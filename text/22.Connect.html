@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Command Line Interface" href="23.CommandLine.html" />
     <link rel="prev" title="Getting Access" href="21.GettingAccess.html" /> 
 
@@ -89,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Connect to the cluster</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connect to the cluster</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hostnames">Hostnames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting-to-a-cluster-via-ssh">Connecting to a cluster via SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging In</a></li>
@@ -163,7 +165,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/22.Connect.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/22.Connect.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,7 +191,7 @@
 </div>
 <div class="section" id="connecting-to-a-cluster-via-ssh">
 <h2>Connecting to a cluster via SSH<a class="headerlink" href="#connecting-to-a-cluster-via-ssh" title="Permalink to this headline">¶</a></h2>
-<p>Access to a cluster is through the SSH login protocol using a cluster&#8217;s hostname.
+<p>Access to a cluster is through the SSH login protocol using a cluster’s hostname.
 SSH uses encryption to ensure a secure connection and therefore is preferred.
 Unsecured connections through telnet clients have been disabled and will not work.
 You will need an SSH client which is available with any current Unix based
@@ -199,11 +201,11 @@ is a commonly used SSH client with a graphical interface and is available for
 free download.  We have [[puttyIns | Putty Instructions here]].</p>
 <p>To use a command-line SSH client available on Unix based operating systems,
 open a terminal shell and type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh username@hostname
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh username@hostname
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh -Y username@hostname
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh -Y username@hostname
 </pre></div>
 </div>
 <p>Where username is your username and hostname is the name of the cluster you
@@ -214,7 +216,7 @@ running on Spruce to be forwarded to your local machine.</p>
 <h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
 <p>When your SSH access is granted, you will be prompted with a login message
 (below is the Spruce Knob login message):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
                    Welcome to the Spruce Knob Supercomputer
             Shared Research Facilities, West Virginia University
 ------------------------------------------------------------------------------
@@ -303,21 +305,21 @@ command in the command prompt.</p>
 <div class="section" id="logging-out">
 <h2>Logging Out<a class="headerlink" href="#logging-out" title="Permalink to this headline">¶</a></h2>
 <p>Logging out of a cluster can be done with the exit command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; exit
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; exit
 </pre></div>
 </div>
 <p>The exit command will attempt to terminate any job not running through the
 queuing system.  In some cases, you will get an error that jobs are either
 currently running or currently stopped.  You can view stopped jobs using the
 jobs command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; jobs -l
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; jobs -l
 [1]+ 3325 Stopped            vim script56.py
 </pre></div>
 </div>
 <p>The output of jobs -l will give you the job PID number (in this case 3325) and
 the command (vim script56.py).  To kill jobs preventing successful logout,
 use the kill command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
 </pre></div>
 </div>
 <p>Once all jobs are terminated, the exit command will close the connection to host.</p>
@@ -369,11 +371,11 @@ use the kill command:</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
