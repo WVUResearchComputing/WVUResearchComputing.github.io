@@ -253,40 +253,44 @@ The purpose of this brief tutorial is familiarize you with the most common comma
 
 The next table summarizes those commands.
 
-.. list-table:: WVU's High Performance Computer (HPC) Clusters
-   :widths: 25 50 25
-   :header-rows: 1
+.. table:: WVU's High Performance Computer (HPC) Clusters
+    :widths: 10 20 30
 
-   * - Command
-     - Description
-     - Examples
-   * - ``echo``
-     - Display a given message on the screen
-     - ``echo "This is a message"``
-   * - ``cat``
-     - Display the contents of a file on screen, concatenate files
-     - ``cat my_file``
-   * - ``date``
-     - Shows the current date on screen
-     - ``date``
-   * - ``pwd``
-     - *thorny.hpc.wvu.edu*
-     - To be deployed by the end of 2018
-   * - ``cd``
-     - Change directory
-     - ``cd sub_folder``
-   * - ``mkdir``
-     - Create directory
-     - ``mkdir new_folder``
-   * - ``touch``
-     - Change the access and modification time of a file, create empty files
-     - ``touch new_file``
-   * - ``cp``
-     - Copy a file in another location. Copy several files into a destination directory
-     - ``cp old_file new_file``
-   * - ``mv``
-     - Move a file in another location. Move several files into a destination directory
-     - ``mv old_name new_name``
-   * - ``rm``
-     - Remove one or more files from the file system tree.
-     - ``rm trash_file``
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |Command  | Description                                           | Examples                          |
+    +=========+=======================================================+===================================+
+    |``echo`` | | Display a given message on the screen               | | ``$> echo "This is a message"`` |
+    |         |                                                       |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``cat``  | | Display the contents of a file on screen            | | ``$> cat my_file``              |
+    |         | | Concatenate files                                   |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``date`` | | Shows the current date on screen                    | | ``$> date``                     |
+    |         |                                                       | | Wed Nov 7 10:40:05 EST 2018     |
+    |         |                                                       |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``pwd``  | | Return the path to the current working directory    | | ``$> pwd``                      |
+    |         |                                                       | | /users/username                 |
+    |         |                                                       |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``cd``   | | Change directory                                    | | ``$> cd sub_folder``            |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``mkdir``| | Create directory                                    | | ``$> mkdir new_folder``         |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``touch``| | Change the access and modification time of a file   | | ``$> touch new_file``           |
+    |         | | Create empty files                                  |                                   |
+    |         |                                                       |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``cp``   | | Copy a file in another location.                    | | ``$> cp old_file new_file``     |
+    |         | | Copy several files into a destination directory     |                                   |
+    |         |                                                       |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``mv``   | | Move a file in another location.                    | | ``$> mv old_name new_name``     |
+    |         | | Move several files into a destination directory     |                                   |
+    |         |                                                       |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+    |``rm``   | | Remove one or more files from the file system tree  | | ``$> rm trash_file``            |
+    |         |                                                       | | ``$> rm -r full_folder``        |
+    |         |                                                       |                                   |
+    +---------+-------------------------------------------------------+-----------------------------------+
+

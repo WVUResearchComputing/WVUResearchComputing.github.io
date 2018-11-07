@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Storage" href="25.Storage.html" />
     <link rel="prev" title="Command Line Interface" href="23.CommandLine.html" /> 
 
@@ -91,7 +93,13 @@
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Editing Files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Editing Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opening-gnu-nano">Opening GNU nano</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-gnu-nano">Using GNU nano</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-cut-and-paste">Copy, Cut and Paste</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quitting-nano">Quitting Nano</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="25.Storage.html">Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="26.JobSubmission.html">Job Submission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
@@ -157,7 +165,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/24.EditFiles.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/24.EditFiles.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,7 +180,46 @@
             
   <div class="section" id="editing-files">
 <span id="qs-edit-files"></span><h1>Editing Files<a class="headerlink" href="#editing-files" title="Permalink to this headline">¶</a></h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>After learning a few commands the next thing to learn is to edit text files.
+As we will see later, editing small text files is a common procedure on a HPC cluster; the submission scripts are relatively small text files. Many scientific codes use text-based input files for running simulations.
+You need to know at least one basic editor to help you with those tasks.</p>
+<p>There are several editors available on modern UNIX/Linux machines.
+The most widely used are vi, emacs and nano.</p>
+<p>The standard <em>de facto</em> editor in UNIX is <strong>vi</strong> and a hacker favorite. The Single UNIX Specification (SUS) specifies vi, so every conforming system must have it.</p>
+<p>The second most commonly used editor is <strong>emacs</strong>, sometimes not installed by default on many systems it is usually provided on most Linux distributions.</p>
+<p>The third editor is <strong>GNU nano</strong> a very user-friendly editor.
+For this tutorial we will focus on <em>nano</em>, for editing short text files, this editor serves its purpose.</p>
+<div class="section" id="opening-gnu-nano">
+<h2>Opening GNU nano<a class="headerlink" href="#opening-gnu-nano" title="Permalink to this headline">¶</a></h2>
+<p>On a terminal execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nano &lt;name_of_file&gt;
+</pre></div>
+</div>
+<p>You will get a text application that looks like this:</p>
+<img alt="../_images/nano-editor.png" src="../_images/nano-editor.png" />
+</div>
+<div class="section" id="using-gnu-nano">
+<h2>Using GNU nano<a class="headerlink" href="#using-gnu-nano" title="Permalink to this headline">¶</a></h2>
+<p>The bottom two lines shows the commands to use.
+The symbol <code class="docutils literal notranslate"><span class="pre">^</span></code> means press the <em>CONTROL KEY</em> (left or right) and keep it pressed until you press the command key. The character of the command is not case sensitive so pressing <code class="docutils literal notranslate"><span class="pre">^X</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">^x</span></code>.</p>
+<p>Executing commands with nano will sometimes change the list of subcommands, some of them are indicated like <code class="docutils literal notranslate"><span class="pre">M-C</span></code>, in that case <code class="docutils literal notranslate"><span class="pre">M</span></code> means the <code class="docutils literal notranslate"><span class="pre">META</span></code> character that in modern keyboards is indicated like <code class="docutils literal notranslate"><span class="pre">Alt</span></code>.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">^G</span></code> display a complete list of keystrokes available from the main window. To exit from the help page, execute <code class="docutils literal notranslate"><span class="pre">^X</span></code></p>
+<p>nano offers a farily complete set of basic utilities to edit files.</p>
+<p>Search for text with <code class="docutils literal notranslate"><span class="pre">^W</span></code> and the text to find.
+The command <code class="docutils literal notranslate"><span class="pre">^_</span></code> allow you to go to a specific line number.</p>
+</div>
+<div class="section" id="copy-cut-and-paste">
+<h2>Copy, Cut and Paste<a class="headerlink" href="#copy-cut-and-paste" title="Permalink to this headline">¶</a></h2>
+<p>The command <code class="docutils literal notranslate"><span class="pre">^K</span></code> and <code class="docutils literal notranslate"><span class="pre">^U</span></code> only serve to cut and paste the line where the cursor is located. When you cut the text, its contents are stored in what is called the <em>cut buffer</em>. The command <code class="docutils literal notranslate"><span class="pre">^U</span></code> just takes the contents of the <em>cut buffer</em> and write its contents to the location of the cursor. As the contents of the <em>cut buffer</em> are not erase you can use <code class="docutils literal notranslate"><span class="pre">^U</span></code> to repeat the same contents as many times as you want.</p>
+<p>For more advance copy and paste, you need to learn how to select blocks of text before cutting them to the <em>cut buffer</em>
+First, move the cursor to the start of the text you want to select, press the <code class="docutils literal notranslate"><span class="pre">M-A</span></code> key combination (<em>Alt-A</em> in modern keyboards) to mark the start, then move the cursor to the end of the section you want to select.
+Once you have marked the beginning and end of text, the <code class="docutils literal notranslate"><span class="pre">^^</span></code> (Esc-6) and <code class="docutils literal notranslate"><span class="pre">^K</span></code> key combinations can be used to copy or cut it, respectively.
+In a command like <code class="docutils literal notranslate"><span class="pre">^^</span></code>, the meaning of that is press the <em>Control Key</em> followed by the <em>carret symbol</em> <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p>
+</div>
+<div class="section" id="quitting-nano">
+<h2>Quitting Nano<a class="headerlink" href="#quitting-nano" title="Permalink to this headline">¶</a></h2>
+<p>To quit nano, use the <code class="docutils literal notranslate"><span class="pre">^X</span></code> key combination. If the file you are working on has been modified since the last time you saved it, you will be ask to save the file first. Type <em>y</em> to save the file, or <em>n</em> to exit nano without saving the file.</p>
+</div>
 </div>
 
 
@@ -216,20 +263,11 @@
 
     
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
