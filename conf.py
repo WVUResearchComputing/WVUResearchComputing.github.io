@@ -45,7 +45,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'WVU-RC'
-copyright = '2018, Guillermo Avendano-Franco'
+copyright = '2019, West Virginia University'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
