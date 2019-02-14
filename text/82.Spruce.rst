@@ -1,11 +1,49 @@
 Spruce Knob
 ===========
 
-Spruce Knob is a 3376 core cluster spread over 176 nodes using a shared FDR Infiniband Network. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phase.  New hardware is no longer being added to this cluster.  Hardware that is still under warranty will be serviced.  Hardware that is out of warranty will be removed from the cluster upon failure.
+Spruce Knob is a 3,376 core cluster spread over 176 nodes using a shared FDR Infiniband Network. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phase.  New hardware is no longer being added to this cluster.  Hardware that is still under warranty will be serviced.  Hardware that is out of warranty will be removed from the cluster upon failure.
+
+
+Overview
+--------
+
+Resource manager and system scheduler
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Torque v. 6.1.x
+* Moab Cluster Manager v. 9.1.x 
+
+Total Compute Resources
+^^^^^^^^^^^^^^^^^^^^^^^
+* 3,376 Cores
+* 176 Compute Nodes
+* 4 Management Nodes
+* 18 GPUs
+
+Shared Interconnect
+^^^^^^^^^^^^^^^^^^^
+* Mellanox SX6512 Infiniband Switch
+* 216 ports all non-blocking
+* FDR (56 Gb/s) speed
+* All Fibre Connections
 
 
 Hardware
 --------
+
+Phase 0/1 Hardware
+^^^^^^^^^^^^^^^^^^
+
+Phase 2 Hardware
+^^^^^^^^^^^^^^^^^^
+
+Phase 3a Hardware
+^^^^^^^^^^^^^^^^^^
+
+Phase 3b Hardware
+^^^^^^^^^^^^^^^^^^
+
+Phase 4 Hardware
+^^^^^^^^^^^^^^^^^^
 
 
 Queues
