@@ -34,11 +34,11 @@ Phase 0/1 Hardware
 +---------------+-----------------------------------------+-----------------+-------------+-------+
 | Node Type     | Description                             | Community Count | Condo Count | Total |
 +---------------+-----------------------------------------+-----------------+-------------+-------+
-| Small Memory  | 2 x 6138 Intel Procs (40 Cores Total)   | 64              | 13          | 77    |
-|               | 96GB memory                             |                 |             |       |
-|               | 240GB SSD                               |                 |             |       |
-|               | 100 Gb Omnipath                         |                 |             |       |
-|               | 5 yr warranty                           |                 |             |       |
+| Small Memory  | - 2 x 6138 Intel Procs (40 Cores Total) | 64              | 13          | 77    |
+|               | - 96GB memory                           |                 |             |       |
+|               | - 240GB SSD                             |                 |             |       |
+|               | - 100 Gb Omnipath                       |                 |             |       |
+|               | - 5 yr warranty                         |                 |             |       |
 +---------------+-----------------------------------------+-----------------+-------------+-------+
 | Medium Memory | 2 x 6138 Intel Procs (40 Cores Total)   | 0               | 16          | 16    |
 |               | 192GB memory                            |                 |             |       |
@@ -67,7 +67,6 @@ Phase 0/1 Hardware
 |               | 5 yr warranty                           |                 |             |       |
 +---------------+-----------------------------------------+-----------------+-------------+-------+
 
-
 Queues
 ------
 
@@ -76,35 +75,20 @@ command.
 
 ::
 
-    zbetienne          --      --       --      --    1   0 --   E R
-                                                   ----- -----
-                                                     495  2148
-
     server: trcis002.hpc.wvu.edu
 
     Queue            Memory CPU Time Walltime Node  Run Que Lm  State
     ---------------- ------ -------- -------- ----  --- --- --  -----
-    batch              --      --       --      --    0   0 --   E R
     standby            --      --    04:00:00   --    0   0 --   E R
     comm_small_week    --      --    168:00:0   --    0   0 --   E R
     comm_small_day     --      --    24:00:00   --    0   0 --   E R
     comm_gpu_week      --      --    168:00:0   --    0   0 --   E R
     comm_xl_week       --      --    168:00:0   --    0   0 --   E R
-    jaspeir            --      --       --      --    0   0 --   E R
-    ahismail           --      --       --      --    0   0 --   E R
-    jbmertz            --      --       --      --    0   0 --   E R
-    vyakkerman         --      --       --      --    0   0 --   E R
-    bvpopp             --      --       --      --    0   0 --   E R
-    spdifazio          --      --       --      --    0   0 --   E R
-    sbs0016            --      --       --      --    0   0 --   E R
-    pmm0026            --      --       --      --    0   0 --   E R
-    admin              --      --       --      --    0   0 --   E R
                                                ----- -----
                                                       0     0
 
 
-There are three main queue types - research team queues, the standby
-queue, and community node queues.
+There are three main queue types - research team queues, the standby queue, and community node queues.
 
 Research Team Queues
 --------------------
