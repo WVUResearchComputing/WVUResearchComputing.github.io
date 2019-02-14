@@ -1,19 +1,75 @@
 Thorny Flat Cluster
 ===================
 
+Thorny Flat is WVU Latest HPC Cluster.  It was deployed in Feburary 2019 and funded in large part by NSF Major Research Instrumentation (MRI) Grant Award #1726534. The cluster is a 4,208 core cluster spread over 108 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phase and currently is in phase 0. 
+
+Overview
+--------
+
+Resource manager and system scheduler
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Torque v. 6.1.x
+* Moab Cluster Manager v. 9.1.x 
+
+Total Compute Resources
+^^^^^^^^^^^^^^^^^^^^^^^
+* 4,208 Cores
+* 101 Compute Nodes
+* 7 Compute Nodes
+* 21 GPUs
+* 4 Management Nodes
+
+Shared Interconnect
+^^^^^^^^^^^^^^^^^^^
+* Intel Omnipath 100 Gbps
+* 5:1 Blocking
+* FDR (56 Gb/s) speed
+
 Hardware
 --------
 
-Test
+Phase 0/1 Hardware
+^^^^^^^^^^^^^^^^^^
+
++---------------+-----------------------------------------+-----------------+-------------+-------+
+| Node Type     | Description                             | Community Count | Condo Count | Total |
++---------------+-----------------------------------------+-----------------+-------------+-------+
+| Small Memory  | 2 x 6138 Intel Procs (40 Cores Total)   | 64              | 13          | 77    |
+|               | 96GB memory                             |                 |             |       |
+|               | 240GB SSD                               |                 |             |       |
+|               | 100 Gb Omnipath                         |                 |             |       |
+|               | 5 yr warranty                           |                 |             |       |
++---------------+-----------------------------------------+-----------------+-------------+-------+
+| Medium Memory | 2 x 6138 Intel Procs (40 Cores Total)   | 0               | 16          | 16    |
+|               | 192GB memory                            |                 |             |       |
+|               | 240GB SSD                               |                 |             |       |
+|               | 100 Gb Omnipath                         |                 |             |       |
+|               | 5 yr warranty                           |                 |             |       |
++---------------+-----------------------------------------+-----------------+-------------+-------+
+| Large Memory  | 2 x 6138 Intel Procs (40 Cores Total)   | 0               | 4           | 4     |
+|               | 768GB memory                            |                 |             |       |
+|               | 240GB SSD                               |                 |             |       |
+|               | 100 Gb Omnipath                         |                 |             |       |
+|               | 5 yr warranty                           |                 |             |       |
++---------------+-----------------------------------------+-----------------+-------------+-------+
+| XL Memory     | 2 x 6126 Intel Procs (24 Cores Total)   | 3               | 1           | 4     |
+|               | 3 x NVIDIA Quadro P6000 24GB PCIe GPUs, |                 |             |       |
+|               | 96GB memory                             |                 |             |       |
+|               | 240GB SSD                               |                 |             |       |
+|               | 100 Gb Omnipath                         |                 |             |       |
+|               | 5 yr warranty                           |                 |             |       |
++---------------+-----------------------------------------+-----------------+-------------+-------+
+| GPU           | 2 x 6126 Intel Procs (24 Cores Total)   | 6               | 1           | 7     |
+|               | 3 x NVIDIA Quadro P6000 24GB PCIe GPUs, |                 |             |       |
+|               | 96GB memory                             |                 |             |       |
+|               | 240GB SSD                               |                 |             |       |
+|               | 100 Gb Omnipath                         |                 |             |       |
+|               | 5 yr warranty                           |                 |             |       |
++---------------+-----------------------------------------+-----------------+-------------+-------+
 
 
 Queues
 ------
-
-Test
-
-Environment modules
--------------------
 
 The current state and limits of queues can be found using the qstat
 command.
