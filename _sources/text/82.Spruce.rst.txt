@@ -64,12 +64,6 @@ command.
 
     Queue            Memory CPU Time Walltime Node  Run Que Lm  State
     ---------------- ------ -------- -------- ----  --- --- --  -----
-    admin              --      --       --      --    0   0 --   E R
-    ahismail           --      --       --      --    6   1 --   E R
-    alromero           --      --       --      --   13   5 --   E R
-    bts0019            --      --       --      --    0   0 --   D S
-    bvpopp             --      --       --      --    7   0 --   E R
-    cedumitrescu       --      --       --      --   12  12 --   E R
     comm_256g_mem      --      --    168:00:0   --    4   5 --   E R
     comm_gpu           --      --    168:00:0   --    3   1 --   E R
     comm_large_mem     --      --    168:00:0   --    5 268 --   E R
@@ -77,28 +71,8 @@ command.
     comm_mmem_week     --      --    168:00:0   --   71 264 --   E R
     comm_smp           --      --    168:00:0   --    6   0 --   E R
     debug              --      --    00:15:00   --    0   0 --   E R
-    dsmebane           --      --       --      --    2   0 --   E R
-    genomics_core      --      --       --      --   16 300 --   E R
-    gmunu              --      --       --      --    0   0 --   E R
-    gspirou            --      --       --      --    0   0 --   E R
-    jaspeir            --      --       --      --    0   0 --   E R
-    jbmertz            --      --       --      --    3   2 --   E R
-    jbmertz_gpu        --      --       --      --    2   0 --   E R
-    jplewis            --      --       --      --    8 114 --   E R
-    jplewis_large      --      --       --      --    0   0 --   E R
-    jshawkins          --      --       --      --    0   0 --   E R
-    jthibaul           --      --       --      --    0   0 --   D R
-    mcwilliams_gpu     --      --       --      --    0   0 --   E R
-    sp0045             --      --       --      --   13   0 --   E R
-    spdifazio          --      --       --      --   25 600 --   E R
     standby            --      --    04:00:00   --  271 538 --   E R
-    stmcwilliams       --      --       --      --    1   0 --   E R
-    stmcwilliams_lp    --      --       --      --    1   0 --   E R
-    tdmusho            --      --       --      --    0   0 --   E R
-    testqueue          --      --       --      --    0   0 --   E R
     training           --      --       --      --    0   0 --   D S
-    vyakkerman         --      --       --      --   13   0 --   E R
-    zbetienne          --      --       --      --    1   0 --   E R
                                                    ----- -----
                                                      495  2148
 
