@@ -45,7 +45,7 @@ Where ``<username>`` is your *WVU Login account* username and ``<hostname>`` is 
 The -Y option is used to forward X windows applications running on the server to be forwarded to your local machine.
 Remember that the ``$>`` symbols above are there to indicate a command on the terminal, you should not enter those initial characters.
 
-We currently have two clusters *Mountaineer* and *Spruce Knob* the hostnames are:
+We currently have two clusters *Thorny Flat and *Spruce Knob* the hostnames are:
 
 .. list-table:: WVU's High Performance Computer (HPC) Clusters
    :widths: 25 50 25
@@ -73,7 +73,7 @@ If you want to get X11 forwarding, ie remote windows popping on your local machi
 
 .. image:: /_static/putty_xforward.png
 
-If you want to connect to Thorny Flat, you will first have to Research Computing's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
+If you want to connect to Thorny Flat, you will first have to connect to Research Computing's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
 
   $ ssh <username>@ssh.wvu.edu
 
