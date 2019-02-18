@@ -184,8 +184,9 @@
 <p>Due to security reasons, HPC clusters are intended to be accesed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.</p>
 <p>SSH was created as replacement to Telnet and old method for remote communication with no capability of encryption. This kind of access have been disabled and will not work on any cluster.</p>
 <p>In other to connect to any of our clusters you need a <em>username</em>, your name as user of the cluster.
-You should have obtained that <em>username</em> with your <em>WVU Login account</em>
-The next step is to use a SSH client to connect to one of our clusters.</p>
+You should have obtained that <em>username</em> with your <em>WVU Login account</em></p>
+<p>WVU’s clusters are also open to users who are currently associated with another Higher Education Institution in the state of West Virginia.  These users will still need a WVU Login account for access.  If you are working with someone (i.e. a PI) at WVU and need access, please have that person complete the form located <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=7156">here</a>.  If you are not working with anyone at WVU, please send an email <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a></p>
+<p>The next step is to use a SSH client to connect to one of our clusters.</p>
 <div class="section" id="get-a-ssh-client">
 <h2>Get a SSH Client<a class="headerlink" href="#get-a-ssh-client" title="Permalink to this headline">¶</a></h2>
 <p>An SSH Client is a piece of software that allow you to run a remote session on a computer, over a network using a secure connection based on the SSH protocol.</p>
@@ -223,17 +224,13 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>Mountaineer</strong></td>
-<td><em>mountaineer.hpc.wvu.edu</em></td>
-<td>To be decommissioned by the end of 2018</td>
-</tr>
-<tr class="row-odd"><td><strong>Spruce Knob</strong></td>
+<tr class="row-even"><td><strong>Spruce Knob</strong></td>
 <td><em>spruce.hpc.wvu.edu</em></td>
 <td>Operational</td>
 </tr>
-<tr class="row-even"><td><strong>Thorny Flat</strong></td>
+<tr class="row-odd"><td><strong>Thorny Flat</strong></td>
 <td><em>thorny.hpc.wvu.edu</em></td>
-<td>To be deployed by the end of 2018</td>
+<td>Testing</td>
 </tr>
 </tbody>
 </table>
@@ -245,6 +242,15 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 <img alt="../_images/puttystartup.png" src="../_images/puttystartup.png" />
 <p>If you want to get X11 forwarding, ie remote windows popping on your local machine, enable X11 forwarding as shown below.</p>
 <img alt="../_images/putty_xforward.png" src="../_images/putty_xforward.png" />
+<p>If you want to connect to Thorny Flat, you will first have to Research Computing’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
+</pre></div>
+</div>
+<p>then:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh tf.hpc.wvu.edu
+</pre></div>
+</div>
+<p>Note: You should not have to enter a password for the second login.</p>
 </div>
 <div class="section" id="logging-in">
 <h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>

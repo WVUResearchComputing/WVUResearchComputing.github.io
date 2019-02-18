@@ -11,6 +11,9 @@ SSH was created as replacement to Telnet and old method for remote communication
 
 In other to connect to any of our clusters you need a *username*, your name as user of the cluster.
 You should have obtained that *username* with your *WVU Login account*
+
+WVU's clusters are also open to users who are currently associated with another Higher Education Institution in the state of West Virginia.  These users will still need a WVU Login account for access.  If you are working with someone (i.e. a PI) at WVU and need access, please have that person complete the form located `here <https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=7156>`__.  If you are not working with anyone at WVU, please send an email helpdesk@hpc.wvu.edu
+
 The next step is to use a SSH client to connect to one of our clusters.
 
 Get a SSH Client
@@ -51,15 +54,12 @@ We currently have two clusters *Mountaineer* and *Spruce Knob* the hostnames are
    * - Cluster
      - Hostname
      - Status
-   * - **Mountaineer**
-     - *mountaineer.hpc.wvu.edu*
-     - To be decommissioned by the end of 2018
    * - **Spruce Knob**
      - *spruce.hpc.wvu.edu*
      - Operational
    * - **Thorny Flat**
      - *thorny.hpc.wvu.edu*
-     - To be deployed by the end of 2018
+     - Testing
 
 If you want to connect to Spruce use the following command::
 
@@ -72,6 +72,16 @@ If you are using Windows and PuTTy, click on PuTTy Icon and enter the hosname
 If you want to get X11 forwarding, ie remote windows popping on your local machine, enable X11 forwarding as shown below.
 
 .. image:: /_static/putty_xforward.png
+
+If you want to connect to Thorny Flat, you will first have to Research Computing's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
+
+  $ ssh <username>@ssh.wvu.edu
+
+then::
+
+  $ ssh tf.hpc.wvu.edu
+
+Note: You should not have to enter a password for the second login.
 
 
 Logging In
