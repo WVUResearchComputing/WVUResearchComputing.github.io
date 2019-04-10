@@ -95,8 +95,13 @@
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="60.Administrators.html">For Administrators</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Documentation on Sphinx</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creation">Creation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#changing-the-documents">Changing the documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-github-repository">The Github Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-the-singularity-image">Getting the singularity image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-a-shell-inside-the-container">Getting a shell inside the container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-the-sphinx-and-master-branches">Downloading the ‘sphinx’ and ‘master’ branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-the-sources">Editing the sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-add-commit-and-push">Build, add, commit, and push</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-the-documentation-manually">Downloading the documentation (manually)</a></li>
 </ul>
 </li>
 </ul>
@@ -172,19 +177,81 @@
             
   <div class="section" id="documentation-on-sphinx">
 <h1>Documentation on Sphinx<a class="headerlink" href="#documentation-on-sphinx" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="creation">
-<h2>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Create a Repostory called</li>
-</ol>
-<p>WVUResearchComputing.github.io</p>
-<ol class="arabic simple" start="2">
-<li></li>
-</ol>
+<p>The website for documentation about High-Performance Computing at West Virginia
+University is hosted on github and created using Sphinx.</p>
+<p>In practice that means that both sources and HTML files are version controlled
+using git and stored on Github and editing the webpages implies knowing a bit
+how sphinx manages the creation of HTML pages and editing files in rst format.</p>
+<p>This tutorial covers the basics for learning how to download the sources,
+introducing changes and uploading the resulting sources and HTML files.</p>
+<p>We have simplified the process by using a singularity image that provides all
+the functionalities needed with a simple command line.</p>
+<p>On this tutorial we will follow this path. First knowing how to access github
+and how to ad</p>
+<div class="section" id="the-github-repository">
+<h2>The Github Repository<a class="headerlink" href="#the-github-repository" title="Permalink to this headline">¶</a></h2>
+<p>The github repository was created at:
+<a class="reference external" href="_github_repo_">https://github.com/WVUResearchComputing/WVUResearchComputing.github.io</a>.</p>
+<p>The actual documentation can be seen at
+<a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a></p>
 </div>
-<div class="section" id="changing-the-documents">
-<h2>Changing the documents<a class="headerlink" href="#changing-the-documents" title="Permalink to this headline">¶</a></h2>
-<p>These are the steps to create a working environment for introducing changes to the documentation.
+<div class="section" id="getting-the-singularity-image">
+<h2>Getting the singularity image<a class="headerlink" href="#getting-the-singularity-image" title="Permalink to this headline">¶</a></h2>
+<p>We have created a singularity image for managing the process of downloading,
+editing and uploading sources and HTML files as easy as possible.</p>
+<p>The singularity image is called <code class="docutils literal"><span class="pre">docs_hpc_wvu.simg</span></code> and it is stored in HPC
+storage, ask administrators for actual location.</p>
+<p>Once you have the singularity image, be sure that you have singularity installed
+on your computer. The procedure to compile singularity is very simple.</p>
+<p>See <a class="reference external" href="https://singularity.lbl.gov/install-linux">Singularity docs</a> for
+instructions on how to install singularity.</p>
+</div>
+<div class="section" id="getting-a-shell-inside-the-container">
+<h2>Getting a shell inside the container<a class="headerlink" href="#getting-a-shell-inside-the-container" title="Permalink to this headline">¶</a></h2>
+<p>The singularity image provides a complete environment for working with the
+sources, otherwise you need to install a recent version of sphinx a fairly
+complete Latex environment and a few extra utilities to build the sources and
+commit them to github, the image give you all that in a single file</p>
+<p>Get a shell inside the container with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">shell</span> <span class="n">docs_hpc_wvu</span><span class="o">.</span><span class="n">simg</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="downloading-the-sphinx-and-master-branches">
+<h2>Downloading the ‘sphinx’ and ‘master’ branches<a class="headerlink" href="#downloading-the-sphinx-and-master-branches" title="Permalink to this headline">¶</a></h2>
+<p>Once you are inside the container shell. Execute this command to download the
+branches</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">download</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">DOCS</span></code> is the folder where the branches will be created, you can change
+the name of that folder but use it for any interaction with the script</p>
+</div>
+<div class="section" id="editing-the-sources">
+<h2>Editing the sources<a class="headerlink" href="#editing-the-sources" title="Permalink to this headline">¶</a></h2>
+<p>The singularity image includes atom as an editor, otherwise use your editor
+of choice inside or outside the container. If you want to use atom use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">edit</span>
+</pre></div>
+</div>
+<p>Editing the documentation involves introducing changes to the rst files, adding,
+deleting or reordering as needed.</p>
+</div>
+<div class="section" id="build-add-commit-and-push">
+<h2>Build, add, commit, and push<a class="headerlink" href="#build-add-commit-and-push" title="Permalink to this headline">¶</a></h2>
+<p>There are several actions that trigger git commands. build compile the sources
+with sphinx, add stash the files in git, commit will include them in version
+control and push will send both sources and HTML files back to github.</p>
+<p>A simplified command will do all those things in a single command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">bacp</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="downloading-the-documentation-manually">
+<h2>Downloading the documentation (manually)<a class="headerlink" href="#downloading-the-documentation-manually" title="Permalink to this headline">¶</a></h2>
+<p>These are the steps to create a working environment for introducing changes to
+the documentation. These lines are not needed if you are following the automated
+procedure using singularity image and the script that facilitates the edition.
 Create one folder for both “sphinx” and “master” branches:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>mkdir DOCS
 cd DOCS
