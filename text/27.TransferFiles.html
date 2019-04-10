@@ -330,7 +330,7 @@ can be done at <a class="reference external" href="https://www.globus.org/app/en
 Endpoints</a> and can also done
 from the command line via the following command.</p>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:$&gt; ssh globus_username@cli.globusonline.org endpoint-activate endpoint_name
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>:$&gt; ssh globus_username@cli.globusonline.org endpoint-activate endpoint_name
 :
 </pre></div>
 </div>
@@ -339,7 +339,7 @@ from the command line via the following command.</p>
 <li><p class="first">You can use one of the following options with the transfer command to
 transfer files.</p>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">Simple</span> <span class="n">method</span><span class="p">:</span> <span class="n">one</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">recursive</span> <span class="n">directory</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">Simple</span> <span class="n">method</span><span class="p">:</span> <span class="n">one</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">recursive</span> <span class="n">directory</span>
 <span class="p">:</span>    <span class="n">transfer</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="o">--</span> <span class="n">SOURCE</span><span class="o">-</span><span class="n">ENDPOINT</span><span class="o">/</span><span class="n">FILE</span> <span class="n">DESTINATION</span><span class="o">-</span><span class="n">ENDPOINT</span><span class="o">/</span><span class="n">FILE</span>
 <span class="p">:</span>    <span class="n">transfer</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="o">--</span> <span class="n">SOURCE</span><span class="o">-</span><span class="n">ENDPOINT</span><span class="o">/</span><span class="n">DIRECTORY</span><span class="o">/</span> <span class="n">DESTINATION</span><span class="o">-</span><span class="n">ENDPOINT</span><span class="o">/</span><span class="n">DIRECTORY</span><span class="o">/</span> <span class="o">-</span><span class="n">r</span>
 <span class="p">:</span><span class="n">Advanced</span> <span class="n">method</span><span class="p">:</span> <span class="n">multiple</span> <span class="nb">input</span> <span class="n">lines</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">stdin</span>
@@ -353,7 +353,7 @@ transfer files.</p>
 <ul>
 <li><p class="first">Create a file with a list of files to be transferred</p>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">yourfilehere</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">yourfilehere</span>
 <span class="p">:</span><span class="n">username</span><span class="c1">#psc-cilogon/file.txt</span>
 <span class="p">:</span><span class="n">wvu</span><span class="c1">#hpcdtn/gpfs/home/username/file.txt</span>
 <span class="p">:</span><span class="n">EOF</span>
@@ -387,7 +387,7 @@ protocol SSH, because of this regular ftp connections are blocked. SCP
 comes with all current Unix like operating systems (including Linux and
 Mac OS X) and is available from a terminal. To copy a single file using
 scp you can type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; scp &lt;filename&gt; username@hostname:.
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; scp &lt;filename&gt; username@hostname:.
 </pre></div>
 </div>
 <p>Where filename is the name of the file you want to be copied, and
@@ -405,13 +405,13 @@ example, you wanted to copy the file to your SCRATCH directory
 (information about the SCRATCH directory can be found at the <a class="reference external" href="FileSystem">File
 System</a> page) and name the file a different name you
 could use the command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; scp &lt;filename&gt; username@hostname:$SCRATCH/new_filename
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; scp &lt;filename&gt; username@hostname:$SCRATCH/new_filename
 </pre></div>
 </div>
 <p>The above commmand will re-name the file to new_filename and place it
 in your SCRTACH directory. If you instead want to copy over entire
 directories, this can be done the with -r option</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; scp -r &lt;directory&gt; username@hostname:.
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; scp -r &lt;directory&gt; username@hostname:.
 </pre></div>
 </div>
 <p>The above command will copy recursively the specified directory from
@@ -419,19 +419,19 @@ your local machine to your home directory on the cluster preserving
 filenames of the directory. A great option for copying over directories
 is to first tarball the directory into a single file. This can be done
 using the Unix tar command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar cvzf archive.tar.gz &lt;directory&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; tar cvzf archive.tar.gz &lt;directory&gt;
 $&gt; scp archive.tar.gz username@hostname:.
 </pre></div>
 </div>
 <p>Then after connecting to the server through SSH, you can unarchive the
 tarball using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar xvzf archive.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; tar xvzf archive.tar.gz
 </pre></div>
 </div>
 <p>The tar command compresses the directory (which will also speed up
 transfer time) into a single file. This is also a great way to combine
 multiple files on a local machine before transfer</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar cvzf archive.tar.gz &lt;file1&gt; &lt;file2&gt; ... &lt;file100&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; tar cvzf archive.tar.gz &lt;file1&gt; &lt;file2&gt; ... &lt;file100&gt;
 </pre></div>
 </div>
 <p>The archive.tar.gz is the name of the soon to be created tarball. You
@@ -490,11 +490,20 @@ easy to use graphical interface.</p>
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

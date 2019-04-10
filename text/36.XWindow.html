@@ -204,7 +204,7 @@ to submit your job to the scheduler.</strong></p>
 <h3>Linux/OS X Instructions<a class="headerlink" href="#linux-os-x-instructions" title="Permalink to this headline">¶</a></h3>
 <p>With Linux or OS X you can simply run the command below from your
 terminal window to enable X11 forward through SSH.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh -XC username@hostname
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh -XC username@hostname
 </pre></div>
 </div>
 <p>To verify your X setup, you can run the command “xclock” from the
@@ -264,7 +264,7 @@ you will need to run the following command which will launch an
 interactive job and give you terminal access on a compute node. Note:
 The following command is just an example and you will still need to set
 the appropriate pbs flags that meets the task’s needs.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -q standby -X -I
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -q standby -X -I
 </pre></div>
 </div>
 </div>
@@ -311,11 +311,20 @@ the appropriate pbs flags that meets the task’s needs.</p>
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   
