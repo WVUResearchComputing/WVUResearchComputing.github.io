@@ -23,7 +23,6 @@ Shared Interconnect
 ^^^^^^^^^^^^^^^^^^^
 * Intel Omnipath 100 Gbps
 * 5:1 Blocking
-* FDR (56 Gb/s) speed
 
 Hardware
 --------
