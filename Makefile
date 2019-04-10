@@ -191,7 +191,7 @@ pseudoxml:
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
 
 update-master:
-	test -d ../master && cd ../master && rm -rf _* *.html objects.inv searchindex.js text
+	test -d ../master && cd ../master && rm -rf _* *.html objects.inv searchindex.js text manual.pdf
 	test -d ../master && rsync -av _build/html/ ../master
 	test -d ../master && cp _build/manual.pdf ../master
 	test -d ../master && cd ../master && git rm -r --cached . && git add . 
