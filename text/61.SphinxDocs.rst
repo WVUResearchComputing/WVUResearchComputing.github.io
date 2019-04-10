@@ -1,20 +1,112 @@
 Documentation on Sphinx
 =======================
 
-Creation
---------
+The website for documentation about High-Performance Computing at West Virginia
+University is hosted on github and created using Sphinx.
 
-1. Create a Repostory called
+In practice that means that both sources and HTML files are version controlled
+using git and stored on Github and editing the webpages implies knowing a bit
+how sphinx manages the creation of HTML pages and editing files in rst format.
 
-WVUResearchComputing.github.io
+This tutorial covers the basics for learning how to download the sources,
+introducing changes and uploading the resulting sources and HTML files.
+
+We have simplified the process by using a singularity image that provides all
+the functionalities needed with a simple command line.
+
+On this tutorial we will follow this path. First knowing how to access github
+and how to ad
+
+The Github Repository
+---------------------
+
+The github repository was created at:
+`https://github.com/WVUResearchComputing/WVUResearchComputing.github.io`__.
+
+.. _github_repo: https://github.com/WVUResearchComputing/WVUResearchComputing.github.io
+
+__ _github_repo_
+
+The actual documentation can be seen at
+`https://docs.hpc.wvu.edu <https://docs.hpc.wvu.edu>`_
+
+Getting the singularity image
+-----------------------------
+
+We have created a singularity image for managing the process of downloading,
+editing and uploading sources and HTML files as easy as possible.
+
+The singularity image is called ``docs_hpc_wvu.simg`` and it is stored in HPC
+storage, ask administrators for actual location.
+
+Once you have the singularity image, be sure that you have singularity installed
+on your computer. The procedure to compile singularity is very simple.
+
+See `Singularity docs <https://singularity.lbl.gov/install-linux>`_ for
+instructions on how to install singularity.
+
+Getting a shell inside the container
+------------------------------------
+
+The singularity image provides a complete environment for working with the
+sources, otherwise you need to install a recent version of sphinx a fairly
+complete Latex environment and a few extra utilities to build the sources and
+commit them to github, the image give you all that in a single file
+
+Get a shell inside the container with:
+
+::
+
+    singularity shell docs_hpc_wvu.simg
 
 
-2.
+Downloading the 'sphinx' and 'master' branches
+----------------------------------------------
 
-Changing the documents
-----------------------
+Once you are inside the container shell. Execute this command to download the
+branches
 
-These are the steps to create a working environment for introducing changes to the documentation.
+::
+
+    docs_hpc_wvu -b DOCS download
+
+The ``DOCS`` is the folder where the branches will be created, you can change
+the name of that folder but use it for any interaction with the script
+
+
+Editing the sources
+-------------------
+
+The singularity image includes atom as an editor, otherwise use your editor
+of choice inside or outside the container. If you want to use atom use:
+
+::
+
+    docs_hpc_wvu -b DOCS edit
+
+Editing the documentation involves introducing changes to the rst files, adding,
+deleting or reordering as needed.
+
+Build, add, commit, and push
+----------------------------
+
+There are several actions that trigger git commands. build compile the sources
+with sphinx, add stash the files in git, commit will include them in version
+control and push will send both sources and HTML files back to github.
+
+A simplified command will do all those things in a single command:
+
+::
+
+    docs_hpc_wvu -b DOCS bacp
+
+
+Downloading the documentation (manually)
+----------------------------------------
+
+These are the steps to create a working environment for introducing changes to
+the documentation. These lines are not needed if you are following the automated
+procedure using singularity image and the script that facilitates the edition.
 Create one folder for both "sphinx" and "master" branches::
 
     mkdir DOCS
@@ -37,5 +129,3 @@ To compile the documentation enter into the "sphinx" folder and execute::
 
     make html
     make latexpdf
-    
-    
