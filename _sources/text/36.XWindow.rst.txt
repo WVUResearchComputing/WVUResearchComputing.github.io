@@ -45,7 +45,7 @@ Windows does not have a built in X11 Server so one will need to be
 installed. Below are instructions for
 `Xming <https://sourceforge.net/projects/xming/>`__ which is compatible
 with Putty but you maybe also which to look into
-`MobaXterm <http://mobaxterm.mobatek.net/>`__.
+`MobaXterm <https://mobaxterm.mobatek.net/>`__.
 
 #. Download Xming from here
    https://sourceforge.net/projects/xming/files/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe/download.

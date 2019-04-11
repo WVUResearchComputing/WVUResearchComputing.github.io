@@ -89,7 +89,7 @@ instructions in the Globus Online Google Drive Connector Instructions,
 which will guide you on how to make a Shared Endpoint that you can
 attach to your MIX Google Drive Account to transfer data to/from.
 
-`Globus Online Google Drive Connector Instructions <https://docs.globus.org/premium-storage-connectors/google-drive/#share_a_google_drive_folder_using_globus>`__
+`Globus Online Google Drive Connector Instructions <https://docs.globus.org/premium-storage-connectors/google-drive>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  **Note:** In step one, when searching all endpoints you will need to

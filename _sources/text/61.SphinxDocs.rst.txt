@@ -1,57 +1,53 @@
-Documentation on Sphinx
+Editing these documents
 =======================
 
-The website for documentation about High-Performance Computing at West Virginia
-University is hosted on github and created using Sphinx.
+WVU Research Computing releases documentation in two formats:
+As HTML pages hosted at `https://docs.hpc.wvu.edu <https://docs.hpc.wvu.edu>`_
+and a PDF file that can be downloaded from
+`https://docs.hpc.wvu.edu/docs_hpc_wvu.pdf <https://docs.hpc.wvu.edu/docs_hpc_wvu.pdf>`_
 
-In practice that means that both sources and HTML files are version controlled
+Github provides the hosting and version control of sources and generated HTML
+pages and PDF documents. The documentation itself is generated using `Sphinx
+<http://www.sphinx-doc.org/en/master>`_.
+
+`Sphinx <http://www.sphinx-doc.org/en/master>`_ is a tool that makes it easy to create beautiful documentation with multiple output formats.
+Sphinx uses `reStructuredText (rst) <http://docutils.sourceforge.net/rst.html>`_ as its markup language, and many of its strengths come from the power and straightforwardness of `reStructuredText (rst) <http://docutils.sourceforge.net/rst.html>`_ and its parsing and translating suite, the `Docutils <http://docutils.sourceforge.net/>`_.
+
+In practice, that means that both sources and HTML files are version controlled
 using git and stored on Github and editing the webpages implies knowing a bit
-how sphinx manages the creation of HTML pages and editing files in rst format.
+how sphinx manages the creation of HTML pages and editing files in `rst` format.
 
-This tutorial covers the basics for learning how to download the sources,
-introducing changes and uploading the resulting sources and HTML files.
+This tutorial covers the basics of learning how to download the sources, introducing changes and uploading the resulting sources and HTML files.
+There are two ways of accomplishing this, the manual process involves having a git client, a recent version of sphinx on your computer and fairly complete installation of LaTeX for the PDF document. The manual procedure should work fine but require the user to be responsible for installing many packages on his/her system eventually installing some of them by hand if the versions on the distro are too old. Currently, the documentation is known to work with Sphinx v1.6.7 released on Feb 4, 2018.
 
-We have simplified the process by using a singularity image that provides all
-the functionalities needed with a simple command line.
+We have simplified the process by using a singularity image that contains all
+the functionality needed on a single image. The singularity image is based on `ubuntu-bionic` and should be the method of choice in most cases.
 
-On this tutorial we will follow this path. First knowing how to access github
-and how to ad
+We will describe the usage of the singularity image and the convenience script, at the end of the page we describe briefly the manual process.
 
-The Github Repository
----------------------
+Using the Singularity image
+---------------------------
 
-The github repository was created at:
-`https://github.com/WVUResearchComputing/WVUResearchComputing.github.io`__.
+Both the sources and resulting output formats are stored on Github. The location of the repository is
+`https://github.com/WVUResearchComputing/WVUResearchComputing.github.io <https://github.com/WVUResearchComputing/WVUResearchComputing.github.io>`_.
 
-.. _github_repo: https://github.com/WVUResearchComputing/WVUResearchComputing.github.io
+There is a single repository for both using independent branches, the `sphinx` branch contains the sources and the `master` branch the output formats (HTML files and PDF).
 
-__ _github_repo_
-
-The actual documentation can be seen at
+The actual documentation can be seen at the URL:
 `https://docs.hpc.wvu.edu <https://docs.hpc.wvu.edu>`_
 
+You need to have singularity installed on your machine. See `Singularity docs <https://singularity.lbl.gov/install-linux>`_ for instructions on how to install singularity on your computer.
+
+
 Getting the singularity image
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We have created a singularity image for managing the process of downloading,
-editing and uploading sources and HTML files as easy as possible.
+The singularity image has two purposes, first, it offers a complete `ubuntu-bionic` installation with recent versions of all the packages needed to download, build and upload the documentation. In addition to that, the image itself has a simple script that automatizes some of the routinely commands that need to be done to clone or pull both branches, build the documentation from sources and commit and push both branches back to Github. In some cases, a single call to the script is preventing the user to execution a number of git commands and makes.
 
-The singularity image is called ``docs_hpc_wvu.simg`` and it is stored in HPC
-storage, ask administrators for actual location.
-
-Once you have the singularity image, be sure that you have singularity installed
-on your computer. The procedure to compile singularity is very simple.
-
-See `Singularity docs <https://singularity.lbl.gov/install-linux>`_ for
-instructions on how to install singularity.
+The singularity image is called ``docs_hpc_wvu.simg`` and it is stored in the Globus endpoint called ``wvu#datadepot``, inside ``rcadmin/docs_hpc_wvu``, there is nothing secret with this image but its access is restricted to HPC administrators.
 
 Getting a shell inside the container
-------------------------------------
-
-The singularity image provides a complete environment for working with the
-sources, otherwise you need to install a recent version of sphinx a fairly
-complete Latex environment and a few extra utilities to build the sources and
-commit them to github, the image give you all that in a single file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Get a shell inside the container with:
 
@@ -59,9 +55,45 @@ Get a shell inside the container with:
 
     singularity shell docs_hpc_wvu.simg
 
+Your prompt should change to something like
+
+::
+
+    Singularity docs_hpc_wvu.simg:~/>
+
+All the normal commands executed inside this shell are contained in the image.
+As an exercise you can verify the versions of several packages that we will need to compile the documentation files:
+
+::
+
+    Singularity docs_hpc_wvu.simg:~> sphinx-build --version
+    Sphinx (sphinx-build) 1.6.7
+
+    Singularity docs_hpc_wvu.simg:~> make --version
+    GNU Make 4.1
+    Built for x86_64-pc-linux-gnu
+    Copyright (C) 1988-2014 Free Software Foundation, Inc.
+    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+    This is free software: you are free to change and redistribute it.
+    There is NO WARRANTY, to the extent permitted by law.
+
+    Singularity docs_hpc_wvu.simg:~> pdflatex --version
+    pdfTeX 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian)
+    kpathsea version 6.2.3
+    Copyright 2017 Han The Thanh (pdfTeX) et al.
+    There is NO warranty.  Redistribution of this software is
+    covered by the terms of both the pdfTeX copyright and
+    the Lesser GNU General Public License.
+    For more information about these matters, see the file
+    named COPYING and the pdfTeX source.
+    Primary author of pdfTeX: Han The Thanh (pdfTeX) et al.
+    Compiled with libpng 1.6.34; using libpng 1.6.34
+    Compiled with zlib 1.2.11; using zlib 1.2.11
+    Compiled with poppler version 0.62.0
+
 
 Downloading the 'sphinx' and 'master' branches
-----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once you are inside the container shell. Execute this command to download the
 branches
@@ -70,44 +102,92 @@ branches
 
     docs_hpc_wvu -b DOCS download
 
-The ``DOCS`` is the folder where the branches will be created, you can change
-the name of that folder but use it for any interaction with the script
+``DOCS`` is the folder where both branches will be cloned. The name of the folder is arbitrary but use it consistently in all your executions as the script
+expects two folders to be there ``master`` and ``sphinx``
 
 
 Editing the sources
--------------------
+~~~~~~~~~~~~~~~~~~~
 
-The singularity image includes atom as an editor, otherwise use your editor
-of choice inside or outside the container. If you want to use atom use:
+The singularity image offers atom as an editor. You can use whatever editor you want, inside or outside the image. If you want to use atom from inside the container execute:
 
 ::
 
     docs_hpc_wvu -b DOCS edit
 
-Editing the documentation involves introducing changes to the rst files, adding,
-deleting or reordering as needed.
 
-Build, add, commit, and push
-----------------------------
+The convenience of using atom comes from the tree view of files and eventually the ability to add extra packages to work with rst files more effectively. One interesting package in this context is called `language-restructuredtext <https://atom.io/packages/language-restructuredtext>`_. This package provides snippets and syntax highlighting for reStructuredText files.
 
-There are several actions that trigger git commands. build compile the sources
-with sphinx, add stash the files in git, commit will include them in version
-control and push will send both sources and HTML files back to github.
+To install it go to `Edit > Preferences` a new tab opens called `Settings` there you will see a menu called `Install` and search for
+`language-restructuratedtext`, install the package and you will see the different elements of your rst files properly colored.
 
-A simplified command will do all those things in a single command:
+Editing the documentation involves introducing changes to the rst files, adding or deleting rst files or reordering them. Notice that all rst files are located inside the `text` folder and the name contains a number that follows the structure of the final pages. The pages that are multiples of 10 are chapter covers that add introductions for the chapter and a table of contents. Any renaming of rst files involves reordering those chapter covers to reflect the modifications.
+
+
+Build the output formats
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+We are currently supporting two main output formats, multiple HTML files that are the main format on `https://docs.hpc.wvu.edu <https://docs.hpc.wvu.edu>`_ and the PDF that is called
+`docs_hpc_wvu.pdf <https://docs.hpc.wvu.edu/docs_hpc_wvu.pdf>`_
+
+The simplified command will compile both formats and copy the resulting facilitates to master branch:
 
 ::
 
-    docs_hpc_wvu -b DOCS bacp
+    docs_hpc_wvu -b DOCS build
 
 
-Downloading the documentation (manually)
-----------------------------------------
+Add files to the index
+~~~~~~~~~~~~~~~~~~~~~~
 
-These are the steps to create a working environment for introducing changes to
-the documentation. These lines are not needed if you are following the automated
-procedure using singularity image and the script that facilitates the edition.
-Create one folder for both "sphinx" and "master" branches::
+In git every file that is new or has changed need to be explicitly added for being staged for the next commit. In most cases, editing documentation will just modify a few files, maybe adding a few more. The simplified command will tag all the new and modified files as staged.
+
+::
+
+    docs_hpc_wvu -b DOCS add
+
+Sometimes you do not want to add them all, in this case, do not execute the script and add the files one by one. Notice that the command on master also adds as staged all modified files.
+
+Commit the files on both branches
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The commit command in git stores the contents of the index and the given log message describing the changes. For this command, the message is needed.
+Use this to add the message
+
+::
+
+    docs_hpc_wvu -b DOCS commit -m "Changes to ... adding ..."
+
+The script will add your `username` and date and append those to the message.
+If you are executing this step by hand remember to do it on both branches and try to be consistent on both commits.
+
+Update remotes with push
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The command push in git updates the commits into the remote machine. Notice that that is only possible if the remote branch has not been changed after the previous pull, otherwise, a merge must be do done first before attempting a new push. The simplified command assumes that the remote is in condition to be pushed.
+
+::
+
+    docs_hpc_wvu -b DOCS push
+
+Convenience 4in1 command (build + add + commit + push)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some changes are small, very specific and you want the HTML files to reflect those small changes quickly. The action `bacp` will execute all the 4 actions, build, add, commit and push in a single run. The message needs to be provided as needed by the commit.
+
+::
+
+    docs_hpc_wvu -b DOCS bacp -m "Fixing typos at ..."
+
+
+Editing the documentation manually
+----------------------------------
+
+Editing the documentation without the assistance of the script could be necessary for large changes complex selection of the files to be staged, testing that sources are able to build successfully and a variety of other conditions. These instructions guide you on the manual execution of git and make commands without using the script.
+
+No matter if you are using the singularity image or you have the packages installed on your computer the first step is to clone both "sphinx" and "master" branches
+
+::
 
     mkdir DOCS
     cd DOCS
@@ -121,11 +201,32 @@ Create one folder for both "sphinx" and "master" branches::
     git remote set-url origin ${ORIGIN}
     cd ..
 
-After this commands, the DOCS folder will contain two subfolders, "sphinx" and "master".
-The branch "sphinx" has the sources and "master" the generated web pages.
+After this commands, the DOCS folder will contain two sub-folders, ``sphinx`` and ``master``. The branch ``sphinx`` has the sources and ``master`` the generated web pages.
 
-Editing the documentation is basically adding or modifying the ".rst" files in the subfolder "texts".
-To compile the documentation enter into the "sphinx" folder and execute::
+Edit the rst files as needed and go to the `sphinx` folder and execute:
+
+::
 
     make html
     make latexpdf
+
+The first command is to generate the HTML files that will be located at `_build`
+and the second command will create the PDF file ``docs_hpc_wvu.pdf`` also located at ``_build``
+
+You can check the HTML files by opening `_build/html/index.html`. Verify that all changes are as expected before updating the master branch.
+
+Another target in the Makefile is `linkcheck` that will search for broken and redirected links all across the pages:
+
+::
+
+    make linkcheck
+
+Finally, update the master branch, this will remove all contents of that branch and put in place fresh copies of HTML and PDF documents.
+
+::
+
+    make update-master
+
+At this point, all the remaining commands are git related. Adding the changes to the index with `git add`, commit the changes with `git commit -m "Message"` and pushing the current commit to the remote with `git push`.
+
+You have to do all steps above on both ``master`` and ``sphinx`` branches. Remember that the master branch is not intended to be edited by hand but being the result of compiling the sources from ``sphinx``.

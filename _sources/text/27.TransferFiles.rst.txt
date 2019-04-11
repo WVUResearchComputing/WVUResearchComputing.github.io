@@ -22,7 +22,7 @@ temporarily store and transfer data to other locations at WVU or
 elsewhere throughout the world.
 
 The preferred method for transferring data to and from the data transfer
-nodes is to use `Globus Online <http://globus.org>`__. Globus Online
+nodes is to use `Globus Online <https://www.globus.org>`__. Globus Online
 establishes a GridFTP service for transferring files which makes file
 transfer much faster as well as restartable if they fail. Data transfers
 throughput is improved when a user is transferring multiple files from a
@@ -67,7 +67,7 @@ Online with WVU DTN Servers.
 Access Globus Online Web Portal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Go to http://www.globus.org with your web browser and select "Sign
+#. Go to https://www.globus.org with your web browser and select "Sign
    Up" if you do not already have access to Globus Online. If you
    already have access, select Log in in the upper right hand corner.
 #. Search for your organization which will be "West Virginia University"
@@ -124,19 +124,6 @@ Globus Online Hints
    bookmarks can be found at
    https://www.globus.org/blog/greatly-improved-endpoint-search.
 
-Using Globus Online with Pittsburgh Supercomputing Center (PSC)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-WVU Researcher's have the option to purchase archival storage through
-`PSC's Data
-SuperCell. <http://www.psc.edu/index.php/major-initiatives/data-supercell>`__
-For more information on getting access to SuperCell please contact the
-Research Computing Help Desk at https://helpdesk.hpc.wvu.edu.
-
-With the Data SuperCell, users can easily and quickly transfer files
-from WVU to PSC via Globus Online. Instructions on how to configure
-Globus Online to work with PSC's Data Supercell can be found
-`here <http://www.psc.edu/index.php/resources-for-users/storage-resources#go>`__.
 
 Globus Online Command Line Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,7 +131,7 @@ Globus Online Command Line Interface
 For those who prefer to use a command line interface (CLI) for data
 transfers, you may use Globus Online via the CLI. Detailed instructions
 on how to utilize the CLI can be found at
-[https://support.globus.org/entries/30058643-Using-the-Command-Line-Interface-CLI-
+[https://docs.globus.org/cli/-
 Globus Online CLI Instructions]. Below is an example of using Globus
 Online CLI for reference.
 
@@ -277,5 +264,5 @@ Using WinSCP
 
 For transferring files on a Windows computer, you will have to obtain a
 windows SCP client. We recommend
-`WinSCP <http://winscp.net/eng/index.php>`__, it's free and has a very
+`WinSCP <https://winscp.net/eng/index.php>`__, it's free and has a very
 easy to use graphical interface.
