@@ -214,4 +214,4 @@ Managing environments]
 documentation <https://bioconda.github.io/>`__
 
 `Available packages — Bioconda
-documentation <https://bioconda.github.io/recipes.html>`__
+documentation <https://bioconda.github.io/conda-recipe_index.html>`__
