@@ -100,7 +100,12 @@
 <li class="toctree-l2"><a class="reference internal" href="82.Spruce.html">Spruce Knob</a></li>
 <li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html">Thorny Flat Cluster</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Go First Data-Analytics Cluster</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-in-node">Log in Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#name-node">Name&nbsp;Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#worker-nodes">3&nbsp;Worker&nbsp;Nodes</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
@@ -175,12 +180,43 @@
             
   <div class="section" id="go-first-data-analytics-cluster">
 <h1>Go First Data-Analytics Cluster<a class="headerlink" href="#go-first-data-analytics-cluster" title="Permalink to this headline">¶</a></h1>
+<p>GoFirst Cluster is a dedicated WVU MS Business Data Analytics computing resource that allows students in the Business Data Analytics M.S. program to gain experience in a controlled, secure cloud-computing environment. GoFirst is built from four compute nodes running HDFS shared filesystem, to run Hadoop and Spark jobs using RStudio as a front-end interface.</p>
 <div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
-<p>ghfvgufj</p>
+<div class="section" id="log-in-node">
+<h3>Log in Node<a class="headerlink" href="#log-in-node" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Dual CPU E5-2650 v4 &#64; 2.20GHz</li>
+<li>24&nbsp;Cores&nbsp;Total</li>
+<li>256GB&nbsp;Memory</li>
+<li>500 GB&nbsp;Raw&nbsp;Space</li>
+</ul>
+</div>
+<div class="section" id="name-node">
+<h3>Name&nbsp;Node<a class="headerlink" href="#name-node" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Dual&nbsp;Intel&nbsp;2620&nbsp;v3&nbsp;&#64;&nbsp;2.4&nbsp;GHz</li>
+<li>12&nbsp;Cores&nbsp;Total</li>
+<li>64&nbsp;GB&nbsp;Memory</li>
+<li>3.4&nbsp;TB&nbsp;Raw&nbsp;Space</li>
+</ul>
+</div>
+<div class="section" id="worker-nodes">
+<h3>3&nbsp;Worker&nbsp;Nodes<a class="headerlink" href="#worker-nodes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Dual&nbsp;Intel&nbsp;2650&nbsp;v3&nbsp;&#64;&nbsp;2.3&nbsp;GHz</li>
+<li>20&nbsp;Cores&nbsp;Each&nbsp;(60&nbsp;Total)</li>
+<li>128&nbsp;GB&nbsp;RAM&nbsp;Each&nbsp;(384&nbsp;GB&nbsp;Total)</li>
+<li>21&nbsp;TB&nbsp;Combined&nbsp;Worker&nbsp;Node&nbsp;Storage&nbsp;(7&nbsp;TB&nbsp;usable)</li>
+<li>10&nbsp;Gbps&nbsp;Ethernet&nbsp;Interconnect</li>
+<li>Shares&nbsp;HPC&nbsp;resources&nbsp;(i.e.&nbsp;additional&nbsp;storage).</li>
+</ul>
+</div>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Users connect to Citrix through MasterApps.wvu.edu. In Citrix the user should have IE and Firefox browsers they can launch. After launching one of them they can go to gbef4001.hpc.wvu.edu to access RStudio Server and work within RStudio.</p>
+<hr class="docutils" />
 </div>
 </div>
 
