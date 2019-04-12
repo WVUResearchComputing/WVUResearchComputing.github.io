@@ -44,7 +44,7 @@ MPI Standards
 -------------
 
 Message Passing Interface standards are available free for download at
-`www.mpi-forum.org <http://www.mpi-forum.org/docs/docs.html>`__.
+`MPI Forum <https://www.mpi-forum.org/docs/>`__.
 
 Useful Books
 ------------
@@ -65,7 +65,7 @@ in their respective `modulefiles <Using_Modulefiles>`__.
 +---------------+----------------------------------------------------------------------------+
 | **Library**   | **Documentation**                                                          |
 +---------------+----------------------------------------------------------------------------+
-| Intel         | http://software.intel.com/en-us/articles/intel-mpi-library-documentation   |
+| Intel         | https://software.intel.com/en-us/mpi-library/documentation/get-started     |
 +---------------+----------------------------------------------------------------------------+
 | Mpich2        | http://www.mpich.org/documentation/guides/                                 |
 +---------------+----------------------------------------------------------------------------+

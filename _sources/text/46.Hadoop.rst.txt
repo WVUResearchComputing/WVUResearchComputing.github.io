@@ -116,7 +116,7 @@ Useful Webpages
 ~~~~~~~~~~~~~~~
 
 -  `Apache Hadoop <http://hadoop.apache.org>`__
--  `Myhadoop Sourceforge <http://sourceforge.net/projects/myhadoop>`__
+-  `Myhadoop Sourceforge <https://sourceforge.net/projects/myhadoop/>`__
 -  `Rhipe <https://www.datadr.org>`__
 
 Useful Books
