@@ -1,0 +1,902 @@
+Using the Queuing system
+========================
+
+The login node (the shell you get upon logging into a cluster) should be
+used for text editing, file transfer, and job submissions. No Jobs
+should be run directly on the login node. Jobs that take up too much CPU
+time or RAM will be cancelled by the WVU RC staff to ensure proper
+functioning of the cluster. Jobs should be run using the cluster's
+queuing system, which uses the Moab Cluster Manager. Both batch jobs and
+interactive jobs should be submitted using the queuing system.
+
+Batch queues
+------------
+
+Both batch jobs and interactive jobs will be submitted to a batch queue,
+which specifies the length and resources available to your job. Current
+status of a cluster's queues can be found using the ``qstat`` command.
+There are several options that you can use to get an idea about the
+queues available on the system, the output here is for Spruce cluster
+
+::
+
+   $ qstat -q
+
+   server: srih0001.hpc.wvu.edu
+
+   Queue            Memory CPU Time Walltime Node  Run Que Lm  State
+   ---------------- ------ -------- -------- ----  --- --- --  -----
+   comm_mmem_week     --      --    168:00:0   --   26   0 --   E R
+   standby            --      --    04:00:00   --  182 122 --   E R
+   comm_256g_mem      --      --    168:00:0   --    0   0 --   E R
+   comm_mmem_day      --      --    24:00:00   --  566 592 --   E R
+   debug              --      --    00:15:00   --    0   0 --   E R
+   comm_gpu           --      --    168:00:0   --    0   0 --   E R
+   batch              --      --    04:00:00   --    0   0 --   D S
+   comm_smp           --      --    168:00:0   --    0  20 --   E R
+   comm_large_mem     --      --    168:00:0   --    0   0 --   E R
+   ...
+                                                  ----- -----
+                                                    877   914
+
+This command will give you an idea about the Walltime of the queues and
+the number of jobs and queue and running.
+
+Each queue has a designated Walltime, which specifies how long a
+particular job can run. We recommend that users submit job scripts first
+to the debug queue which has the highest priority (meaning your job will
+be placed running before all other jobs submitted to other queues). The
+debug queue only has a 5 minute Walltime, but is perfect for making sure
+your job script is valid and no errors will occur. Without first running
+a job in the debug queue, you run the risk of waiting a couple of hours
+before your job starts and then finding errors. Other queues including
+week, hour and long are more appropriate for longer running jobs and
+your job's priority runs using your user's priority which is explained
+in the `Policies <Policies>`__ page. If you cannot run your job within
+the specified runtime limits, please let us know.
+
+Useful Commands for Job Submission/Status
+-----------------------------------------
+
++-----------------------------------+-----------------------------------+
+| **qsub**                          | Used to submit both batch and     |
+|                                   | interactive jobs (explained       |
+|                                   | below)                            |
++-----------------------------------+-----------------------------------+
+| **canceljob **                    | Terminates a job in the queue or  |
+|                                   | a running job                     |
++-----------------------------------+-----------------------------------+
+| **checkjob **                     | Displays detailed job state       |
+|                                   | information                       |
++-----------------------------------+-----------------------------------+
+
+Submitting a Batch job to the Queue
+-----------------------------------
+
+To submit a batch job to the queue use the qsub command to submit a job
+submission shell script. Useable job submission shell scripts are
+available for easy modification at `Sample Job
+Scripts <Sample_Job_Scripts>`__.
+
+::
+
+   $> qsub <environment_options> <shellscriptname>
+
+** are options qsub takes to specify job submission parameters including
+the specified queue to submit the job, how many CPUs/much RAM is needed,
+working directories etc (more on this below under Serial Jobs). ** is
+the name of a shell script (bash, tcsh, etc.) that contains the commands
+that will be executed at run time. Default standard output and standard
+error of the job will be placed in files named
+*jobname*.\ **o**\ *jobid* and *jobname*.\ **e**\ *jobid*, respectively.
+These files will be written to the directory in which the qsub command
+was executed in. Where jobname is specified using the -N environment
+option and jobid is given at run time by the system. A trivial example
+is
+
+::
+
+   $> qsub -N example -q debug ./batch_job.sh
+   42129.mountaineer
+
+In this example output files are named example.o42129 and example.e42129
+for standard output and standard error, respectively.
+
+Batch Shell Scripts
+~~~~~~~~~~~~~~~~~~~
+
+Serial batch jobs (jobs not requiring any MPI libraries) are submitted
+to the system using shell scripts. An example (very simple) shell script
+could be
+
+::
+
+   #!/bin/bash
+
+   time command_to_be_executed
+
+The above bash script, if submitted to the system using qsub would
+execute a single command. The unix time command before the
+command_to_be_executed is a very useful tool when using HPC scheduler
+systems. This command will report the real time it takes for a command
+to begin and complete execution. Times will be reported in the standard
+error file, and are useful for knowledge about how much walltime a
+command actually uses. The bash script shown above, when executed using
+the qsub command, the user would have to specify environment options at
+the command line. An easier way is to place environment options directly
+into you shell script using #PBS comments.
+
+::
+
+   #!/bin/bash
+
+   #PBS -N example
+   #PBS -q debug
+
+   time command_to_be_executed
+
+By adding the -N and -q options directly into your shell script you no
+longer have to specify these options on the command line when issuing
+the qsub command.
+
+**Note: Do not place a job in the background using the '&' symbol, you
+will confuse the scheduler and potentially loose your command output.**
+
+Qsub Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Enivironment variables can be specified on the command line using the
+qsub command.
+
+::
+
+   $> qsub -N batch_job -q week -l procs=3 ./batch_job.sh
+
+The above example would submit a job named batch_job to the week queue
+with 3 CPUs used and would execute batch_job.sh located in the current
+directory. The output files would be batch_job.o\ *jobid* and
+batch_job.e\ *jobid*. Another way is to specify these options directly
+in the shell script using #PBS commands.
+
+::
+
+   #!/bin/bash
+
+   #PBS -N batch_job
+   #PBS -q week
+   #PBS -l nodes=1:ppn=3
+
+   time command_to_be_executed
+
+With the environment options contained in the shell script, you no
+longer have to specify them on the command line.
+
+::
+
+   $> qsub ./batch_job.sh
+
+The qsub command without options is identical to the previous command
+with options. Below is a list of commonly used qsub environment options,
+and these options are further explained in below sections.
+
++-----------------------------------+-----------------------------------+
+| **-N**                            | Job Name                          |
++-----------------------------------+-----------------------------------+
+| **-q**                            | Queue specification               |
++-----------------------------------+-----------------------------------+
+| **-l**                            | Used to specify job resources     |
+|                                   | (number of CPUs, nodes, length of |
+|                                   | Walltime)                         |
++-----------------------------------+-----------------------------------+
+| **-m**                            | E-mail options                    |
++-----------------------------------+-----------------------------------+
+| **-M**                            | E-mail address(es) for e-mail     |
+|                                   | options                           |
++-----------------------------------+-----------------------------------+
+| **-e**                            | Path for error stream             |
++-----------------------------------+-----------------------------------+
+| **-o**                            | Path for output stream            |
++-----------------------------------+-----------------------------------+
+| **-t**                            | request for array jobs            |
++-----------------------------------+-----------------------------------+
+
+**Note: More information about the PBS system can be found using the man
+pbs command at the terminal. Further an extensive list of qsub options
+including environment variables can be found using the man qsub
+command.**
+
+Resource Specification
+^^^^^^^^^^^^^^^^^^^^^^
+
+The #PBS -l option is used to specify resources such as number of CPUs,
+nodes, and length of Walltime for the job specified. The three most
+common resources specified for the Mountaineer cluster are
+
++-----------------------------------+-----------------------------------+
+| **nodes**                         | Number of nodes needed            |
++-----------------------------------+-----------------------------------+
+| **walltime**                      | Maximum limit for walltime given  |
+|                                   | in the format hh:mm:ss            |
++-----------------------------------+-----------------------------------+
+| **ppn**                           | Processors per node               |
++-----------------------------------+-----------------------------------+
+| **procs**                         | Number of processors requested    |
++-----------------------------------+-----------------------------------+
+| **pvmem**                         | Maximum amount of memory used by  |
+|                                   | any single process in the job     |
++-----------------------------------+-----------------------------------+
+| **vmem**                          | Maximum amount of memory used by  |
+|                                   | all concurrent processes in the   |
+|                                   | job                               |
++-----------------------------------+-----------------------------------+
+|  |
++-----------------------------------+-----------------------------------+
+
+**Note: procs is used when you do not require each CPU to be on the same
+node.**
+
+For example, the PBS directive
+
+::
+
+   #PBS -l nodes=1:ppn=6,walltime=06:00:00
+
+Specifies that the job will need 6 processors located on a single node
+with a maximum run time of 6 hours. Notice there is no space between
+commas or equal signs. Alternatively, if nodes=1 (procs=6 instead) had
+not been specified then the scheduler would just grab the first 6
+processors available regardless of what nodes they reside on (which will
+only work if your program supports distributed computing). In general,
+unless you are running jobs using MPI libraries (mpirun) or posix
+threads, you will most likely only specify a single processor for your
+job (procs=1). **Note:**\ Resources specifying per node request are
+given with the nodes directive and seperated with a :, on the same line
+in your script.
+
+Requesting Memory Specifications
+''''''''''''''''''''''''''''''''
+
+Requesting memory specifications for jobs is done with the attributes
+vmem or pvmem through the PBS -l directive (resource specification). The
+man pages of pbs will specify two other memory related attributes: mem
+and pmem. However, these two attributes measure different job resources
+than virtual memory and therefore are not stable for use the way we
+commonly think of memory (use of RAM). In other words, do not use the
+attributes mem and pmem - they most likely do not do what you think they
+do. vmem and pvmem will put resource limits for the amount of RAM a job
+can access. This is important to ensure two large memory jobs do not end
+up on the same node; exceeding the node's memory limits and causing a
+node crash (which will kill all jobs on the node). If you do not specify
+memory limits - moab will assume a uniform distribution of memory across
+all jobs on the node. For example, a 16 processor/64Gb of RAM compute
+node will assume roughly 4Gb of RAM per processor. However, if a job
+using 62 Gb of RAM and only 8 cores is running on a compute node -
+without memory limits Moab will place 8 more processor jobs on that node
+when clearly there is not enough memory for any remaining jobs. This
+will crash the node. Therefore, we recommend that if you anticipate your
+jobs are going to use more than an average of 3Gb per processor that you
+specify memory limits for your job using pvmem or vmem. On Spruce
+community nodes and Mountaineer we enforce this by making the system
+default of pvmem=3gb. On these systems without specifying memory above
+3Gb will cause your job to fail. This is important - because on
+community nodes if you specify a job with 5 cores and vmem=25Gb; the job
+still will fail if it exceeds 15Gb because pvmem=3gb is assigned to each
+job by default (i.e. vmem does not override pvmem settings). To make
+your PBS scripts portable across community nodes and private nodes, we
+recommend that you only use pvmem to specify memory limits of jobs.
+pvmem attribute specifies the maximum amount of virtual memory used by
+any single processes in the job. Therefore, if you want a job that uses
+6 processors and needs 35 Gb of RAM you would specify the following
+resource directive line:
+
+::
+
+   #PBS -l nodes=1:ppn=6,pvmem=6gb
+
+pvmem=6gb with 6 processors specifies 6*6 = 36Gb of total memory for the
+job.
+
+Requesting Certain Node Types
+'''''''''''''''''''''''''''''
+
+There might be times where you want to be able to request a node with a
+particular feature or processor. The following will allow you to
+accomplish this task. Replace 'feature_name" with one of the features in
+the below table.
+
+::
+
+   #PBS -l feature=feature_name
+
+Note, you can also request a particular feature not by doing the
+following:
+
+::
+
+   #PBS -l feature='!feature_name'
+
+Available Features
+''''''''''''''''''
+
++-----------+------------------------------------+
+| Feature   | Description                        |
++===========+====================================+
+| smb       | Sandy Bridge Based Processor Nodes |
++-----------+------------------------------------+
+| ivy       | Ivy Bridge Based Processor Nodes   |
++-----------+------------------------------------+
+| haswell   | Haswell Based Processor Nodes      |
++-----------+------------------------------------+
+| broadwell | Broadwell Based Processor Nodes    |
++-----------+------------------------------------+
+| avx       | Processors with AVX Extension      |
++-----------+------------------------------------+
+| avx2      | Processors with AVX2 Extension     |
++-----------+------------------------------------+
+| f16c      | Processors with f16c Extension     |
++-----------+------------------------------------+
+| adx       | Processors with adx Extension      |
++-----------+------------------------------------+
+| large     | Nodes with 512 GB of memory        |
++-----------+------------------------------------+
+
+E-mail options
+^^^^^^^^^^^^^^
+
+The #PBS -m and #PBS -M options are used to specify when and to whom the
+scheduler will send e-mails. The -m option consists of either the single
+character "n", or one or more of the characters "a", "b", and "e".
+
++-------+----------------------------------------------------------+
+| **n** | No mail will be sent                                     |
++-------+----------------------------------------------------------+
+| **a** | Mail is sent when the job is aborted by the batch system |
++-------+----------------------------------------------------------+
+| **b** | Mail is sent when the job begins execution               |
++-------+----------------------------------------------------------+
+| **e** | Mail is sent when the job ends                           |
++-------+----------------------------------------------------------+
+
+**Note: If the -m option is not specified, mail will be sent if the job
+is aborted.**
+
+The shellscript option #PBS -M specifies the e-mail addresses to send
+mail to. For example, the PBS directive
+
+::
+
+   #PBS -m ae
+   #PBS -M user@mailserver.com
+
+The scheduler will send an e-mail to user@mailserver.com if the job is
+aborted, or when the job is completed. To specify more than one e-mail
+address with the -M option, each address should be separated with a
+comma without any spaces.
+
+To Receive no e-mails even on aborts
+''''''''''''''''''''''''''''''''''''
+
+Even with the 'n' option of '-m' directive, the system will still send
+an e-mail if the job is cancelled or aborts. To provide the ability for
+our users to circumvent this response, we have set-up an alias e-mail
+address that can be used to bounce these e-mails. To receive absolutely
+no e-mails from the system, no matter what happens before, during and
+after execution of your job, use the noemail@hpc.wvu.edu address with
+the 'n' option:
+
+::
+
+   #PBS -m n
+   #PBS -m noemail@hpc.wvu.edu
+
+Output file specification
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default standard output and standard error of the job will be placed in
+files named *jobname*.\ **o**\ *jobid* and *jobname*.\ **e**\ *jobid*,
+respectfully. These files will be written to the directory in which the
+qsub command was executed in. Where jobname is specified using the -N
+environment option and jobid is given at run time by the system. The
+#PBS -e and #PBS -o options are used to specify what files should be
+written for the standard error and standard output stream, respectively.
+
++--------+--------------------------------------------+
+| **-e** | pathname for standard error stream output  |
++--------+--------------------------------------------+
+| **-o** | pathname for standard output stream output |
++--------+--------------------------------------------+
+
+An example, the PBS directive
+
+::
+
+   #PBS -e /scratch/username/examplejob.error
+   #PBS -o /scratch/username/examplejob.output
+
+The scheduler will write the files /scratch/username/examplejob.error
+and /scratch/username/examplejob.output for the standard error and
+standard output streams, respectively.
+
+**Note: Use full pathnames for your home directory and scratch
+directory**
+
+Requesting Array jobs
+^^^^^^^^^^^^^^^^^^^^^
+
+By using the directive #PBS -t , you can request a job to be repeated by
+a single script a number of times. This is useful if you have data where
+you want a single parameter to range over a section of numbers. For
+instance, if I wanted a series of commands to be run, with a single
+variable in the command to be executed over a range of 10-20 I could use
+the following command directives in my shell script
+
+::
+
+   #PBS -N demographic_${PBS_ARRAYID}
+   #PBS -l nodes=1:ppn=2
+   #PBS -t 10-20
+
+   mkdir output_${PBS_ARRAYID}/
+   cd output_${PBS_ARRAYID}/
+   $SCRATCH/demographic_model.py -input_parameter ${PBS_ARRAYID} -procs 2 -output_file demographic_output.txt
+
+The above script would launch ten jobs. Each job would have the name
+demographic\_; so the first job would be named demographic_10, the
+second job would be named demographic_11, and so fourth. Each job would
+be run a single node with 2 processors (specified as #PBS -l
+nodes=1:ppn=2). Further, each job would make a directory named ouput\_
+(first job output_10, second job output_11, and so forth). Would cd into
+that directory and execute the python script demographic_model.py from
+my scratch directory. Notice that one of the input parameters would
+change each single job using the PBS set environment variable
+PBS_ARRAYID. Array request are very useful in scientific environments
+when you need to modify a parameter and see the output for a range of
+values. Note: this a theoretical example since I never specified
+walltime or a queue to execute this job from.
+
+The number range for array request does not have to be sequential. You
+can also list a comma separated list of numbers as
+
+::
+
+   #PBS -t 10,15,20,25
+
+Further, you can also specify that only a certain number of jobs are
+queued at one time in cases where you have a large number of jobs and
+need to share a queue with another user
+
+::
+
+   #PBS -t 1-200%10
+
+The above directive will only launch ten jobs to the queue at a time
+until all 200 job requests have been executed.
+
+Interactive Jobs
+----------------
+
+Interactive jobs allow a user to be given an interactive terminal on a
+compute node. This allows a user to "interact" directly with a compute
+node instead running in a batch or scripted mode. Interactive jobs are
+very useful when debugging jobs as it allows a user to walk step-by-step
+through your submit script to find errors or problems. Interactive jobs
+are also useful when needing to use a graphical program on the cluster.
+
+To run an interactive job use the following command followed by any
+necessary PBS variables/flags. If you don't specify any flags, you will
+be given an interactive job in the default queue for the cluster.
+
+::
+
+   qsub -I
+
+Do note, interactive jobs are only allowed on certain queues. All condo
+owner queues are allowed to have interactive jobs as well as queues such
+as 'standby' and 'debug'. If you find you need an interactive queue on a
+community resource for a particular task or project, please contact
+`Research Computing Help Desk <https://helpdesk.hpc.wvu.edu>`__ for
+assistance.
+
+Graphical Interface Jobs
+------------------------
+
+Sometimes it might be useful or required to run a graphical program on
+the cluster. Non-compute intensive processes for visualization purposes
+can be run on the login node. These processes include "could" gnuplot, R
+and Matlab assuming they have low overhead. However, if you know your
+program is consume a lot of resources, it is best to run an `interactive
+job <Running_Jobs#Interactive_Jobs>`__.
+
+To execute a graphical application on a compute node, you need to first
+review `Using X Windows applications <Using_X_Windows_applications>`__
+to properly setup your X (i.e. display) environment. To launch a
+graphical job on a compute node, you will need to execute the following
+along with any necessary flags/pbs environment variables.
+
+::
+
+   $> qsub -I -X
+
+Once you are given an access to a interactive terminal you can run your
+the proper executable to launch your graphical (i.e. X Window) program.
+For example:
+
+::
+
+   $> module load statistics/matlab
+   $> matlab &
+
+Checking the Status of Jobs
+---------------------------
+
+The status of a job currently submitted to the queue can be checked
+using the checkjob command. checkjob displays detailed job state
+information and diagnostic output for a specified job. Detailed
+information is available for queued, blocked, active, and recently
+completed jobs. Users can use checkjob to view the status of their own
+jobs.
+
+Examples:
+
+::
+
+   $> checkjob -v <jobid>
+
+where is the jobid given at submission time.
+
+The output of checkjob looks like this
+
+::
+
+   job 1653450 (RM job '1653450.srih0001.hpc.wvu.edu')
+
+   AName: IVY
+   State: Completed
+   Completion Code: 0  Time: Fri May 19 15:30:21
+   Creds:  user:username  group:groupname  class:debug  qos:member
+   WallTime:   00:00:16 of 00:01:00
+   SubmitTime: Fri May 19 15:29:58
+     (Time Queued  Total: 00:00:07  Eligible: 00:00:07)
+
+   Deadline:  3:59:49  (Fri May 19 19:30:58)
+   TemplateSets:  DEFAULT
+   Total Requested Tasks: 1
+
+   Req[0]  TaskCount: 1  Partition: torque
+   Opsys: ---  Arch: ---  Features: ivy
+   GMetric[energy_used]  Current: 0.00  Min: 0.00  Max: 0.00  Avg: 0.00 Total: 0.00
+   NodeAccess: SINGLEJOB
+   TasksPerNode: 1
+   Allocated Nodes:
+   [sgpc0001.hpc.wvu.edu:1]
+
+
+   SystemID:   Moab
+   SystemJID:  1653450
+   Notification Events: JobEnd,JobFail
+   Task Distribution: sgpc0001.hpc.wvu.edu
+   UMask:          0000
+   OutputFile:     srih0001.hpc.wvu.edu:/gpfs/home/username/IVY.o1653450
+   ErrorFile:      srih0001.hpc.wvu.edu:/gpfs/home/username/IVY.e1653450
+   StartCount:     1
+   Execution Partition:  torque
+   SrcRM:          torque  DstRM: torque  DstRMJID: 1653450.srih0001.hpc.wvu.edu
+   Submit Args:    runjob_ivy.pbs
+   Flags:          RESTARTABLE
+   Attr:           checkpoint
+   StartPriority:  1000
+   PE:             1.00
+
+Sometimes your job is rejected and you still get a jobid in that case
+you can check the reasons with checkjob For example, consider this
+submission script where we ask for too much memory for a serial job.
+
+The submisssion script looks like
+
+::
+
+   #!/bin/sh
+
+   #PBS -N TEST
+   #PBS -l nodes=1:ppn=1,vmem=200g
+   #PBS -l walltime=00:01:00
+   #PBS -m ae
+   #PBS -q groupname
+   #PBS -n
+
+   cd $PBS_O_WORKDIR
+
+   date
+
+The jobs is accepted by torque but will see the job in queue for a long
+time. Now we execute checkjob to know the reasons for not being running
+
+::
+
+   $> checkjob -v 1653589
+
+   job 1653589 (RM job '1653589.srih0001.hpc.wvu.edu')
+
+   AName: TEST
+   State: Idle
+   Creds:  user:username  group:groupname  class:groupname  qos:member
+   WallTime:   00:00:00 of 00:01:00
+   BecameEligible: Fri May 19 15:52:14
+   SubmitTime: Fri May 19 15:51:52
+     (Time Queued  Total: 00:01:06  Eligible: 00:00:53)
+
+   Deadline:  3:59:54  (Fri May 19 19:52:52)
+   TemplateSets:  DEFAULT
+   Total Requested Tasks: 1
+
+   Req[0]  TaskCount: 1  Partition: ALL
+   Memory >= 0  Disk >= 0  Swap >= 3072M
+   Dedicated Resources Per Task: PROCS: 1  SWAP: 200G
+   NodeAccess: SINGLEJOB
+   TasksPerNode: 1
+   Reserved Nodes:  (3:09:16:24 -> 3:09:17:24  Duration: 00:01:00)
+   [sarc3001.hpc.wvu.edu:1]
+
+
+   SystemID:   Moab
+   SystemJID:  1653589
+   Notification Events: JobEnd,JobFail
+
+   UMask:          0000
+   OutputFile:     srih0001.hpc.wvu.edu:/gpfs/home/username/TEST.o1653589
+   ErrorFile:      srih0001.hpc.wvu.edu:/gpfs/home/username/TEST.e1653589
+   Partition List: torque
+   SrcRM:          torque  DstRM: torque  DstRMJID: 1653589.srih0001.hpc.wvu.edu
+   Submit Args:    runjob_badmem.pbs
+   Flags:          RESTARTABLE
+   Attr:           checkpoint
+   StartPriority:  2000
+   PE:             37.34
+   Reservation '1653589' (3:09:16:24 -> 3:09:17:24  Duration: 00:01:00)
+   Node Availability for Partition torque --------
+
+   srig0001.hpc.wvu.edu     rejected: Swap
+   szec2001.hpc.wvu.edu     rejected: State (Busy)
+   szec2002.hpc.wvu.edu     rejected: State (Busy)
+   szec2003.hpc.wvu.edu     rejected: State (Busy)
+   ...
+   sbmc0017.hpc.wvu.edu     rejected: State (Busy)
+   sbmc0018.hpc.wvu.edu     rejected: State (Busy)
+   sbmg0001.hpc.wvu.edu     rejected: Swap
+   sric0001.hpc.wvu.edu     rejected: Swap
+   sric0002.hpc.wvu.edu     rejected: Swap
+   ssmc0006.hpc.wvu.edu     rejected: Swap
+   sgsc2001.hpc.wvu.edu     rejected: Class
+   sgsg2001.hpc.wvu.edu     rejected: Swap
+   sric0022.hpc.wvu.edu     rejected: Class
+   sric0025.hpc.wvu.edu     rejected: State (Busy)
+   sbmc0019.hpc.wvu.edu     rejected: State (Busy)
+   sbmc0020.hpc.wvu.edu     rejected: Swap
+   sbmc0021.hpc.wvu.edu     rejected: State (Busy)
+   sbmc0022.hpc.wvu.edu     rejected: State (Busy)
+   sric0024.hpc.wvu.edu     rejected: Swap
+   sllc0001.hpc.wvu.edu     rejected: Swap
+   ...
+   sspc3006.hpc.wvu.edu     rejected: Swap
+   sspc3007.hpc.wvu.edu     rejected: Swap
+   sspc3008.hpc.wvu.edu     rejected: Swap
+   sspc3009.hpc.wvu.edu     rejected: State (Running)
+   sspc3010.hpc.wvu.edu     rejected: Swap
+   NOTE:  job req cannot run in partition torque (available procs do not meet requirements : 0 of 1 procs found)
+   idle procs: 623  feasible procs:   0
+
+   Node Rejection Summary: [Class: 2][State: 110][Swap: 53]
+
+The "Swap" reason is "memory" related. The "State" reason is CPU
+related. The Queue system search for 623 cores available and could not
+find a single machine with 200GB available to launch the job.
+
+Another important tool to monitor jobs and its state is showq
+
+You can get the eligible jobs and their priorities with
+
+`` showq -i -u ``\
+
+For example
+
+::
+
+   $ showq -i -u username
+
+   eligible jobs----------------------
+   JOBID                 PRIORITY  XFACTOR  Q  USERNAME    GROUP  PROCS     WCLIMIT     CLASS      SYSTEMQUEUETIME
+
+   1579829*                 14108      1.7 me   username groupname     16 14:00:00:00  groupname   Tue May  9 12:09:46
+   1595467*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+   1595464*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+   1595468*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+   1595466*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+   1595463*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:10
+   1595465*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+   1595462*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:10
+   1618053*                  6423      1.3 me   username groupname      2 14:00:00:00  groupname   Sun May 14 20:15:33
+   1618385*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:58
+   1618386*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:58
+   1618387*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:59
+   1618388*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:59
+   1630355*                  3967      1.2 me   username groupname      4 14:00:00:00  groupname   Tue May 16 13:11:17
+   1630507*                  3903      1.2 me   username groupname      4 14:00:00:00  groupname   Tue May 16 14:15:09
+   1630546*                  3884      1.2 me   username groupname     16 14:00:00:00  groupname   Tue May 16 14:34:33
+   1630494*                     1      1.4 co   username groupname     16  7:00:00:00 comm_larg   Tue May 16 14:08:50
+   1630349*                     1      1.4 co   username groupname     16  7:00:00:00 comm_larg   Tue May 16 13:10:08
+
+   18 eligible jobs
+
+   Total jobs:  18
+
+Those are jobs that accrue priority as time passes for them on queue.
+Some jobs could become blocked, meaning that they are not gaining
+priority but will eventually become eligible later in time.
+
+::
+
+   $ showq -b -u username
+
+   blocked jobs-----------------------
+   JOBID              USERNAME    GROUP      STATE PROCS     WCLIMIT            QUEUETIME
+
+   1623738             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:50
+   1623747             username groupname       Idle    16  7:00:00:00  Mon May 15 13:51:21
+   1623757             username groupname       Idle    16  7:00:00:00  Mon May 15 13:52:57
+   1652487             username groupname       Idle    16     4:00:00  Fri May 19 12:24:44
+   1646112             username groupname       Idle     4     4:00:00  Thu May 18 15:20:54
+   1646096             username groupname       Idle     4     4:00:00  Thu May 18 15:17:55
+   1630495             username groupname       Idle     4  7:00:00:00  Tue May 16 14:10:13
+   1630501             username groupname       Idle    16  7:00:00:00  Tue May 16 14:11:17
+   1623766             username groupname       Idle    16  7:00:00:00  Mon May 15 13:55:24
+   1623746             username groupname       Idle    16  7:00:00:00  Mon May 15 13:50:50
+   1623749             username groupname       Idle    16  7:00:00:00  Mon May 15 13:51:48
+   1623751             username groupname       Idle    16  7:00:00:00  Mon May 15 13:52:25
+   1646143             username groupname       Idle    16  7:00:00:00  Thu May 18 15:26:36
+   1623759             username groupname       Idle    16  7:00:00:00  Mon May 15 13:53:51
+   1623758             username groupname       Idle    16  7:00:00:00  Mon May 15 13:53:29
+   1623760             username groupname       Idle    16  7:00:00:00  Mon May 15 13:54:53
+   1623740             username groupname       Idle    16  7:00:00:00  Mon May 15 13:50:23
+   1623731             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:08
+   1630569             username groupname       Idle    16  7:00:00:00  Tue May 16 14:48:03
+   1623739             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:53
+   1623732             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:10
+
+   21 blocked jobs
+
+   Total jobs:  21
+
+Finally, you can see the jobs that are currently running with their
+remaining time until hit their wall time
+
+::
+
+   $ showq -r -u username
+
+   active jobs------------------------
+   JOBID               S  PAR  EFFIC  XFACTOR  Q  USERNAME    GROUP            MHOST PROCS   REMAINING            STARTTIME
+
+   1599005             R  tor  24.99      1.0 co   username groupname sric0011.hpc.wvu    16    00:24:38  Fri May 12 17:01:10
+   1599006             R  tor  24.99      1.0 co   username groupname sric0020.hpc.wvu    16    00:51:08  Fri May 12 17:27:40
+   1599007             R  tor  24.98      1.0 co   username groupname sric0021.hpc.wvu    16     1:03:41  Fri May 12 17:40:13
+   1599008             R  tor  24.99      1.0 co   username groupname sric0023.hpc.wvu    16     1:04:45  Fri May 12 17:41:17
+   1599009             R  tor  24.99      1.1 co   username groupname sric0032.hpc.wvu    16     4:42:25  Fri May 12 21:18:57
+   1599010             R  tor  24.99      1.1 co   username groupname sric0026.hpc.wvu    16     4:42:25  Fri May 12 21:18:57
+   1599011             R  tor  24.99      1.1 co   username groupname sric0017.hpc.wvu    16    10:10:42  Sat May 13 02:47:14
+   1546851             R  tor  99.73      2.6 co   username groupname sric0025.hpc.wvu    16  2:13:45:30  Mon May 15 06:22:02
+   1570354             R  tor  87.78      1.0 me   username groupname sarc3001.hpc.wvu    16  3:08:32:50  Tue May  9 01:09:22
+   1595446             R  tor  98.27      1.0 me   username groupname sarc2001.hpc.wvu     4  6:06:02:54  Thu May 11 22:39:26
+   1595448             R  tor  99.98      1.0 me   username groupname sarc2001.hpc.wvu     4  6:07:29:35  Fri May 12 00:06:07
+   1595449             R  tor  99.99      1.0 me   username groupname sarc0001.hpc.wvu     4  6:08:21:37  Fri May 12 00:58:09
+   1595453             R  tor  99.99      1.0 me   username groupname sarc0002.hpc.wvu     4  6:08:49:41  Fri May 12 01:26:13
+   1618813             R  tor  24.77      1.7 co   username groupname sric0037.hpc.wvu    16  6:20:47:59  Fri May 19 13:24:31
+   1618812             R  tor  24.77      1.7 co   username groupname sric0051.hpc.wvu    16  6:20:47:59  Fri May 19 13:24:31
+   1618814             R  tor  24.78      1.7 co   username groupname sric0036.hpc.wvu    16  6:20:47:59  Fri May 19 13:24:31
+   1618815             R  tor  24.84      1.7 co   username groupname sric0030.hpc.wvu    16  6:20:54:14  Fri May 19 13:30:46
+   1595460             R  tor  99.97      1.1 me   username groupname sarc0006.hpc.wvu     4  8:06:16:50  Sat May 13 22:53:22
+   1595461             R  tor  99.97      1.2 me   username groupname sarc0009.hpc.wvu     4  8:13:36:38  Sun May 14 06:13:10
+
+   19 active jobs         232 of 3112 processors in use by local jobs (7.46%)
+                           155 of 165 nodes active      (93.94%)
+
+   Total jobs:  19
+
+Canceling/Removing a Job
+------------------------
+
+Jobs can be cancelled or removed using the canceljob command. Users can
+only remove jobs they submitted to the scheduler.
+
+::
+
+   $> canceljob <jobid>
+
+ is the jobid given at submission time.
+
+Now canceljob is deprecated and Moab offers and alternative to cancel
+jobs For example, if you want to cancel jobs that starts with 1693 you
+can use this command to cancel those jobs. As user you can only cancel
+jobs that you own so do not worry about canceling jobs from other users
+by doing this.
+
+::
+
+   $> mjobctl -c "x:1693.*"
+
+Adding Prologue and Epilogue scripts to a Job
+---------------------------------------------
+
+It is possible to declare scripts that run before and after the
+execution of the main submission script. The main advantage of those is
+to keep a record of the conditions under which a given job is running.
+Here we present a simple example of how to declare an prologue and
+epilogue.
+
+Add these lines to your submission script:
+
+::
+
+   #PBS -l prologue=/absolute/path/to/prologue.sh
+   #PBS -l epilogue=/absolute/path/to/epilogue.sh
+
+The best way of working with those scripts is adding them to your home
+folder and use them on all your submission scripts. They should collect
+information that you can use later for debugging or profiling purposes.
+
+Example of Prologue
+~~~~~~~~~~~~~~~~~~~
+
+prologue.sh
+
+::
+
+   #!/bin/sh
+
+   echo ""
+   echo "Prologue Args:"
+   echo "Job ID: $1"
+   echo "User ID: $2"
+   echo "Group ID: $3"
+   echo ""
+
+   env | sort
+   hostname
+   date
+
+   exit 0
+
+Example of Epilogue
+~~~~~~~~~~~~~~~~~~~
+
+epilogue.sh
+
+::
+
+   #!/bin/sh
+
+   echo ""
+   echo "Epilogue Args:"
+   echo "Job ID: $1"
+   echo "User ID: $2"
+   echo "Group ID: $3"
+   echo "Job Name: $4"
+   echo "Session ID: $5"
+   echo "Resource List: $6"
+   echo "Resources Used: $7"
+   echo "Queue Name: $8"
+   echo "Account String: $9"
+   echo ""
+
+   env | sort
+   hostname
+   date
+
+   exit 0
+
+Both prologue and epilogue must be made executable, use "
+
+::
+
+   chmod +x prologue.sh epilogue.sh
+
+to change their permissions.
