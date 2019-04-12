@@ -27,13 +27,14 @@ Name Node
 * 128 GB RAM Each (384 GB Total)
 * 21 TB Combined Worker Node Storage (7 TB usable)
 
+Additional Features
+^^^^^^^^^^^^^^^^^^^
 * 10 Gbps Ethernet Interconnect
-
 * Shares HPC resources (i.e. additional storage).
 
 Usage
 -----
 
-Users connect to Citrix through MasterApps.wvu.edu. In Citrix the user should have IE and Firefox browsers they can launch. After launching one of them they can go to gbef4001.hpc.wvu.edu to access RStudio Server and work within RStudio.
+Users connect to Citrix through MasterApps.wvu.edu. In Citrix the user should have IE and Firefox browsers they can launch. After launching one of them they can go to gbef4001.hpc.wvu.edu to access RStudio Server and work within RStudio. Jobs can be launched through Hadoop or Spark 2.
 
 -----
