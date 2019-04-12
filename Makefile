@@ -193,5 +193,4 @@ pseudoxml:
 update-master:
 	test -d ../master && cd ../master && rm -rf _* *.html objects.inv searchindex.js text 
 	test -d ../master && rsync -av _build/html/ ../master
-	test -d ../master && cp -rf $(PDF) ../master
 	test -d ../master && cd ../master && git rm -r --cached . && git add . 
