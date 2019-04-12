@@ -113,6 +113,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.JobSubmission.html">Using the Queuing system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="34.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="35.Scratch.html">Managing Scratch Contents</a></li>
@@ -201,13 +202,13 @@ For HPC users the editor is an important choice. Most of your time you are on th
 <h2>Nano<a class="headerlink" href="#nano" title="Permalink to this headline">¶</a></h2>
 <p>Nano is a small, free and friendly editor with commands that usually manage using the Control (CTRL) combined with some other key.</p>
 <p>You can start editing a file using a command line like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">myfile</span><span class="o">.</span><span class="n">f90</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">myfile</span><span class="o">.</span><span class="n">f90</span>
 </pre></div>
 </div>
 <p>There are several commands available, the list below comes from the help text.
 When you see the symbol “^” it means to press the Control (CTRL) key, the symbol
 “M-” is called Meta, but in most keyboards is identified with the (Alt) key.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>^G  (F1)            Display this help text
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>^G  (F1)            Display this help text
 ^X  (F2)            Close the current file buffer / Exit from nano
 ^O  (F3)            Write the current file to disk
 ^J  (F4)            Justify the current paragraph
@@ -294,7 +295,7 @@ used editors in Linux environments. There are a big number of commands, customiz
 that can be integrated with Emacs. We will just go briefly covering the basics.</p>
 <p>The number of commands for Emacs is large, here the basic list of commands for editing, moving and searching text.</p>
 <p>=== Entering Emacs ===</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">emacs</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">emacs</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>=== Leaving Emacs ===</p>
@@ -416,7 +417,7 @@ From insert mode, pressing ESC switches the editor back to normal mode.</p>
 <div class="section" id="to-start-vi">
 <h3>To Start vi<a class="headerlink" href="#to-start-vi" title="Permalink to this headline">¶</a></h3>
 <p>To use vi on a file, type in vi filename. If the file named filename exists, then the first page (or screen) of the file will be displayed; if the file does not exist, then an empty file and screen are created into which you may enter text:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vi</span> <span class="n">filename</span>  <span class="n">edit</span> <span class="n">filename</span> <span class="n">starting</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vi</span> <span class="n">filename</span>  <span class="n">edit</span> <span class="n">filename</span> <span class="n">starting</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="n">vi</span> <span class="o">-</span><span class="n">r</span> <span class="n">filename</span>       <span class="n">recover</span> <span class="n">filename</span> <span class="n">that</span> <span class="n">was</span> <span class="n">being</span> <span class="n">edited</span> <span class="n">when</span> <span class="n">the</span> <span class="n">system</span> <span class="n">crashed</span>
 </pre></div>
 </div>
@@ -425,7 +426,7 @@ From insert mode, pressing ESC switches the editor back to normal mode.</p>
 <h3>To Exit vi<a class="headerlink" href="#to-exit-vi" title="Permalink to this headline">¶</a></h3>
 <p>Usually, the new or modified file is saved when you leave vi. However, it is also possible to quit vi without saving the file.
 Note: The cursor moves to bottom of the screen whenever a colon (:) is typed. This type of command is completed by hitting the &lt;Return&gt; (or &lt;Enter&gt;) key:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>:x&lt;Return&gt;   quit vi, writing out modified file to file named in original invocation
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:x&lt;Return&gt;   quit vi, writing out modified file to file named in original invocation
 :wq&lt;Return&gt;  quit vi, writing out modified file to file named in original invocation
 :q&lt;Return&gt;   quit (or exit) vi
 :q!&lt;Return&gt;  quit vi even though latest changes have not been saved for this vi call
@@ -437,7 +438,7 @@ Note: The cursor moves to bottom of the screen whenever a colon (:) is typed. Th
 <p>Unlike many of the PC and MacIntosh editors, the mouse does not move the cursor within the vi editor screen (or window). You must use the the key commands listed below. On some UNIX platforms, the arrow keys may be used as well; however, since vi was designed with the Qwerty keyboard (containing no arrow keys) in mind, the arrow keys sometimes produce strange effects in vi and should be avoided.
 If you go back and forth between a PC environment and a UNIX environment, you may find that this dissimilarity in methods for cursor movement is the most frustrating difference between the two.
 In the table below, the symbol ^ before a letter means that the &lt;Ctrl&gt; key should be held down while the letter key is pressed:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>j or &lt;Return&gt; [or down-arrow]           move cursor down one line
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>j or &lt;Return&gt; [or down-arrow]           move cursor down one line
 k [or up-arrow]                 move cursor up one line
 h or &lt;Backspace&gt; [or left-arrow]  move cursor left one character
 l or &lt;Space&gt; [or right-arrow]           move cursor right one character
@@ -455,17 +456,17 @@ b                               move cursor back to beginning of preceding word
 <h3>Screen Manipulation<a class="headerlink" href="#screen-manipulation" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow the vi editor screen (or window) to move up or down several lines and to be refreshed.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">^f</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">^f</span></code></dt>
 <dd>move forward one screen</dd>
-<dt><code class="docutils literal"><span class="pre">^b</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">^b</span></code></dt>
 <dd>move backward one screen</dd>
-<dt><code class="docutils literal"><span class="pre">^d</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">^d</span></code></dt>
 <dd>move down (forward) one half screen</dd>
-<dt><code class="docutils literal"><span class="pre">^u</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">^u</span></code></dt>
 <dd>move up (back) one half screen</dd>
-<dt><code class="docutils literal"><span class="pre">^l</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">^l</span></code></dt>
 <dd>redraws the screen</dd>
-<dt><code class="docutils literal"><span class="pre">^r</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">^r</span></code></dt>
 <dd>redraws the screen, removing deleted lines</dd>
 </dl>
 </div>
@@ -474,7 +475,7 @@ b                               move cursor back to beginning of preceding word
 <p>This command acts like a toggle, undoing and redoing your most recent action.
 You cannot go back more than one step.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">u</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">u</span></code></dt>
 <dd>UNDO WHATEVER YOU JUST DID; a simple toggle</dd>
 </dl>
 </div>
@@ -484,17 +485,17 @@ You cannot go back more than one step.</p>
 Each of these commands puts the vi editor into insert mode; thus, the &lt;Esc&gt; key must be pressed to terminate the entry of text and to put the vi editor
 back into command mode.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">i</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">i</span></code></dt>
 <dd>insert text before cursor, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">I</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">I</span></code></dt>
 <dd>insert text at beginning of current line, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">a</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">a</span></code></dt>
 <dd>append text after cursor, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">A</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">A</span></code></dt>
 <dd>append text to end of current line, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">o</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">o</span></code></dt>
 <dd>open and put text in a new line below current line, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">O</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">O</span></code></dt>
 <dd>open and put text in a new line above current line, until &lt;Esc&gt; hit</dd>
 </dl>
 </div>
@@ -502,19 +503,19 @@ back into command mode.</p>
 <h3>Changing Text<a class="headerlink" href="#changing-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to modify text.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">r</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">r</span></code></dt>
 <dd>replace single character under cursor (no &lt;Esc&gt; needed)</dd>
-<dt><code class="docutils literal"><span class="pre">R</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">R</span></code></dt>
 <dd>replace characters, starting with current cursor position, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">cw</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">cw</span></code></dt>
 <dd>change the current word with new text, starting with the character under cursor, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">cNw</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">cNw</span></code></dt>
 <dd>change N words beginning with character under cursor, until &lt;Esc&gt; hit; e.g., c5w changes 5 words</dd>
-<dt><code class="docutils literal"><span class="pre">C</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">C</span></code></dt>
 <dd>change (replace) the characters in the current line, until &lt;Esc&gt; hit</dd>
-<dt><code class="docutils literal"><span class="pre">cc</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">cc</span></code></dt>
 <dd>change (replace) the entire current line, stopping when &lt;Esc&gt; is hit</dd>
-<dt><code class="docutils literal"><span class="pre">Ncc</span> <span class="pre">or</span> <span class="pre">cNc</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">Ncc</span> <span class="pre">or</span> <span class="pre">cNc</span></code></dt>
 <dd>change (replace) the next N lines, starting with the current line, stopping when &lt;Esc&gt; is hit</dd>
 </dl>
 </div>
@@ -522,21 +523,21 @@ back into command mode.</p>
 <h3>Deleting Text<a class="headerlink" href="#deleting-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to delete text.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">x</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">x</span></code></dt>
 <dd>delete single character under cursor</dd>
-<dt><code class="docutils literal"><span class="pre">Nx</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">Nx</span></code></dt>
 <dd>delete N characters, starting with character under cursor</dd>
-<dt><code class="docutils literal"><span class="pre">dw</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">dw</span></code></dt>
 <dd>delete the single word beginning with character under cursor</dd>
-<dt><code class="docutils literal"><span class="pre">dNw</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">dNw</span></code></dt>
 <dd>delete N words beginning with character under cursor; e.g., d5w deletes 5 words</dd>
-<dt><code class="docutils literal"><span class="pre">D</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">D</span></code></dt>
 <dd>delete the remainder of the line, starting with current cursor position</dd>
-<dt><code class="docutils literal"><span class="pre">dd</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">dd</span></code></dt>
 <dd>delete entire current line</dd>
-<dt><code class="docutils literal"><span class="pre">Ndd</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">Ndd</span></code></dt>
 <dd>delete N lines, beginning with the current line; e.g., 5dd deletes 5 lines</dd>
-<dt><code class="docutils literal"><span class="pre">dNd</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">dNd</span></code></dt>
 <dd>same as Ndd</dd>
 </dl>
 </div>
@@ -544,13 +545,13 @@ back into command mode.</p>
 <h3>Cutting and Pasting Text<a class="headerlink" href="#cutting-and-pasting-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to copy and paste text.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">yy</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">yy</span></code></dt>
 <dd>copy (yank, cut) the current line into the buffer</dd>
-<dt><code class="docutils literal"><span class="pre">Nyy</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">Nyy</span></code></dt>
 <dd>copy (yank, cut) the next N lines, including the current line, into the buffer</dd>
-<dt><code class="docutils literal"><span class="pre">yNy</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">yNy</span></code></dt>
 <dd>same as Nyy</dd>
-<dt><code class="docutils literal"><span class="pre">p</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">p</span></code></dt>
 <dd>put (paste) the line(s) in the buffer into the text after the current line</dd>
 </dl>
 </div>
@@ -558,13 +559,13 @@ back into command mode.</p>
 <h3>Searching Text<a class="headerlink" href="#searching-text" title="Permalink to this headline">¶</a></h3>
 <p>A common occurrence in text editing is to replace one word or phase by another. To locate instances of particular sets of characters (or strings), use the following commands.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">/string</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">/string</span></code></dt>
 <dd>search forward for occurrence of string in text</dd>
-<dt><code class="docutils literal"><span class="pre">?string</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">?string</span></code></dt>
 <dd>search backward for occurrence of string in text</dd>
-<dt><code class="docutils literal"><span class="pre">n</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">n</span></code></dt>
 <dd>move to next occurrence of search string</dd>
-<dt><code class="docutils literal"><span class="pre">N</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">N</span></code></dt>
 <dd>move to next occurrence of search string in opposite direction</dd>
 </dl>
 </div>
@@ -573,11 +574,11 @@ back into command mode.</p>
 <p>Being able to determine the line number of the current line or the total number
 of lines in the file being edited is sometimes useful.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">:.=</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">:.=</span></code></dt>
 <dd>returns line number of current line at bottom of screen</dd>
-<dt><code class="docutils literal"><span class="pre">:=</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">:=</span></code></dt>
 <dd>returns the total number of lines at bottom of screen</dd>
-<dt><code class="docutils literal"><span class="pre">^g</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">^g</span></code></dt>
 <dd>provides the current line number, along with the total number of lines, in the file at the bottom of the screen</dd>
 </dl>
 </div>
@@ -585,15 +586,15 @@ of lines in the file being edited is sometimes useful.</p>
 <h3>Saving and Reading Files<a class="headerlink" href="#saving-and-reading-files" title="Permalink to this headline">¶</a></h3>
 <p>These commands permit you to input and output files other than the named file with which you are currently working.</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">:r</span> <span class="pre">filename&lt;Return&gt;</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">:r</span> <span class="pre">filename&lt;Return&gt;</span></code></dt>
 <dd>read file named filename and insert after current line (the line with cursor)</dd>
-<dt><code class="docutils literal"><span class="pre">:w&lt;Return&gt;</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">:w&lt;Return&gt;</span></code></dt>
 <dd>write current contents to file named in original vi call</dd>
-<dt><code class="docutils literal"><span class="pre">:w</span> <span class="pre">newfile&lt;Return&gt;</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">:w</span> <span class="pre">newfile&lt;Return&gt;</span></code></dt>
 <dd>write current contents to a new file named newfile</dd>
-<dt><code class="docutils literal"><span class="pre">:12,35w</span> <span class="pre">smallfile&lt;Return&gt;</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">:12,35w</span> <span class="pre">smallfile&lt;Return&gt;</span></code></dt>
 <dd>write the contents of the lines numbered 12 through 35 to a new file named smallfile</dd>
-<dt><code class="docutils literal"><span class="pre">:w!</span> <span class="pre">prevfile&lt;Return&gt;</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">:w!</span> <span class="pre">prevfile&lt;Return&gt;</span></code></dt>
 <dd>write current contents over a pre-existing file named prevfile</dd>
 </dl>
 </div>

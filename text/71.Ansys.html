@@ -183,13 +183,13 @@
 <div class="section" id="log-in-to-spruce">
 <h2>Log in to Spruce<a class="headerlink" href="#log-in-to-spruce" title="Permalink to this headline">¶</a></h2>
 <p>Enter on Spruce with X11 forwarding, at least on Linux it is with</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="o">&lt;</span><span class="n">USERNAME</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="o">&lt;</span><span class="n">USERNAME</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>On Windows you can MobaXTerm and the program will give you X11
 forwarding too</p>
 <p>You can test the X11 forwarding with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xeyes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xeyes</span>
 </pre></div>
 </div>
 <p>A small window with two eyes will pop up on your screen, execute CTRL-C
@@ -200,7 +200,7 @@ client machine.</p>
 <h2>Create an interactive job<a class="headerlink" href="#create-an-interactive-job" title="Permalink to this headline">¶</a></h2>
 <p>Ask for an interactive job with X11 Forwarding enabled, I am using
 “debug” queue, change accordingly</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">X</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">debug</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">X</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">debug</span>
 </pre></div>
 </div>
 <p>Wait around 2 minutes to get a compute node allocated for you Different
@@ -212,11 +212,11 @@ jobs to run during a 4-hour timeframe.</p>
 <h2>Load the module for ANSYS Fluids or Structures<a class="headerlink" href="#load-the-module-for-ansys-fluids-or-structures" title="Permalink to this headline">¶</a></h2>
 <p>There are two modules corresponding to equal number of ANSYS Suites of
 packages</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">ansys</span><span class="o">/</span><span class="n">fluids_18</span><span class="o">.</span><span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">ansys</span><span class="o">/</span><span class="n">fluids_18</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
 <p>and</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">ansys</span><span class="o">/</span><span class="n">structures_18</span><span class="o">.</span><span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">ansys</span><span class="o">/</span><span class="n">structures_18</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
 <p>You can load one or another or both, they use the same MPI Runtime
@@ -226,11 +226,11 @@ Libraries so they are compatible to each other.</p>
 <h2>Executing the ANSYS package of your choice<a class="headerlink" href="#executing-the-ansys-package-of-your-choice" title="Permalink to this headline">¶</a></h2>
 <p>Most commands will be directly accessible to you, you do not need to
 enter the full path</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fluent</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fluent</span>
 </pre></div>
 </div>
 <p>The fluent window opens and on the lower right corner you will see:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">ansys</span><span class="o">/</span><span class="n">fluids_181</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">v181</span><span class="o">/</span><span class="n">fluent</span><span class="o">/</span><span class="n">fluent18</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">fluent</span> <span class="o">-</span><span class="n">r18</span><span class="o">.</span><span class="mf">1.0</span> <span class="mi">3</span><span class="n">d</span> <span class="o">-</span><span class="n">alnamd64</span> <span class="o">-</span><span class="n">path</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">ansys</span><span class="o">/</span><span class="n">fluids_181</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">v181</span><span class="o">/</span><span class="n">fluent</span> <span class="o">-</span><span class="n">ssh</span> <span class="o">-</span><span class="n">cx</span> <span class="n">sllc0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="mi">41717</span><span class="p">:</span><span class="mi">33691</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">ansys</span><span class="o">/</span><span class="n">fluids_181</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">v181</span><span class="o">/</span><span class="n">fluent</span><span class="o">/</span><span class="n">fluent18</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">fluent</span> <span class="o">-</span><span class="n">r18</span><span class="o">.</span><span class="mf">1.0</span> <span class="mi">3</span><span class="n">d</span> <span class="o">-</span><span class="n">alnamd64</span> <span class="o">-</span><span class="n">path</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">ansys</span><span class="o">/</span><span class="n">fluids_181</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">v181</span><span class="o">/</span><span class="n">fluent</span> <span class="o">-</span><span class="n">ssh</span> <span class="o">-</span><span class="n">cx</span> <span class="n">sllc0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="mi">41717</span><span class="p">:</span><span class="mi">33691</span>
 <span class="n">Starting</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">ansys</span><span class="o">/</span><span class="n">fluids_181</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">v181</span><span class="o">/</span><span class="n">fluent</span><span class="o">/</span><span class="n">fluent18</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="n">lnamd64</span><span class="o">/</span><span class="mi">3</span><span class="n">d</span><span class="o">/</span><span class="n">fluent</span><span class="o">.</span><span class="mf">18.1</span><span class="o">.</span><span class="mi">0</span> <span class="o">-</span><span class="n">cx</span> <span class="n">sllc0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="mi">41717</span><span class="p">:</span><span class="mi">33691</span>
 
               <span class="n">Welcome</span> <span class="n">to</span> <span class="n">ANSYS</span> <span class="n">Fluent</span> <span class="n">Release</span> <span class="mf">18.1</span>
@@ -254,14 +254,14 @@ enter the full path</p>
 </pre></div>
 </div>
 <p>You can try also ANSYS/Forte</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">forte</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forte</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>A window with 3 big buttons appear, click Simulate</p>
 <p>The Full Window for Forte appears.</p>
 <p>In the case of ANSYS Structures 18.1 all that you have to do after
 loading the module is to open the Workbench:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">runwb2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">runwb2</span>
 </pre></div>
 </div>
 </div>

@@ -94,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.JobSubmission.html">Using the Queuing system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Environment Modules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-are-modulefiles">What are Modulefiles</a></li>
@@ -217,7 +218,7 @@ on our systems.</p>
 <h2>Listing available modefiles<a class="headerlink" href="#listing-available-modefiles" title="Permalink to this headline">¶</a></h2>
 <p>To list the currentely available modulefiles on the system use the
 module command with the available subcommand:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module available
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module available
 
 --------------------------------------------- /usr/share/Modules/software ----------------------------------------------
 chemistry/autodock_vina genomics/clumpp         genomics/muscle         genomics/tabix
@@ -247,14 +248,14 @@ all compiler modulefiles start with ‘compilers/’ (i.e.
 compilers/gcc/4.8.2). The module available command can be given words
 for matching, and will return modulefiles that start with the given
 word. For instance, if you want to list all MPI modulefiles:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt;module available mpi
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt;module available mpi
 
 -------------------------------------------- /usr/share/Modules/development --------------------------------------------
 mpi/intel/4.1.1.036 mpi/mpich2/1.2.1    mpi/mvapich2/1.9    mpi/openmpi/1.6.5
 </pre></div>
 </div>
 <p>Further, you can list all gcc compilers:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt;module available compilers/gcc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt;module available compilers/gcc
 
 -------------------------------------------- /usr/share/Modules/development --------------------------------------------
 compilers/gcc/4.8.2 compilers/gcc/4.9.0
@@ -265,7 +266,7 @@ compilers/gcc/4.8.2 compilers/gcc/4.9.0
 <h2>Showing what a modulefile does<a class="headerlink" href="#showing-what-a-modulefile-does" title="Permalink to this headline">¶</a></h2>
 <p>Viewing the contents of a modulefile can be done using the module
 command with the show subcommand:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module show compilers/intel/14.0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module show compilers/intel/14.0
 
 -------------------------------------------------------------------
 /usr/share/Modules/development/compilers/intel/14.0:
@@ -287,7 +288,7 @@ prepend-path     LD_LIBRARY_PATH /shared/software/intel/lib/intel64
 lines module-whatis gives information about version numbers, categories
 for tools, URLs for more information. If you only want to see these
 first few lines you can use the whatis subcommand:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module whatis compilers/intel/14.0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module whatis compilers/intel/14.0
 
 compilers/intel/14.0 : Name: Intel Compiler
 compilers/intel/14.0 : Version: 14.0
@@ -311,7 +312,7 @@ the modulefile manpage (man modulefile).</p>
 <p>Loading and unloading modulefiles can be done using the module command
 the subcommands load and unload. In this example, the Intel C compiler
 is named icc:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; icc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; icc
 -bash: icc: command not found
 
 $&gt; module load compilers/intel

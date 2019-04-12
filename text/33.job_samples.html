@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Environment Modules" href="34.EnvModules.html" />
-    <link rel="prev" title="Globus Online" href="33.GlobusOnline.html" /> 
+    <link rel="prev" title="Using the Queuing system" href="33.JobSubmission.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -94,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.JobSubmission.html">Using the Queuing system</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Samples of Job Submission scripts</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#script-for-running-a-non-array-batch-queue">Script for running a non-array batch queue</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#script-for-running-an-array-batch-queue">Script for running an array batch queue</a></li>
@@ -188,7 +189,7 @@ text editors (i.e. vi, emacs, etc…)</p>
 <p>The below script has PBS directives to set-up commonly used variables
 such as job name, resources needed, e-mail address upon job completion
 and abnormal termination and specify a queue to run on</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#This is an example script for executing generic jobs with</span>
 <span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
@@ -229,7 +230,7 @@ and abnormal termination and specify a queue to run on</p>
 <h2>Script for running an array batch queue<a class="headerlink" href="#script-for-running-an-array-batch-queue" title="Permalink to this headline">¶</a></h2>
 <p>Script is the same as above, but adds PBS -t to execute array request
 job submissions.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#This is an example script for executing genetic jobs with</span>
 <span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
@@ -289,7 +290,7 @@ job submissions.</p>
         <a href="34.EnvModules.html" class="btn btn-neutral float-right" title="Environment Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="33.GlobusOnline.html" class="btn btn-neutral" title="Globus Online" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="33.JobSubmission.html" class="btn btn-neutral" title="Using the Queuing system" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

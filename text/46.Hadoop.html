@@ -206,7 +206,7 @@ PBS job script. However, before you run Hadoop commands, you need to
 start the Hadoop datanode. To do this, you need to load a few module
 files and run a few start-up scripts. In addition a specific PBS
 directive (PBS -W) needs to be specified so Hadoop runs properly:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#PBS -W x=nmatchpolicy:exactnode
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#PBS -W x=nmatchpolicy:exactnode
 
 module load compilers/java/jre1.8.0
 module load libraries/DFS/myhadoop
@@ -219,7 +219,7 @@ start-all.sh
 </div>
 <p>Below these lines, you can place your intended hadoop commands. At the
 end of your script, you need to stop the hadoop datanode:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">sh</span>
 
 <span class="n">myhadoop</span><span class="o">-</span><span class="n">cleanup</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
@@ -230,7 +230,7 @@ Hadoop script that will run on 3 nodes with 1 processor a node. The
 example is a wordcount program that is distributed with Hadoop that
 counts the presence of all words in small sample of Shakespeare
 playwrights taken from Project Gutenberg.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -q standby
 #PBS -N hadoop_job
@@ -277,7 +277,7 @@ memory. However, using Hadoop with R can overcome that limitation. To
 use the R package Rhipe, after setting up the hadoop datanode, you can
 load the two modules for the dynamically shared R binary and the Rhipe R
 package:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">libraries</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="n">Rhipe</span>
 </pre></div>
 </div>

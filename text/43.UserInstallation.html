@@ -219,14 +219,14 @@ this means below), and keep versions in the install directory. That way,
 if you upgrade or change versions of software, all versions of the same
 software package can be located in the same parent directory. In our
 example, this directory structure can be made using:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">example_pkg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">example_pkg</span>
 <span class="n">cd</span> <span class="n">example_pkg</span>
 <span class="n">mkdir</span> <span class="n">build</span> <span class="n">source</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>You then move the tarball into the source directory, and extract the
 files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mf">7.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">source</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mf">7.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">source</span>
 <span class="n">cd</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">source</span>
 <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mf">7.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
@@ -260,7 +260,7 @@ where to install the software. You will additionally, want to run the
 configure script from the build directory that we set up earlier. This
 is good practice, and allows easy cleaning (what is referred to as VPATH
 building).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">build</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">build</span>
 <span class="n">mkdir</span> <span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span>
 <span class="n">cd</span> <span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span>
 <span class="o">../../</span><span class="n">source</span><span class="o">/</span><span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">example_pkg</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span>
@@ -281,7 +281,7 @@ and you need help to resolve it, please use our
 <p>If the configure step finishes without error. The Make/Build step can be
 completed with the single command from within the build directory
 (directory you ran configure in):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
 </pre></div>
 </div>
 </div>
@@ -292,7 +292,7 @@ the make step will finish (unless the package maintainers incorrectly
 built the configure script). Therefore, the install step can be
 completed with the single command. Again from within the build
 directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>This command will put all the binaries, libraries, documentation

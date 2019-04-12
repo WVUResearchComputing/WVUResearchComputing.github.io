@@ -200,7 +200,7 @@ that happens python 2 and 3 will coexist and that is the reason why we
 keep both on our cluster.</p>
 <div class="section" id="packages-included">
 <h2>Packages included<a class="headerlink" href="#packages-included" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Python</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Python</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
 <span class="o">*</span> <span class="n">Python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -291,14 +291,14 @@ LZMA is a newer compression algorithm that Python 3 is linked to.</p>
 (LTO) and Profile-guided optimization (PGO) to maximize performance in
 production runs.</p>
 <p>Compilation proceed with (similar for 6.3.0):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">languages</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">languages</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
 <span class="n">make</span> <span class="n">profile</span><span class="o">-</span><span class="n">opt</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>The Makefile was modified to remove the command option
-<code class="docutils literal"><span class="pre">-fuse-linker-plugin</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>--- Makefile.orig	2017-01-24 09:52:54.597959711 -0500
+<code class="docutils literal notranslate"><span class="pre">-fuse-linker-plugin</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- Makefile.orig	2017-01-24 09:52:54.597959711 -0500
 +++ Makefile	        2017-01-24 10:27:24.152893000 -0500
 @@ -469,7 +469,7 @@
  	$(MAKE) profile-removal

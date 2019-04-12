@@ -8,8 +8,8 @@ actively get familiar with Unix command line interface and GNU/Linux in
 particular. Outstanding and Free documentation is provided at `The Linux
 Documentation Project <http://www.tldp.org>`__, specifically their
 `Guides <http://www.tldp.org/guides.html>`__ which cover basic topics
-including Using Linux and shell scripting to advanced File system
-and kernel modulization guides. Below is a succinct list of Unix commands
+including Using Linux and shell scripting to advanced File system and
+kernel modulization guides. Below is a succinct list of Unix commands
 that will help you get started in moving around and manipulating files.
 
 Moving around the file system
