@@ -7,9 +7,7 @@ A HPC cluster is a big computing infrastructure intended for concurrent usage by
 
 Due to security reasons, HPC clusters are intended to be accesed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.
 
-SSH was created as replacement to Telnet and old method for remote communication with no capability of encryption. This kind of access have been disabled and will not work on any cluster.
-
-In other to connect to any of our clusters you need a *username*, your name as user of the cluster.
+In order to connect to any of our clusters you need a *username*, your name as user of the cluster.
 You should have obtained that *username* with your *WVU Login account*
 
 WVU's clusters are also open to users who are currently associated with another Higher Education Institution in the state of West Virginia.  These users will still need a WVU Login account for access.  If you are working with someone (i.e. a PI) at WVU and need access, please have that person complete the form located `here <https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=7156>`__.  If you are not working with anyone at WVU, please send an email helpdesk@hpc.wvu.edu
@@ -30,8 +28,13 @@ Go to `PuTTy <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`__ to know mo
 
 PuTTY is not the only SSH client available for Windows. See for example `Comparison of SSH clients <https://en.wikipedia.org/wiki/Comparison_of_SSH_clients>`__ for several alternatives.
 
-Connecting to a cluster via SSH
--------------------------------
+Connecting to WVU's Clusters via SSH
+------------------------------------
+
+Currently, WVU has two clusters available for access.  Depending on which cluster you are using, the instructions for connecting slightly differ.
+
+General SSH Connection Instructions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On MacOS and Unix/Linux, open a terminal shell and type::
 
@@ -58,19 +61,29 @@ We currently have two clusters *Thorny Flat and *Spruce Knob* the hostnames are:
      - *spruce.hpc.wvu.edu*
      - Operational
    * - **Thorny Flat**
-     - *thorny.hpc.wvu.edu*
-     - Testing
+     - *tf.hpc.wvu.edu*
+     - Operational
 
-If you want to connect to Spruce use the following command::
+Spruce Knob Connectivity Instructions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To connect to Spruce Knob use the following command::
 
   $ ssh <username>@spruce.hpc.wvu.edu
 
+**Note:** Two-factor authentication is required to connect to Spruce Knob when not on WVU's Main Campus Network.  More about WVU's Two-Factor Authentication system can be found `here <https://wvu.teamdynamix.com/TDClient/KB/Default?CategoryID=3626>`__
 
-If you want to connect to Thorny Flat, you will first have to connect to WVU's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
+
+Thorny Flat Connectivity Instructions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To connect to Thorny Flat, you will first have to connect to WVU's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
 
   $ ssh <username>@ssh.wvu.edu
 
-Note: Two-factor authentication is required for connection to gateway service.
+More information on WVU's Gateway Service can be found `here <https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=27427>`__.  When your account is created to for Thorny Flat, you will automatically be approved for access to WVU's SSH Gateway Service.
+
+**Note:** Two-factor authentication is required to connect to WVU's Gateway Service.  More about WVU's Two-Factor Authentication system can be found `here <https://wvu.teamdynamix.com/TDClient/KB/Default?CategoryID=3626>`__.
 
 then::
 

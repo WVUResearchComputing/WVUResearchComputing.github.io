@@ -1,0 +1,1139 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using the Queuing system &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Samples of Job Submission scripts" href="33.job_samples.html" />
+    <link rel="prev" title="Globus Online" href="33.GlobusOnline.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Queuing system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#batch-queues">Batch queues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-commands-for-job-submission-status">Useful Commands for Job Submission/Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#batch-shell-scripts">Batch Shell Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qsub-environment-variables">Qsub Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-jobs">Interactive Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphical-interface-jobs">Graphical Interface Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-the-status-of-jobs">Checking the Status of Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#canceling-removing-a-job">Canceling/Removing a Job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-prologue-and-epilogue-scripts-to-a-job">Adding Prologue and Epilogue scripts to a Job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-of-prologue">Example of Prologue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-of-epilogue">Example of Epilogue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="34.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="35.Scratch.html">Managing Scratch Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="36.XWindow.html">XWindow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="30.BasicUser.html">For Basic Users</a> &raquo;</li>
+        
+      <li>Using the Queuing system</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/33.JobSubmission.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-the-queuing-system">
+<h1>Using the Queuing system<a class="headerlink" href="#using-the-queuing-system" title="Permalink to this headline">¶</a></h1>
+<p>The login node (the shell you get upon logging into a cluster) should be
+used for text editing, file transfer, and job submissions. No Jobs
+should be run directly on the login node. Jobs that take up too much CPU
+time or RAM will be cancelled by the WVU RC staff to ensure proper
+functioning of the cluster. Jobs should be run using the cluster’s
+queuing system, which uses the Moab Cluster Manager. Both batch jobs and
+interactive jobs should be submitted using the queuing system.</p>
+<div class="section" id="batch-queues">
+<h2>Batch queues<a class="headerlink" href="#batch-queues" title="Permalink to this headline">¶</a></h2>
+<p>Both batch jobs and interactive jobs will be submitted to a batch queue,
+which specifies the length and resources available to your job. Current
+status of a cluster’s queues can be found using the <code class="docutils literal"><span class="pre">qstat</span></code> command.
+There are several options that you can use to get an idea about the
+queues available on the system, the output here is for Spruce cluster</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat -q
+
+server: srih0001.hpc.wvu.edu
+
+Queue            Memory CPU Time Walltime Node  Run Que Lm  State
+---------------- ------ -------- -------- ----  --- --- --  -----
+comm_mmem_week     --      --    168:00:0   --   26   0 --   E R
+standby            --      --    04:00:00   --  182 122 --   E R
+comm_256g_mem      --      --    168:00:0   --    0   0 --   E R
+comm_mmem_day      --      --    24:00:00   --  566 592 --   E R
+debug              --      --    00:15:00   --    0   0 --   E R
+comm_gpu           --      --    168:00:0   --    0   0 --   E R
+batch              --      --    04:00:00   --    0   0 --   D S
+comm_smp           --      --    168:00:0   --    0  20 --   E R
+comm_large_mem     --      --    168:00:0   --    0   0 --   E R
+...
+                                               ----- -----
+                                                 877   914
+</pre></div>
+</div>
+<p>This command will give you an idea about the Walltime of the queues and
+the number of jobs and queue and running.</p>
+<p>Each queue has a designated Walltime, which specifies how long a
+particular job can run. We recommend that users submit job scripts first
+to the debug queue which has the highest priority (meaning your job will
+be placed running before all other jobs submitted to other queues). The
+debug queue only has a 5 minute Walltime, but is perfect for making sure
+your job script is valid and no errors will occur. Without first running
+a job in the debug queue, you run the risk of waiting a couple of hours
+before your job starts and then finding errors. Other queues including
+week, hour and long are more appropriate for longer running jobs and
+your job’s priority runs using your user’s priority which is explained
+in the <a class="reference external" href="Policies">Policies</a> page. If you cannot run your job within
+the specified runtime limits, please let us know.</p>
+</div>
+<div class="section" id="useful-commands-for-job-submission-status">
+<h2>Useful Commands for Job Submission/Status<a class="headerlink" href="#useful-commands-for-job-submission-status" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>qsub</strong></td>
+<td>Used to submit both batch and
+interactive jobs (explained
+below)</td>
+</tr>
+<tr class="row-even"><td><strong>canceljob</strong></td>
+<td>Terminates a job in the queue or
+a running job</td>
+</tr>
+<tr class="row-odd"><td><strong>checkjob</strong></td>
+<td>Displays detailed job state
+information</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="submitting-a-batch-job-to-the-queue">
+<h2>Submitting a Batch job to the Queue<a class="headerlink" href="#submitting-a-batch-job-to-the-queue" title="Permalink to this headline">¶</a></h2>
+<p>To submit a batch job to the queue use the qsub command to submit a job
+submission shell script. Useable job submission shell scripts are
+available for easy modification at <a class="reference external" href="Sample_Job_Scripts">Sample Job
+Scripts</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub &lt;environment_options&gt; &lt;shellscriptname&gt;
+</pre></div>
+</div>
+<p>** are options qsub takes to specify job submission parameters including
+the specified queue to submit the job, how many CPUs/much RAM is needed,
+working directories etc (more on this below under Serial Jobs). ** is
+the name of a shell script (bash, tcsh, etc.) that contains the commands
+that will be executed at run time. Default standard output and standard
+error of the job will be placed in files named
+<em>jobname</em>.<strong>o</strong><em>jobid</em> and <em>jobname</em>.<strong>e</strong><em>jobid</em>, respectively.
+These files will be written to the directory in which the qsub command
+was executed in. Where jobname is specified using the -N environment
+option and jobid is given at run time by the system. A trivial example
+is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -N example -q debug ./batch_job.sh
+42129.mountaineer
+</pre></div>
+</div>
+<p>In this example output files are named example.o42129 and example.e42129
+for standard output and standard error, respectively.</p>
+<div class="section" id="batch-shell-scripts">
+<h3>Batch Shell Scripts<a class="headerlink" href="#batch-shell-scripts" title="Permalink to this headline">¶</a></h3>
+<p>Serial batch jobs (jobs not requiring any MPI libraries) are submitted
+to the system using shell scripts. An example (very simple) shell script
+could be</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="n">time</span> <span class="n">command_to_be_executed</span>
+</pre></div>
+</div>
+<p>The above bash script, if submitted to the system using qsub would
+execute a single command. The unix time command before the
+command_to_be_executed is a very useful tool when using HPC scheduler
+systems. This command will report the real time it takes for a command
+to begin and complete execution. Times will be reported in the standard
+error file, and are useful for knowledge about how much walltime a
+command actually uses. The bash script shown above, when executed using
+the qsub command, the user would have to specify environment options at
+the command line. An easier way is to place environment options directly
+into you shell script using #PBS comments.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#PBS -N example</span>
+<span class="c1">#PBS -q debug</span>
+
+<span class="n">time</span> <span class="n">command_to_be_executed</span>
+</pre></div>
+</div>
+<p>By adding the -N and -q options directly into your shell script you no
+longer have to specify these options on the command line when issuing
+the qsub command.</p>
+<p><strong>Note: Do not place a job in the background using the ‘&amp;’ symbol, you
+will confuse the scheduler and potentially loose your command output.</strong></p>
+</div>
+<div class="section" id="qsub-environment-variables">
+<h3>Qsub Environment Variables<a class="headerlink" href="#qsub-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>Enivironment variables can be specified on the command line using the
+qsub command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -N batch_job -q week -l procs=3 ./batch_job.sh
+</pre></div>
+</div>
+<p>The above example would submit a job named batch_job to the week queue
+with 3 CPUs used and would execute batch_job.sh located in the current
+directory. The output files would be batch_job.o<em>jobid</em> and
+batch_job.e<em>jobid</em>. Another way is to specify these options directly
+in the shell script using #PBS commands.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#PBS -N batch_job</span>
+<span class="c1">#PBS -q week</span>
+<span class="c1">#PBS -l nodes=1:ppn=3</span>
+
+<span class="n">time</span> <span class="n">command_to_be_executed</span>
+</pre></div>
+</div>
+<p>With the environment options contained in the shell script, you no
+longer have to specify them on the command line.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub ./batch_job.sh
+</pre></div>
+</div>
+<p>The qsub command without options is identical to the previous command
+with options. Below is a list of commonly used qsub environment options,
+and these options are further explained in below sections.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>-N</strong></td>
+<td>Job Name</td>
+</tr>
+<tr class="row-even"><td><strong>-q</strong></td>
+<td>Queue specification</td>
+</tr>
+<tr class="row-odd"><td><strong>-l</strong></td>
+<td>Used to specify job resources
+(number of CPUs, nodes, length of
+Walltime)</td>
+</tr>
+<tr class="row-even"><td><strong>-m</strong></td>
+<td>E-mail options</td>
+</tr>
+<tr class="row-odd"><td><strong>-M</strong></td>
+<td>E-mail address(es) for e-mail
+options</td>
+</tr>
+<tr class="row-even"><td><strong>-e</strong></td>
+<td>Path for error stream</td>
+</tr>
+<tr class="row-odd"><td><strong>-o</strong></td>
+<td>Path for output stream</td>
+</tr>
+<tr class="row-even"><td><strong>-t</strong></td>
+<td>request for array jobs</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note: More information about the PBS system can be found using the man
+pbs command at the terminal. Further an extensive list of qsub options
+including environment variables can be found using the man qsub
+command.</strong></p>
+<div class="section" id="resource-specification">
+<h4>Resource Specification<a class="headerlink" href="#resource-specification" title="Permalink to this headline">¶</a></h4>
+<p>The #PBS -l option is used to specify resources such as number of CPUs,
+nodes, and length of Walltime for the job specified. The three most
+common resources specified for the Mountaineer cluster are</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>nodes</strong></td>
+<td>Number of nodes needed</td>
+</tr>
+<tr class="row-even"><td><strong>walltime</strong></td>
+<td>Maximum limit for walltime given
+in the format hh:mm:ss</td>
+</tr>
+<tr class="row-odd"><td><strong>ppn</strong></td>
+<td>Processors per node</td>
+</tr>
+<tr class="row-even"><td><strong>procs</strong></td>
+<td>Number of processors requested</td>
+</tr>
+<tr class="row-odd"><td><strong>pvmem</strong></td>
+<td>Maximum amount of memory used by
+any single process in the job</td>
+</tr>
+<tr class="row-even"><td><strong>vmem</strong></td>
+<td>Maximum amount of memory used by
+all concurrent processes in the
+job</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note: procs is used when you do not require each CPU to be on the same
+node.</strong></p>
+<p>For example, the PBS directive</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,walltime=06:00:00</span>
+</pre></div>
+</div>
+<p>Specifies that the job will need 6 processors located on a single node
+with a maximum run time of 6 hours. Notice there is no space between
+commas or equal signs. Alternatively, if nodes=1 (procs=6 instead) had
+not been specified then the scheduler would just grab the first 6
+processors available regardless of what nodes they reside on (which will
+only work if your program supports distributed computing). In general,
+unless you are running jobs using MPI libraries (mpirun) or posix
+threads, you will most likely only specify a single processor for your
+job (procs=1). <strong>Note:</strong>Resources specifying per node request are
+given with the nodes directive and seperated with a :, on the same line
+in your script.</p>
+<div class="section" id="requesting-memory-specifications">
+<h5>Requesting Memory Specifications<a class="headerlink" href="#requesting-memory-specifications" title="Permalink to this headline">¶</a></h5>
+<p>Requesting memory specifications for jobs is done with the attributes
+vmem or pvmem through the PBS -l directive (resource specification). The
+man pages of pbs will specify two other memory related attributes: mem
+and pmem. However, these two attributes measure different job resources
+than virtual memory and therefore are not stable for use the way we
+commonly think of memory (use of RAM). In other words, do not use the
+attributes mem and pmem - they most likely do not do what you think they
+do. vmem and pvmem will put resource limits for the amount of RAM a job
+can access. This is important to ensure two large memory jobs do not end
+up on the same node; exceeding the node’s memory limits and causing a
+node crash (which will kill all jobs on the node). If you do not specify
+memory limits - moab will assume a uniform distribution of memory across
+all jobs on the node. For example, a 16 processor/64Gb of RAM compute
+node will assume roughly 4Gb of RAM per processor. However, if a job
+using 62 Gb of RAM and only 8 cores is running on a compute node -
+without memory limits Moab will place 8 more processor jobs on that node
+when clearly there is not enough memory for any remaining jobs. This
+will crash the node. Therefore, we recommend that if you anticipate your
+jobs are going to use more than an average of 3Gb per processor that you
+specify memory limits for your job using pvmem or vmem. On Spruce
+community nodes and Mountaineer we enforce this by making the system
+default of pvmem=3gb. On these systems without specifying memory above
+3Gb will cause your job to fail. This is important - because on
+community nodes if you specify a job with 5 cores and vmem=25Gb; the job
+still will fail if it exceeds 15Gb because pvmem=3gb is assigned to each
+job by default (i.e. vmem does not override pvmem settings). To make
+your PBS scripts portable across community nodes and private nodes, we
+recommend that you only use pvmem to specify memory limits of jobs.
+pvmem attribute specifies the maximum amount of virtual memory used by
+any single processes in the job. Therefore, if you want a job that uses
+6 processors and needs 35 Gb of RAM you would specify the following
+resource directive line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,pvmem=6gb</span>
+</pre></div>
+</div>
+<p>pvmem=6gb with 6 processors specifies 6*6 = 36Gb of total memory for the
+job.</p>
+</div>
+<div class="section" id="requesting-certain-node-types">
+<h5>Requesting Certain Node Types<a class="headerlink" href="#requesting-certain-node-types" title="Permalink to this headline">¶</a></h5>
+<p>There might be times where you want to be able to request a node with a
+particular feature or processor. The following will allow you to
+accomplish this task. Replace ‘feature_name” with one of the features in
+the below table.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=feature_name</span>
+</pre></div>
+</div>
+<p>Note, you can also request a particular feature not by doing the
+following:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=&#39;!feature_name&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="available-features">
+<h5>Available Features<a class="headerlink" href="#available-features" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>smb</td>
+<td>Sandy Bridge Based Processor Nodes</td>
+</tr>
+<tr class="row-odd"><td>ivy</td>
+<td>Ivy Bridge Based Processor Nodes</td>
+</tr>
+<tr class="row-even"><td>haswell</td>
+<td>Haswell Based Processor Nodes</td>
+</tr>
+<tr class="row-odd"><td>broadwell</td>
+<td>Broadwell Based Processor Nodes</td>
+</tr>
+<tr class="row-even"><td>avx</td>
+<td>Processors with AVX Extension</td>
+</tr>
+<tr class="row-odd"><td>avx2</td>
+<td>Processors with AVX2 Extension</td>
+</tr>
+<tr class="row-even"><td>f16c</td>
+<td>Processors with f16c Extension</td>
+</tr>
+<tr class="row-odd"><td>adx</td>
+<td>Processors with adx Extension</td>
+</tr>
+<tr class="row-even"><td>large</td>
+<td>Nodes with 512 GB of memory</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="e-mail-options">
+<h4>E-mail options<a class="headerlink" href="#e-mail-options" title="Permalink to this headline">¶</a></h4>
+<p>The #PBS -m and #PBS -M options are used to specify when and to whom the
+scheduler will send e-mails. The -m option consists of either the single
+character “n”, or one or more of the characters “a”, “b”, and “e”.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>n</strong></td>
+<td>No mail will be sent</td>
+</tr>
+<tr class="row-even"><td><strong>a</strong></td>
+<td>Mail is sent when the job is aborted by the batch system</td>
+</tr>
+<tr class="row-odd"><td><strong>b</strong></td>
+<td>Mail is sent when the job begins execution</td>
+</tr>
+<tr class="row-even"><td><strong>e</strong></td>
+<td>Mail is sent when the job ends</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note: If the -m option is not specified, mail will be sent if the job
+is aborted.</strong></p>
+<p>The shellscript option #PBS -M specifies the e-mail addresses to send
+mail to. For example, the PBS directive</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -m ae</span>
+<span class="c1">#PBS -M user@mailserver.com</span>
+</pre></div>
+</div>
+<p>The scheduler will send an e-mail to <a class="reference external" href="mailto:user&#37;&#52;&#48;mailserver&#46;com">user<span>&#64;</span>mailserver<span>&#46;</span>com</a> if the job is
+aborted, or when the job is completed. To specify more than one e-mail
+address with the -M option, each address should be separated with a
+comma without any spaces.</p>
+<div class="section" id="to-receive-no-e-mails-even-on-aborts">
+<h5>To Receive no e-mails even on aborts<a class="headerlink" href="#to-receive-no-e-mails-even-on-aborts" title="Permalink to this headline">¶</a></h5>
+<p>Even with the ‘n’ option of ‘-m’ directive, the system will still send
+an e-mail if the job is cancelled or aborts. To provide the ability for
+our users to circumvent this response, we have set-up an alias e-mail
+address that can be used to bounce these e-mails. To receive absolutely
+no e-mails from the system, no matter what happens before, during and
+after execution of your job, use the <a class="reference external" href="mailto:noemail&#37;&#52;&#48;hpc&#46;wvu&#46;edu">noemail<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> address with
+the ‘n’ option:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -m n</span>
+<span class="c1">#PBS -m noemail@hpc.wvu.edu</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="output-file-specification">
+<h4>Output file specification<a class="headerlink" href="#output-file-specification" title="Permalink to this headline">¶</a></h4>
+<p>Default standard output and standard error of the job will be placed in
+files named <em>jobname</em>.<strong>o</strong><em>jobid</em> and <em>jobname</em>.<strong>e</strong><em>jobid</em>,
+respectfully. These files will be written to the directory in which the
+qsub command was executed in. Where jobname is specified using the -N
+environment option and jobid is given at run time by the system. The
+#PBS -e and #PBS -o options are used to specify what files should be
+written for the standard error and standard output stream, respectively.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>-e</strong></td>
+<td>pathname for standard error stream output</td>
+</tr>
+<tr class="row-even"><td><strong>-o</strong></td>
+<td>pathname for standard output stream output</td>
+</tr>
+</tbody>
+</table>
+<p>An example, the PBS directive</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -e /scratch/username/examplejob.error</span>
+<span class="c1">#PBS -o /scratch/username/examplejob.output</span>
+</pre></div>
+</div>
+<p>The scheduler will write the files /scratch/username/examplejob.error
+and /scratch/username/examplejob.output for the standard error and
+standard output streams, respectively.</p>
+<p><strong>Note: Use full pathnames for your home directory and scratch
+directory</strong></p>
+</div>
+<div class="section" id="requesting-array-jobs">
+<h4>Requesting Array jobs<a class="headerlink" href="#requesting-array-jobs" title="Permalink to this headline">¶</a></h4>
+<p>By using the directive #PBS -t , you can request a job to be repeated by
+a single script a number of times. This is useful if you have data where
+you want a single parameter to range over a section of numbers. For
+instance, if I wanted a series of commands to be run, with a single
+variable in the command to be executed over a range of 10-20 I could use
+the following command directives in my shell script</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#PBS -N demographic_${PBS_ARRAYID}
+#PBS -l nodes=1:ppn=2
+#PBS -t 10-20
+
+mkdir output_${PBS_ARRAYID}/
+cd output_${PBS_ARRAYID}/
+$SCRATCH/demographic_model.py -input_parameter ${PBS_ARRAYID} -procs 2 -output_file demographic_output.txt
+</pre></div>
+</div>
+<p>The above script would launch ten jobs. Each job would have the name
+demographic_; so the first job would be named demographic_10, the
+second job would be named demographic_11, and so fourth. Each job would
+be run a single node with 2 processors (specified as #PBS -l
+nodes=1:ppn=2). Further, each job would make a directory named ouput_
+(first job output_10, second job output_11, and so forth). Would cd into
+that directory and execute the python script demographic_model.py from
+my scratch directory. Notice that one of the input parameters would
+change each single job using the PBS set environment variable
+PBS_ARRAYID. Array request are very useful in scientific environments
+when you need to modify a parameter and see the output for a range of
+values. Note: this a theoretical example since I never specified
+walltime or a queue to execute this job from.</p>
+<p>The number range for array request does not have to be sequential. You
+can also list a comma separated list of numbers as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 10,15,20,25</span>
+</pre></div>
+</div>
+<p>Further, you can also specify that only a certain number of jobs are
+queued at one time in cases where you have a large number of jobs and
+need to share a queue with another user</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 1-200%10</span>
+</pre></div>
+</div>
+<p>The above directive will only launch ten jobs to the queue at a time
+until all 200 job requests have been executed.</p>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-jobs">
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Interactive jobs allow a user to be given an interactive terminal on a
+compute node. This allows a user to “interact” directly with a compute
+node instead running in a batch or scripted mode. Interactive jobs are
+very useful when debugging jobs as it allows a user to walk step-by-step
+through your submit script to find errors or problems. Interactive jobs
+are also useful when needing to use a graphical program on the cluster.</p>
+<p>To run an interactive job use the following command followed by any
+necessary PBS variables/flags. If you don’t specify any flags, you will
+be given an interactive job in the default queue for the cluster.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span>
+</pre></div>
+</div>
+<p>Do note, interactive jobs are only allowed on certain queues. All condo
+owner queues are allowed to have interactive jobs as well as queues such
+as ‘standby’ and ‘debug’. If you find you need an interactive queue on a
+community resource for a particular task or project, please contact
+<a class="reference external" href="https://helpdesk.hpc.wvu.edu">Research Computing Help Desk</a> for
+assistance.</p>
+</div>
+<div class="section" id="graphical-interface-jobs">
+<h2>Graphical Interface Jobs<a class="headerlink" href="#graphical-interface-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it might be useful or required to run a graphical program on
+the cluster. Non-compute intensive processes for visualization purposes
+can be run on the login node. These processes include “could” gnuplot, R
+and Matlab assuming they have low overhead. However, if you know your
+program is consume a lot of resources, it is best to run an <a class="reference external" href="Running_Jobs#Interactive_Jobs">interactive
+job</a>.</p>
+<p>To execute a graphical application on a compute node, you need to first
+review <a class="reference external" href="Using_X_Windows_applications">Using X Windows applications</a>
+to properly setup your X (i.e. display) environment. To launch a
+graphical job on a compute node, you will need to execute the following
+along with any necessary flags/pbs environment variables.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -I -X
+</pre></div>
+</div>
+<p>Once you are given an access to a interactive terminal you can run your
+the proper executable to launch your graphical (i.e. X Window) program.
+For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load statistics/matlab
+$&gt; matlab &amp;
+</pre></div>
+</div>
+</div>
+<div class="section" id="checking-the-status-of-jobs">
+<h2>Checking the Status of Jobs<a class="headerlink" href="#checking-the-status-of-jobs" title="Permalink to this headline">¶</a></h2>
+<p>The status of a job currently submitted to the queue can be checked
+using the checkjob command. checkjob displays detailed job state
+information and diagnostic output for a specified job. Detailed
+information is available for queued, blocked, active, and recently
+completed jobs. Users can use checkjob to view the status of their own
+jobs.</p>
+<p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; checkjob -v &lt;jobid&gt;
+</pre></div>
+</div>
+<p>where is the jobid given at submission time.</p>
+<p>The output of checkjob looks like this</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="mi">1653450</span> <span class="p">(</span><span class="n">RM</span> <span class="n">job</span> <span class="s1">&#39;1653450.srih0001.hpc.wvu.edu&#39;</span><span class="p">)</span>
+
+<span class="n">AName</span><span class="p">:</span> <span class="n">IVY</span>
+<span class="n">State</span><span class="p">:</span> <span class="n">Completed</span>
+<span class="n">Completion</span> <span class="n">Code</span><span class="p">:</span> <span class="mi">0</span>  <span class="n">Time</span><span class="p">:</span> <span class="n">Fri</span> <span class="n">May</span> <span class="mi">19</span> <span class="mi">15</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">21</span>
+<span class="n">Creds</span><span class="p">:</span>  <span class="n">user</span><span class="p">:</span><span class="n">username</span>  <span class="n">group</span><span class="p">:</span><span class="n">groupname</span>  <span class="n">class</span><span class="p">:</span><span class="n">debug</span>  <span class="n">qos</span><span class="p">:</span><span class="n">member</span>
+<span class="n">WallTime</span><span class="p">:</span>   <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">16</span> <span class="n">of</span> <span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">SubmitTime</span><span class="p">:</span> <span class="n">Fri</span> <span class="n">May</span> <span class="mi">19</span> <span class="mi">15</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">58</span>
+  <span class="p">(</span><span class="n">Time</span> <span class="n">Queued</span>  <span class="n">Total</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">07</span>  <span class="n">Eligible</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">)</span>
+
+<span class="n">Deadline</span><span class="p">:</span>  <span class="mi">3</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">49</span>  <span class="p">(</span><span class="n">Fri</span> <span class="n">May</span> <span class="mi">19</span> <span class="mi">19</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">58</span><span class="p">)</span>
+<span class="n">TemplateSets</span><span class="p">:</span>  <span class="n">DEFAULT</span>
+<span class="n">Total</span> <span class="n">Requested</span> <span class="n">Tasks</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="n">Req</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="n">TaskCount</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">Partition</span><span class="p">:</span> <span class="n">torque</span>
+<span class="n">Opsys</span><span class="p">:</span> <span class="o">---</span>  <span class="n">Arch</span><span class="p">:</span> <span class="o">---</span>  <span class="n">Features</span><span class="p">:</span> <span class="n">ivy</span>
+<span class="n">GMetric</span><span class="p">[</span><span class="n">energy_used</span><span class="p">]</span>  <span class="n">Current</span><span class="p">:</span> <span class="mf">0.00</span>  <span class="n">Min</span><span class="p">:</span> <span class="mf">0.00</span>  <span class="n">Max</span><span class="p">:</span> <span class="mf">0.00</span>  <span class="n">Avg</span><span class="p">:</span> <span class="mf">0.00</span> <span class="n">Total</span><span class="p">:</span> <span class="mf">0.00</span>
+<span class="n">NodeAccess</span><span class="p">:</span> <span class="n">SINGLEJOB</span>
+<span class="n">TasksPerNode</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">Allocated</span> <span class="n">Nodes</span><span class="p">:</span>
+<span class="p">[</span><span class="n">sgpc0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">SystemID</span><span class="p">:</span>   <span class="n">Moab</span>
+<span class="n">SystemJID</span><span class="p">:</span>  <span class="mi">1653450</span>
+<span class="n">Notification</span> <span class="n">Events</span><span class="p">:</span> <span class="n">JobEnd</span><span class="p">,</span><span class="n">JobFail</span>
+<span class="n">Task</span> <span class="n">Distribution</span><span class="p">:</span> <span class="n">sgpc0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<span class="n">UMask</span><span class="p">:</span>          <span class="mi">0000</span>
+<span class="n">OutputFile</span><span class="p">:</span>     <span class="n">srih0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">IVY</span><span class="o">.</span><span class="n">o1653450</span>
+<span class="n">ErrorFile</span><span class="p">:</span>      <span class="n">srih0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">IVY</span><span class="o">.</span><span class="n">e1653450</span>
+<span class="n">StartCount</span><span class="p">:</span>     <span class="mi">1</span>
+<span class="n">Execution</span> <span class="n">Partition</span><span class="p">:</span>  <span class="n">torque</span>
+<span class="n">SrcRM</span><span class="p">:</span>          <span class="n">torque</span>  <span class="n">DstRM</span><span class="p">:</span> <span class="n">torque</span>  <span class="n">DstRMJID</span><span class="p">:</span> <span class="mf">1653450.</span><span class="n">srih0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<span class="n">Submit</span> <span class="n">Args</span><span class="p">:</span>    <span class="n">runjob_ivy</span><span class="o">.</span><span class="n">pbs</span>
+<span class="n">Flags</span><span class="p">:</span>          <span class="n">RESTARTABLE</span>
+<span class="n">Attr</span><span class="p">:</span>           <span class="n">checkpoint</span>
+<span class="n">StartPriority</span><span class="p">:</span>  <span class="mi">1000</span>
+<span class="n">PE</span><span class="p">:</span>             <span class="mf">1.00</span>
+</pre></div>
+</div>
+<p>Sometimes your job is rejected and you still get a jobid in that case
+you can check the reasons with checkjob For example, consider this
+submission script where we ask for too much memory for a serial job.</p>
+<p>The submisssion script looks like</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+
+#PBS -N TEST
+#PBS -l nodes=1:ppn=1,vmem=200g
+#PBS -l walltime=00:01:00
+#PBS -m ae
+#PBS -q groupname
+#PBS -n
+
+cd $PBS_O_WORKDIR
+
+date
+</pre></div>
+</div>
+<p>The jobs is accepted by torque but will see the job in queue for a long
+time. Now we execute checkjob to know the reasons for not being running</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; checkjob -v 1653589
+
+job 1653589 (RM job &#39;1653589.srih0001.hpc.wvu.edu&#39;)
+
+AName: TEST
+State: Idle
+Creds:  user:username  group:groupname  class:groupname  qos:member
+WallTime:   00:00:00 of 00:01:00
+BecameEligible: Fri May 19 15:52:14
+SubmitTime: Fri May 19 15:51:52
+  (Time Queued  Total: 00:01:06  Eligible: 00:00:53)
+
+Deadline:  3:59:54  (Fri May 19 19:52:52)
+TemplateSets:  DEFAULT
+Total Requested Tasks: 1
+
+Req[0]  TaskCount: 1  Partition: ALL
+Memory &gt;= 0  Disk &gt;= 0  Swap &gt;= 3072M
+Dedicated Resources Per Task: PROCS: 1  SWAP: 200G
+NodeAccess: SINGLEJOB
+TasksPerNode: 1
+Reserved Nodes:  (3:09:16:24 -&gt; 3:09:17:24  Duration: 00:01:00)
+[sarc3001.hpc.wvu.edu:1]
+
+
+SystemID:   Moab
+SystemJID:  1653589
+Notification Events: JobEnd,JobFail
+
+UMask:          0000
+OutputFile:     srih0001.hpc.wvu.edu:/gpfs/home/username/TEST.o1653589
+ErrorFile:      srih0001.hpc.wvu.edu:/gpfs/home/username/TEST.e1653589
+Partition List: torque
+SrcRM:          torque  DstRM: torque  DstRMJID: 1653589.srih0001.hpc.wvu.edu
+Submit Args:    runjob_badmem.pbs
+Flags:          RESTARTABLE
+Attr:           checkpoint
+StartPriority:  2000
+PE:             37.34
+Reservation &#39;1653589&#39; (3:09:16:24 -&gt; 3:09:17:24  Duration: 00:01:00)
+Node Availability for Partition torque --------
+
+srig0001.hpc.wvu.edu     rejected: Swap
+szec2001.hpc.wvu.edu     rejected: State (Busy)
+szec2002.hpc.wvu.edu     rejected: State (Busy)
+szec2003.hpc.wvu.edu     rejected: State (Busy)
+...
+sbmc0017.hpc.wvu.edu     rejected: State (Busy)
+sbmc0018.hpc.wvu.edu     rejected: State (Busy)
+sbmg0001.hpc.wvu.edu     rejected: Swap
+sric0001.hpc.wvu.edu     rejected: Swap
+sric0002.hpc.wvu.edu     rejected: Swap
+ssmc0006.hpc.wvu.edu     rejected: Swap
+sgsc2001.hpc.wvu.edu     rejected: Class
+sgsg2001.hpc.wvu.edu     rejected: Swap
+sric0022.hpc.wvu.edu     rejected: Class
+sric0025.hpc.wvu.edu     rejected: State (Busy)
+sbmc0019.hpc.wvu.edu     rejected: State (Busy)
+sbmc0020.hpc.wvu.edu     rejected: Swap
+sbmc0021.hpc.wvu.edu     rejected: State (Busy)
+sbmc0022.hpc.wvu.edu     rejected: State (Busy)
+sric0024.hpc.wvu.edu     rejected: Swap
+sllc0001.hpc.wvu.edu     rejected: Swap
+...
+sspc3006.hpc.wvu.edu     rejected: Swap
+sspc3007.hpc.wvu.edu     rejected: Swap
+sspc3008.hpc.wvu.edu     rejected: Swap
+sspc3009.hpc.wvu.edu     rejected: State (Running)
+sspc3010.hpc.wvu.edu     rejected: Swap
+NOTE:  job req cannot run in partition torque (available procs do not meet requirements : 0 of 1 procs found)
+idle procs: 623  feasible procs:   0
+
+Node Rejection Summary: [Class: 2][State: 110][Swap: 53]
+</pre></div>
+</div>
+<p>The “Swap” reason is “memory” related. The “State” reason is CPU
+related. The Queue system search for 623 cores available and could not
+find a single machine with 200GB available to launch the job.</p>
+<p>Another important tool to monitor jobs and its state is showq</p>
+<p>You can get the eligible jobs and their priorities with</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">showq</span><span class="o">-</span> <span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -i -u username
+
+eligible jobs----------------------
+JOBID                 PRIORITY  XFACTOR  Q  USERNAME    GROUP  PROCS     WCLIMIT     CLASS      SYSTEMQUEUETIME
+
+1579829*                 14108      1.7 me   username groupname     16 14:00:00:00  groupname   Tue May  9 12:09:46
+1595467*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+1595464*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+1595468*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+1595466*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+1595463*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:10
+1595465*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:11
+1595462*                 10599      1.6 me   username groupname      4 14:00:00:00  groupname   Thu May 11 22:39:10
+1618053*                  6423      1.3 me   username groupname      2 14:00:00:00  groupname   Sun May 14 20:15:33
+1618385*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:58
+1618386*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:58
+1618387*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:59
+1618388*                  6363      1.3 me   username groupname      4 14:00:00:00  groupname   Sun May 14 21:14:59
+1630355*                  3967      1.2 me   username groupname      4 14:00:00:00  groupname   Tue May 16 13:11:17
+1630507*                  3903      1.2 me   username groupname      4 14:00:00:00  groupname   Tue May 16 14:15:09
+1630546*                  3884      1.2 me   username groupname     16 14:00:00:00  groupname   Tue May 16 14:34:33
+1630494*                     1      1.4 co   username groupname     16  7:00:00:00 comm_larg   Tue May 16 14:08:50
+1630349*                     1      1.4 co   username groupname     16  7:00:00:00 comm_larg   Tue May 16 13:10:08
+
+18 eligible jobs
+
+Total jobs:  18
+</pre></div>
+</div>
+<p>Those are jobs that accrue priority as time passes for them on queue.
+Some jobs could become blocked, meaning that they are not gaining
+priority but will eventually become eligible later in time.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -b -u username
+
+blocked jobs-----------------------
+JOBID              USERNAME    GROUP      STATE PROCS     WCLIMIT            QUEUETIME
+
+1623738             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:50
+1623747             username groupname       Idle    16  7:00:00:00  Mon May 15 13:51:21
+1623757             username groupname       Idle    16  7:00:00:00  Mon May 15 13:52:57
+1652487             username groupname       Idle    16     4:00:00  Fri May 19 12:24:44
+1646112             username groupname       Idle     4     4:00:00  Thu May 18 15:20:54
+1646096             username groupname       Idle     4     4:00:00  Thu May 18 15:17:55
+1630495             username groupname       Idle     4  7:00:00:00  Tue May 16 14:10:13
+1630501             username groupname       Idle    16  7:00:00:00  Tue May 16 14:11:17
+1623766             username groupname       Idle    16  7:00:00:00  Mon May 15 13:55:24
+1623746             username groupname       Idle    16  7:00:00:00  Mon May 15 13:50:50
+1623749             username groupname       Idle    16  7:00:00:00  Mon May 15 13:51:48
+1623751             username groupname       Idle    16  7:00:00:00  Mon May 15 13:52:25
+1646143             username groupname       Idle    16  7:00:00:00  Thu May 18 15:26:36
+1623759             username groupname       Idle    16  7:00:00:00  Mon May 15 13:53:51
+1623758             username groupname       Idle    16  7:00:00:00  Mon May 15 13:53:29
+1623760             username groupname       Idle    16  7:00:00:00  Mon May 15 13:54:53
+1623740             username groupname       Idle    16  7:00:00:00  Mon May 15 13:50:23
+1623731             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:08
+1630569             username groupname       Idle    16  7:00:00:00  Tue May 16 14:48:03
+1623739             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:53
+1623732             username groupname       Idle    16  7:00:00:00  Mon May 15 13:49:10
+
+21 blocked jobs
+
+Total jobs:  21
+</pre></div>
+</div>
+<p>Finally, you can see the jobs that are currently running with their
+remaining time until hit their wall time</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -r -u username
+
+active jobs------------------------
+JOBID               S  PAR  EFFIC  XFACTOR  Q  USERNAME    GROUP            MHOST PROCS   REMAINING            STARTTIME
+
+1599005             R  tor  24.99      1.0 co   username groupname sric0011.hpc.wvu    16    00:24:38  Fri May 12 17:01:10
+1599006             R  tor  24.99      1.0 co   username groupname sric0020.hpc.wvu    16    00:51:08  Fri May 12 17:27:40
+1599007             R  tor  24.98      1.0 co   username groupname sric0021.hpc.wvu    16     1:03:41  Fri May 12 17:40:13
+1599008             R  tor  24.99      1.0 co   username groupname sric0023.hpc.wvu    16     1:04:45  Fri May 12 17:41:17
+1599009             R  tor  24.99      1.1 co   username groupname sric0032.hpc.wvu    16     4:42:25  Fri May 12 21:18:57
+1599010             R  tor  24.99      1.1 co   username groupname sric0026.hpc.wvu    16     4:42:25  Fri May 12 21:18:57
+1599011             R  tor  24.99      1.1 co   username groupname sric0017.hpc.wvu    16    10:10:42  Sat May 13 02:47:14
+1546851             R  tor  99.73      2.6 co   username groupname sric0025.hpc.wvu    16  2:13:45:30  Mon May 15 06:22:02
+1570354             R  tor  87.78      1.0 me   username groupname sarc3001.hpc.wvu    16  3:08:32:50  Tue May  9 01:09:22
+1595446             R  tor  98.27      1.0 me   username groupname sarc2001.hpc.wvu     4  6:06:02:54  Thu May 11 22:39:26
+1595448             R  tor  99.98      1.0 me   username groupname sarc2001.hpc.wvu     4  6:07:29:35  Fri May 12 00:06:07
+1595449             R  tor  99.99      1.0 me   username groupname sarc0001.hpc.wvu     4  6:08:21:37  Fri May 12 00:58:09
+1595453             R  tor  99.99      1.0 me   username groupname sarc0002.hpc.wvu     4  6:08:49:41  Fri May 12 01:26:13
+1618813             R  tor  24.77      1.7 co   username groupname sric0037.hpc.wvu    16  6:20:47:59  Fri May 19 13:24:31
+1618812             R  tor  24.77      1.7 co   username groupname sric0051.hpc.wvu    16  6:20:47:59  Fri May 19 13:24:31
+1618814             R  tor  24.78      1.7 co   username groupname sric0036.hpc.wvu    16  6:20:47:59  Fri May 19 13:24:31
+1618815             R  tor  24.84      1.7 co   username groupname sric0030.hpc.wvu    16  6:20:54:14  Fri May 19 13:30:46
+1595460             R  tor  99.97      1.1 me   username groupname sarc0006.hpc.wvu     4  8:06:16:50  Sat May 13 22:53:22
+1595461             R  tor  99.97      1.2 me   username groupname sarc0009.hpc.wvu     4  8:13:36:38  Sun May 14 06:13:10
+
+19 active jobs         232 of 3112 processors in use by local jobs (7.46%)
+                        155 of 165 nodes active      (93.94%)
+
+Total jobs:  19
+</pre></div>
+</div>
+</div>
+<div class="section" id="canceling-removing-a-job">
+<h2>Canceling/Removing a Job<a class="headerlink" href="#canceling-removing-a-job" title="Permalink to this headline">¶</a></h2>
+<p>Jobs can be cancelled or removed using the canceljob command. Users can
+only remove jobs they submitted to the scheduler.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $&gt; canceljob &lt;jobid&gt;
+
+is the jobid given at submission time.
+</pre></div>
+</div>
+<p>Now canceljob is deprecated and Moab offers and alternative to cancel
+jobs For example, if you want to cancel jobs that starts with 1693 you
+can use this command to cancel those jobs. As user you can only cancel
+jobs that you own so do not worry about canceling jobs from other users
+by doing this.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mjobctl -c &quot;x:1693.*&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-prologue-and-epilogue-scripts-to-a-job">
+<h2>Adding Prologue and Epilogue scripts to a Job<a class="headerlink" href="#adding-prologue-and-epilogue-scripts-to-a-job" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to declare scripts that run before and after the
+execution of the main submission script. The main advantage of those is
+to keep a record of the conditions under which a given job is running.
+Here we present a simple example of how to declare an prologue and
+epilogue.</p>
+<p>Add these lines to your submission script:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l prologue=/absolute/path/to/prologue.sh</span>
+<span class="c1">#PBS -l epilogue=/absolute/path/to/epilogue.sh</span>
+</pre></div>
+</div>
+<p>The best way of working with those scripts is adding them to your home
+folder and use them on all your submission scripts. They should collect
+information that you can use later for debugging or profiling purposes.</p>
+<div class="section" id="example-of-prologue">
+<h3>Example of Prologue<a class="headerlink" href="#example-of-prologue" title="Permalink to this headline">¶</a></h3>
+<p>prologue.sh</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="n">echo</span> <span class="s2">&quot;&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Prologue Args:&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Job ID: $1&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;User ID: $2&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Group ID: $3&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;&quot;</span>
+
+<span class="n">env</span> <span class="o">|</span> <span class="n">sort</span>
+<span class="n">hostname</span>
+<span class="n">date</span>
+
+<span class="n">exit</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-of-epilogue">
+<h3>Example of Epilogue<a class="headerlink" href="#example-of-epilogue" title="Permalink to this headline">¶</a></h3>
+<p>epilogue.sh</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="n">echo</span> <span class="s2">&quot;&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Epilogue Args:&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Job ID: $1&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;User ID: $2&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Group ID: $3&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Job Name: $4&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Session ID: $5&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Resource List: $6&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Resources Used: $7&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Queue Name: $8&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;Account String: $9&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;&quot;</span>
+
+<span class="n">env</span> <span class="o">|</span> <span class="n">sort</span>
+<span class="n">hostname</span>
+<span class="n">date</span>
+
+<span class="n">exit</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Both prologue and epilogue must be made executable, use “</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">prologue</span><span class="o">.</span><span class="n">sh</span> <span class="n">epilogue</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>to change their permissions.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="33.job_samples.html" class="btn btn-neutral float-right" title="Samples of Job Submission scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="33.GlobusOnline.html" class="btn btn-neutral" title="Globus Online" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
