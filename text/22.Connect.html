@@ -93,7 +93,12 @@
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Connect to the cluster</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#get-a-ssh-client">Get a SSH Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#connecting-to-a-cluster-via-ssh">Connecting to a cluster via SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-wvu-s-clusters-via-ssh">Connecting to WVU’s Clusters via SSH</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-ssh-connection-instructions">General SSH Connection Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spruce-knob-connectivity-instructions">Spruce Knob Connectivity Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thorny-flat-connectivity-instructions">Thorny Flat Connectivity Instructions</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging In</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-out">Logging Out</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#putty-example">Putty Example</a></li>
@@ -183,8 +188,7 @@
 <span id="qs-connect"></span><h1>Connect to the cluster<a class="headerlink" href="#connect-to-the-cluster" title="Permalink to this headline">¶</a></h1>
 <p>A HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop or even workstations are intended for a single user at a time. In general Graphical User Interfaces consume important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.</p>
 <p>Due to security reasons, HPC clusters are intended to be accesed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.</p>
-<p>SSH was created as replacement to Telnet and old method for remote communication with no capability of encryption. This kind of access have been disabled and will not work on any cluster.</p>
-<p>In other to connect to any of our clusters you need a <em>username</em>, your name as user of the cluster.
+<p>In order to connect to any of our clusters you need a <em>username</em>, your name as user of the cluster.
 You should have obtained that <em>username</em> with your <em>WVU Login account</em></p>
 <p>WVU’s clusters are also open to users who are currently associated with another Higher Education Institution in the state of West Virginia.  These users will still need a WVU Login account for access.  If you are working with someone (i.e. a PI) at WVU and need access, please have that person complete the form located <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=7156">here</a>.  If you are not working with anyone at WVU, please send an email <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a></p>
 <p>The next step is to use a SSH client to connect to one of our clusters.</p>
@@ -197,8 +201,11 @@ PuTTY is a free implementation of SSH for Windows platforms, it comes along with
 <p>Go to <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a> to know more about the product or download it directly from <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY Download</a>.</p>
 <p>PuTTY is not the only SSH client available for Windows. See for example <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_SSH_clients">Comparison of SSH clients</a> for several alternatives.</p>
 </div>
-<div class="section" id="connecting-to-a-cluster-via-ssh">
-<h2>Connecting to a cluster via SSH<a class="headerlink" href="#connecting-to-a-cluster-via-ssh" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connecting-to-wvu-s-clusters-via-ssh">
+<h2>Connecting to WVU’s Clusters via SSH<a class="headerlink" href="#connecting-to-wvu-s-clusters-via-ssh" title="Permalink to this headline">¶</a></h2>
+<p>Currently, WVU has two clusters available for access.  Depending on which cluster you are using, the instructions for connecting slightly differ.</p>
+<div class="section" id="general-ssh-connection-instructions">
+<h3>General SSH Connection Instructions<a class="headerlink" href="#general-ssh-connection-instructions" title="Permalink to this headline">¶</a></h3>
 <p>On MacOS and Unix/Linux, open a terminal shell and type:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
@@ -230,23 +237,32 @@ Remember that the <code class="docutils literal"><span class="pre">$&gt;</span><
 <td>Operational</td>
 </tr>
 <tr class="row-odd"><td><strong>Thorny Flat</strong></td>
-<td><em>thorny.hpc.wvu.edu</em></td>
-<td>Testing</td>
+<td><em>tf.hpc.wvu.edu</em></td>
+<td>Operational</td>
 </tr>
 </tbody>
 </table>
-<p>If you want to connect to Spruce use the following command:</p>
+</div>
+<div class="section" id="spruce-knob-connectivity-instructions">
+<h3>Spruce Knob Connectivity Instructions<a class="headerlink" href="#spruce-knob-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
+<p>To connect to Spruce Knob use the following command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
 </pre></div>
 </div>
-<p>If you want to connect to Thorny Flat, you will first have to connect to WVU’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
+<p><strong>Note:</strong> Two-factor authentication is required to connect to Spruce Knob when not on WVU’s Main Campus Network.  More about WVU’s Two-Factor Authentication system can be found <cite>here &lt;https://wvu.teamdynamix.com/TDClient/KB/Default?CategoryID=3626&gt;</cite></p>
+</div>
+<div class="section" id="thorny-flat-connectivity-instructions">
+<h3>Thorny Flat Connectivity Instructions<a class="headerlink" href="#thorny-flat-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
+<p>To connect to Thorny Flat, you will first have to connect to WVU’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
 </pre></div>
 </div>
-<p>Note: Two-factor authentication is required for connection to gateway service.</p>
+<p>More information on WVU’s Gateway Service can be found <cite>here https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=27427</cite>.  When your account is created to for Thorny Flat, you will automatically be approved for access to WVU’s SSH Gateway Service.</p>
+<p><strong>Note:</strong> Two-factor authentication is required to connect to WVU’s Gateway Service.  More about WVU’s Two-Factor Authentication system can be found <cite>here &lt;https://wvu.teamdynamix.com/TDClient/KB/Default?CategoryID=3626&gt;</cite></p>
 <p>then:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh tf.hpc.wvu.edu
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="logging-in">
