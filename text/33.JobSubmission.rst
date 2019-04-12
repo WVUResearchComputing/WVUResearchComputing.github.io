@@ -63,10 +63,10 @@ Useful Commands for Job Submission/Status
 |                                   | interactive jobs (explained       |
 |                                   | below)                            |
 +-----------------------------------+-----------------------------------+
-| **canceljob **                    | Terminates a job in the queue or  |
+| **canceljob**                     | Terminates a job in the queue or  |
 |                                   | a running job                     |
 +-----------------------------------+-----------------------------------+
-| **checkjob **                     | Displays detailed job state       |
+| **checkjob**                      | Displays detailed job state       |
 |                                   | information                       |
 +-----------------------------------+-----------------------------------+
 
@@ -229,7 +229,7 @@ common resources specified for the Mountaineer cluster are
 |                                   | all concurrent processes in the   |
 |                                   | job                               |
 +-----------------------------------+-----------------------------------+
-|  |
+|                                   |                                   |
 +-----------------------------------+-----------------------------------+
 
 **Note: procs is used when you do not require each CPU to be on the same
@@ -695,7 +695,10 @@ Another important tool to monitor jobs and its state is showq
 
 You can get the eligible jobs and their priorities with
 
-`` showq -i -u ``\
+::
+
+    showq- i -u <username>
+
 
 For example
 
