@@ -202,18 +202,18 @@ python interpreter. For instance, if you want python 2.7.10, then load
 the 2.7.10 python modefule. If you want to use the default system python
 (v. 2.6), then you do not need to load a python modulefile. However, you
 do need to load the virtualenv modulefile.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">10</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">virtualenv</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">10</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">virtualenv</span>
 </pre></div>
 </div>
 <p>Then create a virtualenv directory with the ‘virtualenv’ command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">workflow1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">workflow1</span>
 </pre></div>
 </div>
 <p>You should now have a directory called ‘workflow1’. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
 virtualenv.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
 <p>Your command prompt will now be pre-emptied by (workflow1) to remind you
@@ -225,18 +225,18 @@ pip, and easy_install just as you would regularly.</p>
 <p>First, load the python3 modulefile. The python3 modulefile comes with
 it’s own virtual environment utility, so you do not need to load the
 virtualenv modulefile.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
 <p>Then create a virtualenv directry with the ‘pyvenv’ command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="n">workflow1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="n">workflow1</span>
 </pre></div>
 </div>
 <p>You should now have a directory called ‘workflow1’. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
 virtualenv.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
 <p>Your command prompt will now be pre-emptied by (workflow1) to remind you
@@ -247,7 +247,7 @@ pip, and easy_install just as you would regularly.</p>
 <h2>Activating virtual environments using the C shell<a class="headerlink" href="#activating-virtual-environments-using-the-c-shell" title="Permalink to this headline">¶</a></h2>
 <p>If you are using the shells csh or tcsh, you will not be able to source
 the ‘activate’ file. Instead, you need to source the activate.csh file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span><span class="o">.</span><span class="n">csh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span><span class="o">.</span><span class="n">csh</span>
 </pre></div>
 </div>
 </div>
@@ -259,11 +259,11 @@ with them by default. For instance, python 2.7.10 already has Numpy
 1.9.2 and Matplotlib 1.4.2 installed. To have your virtualenv keep using
 these packages so you do not need to install them in your virtualenv,
 using the –system-site-packages option.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 </pre></div>
 </div>
 <p>Or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="o">--</span><span class="n">systems</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="o">--</span><span class="n">systems</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 </pre></div>
 </div>
 </div>

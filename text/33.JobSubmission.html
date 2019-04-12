@@ -204,10 +204,10 @@ interactive jobs should be submitted using the queuing system.</p>
 <h2>Batch queues<a class="headerlink" href="#batch-queues" title="Permalink to this headline">¶</a></h2>
 <p>Both batch jobs and interactive jobs will be submitted to a batch queue,
 which specifies the length and resources available to your job. Current
-status of a cluster’s queues can be found using the <code class="docutils literal notranslate"><span class="pre">qstat</span></code> command.
+status of a cluster’s queues can be found using the <code class="docutils literal"><span class="pre">qstat</span></code> command.
 There are several options that you can use to get an idea about the
 queues available on the system, the output here is for Spruce cluster</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat -q
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat -q
 
 server: srih0001.hpc.wvu.edu
 
@@ -272,7 +272,7 @@ information</td>
 submission shell script. Useable job submission shell scripts are
 available for easy modification at <a class="reference external" href="Sample_Job_Scripts">Sample Job
 Scripts</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub &lt;environment_options&gt; &lt;shellscriptname&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub &lt;environment_options&gt; &lt;shellscriptname&gt;
 </pre></div>
 </div>
 <p>** are options qsub takes to specify job submission parameters including
@@ -286,7 +286,7 @@ These files will be written to the directory in which the qsub command
 was executed in. Where jobname is specified using the -N environment
 option and jobid is given at run time by the system. A trivial example
 is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -N example -q debug ./batch_job.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -N example -q debug ./batch_job.sh
 42129.mountaineer
 </pre></div>
 </div>
@@ -297,7 +297,7 @@ for standard output and standard error, respectively.</p>
 <p>Serial batch jobs (jobs not requiring any MPI libraries) are submitted
 to the system using shell scripts. An example (very simple) shell script
 could be</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="n">time</span> <span class="n">command_to_be_executed</span>
 </pre></div>
@@ -312,7 +312,7 @@ command actually uses. The bash script shown above, when executed using
 the qsub command, the user would have to specify environment options at
 the command line. An easier way is to place environment options directly
 into you shell script using #PBS comments.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#PBS -N example</span>
 <span class="c1">#PBS -q debug</span>
@@ -330,7 +330,7 @@ will confuse the scheduler and potentially loose your command output.</strong></
 <h3>Qsub Environment Variables<a class="headerlink" href="#qsub-environment-variables" title="Permalink to this headline">¶</a></h3>
 <p>Enivironment variables can be specified on the command line using the
 qsub command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -N batch_job -q week -l procs=3 ./batch_job.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -N batch_job -q week -l procs=3 ./batch_job.sh
 </pre></div>
 </div>
 <p>The above example would submit a job named batch_job to the week queue
@@ -338,7 +338,7 @@ with 3 CPUs used and would execute batch_job.sh located in the current
 directory. The output files would be batch_job.o<em>jobid</em> and
 batch_job.e<em>jobid</em>. Another way is to specify these options directly
 in the shell script using #PBS commands.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#PBS -N batch_job</span>
 <span class="c1">#PBS -q week</span>
@@ -349,7 +349,7 @@ in the shell script using #PBS commands.</p>
 </div>
 <p>With the environment options contained in the shell script, you no
 longer have to specify them on the command line.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub ./batch_job.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub ./batch_job.sh
 </pre></div>
 </div>
 <p>The qsub command without options is identical to the previous command
@@ -435,7 +435,7 @@ job</td>
 <p><strong>Note: procs is used when you do not require each CPU to be on the same
 node.</strong></p>
 <p>For example, the PBS directive</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,walltime=06:00:00</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,walltime=06:00:00</span>
 </pre></div>
 </div>
 <p>Specifies that the job will need 6 processors located on a single node
@@ -483,7 +483,7 @@ pvmem attribute specifies the maximum amount of virtual memory used by
 any single processes in the job. Therefore, if you want a job that uses
 6 processors and needs 35 Gb of RAM you would specify the following
 resource directive line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,pvmem=6gb</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,pvmem=6gb</span>
 </pre></div>
 </div>
 <p>pvmem=6gb with 6 processors specifies 6*6 = 36Gb of total memory for the
@@ -495,12 +495,12 @@ job.</p>
 particular feature or processor. The following will allow you to
 accomplish this task. Replace ‘feature_name” with one of the features in
 the below table.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=feature_name</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=feature_name</span>
 </pre></div>
 </div>
 <p>Note, you can also request a particular feature not by doing the
 following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=&#39;!feature_name&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=&#39;!feature_name&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -577,7 +577,7 @@ character “n”, or one or more of the characters “a”, “b”, and “e�
 is aborted.</strong></p>
 <p>The shellscript option #PBS -M specifies the e-mail addresses to send
 mail to. For example, the PBS directive</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -m ae</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -m ae</span>
 <span class="c1">#PBS -M user@mailserver.com</span>
 </pre></div>
 </div>
@@ -594,7 +594,7 @@ address that can be used to bounce these e-mails. To receive absolutely
 no e-mails from the system, no matter what happens before, during and
 after execution of your job, use the <a class="reference external" href="mailto:noemail&#37;&#52;&#48;hpc&#46;wvu&#46;edu">noemail<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> address with
 the ‘n’ option:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -m n</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -m n</span>
 <span class="c1">#PBS -m noemail@hpc.wvu.edu</span>
 </pre></div>
 </div>
@@ -624,7 +624,7 @@ written for the standard error and standard output stream, respectively.</p>
 </tbody>
 </table>
 <p>An example, the PBS directive</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -e /scratch/username/examplejob.error</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -e /scratch/username/examplejob.error</span>
 <span class="c1">#PBS -o /scratch/username/examplejob.output</span>
 </pre></div>
 </div>
@@ -642,7 +642,7 @@ you want a single parameter to range over a section of numbers. For
 instance, if I wanted a series of commands to be run, with a single
 variable in the command to be executed over a range of 10-20 I could use
 the following command directives in my shell script</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#PBS -N demographic_${PBS_ARRAYID}
+<div class="highlight-default"><div class="highlight"><pre><span></span>#PBS -N demographic_${PBS_ARRAYID}
 #PBS -l nodes=1:ppn=2
 #PBS -t 10-20
 
@@ -666,13 +666,13 @@ values. Note: this a theoretical example since I never specified
 walltime or a queue to execute this job from.</p>
 <p>The number range for array request does not have to be sequential. You
 can also list a comma separated list of numbers as</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 10,15,20,25</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 10,15,20,25</span>
 </pre></div>
 </div>
 <p>Further, you can also specify that only a certain number of jobs are
 queued at one time in cases where you have a large number of jobs and
 need to share a queue with another user</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 1-200%10</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 1-200%10</span>
 </pre></div>
 </div>
 <p>The above directive will only launch ten jobs to the queue at a time
@@ -691,7 +691,7 @@ are also useful when needing to use a graphical program on the cluster.</p>
 <p>To run an interactive job use the following command followed by any
 necessary PBS variables/flags. If you don’t specify any flags, you will
 be given an interactive job in the default queue for the cluster.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span>
 </pre></div>
 </div>
 <p>Do note, interactive jobs are only allowed on certain queues. All condo
@@ -714,13 +714,13 @@ review <a class="reference external" href="Using_X_Windows_applications">Using X
 to properly setup your X (i.e. display) environment. To launch a
 graphical job on a compute node, you will need to execute the following
 along with any necessary flags/pbs environment variables.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -X
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -I -X
 </pre></div>
 </div>
 <p>Once you are given an access to a interactive terminal you can run your
 the proper executable to launch your graphical (i.e. X Window) program.
 For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load statistics/matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load statistics/matlab
 $&gt; matlab &amp;
 </pre></div>
 </div>
@@ -734,12 +734,12 @@ information is available for queued, blocked, active, and recently
 completed jobs. Users can use checkjob to view the status of their own
 jobs.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; checkjob -v &lt;jobid&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; checkjob -v &lt;jobid&gt;
 </pre></div>
 </div>
 <p>where is the jobid given at submission time.</p>
 <p>The output of checkjob looks like this</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="mi">1653450</span> <span class="p">(</span><span class="n">RM</span> <span class="n">job</span> <span class="s1">&#39;1653450.srih0001.hpc.wvu.edu&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="mi">1653450</span> <span class="p">(</span><span class="n">RM</span> <span class="n">job</span> <span class="s1">&#39;1653450.srih0001.hpc.wvu.edu&#39;</span><span class="p">)</span>
 
 <span class="n">AName</span><span class="p">:</span> <span class="n">IVY</span>
 <span class="n">State</span><span class="p">:</span> <span class="n">Completed</span>
@@ -783,7 +783,7 @@ jobs.</p>
 you can check the reasons with checkjob For example, consider this
 submission script where we ask for too much memory for a serial job.</p>
 <p>The submisssion script looks like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N TEST
 #PBS -l nodes=1:ppn=1,vmem=200g
@@ -799,7 +799,7 @@ date
 </div>
 <p>The jobs is accepted by torque but will see the job in queue for a long
 time. Now we execute checkjob to know the reasons for not being running</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; checkjob -v 1653589
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; checkjob -v 1653589
 
 job 1653589 (RM job &#39;1653589.srih0001.hpc.wvu.edu&#39;)
 
@@ -879,11 +879,11 @@ related. The Queue system search for 623 cores available and could not
 find a single machine with 200GB available to launch the job.</p>
 <p>Another important tool to monitor jobs and its state is showq</p>
 <p>You can get the eligible jobs and their priorities with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">showq</span><span class="o">-</span> <span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">showq</span><span class="o">-</span> <span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>For example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -i -u username
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -i -u username
 
 eligible jobs----------------------
 JOBID                 PRIORITY  XFACTOR  Q  USERNAME    GROUP  PROCS     WCLIMIT     CLASS      SYSTEMQUEUETIME
@@ -915,7 +915,7 @@ Total jobs:  18
 <p>Those are jobs that accrue priority as time passes for them on queue.
 Some jobs could become blocked, meaning that they are not gaining
 priority but will eventually become eligible later in time.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -b -u username
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -b -u username
 
 blocked jobs-----------------------
 JOBID              USERNAME    GROUP      STATE PROCS     WCLIMIT            QUEUETIME
@@ -949,7 +949,7 @@ Total jobs:  21
 </div>
 <p>Finally, you can see the jobs that are currently running with their
 remaining time until hit their wall time</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -r -u username
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -r -u username
 
 active jobs------------------------
 JOBID               S  PAR  EFFIC  XFACTOR  Q  USERNAME    GROUP            MHOST PROCS   REMAINING            STARTTIME
@@ -985,7 +985,7 @@ Total jobs:  19
 <h2>Canceling/Removing a Job<a class="headerlink" href="#canceling-removing-a-job" title="Permalink to this headline">¶</a></h2>
 <p>Jobs can be cancelled or removed using the canceljob command. Users can
 only remove jobs they submitted to the scheduler.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $&gt; canceljob &lt;jobid&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $&gt; canceljob &lt;jobid&gt;
 
 is the jobid given at submission time.
 </pre></div>
@@ -995,7 +995,7 @@ jobs For example, if you want to cancel jobs that starts with 1693 you
 can use this command to cancel those jobs. As user you can only cancel
 jobs that you own so do not worry about canceling jobs from other users
 by doing this.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mjobctl -c &quot;x:1693.*&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mjobctl -c &quot;x:1693.*&quot;
 </pre></div>
 </div>
 </div>
@@ -1007,7 +1007,7 @@ to keep a record of the conditions under which a given job is running.
 Here we present a simple example of how to declare an prologue and
 epilogue.</p>
 <p>Add these lines to your submission script:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l prologue=/absolute/path/to/prologue.sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l prologue=/absolute/path/to/prologue.sh</span>
 <span class="c1">#PBS -l epilogue=/absolute/path/to/epilogue.sh</span>
 </pre></div>
 </div>
@@ -1017,7 +1017,7 @@ information that you can use later for debugging or profiling purposes.</p>
 <div class="section" id="example-of-prologue">
 <h3>Example of Prologue<a class="headerlink" href="#example-of-prologue" title="Permalink to this headline">¶</a></h3>
 <p>prologue.sh</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="n">echo</span> <span class="s2">&quot;&quot;</span>
 <span class="n">echo</span> <span class="s2">&quot;Prologue Args:&quot;</span>
@@ -1037,7 +1037,7 @@ information that you can use later for debugging or profiling purposes.</p>
 <div class="section" id="example-of-epilogue">
 <h3>Example of Epilogue<a class="headerlink" href="#example-of-epilogue" title="Permalink to this headline">¶</a></h3>
 <p>epilogue.sh</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="n">echo</span> <span class="s2">&quot;&quot;</span>
 <span class="n">echo</span> <span class="s2">&quot;Epilogue Args:&quot;</span>
@@ -1060,7 +1060,7 @@ information that you can use later for debugging or profiling purposes.</p>
 </pre></div>
 </div>
 <p>Both prologue and epilogue must be made executable, use “</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">prologue</span><span class="o">.</span><span class="n">sh</span> <span class="n">epilogue</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">prologue</span><span class="o">.</span><span class="n">sh</span> <span class="n">epilogue</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>to change their permissions.</p>

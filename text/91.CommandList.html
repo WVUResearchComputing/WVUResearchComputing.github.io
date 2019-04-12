@@ -178,58 +178,58 @@
 <div class="section" id="moving-around-the-file-system">
 <h2>Moving around the file system<a class="headerlink" href="#moving-around-the-file-system" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">pwd</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">pwd</span></code></dt>
 <dd>List current directory</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ls</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">ls</span></code></dt>
 <dd>List contents of current directory</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">ls</span> <span class="pre">-l</span></code></dt>
 <dd>List contents of current directory with more information per file including permissions, last edited time, and size of file</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lh</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">ls</span> <span class="pre">-lh</span></code></dt>
 <dd>Same as ls -lh except file size in included in ‘human readable’ form (gigabytes, megabytes, kilobytes)</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lt</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">ls</span> <span class="pre">-lt</span></code></dt>
 <dd>Same as ls -l, except list files in chronological order with newer files occurring at the top</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">dirname</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">cd</span> <span class="pre">dirname</span></code></dt>
 <dd>Changes current directory to dirname</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">cd</span> <span class="pre">..</span></code></dt>
 <dd>Changes current directory up one hierarchy level</dd>
 </dl>
 </div>
 <div class="section" id="examining-files">
 <h2>Examining Files<a class="headerlink" href="#examining-files" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">&lt;filename&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">cat</span> <span class="pre">&lt;filename&gt;</span></code></dt>
 <dd>Concatenates <cite>filename</cite> and prints to standard output (screen)</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">&lt;filename&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">less</span> <span class="pre">&lt;filename&gt;</span></code></dt>
 <dd>A filter that pages through <cite>filename</cite> one full screen at a time.
 Allows both forward and backward movement through file</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">more</span> <span class="pre">&lt;filename&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">more</span> <span class="pre">&lt;filename&gt;</span></code></dt>
 <dd>Similar to less, except cannot move backwards through file</dd>
 </dl>
 </div>
 <div class="section" id="manipulating-files-and-directories">
 <h2>Manipulating Files and Directories<a class="headerlink" href="#manipulating-files-and-directories" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">cp</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
 <dd>Copies <cite>filename1</cite> to <cite>filename2</cite>.  If <cite>filename2</cite> is the name of a directory, copies <cite>filename1</cite> into the directory</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-i</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">cp</span> <span class="pre">-i</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
 <dd>Copies <cite>filename1</cite> to <cite>filename2</cite> and ask permission before overwriting</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">&lt;directory1&gt;</span> <span class="pre">&lt;directory2&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">&lt;directory1&gt;</span> <span class="pre">&lt;directory2&gt;</span></code></dt>
 <dd>Copies <cite>directory1</cite> and all of it’s contents to <cite>directory2</cite></dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">mv</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
 <dd>Renames ‘’filename1’’ to ‘’filename2’‘.  If ‘’filename2’’ is a directory, moves ‘’filename1’’ into directory</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">-i</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">mv</span> <span class="pre">-i</span> <span class="pre">&lt;filename1&gt;</span> <span class="pre">&lt;filename2&gt;</span></code></dt>
 <dd>Renames ‘’filename1’’ to ‘’filename2’’ and ask permission before overwriting files</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">&lt;filename&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">rm</span> <span class="pre">&lt;filename&gt;</span></code></dt>
 <dd>Removes file</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-i</span> <span class="pre">&lt;filename&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">rm</span> <span class="pre">-i</span> <span class="pre">&lt;filename&gt;</span></code></dt>
 <dd>Removes file and ask permission before doing so</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">&lt;directory&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">&lt;directory&gt;</span></code></dt>
 <dd>Removes directory and it’s contents</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-ir</span> <span class="pre">&lt;directory&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">rm</span> <span class="pre">-ir</span> <span class="pre">&lt;directory&gt;</span></code></dt>
 <dd>Removes directory and it’s contents asking permission for each file</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">&lt;directory&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">&lt;directory&gt;</span></code></dt>
 <dd>Create a directory with ‘’directory’’ as a name</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rmdir</span> <span class="pre">&lt;directory&gt;</span></code></dt>
+<dt><code class="docutils literal"><span class="pre">rmdir</span> <span class="pre">&lt;directory&gt;</span></code></dt>
 <dd>Remove an empty directory</dd>
 </dl>
 </div>
