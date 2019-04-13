@@ -69,28 +69,43 @@ use Spruce as server. On MacOS the command line is accesible with:
 -  In the Host profiles window, select **New** and enter the following
    information on the **Host Settings** tab.
 
-.. figure:: /_static/host_settings.png
-   :alt: host_settings.png
+.. figure:: /_static/host_settings_1.png
+   :alt: host_settings_1.png
 
-   host\_settings.png
+   host\_settings_1.png
+
+.. figure:: /_static/host_settings_2.png
+   :alt: host_settings_2.png
+
+   host\_settings_2.png
 
 -  Select the **Launch Profile** tab and select **New Profile** and
    enter the following information in the **Settings** sub tab.
 
-.. figure:: /_static/launch_profiles.png
-   :alt: launch_profiles.png
+.. figure:: /_static/launch_profiles_1.png
+   :alt: launch_profiles_1.png
 
-   launch\_profiles.png
+   launch\_profiles_1.png
+
+.. figure:: /_static/launch_profiles_2.png
+   :alt: launch_profiles_2.png
+
+   launch\_profiles_2.png
 
 -  Select the **Parallel** sub tab and enter the following information.
    Note, you can use a different **Queue** setting but in most cases
    standby should be sufficient unless you suspect your task will last
    longer than 4 hours.
 
-.. figure:: /_static/parallel_options.png
-   :alt: parallel_options.png
+.. figure:: /_static/parallel_options_1.png
+   :alt: parallel_options_1.png
 
-   parallel\_options.png
+   parallel\_options_1.png
+
+.. figure:: /_static/parallel_options_2.png
+   :alt: parallel_options_2.png
+
+   parallel\_options_2.png
 
 -  Within the **Parallel** sub tab, select the **Advanced** sub tab, and
    enter **module load visualization/visit/2.10.2** in the **Sublauncher
