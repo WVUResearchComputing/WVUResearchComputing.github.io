@@ -104,10 +104,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#downloading-the-sphinx-and-master-branches">Downloading the ‘sphinx’ and ‘master’ branches</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#editing-the-sources">Editing the sources</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build-the-output-formats">Build the output formats</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-files-to-the-index">Add files to the index</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#commit-the-files-on-both-branches">Commit the files on both branches</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#update-remotes-with-push">Update remotes with push</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#convenience-4in1-command-build-add-commit-push">Convenience 4in1 command (build + add + commit + push)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-the-sphinx-repository">Update the sphinx repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-master-branch">Update master branch</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#editing-the-documentation-manually">Editing the documentation manually</a></li>
@@ -200,8 +198,7 @@ using git and stored on Github and editing the webpages implies knowing a bit
 how sphinx manages the creation of HTML pages and editing files in <cite>rst</cite> format.</p>
 <p>This tutorial covers the basics of learning how to download the sources, introducing changes and uploading the resulting sources and HTML files.
 There are two ways of accomplishing this, the manual process involves having a git client, a recent version of sphinx on your computer and fairly complete installation of LaTeX for the PDF document. The manual procedure should work fine but require the user to be responsible for installing many packages on his/her system eventually installing some of them by hand if the versions on the distro are too old. Currently, the documentation is known to work with Sphinx v1.6.7 released on Feb 4, 2018.</p>
-<p>We have simplified the process by using a singularity image that contains all
-the functionality needed on a single image. The singularity image is based on <cite>ubuntu-bionic</cite> and should be the method of choice in most cases.</p>
+<p>We have simplified the process by using a singularity image that contains all the functionality needed on a single image. The singularity image is based on <cite>ubuntu-bionic</cite> and should be the method of choice in most cases.</p>
 <p>We will describe the usage of the singularity image and the convenience script, at the end of the page we describe briefly the manual process.</p>
 <div class="section" id="using-the-singularity-image">
 <h2>Using the Singularity image<a class="headerlink" href="#using-the-singularity-image" title="Permalink to this headline">¶</a></h2>
@@ -214,7 +211,7 @@ the functionality needed on a single image. The singularity image is based on <c
 <div class="section" id="getting-the-singularity-image">
 <h3>Getting the singularity image<a class="headerlink" href="#getting-the-singularity-image" title="Permalink to this headline">¶</a></h3>
 <p>The singularity image has two purposes, first, it offers a complete <cite>ubuntu-bionic</cite> installation with recent versions of all the packages needed to download, build and upload the documentation. In addition to that, the image itself has a simple script that automatizes some of the routinely commands that need to be done to clone or pull both branches, build the documentation from sources and commit and push both branches back to Github. In some cases, a single call to the script is preventing the user to execution a number of git commands and makes.</p>
-<p>The singularity image is called <code class="docutils literal notranslate"><span class="pre">docs_hpc_wvu.simg</span></code> and it is stored in the Globus endpoint called <code class="docutils literal notranslate"><span class="pre">wvu#datadepot</span></code>, inside <code class="docutils literal notranslate"><span class="pre">rcadmin/docs_hpc_wvu</span></code>, there is nothing secret with this image but its access is restricted to HPC administrators.</p>
+<p>The singularity image is called <code class="docutils literal notranslate"><span class="pre">docs_hpc_wvu.simg</span></code> and it is stored in the Globus endpoint called <code class="docutils literal notranslate"><span class="pre">wvu#datadepot</span></code>, inside <code class="docutils literal notranslate"><span class="pre">rcadmin/docs_hpc_wvu</span></code>, there is nothing secret with this image but its access is currently restricted to HPC administrators.</p>
 </div>
 <div class="section" id="getting-a-shell-inside-the-container">
 <h3>Getting a shell inside the container<a class="headerlink" href="#getting-a-shell-inside-the-container" title="Permalink to this headline">¶</a></h3>
@@ -284,36 +281,26 @@ expects two folders to be there <code class="docutils literal notranslate"><span
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">build</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-files-to-the-index">
-<h3>Add files to the index<a class="headerlink" href="#add-files-to-the-index" title="Permalink to this headline">¶</a></h3>
-<p>In git every file that is new or has changed need to be explicitly added for being staged for the next commit. In most cases, editing documentation will just modify a few files, maybe adding a few more. The simplified command will tag all the new and modified files as staged.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">add</span>
+<p>The command to compile the PDF version is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">build_pdf</span>
 </pre></div>
 </div>
-<p>Sometimes you do not want to add them all, in this case, do not execute the script and add the files one by one. Notice that the command on master also adds as staged all modified files.</p>
+<p>You do not need to compile always the PDF version, the HTML is considered the primary format and PDF outputs will be created at least once per semester.</p>
 </div>
-<div class="section" id="commit-the-files-on-both-branches">
-<h3>Commit the files on both branches<a class="headerlink" href="#commit-the-files-on-both-branches" title="Permalink to this headline">¶</a></h3>
-<p>The commit command in git stores the contents of the index and the given log message describing the changes. For this command, the message is needed.
-Use this to add the message</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Changes to ... adding ...&quot;</span>
+<div class="section" id="update-the-sphinx-repository">
+<h3>Update the sphinx repository<a class="headerlink" href="#update-the-sphinx-repository" title="Permalink to this headline">¶</a></h3>
+<p>You can add, commit and push directly with git commands.
+However, the script offers a quick version that will do all those tasks in one single call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">update_sphinx</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Changes to ... adding ...&quot;</span>
 </pre></div>
 </div>
-<p>The script will add your <cite>username</cite> and date and append those to the message.
-If you are executing this step by hand remember to do it on both branches and try to be consistent on both commits.</p>
+<p>The script will add your <cite>username</cite> and date and append those to the message used for commit.</p>
 </div>
-<div class="section" id="update-remotes-with-push">
-<h3>Update remotes with push<a class="headerlink" href="#update-remotes-with-push" title="Permalink to this headline">¶</a></h3>
-<p>The command push in git updates the commits into the remote machine. Notice that that is only possible if the remote branch has not been changed after the previous pull, otherwise, a merge must be do done first before attempting a new push. The simplified command assumes that the remote is in condition to be pushed.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">push</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="convenience-4in1-command-build-add-commit-push">
-<h3>Convenience 4in1 command (build + add + commit + push)<a class="headerlink" href="#convenience-4in1-command-build-add-commit-push" title="Permalink to this headline">¶</a></h3>
-<p>Some changes are small, very specific and you want the HTML files to reflect those small changes quickly. The action <cite>bacp</cite> will execute all the 4 actions, build, add, commit and push in a single run. The message needs to be provided as needed by the commit.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">bacp</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Fixing typos at ...&quot;</span>
+<div class="section" id="update-master-branch">
+<h3>Update master branch<a class="headerlink" href="#update-master-branch" title="Permalink to this headline">¶</a></h3>
+<p>The master branch contains HTML files and PDF. The contents
+are the result of compiling the sources and should not receive direct human intervention. The script provides a single command that copies the HTML files from <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> to the master branch and the PDF as well. It will clean the index and commit all the files, finally will push the commit to remote. The command is as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">update_master</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Changes to ... adding ...&quot;</span>
 </pre></div>
 </div>
 </div>
