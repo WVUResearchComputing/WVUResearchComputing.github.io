@@ -19,33 +19,35 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Common Unix commands" href="91.CommandList.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -79,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -110,6 +113,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,96 +189,96 @@ kernel modulization guides. Below is a succinct list of Unix commands
 that will help you get started in moving around and manipulating files.</p>
 <div class="section" id="moving-around-the-file-system">
 <h2>Moving around the file system<a class="headerlink" href="#moving-around-the-file-system" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="16%" />
-<col width="84%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>pwd</strong></td>
-<td>List current directory</td>
+<tbody>
+<tr class="row-odd"><td><p><strong>pwd</strong></p></td>
+<td><p>List current directory</p></td>
 </tr>
-<tr class="row-even"><td><strong>ls</strong></td>
-<td>List contents of current directory</td>
+<tr class="row-even"><td><p><strong>ls</strong></p></td>
+<td><p>List contents of current directory</p></td>
 </tr>
-<tr class="row-odd"><td><strong>ls -l</strong></td>
-<td>List contents of current directory with more information per file including permissions, last edited time, and size of file</td>
+<tr class="row-odd"><td><p><strong>ls -l</strong></p></td>
+<td><p>List contents of current directory with more information per file including permissions, last edited time, and size of file</p></td>
 </tr>
-<tr class="row-even"><td><strong>ls -lh</strong></td>
-<td>Same as ls -lh except file size in included in ‘human readable’ form (gigabytes, megabytes, kilobytes)</td>
+<tr class="row-even"><td><p><strong>ls -lh</strong></p></td>
+<td><p>Same as ls -lh except file size in included in ‘human readable’ form (gigabytes, megabytes, kilobytes)</p></td>
 </tr>
-<tr class="row-odd"><td><strong>ls -lt</strong></td>
-<td>Same as ls -l, except list files in chronological order with newer files occurring at the top</td>
+<tr class="row-odd"><td><p><strong>ls -lt</strong></p></td>
+<td><p>Same as ls -l, except list files in chronological order with newer files occurring at the top</p></td>
 </tr>
-<tr class="row-even"><td><strong>cd</strong> <strong>*dirname*</strong></td>
-<td>Changes current directory to <em>dirname</em></td>
+<tr class="row-even"><td><p><strong>cd</strong> <strong>*dirname*</strong></p></td>
+<td><p>Changes current directory to <em>dirname</em></p></td>
 </tr>
-<tr class="row-odd"><td><strong>cd ..</strong></td>
-<td>Changes current directory up one hiearchy level</td>
+<tr class="row-odd"><td><p><strong>cd ..</strong></p></td>
+<td><p>Changes current directory up one hiearchy level</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="examining-files">
 <h2>Examining Files<a class="headerlink" href="#examining-files" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="18%" />
-<col width="82%" />
+<col style="width: 18%" />
+<col style="width: 82%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>cat</strong> <strong>*filename*</strong></td>
-<td>Concatenates <em>filename</em> and prints to standard output (screen)</td>
+<tbody>
+<tr class="row-odd"><td><p><strong>cat</strong> <strong>*filename*</strong></p></td>
+<td><p>Concatenates <em>filename</em> and prints to standard output (screen)</p></td>
 </tr>
-<tr class="row-even"><td><strong>less</strong> <strong>*filename*</strong></td>
-<td>A filter that pages through <em>filename</em> one screenful at a time. Allows both forward and backward movement through file</td>
+<tr class="row-even"><td><p><strong>less</strong> <strong>*filename*</strong></p></td>
+<td><p>A filter that pages through <em>filename</em> one screenful at a time. Allows both forward and backward movement through file</p></td>
 </tr>
-<tr class="row-odd"><td><strong>more</strong> <strong>*filename*</strong></td>
-<td>Similar to less, except cannot move backwards through file</td>
+<tr class="row-odd"><td><p><strong>more</strong> <strong>*filename*</strong></p></td>
+<td><p>Similar to less, except cannot move backwards through file</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="manipulating-files-and-directories">
 <h2>Manipulating Files and Directories<a class="headerlink" href="#manipulating-files-and-directories" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="26%" />
-<col width="74%" />
+<col style="width: 26%" />
+<col style="width: 74%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>cp</strong> <strong>*filename1 filename2*</strong></td>
-<td>Copies <em>filename1</em> to <em>filename2</em>. If <em>filename2</em> is the name of a directory, copies <em>filename1</em> into the directory</td>
+<tbody>
+<tr class="row-odd"><td><p><strong>cp</strong> <strong>*filename1 filename2*</strong></p></td>
+<td><p>Copies <em>filename1</em> to <em>filename2</em>. If <em>filename2</em> is the name of a directory, copies <em>filename1</em> into the directory</p></td>
 </tr>
-<tr class="row-even"><td><strong>cp -i</strong> <strong>*filename1 filename2*</strong></td>
-<td>Copies <em>filename1</em> to <em>filename2</em> and ask permission before overwriting</td>
+<tr class="row-even"><td><p><strong>cp -i</strong> <strong>*filename1 filename2*</strong></p></td>
+<td><p>Copies <em>filename1</em> to <em>filename2</em> and ask permission before overwriting</p></td>
 </tr>
-<tr class="row-odd"><td><strong>cp -r</strong> <strong>*directory1 directory2*</strong></td>
-<td>Copies ‘’directory1 and all of it’s contents to <em>directory2</em></td>
+<tr class="row-odd"><td><p><strong>cp -r</strong> <strong>*directory1 directory2*</strong></p></td>
+<td><p>Copies ‘’directory1 and all of it’s contents to <em>directory2</em></p></td>
 </tr>
-<tr class="row-even"><td><strong>mv</strong> <strong>*filename1 filename2*</strong></td>
-<td>Renames <em>filename1</em> to <em>filename2</em>. If <em>filename2</em> is a directory, moves <em>filename1</em> into directory</td>
+<tr class="row-even"><td><p><strong>mv</strong> <strong>*filename1 filename2*</strong></p></td>
+<td><p>Renames <em>filename1</em> to <em>filename2</em>. If <em>filename2</em> is a directory, moves <em>filename1</em> into directory</p></td>
 </tr>
-<tr class="row-odd"><td><strong>mv -i</strong> <strong>*filename1 filename2*</strong></td>
-<td>Renames <em>filename1</em> to <em>filename2</em> and ask permission before overwriting files</td>
+<tr class="row-odd"><td><p><strong>mv -i</strong> <strong>*filename1 filename2*</strong></p></td>
+<td><p>Renames <em>filename1</em> to <em>filename2</em> and ask permission before overwriting files</p></td>
 </tr>
-<tr class="row-even"><td><strong>rm</strong> <strong>*filename*</strong></td>
-<td>Removes file</td>
+<tr class="row-even"><td><p><strong>rm</strong> <strong>*filename*</strong></p></td>
+<td><p>Removes file</p></td>
 </tr>
-<tr class="row-odd"><td><strong>rm -i</strong> <strong>*filename*</strong></td>
-<td>Removes file and ask permission before doing so</td>
+<tr class="row-odd"><td><p><strong>rm -i</strong> <strong>*filename*</strong></p></td>
+<td><p>Removes file and ask permission before doing so</p></td>
 </tr>
-<tr class="row-even"><td><strong>rm -r</strong> <strong>*directory*</strong></td>
-<td>Removes directory and it’s contents</td>
+<tr class="row-even"><td><p><strong>rm -r</strong> <strong>*directory*</strong></p></td>
+<td><p>Removes directory and it’s contents</p></td>
 </tr>
-<tr class="row-odd"><td><strong>rm -ir</strong> <strong>*directory*</strong></td>
-<td>Removes directory and it’s contents asking permission for each file</td>
+<tr class="row-odd"><td><p><strong>rm -ir</strong> <strong>*directory*</strong></p></td>
+<td><p>Removes directory and it’s contents asking permission for each file</p></td>
 </tr>
-<tr class="row-even"><td><strong>mkdir</strong> <strong>*directory*</strong></td>
-<td>Create a directory with <em>directory</em> as a name</td>
+<tr class="row-even"><td><p><strong>mkdir</strong> <strong>*directory*</strong></p></td>
+<td><p>Create a directory with <em>directory</em> as a name</p></td>
 </tr>
-<tr class="row-odd"><td><strong>rmdir</strong> <strong>*directory*</strong></td>
-<td>Remove an emptry directory</td>
+<tr class="row-odd"><td><p><strong>rmdir</strong> <strong>*directory*</strong></p></td>
+<td><p>Remove an emptry directory</p></td>
 </tr>
 </tbody>
 </table>
@@ -290,7 +294,7 @@ that will help you get started in moving around and manipulating files.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="91.CommandList.html" class="btn btn-neutral" title="Common Unix commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="91.CommandList.html" class="btn btn-neutral float-left" title="Common Unix commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -316,35 +320,16 @@ that will help you get started in moving around and manipulating files.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

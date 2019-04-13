@@ -19,34 +19,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Matlab: Running Matlab scripts on a HPC cluster" href="76.Matlab.html" />
     <link rel="prev" title="Bioinformatics: Conda and BioConda" href="74.Bioconda.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -80,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -118,6 +121,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -186,11 +190,11 @@ a big pair of sequencing data.</p>
 <p>For the purpose of the tutorial, consider that you receive a pair of
 files like this:</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">Estrogen_24_1.clean.fq</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">Estrogen_24_2.clean.fq</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Estrogen_24_1.clean.fq</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Estrogen_24_2.clean.fq</span></code></div>
 </div>
 <p>And you have a reference like:</p>
-<p><code class="docutils literal"><span class="pre">Oncorhynchus_mykiss_chr.fa</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Oncorhynchus_mykiss_chr.fa</span></code></p>
 <p>This tutorial will show you how to do the alignments concurrently by
 splitting the fq files and use BSseeker and bowtie2 for the alignment.
 When the job is done we use samtools to merge the results in a single
@@ -205,7 +209,7 @@ using the Globus connector to sent those files from your computer to the
 cluster.</p>
 <p>If you are using Linux or Mac on your side, the command to send those
 files will be,</p>
-<p><code class="docutils literal"><span class="pre">rsync&nbsp;-av&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;[username]&#64;spruce.hpc.wvu.edu:/scratch/[username]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">rsync</span><span class="pre">-av</span><span class="pre">Estrogen_24_1.clean.fq</span><span class="pre">Estrogen_24_2.clean.fq</span><span class="pre">Oncorhynchus_mykiss_chr.fa</span><span class="pre">[username]&#64;spruce.hpc.wvu.edu:/scratch/[username]</span></code></p>
 <p>Globus is another alternative, follow the instructions:
 [Transferring_Files]</p>
 </div>
@@ -216,13 +220,13 @@ will use on your research. We suggest creating a few directories, for
 the references, for the big sequence fq files, output and temporary
 files.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">cd&nbsp;/scratch/[username]</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">mkdir&nbsp;REFS&nbsp;OUTPUT&nbsp;TMP&nbsp;WGBS</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cd</span><span class="pre">/scratch/[username]</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mkdir</span><span class="pre">REFS</span><span class="pre">OUTPUT</span><span class="pre">TMP</span><span class="pre">WGBS</span></code></div>
 </div>
 <p>Now we need to move the big fq files to WGBS and the reference to REFS</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">mv&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;WGBS</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">mv&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;REFS</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mv</span><span class="pre">Estrogen_24_1.clean.fq</span><span class="pre">Estrogen_24_2.clean.fq</span><span class="pre">WGBS</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mv</span><span class="pre">Oncorhynchus_mykiss_chr.fa</span><span class="pre">REFS</span></code></div>
 </div>
 </div>
 <div class="section" id="splitting-the-files">
@@ -230,27 +234,27 @@ files.</p>
 <p>Our first couple of jobs consists on splitting the two big fq files. We
 can get an idea about how big they are by counting the number of lines</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&nbsp;wc&nbsp;-l&nbsp;WGBS/Estrogen_24*.fq</span></code></div>
-<div class="line">``&nbsp;&nbsp;670407612&nbsp;WGBS/Estrogen_24_1.clean.fq``</div>
-<div class="line">``&nbsp;&nbsp;670407612&nbsp;WGBS/Estrogen_24_2.clean.fq``</div>
-<div class="line">``&nbsp;1340815224&nbsp;total``</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span><span class="pre">wc</span><span class="pre">-l</span><span class="pre">WGBS/Estrogen_24*.fq</span></code></div>
+<div class="line">``  670407612 WGBS/Estrogen_24_1.clean.fq``</div>
+<div class="line">``  670407612 WGBS/Estrogen_24_2.clean.fq``</div>
+<div class="line">`` 1340815224 total``</div>
 </div>
 <p>They have the same number of lines, more than 670 million lines. It is
 important to realize that you cannot simple cut those files arbitrarily.
 Each 4 lines makes a block of information that cannot be splitted</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">&#64;ST-E00144:275:HW5VJCCXX:7:1101:2564:1327&nbsp;1:N:0:NTGAGCCA</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">NGAGAATATTTTTGGTTATTTTTTTTAGTTTTTGATTTGGAAGATTTATTAGATAGAGAATATTGTTGGTTATTTTTTTTAGTTTTTGATTTGGAGGATGTAGTAAATAGATAATATTTTTGTTGTGTATTTTTTTTAGTTTTTGTGTTG</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">+</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">#AAAAA7-7A</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&#64;ST-E00144:275:HW5VJCCXX:7:1101:2564:1327</span><span class="pre">1:N:0:NTGAGCCA</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NGAGAATATTTTTGGTTATTTTTTTTAGTTTTTGATTTGGAAGATTTATTAGATAGAGAATATTGTTGGTTATTTTTTTTAGTTTTTGATTTGGAGGATGTAGTAAATAGATAATATTTTTGTTGTGTATTTTTTTTAGTTTTTGTGTTG</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">#AAAAA7-7A</span></code></div>
 </div>
 <ol class="arabic simple">
-<li>!/bin/bash</li>
-<li>PBS -N SPLIT</li>
-<li>PBS -l nodes=1:ppn=1</li>
-<li>PBS -l walltime=4:00:00</li>
-<li>PBS -m ae</li>
-<li>PBS -q standby</li>
+<li><p>!/bin/bash</p></li>
+<li><p>PBS -N SPLIT</p></li>
+<li><p>PBS -l nodes=1:ppn=1</p></li>
+<li><p>PBS -l walltime=4:00:00</p></li>
+<li><p>PBS -m ae</p></li>
+<li><p>PBS -q standby</p></li>
 </ol>
 <p>cd $PBS_O_WORKDIR</p>
 <p>mkdir -p WGBS/split echo $file split -d -a 3 -l 2400000 WGBS/${file}
@@ -259,9 +263,9 @@ WGBS/split/${file}_</p>
 (nodes=1) and one process per node (ppn=1). We set a walltime in 4
 hours, the limit for the standby queue. We suppose to submit this job
 from the scratch directory. So the first step is to move into that
-directory using <code class="docutils literal"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR</span></code>, we create a folder for the split
+directory using <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR</span></code>, we create a folder for the split
 files inside WGBS. The split command:</p>
-<p><code class="docutils literal"><span class="pre">split&nbsp;-d&nbsp;-a&nbsp;3&nbsp;-l&nbsp;2400000&nbsp;WGBS/${file}&nbsp;WGBS/split/${file}_</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">split</span><span class="pre">-d</span><span class="pre">-a</span><span class="pre">3</span><span class="pre">-l</span><span class="pre">2400000</span><span class="pre">WGBS/${file}</span><span class="pre">WGBS/split/${file}_</span></code></p>
 <p>The split command will create split files with 3 digits (-a 3), starting
 from 000. It will split every 2.4 million lines, the file indicated
 under the file variable that will will use next. All those split files
@@ -269,8 +273,8 @@ will be stored at WGBS/split using the same name as the original but
 with a suffix being underscored “_” and the 3 digits mentioned before.</p>
 <p>We submit the jobs like this:</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_1.clean.fq</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_2.clean.fq</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">qsub</span><span class="pre">runjob_split.pbs</span><span class="pre">-v</span><span class="pre">file=Estrogen_24_1.clean.fq</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">qsub</span><span class="pre">runjob_split.pbs</span><span class="pre">-v</span><span class="pre">file=Estrogen_24_2.clean.fq</span></code></div>
 </div>
 <p>Those two jobs takes around 30 minutes in one of our compute nodes. Once
 that splitting is complete you can see many files populating the
@@ -282,11 +286,11 @@ WGBS/split folder. Those are the files we will use in our next step</p>
 <a class="reference external" href="http://pellegrini-legacy.mcdb.ucla.edu/bs_seeker2/">1</a> Copy the link and
 download the software, at the time of writing this (April 2017), the
 latest version was 2.1.0 and the download URL was:</p>
-<p><code class="docutils literal"><span class="pre">wget&nbsp;``\</span> <span class="pre">```https://github.com/BSSeeker/BSseeker2/archive/BSseeker2-v2.1.8.tar.gz</span></code> &lt;<a class="reference external" href="https://github.com/BSSeeker/BSseeker2/archive/BSseeker2-v2.1.8.tar.gz">https://github.com/BSSeeker/BSseeker2/archive/BSseeker2-v2.1.8.tar.gz</a>&gt;`__</p>
+<p><code class="docutils literal notranslate"><span class="pre">wget</span><span class="pre">``\</span> <span class="pre">```https://github.com/BSSeeker/BSseeker2/archive/BSseeker2-v2.1.8.tar.gz</span></code> &lt;<a class="reference external" href="https://github.com/BSSeeker/BSseeker2/archive/BSseeker2-v2.1.8.tar.gz">https://github.com/BSSeeker/BSseeker2/archive/BSseeker2-v2.1.8.tar.gz</a>&gt;`__</p>
 <p>Once you have the code, uncompress it with:</p>
-<p><code class="docutils literal"><span class="pre">tar&nbsp;-zxvf&nbsp;BSseeker2-v2.1.8.tar.gz</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">tar</span><span class="pre">-zxvf</span><span class="pre">BSseeker2-v2.1.8.tar.gz</span></code></p>
 <p>The submission script (runjob.pbs) will look like:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N ALIGN_${PBS_ARRAYID}
 #PBS -l nodes=1:ppn=4
@@ -333,7 +337,7 @@ echo &#39;Job complete: &#39;`date`
 million lines in order to be sure we can process them in our 4 hour
 walltime. The Job Array start with 0 and ends at 279. This piece of code
 ensures 3 digit numbers filling with leading zeros as needed:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>if [ ${PBS_ARRAYID} -lt 10 ]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if [ ${PBS_ARRAYID} -lt 10 ]
 then
     JAID=00${PBS_ARRAYID}
 elif [ ${PBS_ARRAYID} -lt 100 ]
@@ -347,7 +351,7 @@ fi
 <p>The rest of the script defines locations for references, the split files
 and output. Finally it launches BSseeker2. Remember to replace
 [username] with your username.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SCRATCH=/scratch/[username]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCRATCH=/scratch/[username]
 REFS=${SCRATCH}/REFS
 WGBS=${SCRATCH}/WGBS
 TEMP=${SCRATCH}/TMP
@@ -376,7 +380,7 @@ set ppn=4.</p>
 check the output one by one to see if some job needs to be executed
 again. This small python script could help you with that task
 (BSresubmit.py)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -412,7 +416,7 @@ again. This small python script could help you with that task
 </pre></div>
 </div>
 <p>In order to check if all the jobs are complete execute:</p>
-<p>``&nbsp;./BSresubmit.py&nbsp;-d&nbsp;OUTPUT&nbsp;-p&nbsp;Estrogen_24.&nbsp;-s&nbsp;.align.bs_seeker2_log&nbsp;-n&nbsp;279``</p>
+<p>`` ./BSresubmit.py -d OUTPUT -p Estrogen_24. -s .align.bs_seeker2_log -n 279``</p>
 <p>Once you have all the data you can move forward and merge the files
 using samtools:</p>
 </div>
@@ -429,7 +433,7 @@ using samtools:</p>
         <a href="76.Matlab.html" class="btn btn-neutral float-right" title="Matlab: Running Matlab scripts on a HPC cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="74.Bioconda.html" class="btn btn-neutral" title="Bioinformatics: Conda and BioConda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="74.Bioconda.html" class="btn btn-neutral float-left" title="Bioinformatics: Conda and BioConda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -455,35 +459,16 @@ using samtools:</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

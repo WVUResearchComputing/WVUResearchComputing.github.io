@@ -19,34 +19,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Storage" href="25.Storage.html" />
     <link rel="prev" title="Command Line Interface" href="23.CommandLine.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -80,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -117,6 +120,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -192,7 +196,7 @@ For this tutorial we will focus on <em>nano</em>, for editing short text files, 
 <div class="section" id="opening-gnu-nano">
 <h2>Opening GNU nano<a class="headerlink" href="#opening-gnu-nano" title="Permalink to this headline">¶</a></h2>
 <p>On a terminal execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; nano &lt;name_of_file&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nano &lt;name_of_file&gt;
 </pre></div>
 </div>
 <p>You will get a text application that looks like this:</p>
@@ -201,24 +205,24 @@ For this tutorial we will focus on <em>nano</em>, for editing short text files, 
 <div class="section" id="using-gnu-nano">
 <h2>Using GNU nano<a class="headerlink" href="#using-gnu-nano" title="Permalink to this headline">¶</a></h2>
 <p>The bottom two lines shows the commands to use.
-The symbol <code class="docutils literal"><span class="pre">^</span></code> means press the <em>CONTROL KEY</em> (left or right) and keep it pressed until you press the command key. The character of the command is not case sensitive so pressing <code class="docutils literal"><span class="pre">^X</span></code> is equivalent to <code class="docutils literal"><span class="pre">^x</span></code>.</p>
-<p>Executing commands with nano will sometimes change the list of subcommands, some of them are indicated like <code class="docutils literal"><span class="pre">M-C</span></code>, in that case <code class="docutils literal"><span class="pre">M</span></code> means the <code class="docutils literal"><span class="pre">META</span></code> character that in modern keyboards is indicated like <code class="docutils literal"><span class="pre">Alt</span></code>.</p>
-<p>The command <code class="docutils literal"><span class="pre">^G</span></code> display a complete list of keystrokes available from the main window. To exit from the help page, execute <code class="docutils literal"><span class="pre">^X</span></code></p>
+The symbol <code class="docutils literal notranslate"><span class="pre">^</span></code> means press the <em>CONTROL KEY</em> (left or right) and keep it pressed until you press the command key. The character of the command is not case sensitive so pressing <code class="docutils literal notranslate"><span class="pre">^X</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">^x</span></code>.</p>
+<p>Executing commands with nano will sometimes change the list of subcommands, some of them are indicated like <code class="docutils literal notranslate"><span class="pre">M-C</span></code>, in that case <code class="docutils literal notranslate"><span class="pre">M</span></code> means the <code class="docutils literal notranslate"><span class="pre">META</span></code> character that in modern keyboards is indicated like <code class="docutils literal notranslate"><span class="pre">Alt</span></code>.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">^G</span></code> display a complete list of keystrokes available from the main window. To exit from the help page, execute <code class="docutils literal notranslate"><span class="pre">^X</span></code></p>
 <p>nano offers a farily complete set of basic utilities to edit files.</p>
-<p>Search for text with <code class="docutils literal"><span class="pre">^W</span></code> and the text to find.
-The command <code class="docutils literal"><span class="pre">^_</span></code> allow you to go to a specific line number.</p>
+<p>Search for text with <code class="docutils literal notranslate"><span class="pre">^W</span></code> and the text to find.
+The command <code class="docutils literal notranslate"><span class="pre">^_</span></code> allow you to go to a specific line number.</p>
 </div>
 <div class="section" id="copy-cut-and-paste">
 <h2>Copy, Cut and Paste<a class="headerlink" href="#copy-cut-and-paste" title="Permalink to this headline">¶</a></h2>
-<p>The command <code class="docutils literal"><span class="pre">^K</span></code> and <code class="docutils literal"><span class="pre">^U</span></code> only serve to cut and paste the line where the cursor is located. When you cut the text, its contents are stored in what is called the <em>cut buffer</em>. The command <code class="docutils literal"><span class="pre">^U</span></code> just takes the contents of the <em>cut buffer</em> and write its contents to the location of the cursor. As the contents of the <em>cut buffer</em> are not erase you can use <code class="docutils literal"><span class="pre">^U</span></code> to repeat the same contents as many times as you want.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">^K</span></code> and <code class="docutils literal notranslate"><span class="pre">^U</span></code> only serve to cut and paste the line where the cursor is located. When you cut the text, its contents are stored in what is called the <em>cut buffer</em>. The command <code class="docutils literal notranslate"><span class="pre">^U</span></code> just takes the contents of the <em>cut buffer</em> and write its contents to the location of the cursor. As the contents of the <em>cut buffer</em> are not erase you can use <code class="docutils literal notranslate"><span class="pre">^U</span></code> to repeat the same contents as many times as you want.</p>
 <p>For more advance copy and paste, you need to learn how to select blocks of text before cutting them to the <em>cut buffer</em>
-First, move the cursor to the start of the text you want to select, press the <code class="docutils literal"><span class="pre">M-A</span></code> key combination (<em>Alt-A</em> in modern keyboards) to mark the start, then move the cursor to the end of the section you want to select.
-Once you have marked the beginning and end of text, the <code class="docutils literal"><span class="pre">^^</span></code> (Esc-6) and <code class="docutils literal"><span class="pre">^K</span></code> key combinations can be used to copy or cut it, respectively.
-In a command like <code class="docutils literal"><span class="pre">^^</span></code>, the meaning of that is press the <em>Control Key</em> followed by the <em>carret symbol</em> <code class="docutils literal"><span class="pre">^</span></code>.</p>
+First, move the cursor to the start of the text you want to select, press the <code class="docutils literal notranslate"><span class="pre">M-A</span></code> key combination (<em>Alt-A</em> in modern keyboards) to mark the start, then move the cursor to the end of the section you want to select.
+Once you have marked the beginning and end of text, the <code class="docutils literal notranslate"><span class="pre">^^</span></code> (Esc-6) and <code class="docutils literal notranslate"><span class="pre">^K</span></code> key combinations can be used to copy or cut it, respectively.
+In a command like <code class="docutils literal notranslate"><span class="pre">^^</span></code>, the meaning of that is press the <em>Control Key</em> followed by the <em>carret symbol</em> <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p>
 </div>
 <div class="section" id="quitting-nano">
 <h2>Quitting Nano<a class="headerlink" href="#quitting-nano" title="Permalink to this headline">¶</a></h2>
-<p>To quit nano, use the <code class="docutils literal"><span class="pre">^X</span></code> key combination. If the file you are working on has been modified since the last time you saved it, you will be ask to save the file first. Type <em>y</em> to save the file, or <em>n</em> to exit nano without saving the file.</p>
+<p>To quit nano, use the <code class="docutils literal notranslate"><span class="pre">^X</span></code> key combination. If the file you are working on has been modified since the last time you saved it, you will be ask to save the file first. Type <em>y</em> to save the file, or <em>n</em> to exit nano without saving the file.</p>
 </div>
 </div>
 
@@ -233,7 +237,7 @@ In a command like <code class="docutils literal"><span class="pre">^^</span></co
         <a href="25.Storage.html" class="btn btn-neutral float-right" title="Storage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="23.CommandLine.html" class="btn btn-neutral" title="Command Line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="23.CommandLine.html" class="btn btn-neutral float-left" title="Command Line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -259,35 +263,16 @@ In a command like <code class="docutils literal"><span class="pre">^^</span></co
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

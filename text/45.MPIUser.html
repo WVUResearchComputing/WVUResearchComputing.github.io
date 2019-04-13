@@ -19,34 +19,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Executing HADOOP jobs" href="46.Hadoop.html" />
     <link rel="prev" title="Miniconda" href="44.Miniconda.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -80,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -119,6 +122,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -189,7 +193,7 @@ every program using MPI, all the programs using MPI need to be told
 which hosts and cpus to run. Generally, most programs use the mpirun
 executable that comes pre-packaged with MPI libraries to accomplish this
 task. The general syntax for running parallel programs with mpirun is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="o">&lt;</span><span class="n">processor</span> <span class="n">number</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">machinefile</span> <span class="o">&lt;</span><span class="n">procs</span> <span class="n">file</span><span class="o">&gt;</span> <span class="n">command</span> <span class="p">[</span><span class="o">..</span><span class="n">args</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="o">&lt;</span><span class="n">processor</span> <span class="n">number</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">machinefile</span> <span class="o">&lt;</span><span class="n">procs</span> <span class="n">file</span><span class="o">&gt;</span> <span class="n">command</span> <span class="p">[</span><span class="o">..</span><span class="n">args</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>With -np option specifying the number of processors the job requires,
@@ -204,7 +208,7 @@ Moab/Torque provides a machinefile for each job that is executed through
 the scheduler, and it’s location is stored in the $PBS_NODEFILE
 variable. Therefore, on our clusters, the general syntax of running a
 program parallel with MPI is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>module load &lt;mpi/modulefile&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module load &lt;mpi/modulefile&gt;
 
 mpirun -np &lt;processor number&gt; -machinefile $PBS_NODEFILE command [..args]
 </pre></div>
@@ -232,26 +236,26 @@ ISBN-13:978-0072822564</p>
 <h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
 <p>Current information about location and version of library can be found
 in their respective <a class="reference external" href="Using_Modulefiles">modulefiles</a>.</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="16%" />
-<col width="84%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Library</strong></td>
-<td><strong>Documentation</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Library</strong></p></td>
+<td><p><strong>Documentation</strong></p></td>
 </tr>
-<tr class="row-even"><td>Intel</td>
-<td><a class="reference external" href="https://software.intel.com/en-us/mpi-library/documentation/get-started">https://software.intel.com/en-us/mpi-library/documentation/get-started</a></td>
+<tr class="row-even"><td><p>Intel</p></td>
+<td><p><a class="reference external" href="https://software.intel.com/en-us/mpi-library/documentation/get-started">https://software.intel.com/en-us/mpi-library/documentation/get-started</a></p></td>
 </tr>
-<tr class="row-odd"><td>Mpich2</td>
-<td><a class="reference external" href="http://www.mpich.org/documentation/guides/">http://www.mpich.org/documentation/guides/</a></td>
+<tr class="row-odd"><td><p>Mpich2</p></td>
+<td><p><a class="reference external" href="http://www.mpich.org/documentation/guides/">http://www.mpich.org/documentation/guides/</a></p></td>
 </tr>
-<tr class="row-even"><td>Mvapich2</td>
-<td><a class="reference external" href="http://mvapich.cse.ohio-state.edu/support/">http://mvapich.cse.ohio-state.edu/support/</a></td>
+<tr class="row-even"><td><p>Mvapich2</p></td>
+<td><p><a class="reference external" href="http://mvapich.cse.ohio-state.edu/support/">http://mvapich.cse.ohio-state.edu/support/</a></p></td>
 </tr>
-<tr class="row-odd"><td>OpenMPI</td>
-<td><a class="reference external" href="http://www.open-mpi.org/doc/">http://www.open-mpi.org/doc/</a></td>
+<tr class="row-odd"><td><p>OpenMPI</p></td>
+<td><p><a class="reference external" href="http://www.open-mpi.org/doc/">http://www.open-mpi.org/doc/</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -269,7 +273,7 @@ in their respective <a class="reference external" href="Using_Modulefiles">modul
         <a href="46.Hadoop.html" class="btn btn-neutral float-right" title="Executing HADOOP jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="44.Miniconda.html" class="btn btn-neutral" title="Miniconda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="44.Miniconda.html" class="btn btn-neutral float-left" title="Miniconda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -295,35 +299,16 @@ in their respective <a class="reference external" href="Using_Modulefiles">modul
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -19,34 +19,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="For Basic Users" href="30.BasicUser.html" />
     <link rel="prev" title="Job Submission" href="26.JobSubmission.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -80,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -116,6 +119,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -181,41 +185,41 @@
 <span id="qs-transfer-files"></span><h1>Transferring Files<a class="headerlink" href="#transferring-files" title="Permalink to this headline">¶</a></h1>
 <p>Due to the large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly opimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:</p>
 <ul class="simple">
-<li>DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN’s are connected to <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=9806">WVU’s Science DMZ network</a> which is a dedicated network to science/research data across campus.</li>
-<li>Users who transfer data using a login node, can put the login node under strain causing it slow down affecting other users and even possibly cause the node to fail.</li>
+<li><p>DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN’s are connected to <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=9806">WVU’s Science DMZ network</a> which is a dedicated network to science/research data across campus.</p></li>
+<li><p>Users who transfer data using a login node, can put the login node under strain causing it slow down affecting other users and even possibly cause the node to fail.</p></li>
 </ul>
 <p>WVU’s recommended method for transferring data is <a class="reference external" href="https://www.globus.org/">Globus Online</a>.  The other supported method is sftp.</p>
 <div class="section" id="data-transfer-nodes">
 <h2>Data Transfer Nodes<a class="headerlink" href="#data-transfer-nodes" title="Permalink to this headline">¶</a></h2>
 <p>Research Computing offers dedicated servers for transferring files at each one of its supported systems/locations (i.e. Spruce Knob, Thorny Flat, and the Data Depot).  The following table describes the services available at each location as well as the associated Globus Endpoint Name or sftp Hostname.</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="16%" />
-<col width="17%" />
-<col width="21%" />
-<col width="27%" />
-<col width="19%" />
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 27%" />
+<col style="width: 19%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">&#160;</th>
-<th class="head">Spruce Knob</th>
-<th class="head">Thorny Flat</th>
-<th class="head">Data Depot</th>
-<th class="head">MIX Google Drive</th>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Spruce Knob</p></th>
+<th class="head"><p>Thorny Flat</p></th>
+<th class="head"><p>Data Depot</p></th>
+<th class="head"><p>MIX Google Drive</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Globus Endpoint</td>
-<td>wvu#hpcdtn</td>
-<td>wvu#thornydtn</td>
-<td>wvu#datadepot</td>
-<td>wvu#GoogleDrive</td>
+<tbody>
+<tr class="row-even"><td><p>Globus Endpoint</p></td>
+<td><p>wvu#hpcdtn</p></td>
+<td><p>wvu#thornydtn</p></td>
+<td><p>wvu#datadepot</p></td>
+<td><p>wvu#GoogleDrive</p></td>
 </tr>
-<tr class="row-odd"><td>sftp Hostname</td>
-<td>data.hpc.wvu.edu</td>
-<td>tf-data.hpc.wvu.edu</td>
-<td>datadepot-sftp.hpc.wvu.edu</td>
-<td>NA</td>
+<tr class="row-odd"><td><p>sftp Hostname</p></td>
+<td><p>data.hpc.wvu.edu</p></td>
+<td><p>tf-data.hpc.wvu.edu</p></td>
+<td><p>datadepot-sftp.hpc.wvu.edu</p></td>
+<td><p>NA</p></td>
 </tr>
 </tbody>
 </table>
@@ -224,17 +228,17 @@
 <h2>Using Globus Online<a class="headerlink" href="#using-globus-online" title="Permalink to this headline">¶</a></h2>
 <p>Globus Online is the preferred method for transferring files to, from, and between Reserach Computing Resources.  WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditonal transfer methods (i.e. scp, sftp, rsync):</p>
 <ul class="simple">
-<li>Auto performance tuning to ensure the data is transferrred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.</li>
-<li>Safe transfers by ensuring data integrity using checksum methods.</li>
-<li>Transfers are automatically restarted after a failed or stopped connection.</li>
-<li>Abilility to only transfer files that have yet to be transferred (similar to rsync).</li>
-<li>Transfers are done in the background so users do not need to remain logged into the system.</li>
+<li><p>Auto performance tuning to ensure the data is transferrred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.</p></li>
+<li><p>Safe transfers by ensuring data integrity using checksum methods.</p></li>
+<li><p>Transfers are automatically restarted after a failed or stopped connection.</p></li>
+<li><p>Abilility to only transfer files that have yet to be transferred (similar to rsync).</p></li>
+<li><p>Transfers are done in the background so users do not need to remain logged into the system.</p></li>
 </ul>
 <p>WVU’s Globus Subscription adds the following features:</p>
 <ul class="simple">
-<li>Ability to archive/transfer data with unlimited storage to user’s <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=10319">Google Drive MIX Account</a>.</li>
-<li>Sharing of data with others inside and outside the university.</li>
-<li>Sharing of data from personal workstations via <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</li>
+<li><p>Ability to archive/transfer data with unlimited storage to user’s <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=10319">Google Drive MIX Account</a>.</p></li>
+<li><p>Sharing of data with others inside and outside the university.</p></li>
+<li><p>Sharing of data from personal workstations via <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</p></li>
 </ul>
 <p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step by step guide on use Globus Online.</p>
 <p>Note: For a video on how to utilze Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
@@ -243,8 +247,8 @@
 <h2>Alternative Transfer Methods<a class="headerlink" href="#alternative-transfer-methods" title="Permalink to this headline">¶</a></h2>
 <p>To transfer files to Research Coomputing  systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">here</a>.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://winscp.net/eng/index.php">https://winscp.net/eng/index.php</a></li>
-<li><a class="reference external" href="https://filezilla-project.org/">https://filezilla-project.org/</a></li>
+<li><p><a class="reference external" href="https://winscp.net/eng/index.php">https://winscp.net/eng/index.php</a></p></li>
+<li><p><a class="reference external" href="https://filezilla-project.org/">https://filezilla-project.org/</a></p></li>
 </ul>
 </div>
 </div>
@@ -260,7 +264,7 @@
         <a href="30.BasicUser.html" class="btn btn-neutral float-right" title="For Basic Users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="26.JobSubmission.html" class="btn btn-neutral" title="Job Submission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="26.JobSubmission.html" class="btn btn-neutral float-left" title="Job Submission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -286,35 +290,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

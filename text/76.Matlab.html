@@ -19,34 +19,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualization: VisIt" href="77.Visit.html" />
     <link rel="prev" title="Bioinformatics: Using Bowtie2" href="75.bowtie2.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -80,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,6 +118,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -187,14 +191,14 @@ of a function to find extrema and inflection points of a given function.</p>
 <p><a class="reference external" href="Media:derivatives.zip">derivatives.zip</a></p>
 <p>You can create a directory for this, for example MATLAB and uncompress
 there the file derivatives.zip:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">derivatives</span><span class="o">.</span><span class="n">zip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">derivatives</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
 <p>It will uncompress a file called “derivatives.m”, that is the actual
 matlab code that we would like to execute on the cluster.</p>
 <p>The submission script is very simple, for this example we will use a
 single core:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
 #PBS -l nodes=1:ppn=1
@@ -224,21 +228,21 @@ without opening the graphical user interface (GUI). Notive that you
 should execute matlab -nodisplay -r derivatives without adding the “.m”.
 Matlab will always search for a file called “derivatives.m”</p>
 <p>You submit the job from the command line executing:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$qsub runjob.pbs
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$qsub runjob.pbs
 987788.srih0001.hpc.wvu.edu
 </pre></div>
 </div>
 <p>You should get like above the JobID, an identifier that allow you to
 keep track of your execution. You can monitor the execution like this:
 When in queue, ie, waiting for execution:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - ------
 987788.srih0001            MATLAB           gufranco               0 Q debug
 </pre></div>
 </div>
 <p>When running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
 Job ID                    Name             User            Time Use S Queue
 
 ------------------------- ---------------- --------------- -------- - ------
@@ -246,7 +250,7 @@ Job ID                    Name             Use
 </pre></div>
 </div>
 <p>When finished:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
 
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - -----
@@ -254,7 +258,7 @@ Job ID                    Name             Use
 </pre></div>
 </div>
 <p>When the job concludes, you will get the files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>derivatives.fig
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>derivatives.fig
 derivatives.m
 derivatives.png
 MATLAB.e987788
@@ -264,11 +268,11 @@ runjob.pbs``
 </div>
 <p>The figures where generated and save on the same folder you submit your
 job. The output of your execution is stored at MATLAB.o987788</p>
-<div class="figure" id="id1">
+<div class="figure align-center" id="id1">
 <img alt="derivatives.png" src="../_images/derivatives.png" />
-<p class="caption"><span class="caption-text">derivatives.png</span></p>
+<p class="caption"><span class="caption-text">derivatives.png</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
                   <span class="n">Copyright</span> <span class="mi">1984</span><span class="o">-</span><span class="mi">2014</span> <span class="n">The</span> <span class="n">MathWorks</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
                     <span class="n">R2014a</span> <span class="p">(</span><span class="mf">8.3</span><span class="o">.</span><span class="mf">0.532</span><span class="p">)</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="p">(</span><span class="n">glnxa64</span><span class="p">)</span>
                              <span class="n">February</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2014</span>
@@ -342,9 +346,10 @@ job. The output of your execution is stored at MATLAB.o987788</p>
 <h2>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to load matlab to get access to its executables:</p>
 <blockquote>
-<div>module&nbsp;load&nbsp;statistics/matlab/2014a</div></blockquote>
+<div><p>module load statistics/matlab/2014a</p>
+</div></blockquote>
 <p>Prepare the compilation environment with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ mbuild -setup``
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mbuild -setup``
 MBUILD configured to use &#39;gcc&#39; for C language compilation.``
 
 To choose a different language, execute one from the following:``
@@ -357,16 +362,16 @@ To choose a different language, execute one from the following:``
 <p>So we will use another script for this tutorial.</p>
 <p><a class="reference external" href="Media:mandelbrot.zip">mandelbrot.zip</a></p>
 <p>After uncompress the file “mandelbrot.m”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mcc</span> <span class="o">-</span><span class="n">m</span> <span class="n">mandelbrot</span><span class="o">.</span><span class="n">m</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mcc</span> <span class="o">-</span><span class="n">m</span> <span class="n">mandelbrot</span><span class="o">.</span><span class="n">m</span>
 </pre></div>
 </div>
 <p>It takes a while, when finished you will get some extra files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mandelbrot</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mandelbrot</span>
 <span class="n">run_mandelbrot</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>The submission script changes to:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
 #PBS -l nodes=1:ppn=1
@@ -382,13 +387,13 @@ cd $PBS_O_WORKDIR
 </pre></div>
 </div>
 <p>After submit the job with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
 <p>You get the results on “MATLAB.o#######” with the corresponding JobID</p>
-<div class="figure" id="id2">
+<div class="figure align-center" id="id2">
 <img alt="Mandelbrot fractal generated from Matlab" src="../_images/mandelbrotmatlab.png" />
-<p class="caption"><span class="caption-text">Mandelbrot fractal generated from Matlab</span></p>
+<p class="caption"><span class="caption-text">Mandelbrot fractal generated from Matlab</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -404,7 +409,7 @@ cd $PBS_O_WORKDIR
         <a href="77.Visit.html" class="btn btn-neutral float-right" title="Visualization: VisIt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="75.bowtie2.html" class="btn btn-neutral" title="Bioinformatics: Using Bowtie2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="75.bowtie2.html" class="btn btn-neutral float-left" title="Bioinformatics: Using Bowtie2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -430,35 +435,16 @@ cd $PBS_O_WORKDIR
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
