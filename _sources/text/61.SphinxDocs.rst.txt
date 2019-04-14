@@ -143,8 +143,8 @@ The command to compile the PDF version is:
 
 You do not need to compile always the PDF version, the HTML is considered the primary format and PDF outputs will be created at least once per semester.
 
-Update the sphinx repository
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Update the sphinx branch
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can add, commit and push directly with git commands.
 However, the script offers a quick version that will do all those tasks in one single call:
@@ -155,8 +155,8 @@ However, the script offers a quick version that will do all those tasks in one s
 
 The script will add your `username` and date and append those to the message used for commit.
 
-Update master branch
-~~~~~~~~~~~~~~~~~~~~
+Update the master branch
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The master branch contains HTML files and PDF. The contents
 are the result of compiling the sources and should not receive direct human intervention. The script provides a single command that copies the HTML files from ``_build/html`` to the master branch and the PDF as well. It will clean the index and commit all the files, finally will push the commit to remote. The command is as follows.
