@@ -68,9 +68,9 @@ For groups who have purchased this storage, it can be accessed here:
 
 **Note: Persistent group storage is NOT backed up.**
 
-**Note: Persistent Group storage has been replaced by a the new
+**Note: Persistent Group storage has been replaced by a the new**
 `Research Data Depot
-Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__.**
+Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__
 
 Archival Storage
 ----------------
