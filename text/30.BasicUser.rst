@@ -9,6 +9,7 @@ For Basic Users
    31.Editors.rst
    32.editors.rst
    33.GlobusOnline.rst
+   33.JobSubmission.rst
    33.job_samples.rst
    34.EnvModules.rst
    35.Scratch.rst

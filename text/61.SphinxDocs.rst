@@ -20,8 +20,7 @@ how sphinx manages the creation of HTML pages and editing files in `rst` format.
 This tutorial covers the basics of learning how to download the sources, introducing changes and uploading the resulting sources and HTML files.
 There are two ways of accomplishing this, the manual process involves having a git client, a recent version of sphinx on your computer and fairly complete installation of LaTeX for the PDF document. The manual procedure should work fine but require the user to be responsible for installing many packages on his/her system eventually installing some of them by hand if the versions on the distro are too old. Currently, the documentation is known to work with Sphinx v1.6.7 released on Feb 4, 2018.
 
-We have simplified the process by using a singularity image that contains all
-the functionality needed on a single image. The singularity image is based on `ubuntu-bionic` and should be the method of choice in most cases.
+We have simplified the process by using a singularity image that contains all the functionality needed on a single image. The singularity image is based on `ubuntu-bionic` and should be the method of choice in most cases.
 
 We will describe the usage of the singularity image and the convenience script, at the end of the page we describe briefly the manual process.
 
@@ -44,7 +43,7 @@ Getting the singularity image
 
 The singularity image has two purposes, first, it offers a complete `ubuntu-bionic` installation with recent versions of all the packages needed to download, build and upload the documentation. In addition to that, the image itself has a simple script that automatizes some of the routinely commands that need to be done to clone or pull both branches, build the documentation from sources and commit and push both branches back to Github. In some cases, a single call to the script is preventing the user to execution a number of git commands and makes.
 
-The singularity image is called ``docs_hpc_wvu.simg`` and it is stored in the Globus endpoint called ``wvu#datadepot``, inside ``rcadmin/docs_hpc_wvu``, there is nothing secret with this image but its access is restricted to HPC administrators.
+The singularity image is called ``docs_hpc_wvu.simg`` and it is stored in the Globus endpoint called ``wvu#datadepot``, inside ``rcadmin/docs_hpc_wvu``, there is nothing secret with this image but its access is currently restricted to HPC administrators.
 
 Getting a shell inside the container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,49 +135,35 @@ The simplified command will compile both formats and copy the resulting facilita
 
     docs_hpc_wvu -b DOCS build
 
-
-Add files to the index
-~~~~~~~~~~~~~~~~~~~~~~
-
-In git every file that is new or has changed need to be explicitly added for being staged for the next commit. In most cases, editing documentation will just modify a few files, maybe adding a few more. The simplified command will tag all the new and modified files as staged.
+The command to compile the PDF version is:
 
 ::
 
-    docs_hpc_wvu -b DOCS add
+    docs_hpc_wvu -b DOCS build_pdf
 
-Sometimes you do not want to add them all, in this case, do not execute the script and add the files one by one. Notice that the command on master also adds as staged all modified files.
+You do not need to compile always the PDF version, the HTML is considered the primary format and PDF outputs will be created at least once per semester.
 
-Commit the files on both branches
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The commit command in git stores the contents of the index and the given log message describing the changes. For this command, the message is needed.
-Use this to add the message
-
-::
-
-    docs_hpc_wvu -b DOCS commit -m "Changes to ... adding ..."
-
-The script will add your `username` and date and append those to the message.
-If you are executing this step by hand remember to do it on both branches and try to be consistent on both commits.
-
-Update remotes with push
+Update the sphinx branch
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The command push in git updates the commits into the remote machine. Notice that that is only possible if the remote branch has not been changed after the previous pull, otherwise, a merge must be do done first before attempting a new push. The simplified command assumes that the remote is in condition to be pushed.
+You can add, commit and push directly with git commands.
+However, the script offers a quick version that will do all those tasks in one single call:
 
 ::
 
-    docs_hpc_wvu -b DOCS push
+    docs_hpc_wvu -b DOCS update_sphinx -m "Changes to ... adding ..."
 
-Convenience 4in1 command (build + add + commit + push)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The script will add your `username` and date and append those to the message used for commit.
 
-Some changes are small, very specific and you want the HTML files to reflect those small changes quickly. The action `bacp` will execute all the 4 actions, build, add, commit and push in a single run. The message needs to be provided as needed by the commit.
+Update the master branch
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The master branch contains HTML files and PDF. The contents
+are the result of compiling the sources and should not receive direct human intervention. The script provides a single command that copies the HTML files from ``_build/html`` to the master branch and the PDF as well. It will clean the index and commit all the files, finally will push the commit to remote. The command is as follows.
 
 ::
 
-    docs_hpc_wvu -b DOCS bacp -m "Fixing typos at ..."
-
+    docs_hpc_wvu -b DOCS update_master -m "Changes to ... adding ..."
 
 Editing the documentation manually
 ----------------------------------

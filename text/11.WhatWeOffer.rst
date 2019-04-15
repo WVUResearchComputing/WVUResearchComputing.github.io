@@ -3,37 +3,33 @@
 Infrastructure and Services
 ===========================
 
-We provide access to centrally managed computational systems, several High Performance Computing and data analysis clusters. We also offer Infrastructure that support researchers such as large and secure storage, high-speed data transfer channel using a demilitarized zone (DMZ), support in areas of High Performance Computing, Parallel programming and visualization and tranning on those areas via workshops and seminars.
+We provide access to centrally managed computational systems, several High-Performance Computing, and data analysis clusters. We also offer Infrastructure that supports researchers such as large and secure storage, high-speed data transfer channel using a demilitarized zone (DMZ), support in areas of High-Performance Computing, Parallel programming and visualization and training on those areas via workshops and seminars.
 
 Here we summarize the different dimensions of action for WVU-RC:
 
 High-Performance Computing
 --------------------------
 
-We operate 2 High-Performance computing Clusters and one more has been acquired and should be deployed by the end of the year.
+We operate 2 High-Performance computing Clusters "Spruce Knob" and "Thorny Flat".
 
-The High Performance Computing facilities are funded by the National Science Foundation EPSCoR Research Infrastructure Improvement Cooperative Agreement #1003907, the state of West Virginia (WVEPSCoR via the Higher Education Policy Commission), the WVU Research Corporation and faculty investments.
+The High-Performance Computing facilities are funded by the National Science Foundation EPSCoR Research Infrastructure Improvement Cooperative Agreement #1003907, the state of West Virginia (WVEPSCoR via the Higher Education Policy Commission), the WVU Research Corporation and faculty investments.
 
-The two clusters in operation are called *Mountaineer* and *Spruce Knob*.
-The newest cluster, called *Thorny Flat* should be in operation by the end of 2018.
-
-*Mountaineer* is WVU's oldest shared cluster and it is a 384 core Intel high-density computing cluster based on Xeon Westmere processors. Each node has 12 cores and 48GB of RAM, providing 4GB per node average. Storage is provided by a direct-attached SAN unit with 10TB of formatted disk space, as well as a network attached storage system with 60 TB of storage capacity. Mountaineer will stop operation when the new cluster *Thorny Flat* starts.
-
+*Mountaineer* was WVU's first shared cluster and it was a 384 core Intel high-density computing cluster based on Xeon Westmere processors. Each node had 12 cores and 48GB of RAM, providing 4GB per node average. Storage was provided by a direct-attached SAN unit with 10TB of formatted disk space, as well as a network attached storage system with 60 TB of storage capacity. Mountaineer stop operation in April 2019 when the new cluster *Thorny Flat* started.
 
 *Spruce Knob* is WVU’s current HPC system. This system is 176 nodes, 3,376 core heterogeneous high-density computing cluster based on Intel Xeon Sandy Bridge, Ivy Bridge, Haswell, and Broadwell processors. Spruce Knob follows a condo model where faculty members can purchase direct access to nodes on the cluster making them part owners of the cluster.
 
-*Thorny Flat* will be the next generation HPC cluster, with around 111 nodes, more than 4000 cores and a number of Nvidia P6000 GPU cards for extra computing power.
+*Thorny Flat* is our new generation HPC cluster, with around 108 nodes, 4208 cores and 21 Nvidia P6000 GPU cards for extra computing power.
 
 Data Analysis Cluster
 ---------------------
 
 *GoFirst* Cluster is a dedicated WVU MS Business Data Analytics computing resource that allows students in the Business Data Analytics M.S. program to gain experience in a controlled, secure cloud-computing environment.
-*GoFirst* is build from four compute nodes running HDFS shared filesystem, to run Hadoop and Spark jobs using RStudio as a frontend interface.
+*GoFirst* is built from four compute nodes running HDFS shared filesystem, to run Hadoop and Spark jobs using RStudio as a frontend interface.
 
 Research Exchange
 -----------------
 
-REX is a Science DMZ, or demilitarized zone, which is a dedicated “express lane” network for research data traffic within the University’s larger network. It is funded through a nearly $487,000 cyber infrastructure grant that WVU Research Corp. won in 2014 year from the National Science Foundation.
+REX is a Science DMZ, or demilitarized zone, which is a dedicated “express lane” network for research data traffic within the University’s larger network. It is funded through a nearly $487,000 cyberinfrastructure grant that WVU Research Corp. won in the 2014 year from the National Science Foundation.
 
 REX gives Information Technology Services the ability to separate research traffic from other Internet traffic, guarantee high-speed Internet2 access for WVU researchers, and facilitate data exchanges with off-campus collaborators. The upgrades also provide WVU researchers with greater access to off-campus resources such as national scientific supercomputing centers. The grant funded the development and deployment of two Data Transfer Nodes, high-performance data transfer “depots” that will improve the ability to move large science data sets. These Data Transfer Nodes have 640TB of raw disk storage, giving researchers a high-speed storage location when transferring large data sets.
 
@@ -54,11 +50,11 @@ Data Depot
 
 The WVU Research Data Depot is a centrally managed, reliable, secure and fast data storage system specifically designed to meet the university’s diverse research storage needs. Designed to handle all size of files, from small to very large, researchers who use this service will have access to their data both on and off campus and can also use it to collaborate with researchers outside of WVU.
 
-ITS designed the Data Depot to be easy to use. Researchers have access to drag and drop files through an interface they are accustomed to using such as Windows, OSX or Linux file managers. Command line tools, such as sftp, and Linux based command, such as mount, can also be used to access the files on lab PCs/servers.
+ITS designed the Data Depot to be easy to use. Researchers have access to drag and drop files through an interface they are accustomed to for users of Windows, OSX or Linux file managers. Command line tools, such as sftp, and Linux based command, such as mount, can also be used to access the files on lab PCs/servers.
 
 More information on: `Research Data Depot <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`_
 
 Seminars and workshops
 ----------------------
 
-WVU-RC supports the mission of educate users on High Performance Computing, Parallel Programming and Data Analysis via seminars and workshops.
+WVU-RC supports the mission of educating users on High-Performance Computing, Parallel Programming, and Data Analysis via seminars and workshops.
