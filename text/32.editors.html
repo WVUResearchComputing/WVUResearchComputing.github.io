@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -225,12 +234,12 @@ informed choice.</p>
 <p>Nano is a small, free and friendly editor with commands that usually
 manage using the Control (CTRL) combined with some other key.</p>
 <p>You can start editing a file using a command line like this</p>
-<p>`` nano myfile.f90``</p>
+<p>``&nbsp;nano&nbsp;myfile.f90``</p>
 <p>There are several commands available, the list below comes from the help
 text. When you see the symbol “^” it means to press the Control (CTRL)
 key, the symbol “M-” is called Meta, but in most keyboards is identified
 with the (Alt) key.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>^G  (F1)            Display this help text
+<div class="highlight-default"><div class="highlight"><pre><span></span>^G  (F1)            Display this help text
 ^X  (F2)            Close the current file buffer / Exit from nano
 ^O  (F3)            Write the current file to disk
 ^J  (F4)            Justify the current paragraph
@@ -321,144 +330,144 @@ basics.</p>
 commands for editing, moving and searching text.</p>
 <div class="section" id="entering-emacs">
 <h3>Entering Emacs<a class="headerlink" href="#entering-emacs" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
-<dt>::</dt><dd><p>emacs</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd>emacs</dd>
 </dl>
 </div>
 <div class="section" id="leaving-emacs">
 <h3>Leaving Emacs<a class="headerlink" href="#leaving-emacs" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">suspend</span><span class="pre">Emacs</span><span class="pre">(or</span><span class="pre">iconify</span><span class="pre">it</span><span class="pre">under</span><span class="pre">X)</span><span class="pre">C-z</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">exit</span><span class="pre">Emacs</span><span class="pre">permanently</span><span class="pre">C-x</span><span class="pre">C-c</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">suspend&nbsp;Emacs&nbsp;(or&nbsp;iconify&nbsp;it&nbsp;under&nbsp;X)&nbsp;C-z</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">exit&nbsp;Emacs&nbsp;permanently&nbsp;C-x&nbsp;C-c</span></code></div>
 </div>
 </div>
 <div class="section" id="files">
 <h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">read</span><span class="pre">a</span><span class="pre">file</span><span class="pre">into</span><span class="pre">Emacs</span><span class="pre">C-x</span><span class="pre">C-f</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">save</span><span class="pre">a</span><span class="pre">file</span><span class="pre">back</span><span class="pre">to</span><span class="pre">disk</span><span class="pre">C-x</span><span class="pre">C-s</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">save</span><span class="pre">all</span><span class="pre">files</span><span class="pre">C-x</span><span class="pre">s</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">insert</span><span class="pre">contents</span><span class="pre">of</span><span class="pre">another</span><span class="pre">file</span><span class="pre">into</span><span class="pre">this</span><span class="pre">buffer</span><span class="pre">C-x</span><span class="pre">i</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">replace</span><span class="pre">this</span><span class="pre">file</span><span class="pre">with</span><span class="pre">the</span><span class="pre">file</span><span class="pre">you</span><span class="pre">really</span><span class="pre">want</span><span class="pre">C-x</span><span class="pre">C-v</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">write</span><span class="pre">buffer</span><span class="pre">to</span><span class="pre">a</span><span class="pre">specified</span><span class="pre">file</span><span class="pre">C-x</span><span class="pre">C-w</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">toggle</span><span class="pre">read-only</span><span class="pre">status</span><span class="pre">of</span><span class="pre">buffer</span><span class="pre">C-x</span><span class="pre">C-q</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">read&nbsp;a&nbsp;file&nbsp;into&nbsp;Emacs&nbsp;C-x&nbsp;C-f</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">save&nbsp;a&nbsp;file&nbsp;back&nbsp;to&nbsp;disk&nbsp;C-x&nbsp;C-s</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">save&nbsp;all&nbsp;files&nbsp;C-x&nbsp;s</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">insert&nbsp;contents&nbsp;of&nbsp;another&nbsp;file&nbsp;into&nbsp;this&nbsp;buffer&nbsp;C-x&nbsp;i</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">replace&nbsp;this&nbsp;file&nbsp;with&nbsp;the&nbsp;file&nbsp;you&nbsp;really&nbsp;want&nbsp;C-x&nbsp;C-v</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">write&nbsp;buffer&nbsp;to&nbsp;a&nbsp;specified&nbsp;file&nbsp;C-x&nbsp;C-w</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">toggle&nbsp;read-only&nbsp;status&nbsp;of&nbsp;buffer&nbsp;C-x&nbsp;C-q</span></code></div>
 </div>
 </div>
 <div class="section" id="incremental-search">
 <h3>Incremental Search<a class="headerlink" href="#incremental-search" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">search</span><span class="pre">forward</span><span class="pre">C-s</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">search</span><span class="pre">backward</span><span class="pre">C-r</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">regular</span><span class="pre">expression</span><span class="pre">search</span><span class="pre">C-M-s</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">reverse</span><span class="pre">regular</span><span class="pre">expression</span><span class="pre">search</span><span class="pre">C-M-r</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">select</span><span class="pre">previous</span><span class="pre">search</span><span class="pre">string</span><span class="pre">M-p</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">select</span><span class="pre">next</span><span class="pre">later</span><span class="pre">search</span><span class="pre">string</span><span class="pre">M-n</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">exit</span><span class="pre">incremental</span><span class="pre">search</span><span class="pre">RET</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">undo</span><span class="pre">effect</span><span class="pre">of</span><span class="pre">last</span><span class="pre">character</span><span class="pre">DEL</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">abort</span><span class="pre">current</span><span class="pre">search</span><span class="pre">C-g</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">Use</span><span class="pre">C-s</span><span class="pre">or</span><span class="pre">C-r</span><span class="pre">again</span><span class="pre">to</span><span class="pre">repeat</span><span class="pre">the</span><span class="pre">search</span><span class="pre">in</span><span class="pre">either</span><span class="pre">direction.</span><span class="pre">If</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">Emacs</span><span class="pre">is</span><span class="pre">still</span><span class="pre">searching,</span><span class="pre">C-g</span><span class="pre">cancels</span><span class="pre">only</span><span class="pre">the</span><span class="pre">part</span><span class="pre">not</span><span class="pre">matched.</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">search&nbsp;forward&nbsp;C-s</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">search&nbsp;backward&nbsp;C-r</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">regular&nbsp;expression&nbsp;search&nbsp;C-M-s</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">reverse&nbsp;regular&nbsp;expression&nbsp;search&nbsp;C-M-r</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">select&nbsp;previous&nbsp;search&nbsp;string&nbsp;M-p</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">select&nbsp;next&nbsp;later&nbsp;search&nbsp;string&nbsp;M-n</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">exit&nbsp;incremental&nbsp;search&nbsp;RET</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">undo&nbsp;effect&nbsp;of&nbsp;last&nbsp;character&nbsp;DEL</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">abort&nbsp;current&nbsp;search&nbsp;C-g</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">Use&nbsp;C-s&nbsp;or&nbsp;C-r&nbsp;again&nbsp;to&nbsp;repeat&nbsp;the&nbsp;search&nbsp;in&nbsp;either&nbsp;direction.&nbsp;If</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">Emacs&nbsp;is&nbsp;still&nbsp;searching,&nbsp;C-g&nbsp;cancels&nbsp;only&nbsp;the&nbsp;part&nbsp;not&nbsp;matched.</span></code></div>
 </div>
 </div>
 <div class="section" id="motion">
 <h3>Motion<a class="headerlink" href="#motion" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">entity</span><span class="pre">to</span><span class="pre">move</span><span class="pre">over</span><span class="pre">backward</span><span class="pre">forward</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">character</span><span class="pre">C-b</span><span class="pre">C-f</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">word</span><span class="pre">M-b</span><span class="pre">M-f</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">line</span><span class="pre">C-p</span><span class="pre">C-n</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">go</span><span class="pre">to</span><span class="pre">line</span><span class="pre">beginning</span><span class="pre">(or</span><span class="pre">end)</span><span class="pre">C-a</span><span class="pre">C-e</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">sentence</span><span class="pre">M-a</span><span class="pre">M-e</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">paragraph</span><span class="pre">M-{</span><span class="pre">M-}</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">page</span><span class="pre">C-x</span><span class="pre">[</span><span class="pre">C-x</span><span class="pre">]</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">sexp</span><span class="pre">C-M-b</span><span class="pre">C-M-f</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">function</span><span class="pre">C-M-a</span><span class="pre">C-M-e</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">go</span><span class="pre">to</span><span class="pre">buffer</span><span class="pre">beginning</span><span class="pre">(or</span><span class="pre">end)</span><span class="pre">M-&lt;</span><span class="pre">M-&gt;</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">scroll</span><span class="pre">to</span><span class="pre">next</span><span class="pre">screen</span><span class="pre">C-v</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">scroll</span><span class="pre">to</span><span class="pre">previous</span><span class="pre">screen</span><span class="pre">M-v</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">scroll</span><span class="pre">left</span><span class="pre">C-x</span><span class="pre">&lt;</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">scroll</span><span class="pre">right</span><span class="pre">C-x</span><span class="pre">&gt;</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">scroll</span><span class="pre">current</span><span class="pre">line</span><span class="pre">to</span><span class="pre">center,</span><span class="pre">top,</span><span class="pre">bottom</span><span class="pre">C-l</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">goto</span><span class="pre">line</span><span class="pre">M-g</span><span class="pre">g</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">goto</span><span class="pre">char</span><span class="pre">M-g</span><span class="pre">c</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">back</span><span class="pre">to</span><span class="pre">indentation</span><span class="pre">M-m</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">entity&nbsp;to&nbsp;move&nbsp;over&nbsp;backward&nbsp;forward</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">character&nbsp;C-b&nbsp;C-f</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">word&nbsp;M-b&nbsp;M-f</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">line&nbsp;C-p&nbsp;C-n</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">go&nbsp;to&nbsp;line&nbsp;beginning&nbsp;(or&nbsp;end)&nbsp;C-a&nbsp;C-e</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">sentence&nbsp;M-a&nbsp;M-e</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">paragraph&nbsp;M-{&nbsp;M-}</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">page&nbsp;C-x&nbsp;[&nbsp;C-x&nbsp;]</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">sexp&nbsp;C-M-b&nbsp;C-M-f</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">function&nbsp;C-M-a&nbsp;C-M-e</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">go&nbsp;to&nbsp;buffer&nbsp;beginning&nbsp;(or&nbsp;end)&nbsp;M-&lt;&nbsp;M-&gt;</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">scroll&nbsp;to&nbsp;next&nbsp;screen&nbsp;C-v</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">scroll&nbsp;to&nbsp;previous&nbsp;screen&nbsp;M-v</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">scroll&nbsp;left&nbsp;C-x&nbsp;&lt;</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">scroll&nbsp;right&nbsp;C-x&nbsp;&gt;</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">scroll&nbsp;current&nbsp;line&nbsp;to&nbsp;center,&nbsp;top,&nbsp;bottom&nbsp;C-l</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">goto&nbsp;line&nbsp;M-g&nbsp;g</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">goto&nbsp;char&nbsp;M-g&nbsp;c</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">back&nbsp;to&nbsp;indentation&nbsp;M-m</span></code></div>
 </div>
 </div>
 <div class="section" id="killing-and-deleting">
 <h3>Killing and Deleting<a class="headerlink" href="#killing-and-deleting" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">entity</span><span class="pre">to</span><span class="pre">kill</span><span class="pre">backward</span><span class="pre">forward</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">character</span><span class="pre">(delete,</span><span class="pre">not</span><span class="pre">kill)</span><span class="pre">DEL</span><span class="pre">C-d</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">word</span><span class="pre">M-DEL</span><span class="pre">M-d</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">line</span><span class="pre">(to</span><span class="pre">end</span><span class="pre">of)</span><span class="pre">M-0</span><span class="pre">C-k</span><span class="pre">C-k</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">sentence</span><span class="pre">C-x</span><span class="pre">DEL</span><span class="pre">M-k</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">sexp</span><span class="pre">M--</span><span class="pre">C-M-k</span><span class="pre">C-M-k</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">kill</span><span class="pre">region</span><span class="pre">C-w</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">copy</span><span class="pre">region</span><span class="pre">to</span><span class="pre">kill</span><span class="pre">ring</span><span class="pre">M-w</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">kill</span><span class="pre">through</span><span class="pre">next</span><span class="pre">occurrence</span><span class="pre">of</span><span class="pre">char</span><span class="pre">M-z</span><span class="pre">char</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">yank</span><span class="pre">back</span><span class="pre">last</span><span class="pre">thing</span><span class="pre">killed</span><span class="pre">C-y</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">replace</span><span class="pre">last</span><span class="pre">yank</span><span class="pre">with</span><span class="pre">previous</span><span class="pre">kill</span><span class="pre">M-y</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">entity&nbsp;to&nbsp;kill&nbsp;backward&nbsp;forward</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">character&nbsp;(delete,&nbsp;not&nbsp;kill)&nbsp;DEL&nbsp;C-d</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">word&nbsp;M-DEL&nbsp;M-d</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">line&nbsp;(to&nbsp;end&nbsp;of)&nbsp;M-0&nbsp;C-k&nbsp;C-k</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">sentence&nbsp;C-x&nbsp;DEL&nbsp;M-k</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">sexp&nbsp;M--&nbsp;C-M-k&nbsp;C-M-k</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">kill&nbsp;region&nbsp;C-w</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">copy&nbsp;region&nbsp;to&nbsp;kill&nbsp;ring&nbsp;M-w</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">kill&nbsp;through&nbsp;next&nbsp;occurrence&nbsp;of&nbsp;char&nbsp;M-z&nbsp;char</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">yank&nbsp;back&nbsp;last&nbsp;thing&nbsp;killed&nbsp;C-y</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">replace&nbsp;last&nbsp;yank&nbsp;with&nbsp;previous&nbsp;kill&nbsp;M-y</span></code></div>
 </div>
 </div>
 <div class="section" id="marking">
 <h3>Marking<a class="headerlink" href="#marking" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">set</span><span class="pre">mark</span><span class="pre">here</span><span class="pre">C-&#64;</span><span class="pre">or</span><span class="pre">C-SPC</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">exchange</span><span class="pre">point</span><span class="pre">and</span><span class="pre">mark</span><span class="pre">C-x</span><span class="pre">C-x</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">set</span><span class="pre">mark</span><span class="pre">arg</span><span class="pre">words</span><span class="pre">away</span><span class="pre">M-&#64;</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">mark</span><span class="pre">paragraph</span><span class="pre">M-h</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">mark</span><span class="pre">page</span><span class="pre">C-x</span><span class="pre">C-p</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">mark</span><span class="pre">sexp</span><span class="pre">C-M-&#64;</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">mark</span><span class="pre">function</span><span class="pre">C-M-h</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">mark</span><span class="pre">entire</span><span class="pre">buffer</span><span class="pre">C-x</span><span class="pre">h</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">set&nbsp;mark&nbsp;here&nbsp;C-&#64;&nbsp;or&nbsp;C-SPC</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">exchange&nbsp;point&nbsp;and&nbsp;mark&nbsp;C-x&nbsp;C-x</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">set&nbsp;mark&nbsp;arg&nbsp;words&nbsp;away&nbsp;M-&#64;</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mark&nbsp;paragraph&nbsp;M-h</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mark&nbsp;page&nbsp;C-x&nbsp;C-p</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mark&nbsp;sexp&nbsp;C-M-&#64;</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mark&nbsp;function&nbsp;C-M-h</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mark&nbsp;entire&nbsp;buffer&nbsp;C-x&nbsp;h</span></code></div>
 </div>
 </div>
 <div class="section" id="query-replace">
 <h3>Query Replace<a class="headerlink" href="#query-replace" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">interactively</span><span class="pre">replace</span><span class="pre">a</span><span class="pre">text</span><span class="pre">string</span><span class="pre">M-%</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">using</span><span class="pre">regular</span><span class="pre">expressions</span><span class="pre">M-x</span><span class="pre">query-replace-regexp</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">Valid</span><span class="pre">responses</span><span class="pre">in</span><span class="pre">query-replace</span><span class="pre">mode</span><span class="pre">are</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">interactively&nbsp;replace&nbsp;a&nbsp;text&nbsp;string&nbsp;M-%</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">using&nbsp;regular&nbsp;expressions&nbsp;M-x&nbsp;query-replace-regexp</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">Valid&nbsp;responses&nbsp;in&nbsp;query-replace&nbsp;mode&nbsp;are</span></code></div>
 </div>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">replace</span><span class="pre">this</span><span class="pre">one,</span><span class="pre">go</span><span class="pre">on</span><span class="pre">to</span><span class="pre">next</span><span class="pre">SPC</span><span class="pre">or</span><span class="pre">y</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">replace</span><span class="pre">this</span><span class="pre">one,</span><span class="pre">don’t</span><span class="pre">move</span><span class="pre">,</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">skip</span><span class="pre">to</span><span class="pre">next</span><span class="pre">without</span><span class="pre">replacing</span><span class="pre">DEL</span><span class="pre">or</span><span class="pre">n</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">replace</span><span class="pre">all</span><span class="pre">remaining</span><span class="pre">matches</span><span class="pre">!</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">back</span><span class="pre">up</span><span class="pre">to</span><span class="pre">the</span><span class="pre">previous</span><span class="pre">match</span><span class="pre">^</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">exit</span><span class="pre">query-replace</span><span class="pre">RET</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">enter</span><span class="pre">recursive</span><span class="pre">edit</span><span class="pre">(C-M-c</span><span class="pre">to</span><span class="pre">exit)</span><span class="pre">C-r</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">replace&nbsp;this&nbsp;one,&nbsp;go&nbsp;on&nbsp;to&nbsp;next&nbsp;SPC&nbsp;or&nbsp;y</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">replace&nbsp;this&nbsp;one,&nbsp;don’t&nbsp;move&nbsp;,</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">skip&nbsp;to&nbsp;next&nbsp;without&nbsp;replacing&nbsp;DEL&nbsp;or&nbsp;n</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">replace&nbsp;all&nbsp;remaining&nbsp;matches&nbsp;!</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">back&nbsp;up&nbsp;to&nbsp;the&nbsp;previous&nbsp;match&nbsp;^</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">exit&nbsp;query-replace&nbsp;RET</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">enter&nbsp;recursive&nbsp;edit&nbsp;(C-M-c&nbsp;to&nbsp;exit)&nbsp;C-r</span></code></div>
 </div>
 </div>
 <div class="section" id="formatting">
 <h3>Formatting<a class="headerlink" href="#formatting" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">indent</span><span class="pre">current</span><span class="pre">line</span><span class="pre">(mode-dependent)</span><span class="pre">TAB</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">indent</span><span class="pre">region</span><span class="pre">(mode-dependent)</span><span class="pre">C-M-\</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">indent</span><span class="pre">sexp</span><span class="pre">(mode-dependent)</span><span class="pre">C-M-q</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">indent</span><span class="pre">region</span><span class="pre">rigidly</span><span class="pre">arg</span><span class="pre">columns</span><span class="pre">C-x</span><span class="pre">TAB</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">indent</span><span class="pre">for</span><span class="pre">comment</span><span class="pre">M-;</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">insert</span><span class="pre">newline</span><span class="pre">after</span><span class="pre">point</span><span class="pre">C-o</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">move</span><span class="pre">rest</span><span class="pre">of</span><span class="pre">line</span><span class="pre">vertically</span><span class="pre">down</span><span class="pre">C-M-o</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">delete</span><span class="pre">blank</span><span class="pre">lines</span><span class="pre">around</span><span class="pre">point</span><span class="pre">C-x</span><span class="pre">C-o</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">join</span><span class="pre">line</span><span class="pre">with</span><span class="pre">previous</span><span class="pre">(with</span><span class="pre">arg,</span><span class="pre">next)</span><span class="pre">M-^</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">delete</span><span class="pre">all</span><span class="pre">white</span><span class="pre">space</span><span class="pre">around</span><span class="pre">point</span><span class="pre">M-\</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">put</span><span class="pre">exactly</span><span class="pre">one</span><span class="pre">space</span><span class="pre">at</span><span class="pre">point</span><span class="pre">M-SPC</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">fill</span><span class="pre">paragraph</span><span class="pre">M-q</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">set</span><span class="pre">fill</span><span class="pre">column</span><span class="pre">to</span><span class="pre">arg</span><span class="pre">C-x</span><span class="pre">f</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">set</span><span class="pre">prefix</span><span class="pre">each</span><span class="pre">line</span><span class="pre">starts</span><span class="pre">with</span><span class="pre">C-x</span><span class="pre">.</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">set</span><span class="pre">face</span><span class="pre">M-o</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">indent&nbsp;current&nbsp;line&nbsp;(mode-dependent)&nbsp;TAB</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">indent&nbsp;region&nbsp;(mode-dependent)&nbsp;C-M-\</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">indent&nbsp;sexp&nbsp;(mode-dependent)&nbsp;C-M-q</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">indent&nbsp;region&nbsp;rigidly&nbsp;arg&nbsp;columns&nbsp;C-x&nbsp;TAB</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">indent&nbsp;for&nbsp;comment&nbsp;M-;</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">insert&nbsp;newline&nbsp;after&nbsp;point&nbsp;C-o</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">move&nbsp;rest&nbsp;of&nbsp;line&nbsp;vertically&nbsp;down&nbsp;C-M-o</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">delete&nbsp;blank&nbsp;lines&nbsp;around&nbsp;point&nbsp;C-x&nbsp;C-o</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">join&nbsp;line&nbsp;with&nbsp;previous&nbsp;(with&nbsp;arg,&nbsp;next)&nbsp;M-^</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">delete&nbsp;all&nbsp;white&nbsp;space&nbsp;around&nbsp;point&nbsp;M-\</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">put&nbsp;exactly&nbsp;one&nbsp;space&nbsp;at&nbsp;point&nbsp;M-SPC</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">fill&nbsp;paragraph&nbsp;M-q</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">set&nbsp;fill&nbsp;column&nbsp;to&nbsp;arg&nbsp;C-x&nbsp;f</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">set&nbsp;prefix&nbsp;each&nbsp;line&nbsp;starts&nbsp;with&nbsp;C-x&nbsp;.</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">set&nbsp;face&nbsp;M-o</span></code></div>
 </div>
 </div>
 <div class="section" id="case-change">
 <h3>Case Change<a class="headerlink" href="#case-change" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">uppercase</span><span class="pre">word</span><span class="pre">M-u</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">lowercase</span><span class="pre">word</span><span class="pre">M-l</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">capitalize</span><span class="pre">word</span><span class="pre">M-c</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">uppercase</span><span class="pre">region</span><span class="pre">C-x</span><span class="pre">C-u</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">lowercase</span><span class="pre">region</span><span class="pre">C-x</span><span class="pre">C-l</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">uppercase&nbsp;word&nbsp;M-u</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">lowercase&nbsp;word&nbsp;M-l</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">capitalize&nbsp;word&nbsp;M-c</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">uppercase&nbsp;region&nbsp;C-x&nbsp;C-u</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">lowercase&nbsp;region&nbsp;C-x&nbsp;C-l</span></code></div>
 </div>
 </div>
 </div>
@@ -484,8 +493,8 @@ exists, then the first page (or screen) of the file will be displayed;
 if the file does not exist, then an empty file and screen are created
 into which you may enter text.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">vi</span><span class="pre">filename</span><span class="pre">edit</span><span class="pre">filename</span><span class="pre">starting</span><span class="pre">at</span><span class="pre">line</span><span class="pre">1</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">vi</span><span class="pre">-r</span><span class="pre">filename</span><span class="pre">recover</span><span class="pre">filename</span><span class="pre">that</span><span class="pre">was</span><span class="pre">being</span><span class="pre">edited</span><span class="pre">when</span><span class="pre">the</span><span class="pre">system</span><span class="pre">crashed</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">vi&nbsp;filename&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;filename&nbsp;starting&nbsp;at&nbsp;line&nbsp;1</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">vi&nbsp;-r&nbsp;filename&nbsp;recover&nbsp;filename&nbsp;that&nbsp;was&nbsp;being&nbsp;edited&nbsp;when&nbsp;the&nbsp;system&nbsp;crashed</span></code></div>
 </div>
 </div>
 <div class="section" id="to-exit-vi">
@@ -494,7 +503,7 @@ into which you may enter text.</p>
 it is also possible to quit vi without saving the file. Note: The cursor
 moves to bottom of the screen whenever a colon (:) is typed. This type
 of command is completed by hitting the (or ) key.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:x&lt;Return&gt; quit vi, writing out modified file to file named in original invocation
+<div class="highlight-default"><div class="highlight"><pre><span></span>:x&lt;Return&gt; quit vi, writing out modified file to file named in original invocation
 :wq&lt;Return&gt;    quit vi, writing out modified file to file named in original invocation
 :q&lt;Return&gt; quit (or exit) vi
 :q!&lt;Return&gt;    quit vi even though latest changes have not been saved for this vi call
@@ -514,7 +523,7 @@ dissimilarity in methods for cursor movement is the most frustrating
 difference between the two. In the table below, the symbol ^ before a
 letter means that the key should be held down while the letter key is
 pressed.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>j or &lt;Return&gt; [or down-arrow]     move cursor down one line
+<div class="highlight-default"><div class="highlight"><pre><span></span>j or &lt;Return&gt; [or down-arrow]     move cursor down one line
 k [or up-arrow]               move cursor up one line
 h or &lt;Backspace&gt; [or left-arrow]  move cursor left one character
 l or &lt;Space&gt; [or right-arrow]     move cursor right one character
@@ -533,19 +542,19 @@ b                             move cursor back to beginning of preceding word
 <p>The following commands allow the vi editor screen (or window) to move up
 or down several lines and to be refreshed.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">^f</span><span class="pre">move</span><span class="pre">forward</span><span class="pre">one</span><span class="pre">screen</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">^b</span><span class="pre">move</span><span class="pre">backward</span><span class="pre">one</span><span class="pre">screen</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">^d</span><span class="pre">move</span><span class="pre">down</span><span class="pre">(forward)</span><span class="pre">one</span><span class="pre">half</span><span class="pre">screen</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">^u</span><span class="pre">move</span><span class="pre">up</span><span class="pre">(back)</span><span class="pre">one</span><span class="pre">half</span><span class="pre">screen</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">^l</span><span class="pre">redraws</span><span class="pre">the</span><span class="pre">screen</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">^r</span><span class="pre">redraws</span><span class="pre">the</span><span class="pre">screen,</span><span class="pre">removing</span><span class="pre">deleted</span><span class="pre">lines</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">^f&nbsp;move&nbsp;forward&nbsp;one&nbsp;screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">^b&nbsp;move&nbsp;backward&nbsp;one&nbsp;screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">^d&nbsp;move&nbsp;down&nbsp;(forward)&nbsp;one&nbsp;half&nbsp;screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">^u&nbsp;move&nbsp;up&nbsp;(back)&nbsp;one&nbsp;half&nbsp;screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">^l&nbsp;redraws&nbsp;the&nbsp;screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">^r&nbsp;redraws&nbsp;the&nbsp;screen,&nbsp;removing&nbsp;deleted&nbsp;lines</span></code></div>
 </div>
 </div>
 <div class="section" id="adding-changing-and-deleting-text">
 <h3>Adding, Changing, and Deleting Text<a class="headerlink" href="#adding-changing-and-deleting-text" title="Permalink to this headline">¶</a></h3>
 <p>This command acts like a toggle, undoing and redoing your most recent
 action. You cannot go back more than one step.</p>
-<p>``   u   UNDO WHATEVER YOU JUST DID; a simple toggle``</p>
+<p>``&nbsp;&nbsp;&nbsp;u&nbsp;&nbsp;&nbsp;UNDO&nbsp;WHATEVER&nbsp;YOU&nbsp;JUST&nbsp;DID;&nbsp;a&nbsp;simple&nbsp;toggle``</p>
 </div>
 <div class="section" id="inserting-or-adding-text">
 <h3>Inserting or Adding Text<a class="headerlink" href="#inserting-or-adding-text" title="Permalink to this headline">¶</a></h3>
@@ -553,7 +562,7 @@ action. You cannot go back more than one step.</p>
 commands puts the vi editor into insert mode; thus, the key must be
 pressed to terminate the entry of text and to put the vi editor back
 into command mode.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span>  <span class="n">insert</span> <span class="n">text</span> <span class="n">before</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">i</span>  <span class="n">insert</span> <span class="n">text</span> <span class="n">before</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span>
 <span class="n">I</span>  <span class="n">insert</span> <span class="n">text</span> <span class="n">at</span> <span class="n">beginning</span> <span class="n">of</span> <span class="n">current</span> <span class="n">line</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span>
 <span class="n">a</span>  <span class="n">append</span> <span class="n">text</span> <span class="n">after</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span>
 <span class="n">A</span>  <span class="n">append</span> <span class="n">text</span> <span class="n">to</span> <span class="n">end</span> <span class="n">of</span> <span class="n">current</span> <span class="n">line</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span>
@@ -565,7 +574,7 @@ into command mode.</p>
 <div class="section" id="changing-text">
 <h3>Changing Text<a class="headerlink" href="#changing-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to modify text.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span>  <span class="n">replace</span> <span class="n">single</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span> <span class="p">(</span><span class="n">no</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">needed</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">r</span>  <span class="n">replace</span> <span class="n">single</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span> <span class="p">(</span><span class="n">no</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">needed</span><span class="p">)</span>
 <span class="n">R</span>  <span class="n">replace</span> <span class="n">characters</span><span class="p">,</span> <span class="n">starting</span> <span class="k">with</span> <span class="n">current</span> <span class="n">cursor</span> <span class="n">position</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span>
 <span class="n">cw</span> <span class="n">change</span> <span class="n">the</span> <span class="n">current</span> <span class="n">word</span> <span class="k">with</span> <span class="n">new</span> <span class="n">text</span><span class="p">,</span> <span class="n">starting</span> <span class="k">with</span> <span class="n">the</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span>
 <span class="n">cNw</span>    <span class="n">change</span> <span class="n">N</span> <span class="n">words</span> <span class="n">beginning</span> <span class="k">with</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">until</span> <span class="o">&lt;</span><span class="n">Esc</span><span class="o">&gt;</span> <span class="n">hit</span><span class="p">;</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">c5w</span> <span class="n">changes</span> <span class="mi">5</span> <span class="n">words</span>
@@ -578,7 +587,7 @@ into command mode.</p>
 <div class="section" id="deleting-text">
 <h3>Deleting Text<a class="headerlink" href="#deleting-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to delete text.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>  <span class="n">delete</span> <span class="n">single</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span>  <span class="n">delete</span> <span class="n">single</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span>
 <span class="n">Nx</span> <span class="n">delete</span> <span class="n">N</span> <span class="n">characters</span><span class="p">,</span> <span class="n">starting</span> <span class="k">with</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span>
 <span class="n">dw</span> <span class="n">delete</span> <span class="n">the</span> <span class="n">single</span> <span class="n">word</span> <span class="n">beginning</span> <span class="k">with</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span>
 <span class="n">dNw</span>    <span class="n">delete</span> <span class="n">N</span> <span class="n">words</span> <span class="n">beginning</span> <span class="k">with</span> <span class="n">character</span> <span class="n">under</span> <span class="n">cursor</span><span class="p">;</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">d5w</span> <span class="n">deletes</span> <span class="mi">5</span> <span class="n">words</span>
@@ -593,10 +602,10 @@ into command mode.</p>
 <h3>Cutting and Pasting Text<a class="headerlink" href="#cutting-and-pasting-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to copy and paste text.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">yy</span><span class="pre">copy</span><span class="pre">(yank,</span><span class="pre">cut)</span><span class="pre">the</span><span class="pre">current</span><span class="pre">line</span><span class="pre">into</span><span class="pre">the</span><span class="pre">buffer</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">Nyy</span><span class="pre">copy</span><span class="pre">(yank,</span><span class="pre">cut)</span><span class="pre">the</span><span class="pre">next</span><span class="pre">N</span><span class="pre">lines,</span><span class="pre">including</span><span class="pre">the</span><span class="pre">current</span><span class="pre">line,</span><span class="pre">into</span><span class="pre">the</span><span class="pre">buffer</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">yNy</span><span class="pre">same</span><span class="pre">as</span><span class="pre">Nyy</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">p</span><span class="pre">put</span><span class="pre">(paste)</span><span class="pre">the</span><span class="pre">line(s)</span><span class="pre">in</span><span class="pre">the</span><span class="pre">buffer</span><span class="pre">into</span><span class="pre">the</span><span class="pre">text</span><span class="pre">after</span><span class="pre">the</span><span class="pre">current</span><span class="pre">line</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">yy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy&nbsp;(yank,&nbsp;cut)&nbsp;the&nbsp;current&nbsp;line&nbsp;into&nbsp;the&nbsp;buffer</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">Nyy&nbsp;&nbsp;&nbsp;&nbsp;copy&nbsp;(yank,&nbsp;cut)&nbsp;the&nbsp;next&nbsp;N&nbsp;lines,&nbsp;including&nbsp;the&nbsp;current&nbsp;line,&nbsp;into&nbsp;the&nbsp;buffer</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">yNy&nbsp;&nbsp;&nbsp;&nbsp;same&nbsp;as&nbsp;Nyy</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;put&nbsp;(paste)&nbsp;the&nbsp;line(s)&nbsp;in&nbsp;the&nbsp;buffer&nbsp;into&nbsp;the&nbsp;text&nbsp;after&nbsp;the&nbsp;current&nbsp;line</span></code></div>
 </div>
 </div>
 <div class="section" id="searching-text">
@@ -605,10 +614,10 @@ into command mode.</p>
 another. To locate instances of particular sets of characters (or
 strings), use the following commands.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">/string</span><span class="pre">search</span><span class="pre">forward</span><span class="pre">for</span><span class="pre">occurrence</span><span class="pre">of</span><span class="pre">string</span><span class="pre">in</span><span class="pre">text</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">?string</span><span class="pre">search</span><span class="pre">backward</span><span class="pre">for</span><span class="pre">occurrence</span><span class="pre">of</span><span class="pre">string</span><span class="pre">in</span><span class="pre">text</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">n</span><span class="pre">move</span><span class="pre">to</span><span class="pre">next</span><span class="pre">occurrence</span><span class="pre">of</span><span class="pre">search</span><span class="pre">string</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">N</span><span class="pre">move</span><span class="pre">to</span><span class="pre">next</span><span class="pre">occurrence</span><span class="pre">of</span><span class="pre">search</span><span class="pre">string</span><span class="pre">in</span><span class="pre">opposite</span><span class="pre">direction</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">/string&nbsp;&nbsp;&nbsp;&nbsp;search&nbsp;forward&nbsp;for&nbsp;occurrence&nbsp;of&nbsp;string&nbsp;in&nbsp;text</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">?string&nbsp;&nbsp;&nbsp;&nbsp;search&nbsp;backward&nbsp;for&nbsp;occurrence&nbsp;of&nbsp;string&nbsp;in&nbsp;text</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">n&nbsp;&nbsp;move&nbsp;to&nbsp;next&nbsp;occurrence&nbsp;of&nbsp;search&nbsp;string</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">N&nbsp;&nbsp;move&nbsp;to&nbsp;next&nbsp;occurrence&nbsp;of&nbsp;search&nbsp;string&nbsp;in&nbsp;opposite&nbsp;direction</span></code></div>
 </div>
 </div>
 <div class="section" id="determining-line-numbers">
@@ -616,9 +625,9 @@ strings), use the following commands.</p>
 <p>Being able to determine the line number of the current line or the total
 number of lines in the file being edited is sometimes useful.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">:.=</span><span class="pre">returns</span><span class="pre">line</span><span class="pre">number</span><span class="pre">of</span><span class="pre">current</span><span class="pre">line</span><span class="pre">at</span><span class="pre">bottom</span><span class="pre">of</span><span class="pre">screen</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">:=</span><span class="pre">returns</span><span class="pre">the</span><span class="pre">total</span><span class="pre">number</span><span class="pre">of</span><span class="pre">lines</span><span class="pre">at</span><span class="pre">bottom</span><span class="pre">of</span><span class="pre">screen</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">^g</span><span class="pre">provides</span><span class="pre">the</span><span class="pre">current</span><span class="pre">line</span><span class="pre">number,</span><span class="pre">along</span><span class="pre">with</span><span class="pre">the</span><span class="pre">total</span><span class="pre">number</span><span class="pre">of</span><span class="pre">lines,</span><span class="pre">in</span><span class="pre">the</span><span class="pre">file</span><span class="pre">at</span><span class="pre">the</span><span class="pre">bottom</span><span class="pre">of</span><span class="pre">the</span><span class="pre">screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">:.=&nbsp;&nbsp;&nbsp;&nbsp;returns&nbsp;line&nbsp;number&nbsp;of&nbsp;current&nbsp;line&nbsp;at&nbsp;bottom&nbsp;of&nbsp;screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">:=&nbsp;returns&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;lines&nbsp;at&nbsp;bottom&nbsp;of&nbsp;screen</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">^g&nbsp;provides&nbsp;the&nbsp;current&nbsp;line&nbsp;number,&nbsp;along&nbsp;with&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;lines,&nbsp;in&nbsp;the&nbsp;file&nbsp;at&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the&nbsp;screen</span></code></div>
 </div>
 </div>
 <div class="section" id="saving-and-reading-files">
@@ -626,11 +635,11 @@ number of lines in the file being edited is sometimes useful.</p>
 <p>These commands permit you to input and output files other than the named
 file with which you are currently working.</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">:r</span><span class="pre">filename</span></code>``            read file named filename and insert after current line (the line with cursor)``</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">:w</span></code>``                 write current contents to file named in original vi call``</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">:w</span><span class="pre">newfile</span></code>``         write current contents to a new file named newfile``</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">:12,35w</span><span class="pre">smallfile</span></code>``  write the contents of the lines numbered 12 through 35 to a new file named smallfile``</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">:w!</span><span class="pre">prevfile</span></code>``           write current contents over a pre-existing file named prevfile``</div>
+<div class="line"><code class="docutils literal"><span class="pre">:r&nbsp;filename</span></code>``&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read&nbsp;file&nbsp;named&nbsp;filename&nbsp;and&nbsp;insert&nbsp;after&nbsp;current&nbsp;line&nbsp;(the&nbsp;line&nbsp;with&nbsp;cursor)``</div>
+<div class="line"><code class="docutils literal"><span class="pre">:w</span></code>``&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write&nbsp;current&nbsp;contents&nbsp;to&nbsp;file&nbsp;named&nbsp;in&nbsp;original&nbsp;vi&nbsp;call``</div>
+<div class="line"><code class="docutils literal"><span class="pre">:w&nbsp;newfile</span></code>``&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write&nbsp;current&nbsp;contents&nbsp;to&nbsp;a&nbsp;new&nbsp;file&nbsp;named&nbsp;newfile``</div>
+<div class="line"><code class="docutils literal"><span class="pre">:12,35w&nbsp;smallfile</span></code>``&nbsp;&nbsp;write&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;lines&nbsp;numbered&nbsp;12&nbsp;through&nbsp;35&nbsp;to&nbsp;a&nbsp;new&nbsp;file&nbsp;named&nbsp;smallfile``</div>
+<div class="line"><code class="docutils literal"><span class="pre">:w!&nbsp;prevfile</span></code>``&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write&nbsp;current&nbsp;contents&nbsp;over&nbsp;a&nbsp;pre-existing&nbsp;file&nbsp;named&nbsp;prevfile``</div>
 </div>
 </div>
 </div>

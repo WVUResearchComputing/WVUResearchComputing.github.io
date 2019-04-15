@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -202,26 +211,26 @@
 <div class="section" id="resource-manager-and-system-scheduler">
 <h3>Resource manager and system scheduler<a class="headerlink" href="#resource-manager-and-system-scheduler" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Torque v. 6.1.x</p></li>
-<li><p>Moab Cluster Manager v. 9.1.x</p></li>
+<li>Torque v. 6.1.x</li>
+<li>Moab Cluster Manager v. 9.1.x</li>
 </ul>
 </div>
 <div class="section" id="total-compute-resources">
 <h3>Total Compute Resources<a class="headerlink" href="#total-compute-resources" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>3,376 Cores</p></li>
-<li><p>176 Compute Nodes</p></li>
-<li><p>4 Management Nodes</p></li>
-<li><p>18 GPUs</p></li>
+<li>3,376 Cores</li>
+<li>176 Compute Nodes</li>
+<li>4 Management Nodes</li>
+<li>18 GPUs</li>
 </ul>
 </div>
 <div class="section" id="shared-interconnect">
 <h3>Shared Interconnect<a class="headerlink" href="#shared-interconnect" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Mellanox SX6512 Infiniband Switch</p></li>
-<li><p>216 ports all non-blocking</p></li>
-<li><p>FDR (56 Gb/s) speed</p></li>
-<li><p>All Fibre Connections</p></li>
+<li>Mellanox SX6512 Infiniband Switch</li>
+<li>216 ports all non-blocking</li>
+<li>FDR (56 Gb/s) speed</li>
+<li>All Fibre Connections</li>
 </ul>
 </div>
 </div>
@@ -250,7 +259,7 @@
 <h2>Environment modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>The current state and limits of queues can be found using the qstat
 command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qstat -q
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qstat -q
 
 server: srih0001.hpc.wvu.edu
 
