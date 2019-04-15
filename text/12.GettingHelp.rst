@@ -7,10 +7,10 @@ To request the opening of an account, software installation, general support on 
 
 `WVU Research Computing - HPC HelpDesk <https://helpdesk.hpc.wvu.edu>`_
 
-.. image:: /_static/helpdesk.png
+.. image:: /_static/helpdesk-td.png
 
-Click *Open a New Ticket* and fill mandatory fields marked with a red `*`
+Fill out the subject field, select a help topic, and fill out all the mandatory fields.
 
-.. image:: /_static/helpdesk-ticket.png
+.. image:: /_static/helpdesk-ticket-td.png
 
-Once all relevant information is provided, click on *Create Ticket* and your request will be submitted to the WVU-RC for processing.
+Once all relevant information is provided, click on *Request* and your request will be submitted to the WVU-RC for processing.
