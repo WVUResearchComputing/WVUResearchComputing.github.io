@@ -3,27 +3,31 @@
 Command Line Interface
 ======================
 
-The interaction with a HPC cluster happens most of the time using a Command Line Interface (CLI). One the cluster all your interaction is controlled by a program called a *shell*. You identify that you are in *shell* when you see what is called a *prompt*, a set of characters that indicate that the *shell* is ready to receive instructions to operate.
+The interaction with a HPC cluster happens most of the time using a Command Line Interface (CLI) also known as terminal. On a terminal, all your interaction is controlled by a program called *shell*. You identify that you are in *shell* when you see what is called a *prompt* message, a set of characters that indicate that the *shell* is ready to receive instructions to operate.
 
 To issue a command to the shell you type a command, eventually followed for a few arguments. When you end typing the full command you type the ``ENTER`` key, the command is executed and if the command is programmed to produce screen output it will appear on your terminal as it executes. Once the command is terminated you get a new *prompt* indicating that the shell is ready for new commands.
 
-The CLI interface is a powerful way to interact with a remote computer.
+The CLI interface is a powerful way to interact with a remote computer for several reasons:
 
 1. It takes little resources on the remote machine allowing the machine to serve tens, hundreds and in some cases even thousands of concurrent users.
 
-2. The *shell* is far more than command reader and executioner, it is actually a complete programming language. You can create complex sets of instructions by doing what is called *Shell Programming* actually the ability to do shell programming is what we use in this document to differentiate a basic user from an advanced user.
+2. The *shell* is far more than command reader and executioner, it is actually a complete programming language. You can create complex sets of instructions by doing what is called *Shell Programming* actually, the ability to do shell programming is what we use in this document to differentiate a basic user from an advanced user.
 
-3. Despite of the learning curve being steeper, the CLI give you far more control on the machine, so as you become more comfortable using it you will be able to do things than on a Graphical User Interface are simply cumbersome.
+3. Despite of the learning curve being steeper, the CLI give you far more control on the machine, so as you become more comfortable using it you will be able to do things than on a Graphical User Interface (GUI) are too cumbersome.
 
-Using a CLI is probably the biggest obstacle than beginners has to overcome before start taking advantage of a HPC cluster. Here we will offer a short straight to the point introduction to the bare minimals of managing files and folders on the *shell*.
+Using a CLI is probably the biggest obstacle than beginners has to overcome before start taking advantage of a HPC cluster. Here we will offer a short straight to the point introduction to the bare minimal of managing files and folders on the *shell*.
 
 Files and Folders
 -----------------
 
-Operating Systems from UNIX legacy, Linux and MacOS being the most prominent examples, uses the idea of *folders* and *files* to organize the data on their storage device. Differently from Windows, on UNIX there is not such idea of Drives ``C:`` or ``D:`` or letters for CD Drives or USB Keys. In UNIX every piece of data on any storage device is logically located in some place of a *filesystem tree*. Thing about the *filesystem tree* where the lowest level is called *the root folder* and is indicated by ``/``. From ``/`` you will see branches like ``/bin``, ``/lib`` and many others, those are folders. Inside each folder there are potentially more folders and files. The tree structure as a metaphor for storing data is very powerful and in the case of UNIX system that data structure is deeply exploited in UNIX systems, even hardware devices such as sound outputs, hard drives receive a file-like entry on the rooted tree.
+Operating Systems from UNIX legacy, Linux and MacOS being the most prominent examples, uses the idea of *folders* and *files* to organize the data on their storage device. Differently from Windows, on UNIX there is no such idea of Drives ``C:`` or ``D:`` or letters for CD Drives or USB Keys. In UNIX every piece of data on any storage device is logically located in some place of a *filesystem tree*. Think about the *filesystem tree* where the lowest level is called *the root folder* and is indicated by ``/``. From ``/`` you will see branches like ``/bin``, ``/lib`` and many others, those are folders. Inside each folder, there are potentially more folders and files. The tree structure as a metaphor for storing data is very powerful and in the case of UNIX systems, that data structure is deeply exploited, even hardware devices such as sound cards, CD drives and hard drives receive a file-like entry on the rooted tree.
 When you insert a USB drive, Modern Linux distributions and MacOS will *mount* it automatically, meaning that it will receive a location on the tree, in the case of Linux, the mounting point is usually somewhere inside */media/*, in MacOS the mounting point is */Volumes*.
 
-In the particular case of your interaction with the HPC cluster there are two important folders that you should be aware of. They are so important that they receive special variables to tell you what they are.
+In the particular case of your interaction with the HPC cluster, there are two important folders that you should be aware of. They are so important that they receive special variables to tell you what they are. The ``$HOME`` and ``$SCRATCH``, each user gets assigned a unique location for both folders.
+On them the user has the rights to create, modify and delete files and folders as he/she wants. In Linux the names of files and folders are basically arbitrary. Most linux filesystems are case sensitive, meaning that changing the file in lowercase and uppercase refers to different files. Using spaces for files and folders is allowed but discouraged as it force you to enclose the filename in quotes `` " and "`` for declare them or escaping the spaces like,
+``This\ file\ has\ spaces``.
+
+
 
 The *echo* and *cat* commands
 -----------------------------
@@ -37,7 +41,7 @@ Your fist command will show you what those locations are. Execute::
 
 The first command to learn is ``echo``. The command above uses ``echo`` to show the contents of two shell variables ``$HOME`` and ``$SCRATCH``. Shell variables are ways to store information in such a way that the shell can use it when needed. Each user on the cluster receives appropriated values for those variables.
 
-Lets explore a bit more the usage of ``echo``. Enter this command line and execute ``ENTER``::
+Let us explore a bit more the usage of ``echo``. Enter this command line and execute ``ENTER``::
 
   $> echo "I am learning UNIX Commands"
   I am learning UNIX Commands
@@ -54,7 +58,7 @@ Notice that as customary in mathematics products take precedence over addition. 
   42
 
 Notice that the exponential operation is expressed with the ``**`` operator.
-The usage of ``echo`` is important, otherwise, if you execute the command without ``echo`` the shell will do the operation and will try to execute a command called ``42`` that does not exists on the system. Try by yourself::
+The usage of ``echo`` is important, otherwise, if you execute the command without ``echo`` the shell will do the operation and will try to execute a command called ``42`` that does not exist on the system. Try by yourself::
 
   $> $ $(((1+2**3*(4+5)-7)/2+9))
   -bash: 42: command not found
@@ -74,7 +78,7 @@ To check that the file actually contains the line produced by echo, execute::
 
 The cat (concatenate) command displays the contents of one or several files. In the case of multiple files the files are printed in the order they are described in the command line, concatenating the output so the name of the command.
 
-You can even use a nice trick to write small text on a file. Execute the following command, followed by the text that you want to write, sat the end execute ``Ctrl-D`` (``^D``), the *Control Key* followed by the ``D`` key.
+You can even use a nice trick to write a small text on a file. Execute the following command, followed by the text that you want to write, sat the end execute ``Ctrl-D`` (``^D``), the *Control Key* followed by the ``D`` key.
 I am annotating below the location where ``^D`` should be executed::
 
   $> cat > report.log
@@ -82,7 +86,7 @@ I am annotating below the location where ``^D`` should be executed::
   $> cat report.log
   I am learning UNIX Commands
 
-In fact there are hundreds of commands, most of them with a variety of options that change the behavior of the original command. You can feel bewildered t first by the large number of existing commands, but in fact most of the time you will be using a very little number of them. Learning those will speed up your learning curve.
+In fact, there are hundreds of commands, most of them with a variety of options that change the behavior of the original command. You can feel bewildered t first by a large number of existing commands, but in fact most of the time you will be using a very little number of them. Learning those will speed up your learning curve.
 
 Another very simple command that is very useful in HPC is ``date``. Without any arguments, it prints the current date to the screen. Example::
 
@@ -93,7 +97,7 @@ Another very simple command that is very useful in HPC is ``date``. Without any 
 Folder commands
 ---------------
 
-As we mention before, UNIX organizes data in storage devices as a tree.
+As we mentioned before, UNIX organizes data in storage devices as a tree.
 The commands ``pwd``, ``cd`` and ``mkdir`` will allow you to know where you are, move your location on the tree and create new folders. Later we will see how to move folders from one location on the tree to another.
 
 The first command is ``pwd``. Just execute the command on the terminal::
@@ -101,17 +105,17 @@ The first command is ``pwd``. Just execute the command on the terminal::
   $> $ pwd
   /users/<username>
 
-It is very important at all times to know where in the tree you are. Doing research usually involves dealing with important amount of data, exploring several parameters or physical conditions. Organize properly all the data in meaningful folders is very important to research endeavors.
+It is very important at all times to know where in the tree you are. Doing research usually involves dealing with an important amount of data, exploring several parameters or physical conditions. Organize properly all the data in meaningful folders is very important to research endeavors.
 
 When you log into a cluster, by default you are located on your ``$HOME`` folder. That is why most likely the command ``pwd`` will return that location in a first instance.
 
-The next command is ``cd``. This command is used to *change directory*. Directory is another name for *folder*.
+The next command is ``cd``. This command is used to *change directory*. The directory is another name for *folder*.
 The term *directory* is also widely used.
 At least in UNIX the terms *directory* and *folder* are exchangeable.
-Other Desktop Operating Systems like Windows and MacOS have the concept of *smart folders* or *virtual folders*, where the *folder* that you see on screen has not correlation with a directory in the filesystem.
+Other Desktop Operating Systems like Windows and MacOS have the concept of *smart folders* or *virtual folders*, where the *folder* that you see on screen has no correlation with a directory in the filesystem.
 In those cases the distinction is relevant.
 
-There is another important folder defined in our clusters, its called the scratch folder and each user has its own. The location of the folder is stored in the variable ``$SCRATCH``. Notice that this is an internal convection and is not observed in other HPC clusters.
+There is another important folder defined in our clusters, its called the scratch folder and each user has its own. The location of the folder is stored in the variable ``$SCRATCH``. Notice that this is internal convection and is not observed in other HPC clusters.
 
 Use the next command to go to that folder::
 
@@ -131,24 +135,24 @@ This is a good opportunity to start creating one folder there and change your lo
   $> mkdir test_folder
   $> cd test_folder
 
-We have use two new commands here, ``mkdir`` allow you to create folders in places where you are authorized to do so. For example your ``$HOME`` and ``$SCRATCH`` folders. Try this command::
+We have use two new commands here, ``mkdir``allows you to create folders in places where you are authorized to do so. For example your ``$HOME`` and ``$SCRATCH`` folders. Try this command::
 
   $> mkdir /test_folder
   mkdir: cannot create directory `/test_folder': Permission denied
 
 There is an important difference between ``test_folder`` and ``/test_folder``.
-The former is a location in your current working directory (CWD), the later is a location starting on the root directory ``/``. A normal user has no rights to create folders on that directory so ``mkdir`` will fail and a error message will be shown on your screen.
+The former is a location in your current working directory (CWD), the later is a location starting on the root directory ``/``. A normal user has no rights to create folders on that directory so ``mkdir`` will fail and an error message will be shown on your screen.
 
 The name of the folder is ``test_folder``, notice the underscore between *test* and *folder*. In UNIX, there is no restriction having files or directories with spaces but using them become a nuisance on the command line. If you want to create the folder with spaces from the command line, here are the options::
 
   $> mkdir "test folder with spaces"
   $> mkdir another\ test\ folder\ with\ spaces
 
-In any case you have to type extra characters to prevent the command line application of consider those spaces as separators for several arguments in your command. Try executing the following::
+In any case, you have to type extra characters to prevent the command line application of considering those spaces as separators for several arguments in your command. Try executing the following::
 
   $> mkdir another folder with spaces
   $> ls
-  another  another folder with spaces  folder  spaces  test_folder  test folder with spaces  with
+  another folder with spaces  folder  spaces  test_folder  test folder with spaces  with
 
 Maybe is not clear what is happening here. There is an option for ``ls`` that present the contents of a directory::
 
@@ -169,9 +173,9 @@ This is the perfect opportunity to learn how to delete empty folders. Execute::
   $> rmdir folder spaces with
 
 You can delete one or several folders, but all those folders must be empty.
-If those folders contain files or more folders, the command will fail and error message will be displayed.
+If those folders contain files or more folders, the command will fail and an error message will be displayed.
 
-After deleting those folders created by mistake, lets check the contents of the current directory. The command ``ls -1`` will list the contents of a file one per line, something very convenient for future scripting::
+After deleting those folders created by mistake, let's check the contents of the current directory. The command ``ls -1`` will list the contents of a file one per line, something very convenient for future scripting::
 
   $> ls -1
   another folder with spaces
@@ -181,9 +185,9 @@ After deleting those folders created by mistake, lets check the contents of the 
 Commands for copy and move
 --------------------------
 
-The next two commands are ``cp`` and ``mv``. They are use to copy or move files or folders from one location to another. In its simplest usage, those two commands take two arguments, the first argument is the source and the last one the destination. In the case of more than two arguments the destination must be a directory. The effect will be to copy or move all the source items into the folder indicated as destination.
+The next two commands are ``cp`` and ``mv``. They are used to copy or move files or folders from one location to another. In its simplest usage, those two commands take two arguments, the first argument is the source and the last one the destination. In the case of more than two arguments, the destination must be a directory. The effect will be to copy or move all the source items into the folder indicated as the destination.
 
-Before doing a few examples with ``cp`` and ``mv`` lets use a very handy command to create files. The command ``touch`` is use to update the access and modification times of a file or folder to the current time. In case there is not such a file, the command will create a new empty file. We will use that feature to create some empty files for the purpose of demonstrate how to use ``cp`` and ``mv``.
+Before doing a few examples with ``cp`` and ``mv``let's use a very handy command to create files. The command ``touch`` is used to update the access and modification times of a file or folder to the current time. In case there is not such a file, the command will create a new empty file. We will use that feature to create some empty files for the purpose of demonstrating how to use ``cp`` and ``mv``.
 
 Lets create a few files and directories::
 
@@ -214,7 +218,7 @@ execute this command::
   $> ls f0[3,5,7]
   f03  f05  f07
 
-The files selected are those whose last character is on the list ``[3,5,7]``. Similarly a range of characters can be represented. See::
+The files selected are those whose last character is on the list ``[3,5,7]``. Similarly, a range of characters can be represented. See::
 
   $> ls f0[3-7]
   f03  f04  f05  f06  f07
@@ -232,28 +236,28 @@ The command above is equivalent to execute the explicit listing of sources::
 Delete files and Folders
 ------------------------
 
-As we mention above, empty folders can be deleted with the command ``rmdir`` but that only works if there are no subfolders or files inside the folder that you want to delete. See for example what happens if you try to delete the folder called ``odd``::
+As we mentioned above, empty folders can be deleted with the command ``rmdir`` but that only works if there are no subfolders or files inside the folder that you want to delete. See for example what happens if you try to delete the folder called ``odd``::
 
   $> rmdir odd
   rmdir: failed to remove `odd': Directory not empty
 
-If you want to delete odd, you can do it in two ways. The command ``rm`` allow you to delete one or more files entered as arguments. Lets delete all the files inside odd, followed by the deletion of the folder ``odd`` itself::
+If you want to delete odd, you can do it in two ways. The command ``rm``allows you to delete one or more files entered as arguments. Let's delete all the files inside odd, followed by the deletion of the folder ``odd`` itself::
 
   $> rm odd/*
   $> rmdir odd
 
-Another option is to delete a folder recursively, this is a powerful but also dangerous option. Even if deleting a file is not actually filling with zeros the location of the data, on HPC systems the recovery of data is practice unfeasible. Lets delete the folder even recursively::
+Another option is to delete a folder recursively, this is a powerful but also dangerous option. Even if deleting a file is not actually filling with zeros the location of the data, on HPC systems the recovery of data is practice unfeasible. Let's delete the folder even recursively::
 
   $> rm -r even
 
 Summary of Basic Commands
 -------------------------
 
-The purpose of this brief tutorial is familiarize you with the most common commands used in UNIX environments. We have shown 10 commands that you will be using, very often on your interaction. This 10 basic commands and one editor from the next section is all that you need to be ready for submitting jobs on the cluster.
+The purpose of this brief tutorial is to familiarize you with the most common commands used in UNIX environments. We have shown 10 commands that you will be using, very often on your interaction. This 10 basic commands and one editor from the next section is all that you need to be ready for submitting jobs on the cluster.
 
 The next table summarizes those commands.
 
-.. table:: WVU's High Performance Computer (HPC) Clusters
+.. table:: WVU's High-Performance Computer (HPC) Clusters
     :widths: 10 20 30
 
     +---------+-------------------------------------------------------+-----------------------------------+
@@ -293,4 +297,3 @@ The next table summarizes those commands.
     |         |                                                       | | ``$> rm -r full_folder``        |
     |         |                                                       |                                   |
     +---------+-------------------------------------------------------+-----------------------------------+
-

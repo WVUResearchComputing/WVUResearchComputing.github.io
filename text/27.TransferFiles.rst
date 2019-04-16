@@ -3,12 +3,12 @@
 Transferring Files
 ==================
 
-Due to the large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly opimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:
+Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:
 
 * DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN's are connected to `WVU's Science DMZ network <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=9806>`__ which is a dedicated network to science/research data across campus.
-* Users who transfer data using a login node, can put the login node under strain causing it slow down affecting other users and even possibly cause the node to fail.
+* Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.
 
-WVU's recommended method for transferring data is `Globus Online <https://www.globus.org/>`__.  The other supported method is sftp. 
+WVU's recommended method for transferring data is `Globus Online <https://www.globus.org/>`__.  The other supported method is sftp.
 
 Data Transfer Nodes
 -------------------
@@ -22,16 +22,16 @@ Research Computing offers dedicated servers for transferring files at each one o
 +-----------------+------------------+----------------------+----------------------------+--------------------+
 | sftp Hostname   | data.hpc.wvu.edu | tf-data.hpc.wvu.edu  | datadepot-sftp.hpc.wvu.edu | NA                 |
 +-----------------+------------------+----------------------+----------------------------+--------------------+
-  
+
 Using Globus Online
 -------------------
 
-Globus Online is the preferred method for transferring files to, from, and between Reserach Computing Resources.  WVU is also a `Globus Subscriber <https://www.globus.org/subscriptions>`__ which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditonal transfer methods (i.e. scp, sftp, rsync):
+Globus Online is the preferred method for transferring files to, from, and between Research Computing Resources.  WVU is also a `Globus Subscriber <https://www.globus.org/subscriptions>`__ which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditional transfer methods (i.e. scp, sftp, rsync):
 
-* Auto performance tuning to ensure the data is transferrred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.
+* Auto performance tuning to ensure the data is transferred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.
 * Safe transfers by ensuring data integrity using checksum methods.
 * Transfers are automatically restarted after a failed or stopped connection.
-* Abilility to only transfer files that have yet to be transferred (similar to rsync).
+* Ability to only transfer files that have yet to be transferred (similar to rsync).
 * Transfers are done in the background so users do not need to remain logged into the system.
 
 WVU's Globus Subscription adds the following features:
@@ -42,13 +42,12 @@ WVU's Globus Subscription adds the following features:
 
 **Review** https://www.globus.org/researchers/getting-started for a step by step guide on use Globus Online.
 
-Note: For a video on how to utilze Globus Online with Google Drive, please see https://www.youtube.com/watch?v=tDdVsNVK3ko&feature=youtu.be.
+Note: For a video on how to utilize Globus Online with Google Drive, please see https://www.youtube.com/watch?v=tDdVsNVK3ko&feature=youtu.be.
 
 Alternative Transfer Methods
 ----------------------------
 
-To transfer files to Research Coomputing  systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found `here <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server>`__.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:
+To transfer files to Research Computing systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found `here <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server>`__.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:
 
 * https://winscp.net/eng/index.php
 * https://filezilla-project.org/
-

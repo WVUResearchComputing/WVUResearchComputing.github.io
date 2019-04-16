@@ -9,7 +9,7 @@ Running Jobs on Login Node
 Running jobs/tasks on the login node are not permitted. When the RC admin
 team notices this occurring, the processes will be killed immediately to
 ensure system stability. If you are having trouble submitting jobs
-through the scheduler, please follow instructions on :ref:`int-getting-help` and we would he happy to help.
+through the scheduler, please follow instructions on :ref:`int-getting-help` and we would be happy to help.
 
 Data storage
 ------------
@@ -24,7 +24,7 @@ Sharing User Directories
 
 Initially sharing user directories or scratch space is not permitted.
 This is for tracking user purposes. However, we recognize that research
-is collaborative in nature, and therefore we are attentive for request
+is collaborative in nature, and therefore we are attentive to request
 for sharing resources across user spaces for temporary or fixed time
 limits to get jobs completed. Please follow instructions on :ref:`int-getting-help` and the WVU-RC team with these requests.
 
@@ -82,7 +82,7 @@ X11 Forwarding - Running visualization software
 -----------------------------------------------
 
 Non compute intensive processes for visualization purposes can be run on
-the login node. These processes include "could" Gnuplot, R and Matlab.
+the login node. These processes include "could" Gnuplot, R, and Matlab.
 However, if your visualization job requires computing data before
 producing graphs and figures, it is best to run these jobs through the
 scheduler in batch mode. Compute-intensive jobs, visualization or not,
