@@ -14,7 +14,7 @@ Information Technology Services (ITS) dedicated to supporting, enabling and adva
 This site contains information about how to use the various technologies provided by the Research Computing division at West Virginia University.
 Most documentation here refers to our High Performance Computing clusters but we also provide a variety of other services a large storage service called DataDepot, a DMZ (demilitarized zone) for high speed data transfers called Research Exchange (REX) and support and training in areas of High Performance Computing, Data Analysis and Parallel Programming.
 
-The contents of this website can be downloaded as a single PDF here: `docs_hpc_wvu.pdf <https://github.com/WVUResearchComputing/WVUResearchComputing.github.io/raw/master/docs_hpc_wvu.pdf>`_
+The contents of this website can be downloaded as a single PDF here: `docs_hpc_wvu.pdf <https://docs.hpc.wvu.edu/docs_hpc_wvu.pdf>`_
 
 
 There are several websites associated with WVU-RC activities, here is a list of the most relevant ones:
