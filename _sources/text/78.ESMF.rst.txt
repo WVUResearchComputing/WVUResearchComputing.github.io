@@ -1,0 +1,298 @@
+Compiling Earth Modeling Packages
+=================================
+
+These instructions describe how to compile various packages for Earth modeling, climate, weather and related applications.
+
+
+Earth System Modeling Framework (ESMF)
+--------------------------------------
+
+The Earth System Modeling Framework (ESMF) is high-performance, flexible software infrastructure for building and coupling weather, climate, and related Earth science applications. The ESMF defines an architecture for composing complex, coupled modeling systems and includes data structures and utilities for developing individual models.
+
+We describe how the code was compiled for Thorny Flat using Intel Compiler Suite and MPI libraries.
+
+Download the code
+~~~~~~~~~~~~~~~~~
+
+The code can be clone with git from::
+
+  git clone https://git.code.sf.net/p/esmf/esmf
+
+The code was cloned at this at ``/shared/src/planetary/esmf``
+
+Setting the environment variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The building system is driven by a set of environment variables that need to be exported before executing make. This compilation will be done exclusively using Intel compilers. First we need to load the module for Intel 2018::
+
+  module load lang/intel/2018_u4
+
+
+The variables that need to be exported are::
+
+  export ESMF_DIR=/shared/src/planetaryesmf
+  export ESMF_COMM=intelmpi
+  export ESMF_COMPILER=intel
+  export ESMF_INSTALL_PREFIX=/shared/software/planetary/esmf
+
+Compiling the code
+~~~~~~~~~~~~~~~~~~
+
+To compile the code just execute::
+
+  make
+
+The compilation takes a while, notice that the first lines shows the values of several environnment variables, the 4 that we just set and a few others internal to the makefile::
+
+  --------------------------------------------------------------
+  ESMF_VERSION_STRING:    8.0.0 beta snapshot
+  ESMF_8_0_0_beta_snapshot_30-48-g8e8a213
+  --------------------------------------------------------------
+  # On branch master
+  nothing to commit, working directory clean
+  --------------------------------------------------------------
+
+  --------------------------------------------------------------
+  Make version:
+  GNU Make 3.82
+  Built for x86_64-redhat-linux-gnu
+  Copyright (C) 2010  Free Software Foundation, Inc.
+  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+  This is free software: you are free to change and redistribute it.
+  There is NO WARRANTY, to the extent permitted by law.
+
+  --------------------------------------------------------------
+  Fortran Compiler version:
+  mpiifort for the Intel(R) MPI Library 2018 Update 4 for Linux*
+  Copyright(C) 2003-2018, Intel Corporation.  All rights reserved.
+  Intel(R) Fortran Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 18.0.5.274 Build 20180823
+  Copyright (C) 1985-2018 Intel Corporation.  All rights reserved.
+
+
+  --------------------------------------------------------------
+  C++ Compiler version:
+  mpiicpc for the Intel(R) MPI Library 2018 Update 4 for Linux*
+  Copyright(C) 2003-2018, Intel Corporation.  All rights reserved.
+  Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 18.0.5.274 Build 20180823
+  Copyright (C) 1985-2018 Intel Corporation.  All rights reserved.
+
+
+  --------------------------------------------------------------
+  Preprocessor version:
+  gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-36)
+  Copyright (C) 2015 Free Software Foundation, Inc.
+  This is free software; see the source for copying conditions.  There is NO
+  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+  --------------------------------------------------------------
+   * User set ESMF environment variables *
+  ESMF_COMM=intelmpi
+  ESMF_COMPILER=intel
+  ESMF_DIR=/shared/src/planetary/esmf
+  ESMF_INSTALL_PREFIX=/shared/software/planetary/esmf
+
+  --------------------------------------------------------------
+  ...
+  ...
+
+At the end of compilation you should get::
+
+  make[2]: Leaving directory `/gpfs20/shared/src/planetary/esmf'
+  make[1]: Leaving directory `/gpfs20/shared/src/planetary/esmf'
+  make[1]: Entering directory `/gpfs20/shared/src/planetary/esmf'
+  make[1]: Nothing to be done for `build_tracelibs'.
+  make[1]: Leaving directory `/gpfs20/shared/src/planetary/esmf'
+  make[1]: Entering directory `/gpfs20/shared/src/planetary/esmf'
+  make[1]: Leaving directory `/gpfs20/shared/src/planetary/esmf'
+  ESMF library built successfully on Mon Apr 15 11:30:40 EDT 2019
+  To verify, build and run the unit and system tests with: make check
+   or the more extensive: make all_tests
+
+The tests can be performed with::
+
+  make all_tests
+
+After the tests you should see and output like this::
+
+  The stdout files for the examples can be found at:
+  /shared/src/planetary/esmf/examples/examplesO/Linux.intel.64.intelmpi.default
+
+  Found 85 multi-processor examples, 85 passed and 0 failed.
+
+  make[2]: Leaving directory `/gpfs20/shared/src/planetary/esmf'
+
+  SYSTEM TESTS SUMMARY
+  Found 45 multi-processor system tests, 45 passed and 0 failed.
+
+  EXAMPLES SUMMARY
+  Found 85 multi-processor examples, 85 passed and 0 failed.
+
+  UNIT TESTS SUMMARY
+  Found 3460 non-exhaustive multi-processor unit tests, 3460 passed and 0 failed.
+
+  make[1]: Leaving directory `/gpfs20/shared/src/planetary/esmf'
+
+Installing ESMF
+~~~~~~~~~~~~~~~
+
+Finally, install the libraries and supporting binaries with::
+
+  make install
+
+
+Thermosphere Ionosphere Electrodynamics General Circulation Model (TIE-GCM)
+---------------------------------------------------------------------------
+
+The NCAR Thermosphere-Ionosphere-Electrodynamics General Circulation Model (TIE-GCM) is a comprehensive, first-principles, three-dimensional, non-linear representation of the coupled thermosphere and ionosphere system that includes a self-consistent solution of the middle and low-latitude dynamo field. The model solves the three-dimensional momentum, energy and continuity equations for neutral and ion species at each time step, using a semi-implicit, fourth-order, centered finite difference scheme on each pressure surface in a staggered vertical grid. It can be run in either serial or parallel mode on a variety of platforms, including Linux workstations and supercomputers. The time step is typically 120 s.
+
+Download the code
+~~~~~~~~~~~~~~~~~
+
+The code can be downloaded from `HAO-UCAR webpage <https://www.hao.ucar.edu/modeling/tgcm/tie.php>`_
+
+After registering 3 files need to be downloaded for TIE-GCM 2.0::
+
+  tiegcm2.0.tar
+  tiegcm2.0_res2.5_data.tar
+  tiegcm2.0_res5.0_data.tar
+
+The files can be uncompress with the command::
+
+  tar -xvf tiegcm2.0.tar
+  tar -xvf tiegcm2.0_res2.5_data.tar
+  tar -xvf tiegcm2.0_res5.0_data.tar
+
+
+Editing the make configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once you have downloaded and uncompress the files. You need to adapt/create a Make configuration file suitable for the cluster were the model will run.
+Go to ``tiegcm2.0/scripts`` and make a copy of ``Make.intel_hao64`` as we will use it as template for our cluster. This tutorial assumes that you are using Thorny Flat, so copy the file as ``Make.intel_thorny``::
+
+  cd tiegcm2.0/scripts
+  cp Make.intel_hao64 Make.intel_thorny
+
+Modify ``Make.intel_thorny`` to match the file below::
+
+  #
+  # Included makefile for Intel ifort compiler with openmpi on 64-bit HAO machines.
+  # Intel ifort (IFORT) 12.0.0 20101006
+  #
+  F90      = ifort
+  MPIF90   = mpiifort
+  MPIRUN   = mpirun -l -s all
+  FFLAGS   = -r8 -heap-arrays
+  DBGFLAGS = -debug full -traceback
+  DBGFLAGS += -check bounds -check format -check output_conversion -check pointers -check uninit
+  DBGFLAGS += -fpe-all=0 # this traps all floating point exceptions
+  #
+  # Makefile will use OPTIM = -g if set debug=TRUE in job script.
+  OPTIM    = -O3
+  LIBS     = -lcurl -lnetcdff -lnetcdf
+  HOST     = $(shell hostname)
+  #
+  # Library and Include file paths:
+  #
+  LIB_NETCDF = /shared/software/libs/netcdf/4.x_intel18_impi18/lib
+  INC_NETCDF = /shared/software/libs/netcdf/4.x_intel18_impi18/include
+  #
+  # This public release of ESMF was built at hao with intel on Dec 22, 2015:
+  #
+  LIB_ESMF = /shared/software/planetary/esmf/lib/libO/Linux.intel.64.intelmpi.default
+  #
+  # Make machines.ini file for MPI execution:
+  #
+  prereq: machines.ini mpirun.command
+  machines.ini: export HN=$(HOST)
+  machines.ini: export NP=$(NPROC)
+  machines.ini: FORCE
+          @echo "Making machines.ini.."
+          @echo `hostname` > machines.ini
+          @awk 'BEGIN{ for (i=2; i <= ENVIRON["NP"]; i++) print ENVIRON["HN"] }' >> machines.ini
+
+  mpirun.command: FORCE
+          @echo "Making mpirun.command: MPIRUN=$(MPIRUN)"
+          @echo $(MPIRUN) > mpirun.command
+
+  FORCE:
+
+Notice that we have change the compilers, as loading the module for Intel 2018 will add them to the search ``$PATH``.
+It is important to add ``-lnetcdff -lnetcdf`` as newer versions of NetCDF separate the fortran and C interfaces and both libraries need to be loaded.
+You should also load the module for netcdf::
+
+  module load libs/netcdf/4.x_intel18_impi18
+
+In the previous section we have compiled and installed ESMF. The location on Thorny Flat being ``/shared/software/planetary/esmf`` so the variable ``LIB_ESMF`` reflects the location for ESMF libraries.
+
+This Make configuration file should remain in ``tiegcm2.0/scripts`` and will be captured by the execution script.
+
+Editing the execution script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now we have to edit the execution script ``tiegcm-thorny.job``. It is a good idea to make a copy of it before editing::
+
+  cp tiegcm-linux.job tiegcm-thorny.job
+
+There just a few changes to introduce here. The whole script will not be shown here, just the pieces that needs some changes. The first portion should look like this::
+
+  #! /bin/csh
+  #
+  # Job script to build and execute the model on a 64-bit Linux desktop machine.
+  #
+  # User must set shell variables below:
+  #
+  #   modeldir:  Root directory to model source (may be an SVN working dir)
+  #   execdir:   Directory in which to build and execute (will be created if necessary)
+  #   tgcmdata:  Directory in which startup history and data files are accessed.
+  #              (If tgcmdata is not set, the model will use env var TGCMDATA)
+  #   input:     Namelist input file for the chosen model resolution
+  #   output:    Stdout file from model execution (will be created)
+  #   modelres:  Model resolution (5.0 or 2.5 degrees)
+  #   make:      Build file with platform-specific compile parameters (in scripts dir)
+  #   mpi:       TRUE/FALSE for MPI run (non-MPI runs are not supported in v2.0 and later)
+  #   debug:     If TRUE, build and execute a "debug" run (debug compiler flags are set)
+  #   exec:      If TRUE, execute the model (build only if exec is FALSE)
+  #   utildir:   Directory containing supporting scripts (default $modeldir/scripts)
+  #   runscript: LSF script with run commands (submitted with bsub from execdir)
+  #
+  # To switch to 2.5-deg resolution, set modelres below to 2.5,
+  # and change execdir, tgcmdata and namelist input if necessary.
+  #
+  set modeldir = tiegcm2.0
+  set execdir  = tiegcm.exec
+  set tgcmdata = tiegcm_res5.0_data
+  set input    = tiegcm_res5.0.inp
+  set output   = tiegcm_res5.0.out
+  set modelres = 5.0
+  set make     = Make.intel_thorny
+  set mpi      = TRUE
+  set nproc    = 20
+  set debug    = FALSE
+  set exec     = TRUE
+  set utildir  = $modeldir/scripts
+  ...
+
+Notice that the make file changed to ``Make.intel_thorny``. Next, the number of processors is fixed to 20, notice that on Thorny Flat we have nodes with 24 and 40. The best number depends on how intense in the calculation. For 5.0 degrees
+the code completes in just a few minutes. Remember to change modelres accordingly: 5.0 or 2.5 degrees.
+
+The final change is half down the script were there is a conditional for using the intel compiler. Around line 210 I include a condition to set the compiler to intel::
+
+  set compiler = 'unknown'
+  if ($make == Make.intel_hao64) then
+    set compiler = intel
+  else if ($make == Make.pgi_hao64) then
+    set compiler = pgi
+  else if ($make == Make.gfort_hao64) then
+    set compiler = gfort
+  else if ($make == Make.intel_thorny) then
+    set compiler = intel
+  endif
+  echo Compiler: $compiler
+
+Using 20 cores, it takes around 7 minutes on Thorny Flat to get the results::
+
+  Executing mpirun -l -s all with executable ./tiegcm2.0 at Tue Apr 16 10:32:11 EDT 2019
+  Linux MPI run of ./tiegcm2.0 completed at Tue Apr 16 10:39:45 EDT 2019
+  Overwriting file  /gpfs20/shared/src/planetary/tiegcm2.0/tiegcm_res2.5.out  with non-ASCII characters removed.
+  mklogs: Extracting log files from  /gpfs20/shared/src/planetary/tiegcm2.0/tiegcm_res2.5.out
