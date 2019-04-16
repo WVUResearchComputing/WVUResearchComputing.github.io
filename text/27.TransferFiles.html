@@ -192,10 +192,10 @@
             
   <div class="section" id="transferring-files">
 <span id="qs-transfer-files"></span><h1>Transferring Files<a class="headerlink" href="#transferring-files" title="Permalink to this headline">¶</a></h1>
-<p>Due to the large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly opimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:</p>
+<p>Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:</p>
 <ul class="simple">
 <li>DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN’s are connected to <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=9806">WVU’s Science DMZ network</a> which is a dedicated network to science/research data across campus.</li>
-<li>Users who transfer data using a login node, can put the login node under strain causing it slow down affecting other users and even possibly cause the node to fail.</li>
+<li>Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.</li>
 </ul>
 <p>WVU’s recommended method for transferring data is <a class="reference external" href="https://www.globus.org/">Globus Online</a>.  The other supported method is sftp.</p>
 <div class="section" id="data-transfer-nodes">
@@ -235,12 +235,12 @@
 </div>
 <div class="section" id="using-globus-online">
 <h2>Using Globus Online<a class="headerlink" href="#using-globus-online" title="Permalink to this headline">¶</a></h2>
-<p>Globus Online is the preferred method for transferring files to, from, and between Reserach Computing Resources.  WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditonal transfer methods (i.e. scp, sftp, rsync):</p>
+<p>Globus Online is the preferred method for transferring files to, from, and between Research Computing Resources.  WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditional transfer methods (i.e. scp, sftp, rsync):</p>
 <ul class="simple">
-<li>Auto performance tuning to ensure the data is transferrred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.</li>
+<li>Auto performance tuning to ensure the data is transferred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.</li>
 <li>Safe transfers by ensuring data integrity using checksum methods.</li>
 <li>Transfers are automatically restarted after a failed or stopped connection.</li>
-<li>Abilility to only transfer files that have yet to be transferred (similar to rsync).</li>
+<li>Ability to only transfer files that have yet to be transferred (similar to rsync).</li>
 <li>Transfers are done in the background so users do not need to remain logged into the system.</li>
 </ul>
 <p>WVU’s Globus Subscription adds the following features:</p>
@@ -250,11 +250,11 @@
 <li>Sharing of data from personal workstations via <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</li>
 </ul>
 <p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step by step guide on use Globus Online.</p>
-<p>Note: For a video on how to utilze Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
+<p>Note: For a video on how to utilize Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
 </div>
 <div class="section" id="alternative-transfer-methods">
 <h2>Alternative Transfer Methods<a class="headerlink" href="#alternative-transfer-methods" title="Permalink to this headline">¶</a></h2>
-<p>To transfer files to Research Coomputing  systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">here</a>.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:</p>
+<p>To transfer files to Research Computing systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">here</a>.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://winscp.net/eng/index.php">https://winscp.net/eng/index.php</a></li>
 <li><a class="reference external" href="https://filezilla-project.org/">https://filezilla-project.org/</a></li>

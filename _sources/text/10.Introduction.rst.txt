@@ -14,15 +14,15 @@ The next chapter is :ref:`chap-advanced-user`. Intended for users who feel comfo
 
 The chapter :ref:`chap-developers` is intended for users with interest in develop, test and run their own programs on WVU's clusters. We introduce the basics of using compilers,
 build systems, parallel programming, debugging, profiling and optimization.
-Developers can be considered as an advanced user who program their own codes or integrates other codes in more than a simple linear workflow.
+Developers can be considered as an advanced user who programs their own codes or integrates other codes in more than a simple linear workflow.
 
-In the chapter :ref:`chap-administrators` we make reference to the various tools that can be used to monitor the global health of the clusters. In general, users does not need to have that global view, but knowing how the entire cluster works can give them insights about their own role in having an effective usage of the cluster.
+In the chapter :ref:`chap-administrators` we make reference to the various tools that can be used to monitor the global health of the clusters. In general, users do not need to have that global view but knowing how the entire cluster works can give them insights about their own role in having an effective usage of the cluster.
 
 The next chapter, :ref:`chap-domain-specific` collects sections for various packages that are relevant for a restrict number of researchers.
 
 Chapter :ref:`chap-cluster-specific` should serve as a reference about the current configuration of the clusters, in terms of hardware, software, modules, and queues.
 
-The final chapter :ref:`chap-references` collects tables tables and references about Unix commands, PBS options, variables, it should be of good use when you know exactly what you are looking for.
+The final chapter :ref:`chap-references` collect tables and references about Unix commands, PBS options, variables, it should be of good use when you know exactly what you are looking for.
 
 
 .. toctree::
