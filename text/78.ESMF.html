@@ -448,10 +448,10 @@ You should also load the module for netcdf:</p>
 #
 set modeldir = tiegcm2.0
 set execdir  = tiegcm.exec
-set tgcmdata = tiegcm_res5.0_data
-set input    = tiegcm_res5.0.inp
-set output   = tiegcm_res5.0.out
-set modelres = 5.0
+set tgcmdata = tiegcm_res2.5_data
+set input    = tiegcm_res2.5.inp
+set output   = tiegcm_res2.5.out
+set modelres = 2.5
 set make     = Make.intel_thorny
 set mpi      = TRUE
 set nproc    = 20
@@ -462,7 +462,7 @@ set utildir  = $modeldir/scripts
 </pre></div>
 </div>
 <p>Notice that the make file changed to <code class="docutils literal"><span class="pre">Make.intel_thorny</span></code>. Next, the number of processors is fixed to 20, notice that on Thorny Flat we have nodes with 24 and 40. The best number depends on how intense in the calculation. For 5.0 degrees
-the code completes in just a few minutes. Remember to change modelres accordingly: 5.0 or 2.5 degrees.</p>
+the code completes in just a few minutes. Remember to change modelres accordingly: 5.0 or 2.5 degrees and related files.</p>
 <p>The final change is half down the script were there is a conditional for using the intel compiler. Around line 210 I include a condition to set the compiler to intel:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>set compiler = &#39;unknown&#39;
 if ($make == Make.intel_hao64) then
