@@ -1,5 +1,5 @@
-Compiling Earth Modeling Packages
-=================================
+Compiling Planetary Modeling Packages
+=====================================
 
 These instructions describe how to compile various packages for Earth modeling, climate, weather and related applications.
 
@@ -296,3 +296,77 @@ Using 20 cores, it takes around 7 minutes on Thorny Flat to get the results::
   Linux MPI run of ./tiegcm2.0 completed at Tue Apr 16 10:39:45 EDT 2019
   Overwriting file  /gpfs20/shared/src/planetary/tiegcm2.0/tiegcm_res2.5.out  with non-ASCII characters removed.
   mklogs: Extracting log files from  /gpfs20/shared/src/planetary/tiegcm2.0/tiegcm_res2.5.out
+
+The Global Ionosphere/Thermosphere Model (GITM)
+-----------------------------------------------
+
+GITM is a 3-dimensional spherical code that models the Earth's thermosphere and ionosphere system using a stretched grid in latitude and altitude. The number of grid points in each direction can be specified, so the resolution is extremely flexible. GITM explicitly solves for the neutral densities of O, O2, N(2D), N(2P), N(4S), N2, and NO; and ion species O+(4S), O+(2D), O+(2P), O2+, N+, N2+, and NO+. One major difference between GITM and other thermosphere codes is the use of an altitude grid instead of a pressure grid. The vertical grid spacing is less than 3 km in the lower thermosphere, and over 10 km in the upper thermosphere. GITM allows for non-hydrostatic solutions to develop (i.e., the full vertical momentum equation is solved), so more realistic dynamics in the auroral zone can be simulated.
+
+The procedure to compile the code is not properly documented, so instructions here are specific for our clusters, in particular Thorny Flat.
+
+Cloning the repository
+~~~~~~~~~~~~~~~~~~~~~~
+
+The package can be cloned from the Github page::
+
+  git clone https://github.com/aaronjridley/GITM.git
+
+Configuring the build
+~~~~~~~~~~~~~~~~~~~~~
+
+The build system is managed by a Perl script located on the root folder ``Config.pl``. All documentation about building this code is provided by executing::
+
+  ./Config.pl -h
+
+We will compile the code on Thonry Flat with support for MPI and HDF5, the modules to load are::
+
+  module load lang/intel/2018_u4 libs/hdf5/1.10.5_intel18_impi18
+
+To configure the build for Intel compilers and support  for Parallel HDF5 execute::
+
+  ./Config.pl -install -compiler=mpiifort,icc -hdf5
+
+The command should produce an output like this::
+
+  Installing GITM2
+  touch Library/src/Makefile.DEPEND Library/src/Makefile.RULES
+  cp src/ModSize.f90.orig src/ModSize.f90
+  touch src/Makefile.DEPEND src/Makefile.RULES srcInterface/Makefile.DEPEND
+  Enabling HDF5 library in Makefile.conf
+  set_hdf5_: cp share/Library/src/ModHdf5Utils_orig.f90 share/Library/src/ModHdf5Utils.f90
+  set_spice_: cp share/Library/src/ModSpice_empty.f90 share/Library/src/ModSpice.f90
+  Configuring GITM for Earth!!
+
+Any attempt to recompile with different settings usually requires removing all the sources and clone the repository back, several pieces of code remain even executing ``./Config.pl -uninstall`` or ``make clean``. This is particularly true if you change compiler.
+
+Building the code
+~~~~~~~~~~~~~~~~~
+
+After configuration several make configuration files are copied to the root folder of GITM and the code is ready for compilation. Execute the configure script again to confirm yours settings::
+
+  $ ./Config.pl
+
+  GITM2 is installed in directory /gpfs20/shared/src/planetary/aaronjridley/GITM
+      as a stand-alone code.
+  The installation is for the Linux operating system.
+  Makefile.conf was created from share/build/Makefile.Linux.mpiifort
+                             and share/build/Makefile.icc
+  The selected F90 compiler is ifort.
+  The selected C   compiler is icc.
+  The default precision for reals is double precision.
+  The maximum optimization level is -O4
+  Debugging flags:   no
+  Linked with MPI:   yes
+  Linked with HDF5:  yes
+  Linked with HYPRE: no
+  Linked with FISHPAK: no
+  Linked with SPICE: no
+  Number of cells in a block: nLon=9, nLat=9, nAlt=50
+  Max. number of blocks     : MaxBlock=4
+  Planet=Earth
+
+Execute make to compile the code::
+
+  make
+
+The binary ``GITM.exe`` will be located at ``src`` folder.
