@@ -16,3 +16,4 @@ For Advanced Users
   47.Python.rst
   48.Python.rst
   48.Pythonvenv.rst
+  49.CPAN.rst
