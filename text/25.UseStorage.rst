@@ -1,0 +1,103 @@
+.. _qs-storage:
+
+Understanding Cluster Storage
+=============================
+
+On a desktop machine, you normally own the whole hard drive and you are free
+to use it up to the limit of physical drive. On a share resource like a
+cluster, limits need to be impose to avoid one user taking too much space or
+creating too many files, that could prevent other users to store their data or
+could reduce the overall performance of the drive with too many files.
+
+There are two important locations from the user perspective, ``$HOME`` and
+``$SCRATCH`` those locations are sit on a high performance storage device and
+uses GPFS as their file system. Those locations are also shared between all
+compute nodes, so no matter on which machine you run, files on those locations
+are always available. In this quick start, we will describe briefly the purpose
+of each one of them.
+
+
+Home Directory
+--------------
+
+Home directories on Spruce Knob and Thorny Flat are located in /users directory
+and they are the default login location for users.
+The default disk quota for each user is 10 GB.
+As such, we recommend that home directories use should be
+primarily to store scripts, binary executables and all they software machinery to do your research, in cases where data is too large, the $HOME folder should not be used for storing data as it could fill quickly.
+For research data, users should use Scratch space on our clusters.
+
+The good thing about ``$HOME`` folder, despite its limited size is that all the
+data is backed up on a daily basis via snapshots and tape. Users
+can retrieve up to 4 weeks of older files from
+``/users/.snapshots/{date}/$USER`` if needed.
+If files are not available in the snapshot, please contact helpdesk@hpc.wvu.edu and the HPC team will attempt to retrieve the data from tape.
+
+Note: Users may check their storage quota via the following command::
+
+    quota
+
+This command is actually an alias for the GPFS command to manage quotas on the filesystem, the actual command is::
+
+  /usr/lpp/mmfs/bin/mmlsquota --block-size M
+
+The block size can be changed to ``K`` for Kilo Bytes, ``M`` for Mega Bytes, ``G`` for Giga Bytes and ``T`` for Tera Bytes.
+
+It is important to pay attention not only to the storage size but also to the limit on the number of files that can be stored. Too many files have an impact of file system performance so its number needs to be limited. It you create too many reaching the limit you cannot create more files on that file system even if your quota size still shows allowance.
+
+Scratch Directory
+-----------------
+
+Scratch directories are located in ``/scratch`` directory and can be easily
+moved to use the ``$SCRATCH`` environment variable set-up by default for
+each user. You can go to your scratch folder with::
+
+    cd $SCRATCH
+
+Scratch directories on our clusters are treated as **TRUE** scratch space:
+There is no user-defined quota for space. All users scratch directories share the same file space, which is set at 130 TB. When the scratch directory becomes full, files can be automatically deleted by date.
+To avoid loosing data, all users should use their scratch space as truly temporary storage.
+However, we will notify users well in advance for schedule file deletions to give users ample time to remove data to prevent data loss.
+
+It is a good idea to create a symbolic link from your $HOME folder to go directly to your $SCRATCH folder, this command will do that::
+
+  ln -s $SCRATCH $HOME/scratch
+
+Next time, you can just use the symbolic link::
+
+  cd ~/scratch
+
+**Note: Scratch data is NOT backed up.**
+
+Persistent Group Storage
+------------------------
+
+Research groups may purchase long term persistent storage from the RC
+HPC. This storage allows users to keep data on the cluster that will not
+be removed. In addition, this storage utilizes the same GPFS file system
+so files can be written directly to this storage from jobs executing on
+the cluster.
+
+Persistent storage must be purchased in 1 TB chunks. To purchase this
+storage, go to https://helpdesk.hpc.wvu.edu , select "Open a New Ticket",
+and select "Research Data Depot Storage Purchase" from Help Topic. For more
+information, please contact helpdesk@hpc.wvu.edu.
+
+In the past researchers were allowed to purchase space under ``/group`` folder. For groups who have purchased this storage, it can be accessed here::
+
+    cd /group/{group_name}
+
+**Note: Persistent group storage is NOT backed up.**
+
+**Note: Persistent Group storage has been replaced by the new**
+`Research Data Depot
+Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__
+
+Archival Storage
+----------------
+
+Please see the `Research Data Depot
+Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__
+for archival storage options.
+
+For additional information please contact helpdesk@hpc.wvu.edu.

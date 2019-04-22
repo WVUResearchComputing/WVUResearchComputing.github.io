@@ -17,6 +17,8 @@ At the end of this tutorial, you should have your account activated, connected t
    22.Connect.rst
    23.CommandLine.rst
    24.EditFiles.rst
-   25.Storage.rst
-   26.JobSubmission.rst
-   27.TransferFiles.rst
+   25.UseStorage.rst
+   26.UseModules.rst
+   27.CompileCode.rst
+   28.SubmitJobs.rst
+   29.TransferFiles.rst
