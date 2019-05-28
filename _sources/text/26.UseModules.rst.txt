@@ -1,0 +1,70 @@
+Using Environment Modules
+=========================
+
+A shared resource like a cluster, several individuals could have different requirements about the compilers, libraries and scientific codes needed for their research. Environment Modules helps users choose which compilers, libraries and software they want to use and on which versions.
+
+Modules can be loaded and unloaded during the same session. Modules are very useful when you need to use several scientific packages or compiling software under a variety of different compilers, libraries or versions of them.
+
+Knowing the available modules
+-----------------------------
+
+Execute this command to know which modules are available on the cluster::
+
+  module avail
+
+This command will give a list of all modules centrally managed on the cluster.
+On Thonry Flat the list looks like this::
+
+  $ module avail
+
+  ---------------------------------- /usr/share/Modules/modulefiles ----------------------------------
+  dot         module-git  module-info modules     null        use.own
+
+  ------------------------------------ /shared/modulefiles/tier0 -------------------------------------
+  benchmarks/hpl/2.3_gcc48        libs/fftw/3.3.8_gcc82           libs/netcdf/4.x_intel18_impi18
+  benchmarks/hpl/2.3_gcc82        libs/fftw/3.3.8_gcc82_ompi4     libs/netlib/3.8.0_intel18
+  dev/cmake/3.13                  libs/fftw/3.3.8_intel18         libs/openblas/0.3.5_gcc48
+  dev/doxygen/1.8.15              libs/hdf5/1.10.5_gcc48          libs/openblas/0.3.5_gcc82
+  lang/gcc/8.2.0                  libs/hdf5/1.10.5_gcc48_ompi2    libs/xmlf90/1.5.4_gcc48
+  lang/go/1.12.4                  libs/hdf5/1.10.5_gcc82          libs/xmlf90/1.5.4_gcc82
+  lang/intel/2018_u4              libs/hdf5/1.10.5_gcc82_ompi4    parallel/cuda/10.0.130
+  lang/intel/2019_u2              libs/hdf5/1.10.5_intel18        parallel/hwloc/1.10.1_gcc48
+  lang/intel/2019_u3              libs/hdf5/1.10.5_intel18_impi18 parallel/hwloc/1.10.1_gcc82
+  lang/java/jdk1.8.0_201          libs/libpsml/1.1.7_gcc82        parallel/hwloc/1.10.1_intel18
+  lang/julia/1.1.0                libs/libxc/3.0.1_gcc48          parallel/hwloc/2.0.3_gcc82
+  lang/python/cpython_3.7.2_gcc82 libs/libxc/3.0.1_gcc82          parallel/hwloc/2.0.3_intel18
+  lang/python/intelpython_2.7.15  libs/libxc/3.0.1_intel18        parallel/mpich/3.3_gcc82
+  lang/python/intelpython_3.6.3   libs/libxc/4.2.3_intel18        parallel/mvapich2/2.3.1_gcc82
+  lang/r/3.5.2                    libs/libxc/4.3.4_intel18        parallel/openmpi/2.1.2_gcc48
+  libs/atompaw/4.1.0.5_gcc48      libs/netcdf/4.1.1_gcc48         parallel/openmpi/2.1.6_gcc48
+  libs/atompaw/4.1.0.5_intel18    libs/netcdf/4.x_gcc48           parallel/openmpi/2.1.6_gcc82
+  libs/boost/1.70_gcc48_ompi216   libs/netcdf/4.x_gcc48_ompi2     parallel/openmpi/2.1.6_intel18
+  libs/boost/1.70_gcc82_ompi216   libs/netcdf/4.x_gcc82           parallel/openmpi/3.1.3_intel18
+  libs/boost/1.70_intel18         libs/netcdf/4.x_gcc82_ompi4     parallel/openmpi/4.0.0_gcc82
+  libs/fftw/3.3.8_gcc48           libs/netcdf/4.x_intel18         parallel/ucx/1.5.0_gcc82
+
+  ------------------------------------ /shared/modulefiles/tier1 -------------------------------------
+  conda             singularity/2.5.2
+
+  ------------------------------------ /shared/modulefiles/tier2 -------------------------------------
+  atomistic/abinit/8.10.2_gcc48           atomistic/espresso/6.4_intel18_seq
+  atomistic/abinit/8.10.2_gcc82           atomistic/espresso/6.4_intel18_thd
+  atomistic/abinit/8.10.2_gcc82_nompiio   atomistic/gromacs/2016.6_cuda
+  atomistic/abinit/8.10.2_intel18_gf      atomistic/gromacs/5.1.5_cuda
+  atomistic/abinit/8.6.3_gcc48            atomistic/lammps/2018-12-12_gcc82
+  atomistic/abinit/8.6.3_gcc48_ncdf411    atomistic/lammps/2018-12-12_gcc82_ompi2
+  atomistic/abinit/8.8.4_gcc48            atomistic/namd/2.13_CUDA
+  atomistic/abinit/8.8.4_gcc48_ncdf411    atomistic/vasp/5.4.4_intel18_seq
+  atomistic/abinit/8.8.4_gcc82            atomistic/vasp/5.4.4_intel18_thd
+  atomistic/amber/18_cuda                 bioinformatics/emboss/6.6.0
+  atomistic/amber/18_mpi                  bioinformatics/gatk/4.1.0
+  atomistic/amber/18_openmp               matlab/2018r2
+  atomistic/elk/5.2.14_intel18            visual/graphviz/2.40.1_gcc82
+
+  ------------------------------------ /shared/modulefiles/tier3 -------------------------------------
+  general_gcc82   general_intel18
+
+
+As you can see each module looks like following a tree representation, very much like a filesystem where different versions of the same software are clustered together and codes for similar purposes are under the same low level name.
+
+For this exercise, lets start with the compiler.

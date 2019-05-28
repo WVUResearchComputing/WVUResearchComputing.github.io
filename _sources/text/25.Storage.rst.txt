@@ -6,7 +6,7 @@ Storage
 Home Directory
 --------------
 
-Home directories on Spruce Knob are located in /users directory and are
+Home directories on Spruce Knob are located in /users directory and is
 the default login location for users. The default disk quota for each
 user is 10 Gb. As such, we recommend that home directories use should be
 primarily to store scripts, binary executables and other small data file
@@ -27,8 +27,8 @@ Note: Users may check their storage quota via the following command:
 Scratch Directory
 -----------------
 
-Scratch directories are located in /scratch directory and can be easily
-moved to use the $SCRATCH environment variable set-up by default for
+Scratch directories are located in /scratch directory, and can be easily
+moved to using the $SCRATCH environment variable set-up by default for
 each user.
 
 ::
@@ -36,11 +36,11 @@ each user.
     cd $SCRATCH
 
 Scratch directories on Spruce Knob are treated as true scratch space:
-There is no user-defined quota for space. All users scratch directories
+There is no user defined quota for space. All users scratch directories
 share the same file space, which is set at 130 Tb. When the scratch
 directory becomes full, files are automatically deleted by date. To
 facilitate this, all users should use their scratch space as true
-temporary storage. However, we will notify users well in advance for
+temporary storage. However, we will notify users well in advanced for
 schedule file deletions to give users ample time to remove data to
 prevent data loss.
 
@@ -56,7 +56,7 @@ so files can be written directly to this storage from jobs executing on
 the cluster.
 
 Persistent storage must be purchased in 1 TB chunks. To purchase this
-storage, go to https://helpdesk.hpc.wvu.edu , select "Open a New Ticket",
+storage, go to https://helpdesk.hpc.wvu.edu ,select "Open a New Ticket",
 and select "Dedicated Storage Order" from Help Topic. For more
 information, please contact helpdesk@hpc.wvu.edu.
 
@@ -68,7 +68,7 @@ For groups who have purchased this storage, it can be accessed here:
 
 **Note: Persistent group storage is NOT backed up.**
 
-**Note: Persistent Group storage has been replaced by the new**
+**Note: Persistent Group storage has been replaced by a the new**
 `Research Data Depot
 Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__
 

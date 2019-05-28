@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Storage &mdash; WVU-RC 1.0 documentation</title>
+  <title>Understanding Cluster Storage &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Job Submission" href="26.JobSubmission.html" />
+    <link rel="next" title="Using Environment Modules" href="26.UseModules.html" />
     <link rel="prev" title="Editing Files" href="24.EditFiles.html" /> 
 </head>
 
@@ -106,15 +106,17 @@
 <li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing Files</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Storage</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Understanding Cluster Storage</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#home-directory">Home Directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scratch-directory">Scratch Directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#persistent-group-storage">Persistent Group Storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#archival-storage">Archival Storage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="26.JobSubmission.html">Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.UseModules.html">Using Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27.CompileCode.html">Compile Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="28.SubmitJobs.html">Job Submission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="29.TransferFiles.html">Transferring Files</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
@@ -172,13 +174,13 @@
         
           <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
         
-      <li>Storage</li>
+      <li>Understanding Cluster Storage</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/25.Storage.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/25.UseStorage.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,41 +193,63 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="storage">
-<span id="qs-storage"></span><h1>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="understanding-cluster-storage">
+<span id="qs-storage"></span><h1>Understanding Cluster Storage<a class="headerlink" href="#understanding-cluster-storage" title="Permalink to this headline">¶</a></h1>
+<p>On a desktop machine, you normally own the whole hard drive and you are free
+to use it up to the limit of physical drive. On a share resource like a
+cluster, limits need to be impose to avoid one user taking too much space or
+creating too many files, that could prevent other users to store their data or
+could reduce the overall performance of the drive with too many files.</p>
+<p>There are two important locations from the user perspective, <code class="docutils literal"><span class="pre">$HOME</span></code> and
+<code class="docutils literal"><span class="pre">$SCRATCH</span></code> those locations are sit on a high performance storage device and
+uses GPFS as their file system. Those locations are also shared between all
+compute nodes, so no matter on which machine you run, files on those locations
+are always available. In this quick start, we will describe briefly the purpose
+of each one of them.</p>
 <div class="section" id="home-directory">
 <h2>Home Directory<a class="headerlink" href="#home-directory" title="Permalink to this headline">¶</a></h2>
-<p>Home directories on Spruce Knob are located in /users directory and is
-the default login location for users. The default disk quota for each
-user is 10 Gb. As such, we recommend that home directories use should be
-primarily to store scripts, binary executables and other small data file
-types. For research data, users should use Spruce Knobs Scratch space.</p>
-<p>This data is backed up on a daily basis via snapshots and tape. Users
+<p>Home directories on Spruce Knob and Thorny Flat are located in /users directory
+and they are the default login location for users.
+The default disk quota for each user is 10 GB.
+As such, we recommend that home directories use should be
+primarily to store scripts, binary executables and all they software machinery to do your research, in cases where data is too large, the $HOME folder should not be used for storing data as it could fill quickly.
+For research data, users should use Scratch space on our clusters.</p>
+<p>The good thing about <code class="docutils literal"><span class="pre">$HOME</span></code> folder, despite its limited size is that all the
+data is backed up on a daily basis via snapshots and tape. Users
 can retrieve up to 4 weeks of older files from
-/users/.snapshots/{date}/$USER if needed. If files are not available in
-the snapshot, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and the HPC team will
-attempt to retrieve the data from tape.</p>
+<code class="docutils literal"><span class="pre">/users/.snapshots/{date}/$USER</span></code> if needed.
+If files are not available in the snapshot, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and the HPC team will attempt to retrieve the data from tape.</p>
 <p>Note: Users may check their storage quota via the following command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">quota</span>
 </pre></div>
 </div>
+<p>This command is actually an alias for the GPFS command to manage quotas on the filesystem, the actual command is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lpp</span><span class="o">/</span><span class="n">mmfs</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mmlsquota</span> <span class="o">--</span><span class="n">block</span><span class="o">-</span><span class="n">size</span> <span class="n">M</span>
+</pre></div>
+</div>
+<p>The block size can be changed to <code class="docutils literal"><span class="pre">K</span></code> for Kilo Bytes, <code class="docutils literal"><span class="pre">M</span></code> for Mega Bytes, <code class="docutils literal"><span class="pre">G</span></code> for Giga Bytes and <code class="docutils literal"><span class="pre">T</span></code> for Tera Bytes.</p>
+<p>It is important to pay attention not only to the storage size but also to the limit on the number of files that can be stored. Too many files have an impact of file system performance so its number needs to be limited. It you create too many reaching the limit you cannot create more files on that file system even if your quota size still shows allowance.</p>
 </div>
 <div class="section" id="scratch-directory">
 <h2>Scratch Directory<a class="headerlink" href="#scratch-directory" title="Permalink to this headline">¶</a></h2>
-<p>Scratch directories are located in /scratch directory, and can be easily
-moved to using the $SCRATCH environment variable set-up by default for
-each user.</p>
+<p>Scratch directories are located in <code class="docutils literal"><span class="pre">/scratch</span></code> directory and can be easily
+moved to use the <code class="docutils literal"><span class="pre">$SCRATCH</span></code> environment variable set-up by default for
+each user. You can go to your scratch folder with:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>cd $SCRATCH
 </pre></div>
 </div>
-<p>Scratch directories on Spruce Knob are treated as true scratch space:
-There is no user defined quota for space. All users scratch directories
-share the same file space, which is set at 130 Tb. When the scratch
-directory becomes full, files are automatically deleted by date. To
-facilitate this, all users should use their scratch space as true
-temporary storage. However, we will notify users well in advanced for
-schedule file deletions to give users ample time to remove data to
-prevent data loss.</p>
+<p>Scratch directories on our clusters are treated as <strong>TRUE</strong> scratch space:
+There is no user-defined quota for space. All users scratch directories share the same file space, which is set at 130 TB. When the scratch directory becomes full, files can be automatically deleted by date.
+To avoid loosing data, all users should use their scratch space as truly temporary storage.
+However, we will notify users well in advance for schedule file deletions to give users ample time to remove data to prevent data loss.</p>
+<p>It is a good idea to create a symbolic link from your $HOME folder to go directly to your $SCRATCH folder, this command will do that:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ln -s $SCRATCH $HOME/scratch
+</pre></div>
+</div>
+<p>Next time, you can just use the symbolic link:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">scratch</span>
+</pre></div>
+</div>
 <p><strong>Note: Scratch data is NOT backed up.</strong></p>
 </div>
 <div class="section" id="persistent-group-storage">
@@ -236,15 +260,15 @@ be removed. In addition, this storage utilizes the same GPFS file system
 so files can be written directly to this storage from jobs executing on
 the cluster.</p>
 <p>Persistent storage must be purchased in 1 TB chunks. To purchase this
-storage, go to <a class="reference external" href="https://helpdesk.hpc.wvu.edu">https://helpdesk.hpc.wvu.edu</a> ,select “Open a New Ticket”,
-and select “Dedicated Storage Order” from Help Topic. For more
+storage, go to <a class="reference external" href="https://helpdesk.hpc.wvu.edu">https://helpdesk.hpc.wvu.edu</a> , select “Open a New Ticket”,
+and select “Research Data Depot Storage Purchase” from Help Topic. For more
 information, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>.</p>
-<p>For groups who have purchased this storage, it can be accessed here:</p>
+<p>In the past researchers were allowed to purchase space under <code class="docutils literal"><span class="pre">/group</span></code> folder. For groups who have purchased this storage, it can be accessed here:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">group</span><span class="o">/</span><span class="p">{</span><span class="n">group_name</span><span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Note: Persistent group storage is NOT backed up.</strong></p>
-<p><strong>Note: Persistent Group storage has been replaced by a the new</strong>
+<p><strong>Note: Persistent Group storage has been replaced by the new</strong>
 <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328">Research Data Depot
 Service</a></p>
 </div>
@@ -265,7 +289,7 @@ for archival storage options.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="26.JobSubmission.html" class="btn btn-neutral float-right" title="Job Submission" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="26.UseModules.html" class="btn btn-neutral float-right" title="Using Environment Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="24.EditFiles.html" class="btn btn-neutral float-left" title="Editing Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
