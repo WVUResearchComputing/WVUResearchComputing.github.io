@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Perl Language" href="44.Perl.html" />
-    <link rel="prev" title="Python" href="42.Python.html" /> 
+    <link rel="prev" title="Python Language" href="42.Python.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -105,18 +105,23 @@
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Python.html#python-virtual-environments">Python Virtual Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Python.html#id1">Python Virtual Environments</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">R Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-r-packages-in-default-directories">Installing R Packages in default Directories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-r-packages-in-non-default-directories">Installing R Packages in non-default directories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-install-packages">Using install.packages()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-r-cmd-install">Using R CMD INSTALL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-installed-packages-from-non-default-directories">Using Installed Packages from non-default directories</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="44.Perl.html#using-the-cpan-module">Using the CPAN module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html#matlab-running-matlab-scripts-on-a-hpc-cluster">Matlab: Running Matlab scripts on a HPC cluster</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
@@ -193,6 +198,55 @@
             
   <div class="section" id="r-language">
 <span id="ad-r"></span><h1>R Language<a class="headerlink" href="#r-language" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installing-r-packages-in-default-directories">
+<h2>Installing R Packages in default Directories<a class="headerlink" href="#installing-r-packages-in-default-directories" title="Permalink to this headline">¶</a></h2>
+<p>The two usual ways to install R packages from CRAN is either executing</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>from the R prompt. Or using the command</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>from the command line. The second command only works if you have already
+downloaded a copy of the package from CRAN or an external site. The
+first will automatically download the package from CRAN. R will
+automatically detect that you do not have permissions to write in the
+system-wide R library folder and will prompt if you would like to
+install in a local directory from within your home directory. This
+folder will also be checked automatically when you run R for packages,
+allowing you to use anything you install in this way.</p>
+</div>
+<div class="section" id="installing-r-packages-in-non-default-directories">
+<h2>Installing R Packages in non-default directories<a class="headerlink" href="#installing-r-packages-in-non-default-directories" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-install-packages">
+<h3>Using install.packages()<a class="headerlink" href="#using-install-packages" title="Permalink to this headline">¶</a></h3>
+<p>To use install.packages from the R prompt, before you start R you need
+to modify the R_LIBS environment variable</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Then inside the R prompt you execute install.packages() as normal (see
+above).</p>
+</div>
+<div class="section" id="using-r-cmd-install">
+<h3>Using R CMD INSTALL<a class="headerlink" href="#using-r-cmd-install" title="Permalink to this headline">¶</a></h3>
+<p>For ‘R CMD INSTALL’ command, you can specify the path with the l flag
+(lowercase ‘L’)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-installed-packages-from-non-default-directories">
+<h3>Using Installed Packages from non-default directories<a class="headerlink" href="#using-installed-packages-from-non-default-directories" title="Permalink to this headline">¶</a></h3>
+<p>To use locally installed packages, before you execute R you just need to
+modify the R_LIBS environment variable to tell R where to search for
+local packages.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -206,7 +260,7 @@
         <a href="44.Perl.html" class="btn btn-neutral float-right" title="Perl Language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="42.Python.html" class="btn btn-neutral float-left" title="Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="42.Python.html" class="btn btn-neutral float-left" title="Python Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
