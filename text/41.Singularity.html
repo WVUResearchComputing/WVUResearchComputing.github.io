@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Singularity Containers &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python Language" href="42.Python.html" />
+    <link rel="prev" title="For Advanced Users" href="40.AdvancedUser.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Singularity Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#activating-singularity">Activating Singularity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#singularity-images">Singularity Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-job-with-x11-forwarding">Interactive Job with X11 forwarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-interactive-execution-with-submission-scripts">Non-interactive execution with Submission scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-support-and-singularity">GPU Support and Singularity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
+        
+      <li>Singularity Containers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/41.Singularity.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="singularity-containers">
+<span id="ad-singularity"></span><h1>Singularity Containers<a class="headerlink" href="#singularity-containers" title="Permalink to this headline">¶</a></h1>
+<p>Singularity is an open source container solution developed specifically for HPC environments. With Singularity, HPC users can safely bring their own execution environments to the cluster. Unlike other container solutions, Singularity does not require root level permissions to run containers, which allows users to freely control what software stack they wish to use. Provisioning of a container image can be done locally on the user’s machine or on Singularity Hub. The resulting image can then be securely executed on any machine with Singularity installed. Reproduction of results means that a user can now share a single Singularity image file that will ensure a consistent execution environment wherever it is run.</p>
+<p>Singularity is a virtualization solution. There are several kinds of Virtualization solutions. From one side we have System Virtual Machines, they provide a substitute for a real machine. They provide functionality needed to execute entire operating systems. In some cases the virtualization even emulate different architectures and allow execution of software applications and operating systems written for another CPU or architecture. From the other side we have OS-level virtualization where the kernel allows the existence of multiple isolated user-space instances. Singularity belongs to the latest.</p>
+<p>Containers are similar to Virtual Machines, however, the differences are enough to consider them different technologies and those differences are very important for HPC. Virtual Machines takes up a lot of system resources. Each Virtual Machine (VM) runs not just a full copy of an operating system, but a virtual copy of all the hardware that the operating system needs to run. This quickly adds up to a lot of precious RAM and CPU cycles, valuable resources for HPC.</p>
+<p>In contrast, all that a container requires is enough of an operating system, supporting programs and libraries, and system resources to run a specific program. From the user perspective, a container is in most cases a single file that contains the file system, ie a rather complete Unix filesystem tree with all libraries, executables, and data that are needed for a given workflow or scientific computation.</p>
+<p>There are several container solutions and one prominent example is Docker. Docker is intended to run <em>trusted containers</em> by <em>trusted users</em>. This model do not fit well in HPC where computer clusters are accessed by a number of users whose privileges cannot be escalated to superuser level. For that reason Singularity utilizes a very different security paradigm. This is a required feature for implementation within any multi-user environment with
+<em>untrusted users</em> running <em>untrusted containers</em>.</p>
+<p>For more information about Singularity and complete documentation see:
+<a class="reference external" href="https://singularity.lbl.gov/quickstart">https://singularity.lbl.gov/quickstart</a></p>
+<div class="section" id="activating-singularity">
+<h2>Activating Singularity<a class="headerlink" href="#activating-singularity" title="Permalink to this headline">¶</a></h2>
+<p>There are two main components in Singulairty containers. The runtime executable and the singularity image.</p>
+<p>The <em>Container Runtime</em> or <em>Singularity runtime</em> is designed to leverage the above mentioned container formats. The runtime program is called singularity and is capable not only of running singularity images but also to create them.</p>
+<p>To activate singularity on your current terminal, on both, Spruce and Thorny execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>That will modify the <cite>$PATH</cite> variable allowing you to execute the main command for singularity:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">singularity</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="singularity-images">
+<h2>Singularity Images<a class="headerlink" href="#singularity-images" title="Permalink to this headline">¶</a></h2>
+<p>The second component are <em>Singularity images</em>. On Spruce and Thorny we have a number of centrally managed images:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">containers</span>
+</pre></div>
+</div>
+<p>or using the variable:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$SNG_PATH
+</pre></div>
+</div>
+<p>The list of Singularity images on Spruce and Thorny is the same, the table below shows the current images available.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="39%" />
+<col width="14%" />
+<col width="16%" />
+<col width="3%" />
+<col width="3%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Image Name</th>
+<th class="head" colspan="2">Description</th>
+<th class="head">Based on</th>
+<th class="head">GUI</th>
+<th class="head">GPU</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>centos-final.simg</td>
+<td colspan="2">Example of image using libgraph 1.0.2, run examples
+“circle”, “julia” and “sample”</td>
+<td>centos:latest</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>dakota-6.10-release-public-rhel7.simg</td>
+<td colspan="2">Dakota 6.10: Sandia software for optimization and
+Uncertainty Quantification</td>
+<td>centos:latest</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>docs_hpc_wvu.simg</td>
+<td colspan="2">Contains Sphinx, pandoc and scripts to create documentation
+for <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a></td>
+<td>ubuntu:bionic</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>dolmades.simg</td>
+<td colspan="2">Windows Apps under Linux using Singularity (using wine)</td>
+<td>c1t4r/dolmades</td>
+<td>Yes?</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Grass-7.4.0.simg</td>
+<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
+<td>ubuntu:trusty</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Grass-7.4.simg</td>
+<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
+<td>ubuntu:trusty</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Grass-7.6.1.simg</td>
+<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Jupyter-5.2.2_Python-3.6.8.simg</td>
+<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>jupyter_conda.simg</td>
+<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>continuumio/miniconda3</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>jupyter.simg</td>
+<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>jupyter-xenial.simg</td>
+<td colspan="2">Python 3.5.2 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>ubuntu:xenial</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Keras-2.1.4_TensorFlow-1.5.0.simg</td>
+<td colspan="2">Neural Networks and Deep Learning with Keras 2.1.4 and TensorFlow 1.5.0</td>
+<td>gw000/keras-full:2.1.4</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>loos.simg</td>
+<td colspan="2">Lightweight Object-Oriented Structure library (LOOS)</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>miniconda3_firefox.simg</td>
+<td colspan="2">Jupyter from miniconda with Firefox</td>
+<td>continuumio/miniconda3</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>miniconda3.simg</td>
+<td colspan="2">Jupyter from miniconda without firefox</td>
+<td>continuumio/miniconda3</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>ParaView-5.6.0.simg</td>
+<td colspan="2">ParaView 5.6: open-source, multi-platform data analysis and visualization</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>RStudio-desktop-1.2.1335_R-3.4.4.simg</td>
+<td colspan="2">RStudio Desktop 1.2 with R 3.4.4</td>
+<td>jekriske/r-base</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>RStudio-server-1.2.1335_R-3.4.4.simg</td>
+<td colspan="2">RStudio Server  1.2 with R 3.4.4</td>
+<td>nickjer/singularity-r</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>singularity-rstudio.simg</td>
+<td colspan="2">RStudio Server  1.2</td>
+<td>nickjer/singularity-r</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Stacks-2.1.simg</td>
+<td colspan="2">Stacks: Pipeline for building loci from short-read sequences like illumina</td>
+<td>ubuntu:trusty-20170817</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Stacks-2.4.simg</td>
+<td colspan="2">Stacks: Pipeline for building loci from short-read sequences like illumina</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Tensorflow-1.13.1-gpu-py3-jupyter.simg</td>
+<td>TensorFlow with support for GPUs</td>
+<td colspan="2">tensorflow/tensorflow:1.13.1-gpu-py3-jupyter</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Tensorflow-1.13.1-py3-jupyter.simg</td>
+<td>TensorFlow without support for GPUs</td>
+<td colspan="2">tensorflow/tensorflow:1.13.1-py3-jupyter</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>TensorFlow_gpu_py3.simg</td>
+<td>TensorFlow with support for GPUs</td>
+<td colspan="2">tensorflow/tensorflow:latest-gpu-py3</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Visit-2.13.2.simg</td>
+<td colspan="2">Visit: Interactive, scalable, visualization, animation and analysis tool</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Visit-3.0.simg</td>
+<td colspan="2">Visit: Interactive, scalable, visualization, animation and analysis tool</td>
+<td>centos:latest</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>wkhtmltox-0.12.simg</td>
+<td colspan="2">wkhtmltopdf  command line tools to render HTML into PDF and other image formats</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>wkhtmltox.simg</td>
+<td colspan="2">wkhtmltopdf  command line tools to render HTML into PDF and other image formats</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="interactive-job-with-x11-forwarding">
+<h2>Interactive Job with X11 forwarding<a class="headerlink" href="#interactive-job-with-x11-forwarding" title="Permalink to this headline">¶</a></h2>
+<p>Several images above are intended for interactive computing.
+In those cases you ensure that you connect to the cluster with X11 forwarding,
+before asking for an interactive job. From Linux or MacOS you can connect via
+SSH with X11 forwarding using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<p>If you are using MacOS you need a X Window System on your Mac. You can install
+XQuartz to get it <a class="reference external" href="https://www.xquartz.org/">https://www.xquartz.org/</a></p>
+<p>If you are using Windows you will need a X11 Server, for example using
+MobaXterm <a class="reference external" href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a></p>
+<p>Once you have login into the cluster, create an interactive job with the
+following command line, in this case we are using <cite>standby</cite> as queue but
+any other queue is valid.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">X</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">standby</span>
+</pre></div>
+</div>
+<p>Once you get inside a compute node, load the module:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>After loading the module the command singularity is available for usage,
+and you can get a shell inside the image with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>singularity shell ${SNG_PATH}/&lt;Image Name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="non-interactive-execution-with-submission-scripts">
+<h2>Non-interactive execution with Submission scripts<a class="headerlink" href="#non-interactive-execution-with-submission-scripts" title="Permalink to this headline">¶</a></h2>
+<p>In this case you do not need to export X11, just login into Spruce or Thorny:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<p>Once you have login into the cluster, create a submission script,
+(name the file <code class="docutils literal"><span class="pre">runjob.pbs</span></code> for example), in this case we are using standby as
+queue but any other queue is valid.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+
+#PBS -N JOB
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=04:00:00
+#PBS -m ae
+#PBS -q standby
+
+module load singularity/2.5.2
+
+singularity exec ${SNG_PATH}/&lt;Image Name&gt; &lt;command_or_script_to_run&gt;
+</pre></div>
+</div>
+<p>Submit your job with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gpu-support-and-singularity">
+<h2>GPU Support and Singularity<a class="headerlink" href="#gpu-support-and-singularity" title="Permalink to this headline">¶</a></h2>
+<p>To get access to GPUs from inside the container use the argument <code class="docutils literal"><span class="pre">--nv</span></code> either for the <code class="docutils literal"><span class="pre">shell</span></code> or <code class="docutils literal"><span class="pre">exec</span></code> subcommands.
+Lets demonstrate this with an interactive example using Tensorflow on spruce</p>
+<p>Assuming that you are now log into Spruce execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -I -q comm_gpu
+</pre></div>
+</div>
+<p>After a few seconds you get into a compute node:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>salg0001:~$&gt;
+</pre></div>
+</div>
+<p>Next step is to activate Singularity:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load singularity/2.5.2
+</pre></div>
+</div>
+<p>Lets use for example <code class="docutils literal"><span class="pre">Keras-2.1.4_TensorFlow-1.5.0.simg</span></code> one of the images centrally managed and located at <code class="docutils literal"><span class="pre">$SNG_PATH</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; singularity shell --nv $SNG_PATH/Keras-2.1.4_TensorFlow-1.5.0.simg
+</pre></div>
+</div>
+<p>Lets check that from inside the image the GPUs are visible:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; nvidia-smi
+Wed Sep 25 18:06:29 2019
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla K20m          Off  | 00000000:08:00.0 Off |                    0 |
+| N/A   39C    P0    76W / 225W |     96MiB /  4743MiB |     44%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  Tesla K20m          Off  | 00000000:24:00.0 Off |                    0 |
+| N/A   40C    P0    49W / 225W |      0MiB /  4743MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   2  Tesla K20m          Off  | 00000000:27:00.0 Off |                    0 |
+| N/A   34C    P0    52W / 225W |      0MiB /  4743MiB |     91%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|                                                                             |
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+<p>Now we can use IPython and Tensorflow:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ipython3
+Python 3.5.3 (default, Jan 19 2017, 14:11:04)
+Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
+IPython 6.2.1 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
+
+In [1]: import tensorflow as tf
+
+In [2]: tf.test.is_built_with_cuda()
+Out[2]: True
+
+In [3]: tf.test.is_gpu_available()
+2019-09-25 18:18:37.476402: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2019-09-25 18:18:40.271869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties:
+name: Tesla K20m major: 3 minor: 5 memoryClockRate(GHz): 0.7055
+pciBusID: 0000:08:00.0
+totalMemory: 4.63GiB freeMemory: 4.48GiB
+2019-09-25 18:18:40.390182: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 1 with properties:
+name: Tesla K20m major: 3 minor: 5 memoryClockRate(GHz): 0.7055
+pciBusID: 0000:24:00.0
+totalMemory: 4.63GiB freeMemory: 4.56GiB
+2019-09-25 18:18:40.508266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 2 with properties:
+name: Tesla K20m major: 3 minor: 5 memoryClockRate(GHz): 0.7055
+pciBusID: 0000:27:00.0
+totalMemory: 4.63GiB freeMemory: 4.56GiB
+2019-09-25 18:18:40.508594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Device peer to peer matrix
+2019-09-25 18:18:40.508681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1126] DMA: 0 1 2
+2019-09-25 18:18:40.508697: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 0:   Y N N
+2019-09-25 18:18:40.508705: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 1:   N Y Y
+2019-09-25 18:18:40.508713: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 2:   N Y Y
+2019-09-25 18:18:40.508730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -&gt; (device: 0, name: Tesla K20m, pci bus id: 0000:08:00.0, compute capability: 3.5)
+2019-09-25 18:18:40.508742: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:1) -&gt; (device: 1, name: Tesla K20m, pci bus id: 0000:24:00.0, compute capability: 3.5)
+2019-09-25 18:18:40.508753: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:2) -&gt; (device: 2, name: Tesla K20m, pci bus id: 0000:27:00.0, compute capability: 3.5)
+Out[3]: True
+</pre></div>
+</div>
+<p>Those two checks ensure that TensorFlow was indeed compiled with GPU support and the TensorFlow is able to see the 3 GPUs installed on the machine.</p>
+<p>Now we can run a very simple calculation using the GPUs:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;/gpu:0&#39;</span><span class="p">):</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+   <span class="o">...</span><span class="p">:</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">40.750833</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">40.750901</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">40.750914</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="p">[[</span> <span class="mf">22.</span>  <span class="mf">28.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">49.</span>  <span class="mf">64.</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Notice that the calculation was performed on <code class="docutils literal"><span class="pre">/gpu:0</span></code>, as the machine has 3 GPUs you can also compute on <code class="docutils literal"><span class="pre">/gpu:1</span></code> and <code class="docutils literal"><span class="pre">/gpu:2</span></code>
+Another way of checking the available devices is with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+ <span class="o">...</span><span class="p">:</span>   <span class="n">devices</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">list_devices</span><span class="p">()</span>
+ <span class="o">...</span><span class="p">:</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">51.067844</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">51.067891</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">51.067904</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="42.Python.html" class="btn btn-neutral float-right" title="Python Language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="40.AdvancedUser.html" class="btn btn-neutral float-left" title="For Advanced Users" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

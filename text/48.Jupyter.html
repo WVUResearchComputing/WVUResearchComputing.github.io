@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Conda and BioConda &mdash; WVU-RC 1.0 documentation</title>
+  <title>Jupyter Notebooks &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Singularity Containers" href="42.Singularity.html" />
-    <link rel="prev" title="For Advanced Users" href="40.AdvancedUser.html" /> 
+    <link rel="next" title="MATLAB" href="49.Matlab.html" />
+    <link rel="prev" title="Environment Modules" href="47.Modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,16 +104,15 @@
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Conda and BioConda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Singularity.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.SingularityContainers.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43.UserInstallation.html">Installing Packages in User Locations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="45.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="46.Hadoop.html">Executing HADOOP jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="47.Python.html">Python Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="48.Python.html">Python and scientific libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="48.Pythonvenv.html">Python Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
@@ -169,13 +168,13 @@
         
           <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
         
-      <li>Conda and BioConda</li>
+      <li>Jupyter Notebooks</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/41.Conda.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/48.Jupyter.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -188,8 +187,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="conda-and-bioconda">
-<h1>Conda and BioConda<a class="headerlink" href="#conda-and-bioconda" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="jupyter-notebooks">
+<span id="ad-jupyter"></span><h1>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>A Jupyter Notebook (formerly IPython Notebooks) is a web-based interactive computational environment for creating Jupyter notebook documents. The “notebook” term can colloquially make reference to many different entities, mainly the Jupyter web application, Jupyter Python web server, or Jupyter document format depending on context. A Jupyter Notebook document is a JSON document, following a versioned schema, and containing an ordered list of input/output cells which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the “.ipynb” extension.</p>
+<p>A Jupyter Notebook can be converted to a number of open standard output formats (HTML, presentation slides, LaTeX, PDF, ReStructuredText, Markdown, Python) through “Download As” in the web interface, via the nbconvert library or “jupyter nbconvert” command line interface in a shell.</p>
 </div>
 
 
@@ -200,10 +201,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="42.Singularity.html" class="btn btn-neutral float-right" title="Singularity Containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="49.Matlab.html" class="btn btn-neutral float-right" title="MATLAB" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="40.AdvancedUser.html" class="btn btn-neutral float-left" title="For Advanced Users" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="47.Modules.html" class="btn btn-neutral float-left" title="Environment Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

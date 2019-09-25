@@ -1,0 +1,285 @@
+.. _ad-singularity:
+
+Singularity Containers
+======================
+
+Singularity is an open source container solution developed specifically for HPC environments. With Singularity, HPC users can safely bring their own execution environments to the cluster. Unlike other container solutions, Singularity does not require root level permissions to run containers, which allows users to freely control what software stack they wish to use. Provisioning of a container image can be done locally on the user's machine or on Singularity Hub. The resulting image can then be securely executed on any machine with Singularity installed. Reproduction of results means that a user can now share a single Singularity image file that will ensure a consistent execution environment wherever it is run.
+
+Singularity is a virtualization solution. There are several kinds of Virtualization solutions. From one side we have System Virtual Machines, they provide a substitute for a real machine. They provide functionality needed to execute entire operating systems. In some cases the virtualization even emulate different architectures and allow execution of software applications and operating systems written for another CPU or architecture. From the other side we have OS-level virtualization where the kernel allows the existence of multiple isolated user-space instances. Singularity belongs to the latest.
+
+Containers are similar to Virtual Machines, however, the differences are enough to consider them different technologies and those differences are very important for HPC. Virtual Machines takes up a lot of system resources. Each Virtual Machine (VM) runs not just a full copy of an operating system, but a virtual copy of all the hardware that the operating system needs to run. This quickly adds up to a lot of precious RAM and CPU cycles, valuable resources for HPC.
+
+In contrast, all that a container requires is enough of an operating system, supporting programs and libraries, and system resources to run a specific program. From the user perspective, a container is in most cases a single file that contains the file system, ie a rather complete Unix filesystem tree with all libraries, executables, and data that are needed for a given workflow or scientific computation.
+
+There are several container solutions and one prominent example is Docker. Docker is intended to run *trusted containers* by *trusted users*. This model do not fit well in HPC where computer clusters are accessed by a number of users whose privileges cannot be escalated to superuser level. For that reason Singularity utilizes a very different security paradigm. This is a required feature for implementation within any multi-user environment with
+*untrusted users* running *untrusted containers*.
+
+For more information about Singularity and complete documentation see:
+https://singularity.lbl.gov/quickstart
+
+
+Activating Singularity
+----------------------
+
+There are two main components in Singulairty containers. The runtime executable and the singularity image.
+
+The *Container Runtime* or *Singularity runtime* is designed to leverage the above mentioned container formats. The runtime program is called singularity and is capable not only of running singularity images but also to create them.
+
+To activate singularity on your current terminal, on both, Spruce and Thorny execute::
+
+  module load singularity/2.5.2
+
+That will modify the `$PATH` variable allowing you to execute the main command for singularity::
+
+  singularity
+
+Singularity Images
+------------------
+
+The second component are *Singularity images*. On Spruce and Thorny we have a number of centrally managed images::
+
+  /shared/software/containers
+
+or using the variable::
+
+  $SNG_PATH
+
+The list of Singularity images on Spruce and Thorny is the same, the table below shows the current images available.
+
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Image Name                            | Description                                                                      | Based on               | GUI | GPU |
++=======================================+==================================================================================+========================+=====+=====+
+| centos-final.simg                     | Example of image using libgraph 1.0.2, run examples                              | centos:latest          | Yes | No  |
+|                                       | "circle", "julia" and "sample"                                                   |                        |     |     |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| dakota-6.10-release-public-rhel7.simg | Dakota 6.10: Sandia software for optimization and                                | centos:latest          | No  | No  |
+|                                       | Uncertainty Quantification                                                       |                        |     |     |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| docs_hpc_wvu.simg                     | Contains Sphinx, pandoc and scripts to create documentation                      | ubuntu:bionic          | No  | No  |
+|                                       | for https://docs.hpc.wvu.edu                                                     |                        |     |     |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| dolmades.simg                         | Windows Apps under Linux using Singularity (using wine)                          | c1t4r/dolmades         | Yes?| No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Grass-7.4.0.simg                      | GRASS (Geographic Resources Analysis Support System), open source GIS            | ubuntu:trusty          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Grass-7.4.simg                        | GRASS (Geographic Resources Analysis Support System), open source GIS            | ubuntu:trusty          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Grass-7.6.1.simg                      | GRASS (Geographic Resources Analysis Support System), open source GIS            | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Jupyter-5.2.2_Python-3.6.8.simg       | Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks          | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| jupyter_conda.simg                    | Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks          | continuumio/miniconda3 | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| jupyter.simg                          | Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks          | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| jupyter-xenial.simg                   | Python 3.5.2 with a number of Scientific Packages and Jupyter Notebooks          | ubuntu:xenial          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Keras-2.1.4_TensorFlow-1.5.0.simg     | Neural Networks and Deep Learning with Keras 2.1.4 and TensorFlow 1.5.0          | gw000/keras-full:2.1.4 | Yes | Yes |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| loos.simg                             | Lightweight Object-Oriented Structure library (LOOS)                             | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| miniconda3_firefox.simg               | Jupyter from miniconda with Firefox                                              | continuumio/miniconda3 | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| miniconda3.simg                       | Jupyter from miniconda without firefox                                           | continuumio/miniconda3 | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| ParaView-5.6.0.simg                   | ParaView 5.6: open-source, multi-platform data analysis and visualization        | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| RStudio-desktop-1.2.1335_R-3.4.4.simg | RStudio Desktop 1.2 with R 3.4.4                                                 | jekriske/r-base        | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| RStudio-server-1.2.1335_R-3.4.4.simg  | RStudio Server  1.2 with R 3.4.4                                                 | nickjer/singularity-r  | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| singularity-rstudio.simg              | RStudio Server  1.2                                                              | nickjer/singularity-r  | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Stacks-2.1.simg                       | Stacks: Pipeline for building loci from short-read sequences like illumina       | ubuntu:trusty-20170817 | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Stacks-2.4.simg                       | Stacks: Pipeline for building loci from short-read sequences like illumina       | ubuntu:trusty          | No  | No  |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| Tensorflow-1.13.1-gpu-py3-jupyter.simg| TensorFlow with support for GPUs                           | tensorflow/tensorflow:1.13.1-gpu-py3-jupyter | Yes | No  |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| Tensorflow-1.13.1-py3-jupyter.simg    | TensorFlow without support for GPUs                        | tensorflow/tensorflow:1.13.1-py3-jupyter     | Yes | No  |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| TensorFlow_gpu_py3.simg               | TensorFlow with support for GPUs                           | tensorflow/tensorflow:latest-gpu-py3         | No  | Yes |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| Visit-2.13.2.simg                     | Visit: Interactive, scalable, visualization, animation and analysis tool         | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Visit-3.0.simg                        | Visit: Interactive, scalable, visualization, animation and analysis tool         | centos:latest          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| wkhtmltox-0.12.simg                   | wkhtmltopdf  command line tools to render HTML into PDF and other image formats  | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| wkhtmltox.simg                        | wkhtmltopdf  command line tools to render HTML into PDF and other image formats  | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+
+Interactive Job with X11 forwarding
+-----------------------------------
+
+Several images above are intended for interactive computing.
+In those cases you ensure that you connect to the cluster with X11 forwarding,
+before asking for an interactive job. From Linux or MacOS you can connect via
+SSH with X11 forwarding using::
+
+    ssh -X <username>@spruce.hpc.wvu.edu
+
+If you are using MacOS you need a X Window System on your Mac. You can install
+XQuartz to get it https://www.xquartz.org/
+
+If you are using Windows you will need a X11 Server, for example using
+MobaXterm https://mobaxterm.mobatek.net/
+
+Once you have login into the cluster, create an interactive job with the
+following command line, in this case we are using `standby` as queue but
+any other queue is valid.::
+
+    qsub -X -I -q standby
+
+Once you get inside a compute node, load the module::
+
+    module load singularity/2.5.2
+
+After loading the module the command singularity is available for usage,
+and you can get a shell inside the image with::
+
+    singularity shell ${SNG_PATH}/<Image Name>
+
+
+Non-interactive execution with Submission scripts
+-------------------------------------------------
+
+In this case you do not need to export X11, just login into Spruce or Thorny::
+
+    ssh <username>@spruce.hpc.wvu.edu
+
+Once you have login into the cluster, create a submission script,
+(name the file ``runjob.pbs`` for example), in this case we are using standby as
+queue but any other queue is valid.
+
+::
+
+    #!/bin/sh
+
+    #PBS -N JOB
+    #PBS -l nodes=1:ppn=1
+    #PBS -l walltime=04:00:00
+    #PBS -m ae
+    #PBS -q standby
+
+    module load singularity/2.5.2
+
+    singularity exec ${SNG_PATH}/<Image Name> <command_or_script_to_run>
+
+Submit your job with::
+
+    qsub runjob.pbs
+
+
+GPU Support and Singularity
+---------------------------
+
+To get access to GPUs from inside the container use the argument ``--nv`` either for the ``shell`` or ``exec`` subcommands.
+Lets demonstrate this with an interactive example using Tensorflow on spruce
+
+Assuming that you are now log into Spruce execute::
+
+  $> qsub -I -q comm_gpu
+
+After a few seconds you get into a compute node::
+
+  salg0001:~$>
+
+Next step is to activate Singularity::
+
+  $> module load singularity/2.5.2
+
+Lets use for example ``Keras-2.1.4_TensorFlow-1.5.0.simg`` one of the images centrally managed and located at ``$SNG_PATH``::
+
+  $> singularity shell --nv $SNG_PATH/Keras-2.1.4_TensorFlow-1.5.0.simg
+
+Lets check that from inside the image the GPUs are visible::
+
+  $> nvidia-smi
+  Wed Sep 25 18:06:29 2019
+  +-----------------------------------------------------------------------------+
+  | NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
+  |-------------------------------+----------------------+----------------------+
+  | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+  |===============================+======================+======================|
+  |   0  Tesla K20m          Off  | 00000000:08:00.0 Off |                    0 |
+  | N/A   39C    P0    76W / 225W |     96MiB /  4743MiB |     44%      Default |
+  +-------------------------------+----------------------+----------------------+
+  |   1  Tesla K20m          Off  | 00000000:24:00.0 Off |                    0 |
+  | N/A   40C    P0    49W / 225W |      0MiB /  4743MiB |      0%      Default |
+  +-------------------------------+----------------------+----------------------+
+  |   2  Tesla K20m          Off  | 00000000:27:00.0 Off |                    0 |
+  | N/A   34C    P0    52W / 225W |      0MiB /  4743MiB |     91%      Default |
+  +-------------------------------+----------------------+----------------------+
+
+  +-----------------------------------------------------------------------------+
+  | Processes:                                                       GPU Memory |
+  |  GPU       PID   Type   Process name                             Usage      |
+  |=============================================================================|
+  |                                                                             |
+  +-----------------------------------------------------------------------------+
+
+Now we can use IPython and Tensorflow::
+
+  $> ipython3
+  Python 3.5.3 (default, Jan 19 2017, 14:11:04)
+  Type 'copyright', 'credits' or 'license' for more information
+  IPython 6.2.1 -- An enhanced Interactive Python. Type '?' for help.
+
+  In [1]: import tensorflow as tf
+
+  In [2]: tf.test.is_built_with_cuda()
+  Out[2]: True
+
+  In [3]: tf.test.is_gpu_available()
+  2019-09-25 18:18:37.476402: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+  2019-09-25 18:18:40.271869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties:
+  name: Tesla K20m major: 3 minor: 5 memoryClockRate(GHz): 0.7055
+  pciBusID: 0000:08:00.0
+  totalMemory: 4.63GiB freeMemory: 4.48GiB
+  2019-09-25 18:18:40.390182: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 1 with properties:
+  name: Tesla K20m major: 3 minor: 5 memoryClockRate(GHz): 0.7055
+  pciBusID: 0000:24:00.0
+  totalMemory: 4.63GiB freeMemory: 4.56GiB
+  2019-09-25 18:18:40.508266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 2 with properties:
+  name: Tesla K20m major: 3 minor: 5 memoryClockRate(GHz): 0.7055
+  pciBusID: 0000:27:00.0
+  totalMemory: 4.63GiB freeMemory: 4.56GiB
+  2019-09-25 18:18:40.508594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Device peer to peer matrix
+  2019-09-25 18:18:40.508681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1126] DMA: 0 1 2
+  2019-09-25 18:18:40.508697: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 0:   Y N N
+  2019-09-25 18:18:40.508705: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 1:   N Y Y
+  2019-09-25 18:18:40.508713: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 2:   N Y Y
+  2019-09-25 18:18:40.508730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K20m, pci bus id: 0000:08:00.0, compute capability: 3.5)
+  2019-09-25 18:18:40.508742: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla K20m, pci bus id: 0000:24:00.0, compute capability: 3.5)
+  2019-09-25 18:18:40.508753: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: Tesla K20m, pci bus id: 0000:27:00.0, compute capability: 3.5)
+  Out[3]: True
+
+Those two checks ensure that TensorFlow was indeed compiled with GPU support and the TensorFlow is able to see the 3 GPUs installed on the machine.
+
+Now we can run a very simple calculation using the GPUs::
+
+  In [4]: with tf.device('/gpu:0'):
+     ...:     a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
+     ...:     b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
+     ...:     c = tf.matmul(a, b)
+     ...:
+     ...: with tf.Session() as sess:
+     ...:     print (sess.run(c))
+     ...:
+  2019-09-25 18:22:40.750833: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K20m, pci bus id: 0000:08:00.0, compute capability: 3.5)
+  2019-09-25 18:22:40.750901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla K20m, pci bus id: 0000:24:00.0, compute capability: 3.5)
+  2019-09-25 18:22:40.750914: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: Tesla K20m, pci bus id: 0000:27:00.0, compute capability: 3.5)
+  [[ 22.  28.]
+   [ 49.  64.]]
+
+Notice that the calculation was performed on ``/gpu:0``, as the machine has 3 GPUs you can also compute on ``/gpu:1`` and ``/gpu:2``
+Another way of checking the available devices is with::
+
+  In [5]: with tf.Session() as sess:
+   ...:   devices = sess.list_devices()
+   ...:
+  2019-09-25 18:27:51.067844: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K20m, pci bus id: 0000:08:00.0, compute capability: 3.5)
+  2019-09-25 18:27:51.067891: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla K20m, pci bus id: 0000:24:00.0, compute capability: 3.5)
+  2019-09-25 18:27:51.067904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: Tesla K20m, pci bus id: 0000:27:00.0, compute capability: 3.5)

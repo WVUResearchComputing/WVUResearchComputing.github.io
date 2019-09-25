@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using the CPAN module &mdash; WVU-RC 1.0 documentation</title>
+  <title>Perl Language &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="For Developers" href="50.Developers.html" />
-    <link rel="prev" title="Python Virtual Environments" href="48.Pythonvenv.html" /> 
+    <link rel="next" title="Conda" href="45.Conda.html" />
+    <link rel="prev" title="R Language" href="43.R.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,21 +104,20 @@
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="41.Conda.html">Conda and BioConda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Singularity.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.SingularityContainers.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43.UserInstallation.html">Installing Packages in User Locations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="45.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="46.Hadoop.html">Executing HADOOP jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="47.Python.html">Python Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="48.Python.html">Python and scientific libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="48.Pythonvenv.html">Python Virtual Environments</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the CPAN module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.R.html">R Language</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Perl Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-cpan-module">Using the CPAN module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preparing-the-cpan-shell">Preparing the CPAN Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-perl-modules">Installing Perl modules</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
@@ -174,13 +173,13 @@
         
           <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
         
-      <li>Using the CPAN module</li>
+      <li>Perl Language</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/49.CPAN.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/44.Perl.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -193,14 +192,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="using-the-cpan-module">
-<h1>Using the CPAN module<a class="headerlink" href="#using-the-cpan-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="perl-language">
+<span id="ad-perl"></span><h1>Perl Language<a class="headerlink" href="#perl-language" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-the-cpan-module">
+<h2>Using the CPAN module<a class="headerlink" href="#using-the-cpan-module" title="Permalink to this headline">¶</a></h2>
 <p>The CPAN module automates or at least simplifies the make and install of perl modules and extensions. It includes some primitive searching capabilities and knows how to use LWP, <a class="reference external" href="HTTP::Tiny">HTTP::Tiny</a>, Net::FTP and certain external download clients to fetch distributions from the net.</p>
 <p>These are fetched from one or more mirrored CPAN (Comprehensive Perl Archive Network) sites and unpacked in a dedicated directory.</p>
 <p>The CPAN module also supports named and versioned bundles of modules. Bundles simplify handling of sets of related modules. See Bundles below.</p>
 <p>The package contains a session manager and a cache manager. The session manager keeps track of what has been fetched, built, and installed in the current session. The cache manager keeps track of the disk space occupied by the make processes and deletes excess space using a simple FIFO mechanism.</p>
 <p>All methods provided are accessible in a programmer style and in an interactive shell style.</p>
 <p>Users can install their own modules from the head node and they will be installed on the <code class="docutils literal"><span class="pre">$HOME</span></code> folder for usage later on any compute node.</p>
+</div>
 <div class="section" id="preparing-the-cpan-shell">
 <h2>Preparing the CPAN Shell<a class="headerlink" href="#preparing-the-cpan-shell" title="Permalink to this headline">¶</a></h2>
 <p>Enter interactive mode by running:</p>
@@ -317,10 +319,10 @@ Log into the CPAN shell and execute:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="50.Developers.html" class="btn btn-neutral float-right" title="For Developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="45.Conda.html" class="btn btn-neutral float-right" title="Conda" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="48.Pythonvenv.html" class="btn btn-neutral float-left" title="Python Virtual Environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="43.R.html" class="btn btn-neutral float-left" title="R Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

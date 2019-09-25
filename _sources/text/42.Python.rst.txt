@@ -1,0 +1,635 @@
+.. _ad-python:
+
+Python Language
+===============
+
+Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.
+
+Due to Python's extensive mathematics library, and the third-party library NumPy that further extends the native capabilities, it is frequently used as a scientific scripting language to aid in problems such as numerical data processing and manipulation.
+
+Libraries such as NumPy, SciPy and Matplotlib allow the effective use of Python in scientific computing, with specialized libraries such as Biopython and Astropy providing domain-specific functionality. Python is commonly used in artificial intelligence projects with the help of libraries like TensorFlow, Keras and Scikit-learn. As a scripting language with modular architecture, simple syntax and rich text processing tools, Python is often used for natural language processing.
+
+Both clusters, Spruce and Thorny offer a variety of Python implementations and versions.
+
+This section shows some of them and why is important to know where and how activate the different python environments.
+
+Red Hat Linux Native Python
+---------------------------
+
+Python 2.x comes by default with RedHat Enterprise Linux (RHEL).
+In the case of Spruce the current version of RHEL is 6.10 and on Thorny the
+version of RHEL is 7.6.
+
+Notice that by default RHEL only includes Python 2.x versions. In the case of Spruce
+the Python version is 2.6.6 and on Thorny is 2.7.5
+
+For scientific applications the Python versions on Spruce and Thorny are very outdated in particular on Spruce.
+Most scientific applications written in Python demands at least version 2.7.
+Python 2.7 will not be maintained past 2020 and a number of critical Python projects have pledged to stop supporting Python 2 soon.
+
+From another side, despite of Python being installed by default on RHEL most scientific packages are not installed.
+This is another reason to not use the Python install with the OS and instead use one of environment modules for Python.
+
+Python from environment Modules
+-------------------------------
+
+On Spruce and Thorny offer a variety of environment modules with Python.
+They include a good variety of scientific computing packages preinstalled.
+The tables below describe the modules available on Spruce and Thorny
+
+
++-------------------------------------------------+-------------+------------+
+| Environment Module                              | Spruce      | Thorny     |
++=================================================+=============+============+
+|lang/python/2.7.15_gcc82                         | Yes         | No         |
++-------------------------------------------------+-------------+------------+
+|lang/python/3.6.8_gcc82                          | Yes         | No         |
++-------------------------------------------------+-------------+------------+
+|lang/python/3.7.2_gcc82                          | Yes         | No         |
++-------------------------------------------------+-------------+------------+
+|lang/python/cpython_3.6.9_gcc82                  | Yes         | Yes        |
++-------------------------------------------------+-------------+------------+
+|lang/python/cpython_3.7.2_gcc82                  | No          | Yes        |
++-------------------------------------------------+-------------+------------+
+|lang/python/cpython_3.7.4_gcc82                  | Yes         | Yes        |
++-------------------------------------------------+-------------+------------+
+|lang/python/intelpython_3.6.3                    | Yes         | Yes        |
++-------------------------------------------------+-------------+------------+
+|lang/python/intelpython_2.7.15                   | No          | Yes        |
++-------------------------------------------------+-------------+------------+
+|lang/python/pypy2.7-7.1.1-portable               | Yes         | Yes        |
++-------------------------------------------------+-------------+------------+
+|lang/python/pypy3.6-7.1.1-portable               | Yes         | Yes        |
++-------------------------------------------------+-------------+------------+
+|lang/python/pypy3.6-v7.1.1-thorny                | No          | Yes        |
++-------------------------------------------------+-------------+------------+
+
+The modules indicated with ``_gcc82`` where compiled with GCC 8.2.0 so the
+module ``lang/gcc/8.2.0`` must be preloaded in to activate the corresponding
+Python module. For example to load ``lang/python/cpython_3.7.4_gcc82`` you
+should execute the following command to activate Python::
+
+  module load lang/gcc/8.2.0 lang/python/cpython_3.7.4_gcc82
+
+There are basically three kinds of Pythons to choose. The versions with
+prefix ``cpython_`` and those with just version numbers are compilations of the
+reference implementation written in C and Python from https://www.python.org/downloads/ also called
+CPython.
+
+The modules with prefix ``intelpython_`` are the Intel Distribution for Python.
+An optimized version of the reference CPython optimized by intel for their processors.
+In particular Intel Python includes MKL optimized versions of Numpy, Scipy and Scikit-Learn.
+
+The modules with prefix ``pypy`` offers an alternative implementation of the Python programming language.
+PyPy often runs faster than CPython, because PyPy is a just-in-time compiler, while CPython is an interpreter. Most Python code runs well on PyPy, except for code that depends on CPython extensions, which either does not work or incurs some overhead when run in PyPy. Functionally,
+
+Packages included
+-----------------
+
++-------------------+----------------+-------------------+-----------+
++ Package           | Version        | Package           | Version   |
++===================+================+===================+===========+
+|asv                |0.4.1           | pandocfilters     |  1.4.2    |
++-------------------+----------------+-------------------+-----------+
+|atomicwrites       |1.3.0           | parso             |  0.5.1    |
++-------------------+----------------+-------------------+-----------+
+|attrs              |19.1.0          | pexpect           |  4.7.0    |
++-------------------+----------------+-------------------+-----------+
+|backcall           |0.1.0           | pickleshare       |  0.7.5    |
++-------------------+----------------+-------------------+-----------+
+|bleach             |3.1.0           | Pillow            |  6.1.0    |
++-------------------+----------------+-------------------+-----------+
+|cloudpickle        |1.2.2           | pip               |  19.2.3   |
++-------------------+----------------+-------------------+-----------+
+|cycler             |0.10.0          | pluggy            |  0.13.0   |
++-------------------+----------------+-------------------+-----------+
+|Cython             |0.29.13         | prometheus-client |  0.7.1    |
++-------------------+----------------+-------------------+-----------+
+|dask               |2.4.0           | prompt-toolkit    |  2.0.9    |
++-------------------+----------------+-------------------+-----------+
+|decorator          |4.4.0           | ptyprocess        |  0.6.0    |
++-------------------+----------------+-------------------+-----------+
+|defusedxml         |0.6.0           | py                |  1.8.0    |
++-------------------+----------------+-------------------+-----------+
+|entrypoints        |0.3             | pycodestyle       |  2.5.0    |
++-------------------+----------------+-------------------+-----------+
+|flake8             |3.7.8           | pyflakes          |  2.1.1    |
++-------------------+----------------+-------------------+-----------+
+|h5py               |2.10.0          | Pygments          |  2.4.2    |
++-------------------+----------------+-------------------+-----------+
+|imageio            |2.5.0           | pymongo           |  3.9.0    |
++-------------------+----------------+-------------------+-----------+
+|importlib-metadata |0.22            | pyparsing         |  2.4.2    |
++-------------------+----------------+-------------------+-----------+
+|ipykernel          |5.1.2           | pyrsistent        |  0.15.4   |
++-------------------+----------------+-------------------+-----------+
+|ipyparallel        |6.2.4           | pytest            |  5.1.2    |
++-------------------+----------------+-------------------+-----------+
+|ipython            |7.8.0           | python-dateutil   |  2.8.0    |
++-------------------+----------------+-------------------+-----------+
+|ipython-genutils   |0.2.0           | pytz              |  2019.2   |
++-------------------+----------------+-------------------+-----------+
+|ipywidgets         |7.5.1           | PyWavelets        |  1.0.3    |
++-------------------+----------------+-------------------+-----------+
+|jedi               |0.15.1          | pyzmq             |  18.1.0   |
++-------------------+----------------+-------------------+-----------+
+|Jinja2             |2.10.1          | qtconsole         |  4.5.5    |
++-------------------+----------------+-------------------+-----------+
+|joblib             |0.13.2          | scikit-image      |  0.15.0   |
++-------------------+----------------+-------------------+-----------+
+|jsonschema         |3.0.2           | scikit-learn      |  0.21.3   |
++-------------------+----------------+-------------------+-----------+
+|jupyter            |1.0.0           | scipy             |  1.3.1    |
++-------------------+----------------+-------------------+-----------+
+|jupyter-console    |6.0.0           | Send2Trash        |  1.5.0    |
++-------------------+----------------+-------------------+-----------+
+|jupyter-client     |5.3.2           | seaborn           |  0.9.0    |
++-------------------+----------------+-------------------+-----------+
+|jupyter-core       |4.5.0           | setuptools        |  41.2.0   |
++-------------------+----------------+-------------------+-----------+
+|kiwisolver         |1.1.0           | six               |  1.12.0   |
++-------------------+----------------+-------------------+-----------+
+|MarkupSafe         |1.1.1           | sympy             |  1.4      |
++-------------------+----------------+-------------------+-----------+
+|mccabe             |0.6.1           | testpath          |  0.4.2    |
++-------------------+----------------+-------------------+-----------+
+|matplotlib         |3.1.1           | terminado         |  0.8.2    |
++-------------------+----------------+-------------------+-----------+
+|mistune            |0.8.4           | toolz             |  0.10.0   |
++-------------------+----------------+-------------------+-----------+
+|more-itertools     |7.2.0           | tornado           |  6.0.3    |
++-------------------+----------------+-------------------+-----------+
+|nbconvert          |5.6.0           | virtualenv        |  16.7.5   |
++-------------------+----------------+-------------------+-----------+
+|mpmath             |1.1.0           | traitlets         |  4.3.2    |
++-------------------+----------------+-------------------+-----------+
+|nbformat           |4.4.0           | wcwidth           | 0.1.7     |
++-------------------+----------------+-------------------+-----------+
+|networkx           |2.3             | webencodings      | 0.5.1     |
++-------------------+----------------+-------------------+-----------+
+|numpy              |1.17.2          | xlrd              | 1.2.0     |
++-------------------+----------------+-------------------+-----------+
+|notebook           |6.0.1           | widgetsnbextension| 3.5.1     |
++-------------------+----------------+-------------------+-----------+
+|packaging          |19.1            | zipp              | 0.6.0     |
++-------------------+----------------+-------------------+-----------+
+|pandas             |0.25.1          |                   |           |
++-------------------+----------------+-------------------+-----------+
+
+The modules with Pypy and and Intel Python includes a similar but not
+identical set of packages.
+
+However, you are not constrained to use just those packages. You can also
+install your own or create entire new environments with the packages and
+versions that you want.
+
+Installing python packages as user with pip
+-------------------------------------------
+
+An easy way to install Python modules locally (within your user
+directory) is by using the ``--user`` flag::
+
+    pip install --user <package_name>
+
+The ``--user`` flag directs python to install the package in a user location
+rather than a system wide location where you are not allowed to alter files.
+
+The user location for python packages is ``$HOME/.local/lib/pythonX.Y/site-packages``,
+This is generally the preferred method of locally installing new python packages as this
+user site package is by default in the python library path: meaning
+modules installed this way can be used as if they were installed
+system-wide.
+
+Installing python packages with a custom prefix
+-----------------------------------------------
+
+Another way to install Python modules locally is by using the ``--target`` flag::
+
+    pip install --target <dir> <package_name>
+
+representing the directory location you want the package installed into.
+These flags essentially do the same thing by directing Python to install
+the module in the specified directory. These directories will not be
+searched by default with Python. Therefore, in order to use these
+modules in your Python scripts you will have to modify the ``$PYTHONPATH``
+environment variable to include the specified directory. Or
+alternatively, modify sys.path from within your python script (for this
+method, consult `python documentation <https://docs.python.org>`__.
+
+::
+
+    export PYTHONPATH=<dir>
+
+Virtual Environments
+~~~~~~~~~~~~~~~~~~~~
+
+The problem with Python User, Home and Prefix flags are that they will
+all be searched secondary to the system-wide site package. This is a
+problem if you are trying to install locally a different version of a
+module already installed system-wide. A way to get around this is by
+using `Python Virtual Environments <Python virtual environments>`__.
+
+Installing R Packages in default Directories
+--------------------------------------------
+
+The two usual ways to install R packages from CRAN is either executing
+
+::
+
+    install.packages('<Package Name>')
+
+from the R prompt. Or using the command
+
+::
+
+    R CMD INSTALL <package>
+
+from the command line. The second command only works if you have already
+downloaded a copy of the package from CRAN or an external site. The
+first will automatically download the package from CRAN. R will
+automatically detect that you do not have permissions to write in the
+system-wide R library folder and will prompt if you would like to
+install in a local directory from within your home directory. This
+folder will also be checked automatically when you run R for packages,
+allowing you to use anything you install in this way.
+
+Installing R Packages in non-default directories
+------------------------------------------------
+
+Using install.packages()
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use install.packages from the R prompt, before you start R you need
+to modify the R\_LIBS environment variable
+
+::
+
+    export R_LIBS=<dir>
+
+Then inside the R prompt you execute install.packages() as normal (see
+above).
+
+Using R CMD INSTALL
+~~~~~~~~~~~~~~~~~~~
+
+For 'R CMD INSTALL' command, you can specify the path with the l flag
+(lowercase 'L')
+
+::
+
+    R CMD INSTALL -l <dir> <package_name>
+
+Using Installed Packages from non-default directories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use locally installed packages, before you execute R you just need to
+modify the R\_LIBS environment variable to tell R where to search for
+local packages.
+
+::
+
+    export R_LIBS=<dir>
+
+    Python and scientific libraries
+    ===============================
+
+    **Module:** languages/python/2.7.13
+
+    **Module:** languages/python/3.6.0
+
+    **Path** /shared/software/languages/python/2.7.13
+
+    **Path** /shared/software/languages/python/3.6.0
+
+    **Date** January 24, 2017
+
+    Python currently has two active versions, there are some important
+    differences that prevent python code from running with python 3. That
+    means that some packages are currently no python 3 ready and some of
+    them will never be. Python 2 will stop being supported on 2020, so until
+    that happens python 2 and 3 will coexist and that is the reason why we
+    keep both on our cluster.
+
+    Packages included
+    -----------------
+    ::
+
+        * Python-2.7.13
+        * Python-3.6.0
+
+    Libraries included
+    ------------------
+
+    We provide a comprehensive collection of scientific libraries for
+    python:
+
+    Python 2.7 and 3.6
+    ~~~~~~~~~~~~~~~~~~
+
+    ::
+        coverage (4.3.4)
+        cycler (0.10.0)
+        Cython (0.25.2)
+        dask (0.13.0)
+        decorator (4.0.11)
+        future (0.16.0)
+        h5py (2.6.0)
+        ipython (5.1.0)
+        ipython-genutils (0.1.0)
+        matplotlib (2.0.0)
+        mpmath (0.19)
+        networkx (1.11)
+        nose (1.3.7)
+        numpy (1.12.0)
+        olefile (0.44)
+        pandas (0.19.2)
+        pexpect (4.2.1)
+        performance (0.5.1)
+        pickleshare (0.7.4)
+        Pillow (4.0.0)
+        pip (9.0.1)
+        prompt-toolkit (1.0.9)
+        ptyprocess (0.5.1)
+        Pygments (2.2.0)
+        pymongo (3.4.0)
+        pyparsing (2.1.10)
+        python-dateutil (2.6.0)
+        pytz (2016.10)
+        scikit-image (0.12.3)
+        scikit-learn (0.18.1)
+        scipy (0.18.1)
+        simplegeneric (0.8.1)
+        six (1.10.0)
+        sympy (1.0)
+        toolz (0.8.2)
+        traitlets (4.3.1)
+        virtualenv (15.1.0)
+        wcwidth (0.1.7)
+
+    Python 2.7 only
+    ~~~~~~~~~~~~~~~
+
+    ::
+        appdirs (1.4.0)
+        backports.shutil-get-terminal-size (1.0.0)
+        enum34 (1.1.6)
+        functools32 (3.2.3.post2)
+        packaging (16.8)
+        pathlib2 (2.2.1)
+        scandir (1.4)
+        setuptools (34.0.2)
+        subprocess32 (3.2.7)
+        wheel (0.29.0)
+
+    Python 3.6 only
+    ~~~~~~~~~~~~~~~
+
+    ::
+        CacheControl (0.11.7)
+        lockfile (0.12.2)
+        natsort (5.0.1)
+        requests (2.13.0)
+        scikit-bio (0.5.1)
+        setuptools (28.8.0)
+
+    Notes from building
+    -------------------
+
+    Python 2 and 3 where compiled with \`sqlite\` support and python 3 with
+    \`lzma\`. SqLite is used by IPython to record history of commands and
+    LZMA is a newer compression algorithm that Python 3 is linked to.
+
+    Both version were compiled with GCC 6.3.0 with Link-time optimization
+    (LTO) and Profile-guided optimization (PGO) to maximize performance in
+    production runs.
+
+    Compilation proceed with (similar for 6.3.0)::
+
+         ../configure --prefix=/shared/software/languages/python/2.7.13
+         make profile-opt
+         make install
+
+    The Makefile was modified to remove the command option
+    ``-fuse-linker-plugin``
+
+    .. literalinclude:: /_static/python.patch
+
+Python Virtual Environments
+---------------------------
+
+Python virtual environments are used to build completely isolated python
+workflows. Primarily they are used to solve the need for multiple
+versions within python modules. Often, you might have the need to use
+pkgA which needs pkgC version 1.24, but you also need pkgB which needs
+pkgC version 2.1. If you use setuptools to install the packages (i.e.
+pip or easy\_install), you will create a dependency issue since both
+versions of pkbC will be installed to the same location.
+
+To resolve this, you can create python virtual environments that all
+isolation of package dependencies, so you can successfully have
+different versions of packages installed and tied to seperate python
+interpreters. Setting up python virtual environments is easy, and using
+them is no different than using python it's self.
+
+Using Virtual Environments with python2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, load which version of python2 you would like to use as your base
+python interpreter. For instance, if you want python 2.7.10, then load
+the 2.7.10 python modefule. If you want to use the default system python
+(v. 2.6), then you do not need to load a python modulefile. However, you
+do need to load the virtualenv modulefile.
+
+::
+
+    module load compilers/python/2.7.10 compilers/python/virtualenv
+
+Then create a virtualenv directory with the 'virtualenv' command.
+
+::
+
+    virtualenv workflow1
+
+You should now have a directory called 'workflow1'. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv.
+
+::
+
+    source workflow1/bin/activate
+
+Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy\_install just as you would regularly.
+
+Using Virtual Environments with python3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, load the python3 modulefile. The python3 modulefile comes with
+it's own virtual environment utility, so you do not need to load the
+virtualenv modulefile.
+
+::
+
+    module load compilers/python/3.5.1
+
+Then create a virtualenv directry with the 'pyvenv' command.
+
+::
+
+    pyvenv workflow1
+
+You should now have a directory called 'workflow1'. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv.
+
+::
+
+    source workflow1/bin/activate
+
+Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy\_install just as you would regularly.
+
+Activating virtual environments using the C shell
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are using the shells csh or tcsh, you will not be able to source
+the 'activate' file. Instead, you need to source the activate.csh file.
+
+::
+
+    source workflow1/bin/activate.csh
+
+Using site-wide system packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The centrally installed python interpreters (python loaded with
+modelefiles), usually have some common scientific packages installed
+with them by default. For instance, python 2.7.10 already has Numpy
+1.9.2 and Matplotlib 1.4.2 installed. To have your virtualenv keep using
+these packages so you do not need to install them in your virtualenv,
+using the --system-site-packages option.
+
+::
+
+    virtualenv --system-site-packages
+
+Or
+
+::
+
+    pyvenv --systems-site-packages
+
+
+
+Python Virtual Environments
+---------------------------
+
+Python virtual environments are used to build completely isolated python
+workflows. Primarily they are used to solve the need for multiple
+versions within python modules. Often, you might have the need to use
+pkgA which needs pkgC version 1.24, but you also need pkgB which needs
+pkgC version 2.1. If you use setuptools to install the packages (i.e.
+pip or easy\_install), you will create a dependency issue since both
+versions of pkbC will be installed to the same location.
+
+To resolve this, you can create python virtual environments that all
+isolation of package dependencies, so you can successfully have
+different versions of packages installed and tied to seperate python
+interpreters. Setting up python virtual environments is easy, and using
+them is no different than using python it's self.
+
+Using Virtual Environments with python2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, load which version of python2 you would like to use as your base
+python interpreter. For instance, if you want python 2.7.10, then load
+the 2.7.10 python modefule. If you want to use the default system python
+(v. 2.6), then you do not need to load a python modulefile. However, you
+do need to load the virtualenv modulefile.
+
+::
+
+    module load compilers/python/2.7.10 compilers/python/virtualenv
+
+Then create a virtualenv directory with the 'virtualenv' command.
+
+::
+
+    virtualenv workflow1
+
+You should now have a directory called 'workflow1'. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv.
+
+::
+
+    source workflow1/bin/activate
+
+Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy\_install just as you would regularly.
+
+Using Virtual Environments with python3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, load the python3 modulefile. The python3 modulefile comes with
+it's own virtual environment utility, so you do not need to load the
+virtualenv modulefile.
+
+::
+
+    module load compilers/python/3.5.1
+
+Then create a virtualenv directry with the 'pyvenv' command.
+
+::
+
+    pyvenv workflow1
+
+You should now have a directory called 'workflow1'. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv.
+
+::
+
+    source workflow1/bin/activate
+
+Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy\_install just as you would regularly.
+
+Activating virtual environments using the C shell
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are using the shells csh or tcsh, you will not be able to source
+the 'activate' file. Instead, you need to source the activate.csh file.
+
+::
+
+    source workflow1/bin/activate.csh
+
+Using site-wide system packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The centrally installed python interpreters (python loaded with
+modelefiles), usually have some common scientific packages installed
+with them by default. For instance, python 2.7.10 already has Numpy
+1.9.2 and Matplotlib 1.4.2 installed. To have your virtualenv keep using
+these packages so you do not need to install them in your virtualenv,
+using the --system-site-packages option.
+
+::
+
+    virtualenv --system-site-packages
+
+Or
+
+::
+
+    pyvenv --systems-site-packages

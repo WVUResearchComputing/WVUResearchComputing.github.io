@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Matlab: Running Matlab scripts on a HPC cluster &mdash; WVU-RC 1.0 documentation</title>
+  <title>MATLAB &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualization: VisIt" href="77.Visit.html" />
-    <link rel="prev" title="Bioinformatics: Using Bowtie2" href="75.bowtie2.html" /> 
+    <link rel="next" title="For Developers" href="50.Developers.html" />
+    <link rel="prev" title="Jupyter Notebooks" href="48.Jupyter.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,23 +103,29 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MATLAB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loading-environment-modules">Loading Environment Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-matlab-scripts-on-a-hpc-cluster">Running Matlab scripts on a HPC cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#executing-matlab-scripts">Executing Matlab scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-matlab-compiler">Using the Matlab Compiler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="71.Ansys.html">Engineering: ANSYS Products</a></li>
-<li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="73.OpenFoam.html">Engineering: Running OpenFOAM simple tutorial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="74.Bioconda.html">Bioinformatics: Conda and BioConda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="75.bowtie2.html">Bioinformatics: Using Bowtie2</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Matlab: Running Matlab scripts on a HPC cluster</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#executing-matlab-scripts">Executing Matlab scripts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-matlab-compiler">Using the Matlab Compiler</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="77.Visit.html">Visualization: VisIt</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
 </ul>
@@ -168,15 +174,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="70.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
         
-      <li>Matlab: Running Matlab scripts on a HPC cluster</li>
+      <li>MATLAB</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/76.Matlab.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/49.Matlab.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,12 +195,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="matlab-running-matlab-scripts-on-a-hpc-cluster">
-<h1>Matlab: Running Matlab scripts on a HPC cluster<a class="headerlink" href="#matlab-running-matlab-scripts-on-a-hpc-cluster" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="matlab">
+<span id="ad-matlab"></span><h1>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h1>
+<p>MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.</p>
+<div class="section" id="loading-environment-modules">
+<h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
+<p>On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
+To access MATLAB on Spruce Knob use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>To access MATLAB on Thorny Flat use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-matlab-scripts-on-a-hpc-cluster">
+<h2>Running Matlab scripts on a HPC cluster<a class="headerlink" href="#running-matlab-scripts-on-a-hpc-cluster" title="Permalink to this headline">¶</a></h2>
 <p>This simple tutorial explains how to use Matlab without launching the
 graphical interface and using the submission script.</p>
 <div class="section" id="executing-matlab-scripts">
-<h2>Executing Matlab scripts<a class="headerlink" href="#executing-matlab-scripts" title="Permalink to this headline">¶</a></h2>
+<h3>Executing Matlab scripts<a class="headerlink" href="#executing-matlab-scripts" title="Permalink to this headline">¶</a></h3>
 <p>Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.</p>
 <p><a class="reference external" href="Media:derivatives.zip">derivatives.zip</a></p>
@@ -206,7 +227,7 @@ there the file derivatives.zip:</p>
 <p>It will uncompress a file called “derivatives.m”, that is the actual
 matlab code that we would like to execute on the cluster.</p>
 <p>The submission script is very simple, for this example we will use a
-single core:</p>
+single core (On Spruce):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
@@ -216,7 +237,7 @@ single core:</p>
 #PBS -q debug
 
 module purge
-module load statistics/matlab/2014a
+module load matlab/2018a
 
 cd $PBS_O_WORKDIR
 matlab -nodisplay -r derivatives
@@ -352,7 +373,7 @@ job. The output of your execution is stored at MATLAB.o987788</p>
 </div>
 </div>
 <div class="section" id="using-the-matlab-compiler">
-<h2>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h2>
+<h3>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h3>
 <p>The first step is to load matlab to get access to its executables:</p>
 <blockquote>
 <div>module&nbsp;load&nbsp;statistics/matlab/2014a</div></blockquote>
@@ -378,7 +399,7 @@ To choose a different language, execute one from the following:``
 <span class="n">run_mandelbrot</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The submission script changes to:</p>
+<p>The submission script changes to (On Spruce):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
@@ -388,7 +409,7 @@ To choose a different language, execute one from the following:``
 #PBS -q debug
 
 module purge
-module load statistics/matlab/2014a
+module load matlab/2018a
 
 cd $PBS_O_WORKDIR
 ./run_mandelbrot.sh /shared/software/MATLAB/R2014a
@@ -405,6 +426,7 @@ cd $PBS_O_WORKDIR
 </div>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -414,10 +436,10 @@ cd $PBS_O_WORKDIR
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="77.Visit.html" class="btn btn-neutral float-right" title="Visualization: VisIt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="50.Developers.html" class="btn btn-neutral float-right" title="For Developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="75.bowtie2.html" class="btn btn-neutral float-left" title="Bioinformatics: Using Bowtie2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="48.Jupyter.html" class="btn btn-neutral float-left" title="Jupyter Notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

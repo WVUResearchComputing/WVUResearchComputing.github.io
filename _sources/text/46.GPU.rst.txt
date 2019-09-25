@@ -1,0 +1,154 @@
+.. _ad-gpu:
+
+GPU Computing
+=============
+
+A graphics processing unit (GPU) is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device. Their highly parallel structure makes them more efficient than general-purpose central processing units (CPUs) for algorithms that process large blocks of data in parallel.
+
+As GPUs become more powerful they start being use to perform numerical calculations in what is called a general purpose graphics processing unit (GPGPU). Due to their design GPUs are generally suited to high-throughput type computations that exhibit data-parallelism. One typical case is in Single Operations Multiple Data (SIMD) operations.
+
+Today GPU computing is an integral part of an HPC environment. Three of the 10 most powerful supercomputers in the world today (2019) take advantage of GPU acceleration.
+
+Both of our clusters, Spruce Knob and Thorny Flat have some nodes with GPUs for jobs that can take advantage of them.
+
+Hardware configurations
+-----------------------
+
+The GPUs on Spruce Knob are from the Kepler GPU microarchitecture (K20 GPU accelerator). On Thorny Flat the GPUs are all from the Pascal GPU microarchitecture (NVIDIA QUADRO P6000)
+
+Spruce Knob
+~~~~~~~~~~~
+
+Spruce has 2 community nodes with GPUs. One has 1x NVIDIA K20m and the second one has 3x NVIDIA K20m.
+
++--------------------------------+-------------------------+
+| **NVIDIA K20**                 | **Specifications**      |
++--------------------------------+-------------------------+
+| Launch                         | November 12, 2012       |
++--------------------------------+-------------------------+
+| Chips                          | 1x GK110                |
++--------------------------------+-------------------------+
+| NVIDIA CUDA Cores              | 2496	                   |
++--------------------------------+-------------------------+
+| Base Clock                     | 706	                   |
++--------------------------------+-------------------------+
+| Max Boost clock                | 758                     |
++--------------------------------+-------------------------+
+| Bus type                       | GDDR5                   |
++--------------------------------+-------------------------+
+| Bus width                      | 320-bit                 |
++--------------------------------+-------------------------+
+| GPU Memory Size                | 5 GB                    |
++--------------------------------+-------------------------+
+| Clock (MT/s)                   | 5200	                   |
++--------------------------------+-------------------------+
+| Memory Bandwidth               | 208 (GB/s)              |
++--------------------------------+-------------------------+
+| Single Precision (MAD or FMA)  | 3524	                   |
++--------------------------------+-------------------------+
+| Double Precision (FMA)         | 1175                    |
++--------------------------------+-------------------------+
+| Cuda compute ability           | 3.5	                   |
++--------------------------------+-------------------------+
+| Thermal Design Power (TDP)     | 225 W                   |
++--------------------------------+-------------------------+
+| Form Factor                    | Full Height, Dual Slot  |
++--------------------------------+-------------------------+
+
+
+Thorny Flat
+~~~~~~~~~~~
+
+Thorny has 6 community nodes with 3x NVIDIA P6000 per node.
+
++--------------------------------+-------------------------+
+| **NVIDIA QUADRO P6000**        | **Specifications**      |
++--------------------------------+-------------------------+
+| GPU Memory Size                | 24 GB GDDR5X            |
++--------------------------------+-------------------------+
+| Memory Interface               | 384-bit                 |
++--------------------------------+-------------------------+
+| Memory Bandwidth               | 432 GB/s                |
++--------------------------------+-------------------------+
+| NVIDIA CUDA Cores              | 3840                    |
++--------------------------------+-------------------------+
+| System Interface               | PCI Express 3.0 x16     |
++--------------------------------+-------------------------+
+| Max Power Consumption          | 250 W                   |
++--------------------------------+-------------------------+
+| Thermal Solution               | Active                  |
++--------------------------------+-------------------------+
+| Form Factor                    | Dual Slot, Full Height  |
++--------------------------------+-------------------------+
+| Compute APIs                   | CUDA, OpenCL            |
++--------------------------------+-------------------------+
+
+Interactive computing with GPUs
+-------------------------------
+
+On Spruce we have one queue for GPU computing. In the case of interacive jobs execute::
+
+  qsub -I -q comm_gpu -l nodes=1:ppn=1:gpus=1
+
+On Thorny Flat we have separate queues for interactive and non-interactive jobs.
+In the case of interactive jobs, execute::
+
+  qsub -I -q comm_gpu_inter -l nodes=1:ppn=1:gpus=3
+
+
+Checking the presence of GPUs
+-----------------------------
+
+The command `nvidia-smi` can be used to monitor the presence and status of the GPUs on the current compute node. For example on Spruce the command will return something like::
+
+  $> nvidia-smi
+  Tue Sep 24 15:48:45 2019
+  +-----------------------------------------------------------------------------+
+  | NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
+  |-------------------------------+----------------------+----------------------+
+  | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+  |===============================+======================+======================|
+  |   0  Tesla K20m          Off  | 00000000:08:00.0 Off |                    0 |
+  | N/A   40C    P0    73W / 225W |     96MiB /  4743MiB |     44%      Default |
+  +-------------------------------+----------------------+----------------------+
+  |   1  Tesla K20m          Off  | 00000000:24:00.0 Off |                    0 |
+  | N/A   40C    P0    49W / 225W |      0MiB /  4743MiB |      0%      Default |
+  +-------------------------------+----------------------+----------------------+
+  |   2  Tesla K20m          Off  | 00000000:27:00.0 Off |                    0 |
+  | N/A   34C    P0    52W / 225W |      0MiB /  4743MiB |     91%      Default |
+  +-------------------------------+----------------------+----------------------+
+
+  +-----------------------------------------------------------------------------+
+  | Processes:                                                       GPU Memory |
+  |  GPU       PID   Type   Process name                             Usage      |
+  |=============================================================================|
+  |                                                                             |
+  +-----------------------------------------------------------------------------+
+
+On Thorny Flat, the same command returns something like::
+
+  $> nvidia-smi
+  Tue Sep 24 15:56:16 2019
+  +-----------------------------------------------------------------------------+
+  | NVIDIA-SMI 410.48                 Driver Version: 410.48                    |
+  |-------------------------------+----------------------+----------------------+
+  | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+  |===============================+======================+======================|
+  |   0  Quadro P6000        Off  | 00000000:37:00.0 Off |                  Off |
+  | 26%   53C    P0   176W / 250W |    523MiB / 24449MiB |     94%   E. Process |
+  +-------------------------------+----------------------+----------------------+
+  |   1  Quadro P6000        Off  | 00000000:AF:00.0 Off |                  Off |
+  | 26%   53C    P0   152W / 250W |    527MiB / 24449MiB |     94%   E. Process |
+  +-------------------------------+----------------------+----------------------+
+  |   2  Quadro P6000        Off  | 00000000:D8:00.0 Off |                  Off |
+  | 26%   50C    P0   162W / 250W |    523MiB / 24449MiB |     96%   E. Process |
+  +-------------------------------+----------------------+----------------------+
+
+  +-----------------------------------------------------------------------------+
+  | Processes:                                                       GPU Memory |
+  |  GPU       PID   Type   Process name                             Usage      |
+  |=============================================================================|
+  |                                                                             |
+  +-----------------------------------------------------------------------------+

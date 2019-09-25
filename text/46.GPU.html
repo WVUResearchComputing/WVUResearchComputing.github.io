@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GPU Computing &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Environment Modules" href="47.Modules.html" />
+    <link rel="prev" title="Conda" href="45.Conda.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GPU Computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-configurations">Hardware configurations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spruce-knob">Spruce Knob</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thorny-flat">Thorny Flat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-computing-with-gpus">Interactive computing with GPUs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-the-presence-of-gpus">Checking the presence of GPUs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
+        
+      <li>GPU Computing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/46.GPU.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gpu-computing">
+<span id="ad-gpu"></span><h1>GPU Computing<a class="headerlink" href="#gpu-computing" title="Permalink to this headline">¶</a></h1>
+<p>A graphics processing unit (GPU) is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device. Their highly parallel structure makes them more efficient than general-purpose central processing units (CPUs) for algorithms that process large blocks of data in parallel.</p>
+<p>As GPUs become more powerful they start being use to perform numerical calculations in what is called a general purpose graphics processing unit (GPGPU). Due to their design GPUs are generally suited to high-throughput type computations that exhibit data-parallelism. One typical case is in Single Operations Multiple Data (SIMD) operations.</p>
+<p>Today GPU computing is an integral part of an HPC environment. Three of the 10 most powerful supercomputers in the world today (2019) take advantage of GPU acceleration.</p>
+<p>Both of our clusters, Spruce Knob and Thorny Flat have some nodes with GPUs for jobs that can take advantage of them.</p>
+<div class="section" id="hardware-configurations">
+<h2>Hardware configurations<a class="headerlink" href="#hardware-configurations" title="Permalink to this headline">¶</a></h2>
+<p>The GPUs on Spruce Knob are from the Kepler GPU microarchitecture (K20 GPU accelerator). On Thorny Flat the GPUs are all from the Pascal GPU microarchitecture (NVIDIA QUADRO P6000)</p>
+<div class="section" id="spruce-knob">
+<h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
+<p>Spruce has 2 community nodes with GPUs. One has 1x NVIDIA K20m and the second one has 3x NVIDIA K20m.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>NVIDIA K20</strong></td>
+<td><strong>Specifications</strong></td>
+</tr>
+<tr class="row-even"><td>Launch</td>
+<td>November 12, 2012</td>
+</tr>
+<tr class="row-odd"><td>Chips</td>
+<td>1x GK110</td>
+</tr>
+<tr class="row-even"><td>NVIDIA CUDA Cores</td>
+<td>2496</td>
+</tr>
+<tr class="row-odd"><td>Base Clock</td>
+<td>706</td>
+</tr>
+<tr class="row-even"><td>Max Boost clock</td>
+<td>758</td>
+</tr>
+<tr class="row-odd"><td>Bus type</td>
+<td>GDDR5</td>
+</tr>
+<tr class="row-even"><td>Bus width</td>
+<td>320-bit</td>
+</tr>
+<tr class="row-odd"><td>GPU Memory Size</td>
+<td>5 GB</td>
+</tr>
+<tr class="row-even"><td>Clock (MT/s)</td>
+<td>5200</td>
+</tr>
+<tr class="row-odd"><td>Memory Bandwidth</td>
+<td>208 (GB/s)</td>
+</tr>
+<tr class="row-even"><td>Single Precision (MAD or FMA)</td>
+<td>3524</td>
+</tr>
+<tr class="row-odd"><td>Double Precision (FMA)</td>
+<td>1175</td>
+</tr>
+<tr class="row-even"><td>Cuda compute ability</td>
+<td>3.5</td>
+</tr>
+<tr class="row-odd"><td>Thermal Design Power (TDP)</td>
+<td>225 W</td>
+</tr>
+<tr class="row-even"><td>Form Factor</td>
+<td>Full Height, Dual Slot</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="thorny-flat">
+<h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>Thorny has 6 community nodes with 3x NVIDIA P6000 per node.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>NVIDIA QUADRO P6000</strong></td>
+<td><strong>Specifications</strong></td>
+</tr>
+<tr class="row-even"><td>GPU Memory Size</td>
+<td>24 GB GDDR5X</td>
+</tr>
+<tr class="row-odd"><td>Memory Interface</td>
+<td>384-bit</td>
+</tr>
+<tr class="row-even"><td>Memory Bandwidth</td>
+<td>432 GB/s</td>
+</tr>
+<tr class="row-odd"><td>NVIDIA CUDA Cores</td>
+<td>3840</td>
+</tr>
+<tr class="row-even"><td>System Interface</td>
+<td>PCI Express 3.0 x16</td>
+</tr>
+<tr class="row-odd"><td>Max Power Consumption</td>
+<td>250 W</td>
+</tr>
+<tr class="row-even"><td>Thermal Solution</td>
+<td>Active</td>
+</tr>
+<tr class="row-odd"><td>Form Factor</td>
+<td>Dual Slot, Full Height</td>
+</tr>
+<tr class="row-even"><td>Compute APIs</td>
+<td>CUDA, OpenCL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="interactive-computing-with-gpus">
+<h2>Interactive computing with GPUs<a class="headerlink" href="#interactive-computing-with-gpus" title="Permalink to this headline">¶</a></h2>
+<p>On Spruce we have one queue for GPU computing. In the case of interacive jobs execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>On Thorny Flat we have separate queues for interactive and non-interactive jobs.
+In the case of interactive jobs, execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu_inter</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="checking-the-presence-of-gpus">
+<h2>Checking the presence of GPUs<a class="headerlink" href="#checking-the-presence-of-gpus" title="Permalink to this headline">¶</a></h2>
+<p>The command <cite>nvidia-smi</cite> can be used to monitor the presence and status of the GPUs on the current compute node. For example on Spruce the command will return something like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; nvidia-smi
+Tue Sep 24 15:48:45 2019
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla K20m          Off  | 00000000:08:00.0 Off |                    0 |
+| N/A   40C    P0    73W / 225W |     96MiB /  4743MiB |     44%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  Tesla K20m          Off  | 00000000:24:00.0 Off |                    0 |
+| N/A   40C    P0    49W / 225W |      0MiB /  4743MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   2  Tesla K20m          Off  | 00000000:27:00.0 Off |                    0 |
+| N/A   34C    P0    52W / 225W |      0MiB /  4743MiB |     91%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|                                                                             |
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+<p>On Thorny Flat, the same command returns something like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; nvidia-smi
+Tue Sep 24 15:56:16 2019
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 410.48                 Driver Version: 410.48                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Quadro P6000        Off  | 00000000:37:00.0 Off |                  Off |
+| 26%   53C    P0   176W / 250W |    523MiB / 24449MiB |     94%   E. Process |
++-------------------------------+----------------------+----------------------+
+|   1  Quadro P6000        Off  | 00000000:AF:00.0 Off |                  Off |
+| 26%   53C    P0   152W / 250W |    527MiB / 24449MiB |     94%   E. Process |
++-------------------------------+----------------------+----------------------+
+|   2  Quadro P6000        Off  | 00000000:D8:00.0 Off |                  Off |
+| 26%   50C    P0   162W / 250W |    523MiB / 24449MiB |     96%   E. Process |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|                                                                             |
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="47.Modules.html" class="btn btn-neutral float-right" title="Environment Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="45.Conda.html" class="btn btn-neutral float-left" title="Conda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

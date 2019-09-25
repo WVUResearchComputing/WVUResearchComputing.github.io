@@ -1,11 +1,31 @@
-Matlab: Running Matlab scripts on a HPC cluster
-===============================================
+.. _ad-matlab:
+
+MATLAB
+======
+
+MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.
+
+Loading Environment Modules
+---------------------------
+
+On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
+To access MATLAB on Spruce Knob use::
+
+  module load matlab/2018a
+
+To access MATLAB on Thorny Flat use::
+
+  module load matlab/2018b
+
+
+Running Matlab scripts on a HPC cluster
+---------------------------------------
 
 This simple tutorial explains how to use Matlab without launching the
 graphical interface and using the submission script.
 
 Executing Matlab scripts
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.
@@ -21,7 +41,7 @@ It will uncompress a file called "derivatives.m", that is the actual
 matlab code that we would like to execute on the cluster.
 
 The submission script is very simple, for this example we will use a
-single core::
+single core (On Spruce)::
 
     #!/bin/sh
 
@@ -32,7 +52,7 @@ single core::
     #PBS -q debug
 
     module purge
-    module load statistics/matlab/2014a
+    module load matlab/2018a
 
     cd $PBS_O_WORKDIR
     matlab -nodisplay -r derivatives
@@ -173,7 +193,7 @@ job. The output of your execution is stored at MATLAB.o987788
      0.57871842655441748319601085860196
 
 Using the Matlab Compiler
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The first step is to load matlab to get access to its executables:
 
@@ -205,7 +225,7 @@ It takes a while, when finished you will get some extra files::
     mandelbrot
     run_mandelbrot.sh
 
-The submission script changes to::
+The submission script changes to (On Spruce)::
 
      #!/bin/sh
 
@@ -216,7 +236,7 @@ The submission script changes to::
      #PBS -q debug
 
      module purge
-     module load statistics/matlab/2014a
+     module load matlab/2018a
 
      cd $PBS_O_WORKDIR
      ./run_mandelbrot.sh /shared/software/MATLAB/R2014a

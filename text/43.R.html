@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Job Submission &mdash; WVU-RC 1.0 documentation</title>
+  <title>R Language &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Transferring Files" href="27.TransferFiles.html" />
-    <link rel="prev" title="Storage" href="25.Storage.html" /> 
+    <link rel="next" title="Perl Language" href="44.Perl.html" />
+    <link rel="prev" title="Python" href="42.Python.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,18 +101,24 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25.Storage.html">Storage</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html#python-virtual-environments">Python Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html#id1">Python Virtual Environments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Perl.html#using-the-cpan-module">Using the CPAN module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html#matlab-running-matlab-scripts-on-a-hpc-cluster">Matlab: Running Matlab scripts on a HPC cluster</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
@@ -164,15 +170,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
         
-      <li>Job Submission</li>
+      <li>R Language</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/26.JobSubmission.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/43.R.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,10 +191,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="job-submission">
-<span id="qs-job-submission"></span><h1>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this headline">¶</a></h1>
-<p>Shared resources like Computer clusters are intended to be used by several people at the same time. To coordinate usage of the resources, users should request to a system called “Resource Manager” to give them access to some resources for a predefined amount of time.</p>
-<p>The set of resources that are requested and the set of commands that you plan to execute is called a job. There are two kinds of jobs: “interactive” and “non-interactive”</p>
+  <div class="section" id="r-language">
+<span id="ad-r"></span><h1>R Language<a class="headerlink" href="#r-language" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -199,10 +203,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="27.TransferFiles.html" class="btn btn-neutral float-right" title="Transferring Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="44.Perl.html" class="btn btn-neutral float-right" title="Perl Language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="25.Storage.html" class="btn btn-neutral float-left" title="Storage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="42.Python.html" class="btn btn-neutral float-left" title="Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
