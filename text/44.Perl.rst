@@ -1,5 +1,10 @@
+.. _ad-perl:
+
+Perl Language
+=============
+
 Using the CPAN module
-=====================
+---------------------
 
 The CPAN module automates or at least simplifies the make and install of perl modules and extensions. It includes some primitive searching capabilities and knows how to use LWP, HTTP::Tiny, Net::FTP and certain external download clients to fetch distributions from the net.
 

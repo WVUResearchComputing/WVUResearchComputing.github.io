@@ -1,0 +1,8 @@
+.. _ad-modules:
+
+Environment Modules
+===================
+
+The Environment Modules system is a tool to help users manage their Unix or Linux shell environment, by allowing groups of related environment-variable settings to be made or removed dynamically.
+
+Modules has been around since the early 1990s and is used mostly at HPC clusters.

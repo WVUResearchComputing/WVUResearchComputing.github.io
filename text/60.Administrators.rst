@@ -8,3 +8,7 @@ For Administrators
 
   61.SphinxDocs.rst
   62.Boost.rst
+  63.Hadoop.rst
+  64.MPIUser.rst
+  65.UserInstallation.rst
+  
