@@ -110,29 +110,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#python-from-environment-modules">Python from environment Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#packages-included">Packages included</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-as-user-with-pip">Installing python packages as user with pip</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-with-a-custom-prefix">Installing python packages with a custom prefix</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#virtual-environments">Virtual Environments</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-r-packages-in-default-directories">Installing R Packages in default Directories</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-r-packages-in-non-default-directories">Installing R Packages in non-default directories</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#using-install-packages">Using install.packages()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-r-cmd-install">Using R CMD INSTALL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-installed-packages-from-non-default-directories">Using Installed Packages from non-default directories</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#python-virtual-environments">Python Virtual Environments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-with-a-custom-prefix">Installing python packages with a custom prefix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-python-virtualenv">Using Python virtualenv</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#using-virtual-environments-with-python2">Using Virtual Environments with python2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-virtual-environments-with-python3">Using Virtual Environments with python3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#activating-virtual-environments-using-the-c-shell">Activating virtual environments using the C shell</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-site-wide-system-packages">Using site-wide system packages</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Python Virtual Environments</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Using Virtual Environments with python2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Using Virtual Environments with python3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Activating virtual environments using the C shell</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Using site-wide system packages</a></li>
 </ul>
 </li>
 </ul>
@@ -223,7 +206,7 @@
 <p>Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python’s design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.</p>
 <p>Due to Python’s extensive mathematics library, and the third-party library NumPy that further extends the native capabilities, it is frequently used as a scientific scripting language to aid in problems such as numerical data processing and manipulation.</p>
 <p>Libraries such as NumPy, SciPy and Matplotlib allow the effective use of Python in scientific computing, with specialized libraries such as Biopython and Astropy providing domain-specific functionality. Python is commonly used in artificial intelligence projects with the help of libraries like TensorFlow, Keras and Scikit-learn. As a scripting language with modular architecture, simple syntax and rich text processing tools, Python is often used for natural language processing.</p>
-<p>Both clusters, Spruce and Thorny offer a variety of Python implementations and versions.</p>
+<p>Both clusters, Spruce and Thorny offer a variety of Python implementations and versions, including the reference CPython, the MKL optimized Intel Python Distribution and PyPy, a fast, compliant alternative implementation of the Python thanks to its Just-in-Time compiler.</p>
 <p>This section shows some of them and why is important to know where and how activate the different python environments.</p>
 <div class="section" id="red-hat-linux-native-python">
 <h2>Red Hat Linux Native Python<a class="headerlink" href="#red-hat-linux-native-python" title="Permalink to this headline">¶</a></h2>
@@ -236,7 +219,7 @@ the Python version is 2.6.6 and on Thorny is 2.7.5</p>
 Most scientific applications written in Python demands at least version 2.7.
 Python 2.7 will not be maintained past 2020 and a number of critical Python projects have pledged to stop supporting Python 2 soon.</p>
 <p>From another side, despite of Python being installed by default on RHEL most scientific packages are not installed.
-This is another reason to not use the Python install with the OS and instead use one of environment modules for Python.</p>
+This is another reason to not use the Python installed with the OS and instead use one of environment modules for Python.</p>
 </div>
 <div class="section" id="python-from-environment-modules">
 <h2>Python from environment Modules<a class="headerlink" href="#python-from-environment-modules" title="Permalink to this headline">¶</a></h2>
@@ -592,190 +575,14 @@ method, consult <a class="reference external" href="https://docs.python.org">pyt
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<div class="section" id="virtual-environments">
-<h3>Virtual Environments<a class="headerlink" href="#virtual-environments" title="Permalink to this headline">¶</a></h3>
-<p>The problem with Python User, Home and Prefix flags are that they will
-all be searched secondary to the system-wide site package. This is a
-problem if you are trying to install locally a different version of a
+</div>
+<div class="section" id="using-python-virtualenv">
+<h2>Using Python virtualenv<a class="headerlink" href="#using-python-virtualenv" title="Permalink to this headline">¶</a></h2>
+<p>The installing with <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></code> or <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--target</span> <span class="pre">&lt;dir&gt;</span></code>
+those locations are all searched secondary to the system-wide site packages.</p>
+<p>This is could be an issue if you are trying to install locally a different version of a
 module already installed system-wide. A way to get around this is by
-using <a class="reference external" href="Pythonvirtualenvironments">Python Virtual Environments</a>.</p>
-</div>
-</div>
-<div class="section" id="installing-r-packages-in-default-directories">
-<h2>Installing R Packages in default Directories<a class="headerlink" href="#installing-r-packages-in-default-directories" title="Permalink to this headline">¶</a></h2>
-<p>The two usual ways to install R packages from CRAN is either executing</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>from the R prompt. Or using the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>from the command line. The second command only works if you have already
-downloaded a copy of the package from CRAN or an external site. The
-first will automatically download the package from CRAN. R will
-automatically detect that you do not have permissions to write in the
-system-wide R library folder and will prompt if you would like to
-install in a local directory from within your home directory. This
-folder will also be checked automatically when you run R for packages,
-allowing you to use anything you install in this way.</p>
-</div>
-<div class="section" id="installing-r-packages-in-non-default-directories">
-<h2>Installing R Packages in non-default directories<a class="headerlink" href="#installing-r-packages-in-non-default-directories" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-install-packages">
-<h3>Using install.packages()<a class="headerlink" href="#using-install-packages" title="Permalink to this headline">¶</a></h3>
-<p>To use install.packages from the R prompt, before you start R you need
-to modify the R_LIBS environment variable</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Then inside the R prompt you execute install.packages() as normal (see
-above).</p>
-</div>
-<div class="section" id="using-r-cmd-install">
-<h3>Using R CMD INSTALL<a class="headerlink" href="#using-r-cmd-install" title="Permalink to this headline">¶</a></h3>
-<p>For ‘R CMD INSTALL’ command, you can specify the path with the l flag
-(lowercase ‘L’)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="using-installed-packages-from-non-default-directories">
-<h3>Using Installed Packages from non-default directories<a class="headerlink" href="#using-installed-packages-from-non-default-directories" title="Permalink to this headline">¶</a></h3>
-<p>To use locally installed packages, before you execute R you just need to
-modify the R_LIBS environment variable to tell R where to search for
-local packages.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>export R_LIBS=&lt;dir&gt;
-
-Python and scientific libraries
-===============================
-
-**Module:** languages/python/2.7.13
-
-**Module:** languages/python/3.6.0
-
-**Path** /shared/software/languages/python/2.7.13
-
-**Path** /shared/software/languages/python/3.6.0
-
-**Date** January 24, 2017
-
-Python currently has two active versions, there are some important
-differences that prevent python code from running with python 3. That
-means that some packages are currently no python 3 ready and some of
-them will never be. Python 2 will stop being supported on 2020, so until
-that happens python 2 and 3 will coexist and that is the reason why we
-keep both on our cluster.
-
-Packages included
------------------
-::
-
-    * Python-2.7.13
-    * Python-3.6.0
-
-Libraries included
-------------------
-
-We provide a comprehensive collection of scientific libraries for
-python:
-
-Python 2.7 and 3.6
-~~~~~~~~~~~~~~~~~~
-
-::
-    coverage (4.3.4)
-    cycler (0.10.0)
-    Cython (0.25.2)
-    dask (0.13.0)
-    decorator (4.0.11)
-    future (0.16.0)
-    h5py (2.6.0)
-    ipython (5.1.0)
-    ipython-genutils (0.1.0)
-    matplotlib (2.0.0)
-    mpmath (0.19)
-    networkx (1.11)
-    nose (1.3.7)
-    numpy (1.12.0)
-    olefile (0.44)
-    pandas (0.19.2)
-    pexpect (4.2.1)
-    performance (0.5.1)
-    pickleshare (0.7.4)
-    Pillow (4.0.0)
-    pip (9.0.1)
-    prompt-toolkit (1.0.9)
-    ptyprocess (0.5.1)
-    Pygments (2.2.0)
-    pymongo (3.4.0)
-    pyparsing (2.1.10)
-    python-dateutil (2.6.0)
-    pytz (2016.10)
-    scikit-image (0.12.3)
-    scikit-learn (0.18.1)
-    scipy (0.18.1)
-    simplegeneric (0.8.1)
-    six (1.10.0)
-    sympy (1.0)
-    toolz (0.8.2)
-    traitlets (4.3.1)
-    virtualenv (15.1.0)
-    wcwidth (0.1.7)
-
-Python 2.7 only
-~~~~~~~~~~~~~~~
-
-::
-    appdirs (1.4.0)
-    backports.shutil-get-terminal-size (1.0.0)
-    enum34 (1.1.6)
-    functools32 (3.2.3.post2)
-    packaging (16.8)
-    pathlib2 (2.2.1)
-    scandir (1.4)
-    setuptools (34.0.2)
-    subprocess32 (3.2.7)
-    wheel (0.29.0)
-
-Python 3.6 only
-~~~~~~~~~~~~~~~
-
-::
-    CacheControl (0.11.7)
-    lockfile (0.12.2)
-    natsort (5.0.1)
-    requests (2.13.0)
-    scikit-bio (0.5.1)
-    setuptools (28.8.0)
-
-Notes from building
--------------------
-
-Python 2 and 3 where compiled with \`sqlite\` support and python 3 with
-\`lzma\`. SqLite is used by IPython to record history of commands and
-LZMA is a newer compression algorithm that Python 3 is linked to.
-
-Both version were compiled with GCC 6.3.0 with Link-time optimization
-(LTO) and Profile-guided optimization (PGO) to maximize performance in
-production runs.
-
-Compilation proceed with (similar for 6.3.0)::
-
-     ../configure --prefix=/shared/software/languages/python/2.7.13
-     make profile-opt
-     make install
-
-The Makefile was modified to remove the command option
-``-fuse-linker-plugin``
-
-.. literalinclude:: /_static/python.patch
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="python-virtual-environments">
-<h2>Python Virtual Environments<a class="headerlink" href="#python-virtual-environments" title="Permalink to this headline">¶</a></h2>
+using Python Virtual Environments.</p>
 <p>Python virtual environments are used to build completely isolated python
 workflows. Primarily they are used to solve the need for multiple
 versions within python modules. Often, you might have the need to use
@@ -785,7 +592,7 @@ pip or easy_install), you will create a dependency issue since both
 versions of pkbC will be installed to the same location.</p>
 <p>To resolve this, you can create python virtual environments that all
 isolation of package dependencies, so you can successfully have
-different versions of packages installed and tied to seperate python
+different versions of packages installed and tied to separate python
 interpreters. Setting up python virtual environments is easy, and using
 them is no different than using python it’s self.</p>
 <div class="section" id="using-virtual-environments-with-python2">
@@ -795,7 +602,7 @@ python interpreter. For instance, if you want python 2.7.10, then load
 the 2.7.10 python modefule. If you want to use the default system python
 (v. 2.6), then you do not need to load a python modulefile. However, you
 do need to load the virtualenv modulefile.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">10</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">virtualenv</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">15</span><span class="n">_gcc82</span>
 </pre></div>
 </div>
 <p>Then create a virtualenv directory with the ‘virtualenv’ command.</p>
@@ -818,7 +625,7 @@ pip, and easy_install just as you would regularly.</p>
 <p>First, load the python3 modulefile. The python3 modulefile comes with
 it’s own virtual environment utility, so you do not need to load the
 virtualenv modulefile.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">7.4</span><span class="n">_gcc82</span>
 </pre></div>
 </div>
 <p>Then create a virtualenv directry with the ‘pyvenv’ command.</p>
@@ -847,102 +654,14 @@ the ‘activate’ file. Instead, you need to source the activate.csh file.</p>
 <div class="section" id="using-site-wide-system-packages">
 <h3>Using site-wide system packages<a class="headerlink" href="#using-site-wide-system-packages" title="Permalink to this headline">¶</a></h3>
 <p>The centrally installed python interpreters (python loaded with
-modelefiles), usually have some common scientific packages installed
-with them by default. For instance, python 2.7.10 already has Numpy
-1.9.2 and Matplotlib 1.4.2 installed. To have your virtualenv keep using
-these packages so you do not need to install them in your virtualenv,
+modelefiles), have some common scientific packages installed
+with them by default. To have your virtualenv keep using
+these packages you do not need to install them in your virtualenv,
 using the –system-site-packages option.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 </pre></div>
 </div>
-<p>Or</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="o">--</span><span class="n">systems</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id1">
-<h2>Python Virtual Environments<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Python virtual environments are used to build completely isolated python
-workflows. Primarily they are used to solve the need for multiple
-versions within python modules. Often, you might have the need to use
-pkgA which needs pkgC version 1.24, but you also need pkgB which needs
-pkgC version 2.1. If you use setuptools to install the packages (i.e.
-pip or easy_install), you will create a dependency issue since both
-versions of pkbC will be installed to the same location.</p>
-<p>To resolve this, you can create python virtual environments that all
-isolation of package dependencies, so you can successfully have
-different versions of packages installed and tied to seperate python
-interpreters. Setting up python virtual environments is easy, and using
-them is no different than using python it’s self.</p>
-<div class="section" id="id2">
-<h3>Using Virtual Environments with python2<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>First, load which version of python2 you would like to use as your base
-python interpreter. For instance, if you want python 2.7.10, then load
-the 2.7.10 python modefule. If you want to use the default system python
-(v. 2.6), then you do not need to load a python modulefile. However, you
-do need to load the virtualenv modulefile.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">10</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">virtualenv</span>
-</pre></div>
-</div>
-<p>Then create a virtualenv directory with the ‘virtualenv’ command.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">workflow1</span>
-</pre></div>
-</div>
-<p>You should now have a directory called ‘workflow1’. You can use whatever
-name you want for the virtualenv, so long as you remember what directory
-corresponds with what environment. You now need to simply activate the
-virtualenv.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-</pre></div>
-</div>
-<p>Your command prompt will now be pre-emptied by (workflow1) to remind you
-that you have an activate virtualenv. You can now proceed to use python,
-pip, and easy_install just as you would regularly.</p>
-</div>
-<div class="section" id="id3">
-<h3>Using Virtual Environments with python3<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>First, load the python3 modulefile. The python3 modulefile comes with
-it’s own virtual environment utility, so you do not need to load the
-virtualenv modulefile.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span>
-</pre></div>
-</div>
-<p>Then create a virtualenv directry with the ‘pyvenv’ command.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="n">workflow1</span>
-</pre></div>
-</div>
-<p>You should now have a directory called ‘workflow1’. You can use whatever
-name you want for the virtualenv, so long as you remember what directory
-corresponds with what environment. You now need to simply activate the
-virtualenv.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-</pre></div>
-</div>
-<p>Your command prompt will now be pre-emptied by (workflow1) to remind you
-that you have an activate virtualenv. You can now proceed to use python,
-pip, and easy_install just as you would regularly.</p>
-</div>
-<div class="section" id="id4">
-<h3>Activating virtual environments using the C shell<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>If you are using the shells csh or tcsh, you will not be able to source
-the ‘activate’ file. Instead, you need to source the activate.csh file.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span><span class="o">.</span><span class="n">csh</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id5">
-<h3>Using site-wide system packages<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>The centrally installed python interpreters (python loaded with
-modelefiles), usually have some common scientific packages installed
-with them by default. For instance, python 2.7.10 already has Numpy
-1.9.2 and Matplotlib 1.4.2 installed. To have your virtualenv keep using
-these packages so you do not need to install them in your virtualenv,
-using the –system-site-packages option.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
-</pre></div>
-</div>
-<p>Or</p>
+<p>or</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="o">--</span><span class="n">systems</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 </pre></div>
 </div>
