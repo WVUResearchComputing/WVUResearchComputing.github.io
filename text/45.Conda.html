@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="GPU" href="46.GPU.html" />
+    <link rel="next" title="GPU Computing" href="46.GPU.html" />
     <link rel="prev" title="Perl Language" href="44.Perl.html" /> 
 </head>
 
@@ -105,37 +105,32 @@
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Python.html#python-virtual-environments">Python Virtual Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Python.html#id1">Python Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="43.R.html">R Language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="44.Perl.html#using-the-cpan-module">Using the CPAN module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Conda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#anaconda-vs-minicoda">Anaconda vs Minicoda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activating-conda-on-spruce-and-thorny-flat">Activating Conda on Spruce and Thorny Flat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conda-environments">Conda Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#knowing-which-environments-are-available">Knowing which environments are available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activating-an-existing-environment">Activating an existing environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deactivating-the-current-environment">Deactivating the current environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-new-environment">Create a new environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conda-and-python">Conda and Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-packages-and-channels">Managing packages and channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-environment-from-a-yml-file">Creating a new environment from a YML file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listing-the-packages-inside-one-environment">Listing the packages inside one environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-conda-environment-in-a-submission-script">Using a conda environment in a submission script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-a-environment">Deleting a environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-documentation">More documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-miniconda">Downloading Miniconda</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#no-installing-anything">No installing anything</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-qiime-on-a-virtual-environment-on-top-of-python-2-7-13">Installing QIIME on a virtual environment on top of python 2.7.13</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-qiime-on-top-of-python-2-7-13-no-virtual-env">Installing QIIME on top of python 2.7.13 (No virtual env)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-with-miniconda">Installing with Miniconda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bioinformatics-conda-and-bioconda">Bioinformatics: Conda and BioConda</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#preparing-the-environment">Preparing the environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#knowing-which-environments-are-available">Knowing which environments are available</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#activating-an-existing-environment">Activating an existing environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deactivating-the-current-environment">Deactivating the current environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-environment-from-a-yml-file">Creating a new environment from a YML file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#listing-the-packages-inside-one-environment">Listing the packages inside one environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-a-conda-environment-in-a-submission-script">Using a conda environment in a submission script</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deleting-a-environment">Deleting a environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#more-documentation">More documentation</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html#matlab-running-matlab-scripts-on-a-hpc-cluster">Matlab: Running Matlab scripts on a HPC cluster</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
@@ -212,155 +207,289 @@
             
   <div class="section" id="conda">
 <span id="ad-conda"></span><h1>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h1>
-<p>Sometimes you want complete control on your Python installation rather
-than rely on the packages and versions provided for you by the central
-installed python installation. This page will guide you in the process
-of installing miniconda on your home account. We describe here how to
-download, install and update a miniconda installation that will give you
-complete control on the packages that you have and the pace on which
-those packages will be updated.</p>
-<div class="section" id="downloading-miniconda">
-<h2>Downloading Miniconda<a class="headerlink" href="#downloading-miniconda" title="Permalink to this headline">¶</a></h2>
-<p>Miniconda can be downloaded from:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">sh</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
+<p>Conda is an open source package management system and environment management system.
+Conda quickly installs, runs and updates packages and their dependencies.
+Conda easily creates, saves, loads and switches between environments.
+It was created for Python programs, but it can package and distribute software for any language.</p>
+<p>Conda as a package manager helps you find and install packages.
+If you need a package that requires a different version of Python, you do not need to switch to a different environment manager, because conda is also an environment manager.
+With just a few commands, you can set up a totally separate environment to run that different version of Python, while continuing to run your usual version of Python in your normal environment.</p>
+<p>There are two installers for conda, Anaconda and Miniconda.</p>
+<div class="section" id="anaconda-vs-minicoda">
+<h2>Anaconda vs Minicoda<a class="headerlink" href="#anaconda-vs-minicoda" title="Permalink to this headline">¶</a></h2>
+<p>Anaconda is a downloadable, free, open source, high-performance and optimized Python and R distribution.
+Anaconda includes conda, conda-build, Python, and 100+ automatically installed, open source scientific packages and their dependencies that have been tested to work well together, including SciPy, NumPy and many others.
+Ananconda is more suited to be installed on a desktop environment as you get after installation a fairly complete environment for scientific computing.</p>
+<p>From the other side Miniconda is free minimal installer for conda.
+Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on and a small number of other useful packages, including pip, zlib and a few others.
+Miniconda is more suited for HPC environments where a minimal installation is all that is needed and users can create their own environments as needed.</p>
 </div>
-</div>
-<div class="section" id="no-installing-anything">
-<h2>No installing anything<a class="headerlink" href="#no-installing-anything" title="Permalink to this headline">¶</a></h2>
-<p>Just load the module:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">genomics</span><span class="o">/</span><span class="n">qiime</span>
-</pre></div>
-</div>
-<p>This module will load python 2.7.3 and qiime on top of that</p>
-</div>
-<div class="section" id="installing-qiime-on-a-virtual-environment-on-top-of-python-2-7-13">
-<h2>Installing QIIME on a virtual environment on top of python 2.7.13<a class="headerlink" href="#installing-qiime-on-a-virtual-environment-on-top-of-python-2-7-13" title="Permalink to this headline">¶</a></h2>
-<p>Use this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
-
-<span class="n">virtualenv</span> <span class="n">veqiime</span>
-<span class="n">cd</span> <span class="n">veqiime</span>
-<span class="n">source</span> <span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">qiime</span> <span class="p">(</span><span class="n">this</span> <span class="n">step</span> <span class="n">takes</span> <span class="n">around</span> <span class="n">a</span> <span class="n">minute</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>After installation all that you have to do is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
-<span class="n">cd</span> <span class="n">veqiime</span>
-<span class="n">source</span> <span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-</pre></div>
-</div>
-<p>and qiime is ready for use.</p>
-</div>
-<div class="section" id="installing-qiime-on-top-of-python-2-7-13-no-virtual-env">
-<h2>Installing QIIME on top of python 2.7.13 (No virtual env)<a class="headerlink" href="#installing-qiime-on-top-of-python-2-7-13-no-virtual-env" title="Permalink to this headline">¶</a></h2>
-<p>Execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span> <span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
-
-<span class="n">pip</span> <span class="n">install</span> <span class="n">qiime</span> <span class="o">--</span><span class="n">user</span>
-</pre></div>
-</div>
-<p>In this case qiime will be installed locally on your home directory
-at:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
-</pre></div>
-</div>
-<p>All that you have to do is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
-</pre></div>
-</div>
-<p>And qiime is ready for use.</p>
-</div>
-<div class="section" id="installing-with-miniconda">
-<h2>Installing with Miniconda<a class="headerlink" href="#installing-with-miniconda" title="Permalink to this headline">¶</a></h2>
-<p>First install miniconda following the instructions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">sh</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86</span>\<span class="n">_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
-
-<span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span>
-
-<span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">qiime1</span> <span class="n">python</span><span class="o">=</span><span class="mf">2.7</span> <span class="n">qiime</span> <span class="n">matplotlib</span><span class="o">=</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">3</span> <span class="n">mock</span> <span class="n">nose</span> <span class="o">-</span><span class="n">c</span> <span class="n">bioconda</span>
-</pre></div>
-</div>
-<p>Finally follow the instructions at the end of the installation</p>
-<p>To activate this environment, use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">source</span> <span class="n">activate</span> <span class="n">qiime1</span>
-</pre></div>
-</div>
-<p>To deactivate this environment, use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">source</span> <span class="n">deactivate</span> <span class="n">qiime1</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="bioinformatics-conda-and-bioconda">
-<h2>Bioinformatics: Conda and BioConda<a class="headerlink" href="#bioinformatics-conda-and-bioconda" title="Permalink to this headline">¶</a></h2>
-<p><strong>Conda</strong> is an open source package management system and environment
-management system that runs on Windows, macOS and Linux. Conda quickly
-installs, runs and updates packages and their dependencies. Conda easily
-creates, saves, loads and switches between environments.</p>
-<p>We have Conda installed on Spruce, all that you have to do to enable the
-conda environment is to execute:</p>
+<div class="section" id="activating-conda-on-spruce-and-thorny-flat">
+<h2>Activating Conda on Spruce and Thorny Flat<a class="headerlink" href="#activating-conda-on-spruce-and-thorny-flat" title="Permalink to this headline">¶</a></h2>
+<p>On Spruce you can activate conda with:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p><strong>Bioconda</strong> is a channel for the conda package manager specializing in
-bioinformatics software. Bioconda offers a repository of more than 4000
-bioinformatics packages</p>
-<p>In the future most packages in bioinformatics will be offered via
-Bioconda instead of independent modules. That allow us to keep packages
-consistent and updated.</p>
-<p>To get a better idea about using bioconda and the packages provided here
-we prepare a basic tutorial on its usage on Spruce.</p>
-<div class="section" id="preparing-the-environment">
-<h3>Preparing the environment<a class="headerlink" href="#preparing-the-environment" title="Permalink to this headline">¶</a></h3>
-<p>On spruce:</p>
-<p>You can load the module, but it only remembers you the script that needs
-to be sourced to operate with Bioconda</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">genomics</span><span class="o">/</span><span class="n">bioconda</span>
+<p>On Thorny Flat the command to activate conda is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">conda_init</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>In fact the conda environment is enable only when you actually source
-the script</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
+<p>After activation your are positioned on the <code class="docutils literal"><span class="pre">base</span></code> environment.</p>
 </div>
+<div class="section" id="conda-environments">
+<h2>Conda Environments<a class="headerlink" href="#conda-environments" title="Permalink to this headline">¶</a></h2>
+<p>Conda allows you to create separate environments containing files, packages and their dependencies that will not interact with other environments.</p>
+<p>When you begin using conda, you already have a default environment named <code class="docutils literal"><span class="pre">base</span></code>.
+You cannot install packages on the <code class="docutils literal"><span class="pre">base</span></code> environment.
+Yous should create new environments for installing packages.
+Try to keep separate environments for different packages or group of packages.
+That reduces the chances of incompatibility between them</p>
 </div>
 <div class="section" id="knowing-which-environments-are-available">
-<h3>Knowing which environments are available<a class="headerlink" href="#knowing-which-environments-are-available" title="Permalink to this headline">¶</a></h3>
-<p>By the time of writting this tutorial Spruce offers three environments
+<h2>Knowing which environments are available<a class="headerlink" href="#knowing-which-environments-are-available" title="Permalink to this headline">¶</a></h2>
+<p>By the time of writing this tutorial Spruce offers three environments
 centrally installed:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda info --envs
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; conda info --envs
+
 # conda environments:
 #
-                         /scratch/gufranco/bowtie2
-base                  *  /shared/software/miniconda3
+                         /scratch/gufranco/conda-intel
+base                     /shared/software/miniconda3
+genomics-core            /shared/software/miniconda3/envs/genomics-core
+jupyter                  /shared/software/miniconda3/envs/jupyter
+python27                 /shared/software/miniconda3/envs/python27
+python35                 /shared/software/miniconda3/envs/python35
+python36                 /shared/software/miniconda3/envs/python36
+python37                 /shared/software/miniconda3/envs/python37
 qiime2-2018.8            /shared/software/miniconda3/envs/qiime2-2018.8
+snowflakes               /shared/software/miniconda3/envs/snowflakes
 tpd0001                  /shared/software/miniconda3/envs/tpd0001
 </pre></div>
 </div>
 </div>
 <div class="section" id="activating-an-existing-environment">
-<h3>Activating an existing environment<a class="headerlink" href="#activating-an-existing-environment" title="Permalink to this headline">¶</a></h3>
+<h2>Activating an existing environment<a class="headerlink" href="#activating-an-existing-environment" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that you want to use the environment called “tpd0001”, to
-achieve that execute</p>
+achieve that execute:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">tpd0001</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="deactivating-the-current-environment">
-<h3>Deactivating the current environment<a class="headerlink" href="#deactivating-the-current-environment" title="Permalink to this headline">¶</a></h3>
+<h2>Deactivating the current environment<a class="headerlink" href="#deactivating-the-current-environment" title="Permalink to this headline">¶</a></h2>
+<p>The current environment can be deactivated with:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+<p>If you are in the <code class="docutils literal"><span class="pre">base</span></code> environment, the deactivation will not have any effect.
+You are always at least on the <code class="docutils literal"><span class="pre">base</span></code> environment.</p>
+</div>
+<div class="section" id="create-a-new-environment">
+<h2>Create a new environment<a class="headerlink" href="#create-a-new-environment" title="Permalink to this headline">¶</a></h2>
+<p>We will name the environment snowflakes and install the package BioPython.
+At the Anaconda Prompt or in your terminal window, type the following:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">snowflakes</span>
+</pre></div>
+</div>
+<p>or if you want also to install a package you can execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">snowflakes</span> <span class="n">biopython</span>
+</pre></div>
+</div>
+<p>Conda collects metadata about the package and its dependencies and produces an installation plan:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">## Package Plan ##</span>
+
+<span class="n">environment</span> <span class="n">location</span><span class="p">:</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">snowflakes</span>
+
+<span class="n">added</span> <span class="o">/</span> <span class="n">updated</span> <span class="n">specs</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">biopython</span>
+
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">will</span> <span class="n">be</span> <span class="n">downloaded</span><span class="p">:</span>
+
+    <span class="n">package</span>                    <span class="o">|</span>            <span class="n">build</span>
+    <span class="o">---------------------------|-----------------</span>
+    <span class="n">_libgcc_mutex</span><span class="o">-</span><span class="mf">0.1</span>          <span class="o">|</span>             <span class="n">main</span>           <span class="mi">3</span> <span class="n">KB</span>
+    <span class="n">biopython</span><span class="o">-</span><span class="mf">1.74</span>             <span class="o">|</span>   <span class="n">py37h7b6447c_0</span>         <span class="mf">2.0</span> <span class="n">MB</span>
+    <span class="n">blas</span><span class="o">-</span><span class="mf">1.0</span>                   <span class="o">|</span>              <span class="n">mkl</span>           <span class="mi">6</span> <span class="n">KB</span>
+    <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="o">-</span><span class="mf">2019.8</span><span class="o">.</span><span class="mi">28</span>  <span class="o">|</span>                <span class="mi">0</span>         <span class="mi">132</span> <span class="n">KB</span>
+    <span class="n">certifi</span><span class="o">-</span><span class="mf">2019.9</span><span class="o">.</span><span class="mi">11</span>          <span class="o">|</span>           <span class="n">py37_0</span>         <span class="mi">154</span> <span class="n">KB</span>
+    <span class="n">intel</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="mf">2019.4</span>        <span class="o">|</span>              <span class="mi">243</span>         <span class="mi">729</span> <span class="n">KB</span>
+    <span class="n">libedit</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">20181209</span>       <span class="o">|</span>       <span class="n">hc058e9b_0</span>         <span class="mi">163</span> <span class="n">KB</span>
+    <span class="n">libffi</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span>               <span class="o">|</span>       <span class="n">hd88cf55_4</span>          <span class="mi">40</span> <span class="n">KB</span>
+    <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span>            <span class="o">|</span>       <span class="n">hdf63c60_0</span>         <span class="mf">5.1</span> <span class="n">MB</span>
+    <span class="n">libgfortran</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span>       <span class="o">|</span>       <span class="n">hdf63c60_0</span>        <span class="mi">1006</span> <span class="n">KB</span>
+    <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span>         <span class="o">|</span>       <span class="n">hdf63c60_0</span>         <span class="mf">3.1</span> <span class="n">MB</span>
+    <span class="n">mkl</span><span class="o">-</span><span class="mf">2019.4</span>                 <span class="o">|</span>              <span class="mi">243</span>       <span class="mf">131.2</span> <span class="n">MB</span>
+    <span class="n">mkl</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">0</span>          <span class="o">|</span>   <span class="n">py37he904b0f_0</span>         <span class="mi">218</span> <span class="n">KB</span>
+    <span class="n">mkl_fft</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">14</span>             <span class="o">|</span>   <span class="n">py37ha843d7b_0</span>         <span class="mi">155</span> <span class="n">KB</span>
+    <span class="n">mkl_random</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span>           <span class="o">|</span>   <span class="n">py37hd6b4f25_0</span>         <span class="mi">321</span> <span class="n">KB</span>
+    <span class="n">ncurses</span><span class="o">-</span><span class="mf">6.1</span>                <span class="o">|</span>       <span class="n">he6710b0_1</span>         <span class="mi">777</span> <span class="n">KB</span>
+    <span class="n">numpy</span><span class="o">-</span><span class="mf">1.17</span><span class="o">.</span><span class="mi">2</span>               <span class="o">|</span>   <span class="n">py37haad9e8e_0</span>           <span class="mi">4</span> <span class="n">KB</span>
+    <span class="n">numpy</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="mf">1.17</span><span class="o">.</span><span class="mi">2</span>          <span class="o">|</span>   <span class="n">py37hde5b4d6_0</span>         <span class="mf">4.2</span> <span class="n">MB</span>
+    <span class="n">openssl</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">1</span><span class="n">d</span>             <span class="o">|</span>       <span class="n">h7b6447c_1</span>         <span class="mf">3.7</span> <span class="n">MB</span>
+    <span class="n">pip</span><span class="o">-</span><span class="mf">19.2</span><span class="o">.</span><span class="mi">3</span>                 <span class="o">|</span>           <span class="n">py37_0</span>         <span class="mf">1.9</span> <span class="n">MB</span>
+    <span class="n">python</span><span class="o">-</span><span class="mf">3.7</span><span class="o">.</span><span class="mi">4</span>               <span class="o">|</span>       <span class="n">h265db76_1</span>        <span class="mf">32.1</span> <span class="n">MB</span>
+    <span class="n">readline</span><span class="o">-</span><span class="mf">7.0</span>               <span class="o">|</span>       <span class="n">h7b6447c_5</span>         <span class="mi">324</span> <span class="n">KB</span>
+    <span class="n">setuptools</span><span class="o">-</span><span class="mf">41.2</span><span class="o">.</span><span class="mi">0</span>          <span class="o">|</span>           <span class="n">py37_0</span>         <span class="mi">630</span> <span class="n">KB</span>
+    <span class="n">six</span><span class="o">-</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span>                 <span class="o">|</span>           <span class="n">py37_0</span>          <span class="mi">23</span> <span class="n">KB</span>
+    <span class="n">sqlite</span><span class="o">-</span><span class="mf">3.29</span><span class="o">.</span><span class="mi">0</span>              <span class="o">|</span>       <span class="n">h7b6447c_0</span>         <span class="mf">1.1</span> <span class="n">MB</span>
+    <span class="n">tk</span><span class="o">-</span><span class="mf">8.6</span><span class="o">.</span><span class="mi">8</span>                   <span class="o">|</span>       <span class="n">hbc83047_0</span>         <span class="mf">2.8</span> <span class="n">MB</span>
+    <span class="n">wheel</span><span class="o">-</span><span class="mf">0.33</span><span class="o">.</span><span class="mi">6</span>               <span class="o">|</span>           <span class="n">py37_0</span>          <span class="mi">40</span> <span class="n">KB</span>
+    <span class="n">xz</span><span class="o">-</span><span class="mf">5.2</span><span class="o">.</span><span class="mi">4</span>                   <span class="o">|</span>       <span class="n">h14c3975_4</span>         <span class="mi">283</span> <span class="n">KB</span>
+    <span class="n">zlib</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">11</span>                <span class="o">|</span>       <span class="n">h7b6447c_3</span>         <span class="mi">103</span> <span class="n">KB</span>
+    <span class="o">------------------------------------------------------------</span>
+                                           <span class="n">Total</span><span class="p">:</span>       <span class="mf">192.2</span> <span class="n">MB</span>
+</pre></div>
+</div>
+<p>Conda asks if you want to proceed with the plan:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Proceed ([y]/n)? y
+Type &quot;y&quot; and press Enter to proceed.
+</pre></div>
+</div>
+<p>After that, conda, download and installs the packages creating a new environment for you.
+The final message shows how to activate and deactivate the environment:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="n">done</span>
+<span class="n">Verifying</span> <span class="n">transaction</span><span class="p">:</span> <span class="n">done</span>
+<span class="n">Executing</span> <span class="n">transaction</span><span class="p">:</span> <span class="n">done</span>
+<span class="c1">#</span>
+<span class="c1"># To activate this environment, use</span>
+<span class="c1">#</span>
+<span class="c1">#     $ conda activate snowflakes</span>
+<span class="c1">#</span>
+<span class="c1"># To deactivate an active environment, use</span>
+<span class="c1">#</span>
+<span class="c1">#     $ conda deactivate</span>
+</pre></div>
+</div>
+<p>Each environment is isolated from other conda environments and that allow you to keep several environments with different packages on them or different versions of the same packages.
+As the message shows you activate the environment with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">snowflakes</span>
+</pre></div>
+</div>
+<p>Notice that when you activate a new environment, the prompt changes adding a prefix in parenthesis to indicate on which conda environment are you using at that moment.
+To check the environments available execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">info</span> <span class="o">--</span><span class="n">envs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conda-and-python">
+<h2>Conda and Python<a class="headerlink" href="#conda-and-python" title="Permalink to this headline">¶</a></h2>
+<p>When you create a new environment, conda installs the same Python version used to install conda on Spruce and Thorny (3.7).
+If you want to use a different version of Python, for example Python 2.7, simply create a new environment and specify the version of Python that you want:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">python27</span> <span class="n">python</span><span class="o">=</span><span class="mf">2.7</span>
+</pre></div>
+</div>
+<p>You activate the environment:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">python27</span>
+</pre></div>
+</div>
+<p>And verify the python version:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python --version
+Python 2.7.16 :: Anaconda, Inc.
+</pre></div>
+</div>
+<p>Conda has packages for versions of python for 2.7, 3.5, 3.6 and 3.7</p>
+</div>
+<div class="section" id="managing-packages-and-channels">
+<h2>Managing packages and channels<a class="headerlink" href="#managing-packages-and-channels" title="Permalink to this headline">¶</a></h2>
+<p>New packages can be installed to existing conda environments. First search for packages with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="n">mkl</span>
+</pre></div>
+</div>
+<p>Packages are stored in repositories called <strong>channels</strong>.
+By default, conda search on the <code class="docutils literal"><span class="pre">pkgs/main</span></code> channel only.
+However, there are many other packages on several other channels.</p>
+<p>The most prominent channels to search for packages are <strong>intel</strong>, <strong>conda-forge</strong> and <strong>bioconda</strong>
+To search for packages there execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">intel</span> <span class="n">mkl</span>
+
+<span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nitime</span>
+
+<span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">bioconda</span> <span class="n">blast</span>
+</pre></div>
+</div>
+<p>Packages can be installed on the current environment with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nitime</span>
+</pre></div>
+</div>
+<p>In this case conda will pick the most recent version of the package compatible with the packages already present on the current environment.
+You can also be very selective on version and build that you want for the package.
+First get the list of versions and builds for the package that you want:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda search -c intel mkl
+Loading channels: done
+# Name                       Version           Build  Channel
+mkl                         2017.0.3         intel_6  intel
+mkl                         2017.0.4      h4c4d0af_0  pkgs/main
+mkl                         2018.0.0      hb491cac_4  pkgs/main
+mkl                         2018.0.0         intel_4  intel
+mkl                         2018.0.1      h19d6760_4  pkgs/main
+mkl                         2018.0.1         intel_4  intel
+mkl                         2018.0.2               1  pkgs/main
+mkl                         2018.0.2         intel_1  intel
+mkl                         2018.0.3               1  pkgs/main
+mkl                         2018.0.3         intel_1  intel
+mkl                           2019.0             117  pkgs/main
+mkl                           2019.0             118  pkgs/main
+mkl                           2019.0       intel_117  intel
+mkl                           2019.1             144  pkgs/main
+mkl                           2019.1       intel_144  intel
+mkl                           2019.2       intel_187  intel
+mkl                           2019.3             199  pkgs/main
+mkl                           2019.3       intel_199  intel
+mkl                           2019.4             243  pkgs/main
+mkl                           2019.4       intel_243  intel
+mkl                           2019.5       intel_281  intel
+</pre></div>
+</div>
+<p>Now, install the package declaring the version and build:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda install -c intel mkl=2019.4=intel_243
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /users/gufranco/.conda/envs/test
+
+  added / updated specs:
+    - mkl==2019.4=intel_243
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    intel-openmp-2019.5        |        intel_281         888 KB  intel
+    mkl-2019.4                 |        intel_243       204.1 MB  intel
+    tbb-2019.8                 |        intel_281         874 KB  intel
+    ------------------------------------------------------------
+                                           Total:       205.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  intel-openmp       intel/linux-64::intel-openmp-2019.5-intel_281
+  mkl                intel/linux-64::mkl-2019.4-intel_243
+  tbb                intel/linux-64::tbb-2019.8-intel_281
+
+
+Proceed ([y]/n)?
+
+
+Downloading and Extracting Packages
+tbb-2019.8           | 874 KB    | #################################################################################################################################### | 100%
+mkl-2019.4           | 204.1 MB  | #################################################################################################################################### | 100%
+intel-openmp-2019.5  | 888 KB    | #################################################################################################################################### | 100%
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
 </pre></div>
 </div>
 </div>
 <div class="section" id="creating-a-new-environment-from-a-yml-file">
-<h3>Creating a new environment from a YML file<a class="headerlink" href="#creating-a-new-environment-from-a-yml-file" title="Permalink to this headline">¶</a></h3>
+<h2>Creating a new environment from a YML file<a class="headerlink" href="#creating-a-new-environment-from-a-yml-file" title="Permalink to this headline">¶</a></h2>
 <p>You can create your own environment, one easy way of doing that is via a
 YML file that describes the channels and packages that you want on your
 environment. The YML file will look like this, for a simple case when
@@ -410,7 +539,7 @@ location on your scratch folder</p>
 $HOME/.conda</p>
 </div>
 <div class="section" id="listing-the-packages-inside-one-environment">
-<h3>Listing the packages inside one environment<a class="headerlink" href="#listing-the-packages-inside-one-environment" title="Permalink to this headline">¶</a></h3>
+<h2>Listing the packages inside one environment<a class="headerlink" href="#listing-the-packages-inside-one-environment" title="Permalink to this headline">¶</a></h2>
 <p>Bowtie2 has a number of dependencies (19 dependencies for 1 package)
 Notice that only bowtie2 comes from bioconda channel. All other packages
 are part of conda-forge, a lower level channel.</p>
@@ -442,7 +571,7 @@ zlib                      1.2.11               h470a237_3    conda-forge
 </div>
 </div>
 <div class="section" id="using-a-conda-environment-in-a-submission-script">
-<h3>Using a conda environment in a submission script<a class="headerlink" href="#using-a-conda-environment-in-a-submission-script" title="Permalink to this headline">¶</a></h3>
+<h2>Using a conda environment in a submission script<a class="headerlink" href="#using-a-conda-environment-in-a-submission-script" title="Permalink to this headline">¶</a></h2>
 <p>To execute software in a non-interactive job you need to source the main
 script, activate the environment that contains the software you need,
 execute the the scientific code and deactivate the environment. This is
@@ -464,14 +593,14 @@ conda deactivate
 </div>
 </div>
 <div class="section" id="deleting-a-environment">
-<h3>Deleting a environment<a class="headerlink" href="#deleting-a-environment" title="Permalink to this headline">¶</a></h3>
+<h2>Deleting a environment<a class="headerlink" href="#deleting-a-environment" title="Permalink to this headline">¶</a></h2>
 <p>To remove an environment you can just execute this command.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>conda remove --all -p $SCRATCH/bowtie2
 </pre></div>
 </div>
 </div>
 <div class="section" id="more-documentation">
-<h3>More documentation<a class="headerlink" href="#more-documentation" title="Permalink to this headline">¶</a></h3>
+<h2>More documentation<a class="headerlink" href="#more-documentation" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://conda.io/docs/index.html">Conda Documentation</a></p>
 <p>[<a class="reference external" href="https://conda.io/docs/user-guide/tasks/manage-environments.html">https://conda.io/docs/user-guide/tasks/manage-environments.html</a>#
 Managing environments]</p>
@@ -480,6 +609,22 @@ documentation</a></p>
 <p><a class="reference external" href="https://bioconda.github.io/conda-recipe_index.html">Available packages — Bioconda
 documentation</a></p>
 </div>
+<div class="section" id="downloading-miniconda">
+<h2>Downloading Miniconda<a class="headerlink" href="#downloading-miniconda" title="Permalink to this headline">¶</a></h2>
+<p>Miniconda can be downloaded from:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">sh</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="no-installing-anything">
+<h2>No installing anything<a class="headerlink" href="#no-installing-anything" title="Permalink to this headline">¶</a></h2>
+<p>Just load the module:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">genomics</span><span class="o">/</span><span class="n">qiime</span>
+</pre></div>
+</div>
+<p>This module will load python 2.7.3 and qiime on top of that</p>
 </div>
 </div>
 
@@ -491,7 +636,7 @@ documentation</a></p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="46.GPU.html" class="btn btn-neutral float-right" title="GPU" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="46.GPU.html" class="btn btn-neutral float-right" title="GPU Computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="44.Perl.html" class="btn btn-neutral float-left" title="Perl Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
