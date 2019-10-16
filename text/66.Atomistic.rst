@@ -1,0 +1,121 @@
+Compiling Atomistic Codes
+=========================
+
+
+Octopus
+-------
+
+Octopus is a Real Space DFT code. The serial version was compiled with
+GCC 8.2.
+
+The modules loaded for compilation were::
+
+  lang/gcc/8.2.0
+  libs/libxc/4.3.4_gcc82
+  libs/hdf5/1.10.5_gcc82
+  libs/netcdf/4.x_gcc82
+  parallel/openmpi/3.1.4_gcc82
+  libs/fftw/3.3.8_gcc82
+  libs/openblas/0.3.7_gcc82
+
+
+Serial version
+~~~~~~~~~~~~~~
+
+The configure line was::
+
+  ./configure --prefix=/shared/software/atomistic/octopus/9.1_gcc82 \
+  --with-libxc-prefix=/shared/software/libs/libxc/4.3.4_gcc82 \
+  --with-blas="-L/shared/software/libs/openblas/0.3.7_gcc82 -lopenblas" \
+  --with-fftw-prefix=/shared/software/libs/fftw/3.3.8_gcc82 \
+  --with-netcdf-prefix=/shared/software/libs/netcdf/4.x_gcc82
+
+On Spruce the results from the testsuite were::
+
+  Status: 1 failures
+    Passed:  160 / 174
+    Skipped: 13 / 174
+    Failed:  1 / 174
+
+    testfile                                                    # failed testcases
+    ------------------------------------------------------------------------------
+    functionals/07-sic.test                                     1
+
+  Total run-time of the testsuite: 00:42:42
+
+On Thorny Flat the results from the testsuite were::
+
+  Status: 1 failures
+    Passed:  159 / 174
+    Skipped: 13 / 174
+    Failed:  2 / 174
+
+    testfile                                                    # failed testcases
+    ------------------------------------------------------------------------------
+    real_time/14-absorption-spinors.test                        1
+    functionals/07-sic.test                                     1
+
+  Total run-time of the testsuite: 00:33:57
+
+Parallel version
+~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+Siesta
+------
+
+Siesta is a electronic structure code using linear scaling algorithms.
+The version compiled was 4.0.2. The code was compiled with Intel Compilers 2018
+and 2019
+
+To compile the code a arch.make needs to be created. The contents of the file
+are::
+
+  SIESTA_ARCH=intel-mpi
+
+  FC=mpiifort
+  FFLAGS=-g -xHost -O3 -prec-div -prec-sqrt -fp-model precise -qopt-prefetch -fPIC -m64
+
+  DUMMY_FOX=--enable-dummy
+  FFLAGS_DEBUG=-g -O2 -debug full -traceback -C
+  LDFLAGS= -static-intel -static-libgcc
+  RANLIB=ranlib
+  FC_SERIAL=ifort
+  FPPFLAGS_CDF=
+
+  MPI_INTERFACE=libmpi_f90.a
+  MKL_INCLUDE=-I$(MKLROOT)/include
+  MPI_LIBS=-L$(I_MPI_ROOT)/intel64/lib -lmpi
+  MKL_LIBS=$(MKLROOT)/lib/intel64
+  MPI_INCLUDE=-I$(I_MPI_ROOT)/intel64/include
+  INCFLAGS=$(MPI_INCLUDE) $(MKL_INCLUDE)
+
+  FPPFLAGS_MPI=-DMPI -DMPI_TIMING -DFC_HAVE_FLUSH -DFC_HAVE_ABORT -DSIESTA__NO_MRRR
+
+  NETCDF_LIBS=
+  NETCDF_INTERFACE=
+
+  LIBS=-mkl=cluster $(MPI_LIBS) -qopenmp -lpthread -lstdc++ -ldl
+
+  SYS=nag
+  FPPFLAGS= $(FPPFLAGS_CDF) $(FPPFLAGS_MPI)
+
+
+  atom.o: atom.F
+          $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+  state_analysis.o: state_analysis.F
+          $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+
+  .F.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $<
+  .f.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $<
+  .F90.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $<
+  .f90.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $<
