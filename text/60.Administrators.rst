@@ -11,4 +11,5 @@ For Administrators
   63.Hadoop.rst
   64.MPIUser.rst
   65.UserInstallation.rst
-  66.Atomistic.rst
+  66.HDF5_NetCDF.rst
+  67.Atomistic.rst
