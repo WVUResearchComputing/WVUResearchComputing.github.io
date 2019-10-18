@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Compiling Atomistic Codes &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Compiling Atomistic Codes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/67.Atomistic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="compiling-atomistic-codes">
+<h1>Compiling Atomistic Codes<a class="headerlink" href="#compiling-atomistic-codes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="octopus">
+<h2>Octopus<a class="headerlink" href="#octopus" title="Permalink to this headline">¶</a></h2>
+<p>Octopus is a Real Space DFT code. The serial version was compiled with
+GCC 8.2.</p>
+<p>The modules loaded for compilation were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
+<span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc82</span>
+<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.</span><span class="n">x_gcc82</span>
+<span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
+<span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span>
+<span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span>
+</pre></div>
+</div>
+<div class="section" id="serial-version">
+<h3>Serial version<a class="headerlink" href="#serial-version" title="Permalink to this headline">¶</a></h3>
+<p>The configure line was:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">9.1</span><span class="n">_gcc82</span> \
+<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">libxc</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span> \
+<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">blas</span><span class="o">=</span><span class="s2">&quot;-L/shared/software/libs/openblas/0.3.7_gcc82 -lopenblas&quot;</span> \
+<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">fftw</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span> \
+<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">netcdf</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.</span><span class="n">x_gcc82</span>
+</pre></div>
+</div>
+<p>On Spruce the results from the testsuite were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
+  <span class="n">Passed</span><span class="p">:</span>  <span class="mi">160</span> <span class="o">/</span> <span class="mi">174</span>
+  <span class="n">Skipped</span><span class="p">:</span> <span class="mi">13</span> <span class="o">/</span> <span class="mi">174</span>
+  <span class="n">Failed</span><span class="p">:</span>  <span class="mi">1</span> <span class="o">/</span> <span class="mi">174</span>
+
+  <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
+  <span class="o">------------------------------------------------------------------------------</span>
+  <span class="n">functionals</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">sic</span><span class="o">.</span><span class="n">test</span>                                     <span class="mi">1</span>
+
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">42</span>
+</pre></div>
+</div>
+<p>On Thorny Flat the results from the testsuite were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
+  <span class="n">Passed</span><span class="p">:</span>  <span class="mi">159</span> <span class="o">/</span> <span class="mi">174</span>
+  <span class="n">Skipped</span><span class="p">:</span> <span class="mi">13</span> <span class="o">/</span> <span class="mi">174</span>
+  <span class="n">Failed</span><span class="p">:</span>  <span class="mi">2</span> <span class="o">/</span> <span class="mi">174</span>
+
+  <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
+  <span class="o">------------------------------------------------------------------------------</span>
+  <span class="n">real_time</span><span class="o">/</span><span class="mi">14</span><span class="o">-</span><span class="n">absorption</span><span class="o">-</span><span class="n">spinors</span><span class="o">.</span><span class="n">test</span>                        <span class="mi">1</span>
+  <span class="n">functionals</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">sic</span><span class="o">.</span><span class="n">test</span>                                     <span class="mi">1</span>
+
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">57</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parallel-version">
+<h3>Parallel version<a class="headerlink" href="#parallel-version" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="siesta">
+<h2>Siesta<a class="headerlink" href="#siesta" title="Permalink to this headline">¶</a></h2>
+<p>Siesta is a electronic structure code using linear scaling algorithms.
+The version compiled was 4.0.2. The code was compiled with Intel Compilers 2018
+and 2019</p>
+<p>To compile the code a arch.make needs to be created. The contents of the file
+are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>SIESTA_ARCH=intel-mpi
+
+FC=mpiifort
+FFLAGS=-g -xHost -O3 -prec-div -prec-sqrt -fp-model precise -qopt-prefetch -fPIC -m64
+
+DUMMY_FOX=--enable-dummy
+FFLAGS_DEBUG=-g -O2 -debug full -traceback -C
+LDFLAGS= -static-intel -static-libgcc
+RANLIB=ranlib
+FC_SERIAL=ifort
+FPPFLAGS_CDF=
+
+MPI_INTERFACE=libmpi_f90.a
+MKL_INCLUDE=-I$(MKLROOT)/include
+MPI_LIBS=-L$(I_MPI_ROOT)/intel64/lib -lmpi
+MKL_LIBS=$(MKLROOT)/lib/intel64
+MPI_INCLUDE=-I$(I_MPI_ROOT)/intel64/include
+INCFLAGS=$(MPI_INCLUDE) $(MKL_INCLUDE)
+
+FPPFLAGS_MPI=-DMPI -DMPI_TIMING -DFC_HAVE_FLUSH -DFC_HAVE_ABORT -DSIESTA__NO_MRRR
+
+NETCDF_LIBS=
+NETCDF_INTERFACE=
+
+LIBS=-mkl=cluster $(MPI_LIBS) -qopenmp -lpthread -lstdc++ -ldl
+
+SYS=nag
+FPPFLAGS= $(FPPFLAGS_CDF) $(FPPFLAGS_MPI)
+
+
+atom.o: atom.F
+        $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $&lt;
+state_analysis.o: state_analysis.F
+        $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $&lt;
+
+.F.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $&lt;
+.f.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $&lt;
+.F90.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $&lt;
+.f90.o:
+        $(FC) -c $(FFLAGS) $(INCFLAGS) $&lt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="gromacs">
+<h2>Gromacs<a class="headerlink" href="#gromacs" title="Permalink to this headline">¶</a></h2>
+<p>Gromacs is a Classical Molecular Dynamics code. The version compiled was 2019.4
+It was compiled with MPI support</p>
+<p>The modules used were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.15</span><span class="o">.</span><span class="mi">4</span>
+<span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
+</pre></div>
+</div>
+<p>Cmake is only used during configuration and it is not needed for using Gromacs</p>
+<div class="section" id="spruce-knob">
+<h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
+<p>The first configuration is the standard one (Single Precision)</p>
+<p>The cmake configuration line was:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_gcc82</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>The results of the tests were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">162.72</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">11.37</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiTest</span>            <span class="o">=</span>  <span class="mf">12.06</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">13.23</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">UnitTest</span>           <span class="o">=</span> <span class="mf">138.12</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
+
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2085.68</span> <span class="n">sec</span>
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
+         <span class="mi">29</span> <span class="o">-</span> <span class="n">GmxPreprocessTests</span> <span class="p">(</span><span class="n">Timeout</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second configuration enables the double precision for gromacs:</p>
+<p>The cmake configuration line was:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_double_gcc82</span> \
+<span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>The results of the tests were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>              <span class="o">=</span>  <span class="mf">85.42</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">10.96</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiTest</span>            <span class="o">=</span>   <span class="mf">1.01</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">23.99</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">UnitTest</span>           <span class="o">=</span>  <span class="mf">50.47</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
+
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">493.51</span> <span class="n">sec</span>
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
+         <span class="mi">29</span> <span class="o">-</span> <span class="n">GmxPreprocessTests</span> <span class="p">(</span><span class="n">Timeout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="thorny-flat">
+<h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>The first configuration is the standard one (Single Precision)</p>
+<p>The cmake configuration line was:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_gcc82</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>The results of the tests were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">162.72</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">11.37</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiTest</span>            <span class="o">=</span>  <span class="mf">12.06</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">13.23</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">UnitTest</span>           <span class="o">=</span> <span class="mf">138.12</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
+
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2085.68</span> <span class="n">sec</span>
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
+         <span class="mi">29</span> <span class="o">-</span> <span class="n">GmxPreprocessTests</span> <span class="p">(</span><span class="n">Timeout</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second configuration enables the double precision for gromacs:</p>
+<p>The cmake configuration line was:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_double_gcc82</span> \
+<span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>The results of the tests were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">117.18</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">13.81</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiTest</span>            <span class="o">=</span>   <span class="mf">2.60</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">12.88</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">UnitTest</span>           <span class="o">=</span>  <span class="mf">90.49</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
+
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2075.93</span> <span class="n">sec</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
