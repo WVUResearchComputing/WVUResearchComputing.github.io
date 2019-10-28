@@ -45,7 +45,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Domain Specific Details" href="70.DomainSpecific.html" />
+    <link rel="prev" title="Compiling HDF5 and NetCDF" href="66.HDF5_NetCDF.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,13 +99,35 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="60.Administrators.html">For Administrators</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="61.SphinxDocs.html">Editing these documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="62.Boost.html">Compiling Boost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="63.Hadoop.html">Executing HADOOP jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="64.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="65.UserInstallation.html">Installing Packages in User Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="66.HDF5_NetCDF.html">Compiling HDF5 and NetCDF</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compiling Atomistic Codes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#serial-version">Serial version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parallel-version">Parallel version</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gromacs">Gromacs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spruce-knob">Spruce Knob</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thorny-flat">Thorny Flat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
@@ -152,6 +176,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="60.Administrators.html">For Administrators</a> &raquo;</li>
         
       <li>Compiling Atomistic Codes</li>
     
@@ -299,7 +325,7 @@ It was compiled with MPI support</p>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
-<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> <span class="o">-</span><span class="n">DGMX_HWLOC</span><span class="o">=</span><span class="n">off</span> \
 <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_gcc82</span> <span class="o">..</span>
 </pre></div>
 </div>
@@ -322,7 +348,7 @@ It was compiled with MPI support</p>
 <p>The second configuration enables the double precision for gromacs:</p>
 <p>The cmake configuration line was:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
-<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> <span class="o">-</span><span class="n">DGMX_HWLOC</span><span class="o">=</span><span class="n">off</span> \
 <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_double_gcc82</span> \
 <span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
 </pre></div>
@@ -399,6 +425,15 @@ It was compiled with MPI support</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="70.DomainSpecific.html" class="btn btn-neutral float-right" title="Domain Specific Details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="66.HDF5_NetCDF.html" class="btn btn-neutral float-left" title="Compiling HDF5 and NetCDF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
