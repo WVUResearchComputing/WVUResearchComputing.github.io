@@ -144,7 +144,7 @@ The first configuration is the standard one (Single Precision)
 The cmake configuration line was::
 
   cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
-  -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx \
+  -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DGMX_HWLOC=off \
   -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2019.4_gcc82 ..
 
 The results of the tests were::
@@ -168,7 +168,7 @@ The second configuration enables the double precision for gromacs:
 The cmake configuration line was::
 
   cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
-  -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx \
+  -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DGMX_HWLOC=off \
   -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2019.4_double_gcc82 \
   -DGMX_DOUBLE=on ..
 
