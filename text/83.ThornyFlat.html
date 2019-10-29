@@ -204,22 +204,27 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p><em>(This text can be used for proposals to Grant Funding Agencies)</em></p>
-<p>Thorny Flat is a general-purpose High-Performance Computing cluster.</p>
-<p>It is built from 108 compute nodes. 101 nodes have a dual socket mainboard with
-Intel(R) Xeon(R) Gold 6138 Processor for a total of 40 cores per node.
-The remaining 7 nodes have dual socket mainboard with Intel(R) Xeon(R) Gold
+<p>Thorny Flat is a general-purpose High-Performance Computing (HPC) cluster.
+Thorny Flat serves the HPC needs for West Virginia University (WVU) and other
+higher education institutions in West Virginia. It is hosted in Pittsburgh
+Supercomputer Center and was built thanks to NSF Major Research Instrumentation
+(MRI) Grant Award #1726534</p>
+<p>Thorny Flat is cluster of 108 compute nodes plus 4 management nodes.
+101 nodes have a dual-socket motherboard with Intel(R) Xeon(R) Gold 6138
+Processor for a total of 40 cores per node.
+The remaining 7 nodes have dual socket motherboard with Intel(R) Xeon(R) Gold
 6126 Processors for a total of 24 cores per node. The total number of cores is
 4208.</p>
-<p>The 7 nodes also have 3 NVIDIA(R) Quadro P6000 24GB PCIe GPUs for a total of
-21 GPU cards on the cluster. RAM memory on compute nodes range from 96GB to
-768GB. The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps
+<p>The 7 nodes with 24 cores also have 3 NVIDIA(R) Quadro P6000 24GB PCIe GPUs
+for a total of 21 GPU cards on the cluster.
+Memory on compute nodes range from 96GB to 768GB.
+The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps
 with a blocking ratio of 5:1.</p>
-<p>Performance of the cluster as mesured from the HPL Linpack benchmark scored
-115 TeraFLOPS using just the 101 CPU-only compute nodes.</p>
-<p>Thorny Flat serves the HPC needs for West Virginia University and other
-higher education institutions in West Virginia, it is hosted in Pittsburgh
-Supercomputer Center and was build thanks to NSF Major Research Instrumentation
-(MRI) Grant Award #1726534</p>
+<p>Thorny Flat scored 115 TeraFLOPS using jut the 101 CPU-only compute nodes.
+Score as measured from the HPL Linpack benchmark.</p>
+<p>Thorny Flat uses Torque and Moab for Resource Managment and Job Scheduling.
+It has a variety of compilers, numerical libraries and scientific software
+specifically compiled and optimized for the Hardware architecture.</p>
 <div class="section" id="resource-manager-and-system-scheduler">
 <h3>Resource manager and system scheduler<a class="headerlink" href="#resource-manager-and-system-scheduler" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
