@@ -14,9 +14,9 @@ higher education institutions in West Virginia. It is hosted in Pittsburgh
 Supercomputer Center and was built thanks to NSF Major Research Instrumentation
 (MRI) Grant Award #1726534
 
-Thorny Flat is cluster of 108 compute nodes plus 4 management nodes.
+Thorny Flat is a cluster of 108 compute nodes plus 4 management nodes.
 101 nodes have a dual-socket motherboard with Intel(R) Xeon(R) Gold 6138
-Processor for a total of 40 cores per node.
+Processors for a total of 40 cores per node.
 The remaining 7 nodes have dual socket motherboard with Intel(R) Xeon(R) Gold
 6126 Processors for a total of 24 cores per node. The total number of cores is
 4208.
@@ -28,11 +28,11 @@ The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps
 with a blocking ratio of 5:1.
 
 Thorny Flat scored 115 TeraFLOPS using jut the 101 CPU-only compute nodes.
-Score as measured from the HPL Linpack benchmark.
+Score was measured from the HPL Linpack benchmark.
 
 Thorny Flat uses Torque and Moab for Resource Managment and Job Scheduling.
 It has a variety of compilers, numerical libraries and scientific software
-specifically compiled and optimized for the Hardware architecture.
+specifically compiled and optimized for the hardware architecture.
 
 
 Resource manager and system scheduler
