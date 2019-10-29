@@ -228,12 +228,12 @@ The priorities are OPENBLAS_NUM_THREADS > GOTO_NUM_THREADS > OMP_NUM_THREADS.
 
 See more about this here:
 
-<https://github.com/xianyi/OpenBLAS>
+https://github.com/xianyi/OpenBLAS
 
 On the case of MKL there are two versions -mkl_sequential and -lmkl_intel_thread
 Setting the selection of libraries for MKL is complex, but I always use the link advisor to help me up
 
-<https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor>
+https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor
 
 The only case where I can think someone would like to use the reference BLAS
 and LAPCACK is if you want to check a numerical issue with the optimized
