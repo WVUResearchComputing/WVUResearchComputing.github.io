@@ -1,10 +1,34 @@
 Thorny Flat Cluster
 ===================
 
-Thorny Flat is WVU Latest HPC Cluster.  It was deployed in Feburary 2019 and funded in large part by NSF Major Research Instrumentation (MRI) Grant Award #1726534. The cluster is a 4,208 core cluster spread over 108 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phases and currently is in phase 0. 
+Thorny Flat is WVU Latest HPC Cluster.  It was deployed in Feburary 2019 and funded in large part by NSF Major Research Instrumentation (MRI) Grant Award #1726534. The cluster is a 4,208 core cluster spread over 108 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phases and currently is in phase 0.
 
 Overview
 --------
+
+*(This text can be used for proposals to Grant Funding Agencies)*
+
+Thorny Flat is a general-purpose High-Performance Computing cluster.
+
+It is built from 108 compute nodes. 101 nodes have a dual socket mainboard with
+Intel(R) Xeon(R) Gold 6138 Processor for a total of 40 cores per node.
+The remaining 7 nodes have dual socket mainboard with Intel(R) Xeon(R) Gold
+6126 Processors for a total of 24 cores per node. The total number of cores is
+4208.
+
+The 7 nodes also have 3 NVIDIA(R) Quadro P6000 24GB PCIe GPUs for a total of
+21 GPU cards on the cluster. RAM memory on compute nodes range from 96GB to
+768GB. The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps
+with a blocking ratio of 5:1.
+
+Performance of the cluster as mesured from the HPL Linpack benchmark scored
+115 TeraFLOPS using just the 101 CPU-only compute nodes.
+
+Thorny Flat serves the HPC needs for West Virginia University and other
+higher education institutions in West Virginia, it is hosted in Pittsburgh
+Supercomputer Center and was build thanks to NSF Major Research Instrumentation
+(MRI) Grant Award #1726534
+
 
 Resource manager and system scheduler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
