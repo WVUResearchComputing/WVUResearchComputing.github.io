@@ -12,3 +12,4 @@ Domain Specific Details
   75.bowtie2.rst
   77.Visit.rst
   78.PlanetaryScience.rst
+  79.NAMD.rst

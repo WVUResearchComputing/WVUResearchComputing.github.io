@@ -1,0 +1,274 @@
+NAMD
+====
+
+Nanoscale Molecular Dynamics (NAMD, formerly Not Another Molecular Dynamics
+Program) is computer software for molecular dynamics simulation, written using
+the Charm++ parallel programming model. It is noted for its parallel efficiency
+and is often used to simulate large systems (millions of atoms).
+It has been developed by the collaboration of the Theoretical and
+Computational Biophysics Group (TCB) and the Parallel Programming Laboratory
+(PPL) at the University of Illinois at Urbana–Champaign.
+
+In this tutorial we will demonstrate the very basics of running NAMD on our
+clusters. NAMD is particularly adapted for several paradigms in parallel
+computing from multithreading to distributed parallel programming and support
+for GPUs.
+
+The purpose of this tutorial is not to teach the chemistry and parameters more
+suited for a given problem. We will just show run NAMD jobs on our clusters.
+NAMD offers a user guide to understand how to prepare simulations from the
+chemical point of view.
+
+https://www.ks.uiuc.edu/Research/namd/2.13/ug/
+
+The tutorial will use a couple of examples from the set of benchmarks available
+for NAMD
+
+https://www.ks.uiuc.edu/Research/namd/utilities/apoa1.tar.gz
+
+https://www.ks.uiuc.edu/Research/namd/utilities/stmv.tar.gz
+
+Downloading the input files
+---------------------------
+
+Select a good location for downloading the inputs and executing the simulations.
+For example use $SCRATCH/NAMD::
+
+  mkdir $SCRATCH/NAMD
+  cd $SCRATCH/NAMD
+
+Download the two examples from the NAMD UIUC webserver::
+
+  wget https://www.ks.uiuc.edu/Research/namd/utilities/apoa1.tar.gz
+  wget https://www.ks.uiuc.edu/Research/namd/utilities/stmv.tar.gz
+
+The examples are compressed, execute this command to uncompress them on the
+current folder::
+
+  tar -zxvf apoa1.tar.gz
+  tar -zxvf stmv.tar.gz
+
+Preparing the submission script
+-------------------------------
+
+We will use ``apoa1`` for demonstrate how to create a submission script.
+ApoA1 has 92K atoms and should run efficiently on a single node.
+
+First, go to the recently created folder ``apoa1`` and start creating a file
+runjob.pbs with your text editor of choice::
+
+  cd apoa1
+  vim runjob.pbs
+
+The content of the submission could be like this::
+
+  #!/bin/bash
+
+  #PBS -N NAMD
+  #PBS -l nodes=1:ppn=2
+  #PBS -q standby
+  #PBS -j oe
+
+  module purge
+  module load atomistic/namd/2.13_multicore
+
+  cd $PBS_O_WORKDIR
+
+  namd2 +p2 +setcpuaffinity apoa1.namd
+
+The first line is called a shebang and indicates that the file below was
+written in bash, one of the several shell interpreters in Linux, for this
+simple example, there is nothing particular for bash and other interpreters
+are possible (csh, ksh, dash) or the system /bin/sh that in the case of
+Spruce is a symbolic link to bash itself.
+
+The next 4 lines start with #PBS. Those are comments for bash but are
+interpreted by qsub and they are important for requesting resources and
+configuring several aspects of non-interactive jobs.
+
+First is the name of the job "NAMD", totally arbitrary string to identify the job.
+Second is the line requesting resources. In this case we are requesting 2 cores
+on a single node.
+Third, is the queue where the job will execute, "standby" is actually the default
+queue so the line is not necessary here, but it is important to use it if you
+plan to run on a different queue.
+The fourth line attach the standard error with the standard output. NAMD will
+almost never write on the standard error, so using this command prevents us from
+having empty files at the end of each simulation.
+
+The next section clean the list of modules and load the corresponding module for
+NAMD. In this case we are using ``atomistic/namd/2.13_multicore`` that is
+intended only for executions on a single node.
+
+Next line changes the working directory to the place where the submission script
+and inputs are located and from we will submit the job.
+
+Finally the command for NAMD. ``namd2 +p2 +setcpuaffinity apoa1.namd``.
+The command tells NAMD to use 2 cores and make those two cores sit on the same
+socket optimizing the usage of Cache Level 3 in some cases. The input file for
+NAMD is apoa1.namd and that completes the submission script.
+
+Submitting the job
+------------------
+
+Submit the job with the following command::
+
+  qsub runjob.pbs
+
+You should get a line indicating the JobID, I got this::
+
+  4731853.srih0001.hpc.wvu.edu
+
+You can use the number to monitor the state of the job.
+
+For example executing::
+
+  $ showq -u $USER
+
+  active jobs------------------------
+  JOBID              USERNAME      STATE PROCS   REMAINING            STARTTIME
+
+  4731853            <username>    Running     2     3:59:35  Fri Nov  1 13:14:12
+
+  1 active job             2 of 3360 processors in use by local jobs (0.06%)
+                            1 of 175 nodes active      (0.57%)
+
+The job is now running and received 4 hours to complete, that is the walltime on
+``standby`` queue.
+
+With ``showq`` you can monitor the status of your jobs, if they are in queue or
+running.
+
+This is an small job that completes in minutes. Once the job is complete you
+will see new files on the folder where you execute the job.
+
+The file NAMD.o<JobID> will contain all the standard output and error produced
+by NAMD during execution. For the job above, my file is ``NAMD.o4731853``
+
+Read the file with care, pay attention to warnings and errors. For the sake of
+simplicity we will just show the last lines::
+
+  ENERGY:     499     20158.0682     19847.7298      5722.4089       178.6361        -337058.4824     23219.2403         0.0000         0.0000     45439.2653        -222493.1338       165.2956   -267932.3991   -222047.2061       165.2956          -2020.8690     -2376.3392    921491.4634     -2020.8690     -2376.3392
+
+  Info: Benchmark time: 2 CPUs 0.384412 s/step 4.44921 days/ns 542 MB memory
+  TIMING: 500  CPU: 195.068, 0.381542/step  Wall: 195.075, 0.381408/step, 0 hours remaining, 542.000000 MB of memory in use.
+  ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+  ENERGY:     500     20974.8941     19756.6569      5724.4523       179.8271        -337741.4189     23251.1007         0.0000         0.0000     45359.0789        -222495.4088       165.0039   -267854.4877   -222061.0906       165.0039          -3197.5170     -2425.4142    921491.4634     -3197.5170     -2425.4142
+
+  WRITING EXTENDED SYSTEM TO OUTPUT FILE AT STEP 500
+  WRITING COORDINATES TO OUTPUT FILE AT STEP 500
+  The last position output (seq=-2) takes 0.002 seconds, 542.000 MB of memory in use
+  WRITING VELOCITIES TO OUTPUT FILE AT STEP 500
+  The last velocity output (seq=-2) takes 0.002 seconds, 542.000 MB of memory in use
+  ====================================================
+
+  WallClock: 197.820267  CPUTime: 196.267166  Memory: 542.000000 MB
+  [Partition 0][Node 0] End of program
+
+This information is useful for adjusting your request for resources for additional
+and similar jobs. In particular this job too around 4 minutes and 540 MB of memory.
+
+Running NAMD on GPUs
+--------------------
+
+Now we will demonstrate the changes to be done when running with GPUs
+Go one folder up where the tar.gz and apoa1 folder is located::
+
+  cd $SCRATCH/NAMD
+
+Make a copy of the apoa1 folder, we will introduce a few changes to the
+submission script::
+
+  cp -r apoa1 apoa1-CUDA
+  cd apoa1-CUDA
+  rm -rf NAMD.o*
+
+Edit the submission script like this::
+
+  #!/bin/bash
+
+  #PBS -N NAMD
+  #PBS -l nodes=1:ppn=2
+  #PBS -q comm_gpu
+  #PBS -j oe
+
+  module purge
+  module load atomistic/namd/2.13_multicore-CUDA
+
+  nvidia-smi
+
+  cd $PBS_O_WORKDIR
+
+  namd2 +p2 +setcpuaffinity apoa1.namd
+
+We are now using ``comm_gpu`` as the queue, that will give us machines with GPUs
+and load the module for NAMD that support GPUs
+
+Submit the job as usual::
+
+  qsub runjob.pbs
+
+After completion you will see a file NAMD.o<JobID> with a content like this::
+
+  Fri Nov  1 13:36:10 2019
+  +-----------------------------------------------------------------------------+
+  | NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
+  |-------------------------------+----------------------+----------------------+
+  | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+  |===============================+======================+======================|
+  |   0  Tesla K20m          Off  | 00000000:08:00.0 Off |                    0 |
+  | N/A   27C    P0    49W / 225W |      0MiB /  4743MiB |      0%      Default |
+  +-------------------------------+----------------------+----------------------+
+  |   1  Tesla K20m          Off  | 00000000:24:00.0 Off |                    0 |
+  | N/A   41C    P0    49W / 225W |      0MiB /  4743MiB |      0%      Default |
+  +-------------------------------+----------------------+----------------------+
+  |   2  Tesla K20m          Off  | 00000000:27:00.0 Off |                    0 |
+  | N/A   31C    P0    50W / 225W |      0MiB /  4743MiB |     94%      Default |
+  +-------------------------------+----------------------+----------------------+
+
+  +-----------------------------------------------------------------------------+
+  | Processes:                                                       GPU Memory |
+  |  GPU       PID   Type   Process name                             Usage      |
+  |=============================================================================|
+  |  No running processes found                                                 |
+  +-----------------------------------------------------------------------------+
+  Charm++: standalone mode (not using charmrun)
+  Charm++> Running in Multicore mode:  2 threads
+  Charm++> Using recursive bisection (scheme 3) for topology aware partitions
+  Converse/Charm++ Commit ID: v6.8.2-0-g26d4bd8-namd-charm-6.8.2-build-2018-Jan-11-30463
+  Warning> Randomization of virtual memory (ASLR) is turned on in the kernel, thread migration may not work! Run 'echo 0 > /proc/sys/kernel/randomize_va_space' as root to disable it, or try running with '+isomalloc_sync'.
+  CharmLB> Load balancer assumes all CPUs are same.
+  Charm++> cpu affinity enabled.
+  Charm++> Running on 1 unique compute nodes (16-way SMP).
+  Charm++> cpu topology info is gathered in 0.001 seconds.
+  Info: Built with CUDA version 9010
+  Did not find +devices i,j,k,... argument, using all
+  Pe 1 physical rank 1 binding to CUDA device 1 on salg0001.hpc.wvu.edu: 'Tesla K20m'  Mem: 4743MB  Rev: 3.5  PCI: 0:24:0
+  Pe 0 physical rank 0 binding to CUDA device 0 on salg0001.hpc.wvu.edu: 'Tesla K20m'  Mem: 4743MB  Rev: 3.5  PCI: 0:8:0
+  Info: NAMD 2.13 for Linux-x86_64-multicore-CUDA
+  Info:
+  ...
+  ...
+  ...
+  ENERGY:     499     20158.0880     19847.6155      5722.4116       178.6402        -337057.2604     23219.0226         0.0000         0.0000     45438.8148        -222492.6677       165.2939   -267931.4825   -222046.7421       165.2939          -2020.7666     -2376.2036    921491.4634     -2020.7666     -2376.2036
+
+  Warning: Energy evaluation is expensive, increase outputEnergies to improve performance.
+  Info: Benchmark time: 2 CPUs 0.0134606 s/step 0.155794 days/ns 685.648 MB memory
+  TIMING: 500  CPU: 6.86896, 0.0139479/step  Wall: 6.88698, 0.013933/step, 0 hours remaining, 685.648438 MB of memory in use.
+  ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+  ENERGY:     500     20974.9322     19756.5540      5724.4551       179.8309        -337740.2041     23250.9041         0.0000         0.0000     45358.6460        -222494.8818       165.0023   -267853.5278   -222060.5633       165.0023          -3197.5089     -2425.3239    921491.4634     -3197.5089     -2425.3239
+
+  WRITING EXTENDED SYSTEM TO OUTPUT FILE AT STEP 500
+  WRITING COORDINATES TO OUTPUT FILE AT STEP 500
+  The last position output (seq=-2) takes 0.002 seconds, 701.625 MB of memory in use
+  WRITING VELOCITIES TO OUTPUT FILE AT STEP 500
+  The last velocity output (seq=-2) takes 0.002 seconds, 701.641 MB of memory in use
+  ====================================================
+
+  WallClock: 9.114665  CPUTime: 8.700677  Memory: 701.644531 MB
+  [Partition 0][Node 0] End of program
+
+Notice the reduction in execution time by using the GPUs
