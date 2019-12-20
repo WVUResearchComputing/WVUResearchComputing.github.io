@@ -45,7 +45,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compiling Atomistic Codes" href="67.Atomistic.html" />
+    <link rel="prev" title="Installing Packages in User Locations" href="65.UserInstallation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,13 +99,33 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="60.Administrators.html">For Administrators</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="61.SphinxDocs.html">Editing these documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="62.Boost.html">Compiling Boost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="63.Hadoop.html">Executing HADOOP jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="64.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="65.UserInstallation.html">Installing Packages in User Locations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compiling HDF5 and NetCDF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hdf5">HDF5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#native-compiler-on-red-hat-enterprise-linux-rhel-on-spruce">Native compiler on Red Hat Enterprise Linux (RHEL) on Spruce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#native-compiler-on-red-hat-enterprise-linux-rhel-on-thorny">Native compiler on Red Hat Enterprise Linux (RHEL) on Thorny</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gcc-8-2-0-on-spruce-and-thorny">GCC 8.2.0 on Spruce and Thorny</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intel-compiler-suite-2018-on-spruce-and-thorny">Intel Compiler Suite 2018 on Spruce and Thorny</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intel-compiler-suite-2019-on-spruce-and-thorny">Intel Compiler Suite 2019 on Spruce and Thorny</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#netcdf">NetCDF</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="67.Atomistic.html">Compiling Atomistic Codes</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
@@ -152,6 +174,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="60.Administrators.html">For Administrators</a> &raquo;</li>
         
       <li>Compiling HDF5 and NetCDF</li>
     
@@ -314,6 +338,15 @@ Fortran and C++ libraries that rely on it.</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="67.Atomistic.html" class="btn btn-neutral float-right" title="Compiling Atomistic Codes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="65.UserInstallation.html" class="btn btn-neutral float-left" title="Installing Packages in User Locations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

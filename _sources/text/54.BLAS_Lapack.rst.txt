@@ -79,6 +79,197 @@ and the compiler is 4.4.
 GCC 4.x has no programming for optimize code for AVX512, that is the main
 reason to use newer compilers like GCC 8.x when compiling scientific code.
 
+Compiling Reference BLAS and LAPACK
+-----------------------------------
+
+Now we will show how to compile the reference BLAS and LAPACK.
+The instructions were created for LAPACK 3.8
+
+Download the code
+~~~~~~~~~~~~~~~~~
+
+The Reference BLAS and LAPACK are hosted on Netlib
+http://www.netlib.org/lapack/
+The sources for LAPACK also contain the reference BLAS so all that we need
+is to download is the package for lapack::
+
+  wget http://www.netlib.org/lapack/lapack-3.8.0.tar.gz
+
+
+Uncompress and untar the file with::
+
+  tar -zxvf lapack-3.8.0.tar.gz
+
+That will generate a folder called ``lapack-3.8.0`` with all the sources inside.
+
+Patching the sources to support shared libraries and optimization for AVX512
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As they are the sources only allow for static libraries when using the Makefile.
+There is also an option to use cmake, and we will cover that later on.
+
+Using make, several files need to be changed.
+The patch file can be downloaded from here `lapack.patch <Media:lapack.patch>`__
+The content of the file is this::
+
+  diff -ruN lapack-3.8.0/BLAS/SRC/Makefile lapack-3.8.0_new/BLAS/SRC/Makefile
+  --- lapack-3.8.0/BLAS/SRC/Makefile	2017-11-12 23:15:54.000000000 -0500
+  +++ lapack-3.8.0_new/BLAS/SRC/Makefile	2019-11-12 13:23:07.985953000 -0500
+  @@ -55,7 +55,10 @@
+   #
+   #######################################################################
+
+  -all: $(BLASLIB)
+  +all: $(BLASLIB) libblas.so
+  +
+  +libblas.so: $(ALLOBJ)
+  +	gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
+
+   #---------------------------------------------------------
+   #  Comment out the next 6 definitions if you already have
+  diff -ruN lapack-3.8.0/Makefile lapack-3.8.0_new/Makefile
+  --- lapack-3.8.0/Makefile	2017-11-12 23:15:54.000000000 -0500
+  +++ lapack-3.8.0_new/Makefile	2019-11-12 13:11:37.379427000 -0500
+  @@ -147,3 +147,9 @@
+   	$(MAKE) -C BLAS cleantest
+   	$(MAKE) -C CBLAS cleantest
+   	$(MAKE) -C TESTING cleantest
+  +
+  +install: all
+  +	cp BLAS/SRC/libblas.so $(PREFIX)/lib
+  +	cp SRC/liblapack.so $(PREFIX)/lib
+  +	cp *.a $(PREFIX)/lib
+  +
+  diff -ruN lapack-3.8.0/make.inc lapack-3.8.0_new/make.inc
+  --- lapack-3.8.0/make.inc	1969-12-31 19:00:00.000000000 -0500
+  +++ lapack-3.8.0_new/make.inc	2019-11-12 13:30:49.341408000 -0500
+  @@ -0,0 +1,88 @@
+  +####################################################################
+  +#  LAPACK make include file.                                       #
+  +#  LAPACK, Version 3.8.0                                           #
+  +#  November 2017                                                   #
+  +####################################################################
+  +
+  +SHELL = /bin/sh
+  +
+  +#INSTALLATION PATH
+  +PREFIX=/shared/software/libs/blas_lapack/3.8_gcc82
+  +
+  +#  CC is the C compiler, normally invoked with options CFLAGS.
+  +#
+  +CC     = gcc
+  +CFLAGS = -O2 -fPIC -g -pipe -march=skylake-avx512
+  +
+  +#  Modify the FORTRAN and OPTS definitions to refer to the compiler
+  +#  and desired compiler options for your machine.  NOOPT refers to
+  +#  the compiler options desired when NO OPTIMIZATION is selected.
+  +#
+  +#  Note: During a regular execution, LAPACK might create NaN and Inf
+  +#  and handle these quantities appropriately. As a consequence, one
+  +#  should not compile LAPACK with flags such as -ffpe-trap=overflow.
+  +#
+  +FORTRAN = gfortran
+  +OPTS    = -O2 -frecursive -fPIC -g -pipe -march=skylake-avx512
+  +DRVOPTS = $(OPTS)
+  +NOOPT   = -O0 -frecursive -fPIC -g -pipe -march=skylake-avx512
+  +
+  +#  Define LOADER and LOADOPTS to refer to the loader and desired
+  +#  load options for your machine.
+  +#
+  +LOADER   = gfortran
+  +LOADOPTS =
+  +
+  +#  The archiver and the flag(s) to use when building an archive
+  +#  (library).  If your system has no ranlib, set RANLIB = echo.
+  +#
+  +ARCH      = ar
+  +ARCHFLAGS = cr
+  +RANLIB    = ranlib
+  +
+  +#  Timer for the SECOND and DSECND routines
+  +#
+  +#  Default:  SECOND and DSECND will use a call to the
+  +#  EXTERNAL FUNCTION ETIME
+  +#TIMER = EXT_ETIME
+  +#  For RS6K:  SECOND and DSECND will use a call to the
+  +#  EXTERNAL FUNCTION ETIME_
+  +#TIMER = EXT_ETIME_
+  +#  For gfortran compiler:  SECOND and DSECND will use a call to the
+  +#  INTERNAL FUNCTION ETIME
+  +TIMER = INT_ETIME
+  +#  If your Fortran compiler does not provide etime (like Nag Fortran
+  +#  Compiler, etc...) SECOND and DSECND will use a call to the
+  +#  INTERNAL FUNCTION CPU_TIME
+  +#TIMER = INT_CPU_TIME
+  +#  If none of these work, you can use the NONE value.
+  +#  In that case, SECOND and DSECND will always return 0.
+  +#TIMER = NONE
+  +
+  +#  Uncomment the following line to include deprecated routines in
+  +#  the LAPACK library.
+  +#
+  +#BUILD_DEPRECATED = Yes
+  +
+  +#  LAPACKE has the interface to some routines from tmglib.
+  +#  If LAPACKE_WITH_TMG is defined, add those routines to LAPACKE.
+  +#
+  +#LAPACKE_WITH_TMG = Yes
+  +
+  +#  Location of the extended-precision BLAS (XBLAS) Fortran library
+  +#  used for building and testing extended-precision routines.  The
+  +#  relevant routines will be compiled and XBLAS will be linked only
+  +#  if USEXBLAS is defined.
+  +#
+  +#USEXBLAS = Yes
+  +#XBLASLIB = -lxblas
+  +
+  +#  The location of the libraries to which you will link.  (The
+  +#  machine-specific, optimized BLAS library should be used whenever
+  +#  possible.)
+  +#
+  +BLASLIB      = ../../librefblas.a
+  +CBLASLIB     = ../../libcblas.a
+  +LAPACKLIB    = liblapack.a
+  +TMGLIB       = libtmglib.a
+  +LAPACKELIB   = liblapacke.a
+  diff -ruN lapack-3.8.0/SRC/Makefile lapack-3.8.0_new/SRC/Makefile
+  --- lapack-3.8.0/SRC/Makefile	2017-11-12 23:15:54.000000000 -0500
+  +++ lapack-3.8.0_new/SRC/Makefile	2019-11-12 13:26:04.437198491 -0500
+  @@ -512,7 +512,10 @@
+   DEPRECATED = $(DEPRECSRC)
+   endif
+
+  -all: ../$(LAPACKLIB)
+  +all: ../$(LAPACKLIB)  liblapack.so
+  +
+  +liblapack.so: $(ALLOBJ)
+  +	gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
+
+   ../$(LAPACKLIB): $(ALLOBJ) $(ALLXOBJ) $(DEPRECATED)
+   	$(ARCH) $(ARCHFLAGS) $@ $^
+
+You can download the patch to the folder ``lapack-3.8.0`` and execute::
+
+  patch -s -p1 < lapack.patch
+
+Another way is to edit the files one by one.
+
+For the file ``lapack-3.8./BLAS/SRC/Makefile`` you need to add a new target
+"libblas.so" and adding the target to "all"::
+
+  all: $(BLASLIB) libblas.so
+
+  libblas.so: $(ALLOBJ)
+  gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
+
+The file ``lapack-3.8./Makefile`` should have now::
+
+  install: all
+      cp BLAS/SRC/libblas.so $(PREFIX)/lib
+      cp SRC/liblapack.so $(PREFIX)/lib
+      cp *.a $(PREFIX)/lib
+
+
 Installing Numpy and Scipy using OpenBLAS
 -----------------------------------------
 

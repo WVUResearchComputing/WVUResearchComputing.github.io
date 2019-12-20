@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="For Administrators" href="60.Administrators.html" />
+    <link rel="next" title="Compiling CHARM++ and NAMD" href="55.CHARM++_NAMD.html" />
     <link rel="prev" title="GCC: The GNU Compiler Collection" href="53.GCC.html" /> 
 </head>
 
@@ -109,10 +109,16 @@
 <li class="toctree-l2"><a class="reference internal" href="52.Parallel.html">Parallel Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="53.GCC.html">GCC: The GNU Compiler Collection</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BLAS and LAPACK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-reference-blas-and-lapack">Compiling Reference BLAS and LAPACK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#download-the-code">Download the code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512">Patching the sources to support shared libraries and optimization for AVX512</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-numpy-and-scipy-using-openblas">Installing Numpy and Scipy using OpenBLAS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multithreading-with-openblas">Multithreading with OpenBLAS</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="55.CHARM++_NAMD.html">Compiling CHARM++ and NAMD</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
@@ -252,6 +258,191 @@ Thorny runs RHEL 7.6 and the compiler is GCC 4.8. Spruce Knob uses RHEL 6.10
 and the compiler is 4.4.</p>
 <p>GCC 4.x has no programming for optimize code for AVX512, that is the main
 reason to use newer compilers like GCC 8.x when compiling scientific code.</p>
+<div class="section" id="compiling-reference-blas-and-lapack">
+<h2>Compiling Reference BLAS and LAPACK<a class="headerlink" href="#compiling-reference-blas-and-lapack" title="Permalink to this headline">¶</a></h2>
+<p>Now we will show how to compile the reference BLAS and LAPACK.
+The instructions were created for LAPACK 3.8</p>
+<div class="section" id="download-the-code">
+<h3>Download the code<a class="headerlink" href="#download-the-code" title="Permalink to this headline">¶</a></h3>
+<p>The Reference BLAS and LAPACK are hosted on Netlib
+<a class="reference external" href="http://www.netlib.org/lapack/">http://www.netlib.org/lapack/</a>
+The sources for LAPACK also contain the reference BLAS so all that we need
+is to download is the package for lapack:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">netlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">lapack</span><span class="o">/</span><span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>Uncompress and untar the file with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>That will generate a folder called <code class="docutils literal"><span class="pre">lapack-3.8.0</span></code> with all the sources inside.</p>
+</div>
+<div class="section" id="patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512">
+<h3>Patching the sources to support shared libraries and optimization for AVX512<a class="headerlink" href="#patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512" title="Permalink to this headline">¶</a></h3>
+<p>As they are the sources only allow for static libraries when using the Makefile.
+There is also an option to use cmake, and we will cover that later on.</p>
+<p>Using make, several files need to be changed.
+The patch file can be downloaded from here <a class="reference external" href="Media:lapack.patch">lapack.patch</a>
+The content of the file is this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>diff -ruN lapack-3.8.0/BLAS/SRC/Makefile lapack-3.8.0_new/BLAS/SRC/Makefile
+--- lapack-3.8.0/BLAS/SRC/Makefile    2017-11-12 23:15:54.000000000 -0500
++++ lapack-3.8.0_new/BLAS/SRC/Makefile        2019-11-12 13:23:07.985953000 -0500
+@@ -55,7 +55,10 @@
+ #
+ #######################################################################
+
+-all: $(BLASLIB)
++all: $(BLASLIB) libblas.so
++
++libblas.so: $(ALLOBJ)
++     gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
+
+ #---------------------------------------------------------
+ #  Comment out the next 6 definitions if you already have
+diff -ruN lapack-3.8.0/Makefile lapack-3.8.0_new/Makefile
+--- lapack-3.8.0/Makefile     2017-11-12 23:15:54.000000000 -0500
++++ lapack-3.8.0_new/Makefile 2019-11-12 13:11:37.379427000 -0500
+@@ -147,3 +147,9 @@
+      $(MAKE) -C BLAS cleantest
+      $(MAKE) -C CBLAS cleantest
+      $(MAKE) -C TESTING cleantest
++
++install: all
++     cp BLAS/SRC/libblas.so $(PREFIX)/lib
++     cp SRC/liblapack.so $(PREFIX)/lib
++     cp *.a $(PREFIX)/lib
++
+diff -ruN lapack-3.8.0/make.inc lapack-3.8.0_new/make.inc
+--- lapack-3.8.0/make.inc     1969-12-31 19:00:00.000000000 -0500
++++ lapack-3.8.0_new/make.inc 2019-11-12 13:30:49.341408000 -0500
+@@ -0,0 +1,88 @@
++####################################################################
++#  LAPACK make include file.                                       #
++#  LAPACK, Version 3.8.0                                           #
++#  November 2017                                                   #
++####################################################################
++
++SHELL = /bin/sh
++
++#INSTALLATION PATH
++PREFIX=/shared/software/libs/blas_lapack/3.8_gcc82
++
++#  CC is the C compiler, normally invoked with options CFLAGS.
++#
++CC     = gcc
++CFLAGS = -O2 -fPIC -g -pipe -march=skylake-avx512
++
++#  Modify the FORTRAN and OPTS definitions to refer to the compiler
++#  and desired compiler options for your machine.  NOOPT refers to
++#  the compiler options desired when NO OPTIMIZATION is selected.
++#
++#  Note: During a regular execution, LAPACK might create NaN and Inf
++#  and handle these quantities appropriately. As a consequence, one
++#  should not compile LAPACK with flags such as -ffpe-trap=overflow.
++#
++FORTRAN = gfortran
++OPTS    = -O2 -frecursive -fPIC -g -pipe -march=skylake-avx512
++DRVOPTS = $(OPTS)
++NOOPT   = -O0 -frecursive -fPIC -g -pipe -march=skylake-avx512
++
++#  Define LOADER and LOADOPTS to refer to the loader and desired
++#  load options for your machine.
++#
++LOADER   = gfortran
++LOADOPTS =
++
++#  The archiver and the flag(s) to use when building an archive
++#  (library).  If your system has no ranlib, set RANLIB = echo.
++#
++ARCH      = ar
++ARCHFLAGS = cr
++RANLIB    = ranlib
++
++#  Timer for the SECOND and DSECND routines
++#
++#  Default:  SECOND and DSECND will use a call to the
++#  EXTERNAL FUNCTION ETIME
++#TIMER = EXT_ETIME
++#  For RS6K:  SECOND and DSECND will use a call to the
++#  EXTERNAL FUNCTION ETIME_
++#TIMER = EXT_ETIME_
++#  For gfortran compiler:  SECOND and DSECND will use a call to the
++#  INTERNAL FUNCTION ETIME
++TIMER = INT_ETIME
++#  If your Fortran compiler does not provide etime (like Nag Fortran
++#  Compiler, etc...) SECOND and DSECND will use a call to the
++#  INTERNAL FUNCTION CPU_TIME
++#TIMER = INT_CPU_TIME
++#  If none of these work, you can use the NONE value.
++#  In that case, SECOND and DSECND will always return 0.
++#TIMER = NONE
++
++#  Uncomment the following line to include deprecated routines in
++#  the LAPACK library.
++#
++#BUILD_DEPRECATED = Yes
++
++#  LAPACKE has the interface to some routines from tmglib.
++#  If LAPACKE_WITH_TMG is defined, add those routines to LAPACKE.
++#
++#LAPACKE_WITH_TMG = Yes
++
++#  Location of the extended-precision BLAS (XBLAS) Fortran library
++#  used for building and testing extended-precision routines.  The
++#  relevant routines will be compiled and XBLAS will be linked only
++#  if USEXBLAS is defined.
++#
++#USEXBLAS = Yes
++#XBLASLIB = -lxblas
++
++#  The location of the libraries to which you will link.  (The
++#  machine-specific, optimized BLAS library should be used whenever
++#  possible.)
++#
++BLASLIB      = ../../librefblas.a
++CBLASLIB     = ../../libcblas.a
++LAPACKLIB    = liblapack.a
++TMGLIB       = libtmglib.a
++LAPACKELIB   = liblapacke.a
+diff -ruN lapack-3.8.0/SRC/Makefile lapack-3.8.0_new/SRC/Makefile
+--- lapack-3.8.0/SRC/Makefile 2017-11-12 23:15:54.000000000 -0500
++++ lapack-3.8.0_new/SRC/Makefile     2019-11-12 13:26:04.437198491 -0500
+@@ -512,7 +512,10 @@
+ DEPRECATED = $(DEPRECSRC)
+ endif
+
+-all: ../$(LAPACKLIB)
++all: ../$(LAPACKLIB)  liblapack.so
++
++liblapack.so: $(ALLOBJ)
++     gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
+
+ ../$(LAPACKLIB): $(ALLOBJ) $(ALLXOBJ) $(DEPRECATED)
+      $(ARCH) $(ARCHFLAGS) $@ $^
+</pre></div>
+</div>
+<p>You can download the patch to the folder <code class="docutils literal"><span class="pre">lapack-3.8.0</span></code> and execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">patch</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">lapack</span><span class="o">.</span><span class="n">patch</span>
+</pre></div>
+</div>
+<p>Another way is to edit the files one by one.</p>
+<p>For the file <code class="docutils literal"><span class="pre">lapack-3.8./BLAS/SRC/Makefile</span></code> you need to add a new target
+“libblas.so” and adding the target to “all”:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>all: $(BLASLIB) libblas.so
+
+libblas.so: $(ALLOBJ)
+gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
+</pre></div>
+</div>
+<p>The file <code class="docutils literal"><span class="pre">lapack-3.8./Makefile</span></code> should have now:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>install: all
+    cp BLAS/SRC/libblas.so $(PREFIX)/lib
+    cp SRC/liblapack.so $(PREFIX)/lib
+    cp *.a $(PREFIX)/lib
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="installing-numpy-and-scipy-using-openblas">
 <h2>Installing Numpy and Scipy using OpenBLAS<a class="headerlink" href="#installing-numpy-and-scipy-using-openblas" title="Permalink to this headline">¶</a></h2>
 <p>For the particular case of Python BLAS/LAPACK are very important for two
@@ -410,7 +601,7 @@ versions but in production, those versions should never being used.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="60.Administrators.html" class="btn btn-neutral float-right" title="For Administrators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="55.CHARM++_NAMD.html" class="btn btn-neutral float-right" title="Compiling CHARM++ and NAMD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="53.GCC.html" class="btn btn-neutral float-left" title="GCC: The GNU Compiler Collection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
