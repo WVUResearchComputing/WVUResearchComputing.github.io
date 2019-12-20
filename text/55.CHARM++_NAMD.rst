@@ -3,7 +3,7 @@ Compiling CHARM++ and NAMD
 
 This tutorial will show how to compile Charm++ and NAMD.
 We will demonstrate with the nightly NAMD sources.
-Go to
+Go to::
 
   wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-19_Source.tar.gz
 
@@ -629,3 +629,16 @@ The script below, explores several options for the SMP version and ask 40 cores 
   done
 
 The trade of between the non-SMP and SMP versions that in non-SMP versions all the nodes are in use for computing. With SMP versions, each logical node has at one communication thread and at least one computation thread. That reduces the number of cores doing effective computation, but also allows to for sharing memory between the PEs workers and lowers the memory needs.
+
+Results from the simulations for non-SMP versions using 40 cores::
+
+  40core_mpi_0.dat:WallClock: 173.954956  CPUTime: 173.954956  Memory: 4822.875000 MB
+  40core_mpi_1.dat:WallClock: 134.189926  CPUTime: 134.189926  Memory: 4824.875000 MB
+  40core_mpi_2.dat:WallClock: 134.149597  CPUTime: 134.149597  Memory: 4822.878906 MB
+  40core_mpi_3.dat:WallClock: 135.400757  CPUTime: 135.400757  Memory: 4822.875000 MB
+  40core_ofi_0.dat:WallClock: 171.675980  CPUTime: 171.073532  Memory: 1786.609375 MB
+  40core_ofi_1.dat:WallClock: 133.711380  CPUTime: 133.267868  Memory: 1761.511719 MB
+  40core_ofi_2.dat:WallClock: 133.707443  CPUTime: 133.280457  Memory: 1911.988281 MB
+  40core_ofi_3.dat:WallClock: 133.408310  CPUTime: 132.921799  Memory: 1777.203125 MB
+
+As stated before, the OFI version uses less memory than the MPI version, the difference is even larger this time, less than half the memory needed by the MPI version.
