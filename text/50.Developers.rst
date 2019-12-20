@@ -10,3 +10,4 @@ For Developers
   52.Parallel.rst
   53.GCC.rst
   54.BLAS_Lapack.rst
+  55.CHARM++_NAMD.rst
