@@ -5,7 +5,7 @@ This tutorial will show how to compile Charm++ and NAMD.
 We will demonstrate with the nightly NAMD sources.
 Go to::
 
-  wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-19_Source.tar.gz
+  wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-20_Source.tar.gz
 
 This is the current Nightly build by the time of writing this document
 (2019-12-18). The nightly build can be download from
@@ -13,8 +13,8 @@ https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD
 
 The sources come in a tar and compressed file. Untar and uncompress them. Go into the created folder and untar the charm sources too::
 
-  tar -zxvf NAMD_Git-2019-12-19_Source.tar.gz
-  cd NAMD_Git-2019-12-19_Source/
+  tar -zxvf NAMD_Git-2019-12-20_Source.tar.gz
+  cd NAMD_Git-2019-12-20_Source/
   tar -xvf charm-6.10.0-pre.tar
 
 We will compile Charm and NAMD using the Intel Compilers 2019. The latest version at the moment of writing this document::
@@ -333,7 +333,7 @@ The output will be similar to this::
   CharmLB> Load balancer assumes all CPUs are same.
   Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
   Charm++> cpu topology info is gathered in 0.001 seconds.
-  Info: NAMD Git-2019-12-19 for Linux-x86_64-MPI
+  Info: NAMD Git-2019-12-20 for Linux-x86_64-MPI
   ...
 
 For the next binary we need to set number of worker threads per process to match available cores, reserving one core per process for communication thread.
@@ -357,7 +357,7 @@ The output looks like this::
   CharmLB> Load balancer assumes all CPUs are same.
   Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
   Charm++> cpu topology info is gathered in 0.001 seconds.
-  Info: NAMD Git-2019-12-19 for Linux-x86_64-MPI-smp
+  Info: NAMD Git-2019-12-20 for Linux-x86_64-MPI-smp
   ...
 
 The OFI binaries can be tested in a similar way::
@@ -389,7 +389,7 @@ The output being like this::
   CharmLB> Load balancer assumes all CPUs are same.
   Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
   Charm++> cpu topology info is gathered in 0.001 seconds.
-  Info: NAMD Git-2019-12-19 for Linux-x86_64-ofi
+  Info: NAMD Git-2019-12-20 for Linux-x86_64-ofi
   ...
 
 The final binary is tested::
@@ -642,3 +642,150 @@ Results from the simulations for non-SMP versions using 40 cores::
   40core_ofi_3.dat:WallClock: 133.408310  CPUTime: 132.921799  Memory: 1777.203125 MB
 
 As stated before, the OFI version uses less memory than the MPI version, the difference is even larger this time, less than half the memory needed by the MPI version.
+
+
+Script summarizing compilation of NAMD
+--------------------------------------
+
+The next script execute all steps above::
+
+  #!/bin/bash
+
+  wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-20_Source.tar.gz
+  tar -zxvf NAMD_Git-2019-12-20_Source.tar.gz
+  cd NAMD_Git-2019-12-20_Source/
+  tar -xvf charm-6.10.0-pre.tar
+  cd charm-6.10.0-pre
+
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort -j16 --with-production
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort smp -j16 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort -j16 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort smp -j16 --with-production
+
+  cd mpi-linux-x86_64-ifort-mpicxx/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd mpi-linux-x86_64-ifort-smp-mpicxx/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd ofi-linux-x86_64-ifort-icc/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
+  make clean && make
+  cd megatest && make && make test
+  cd ../../../..
+
+  cd ..
+
+  wget http://www.ks.uiuc.edu/Research/namd/libraries/fftw-linux-x86_64.tar.gz
+  tar xzf fftw-linux-x86_64.tar.gz
+  mv linux-x86_64 fftw
+  wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-linux-x86_64.tar.gz
+  wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-linux-x86_64-threaded.tar.gz
+  tar xzf tcl8.5.9-linux-x86_64.tar.gz
+  tar xzf tcl8.5.9-linux-x86_64-threaded.tar.gz
+  mv tcl8.5.9-linux-x86_64 tcl
+  mv tcl8.5.9-linux-x86_64-threaded tcl-threaded
+
+
+  ln -s charm-6.10.0-pre charm
+
+  cat << EOF > arch/Linux-x86_64-mpi-mpicxx.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  cat << EOF > arch/Linux-x86_64-mpi-smp-mpicxx.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  cat << EOF > arch/Linux-x86_64-ofi-icc.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = ofi-linux-x86_64-ifort-icc
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  cat << EOF > arch/Linux-x86_64-ofi-smp-icc.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  ./config Linux-x86_64-mpi-mpicxx --charm-arch mpi-linux-x86_64-ifort-mpicxx
+  ./config Linux-x86_64-mpi-smp-mpicxx --charm-arch mpi-linux-x86_64-ifort-smp-mpicxx
+  ./config Linux-x86_64-ofi-icc --charm-arch ofi-linux-x86_64-ifort-icc
+  ./config Linux-x86_64-ofi-smp-icc --charm-arch ofi-linux-x86_64-ifort-smp-icc
+
+  cd Linux-x86_64-mpi-mpicxx
+  make -j16
+  cd ..
+  cd Linux-x86_64-mpi-smp-mpicxx
+  make -j16
+  cd ..
+  cd Linux-x86_64-ofi-icc
+  make -j16
+  cd ..
+  cd Linux-x86_64-ofi-smp-icc
+  make -j16
+  cd ..
+
+  execstack -c Linux-x86_64-*/namd2
+
+  cd Linux-x86_64-mpi-mpicxx
+  ./charmrun ++local +p2 ./namd2 src/alanin
+  cd ..
+
+  cd Linux-x86_64-mpi-smp-mpicxx
+  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2
+  cd ..
+
+  cd ../Linux-x86_64-ofi-icc
+  ./charmrun ++local +p2 ./namd2 src/alanin
+  cd ..
+
+  cd Linux-x86_64-ofi-smp-icc
+  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn 2 +setcpuaffinity
+  cd ..
