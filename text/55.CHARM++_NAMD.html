@@ -193,9 +193,10 @@
 <h1>Compiling CHARM++ and NAMD<a class="headerlink" href="#compiling-charm-and-namd" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial will show how to compile Charm++ and NAMD.
 We will demonstrate with the nightly NAMD sources.
-Go to</p>
-<blockquote>
-<div>wget <a class="reference external" href="https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-19_Source.tar.gz">https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-19_Source.tar.gz</a></div></blockquote>
+Go to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">cvs</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mi">741376</span><span class="o">/</span><span class="n">NAMD_Git</span><span class="o">-</span><span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">19</span><span class="n">_Source</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
 <p>This is the current Nightly build by the time of writing this document
 (2019-12-18). The nightly build can be download from
 <a class="reference external" href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD">https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD</a></p>
@@ -799,6 +800,18 @@ done
 </pre></div>
 </div>
 <p>The trade of between the non-SMP and SMP versions that in non-SMP versions all the nodes are in use for computing. With SMP versions, each logical node has at one communication thread and at least one computation thread. That reduces the number of cores doing effective computation, but also allows to for sharing memory between the PEs workers and lowers the memory needs.</p>
+<p>Results from the simulations for non-SMP versions using 40 cores:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">40</span><span class="n">core_mpi_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">173.954956</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">173.954956</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4822.875000</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">134.189926</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">134.189926</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4824.875000</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">134.149597</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">134.149597</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4822.878906</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">135.400757</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">135.400757</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4822.875000</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_ofi_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">171.675980</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">171.073532</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">1786.609375</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_ofi_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">133.711380</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">133.267868</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">1761.511719</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_ofi_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">133.707443</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">133.280457</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">1911.988281</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_ofi_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">133.408310</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">132.921799</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">1777.203125</span> <span class="n">MB</span>
+</pre></div>
+</div>
+<p>As stated before, the OFI version uses less memory than the MPI version, the difference is even larger this time, less than half the memory needed by the MPI version.</p>
 </div>
 </div>
 
