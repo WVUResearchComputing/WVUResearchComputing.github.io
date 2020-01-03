@@ -5,16 +5,17 @@ This tutorial will show how to compile Charm++ and NAMD.
 We will demonstrate with the nightly NAMD sources.
 Go to::
 
-  wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-20_Source.tar.gz
+  VERSION=2020-01-02
+  wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
 
 This is the current Nightly build by the time of writing this document
-(2019-12-18). The nightly build can be download from
+(2020-01-02). The nightly build can be download from
 https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD
 
 The sources come in a tar and compressed file. Untar and uncompress them. Go into the created folder and untar the charm sources too::
 
-  tar -zxvf NAMD_Git-2019-12-20_Source.tar.gz
-  cd NAMD_Git-2019-12-20_Source/
+  tar -zxvf NAMD_Git-${VERSION}_Source.tar.gz
+  cd NAMD_Git-${VERSION}_Source/
   tar -xvf charm-6.10.0-pre.tar
 
 We will compile Charm and NAMD using the Intel Compilers 2019. The latest version at the moment of writing this document::
@@ -403,6 +404,169 @@ The extra argument is needed as multiple PEs get assigned to same core. Setting 
 You should not pay much attention to timings for this case. The purpose of the executions above is to proof than NAMD works at least for a simple execution.
 We will now move into which configuration perform better.
 
+Script summarizing compilation of NAMD
+--------------------------------------
+
+The next script execute all steps above::
+
+  #!/bin/bash
+
+  VERSION=2020-01-02
+
+  if [ ! -f NAMD_Git-${VERSION}_Source.tar.gz ]
+  then
+  wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
+  fi
+
+  if  [ ! -d NAMD_Git-${VERSION}_Source ]
+  then
+      tar -zxvf NAMD_Git-${VERSION}_Source.tar.gz
+  fi
+
+  cd NAMD_Git-${VERSION}_Source/
+  if  [ ! -d charm-6.10.0-pre ]
+  then
+      tar -xvf charm-6.10.0-pre.tar
+  fi
+  cd charm-6.10.0-pre
+
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort -j16 --with-production
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort smp -j16 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort -j16 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort smp -j16 --with-production
+
+  cd mpi-linux-x86_64-ifort-mpicxx/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd mpi-linux-x86_64-ifort-smp-mpicxx/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd ofi-linux-x86_64-ifort-icc/tests/charm++
+  make clean && make && make test
+  cd ../../..
+  cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
+  make clean && make
+  cd megatest && make && make test
+  cd ../../../..
+
+  cd ..
+
+  wget http://www.ks.uiuc.edu/Research/namd/libraries/fftw-linux-x86_64.tar.gz
+  tar xzf fftw-linux-x86_64.tar.gz
+  mv linux-x86_64 fftw
+  wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-linux-x86_64.tar.gz
+  wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-linux-x86_64-threaded.tar.gz
+  tar xzf tcl8.5.9-linux-x86_64.tar.gz
+  tar xzf tcl8.5.9-linux-x86_64-threaded.tar.gz
+  mv tcl8.5.9-linux-x86_64 tcl
+  mv tcl8.5.9-linux-x86_64-threaded tcl-threaded
+
+
+  ln -s charm-6.10.0-pre charm
+
+  cat << EOF > arch/Linux-x86_64-mpi-mpicxx.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  cat << EOF > arch/Linux-x86_64-mpi-smp-mpicxx.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  cat << EOF > arch/Linux-x86_64-ofi-icc.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = ofi-linux-x86_64-ifort-icc
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  cat << EOF > arch/Linux-x86_64-ofi-smp-icc.arch
+  NAMD_ARCH = Linux-x86_64
+  CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
+
+  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+
+  CXX = icpc -std=c++11
+  CXXOPTS = -O2 \$(FLOATOPTS)
+  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
+  CXXCOLVAROPTS = -O2 -ip
+
+  CC = icc
+  COPTS = -O2 \$(FLOATOPTS)
+  EOF
+
+  ./config Linux-x86_64-mpi-mpicxx --charm-arch mpi-linux-x86_64-ifort-mpicxx
+  ./config Linux-x86_64-mpi-smp-mpicxx --charm-arch mpi-linux-x86_64-ifort-smp-mpicxx
+  ./config Linux-x86_64-ofi-icc --charm-arch ofi-linux-x86_64-ifort-icc
+  ./config Linux-x86_64-ofi-smp-icc --charm-arch ofi-linux-x86_64-ifort-smp-icc
+
+  cd Linux-x86_64-mpi-mpicxx
+  make -j16
+  cd ..
+  cd Linux-x86_64-mpi-smp-mpicxx
+  make -j16
+  cd ..
+  cd Linux-x86_64-ofi-icc
+  make -j16
+  cd ..
+  cd Linux-x86_64-ofi-smp-icc
+  make -j16
+  cd ..
+
+  execstack -c Linux-x86_64-*/namd2
+
+  cd Linux-x86_64-mpi-mpicxx
+  ./charmrun ++local +p2 ./namd2 src/alanin
+  make release
+  cd ..
+
+  cd Linux-x86_64-mpi-smp-mpicxx
+  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2
+  make release
+  cd ..
+
+  cd Linux-x86_64-ofi-icc
+  ./charmrun ++local +p2 ./namd2 src/alanin
+  make release
+  cd ..
+
+  cd Linux-x86_64-ofi-smp-icc
+  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn 2 +setcpuaffinity
+  make release
+  cd ..
+
 Benchmarking NAMD2
 ------------------
 
@@ -534,258 +698,86 @@ Untar and uncompress the package and move into the folder::
   tar -zxvf stmv.tar.gz
   cd stmv
 
-As we did for apoa1, we ask for an isolated node to conduct the test::
-
-  qsub -q debug -l nodes=1:ppn=1,pvmem=90g -n -I
-
-On our first script we will execute using 20 cores out of the 40 available on normal compute nodes on Thorny Flat. The script for the test is called ``runtests.sh`` and contains::
-
-  #!/bin/bash
-
-  rm *.txt
-
-  for i in 0 1 2 3
-  do
-  echo MPI $i
-  ../Linux-x86_64-mpi-mpicxx/charmrun +p20 ../Linux-x86_64-mpi-mpicxx/namd2 stmv.namd > mpi_$i.dat
-  done
-
-  for i in 0 1 2 3
-  do
-  echo MPI SMP $i
-  ../Linux-x86_64-mpi-smp-mpicxx/charmrun +p20 ../Linux-x86_64-mpi-smp-mpicxx/namd2 stmv.namd ++ppn2 > mpi_smp_$i.dat
-  done
-
-  for i in 0 1 2 3
-  do
-  echo OFI $i
-  ../Linux-x86_64-ofi-icc/charmrun +p20 ../Linux-x86_64-ofi-icc/namd2 stmv.namd > ofi_$i.dat
-  done
-
-  for i in 0 1 2 3
-  do
-  echo OFI SMP $i
-  ../Linux-x86_64-ofi-smp-icc/charmrun +p20 ../Linux-x86_64-ofi-smp-icc/namd2 stmv.namd ++ppn2 > ofi_smp_$i.dat
-  done
-
-The timing for the tests is extracted as follows::
-
-  $ grep WallClock *.dat
-  mpi_0.dat:    WallClock: 253.312317  CPUTime: 253.312317  Memory: 3853.394531 MB
-  mpi_1.dat:    WallClock: 205.500519  CPUTime: 205.500519  Memory: 3910.648438 MB
-  mpi_2.dat:    WallClock: 206.173676  CPUTime: 206.173676  Memory: 3911.253906 MB
-  mpi_3.dat:    WallClock: 205.256088  CPUTime: 205.256088  Memory: 3906.843750 MB
-  mpi_smp_0.dat:WallClock: 277.126556  CPUTime: 276.460999  Memory: 3768.593750 MB
-  mpi_smp_1.dat:WallClock: 226.468491  CPUTime: 225.922470  Memory: 3766.320312 MB
-  mpi_smp_2.dat:WallClock: 226.799362  CPUTime: 226.253571  Memory: 3753.492188 MB
-  mpi_smp_3.dat:WallClock: 226.792145  CPUTime: 226.224808  Memory: 3768.500000 MB
-  ofi_0.dat:    WallClock: 255.136749  CPUTime: 254.588318  Memory: 1860.039062 MB
-  ofi_1.dat:    WallClock: 206.386948  CPUTime: 205.935059  Memory: 1827.429688 MB
-  ofi_2.dat:    WallClock: 206.128586  CPUTime: 205.676895  Memory: 1809.550781 MB
-  ofi_3.dat:    WallClock: 206.263779  CPUTime: 205.811935  Memory: 1860.429688 MB
-  ofi_smp_0.dat:WallClock: 274.592010  CPUTime: 273.940521  Memory: 1633.390625 MB
-  ofi_smp_1.dat:WallClock: 224.410950  CPUTime: 223.867752  Memory: 1674.042969 MB
-  ofi_smp_2.dat:WallClock: 224.645325  CPUTime: 224.112000  Memory: 1795.550781 MB
-  ofi_smp_3.dat:WallClock: 225.200882  CPUTime: 224.666580  Memory: 1644.906250 MB
-
-From the results, we can notice that the non-SMP versions in both cases (MPI and OFI) performs better than the SMP versions using 20 cores. The OFI versions uses almost half of the memory compared with the MPI versions.
-
+The STMV execution takes longer so a submission script is better suited for the task.
 Our next set of tests will explore the best performance that we can get using all the cores on a single node. There are several options for the SMP case either adding more worker threads (+pN) or  adding more PEs per logical node (++ppn N).
 
 The script below, explores several options for the SMP version and ask 40 cores for the non-SMP versions::
 
+ once the modules have been created we can use the following script for the MPI build::
+
   #!/bin/bash
+
+  #PBS -l nodes=1:ppn=40
+  #PBS -q standby
+
+  cd $PBS_O_WORKDIR
+
+  module purge
+  module load atomistic/namd/NAMD_Git-2020-01-02-MPI
 
   rm *.txt
 
   for i in 0 1 2 3
   do
   echo MPI $i
-  ../Linux-x86_64-mpi-mpicxx/charmrun +p40 ../Linux-x86_64-mpi-mpicxx/namd2 stmv.namd > 40core_mpi_$i.dat
+  ${MD_NAMD}/charmrun +p20 ${MD_NAMD}/namd2 stmv.namd > mpi_20_$i.dat
+  ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd > mpi_40_$i.dat
   done
 
-  for i in 0 1 2 3
-  do
-  echo OFI $i
-  ../Linux-x86_64-ofi-icc/charmrun +p40 ../Linux-x86_64-ofi-icc/namd2 stmv.namd > 40core_ofi_$i.dat
-  done
+  module purge
+  module load atomistic/namd/NAMD_Git-2020-01-02-MPI-smp
 
   for ppn in 2 5 10 20 40
   do
       for i in 0 1 2 3
       do
       echo MPI SMP $i ${p} ${ppn}
-      ../Linux-x86_64-mpi-smp-mpicxx/charmrun +p40 ../Linux-x86_64-mpi-smp-mpicxx/namd2 stmv.namd ++ppn$ppn > 40core_mpi_smp_${ppn}_${i}.dat
+      ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd ++ppn$ppn > 40core_mpi_smp_${ppn}_${i}.dat
       done
   done
+
+And this one for the OFI build::
+
+  #!/bin/bash
+
+  #PBS -l nodes=1:ppn=40
+  #PBS -q standby
+
+  cd $PBS_O_WORKDIR
+
+  module purge
+  module load atomistic/namd/NAMD_Git-2020-01-02-ofi
+
+  rm *.txt
+
+  for i in 0 1 2 3
+  do
+  echo OFI $i
+  ${MD_NAMD}/charmrun +p20 ${MD_NAMD}/namd2 stmv.namd > ofi_20_$i.dat
+  ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd > ofi_40_$i.dat
+  done
+
+  module purge
+  module load atomistic/namd/NAMD_Git-2020-01-02-ofi-smp
 
   for ppn in 2 5 10 20 40
   do
       for i in 0 1 2 3
       do
       echo OFI SMP $i ${p} ${ppn}
-      ../Linux-x86_64-ofi-smp-icc/charmrun +p40 ../Linux-x86_64-ofi-smp-icc/namd2 stmv.namd ++ppn$ppn > 40core_ofi_smp_${ppn}_${i}.dat
+      ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd ++ppn$ppn > 40core_ofi_smp_${ppn}_${i}.dat
       done
   done
 
+The results are summarized in the following plots
+
+.. figure:: /_static/stmv_wallclock.png
+  :alt: stmv_walltime.png
+
+.. figure:: /_static/stmv_cputime.png
+  :alt: stmv_cputime.png
+
+.. figure:: /_static/stmv_memory.png
+  :alt: stmv_memory.png
+
 The trade of between the non-SMP and SMP versions that in non-SMP versions all the nodes are in use for computing. With SMP versions, each logical node has at one communication thread and at least one computation thread. That reduces the number of cores doing effective computation, but also allows to for sharing memory between the PEs workers and lowers the memory needs.
-
-Results from the simulations for non-SMP versions using 40 cores::
-
-  40core_mpi_0.dat:WallClock: 173.954956  CPUTime: 173.954956  Memory: 4822.875000 MB
-  40core_mpi_1.dat:WallClock: 134.189926  CPUTime: 134.189926  Memory: 4824.875000 MB
-  40core_mpi_2.dat:WallClock: 134.149597  CPUTime: 134.149597  Memory: 4822.878906 MB
-  40core_mpi_3.dat:WallClock: 135.400757  CPUTime: 135.400757  Memory: 4822.875000 MB
-  40core_ofi_0.dat:WallClock: 171.675980  CPUTime: 171.073532  Memory: 1786.609375 MB
-  40core_ofi_1.dat:WallClock: 133.711380  CPUTime: 133.267868  Memory: 1761.511719 MB
-  40core_ofi_2.dat:WallClock: 133.707443  CPUTime: 133.280457  Memory: 1911.988281 MB
-  40core_ofi_3.dat:WallClock: 133.408310  CPUTime: 132.921799  Memory: 1777.203125 MB
-
-As stated before, the OFI version uses less memory than the MPI version, the difference is even larger this time, less than half the memory needed by the MPI version.
-
-
-Script summarizing compilation of NAMD
---------------------------------------
-
-The next script execute all steps above::
-
-  #!/bin/bash
-
-  wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-2019-12-20_Source.tar.gz
-  tar -zxvf NAMD_Git-2019-12-20_Source.tar.gz
-  cd NAMD_Git-2019-12-20_Source/
-  tar -xvf charm-6.10.0-pre.tar
-  cd charm-6.10.0-pre
-
-  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort -j16 --with-production
-  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort smp -j16 --with-production
-  ./build charm++ ofi-linux-x86_64 icc ifort -j16 --with-production
-  ./build charm++ ofi-linux-x86_64 icc ifort smp -j16 --with-production
-
-  cd mpi-linux-x86_64-ifort-mpicxx/tests/charm++
-  make clean && make && make test
-  cd ../../..
-  cd mpi-linux-x86_64-ifort-smp-mpicxx/tests/charm++
-  make clean && make && make test
-  cd ../../..
-  cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
-  make clean && make && make test
-  cd ../../..
-  cd ofi-linux-x86_64-ifort-icc/tests/charm++
-  make clean && make && make test
-  cd ../../..
-  cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
-  make clean && make
-  cd megatest && make && make test
-  cd ../../../..
-
-  cd ..
-
-  wget http://www.ks.uiuc.edu/Research/namd/libraries/fftw-linux-x86_64.tar.gz
-  tar xzf fftw-linux-x86_64.tar.gz
-  mv linux-x86_64 fftw
-  wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-linux-x86_64.tar.gz
-  wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-linux-x86_64-threaded.tar.gz
-  tar xzf tcl8.5.9-linux-x86_64.tar.gz
-  tar xzf tcl8.5.9-linux-x86_64-threaded.tar.gz
-  mv tcl8.5.9-linux-x86_64 tcl
-  mv tcl8.5.9-linux-x86_64-threaded tcl-threaded
-
-
-  ln -s charm-6.10.0-pre charm
-
-  cat << EOF > arch/Linux-x86_64-mpi-mpicxx.arch
-  NAMD_ARCH = Linux-x86_64
-  CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
-
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
-
-  CXX = icpc -std=c++11
-  CXXOPTS = -O2 \$(FLOATOPTS)
-  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
-  CXXCOLVAROPTS = -O2 -ip
-
-  CC = icc
-  COPTS = -O2 \$(FLOATOPTS)
-  EOF
-
-  cat << EOF > arch/Linux-x86_64-mpi-smp-mpicxx.arch
-  NAMD_ARCH = Linux-x86_64
-  CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
-
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
-
-  CXX = icpc -std=c++11
-  CXXOPTS = -O2 \$(FLOATOPTS)
-  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
-  CXXCOLVAROPTS = -O2 -ip
-
-  CC = icc
-  COPTS = -O2 \$(FLOATOPTS)
-  EOF
-
-  cat << EOF > arch/Linux-x86_64-ofi-icc.arch
-  NAMD_ARCH = Linux-x86_64
-  CHARMARCH = ofi-linux-x86_64-ifort-icc
-
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
-
-  CXX = icpc -std=c++11
-  CXXOPTS = -O2 \$(FLOATOPTS)
-  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
-  CXXCOLVAROPTS = -O2 -ip
-
-  CC = icc
-  COPTS = -O2 \$(FLOATOPTS)
-  EOF
-
-  cat << EOF > arch/Linux-x86_64-ofi-smp-icc.arch
-  NAMD_ARCH = Linux-x86_64
-  CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
-
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
-
-  CXX = icpc -std=c++11
-  CXXOPTS = -O2 \$(FLOATOPTS)
-  CXXNOALIASOPTS = -O2 -fno-alias \$(FLOATOPTS)
-  CXXCOLVAROPTS = -O2 -ip
-
-  CC = icc
-  COPTS = -O2 \$(FLOATOPTS)
-  EOF
-
-  ./config Linux-x86_64-mpi-mpicxx --charm-arch mpi-linux-x86_64-ifort-mpicxx
-  ./config Linux-x86_64-mpi-smp-mpicxx --charm-arch mpi-linux-x86_64-ifort-smp-mpicxx
-  ./config Linux-x86_64-ofi-icc --charm-arch ofi-linux-x86_64-ifort-icc
-  ./config Linux-x86_64-ofi-smp-icc --charm-arch ofi-linux-x86_64-ifort-smp-icc
-
-  cd Linux-x86_64-mpi-mpicxx
-  make -j16
-  cd ..
-  cd Linux-x86_64-mpi-smp-mpicxx
-  make -j16
-  cd ..
-  cd Linux-x86_64-ofi-icc
-  make -j16
-  cd ..
-  cd Linux-x86_64-ofi-smp-icc
-  make -j16
-  cd ..
-
-  execstack -c Linux-x86_64-*/namd2
-
-  cd Linux-x86_64-mpi-mpicxx
-  ./charmrun ++local +p2 ./namd2 src/alanin
-  cd ..
-
-  cd Linux-x86_64-mpi-smp-mpicxx
-  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2
-  cd ..
-
-  cd ../Linux-x86_64-ofi-icc
-  ./charmrun ++local +p2 ./namd2 src/alanin
-  cd ..
-
-  cd Linux-x86_64-ofi-smp-icc
-  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn 2 +setcpuaffinity
-  cd ..
