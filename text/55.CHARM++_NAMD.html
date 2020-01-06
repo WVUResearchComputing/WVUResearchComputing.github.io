@@ -115,6 +115,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#testing-namd2">Testing NAMD2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#script-summarizing-compilation-of-namd">Script summarizing compilation of NAMD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#benchmarking-namd2">Benchmarking NAMD2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusions">Conclusions</a></li>
 </ul>
 </li>
 </ul>
@@ -926,6 +927,10 @@ The big advantage comes from the memory usage, the OFI build uses less than half
 <div class="figure">
 <img alt="stmv_memory.png" src="../_images/stmv_memory_ncores.png" />
 </div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>We have explore the performance of NAMD using two flavors of network communication both for single thread and SMP build. The benchmarks using STMV (1 million atoms) shows an small advantage for OFI in most cases. However, it it differentiate notably on its memory usage, something that could be critical for systems with large number of atoms.</p>
 </div>
 </div>
 
