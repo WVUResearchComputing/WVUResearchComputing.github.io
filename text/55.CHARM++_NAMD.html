@@ -843,25 +843,53 @@ done
 </pre></div>
 </div>
 <p>The timings are stored on the output of each execution and can be extracted like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpi_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">40.253445</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">40.253445</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3206.078125</span> <span class="n">MB</span>
-<span class="n">mpi_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">18.956003</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">18.956003</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3210.632812</span> <span class="n">MB</span>
-<span class="n">mpi_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">19.022461</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">19.022461</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3208.144531</span> <span class="n">MB</span>
-<span class="n">mpi_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">18.894148</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">18.894148</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3209.628906</span> <span class="n">MB</span>
-<span class="n">mpi_smp_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">42.859413</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">42.757206</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3008.148438</span> <span class="n">MB</span>
-<span class="n">mpi_smp_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">20.811899</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">20.760214</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3008.148438</span> <span class="n">MB</span>
-<span class="n">mpi_smp_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">20.898300</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">20.846928</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3008.058594</span> <span class="n">MB</span>
-<span class="n">mpi_smp_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">20.816319</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">20.764545</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3010.000000</span> <span class="n">MB</span>
-<span class="n">ofi_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">40.622784</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">40.536499</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">607.863281</span> <span class="n">MB</span>
-<span class="n">ofi_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">19.270533</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">19.229231</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">628.246094</span> <span class="n">MB</span>
-<span class="n">ofi_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">19.305565</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">19.264708</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">613.031250</span> <span class="n">MB</span>
-<span class="n">ofi_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span>     <span class="n">WallClock</span><span class="p">:</span> <span class="mf">19.318277</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">19.277060</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">602.242188</span> <span class="n">MB</span>
-<span class="n">ofi_smp_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">42.898846</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">42.795250</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">621.925781</span> <span class="n">MB</span>
-<span class="n">ofi_smp_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">20.767469</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">20.716738</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">616.386719</span> <span class="n">MB</span>
-<span class="n">ofi_smp_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">20.836725</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">20.785444</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">631.273438</span> <span class="n">MB</span>
-<span class="n">ofi_smp_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span> <span class="n">WallClock</span><span class="p">:</span> <span class="mf">20.797131</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">20.744808</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">637.097656</span> <span class="n">MB</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">40</span><span class="n">core_mpi_smp_10_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.227570</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.259064</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4688.945312</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_10_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.695709</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.160561</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4676.308594</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_10_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.656311</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">122.411018</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4669.125000</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_10_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.610092</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.485626</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4674.390625</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_20_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">149.466599</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">121.044876</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">6597.683594</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_20_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">150.627670</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">121.731064</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">6579.105469</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_20_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">151.018372</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">121.831726</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">6570.664062</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_20_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">150.703796</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">120.617912</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">6580.136719</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_2_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">304.661163</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">165.003647</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4063.429688</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_2_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">261.148773</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">127.608749</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4061.234375</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_2_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">267.194000</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">125.475502</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4048.324219</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_2_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">263.977295</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">128.551437</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4067.074219</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_40_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">136.069626</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">124.950996</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">8210.808594</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_40_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">136.036179</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">125.778336</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">8210.804688</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_40_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">136.111237</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.779816</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">8210.804688</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_40_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">136.662827</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">126.436882</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">8211.011719</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_5_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">170.709076</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">121.197380</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4060.437500</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_5_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">170.846603</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">122.806618</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4060.964844</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_5_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">170.953751</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">122.650635</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4060.734375</span> <span class="n">MB</span>
+<span class="mi">40</span><span class="n">core_mpi_smp_5_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">171.682648</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">122.736526</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4060.371094</span> <span class="n">MB</span>
+<span class="n">mpi_120_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">97.641594</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">97.641594</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4637.144531</span> <span class="n">MB</span>
+<span class="n">mpi_120_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">56.845337</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">56.845337</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4641.140625</span> <span class="n">MB</span>
+<span class="n">mpi_120_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">57.044777</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">57.044777</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4639.140625</span> <span class="n">MB</span>
+<span class="n">mpi_120_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">57.095589</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">57.095585</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4639.140625</span> <span class="n">MB</span>
+<span class="n">mpi_160_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">87.904030</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">87.904030</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4673.871094</span> <span class="n">MB</span>
+<span class="n">mpi_160_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">47.383121</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">47.383121</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4640.863281</span> <span class="n">MB</span>
+<span class="n">mpi_160_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">87.837677</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">87.837677</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4631.820312</span> <span class="n">MB</span>
+<span class="n">mpi_160_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">47.469536</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">47.469536</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4638.867188</span> <span class="n">MB</span>
+<span class="n">mpi_200_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">81.231453</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">81.231453</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4639.152344</span> <span class="n">MB</span>
+<span class="n">mpi_200_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">40.415939</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">40.415939</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4612.089844</span> <span class="n">MB</span>
+<span class="n">mpi_200_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">40.618484</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">40.618484</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4614.089844</span> <span class="n">MB</span>
+<span class="n">mpi_200_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">40.277576</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">40.277576</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4680.089844</span> <span class="n">MB</span>
+<span class="n">mpi_20_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">254.534271</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">254.534271</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3908.117188</span> <span class="n">MB</span>
+<span class="n">mpi_20_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">206.488068</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">206.488068</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3907.054688</span> <span class="n">MB</span>
+<span class="n">mpi_20_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">206.536240</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">206.536240</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3908.660156</span> <span class="n">MB</span>
+<span class="n">mpi_20_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">206.065628</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">206.065628</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">3852.343750</span> <span class="n">MB</span>
+<span class="n">mpi_40_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">150.173309</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">150.173309</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4824.882812</span> <span class="n">MB</span>
+<span class="n">mpi_40_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">136.239975</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">136.239975</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4822.230469</span> <span class="n">MB</span>
+<span class="n">mpi_40_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">136.077591</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">136.077591</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4824.234375</span> <span class="n">MB</span>
+<span class="n">mpi_40_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">135.873062</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">135.873062</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4822.234375</span> <span class="n">MB</span>
+<span class="n">mpi_80_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">121.231468</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">121.231468</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4637.136719</span> <span class="n">MB</span>
+<span class="n">mpi_80_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">79.989479</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">79.989479</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4637.136719</span> <span class="n">MB</span>
+<span class="n">mpi_80_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">80.023216</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">80.023216</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4635.136719</span> <span class="n">MB</span>
+<span class="n">mpi_80_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">80.146004</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">80.146004</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4639.136719</span> <span class="n">MB</span>
 </pre></div>
 </div>
-<p>These prelimiar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.</p>
+<p>These preliminar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.</p>
 <p>More significant for measuring the performance of NAMD for large systems comes from the STMV benchmark (1,066,628 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps)</p>
 <p>Download the code from:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
@@ -874,85 +902,30 @@ done
 </div>
 <p>The STMV execution takes longer so a submission script is better suited for the task.
 Our next set of tests will explore the best performance that we can get using all the cores on a single node. There are several options for the SMP case either adding more worker threads (+pN) or  adding more PEs per logical node (++ppn N).</p>
-<p>The script below, explores several options for the SMP version and ask 40 cores for the non-SMP versions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>once the modules have been created we can use the following script for the MPI build::
-
- #!/bin/bash
-
- #PBS -l nodes=1:ppn=40
- #PBS -q standby
-
- cd $PBS_O_WORKDIR
-
- module purge
- module load atomistic/namd/NAMD_Git-2020-01-02-MPI
-
- rm *.txt
-
- for i in 0 1 2 3
- do
- echo MPI $i
- ${MD_NAMD}/charmrun +p20 ${MD_NAMD}/namd2 stmv.namd &gt; mpi_20_$i.dat
- ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd &gt; mpi_40_$i.dat
- done
-
- module purge
- module load atomistic/namd/NAMD_Git-2020-01-02-MPI-smp
-
- for ppn in 2 5 10 20 40
- do
-     for i in 0 1 2 3
-     do
-     echo MPI SMP $i ${p} ${ppn}
-     ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd ++ppn$ppn &gt; 40core_mpi_smp_${ppn}_${i}.dat
-     done
- done
-</pre></div>
-</div>
-<p>And this one for the OFI build:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
-
-#PBS -l nodes=1:ppn=40
-#PBS -q standby
-
-cd $PBS_O_WORKDIR
-
-module purge
-module load atomistic/namd/NAMD_Git-2020-01-02-ofi
-
-rm *.txt
-
-for i in 0 1 2 3
-do
-echo OFI $i
-${MD_NAMD}/charmrun +p20 ${MD_NAMD}/namd2 stmv.namd &gt; ofi_20_$i.dat
-${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd &gt; ofi_40_$i.dat
-done
-
-module purge
-module load atomistic/namd/NAMD_Git-2020-01-02-ofi-smp
-
-for ppn in 2 5 10 20 40
-do
-    for i in 0 1 2 3
-    do
-    echo OFI SMP $i ${p} ${ppn}
-    ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd ++ppn$ppn &gt; 40core_ofi_smp_${ppn}_${i}.dat
-    done
-done
-</pre></div>
-</div>
-<p>The results are summarized in the following plots</p>
+<p>The first set of benchmark uses the SMP builds. Each node has 40 cores so there are several ways of balance the number of process and the number of threads on each process. The benchmarks below uses the 40 cores under a different number of
+computational threads and the complementary number of processes.</p>
+<p>The results show that the MPI and OFI versions are similar in CPU time but differ in wall time. That could be explained by the OFI being more efficient network I/O improving the overall time the computer needs to perform the task.
+From the point of view of memory usage the OFI version shows considerably better memory usage.</p>
 <div class="figure">
-<img alt="stmv_walltime.png" src="../_images/stmv_wallclock.png" />
+<img alt="stmv_walltime.png" src="../_images/stmv_wallclock_smp.png" />
 </div>
 <div class="figure">
-<img alt="stmv_cputime.png" src="../_images/stmv_cputime.png" />
+<img alt="stmv_cputime.png" src="../_images/stmv_cputime_smp.png" />
 </div>
 <div class="figure">
-<img alt="stmv_memory.png" src="../_images/stmv_memory.png" />
+<img alt="stmv_memory.png" src="../_images/stmv_memory_smp.png" />
 </div>
-<p>The trade of between the non-SMP and SMP versions that in non-SMP versions all the nodes are in use for computing. With SMP versions, each logical node has at one communication thread and at least one computation thread. That reduces the number of cores doing effective computation, but also allows to for sharing memory between the PEs workers and lowers the memory needs.</p>
+<p>For the case of single thread NAMD builds the benchmarks show that the OFI and MPI flavors behave similar in terms of performance with an small advantage for OFI due to a better communication between nodes compared to the MPI build.
+The big advantage comes from the memory usage, the OFI build uses less than half memory compared to MPI build.</p>
+<div class="figure">
+<img alt="stmv_walltime.png" src="../_images/stmv_wallclock_ncores.png" />
+</div>
+<div class="figure">
+<img alt="stmv_cputime.png" src="../_images/stmv_cputime_ncores.png" />
+</div>
+<div class="figure">
+<img alt="stmv_memory.png" src="../_images/stmv_memory_ncores.png" />
+</div>
 </div>
 </div>
 
