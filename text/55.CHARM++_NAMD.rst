@@ -668,24 +668,52 @@ The script can be executed like this::
 
 The timings are stored on the output of each execution and can be extracted like this::
 
-  mpi_0.dat:     WallClock: 40.253445  CPUTime: 40.253445  Memory: 3206.078125 MB
-  mpi_1.dat:     WallClock: 18.956003  CPUTime: 18.956003  Memory: 3210.632812 MB
-  mpi_2.dat:     WallClock: 19.022461  CPUTime: 19.022461  Memory: 3208.144531 MB
-  mpi_3.dat:     WallClock: 18.894148  CPUTime: 18.894148  Memory: 3209.628906 MB
-  mpi_smp_0.dat: WallClock: 42.859413  CPUTime: 42.757206  Memory: 3008.148438 MB
-  mpi_smp_1.dat: WallClock: 20.811899  CPUTime: 20.760214  Memory: 3008.148438 MB
-  mpi_smp_2.dat: WallClock: 20.898300  CPUTime: 20.846928  Memory: 3008.058594 MB
-  mpi_smp_3.dat: WallClock: 20.816319  CPUTime: 20.764545  Memory: 3010.000000 MB
-  ofi_0.dat:     WallClock: 40.622784  CPUTime: 40.536499  Memory: 607.863281 MB
-  ofi_1.dat:     WallClock: 19.270533  CPUTime: 19.229231  Memory: 628.246094 MB
-  ofi_2.dat:     WallClock: 19.305565  CPUTime: 19.264708  Memory: 613.031250 MB
-  ofi_3.dat:     WallClock: 19.318277  CPUTime: 19.277060  Memory: 602.242188 MB
-  ofi_smp_0.dat: WallClock: 42.898846  CPUTime: 42.795250  Memory: 621.925781 MB
-  ofi_smp_1.dat: WallClock: 20.767469  CPUTime: 20.716738  Memory: 616.386719 MB
-  ofi_smp_2.dat: WallClock: 20.836725  CPUTime: 20.785444  Memory: 631.273438 MB
-  ofi_smp_3.dat: WallClock: 20.797131  CPUTime: 20.744808  Memory: 637.097656 MB
+  40core_mpi_smp_10_0.dat:WallClock: 155.227570  CPUTime: 123.259064  Memory: 4688.945312 MB
+  40core_mpi_smp_10_1.dat:WallClock: 155.695709  CPUTime: 123.160561  Memory: 4676.308594 MB
+  40core_mpi_smp_10_2.dat:WallClock: 155.656311  CPUTime: 122.411018  Memory: 4669.125000 MB
+  40core_mpi_smp_10_3.dat:WallClock: 155.610092  CPUTime: 123.485626  Memory: 4674.390625 MB
+  40core_mpi_smp_20_0.dat:WallClock: 149.466599  CPUTime: 121.044876  Memory: 6597.683594 MB
+  40core_mpi_smp_20_1.dat:WallClock: 150.627670  CPUTime: 121.731064  Memory: 6579.105469 MB
+  40core_mpi_smp_20_2.dat:WallClock: 151.018372  CPUTime: 121.831726  Memory: 6570.664062 MB
+  40core_mpi_smp_20_3.dat:WallClock: 150.703796  CPUTime: 120.617912  Memory: 6580.136719 MB
+  40core_mpi_smp_2_0.dat:WallClock: 304.661163  CPUTime: 165.003647  Memory: 4063.429688 MB
+  40core_mpi_smp_2_1.dat:WallClock: 261.148773  CPUTime: 127.608749  Memory: 4061.234375 MB
+  40core_mpi_smp_2_2.dat:WallClock: 267.194000  CPUTime: 125.475502  Memory: 4048.324219 MB
+  40core_mpi_smp_2_3.dat:WallClock: 263.977295  CPUTime: 128.551437  Memory: 4067.074219 MB
+  40core_mpi_smp_40_0.dat:WallClock: 136.069626  CPUTime: 124.950996  Memory: 8210.808594 MB
+  40core_mpi_smp_40_1.dat:WallClock: 136.036179  CPUTime: 125.778336  Memory: 8210.804688 MB
+  40core_mpi_smp_40_2.dat:WallClock: 136.111237  CPUTime: 123.779816  Memory: 8210.804688 MB
+  40core_mpi_smp_40_3.dat:WallClock: 136.662827  CPUTime: 126.436882  Memory: 8211.011719 MB
+  40core_mpi_smp_5_0.dat:WallClock: 170.709076  CPUTime: 121.197380  Memory: 4060.437500 MB
+  40core_mpi_smp_5_1.dat:WallClock: 170.846603  CPUTime: 122.806618  Memory: 4060.964844 MB
+  40core_mpi_smp_5_2.dat:WallClock: 170.953751  CPUTime: 122.650635  Memory: 4060.734375 MB
+  40core_mpi_smp_5_3.dat:WallClock: 171.682648  CPUTime: 122.736526  Memory: 4060.371094 MB
+  mpi_120_0.dat:WallClock: 97.641594  CPUTime: 97.641594  Memory: 4637.144531 MB
+  mpi_120_1.dat:WallClock: 56.845337  CPUTime: 56.845337  Memory: 4641.140625 MB
+  mpi_120_2.dat:WallClock: 57.044777  CPUTime: 57.044777  Memory: 4639.140625 MB
+  mpi_120_3.dat:WallClock: 57.095589  CPUTime: 57.095585  Memory: 4639.140625 MB
+  mpi_160_0.dat:WallClock: 87.904030  CPUTime: 87.904030  Memory: 4673.871094 MB
+  mpi_160_1.dat:WallClock: 47.383121  CPUTime: 47.383121  Memory: 4640.863281 MB
+  mpi_160_2.dat:WallClock: 87.837677  CPUTime: 87.837677  Memory: 4631.820312 MB
+  mpi_160_3.dat:WallClock: 47.469536  CPUTime: 47.469536  Memory: 4638.867188 MB
+  mpi_200_0.dat:WallClock: 81.231453  CPUTime: 81.231453  Memory: 4639.152344 MB
+  mpi_200_1.dat:WallClock: 40.415939  CPUTime: 40.415939  Memory: 4612.089844 MB
+  mpi_200_2.dat:WallClock: 40.618484  CPUTime: 40.618484  Memory: 4614.089844 MB
+  mpi_200_3.dat:WallClock: 40.277576  CPUTime: 40.277576  Memory: 4680.089844 MB
+  mpi_20_0.dat:WallClock: 254.534271  CPUTime: 254.534271  Memory: 3908.117188 MB
+  mpi_20_1.dat:WallClock: 206.488068  CPUTime: 206.488068  Memory: 3907.054688 MB
+  mpi_20_2.dat:WallClock: 206.536240  CPUTime: 206.536240  Memory: 3908.660156 MB
+  mpi_20_3.dat:WallClock: 206.065628  CPUTime: 206.065628  Memory: 3852.343750 MB
+  mpi_40_0.dat:WallClock: 150.173309  CPUTime: 150.173309  Memory: 4824.882812 MB
+  mpi_40_1.dat:WallClock: 136.239975  CPUTime: 136.239975  Memory: 4822.230469 MB
+  mpi_40_2.dat:WallClock: 136.077591  CPUTime: 136.077591  Memory: 4824.234375 MB
+  mpi_40_3.dat:WallClock: 135.873062  CPUTime: 135.873062  Memory: 4822.234375 MB
+  mpi_80_0.dat:WallClock: 121.231468  CPUTime: 121.231468  Memory: 4637.136719 MB
+  mpi_80_1.dat:WallClock: 79.989479  CPUTime: 79.989479  Memory: 4637.136719 MB
+  mpi_80_2.dat:WallClock: 80.023216  CPUTime: 80.023216  Memory: 4635.136719 MB
+  mpi_80_3.dat:WallClock: 80.146004  CPUTime: 80.146004  Memory: 4639.136719 MB
 
-These prelimiar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.
+These preliminar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.
 
 More significant for measuring the performance of NAMD for large systems comes from the STMV benchmark (1,066,628 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps)
 
@@ -701,83 +729,30 @@ Untar and uncompress the package and move into the folder::
 The STMV execution takes longer so a submission script is better suited for the task.
 Our next set of tests will explore the best performance that we can get using all the cores on a single node. There are several options for the SMP case either adding more worker threads (+pN) or  adding more PEs per logical node (++ppn N).
 
-The script below, explores several options for the SMP version and ask 40 cores for the non-SMP versions::
+The first set of benchmark uses the SMP builds. Each node has 40 cores so there are several ways of balance the number of process and the number of threads on each process. The benchmarks below uses the 40 cores under a different number of
+computational threads and the complementary number of processes.
 
- once the modules have been created we can use the following script for the MPI build::
+The results show that the MPI and OFI versions are similar in CPU time but differ in wall time. That could be explained by the OFI being more efficient network I/O improving the overall time the computer needs to perform the task.
+From the point of view of memory usage the OFI version shows considerably better memory usage.
 
-  #!/bin/bash
-
-  #PBS -l nodes=1:ppn=40
-  #PBS -q standby
-
-  cd $PBS_O_WORKDIR
-
-  module purge
-  module load atomistic/namd/NAMD_Git-2020-01-02-MPI
-
-  rm *.txt
-
-  for i in 0 1 2 3
-  do
-  echo MPI $i
-  ${MD_NAMD}/charmrun +p20 ${MD_NAMD}/namd2 stmv.namd > mpi_20_$i.dat
-  ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd > mpi_40_$i.dat
-  done
-
-  module purge
-  module load atomistic/namd/NAMD_Git-2020-01-02-MPI-smp
-
-  for ppn in 2 5 10 20 40
-  do
-      for i in 0 1 2 3
-      do
-      echo MPI SMP $i ${p} ${ppn}
-      ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd ++ppn$ppn > 40core_mpi_smp_${ppn}_${i}.dat
-      done
-  done
-
-And this one for the OFI build::
-
-  #!/bin/bash
-
-  #PBS -l nodes=1:ppn=40
-  #PBS -q standby
-
-  cd $PBS_O_WORKDIR
-
-  module purge
-  module load atomistic/namd/NAMD_Git-2020-01-02-ofi
-
-  rm *.txt
-
-  for i in 0 1 2 3
-  do
-  echo OFI $i
-  ${MD_NAMD}/charmrun +p20 ${MD_NAMD}/namd2 stmv.namd > ofi_20_$i.dat
-  ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd > ofi_40_$i.dat
-  done
-
-  module purge
-  module load atomistic/namd/NAMD_Git-2020-01-02-ofi-smp
-
-  for ppn in 2 5 10 20 40
-  do
-      for i in 0 1 2 3
-      do
-      echo OFI SMP $i ${p} ${ppn}
-      ${MD_NAMD}/charmrun +p40 ${MD_NAMD}/namd2 stmv.namd ++ppn$ppn > 40core_ofi_smp_${ppn}_${i}.dat
-      done
-  done
-
-The results are summarized in the following plots
-
-.. figure:: /_static/stmv_wallclock.png
+.. figure:: /_static/stmv_wallclock_smp.png
   :alt: stmv_walltime.png
 
-.. figure:: /_static/stmv_cputime.png
+.. figure:: /_static/stmv_cputime_smp.png
   :alt: stmv_cputime.png
 
-.. figure:: /_static/stmv_memory.png
+.. figure:: /_static/stmv_memory_smp.png
   :alt: stmv_memory.png
 
-The trade of between the non-SMP and SMP versions that in non-SMP versions all the nodes are in use for computing. With SMP versions, each logical node has at one communication thread and at least one computation thread. That reduces the number of cores doing effective computation, but also allows to for sharing memory between the PEs workers and lowers the memory needs.
+
+For the case of single thread NAMD builds the benchmarks show that the OFI and MPI flavors behave similar in terms of performance with an small advantage for OFI due to a better communication between nodes compared to the MPI build.
+The big advantage comes from the memory usage, the OFI build uses less than half memory compared to MPI build.
+
+.. figure:: /_static/stmv_wallclock_ncores.png
+  :alt: stmv_walltime.png
+
+.. figure:: /_static/stmv_cputime_ncores.png
+  :alt: stmv_cputime.png
+
+.. figure:: /_static/stmv_memory_ncores.png
+  :alt: stmv_memory.png
