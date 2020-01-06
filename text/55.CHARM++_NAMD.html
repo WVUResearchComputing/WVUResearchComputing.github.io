@@ -193,23 +193,23 @@
             
   <div class="section" id="compiling-charm-and-namd">
 <h1>Compiling CHARM++ and NAMD<a class="headerlink" href="#compiling-charm-and-namd" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial will show how to compile Charm++ and NAMD.
-We will demonstrate with the nightly NAMD sources.
-Go to:</p>
+<p>NAMD is a computer software for classical molecular dynamics simulation, written using the Charm++ parallel programming model. It is noted for its parallel efficiency and is often used to simulate large systems (millions of atoms). It has been developed by the collaboration of the Theoretical and Computational Biophysics Group (TCB) and the Parallel Programming Laboratory (PPL) at the University of Illinois at Urbana–Champaign.</p>
+<p>The purpose of this document is to show how Charm++ and NAMD were compiled on Thorny Flat, a cluster build from Skylake CPUs. The current stable sources 2.13 fail compilation using OFI network library. For that reason we will be using the Nightly archived sources available on the official NAMD site.</p>
+<p>The sources can be downloaded for the most recent date at the moment of download. The sources can be download using this command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>VERSION=2020-01-02
 wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
 </pre></div>
 </div>
 <p>This is the current Nightly build by the time of writing this document
-(2020-01-02). The nightly build can be download from
+(2020-01-02). The nightly build can be downloaded from the browser on
 <a class="reference external" href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD">https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD</a></p>
-<p>The sources come in a tar and compressed file. Untar and uncompress them. Go into the created folder and untar the charm sources too:</p>
+<p>The sources are archived in a tar and compressed file. Untar and uncompress them. Go into the created folder and untar the charm sources too:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>tar -zxvf NAMD_Git-${VERSION}_Source.tar.gz
 cd NAMD_Git-${VERSION}_Source/
 tar -xvf charm-6.10.0-pre.tar
 </pre></div>
 </div>
-<p>We will compile Charm and NAMD using the Intel Compilers 2019. The latest version at the moment of writing this document:</p>
+<p>We will compile Charm and NAMD using the Intel Compilers 2019, the latest version at the moment of writing this document:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span>
 </pre></div>
@@ -220,7 +220,7 @@ tar -xvf charm-6.10.0-pre.tar
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pre</span>
 </pre></div>
 </div>
-<p>We will compile 4 versions. The MPI version, the OFI version for both single threaded and shared memory versions:</p>
+<p>We will compile 4 versions. The MPI version and the OFI version for both single threaded and shared memory versions:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
 
 <span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="n">smp</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
