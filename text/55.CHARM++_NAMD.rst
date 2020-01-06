@@ -756,3 +756,8 @@ The big advantage comes from the memory usage, the OFI build uses less than half
 
 .. figure:: /_static/stmv_memory_ncores.png
   :alt: stmv_memory.png
+
+Conclusions
+-----------
+
+We have explore the performance of NAMD using two flavors of network communication both for single thread and SMP build. The benchmarks using STMV (1 million atoms) shows an small advantage for OFI in most cases. However, it it differentiate notably on its memory usage, something that could be critical for systems with large number of atoms.
