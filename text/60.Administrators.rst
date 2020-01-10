@@ -13,3 +13,5 @@ For Administrators
   65.UserInstallation.rst
   66.HDF5_NetCDF.rst
   67.Atomistic.rst
+  68.BLAS_Lapack.rst
+  69.CHARM++_NAMD.rst
