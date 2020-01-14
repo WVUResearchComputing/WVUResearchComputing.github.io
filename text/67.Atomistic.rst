@@ -237,3 +237,336 @@ The results of the tests were::
   UnitTest           =  90.49 sec*proc (34 tests)
 
   Total Test time (real) = 2075.93 sec
+
+
+LAMMPS
+------
+
+Two versions on LAMMPS are compiled using GCC 8.2 with OpenMPI 3.1 and using Intel Compilers 20019.
+Download the code::
+
+  wget https://lammps.sandia.gov/tars/lammps-9Jan20.tar.gz
+
+Uncompress the code::
+
+  tar -zxvf lammps-9Jan20.tar.gz
+
+Change to the src folder inside the uncompressed folder::
+
+  cd lammps-7Aug19/src
+
+There are two files with the configurations for the intel and gcc compilers.
+The file for Intel 2019 is called "Makefile.intel19_impi19"::
+
+  # Makefile.intel19_impi19
+  # mpi = MPI with its default compiler
+
+  SHELL = /bin/sh
+
+  # ---------------------------------------------------------------------
+  # compiler/linker settings
+  # specify flags and libraries needed for your compiler
+
+  CC =            mpicxx
+  CCFLAGS =       -g -O2
+  SHFLAGS =       -fPIC
+  DEPFLAGS =      -M
+
+  LINK =          mpicxx
+  LINKFLAGS =     -g -O2
+  LIB =
+  SIZE =          size
+
+  ARCHIVE =       ar
+  ARFLAGS =       -rc
+  SHLIBFLAGS =    -shared
+
+  # ---------------------------------------------------------------------
+  # LAMMPS-specific settings, all OPTIONAL
+  # specify settings for LAMMPS features you will use
+  # if you change any -D setting, do full re-compile after "make clean"
+
+  # LAMMPS ifdef settings
+  # see possible settings in Section 2.2 (step 4) of manual
+
+  LMP_INC =       -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64
+
+  # MPI library
+  # see discussion in Section 2.2 (step 5) of manual
+  # MPI wrapper compiler/linker can provide this info
+  # can point to dummy MPI library in src/STUBS as in Makefile.serial
+  # use -D MPICH and OMPI settings in INC to avoid C++ lib conflicts
+  # INC = path for mpi.h, MPI compiler settings
+  # PATH = path for MPI library
+  # LIB = name of MPI library
+
+  MPI_INC =       -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1
+  MPI_PATH =
+  MPI_LIB =
+
+  # FFT library
+  # see discussion in Section 2.2 (step 6) of manual
+  # can be left blank to use provided KISS FFT library
+  # INC = -DFFT setting, e.g. -DFFT_FFTW, FFT compiler settings
+  # PATH = path for FFT library
+  # LIB = name of FFT library
+
+  FFT_INC = -DFFT_MKL
+  FFT_PATH =
+  FFT_LIB = -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl -lirc -lintlc
+
+  # JPEG and/or PNG library
+  # see discussion in Section 2.2 (step 7) of manual
+  # only needed if -DLAMMPS_JPEG or -DLAMMPS_PNG listed with LMP_INC
+  # INC = path(s) for jpeglib.h and/or png.h
+  # PATH = path(s) for JPEG library and/or PNG library
+  # LIB = name(s) of JPEG library and/or PNG library
+
+  JPG_INC =
+  JPG_PATH =
+  JPG_LIB =
+
+  # ---------------------------------------------------------------------
+  # build rules and dependencies
+  # do not edit this section
+
+  include Makefile.package.settings
+  include Makefile.package
+
+  EXTRA_INC = $(LMP_INC) $(PKG_INC) $(MPI_INC) $(FFT_INC) $(JPG_INC) $(PKG_SYSINC)
+  EXTRA_PATH = $(PKG_PATH) $(MPI_PATH) $(FFT_PATH) $(JPG_PATH) $(PKG_SYSPATH)
+  EXTRA_LIB = $(PKG_LIB) $(MPI_LIB) $(FFT_LIB) $(JPG_LIB) $(PKG_SYSLIB)
+  EXTRA_CPP_DEPENDS = $(PKG_CPP_DEPENDS)
+  EXTRA_LINK_DEPENDS = $(PKG_LINK_DEPENDS)
+
+  # Path to src files
+
+  vpath %.cpp ..
+  vpath %.h ..
+
+  # Link target
+
+  $(EXE): $(OBJ) $(EXTRA_LINK_DEPENDS)
+          $(LINK) $(LINKFLAGS) $(EXTRA_PATH) $(OBJ) $(EXTRA_LIB) $(LIB) -o $(EXE)
+          $(SIZE) $(EXE)
+
+  # Library targets
+
+  lib:    $(OBJ) $(EXTRA_LINK_DEPENDS)
+          $(ARCHIVE) $(ARFLAGS) $(EXE) $(OBJ)
+
+  shlib:  $(OBJ) $(EXTRA_LINK_DEPENDS)
+          $(CC) $(CCFLAGS) $(SHFLAGS) $(SHLIBFLAGS) $(EXTRA_PATH) -o $(EXE) \
+          $(OBJ) $(EXTRA_LIB) $(LIB)
+
+  # Compilation rules
+
+  %.o:%.cpp
+          $(CC) $(CCFLAGS) $(SHFLAGS) $(EXTRA_INC) -c $<
+
+  # Individual dependencies
+
+  depend : fastdep.exe $(SRC)
+          @./fastdep.exe $(EXTRA_INC) -- $^ > .depend || exit 1
+
+  fastdep.exe: ../DEPEND/fastdep.c
+          cc -O -o $@ $<
+
+  sinclude .depend
+
+The file for GCC 8.2 is called "Makefile.gcc82_ompi31"::
+
+  # Makefile.gcc82_ompi31
+  # mpi = MPI with its default compiler
+
+  SHELL = /bin/sh
+
+  # ---------------------------------------------------------------------
+  # compiler/linker settings
+  # specify flags and libraries needed for your compiler
+
+  CC =            mpicxx
+  CCFLAGS =       -g -O2 -pipe
+  SHFLAGS =       -fPIC
+  DEPFLAGS =      -M
+
+  LINK =          mpicxx
+  LINKFLAGS =     -g -O2 -pipe
+  LIB =
+  SIZE =          size
+
+  ARCHIVE =       ar
+  ARFLAGS =       -rc
+  SHLIBFLAGS =    -shared
+
+  # ---------------------------------------------------------------------
+  # LAMMPS-specific settings, all OPTIONAL
+  # specify settings for LAMMPS features you will use
+  # if you change any -D setting, do full re-compile after "make clean"
+
+  # LAMMPS ifdef settings
+  # see possible settings in Section 2.2 (step 4) of manual
+
+  LMP_INC =       -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64 -DLAMMPS_PNG
+
+  # MPI library
+  # see discussion in Section 2.2 (step 5) of manual
+  # MPI wrapper compiler/linker can provide this info
+  # can point to dummy MPI library in src/STUBS as in Makefile.serial
+  # use -D MPICH and OMPI settings in INC to avoid C++ lib conflicts
+  # INC = path for mpi.h, MPI compiler settings
+  # PATH = path for MPI library
+  # LIB = name of MPI library
+
+  MPI_INC =       -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1
+  MPI_PATH =
+  MPI_LIB =
+
+  # FFT library
+  # see discussion in Section 2.2 (step 6) of manual
+  # can be left blank to use provided KISS FFT library
+  # INC = -DFFT setting, e.g. -DFFT_FFTW, FFT compiler settings
+  # PATH = path for FFT library
+  # LIB = name of FFT library
+
+  FFT_INC = -DFFT_FFTW3
+  FFT_PATH =
+  FFT_LIB =       -lfftw3
+
+  # JPEG and/or PNG library
+  # see discussion in Section 2.2 (step 7) of manual
+  # only needed if -DLAMMPS_JPEG or -DLAMMPS_PNG listed with LMP_INC
+  # INC = path(s) for jpeglib.h and/or png.h
+  # PATH = path(s) for JPEG library and/or PNG library
+  # LIB = name(s) of JPEG library and/or PNG library
+
+  JPG_INC = -I/shared/software/lang/gcc/8.2.0/include
+  JPG_PATH = -L/shared/software/lang/gcc/8.2.0/lib
+  JPG_LIB = -lpng -ljpeg -lz
+
+  # ---------------------------------------------------------------------
+  # build rules and dependencies
+  # do not edit this section
+
+  include Makefile.package.settings
+  include Makefile.package
+
+  EXTRA_INC = $(LMP_INC) $(PKG_INC) $(MPI_INC) $(FFT_INC) $(JPG_INC) $(PKG_SYSINC)
+  EXTRA_PATH = $(PKG_PATH) $(MPI_PATH) $(FFT_PATH) $(JPG_PATH) $(PKG_SYSPATH)
+  EXTRA_LIB = $(PKG_LIB) $(MPI_LIB) $(FFT_LIB) $(JPG_LIB) $(PKG_SYSLIB)
+  EXTRA_CPP_DEPENDS = $(PKG_CPP_DEPENDS)
+  EXTRA_LINK_DEPENDS = $(PKG_LINK_DEPENDS)
+
+  # Path to src files
+
+  vpath %.cpp ..
+  vpath %.h ..
+
+  # Link target
+
+  $(EXE): $(OBJ) $(EXTRA_LINK_DEPENDS)
+          $(LINK) $(LINKFLAGS) $(EXTRA_PATH) $(OBJ) $(EXTRA_LIB) $(LIB) -o $(EXE)
+          $(SIZE) $(EXE)
+
+  # Library targets
+
+  lib:    $(OBJ) $(EXTRA_LINK_DEPENDS)
+          $(ARCHIVE) $(ARFLAGS) $(EXE) $(OBJ)
+
+  shlib:  $(OBJ) $(EXTRA_LINK_DEPENDS)
+          $(CC) $(CCFLAGS) $(SHFLAGS) $(SHLIBFLAGS) $(EXTRA_PATH) -o $(EXE) \
+          $(OBJ) $(EXTRA_LIB) $(LIB)
+
+  # Compilation rules
+
+  %.o:%.cpp
+          $(CC) $(CCFLAGS) $(SHFLAGS) $(EXTRA_INC) -c $<
+
+  # Individual dependencies
+
+  depend : fastdep.exe $(SRC)
+          @./fastdep.exe $(EXTRA_INC) -- $^ > .depend || exit 1
+
+  fastdep.exe: ../DEPEND/fastdep.c
+          cc -O -o $@ $<
+
+  sinclude .depend
+
+The difference between those two files include change the FFT library that will be used and adding JPG support. The difference is::
+
+  $ diff MAKE/Makefile.intel19_impi19 MAKE/Makefile.gcc82_ompi31
+  10c10
+  < CCFLAGS =     -g -O2
+  ---
+  > CCFLAGS =     -g -O2 -pipe
+  15c15
+  < LINKFLAGS =   -g -O2
+  ---
+  > LINKFLAGS =   -g -O2 -pipe
+  31c31
+  < LMP_INC =     -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64
+  ---
+  > LMP_INC =     -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64 -DLAMMPS_PNG
+  53c53
+  < FFT_INC = -DFFT_MKL
+  ---
+  > FFT_INC = -DFFT_FFTW3
+  55c55
+  < FFT_LIB = -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl -lirc -lintlc
+  ---
+  > FFT_LIB =     -lfftw3
+  64,66c64,66
+  < JPG_INC =
+  < JPG_PATH =
+  < JPG_LIB =
+  ---
+  > JPG_INC = -I/shared/software/lang/gcc/8.2.0/include
+  > JPG_PATH = -L/shared/software/lang/gcc/8.2.0/lib
+  > JPG_LIB = -lpng -ljpeg -lz
+
+Those two files should be located inside "src/MAKE" and "src/MAKE/MACHINES".
+Now inside the "src" folder there is a Makefile that allow you to select which packages will be compiled along side with LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few::
+
+  make yes-all
+  make no-lib
+  make yes-PYTHON
+  make yes-USER-COLVARS
+  make yes-USER-MOLFILE
+  make yes-MPIIO
+
+On Thorny, there is no module for Python 2.x and the RHEL python has not the development packages installed. As a result, the PYTHON module must be disable::
+
+  make no-PYTHON
+
+The environment modules needed for the GCC82 are loaded.
+On Spruce::
+
+  module load lang/gcc/8.2.0 parallel/openmpi/3.1.4_gcc82
+  module load libs/fftw/3.3.8_gcc82 lang/python/2.7.15_gcc82
+
+On Thorny::
+
+  module load lang/gcc/8.2.0 parallel/openmpi/3.1.4_gcc82
+  module load libs/fftw/3.3.8_gcc82
+
+The COLVARS library needs to be compiled::
+
+  make lib-colvars args="-m mpi"
+  make lib-colvars args="-m gcc82_ompi31"
+
+And LAMMPS itself after that::
+
+  make gcc82_ompi31
+
+After compiled the binary is called ``lmp_gcc82_ompi31``
+
+Compiling the Intel version. On Spruce and Thorny::
+
+  module purge
+  module load lang/intel/2019 lang/python/intelpython_2.7.16
+
+And compile the code::
+
+  make intel19_impi19
+
+The resulting binaries can be copied to the PATH that will be exported with the environment module.
