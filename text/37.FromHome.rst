@@ -1,0 +1,21 @@
+Effective Research Computing from Home
+======================================
+
+Terminal multiplexing
+---------------------
+
+
+Post-processing, plot and data analysis
+---------------------------------------
+
+
+Collaborative manuscript writing
+--------------------------------
+
+
+Effective version control
+-------------------------
+
+
+Collaborative Notebooks
+-----------------------

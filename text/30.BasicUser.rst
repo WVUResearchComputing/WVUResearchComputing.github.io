@@ -14,3 +14,4 @@ For Basic Users
    34.EnvModules.rst
    35.Scratch.rst
    36.XWindow.rst
+   37.FromHome.rst
