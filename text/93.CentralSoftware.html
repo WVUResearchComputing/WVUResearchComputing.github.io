@@ -1,0 +1,1295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Software Centrally Managed &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Linux Commands" href="92.Commands.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="90.References.html">References</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="91.CommandList.html">Common Unix commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="92.Commands.html">Linux Commands</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Software Centrally Managed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#software-via-environment-modules">Software via Environment Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-via-conda-environment">Software via Conda Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-via-singularity-images">Software via Singularity Images</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="90.References.html">References</a> &raquo;</li>
+        
+      <li>Software Centrally Managed</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/93.CentralSoftware.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="software-centrally-managed">
+<span id="ref-centralsoftware"></span><h1>Software Centrally Managed<a class="headerlink" href="#software-centrally-managed" title="Permalink to this headline">¶</a></h1>
+<p>On Thorny Flat there packages centrally managed from three different sources.
+Packages provided via Environment Modules, Software included in Conda Environments
+and Software built inside Singularity Containers.
+The Software below is a catalog of the software offered on Thorny Flat on
+June 6, 2020. New packages are added over time and some old packages are deprecated
+and eventually removed.</p>
+<div class="section" id="software-via-environment-modules">
+<h2>Software via Environment Modules<a class="headerlink" href="#software-via-environment-modules" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="13%" />
+<col width="33%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Software Name</th>
+<th class="head">TIER 0</th>
+<th class="head">Description</th>
+<th class="head">Modules</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>HPL</td>
+<td>Benchmarks</td>
+<td>High Performance Linpack Benchmarks</td>
+<td><div class="first last line-block">
+<div class="line">benchmarks/hpl/2.3_gcc48</div>
+<div class="line">benchmarks/hpl/2.3_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>CMake</td>
+<td>Developers</td>
+<td>Build System</td>
+<td><div class="first last line-block">
+<div class="line">dev/cmake/3.15.2</div>
+<div class="line">dev/cmake/3.15.4</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Doxygen</td>
+<td>Developers</td>
+<td>Create documentation from Sources</td>
+<td><div class="first last line-block">
+<div class="line">dev/doxygen/1.8.15</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">GNU</div>
+<div class="line">Compiler</div>
+<div class="line">Collection</div>
+</div>
+</td>
+<td>Languages</td>
+<td><div class="first last line-block">
+<div class="line">Compilers for C, C++,</div>
+<div class="line">Fortran and more</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">lang/gcc/7.5.0</div>
+<div class="line">lang/gcc/8.2.0</div>
+<div class="line">lang/gcc/8.4.0</div>
+<div class="line">lang/gcc/9.3.0</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Go Language</td>
+<td>Languages</td>
+<td>Go Programming Language</td>
+<td><div class="first last line-block">
+<div class="line">lang/go/1.12.7</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Intel Compiler Suite</td>
+<td>Languages</td>
+<td><div class="first last line-block">
+<div class="line">Intel Compilers Sute: C, C++ and Fortran</div>
+<div class="line">Includes the Math Kernel Library (MKL)</div>
+<div class="line">and other Intel optimized Libraries</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">lang/intel/2018</div>
+<div class="line">lang/intel/2018_u4</div>
+<div class="line">lang/intel/2019</div>
+<div class="line">lang/intel/2019_u5</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Java Developers Kit</td>
+<td>Languages</td>
+<td>Software to compile and run Java programs</td>
+<td><div class="first last line-block">
+<div class="line">lang/java/jdk1.8.0_201</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Julia</td>
+<td>Languages</td>
+<td><div class="first last line-block">
+<div class="line">Fast Interpreted Language for</div>
+<div class="line">Scientific Computing</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">lang/julia/1.1.1</div>
+<div class="line">lang/julia/1.2.0</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>PGI Compiler Suite</td>
+<td>Languages</td>
+<td>PGI Compilers for C, C++ and Fortran</td>
+<td><div class="first last line-block">
+<div class="line">lang/pgi/19.4</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Python</td>
+<td>Languages</td>
+<td><div class="first last line-block">
+<div class="line">Python Programming Language</div>
+<div class="line">CPython is the reference C</div>
+<div class="line">implementation</div>
+<div class="line">Intel Python offer several optimizations</div>
+<div class="line">for Numerical operations via MKL</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">Pypy is an optimized implementation</div>
+<div class="line">of Python</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">lang/python/cpython_3.6.9_gcc82</div>
+<div class="line">lang/python/cpython_3.7.2_gcc82</div>
+<div class="line">lang/python/cpython_3.7.4_gcc82</div>
+<div class="line">lang/python/intelpython_2.7.14</div>
+<div class="line">lang/python/intelpython_2.7.16</div>
+<div class="line">lang/python/intelpython_3.6.3</div>
+<div class="line">lang/python/intelpython_3.6.9</div>
+<div class="line">lang/python/pypy2.7-7.1.1-portable</div>
+<div class="line">lang/python/pypy3.6-7.1.1-portable</div>
+<div class="line">lang/python/pypy3.6-v7.1.1-thorny</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>R Language</td>
+<td>Languages</td>
+<td>R is a Language used for Statistics</td>
+<td><div class="first last line-block">
+<div class="line">lang/r/3.5.2</div>
+<div class="line">lang/r/3.6.2</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>AtomPAW</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Projected Augmented Wave code</div>
+<div class="line">Used by several DFT codes</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/atompaw/4.1.0.5_gcc48</div>
+<div class="line">libs/atompaw/4.1.0.5_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Boost</td>
+<td>Libraries</td>
+<td>Portable C++ source Libraries</td>
+<td><div class="first last line-block">
+<div class="line">libs/boost/1.70_gcc48_ompi216</div>
+<div class="line">libs/boost/1.70_gcc82_ompi216</div>
+<div class="line">libs/boost/1.70_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>CFITSIO</td>
+<td>Libraries</td>
+<td>FITS subroutine Library</td>
+<td><div class="first last line-block">
+<div class="line">libs/cfitsio/3.47_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>FFTW</td>
+<td>Libraries</td>
+<td>Fast Fourier Transforms</td>
+<td><div class="first last line-block">
+<div class="line">libs/fftw/3.3.8_gcc48</div>
+<div class="line">libs/fftw/3.3.8_gcc75</div>
+<div class="line">libs/fftw/3.3.8_gcc75_ompi3.1.6</div>
+<div class="line">libs/fftw/3.3.8_gcc82</div>
+<div class="line">libs/fftw/3.3.8_gcc82b</div>
+<div class="line">libs/fftw/3.3.8_gcc82_ompi4</div>
+<div class="line">libs/fftw/3.3.8_gcc84</div>
+<div class="line">libs/fftw/3.3.8_gcc84_ompi3.1.6</div>
+<div class="line">libs/fftw/3.3.8_gcc93</div>
+<div class="line">libs/fftw/3.3.8_gcc93_ompi3.1.6</div>
+<div class="line">libs/fftw/3.3.8_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>HDF5</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Open Source File Format for large</div>
+<div class="line">and complex Data</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/hdf5/1.10.5_gcc48</div>
+<div class="line">libs/hdf5/1.10.5_gcc48_ompi31</div>
+<div class="line">libs/hdf5/1.10.5_gcc82</div>
+<div class="line">libs/hdf5/1.10.5_gcc82_ompi31</div>
+<div class="line">libs/hdf5/1.10.5_intel18</div>
+<div class="line">libs/hdf5/1.10.5_intel18_impi18</div>
+<div class="line">libs/hdf5/1.10.5_intel19</div>
+<div class="line">libs/hdf5/1.10.5_intel19_impi19</div>
+<div class="line">libs/hdf5/1.10.6_gcc82_ompi31</div>
+<div class="line">libs/hdf5/1.12.0_gcc75</div>
+<div class="line">libs/hdf5/1.12.0_gcc75_ompi31</div>
+<div class="line">libs/hdf5/1.12.0_gcc84</div>
+<div class="line">libs/hdf5/1.12.0_gcc84_ompi31</div>
+<div class="line">libs/hdf5/1.12.0_gcc93</div>
+<div class="line">libs/hdf5/1.12.0_gcc93_ompi31</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>LibPSML</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Pseudopotential Markup Language</div>
+<div class="line">Used by DFT codes</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/libpsml/1.1.7_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>LibXC</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Library for Exchange Correlation</div>
+<div class="line">Functionals</div>
+<div class="line">Used by DFT codes</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/libxc/3.0.1_gcc48</div>
+<div class="line">libs/libxc/3.0.1_gcc82</div>
+<div class="line">libs/libxc/3.0.1_intel18</div>
+<div class="line">libs/libxc/4.2.3_intel18</div>
+<div class="line">libs/libxc/4.3.4_gcc82</div>
+<div class="line">libs/libxc/4.3.4_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Magma</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Dense Linear Algebra for</div>
+<div class="line">hybrid Multicore+GPUs</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/magma/2.5.1_gcc48</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>NetCDF</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Open Source File Format for</div>
+<div class="line">Scientific Data</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/netcdf/4.1.1_gcc48</div>
+<div class="line">libs/netcdf/4.7.1_gcc82</div>
+<div class="line">libs/netcdf/4.7.1_intel18</div>
+<div class="line">libs/netcdf/4.7.1_intel19</div>
+<div class="line">libs/netcdf/4.x_gcc48</div>
+<div class="line">libs/netcdf/4.x_gcc48_ompi2</div>
+<div class="line">libs/netcdf/4.x_gcc82</div>
+<div class="line">libs/netcdf/4.x_gcc82_ompi4</div>
+<div class="line">libs/netcdf/4.x_intel18</div>
+<div class="line">libs/netcdf/4.x_intel18_impi18</div>
+<div class="line">libs/netcdf/fortran-4.5.2_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">BLAS/LAPACK</div>
+<div class="line">(Netlib)</div>
+</div>
+</td>
+<td>Libraries</td>
+<td>Standard Linear Algebra Routines</td>
+<td><div class="first last line-block">
+<div class="line">libs/netlib/3.8.0_gcc82</div>
+<div class="line">libs/netlib/3.8.0_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>OpenBLAS</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Optimized BLAS/LAPACK with</div>
+<div class="line">multithreading and CPU extensions</div>
+<div class="line">like AVX</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/openblas/0.3.5_gcc48</div>
+<div class="line">libs/openblas/0.3.5_gcc82</div>
+<div class="line">libs/openblas/0.3.7_gcc82</div>
+<div class="line">libs/openblas/0.3.9_gcc75</div>
+<div class="line">libs/openblas/0.3.9_gcc84</div>
+<div class="line">libs/openblas/0.3.9_gcc93</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">BLAS/LAPACK</div>
+<div class="line">(Reference)</div>
+</div>
+</td>
+<td>Libraries</td>
+<td>Reference Libraries BLAS/LAPACK</td>
+<td><div class="first last line-block">
+<div class="line">libs/refblas/3.8_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Suitesparse</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Routines for Sparse Linear Algebra</div>
+<div class="line">operations</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/suitesparse/5.4.0_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Swig</td>
+<td>Libraries</td>
+<td><div class="first last line-block">
+<div class="line">Building Scripting Language interfaces</div>
+<div class="line">to C and C++</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">libs/swig/4.0.1_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>XMLF90</td>
+<td>Libraries</td>
+<td>Support for XML in Fortran 90</td>
+<td><div class="first last line-block">
+<div class="line">libs/xmlf90/1.5.4_gcc48</div>
+<div class="line">libs/xmlf90/1.5.4_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>YaML</td>
+<td>Libraries</td>
+<td>Yet Another Markup Language</td>
+<td><div class="first last line-block">
+<div class="line">libs/yaml/0.2.2_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>ZeroMQ</td>
+<td>Libraries</td>
+<td>&#160;</td>
+<td><div class="first last line-block">
+<div class="line">libs/zeromq/4.3.1_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Cuda</td>
+<td>Parallel</td>
+<td>CUDA compiler and runtime</td>
+<td><div class="first last line-block">
+<div class="line">parallel/cuda/10.0.130</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>HWLOC</td>
+<td>Parallel</td>
+<td>Hardware Location library</td>
+<td><div class="first last line-block">
+<div class="line">parallel/hwloc/1.10.1_gcc48</div>
+<div class="line">parallel/hwloc/1.10.1_gcc82</div>
+<div class="line">parallel/hwloc/1.10.1_intel18</div>
+<div class="line">parallel/hwloc/1.11.13_gcc82</div>
+<div class="line">parallel/hwloc/2.0.3_gcc82</div>
+<div class="line">parallel/hwloc/2.0.3_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Intel MPI</td>
+<td>Parallel</td>
+<td>Intel MPI library 2017</td>
+<td><div class="first last line-block">
+<div class="line">parallel/impi/2017</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>MPICH</td>
+<td>Parallel</td>
+<td>MPICH Implementation of MPI</td>
+<td><div class="first last line-block">
+<div class="line">parallel/mpich/3.3_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>MVAPICH</td>
+<td>Parallel</td>
+<td>MVAPICH Implementation of MPI</td>
+<td><div class="first last line-block">
+<div class="line">parallel/mvapich2/2.3.1_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>OpenMPI</td>
+<td>Parallel</td>
+<td>OpenMPI Implementation of MPI</td>
+<td><div class="first last line-block">
+<div class="line">parallel/openmpi/2.1.2_gcc48</div>
+<div class="line">parallel/openmpi/2.1.6_gcc48</div>
+<div class="line">parallel/openmpi/2.1.6_gcc82</div>
+<div class="line">parallel/openmpi/2.1.6_intel18</div>
+<div class="line">parallel/openmpi/3.1.4_gcc48</div>
+<div class="line">parallel/openmpi/3.1.4_gcc82</div>
+<div class="line">parallel/openmpi/3.1.4_intel18</div>
+<div class="line">parallel/openmpi/3.1.6_gcc75</div>
+<div class="line">parallel/openmpi/3.1.6_gcc84</div>
+<div class="line">parallel/openmpi/3.1.6_gcc93</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>UCX</td>
+<td>Parallel</td>
+<td>UCX library communication framework</td>
+<td><div class="first last line-block">
+<div class="line">parallel/ucx/1.5.0_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>TMUX</td>
+<td>Utils</td>
+<td>Terminal Multiplexer</td>
+<td><div class="first last line-block">
+<div class="line">utils/tmux/3.0a</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="13%" />
+<col width="34%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Software Name</th>
+<th class="head">TIER 1</th>
+<th class="head">Description</th>
+<th class="head">Modules</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Conda</td>
+<td>&#160;</td>
+<td>Package and Environmnet Management</td>
+<td>conda</td>
+</tr>
+<tr class="row-odd"><td>Matlab</td>
+<td>&#160;</td>
+<td>Interactive Scientific Computing</td>
+<td>matlab/2018b</td>
+</tr>
+<tr class="row-even"><td>Singularity</td>
+<td>&#160;</td>
+<td>Containerization for HPC Clusters</td>
+<td>singularity/2.5.2</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="11%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Software Name</th>
+<th class="head">TIER 2</th>
+<th class="head">Description</th>
+<th class="head">Modules</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ANSYS Fluids</td>
+<td>ANSYS</td>
+<td>Computational Fluid Dynamics</td>
+<td><div class="first last line-block">
+<div class="line">ansys/fluids_19.2</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>CASA</td>
+<td>Astronomy</td>
+<td><div class="first last line-block">
+<div class="line">Common Astronomy Software</div>
+<div class="line">Applications</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">astronomy/casa/5.3.0</div>
+<div class="line">astronomy/casa/5.4.1</div>
+<div class="line">astronomy/casa/5.6.0</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>ABINIT</td>
+<td>Atomistic</td>
+<td>Plane-wave based DFT code</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/abinit/8.10.2_intel18</div>
+<div class="line">atomistic/abinit/8.10.3_gcc82</div>
+<div class="line">atomistic/abinit/8.10.3_gcc82_mpiio</div>
+<div class="line">atomistic/abinit/8.10.3_intel18</div>
+<div class="line">atomistic/abinit/9.0.4_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>AMBER</td>
+<td>Atomistic</td>
+<td>Molecular Dynamics</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/amber/18_cuda</div>
+<div class="line">atomistic/amber/18_mpi</div>
+<div class="line">atomistic/amber/18_openmp</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>ELK</td>
+<td>Atomistic</td>
+<td>All electron DFT</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/elk/5.2.14_intel18</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Espresso</td>
+<td>Atomistic</td>
+<td>Plane-wave based DFT code</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/espresso/6.4_intel18_seq</div>
+<div class="line">atomistic/espresso/6.4_intel18_thd</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Gaussian</td>
+<td>Atomistic</td>
+<td>Localized basis DFT code</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/gaussian/g16</div>
+<div class="line">atomistic/gaussian/g16_rev1</div>
+<div class="line">atomistic/gromacs/2016.6</div>
+<div class="line">atomistic/gromacs/2016.6_cuda</div>
+<div class="line">atomistic/gromacs/2016.6_gcc48_cuda</div>
+<div class="line">atomistic/gromacs/2016.6_gcc82</div>
+<div class="line">atomistic/gromacs/2016.6_plumed_gcc82</div>
+<div class="line">atomistic/gromacs/2018.8_gcc82</div>
+<div class="line">atomistic/gromacs/2018.8_plumed_gcc82</div>
+<div class="line">atomistic/gromacs/2019.3</div>
+<div class="line">atomistic/gromacs/2019.3_gcc48_cuda</div>
+<div class="line">atomistic/gromacs/2019.4</div>
+<div class="line">atomistic/gromacs/2019.4_double</div>
+<div class="line">atomistic/gromacs/2019.4_gcc82</div>
+<div class="line">atomistic/gromacs/2019.4_plumed_gcc82</div>
+<div class="line">atomistic/gromacs/5.1.5_cuda</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>LAMMPS</td>
+<td>Atomistic</td>
+<td>Force Field Molecular Dynamics</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/lammps/2018-12-12_gcc82</div>
+<div class="line">atomistic/lammps/2018-12-12_gcc82_ompi</div>
+<div class="line">atomistic/lammps/2019.06.05</div>
+<div class="line">atomistic/lammps/2019.08.07_gcc82_ompi</div>
+<div class="line">atomistic/lammps/2019.08.07_intel19_im</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>NAMD</td>
+<td>Atomistic</td>
+<td>Molecular Dynamics</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/namd/2.13_CPU</div>
+<div class="line">atomistic/namd/2.13_CUDA</div>
+<div class="line">atomistic/namd/NAMD_Git-2020-01-02-mpi</div>
+<div class="line">atomistic/namd/NAMD_Git-2020-01-02-mpi</div>
+<div class="line">atomistic/namd/NAMD_Git-2020-01-02-ofi</div>
+<div class="line">atomistic/namd/NAMD_Git-2020-01-02-ofi</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Octopus</td>
+<td>Atomistic</td>
+<td>Real Space TD-DFT code</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/octopus/9.1_gcc82</div>
+<div class="line">atomistic/octopus/9.1_gcc82_ompi31</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Orca</td>
+<td>Atomistic</td>
+<td>Molecular Dynamics</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/orca/4.2.1_ompi216</div>
+<div class="line">atomistic/orca/4.2.1_ompi314</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Plumed</td>
+<td>Atomistic</td>
+<td>Molecular Dynamics</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/plumed/2.5.3_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Siesta</td>
+<td>Atomistic</td>
+<td>Localized Molecular Dynamics</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/siesta/4.0.2_intel18</div>
+<div class="line">atomistic/siesta/4.0.2_intel19</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>VASP</td>
+<td>Atomistic</td>
+<td>Plane-wave based DFT code</td>
+<td><div class="first last line-block">
+<div class="line">atomistic/vasp/5.4.4_intel18_seq</div>
+<div class="line">atomistic/vasp/5.4.4_intel18_thd</div>
+<div class="line">atomistic/vasp/5.4.4_intel19_seq</div>
+<div class="line">atomistic/vasp/5.4.4_intel19_thd</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Emboss</td>
+<td>Bioinformatics</td>
+<td>Tools for Sequence Analysis</td>
+<td><div class="first last line-block">
+<div class="line">bioinformatics/emboss/6.6.0</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>GATK4</td>
+<td>Bioinformatics</td>
+<td>Genome Analysis Toolkit</td>
+<td><div class="first last line-block">
+<div class="line">bioinformatics/gatk/4.1.0</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>HDFVIEW</td>
+<td>Data</td>
+<td>Visualize HDF5 files</td>
+<td><div class="first last line-block">
+<div class="line">data/hdfview/3.1.0</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Dakota</td>
+<td>Math Modeling</td>
+<td><div class="first last line-block">
+<div class="line">Mathematical Optimization</div>
+<div class="line">and Uncertainty Quantification</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">math/dakota/6.10</div>
+<div class="line">math/dakota/6.10-UI</div>
+<div class="line">math/dakota/6.8</div>
+<div class="line">math/dakota/6.8-UI</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>GAMS</td>
+<td>Math Modeling</td>
+<td>Mathematical Optimization Problems</td>
+<td><div class="first last line-block">
+<div class="line">math/gams/26.1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Graphviz</td>
+<td>Visualization</td>
+<td>Visualize Graphs</td>
+<td><div class="first last line-block">
+<div class="line">visual/graphviz/2.40.1_gcc82</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Paraview</td>
+<td>Visualization</td>
+<td>Scientific Data Visualization Tool</td>
+<td><div class="first last line-block">
+<div class="line">visual/paraview/5.6.0</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="12%" />
+<col width="39%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Software Name</th>
+<th class="head">TIER 3</th>
+<th class="head">Description</th>
+<th class="head">Modules</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Metamodules</td>
+<td>&#160;</td>
+<td><div class="first last line-block">
+<div class="line">GCC + Python + Julia …</div>
+<div class="line">Intel Compilers + Python</div>
+<div class="line">Jupyter Notebooks</div>
+<div class="line">R Version 3.5.2</div>
+<div class="line">R Version 3.6.2</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">general_gcc82</div>
+<div class="line">general_intel18</div>
+<div class="line">jupyter_kernels</div>
+<div class="line">r/3.5.2</div>
+<div class="line">r/3.6.2</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="software-via-conda-environment">
+<h2>Software via Conda Environment<a class="headerlink" href="#software-via-conda-environment" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Conda Environment Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>base</td>
+<td>Base conda environment, the first environment when you activate conda</td>
+</tr>
+<tr class="row-odd"><td>genomics-core-2020b</td>
+<td>Set of packages for Bioinformatics</td>
+</tr>
+<tr class="row-even"><td>neural_gpu</td>
+<td>Neural Networks and Deep Learning with GPUs</td>
+</tr>
+<tr class="row-odd"><td>python27</td>
+<td>Environment with Python Scientific Packages using Python 2.7</td>
+</tr>
+<tr class="row-even"><td>python35</td>
+<td>Environment with Python Scientific Packages using Python 3.5</td>
+</tr>
+<tr class="row-odd"><td>python36</td>
+<td>Environment with Python Scientific Packages using Python 3.6</td>
+</tr>
+<tr class="row-even"><td>python37</td>
+<td>Environment with Python Scientific Packages using Python 3.7</td>
+</tr>
+<tr class="row-odd"><td>qiime2-2020.2</td>
+<td>QIIME2 Next-Generation Microbiome Bioinformatics</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="software-via-singularity-images">
+<h2>Software via Singularity Images<a class="headerlink" href="#software-via-singularity-images" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="39%" />
+<col width="14%" />
+<col width="16%" />
+<col width="3%" />
+<col width="3%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Image Name</th>
+<th class="head" colspan="2">Description</th>
+<th class="head">Based on</th>
+<th class="head">GUI</th>
+<th class="head">GPU</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>casa-5.6.2_centos6.simg</td>
+<td colspan="2">CASA build on CentOS 6</td>
+<td>centos:centos6</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>centos-final.simg</td>
+<td colspan="2">Example of image using libgraph 1.0.2, run examples
+“circle”, “julia” and “sample”</td>
+<td>centos:latest</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>dakota-6.10-release-public-rhel7.simg</td>
+<td colspan="2">Dakota 6.10: Sandia software for optimization and
+Uncertainty Quantification</td>
+<td>centos:latest</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>docs_hpc_wvu.simg</td>
+<td colspan="2">Contains Sphinx, pandoc and scripts to create documentation
+for <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a></td>
+<td>ubuntu:bionic</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>dolmades.simg</td>
+<td colspan="2">Windows Apps under Linux using Singularity (using wine)</td>
+<td>c1t4r/dolmades</td>
+<td>Yes?</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Grass-7.4.0.simg</td>
+<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
+<td>ubuntu:trusty</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Grass-7.4.simg</td>
+<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
+<td>ubuntu:trusty</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Grass-7.6.1.simg</td>
+<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Jupyter-5.2.2_Python-3.6.8.simg</td>
+<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>jupyter_conda.simg</td>
+<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>continuumio/miniconda3</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>jupyter.simg</td>
+<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>jupyter-xenial.simg</td>
+<td colspan="2">Python 3.5.2 with a number of Scientific Packages and Jupyter Notebooks</td>
+<td>ubuntu:xenial</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Keras-2.1.4_TensorFlow-1.5.0.simg</td>
+<td colspan="2">Neural Networks and Deep Learning with Keras 2.1.4 and TensorFlow 1.5.0</td>
+<td>gw000/keras-full:2.1.4</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>loos.simg</td>
+<td colspan="2">Lightweight Object-Oriented Structure library (LOOS)</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>maxwell-b.simg</td>
+<td colspan="2">Maxwell is a Multi-GPU FDFD solver</td>
+<td>nvidia/cuda:10.0-devel</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>miniconda3_firefox.simg</td>
+<td colspan="2">Jupyter from miniconda with Firefox</td>
+<td>continuumio/miniconda3</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>miniconda3.simg</td>
+<td colspan="2">Jupyter from miniconda without firefox</td>
+<td>continuumio/miniconda3</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>orp-2.2.6.simg</td>
+<td colspan="2">Oyster River Protocol</td>
+<td>macmaneslab/orp:2.2.6</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>pycbc-el7.simg</td>
+<td colspan="2">PyCBC Software for Study Gravitational Waves</td>
+<td>pycbc/pycbc-el7:latest</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>ParaView-5.6.0.simg</td>
+<td colspan="2">ParaView 5.6: open-source, multi-platform data analysis and visualization</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>ParaView-5.7.0.simg</td>
+<td colspan="2">ParaView 5.7: open-source, multi-platform data analysis and visualization</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>QGIS.simg</td>
+<td colspan="2">QGIS Software for Geographic Information Systems</td>
+<td>ubuntu:bionic</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>RStudio-desktop-1.2.5033_R-3.4.4.simg</td>
+<td colspan="2">RStudio Desktop 1.2 with R 3.4.4</td>
+<td>jekriske/r-base</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>RStudio-server-1.2.5033_R-3.6.2.simg</td>
+<td colspan="2">RStudio Server  1.2 with R 3.6.2</td>
+<td>nickjer/singularity-r</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Stacks-2.5.simg</td>
+<td colspan="2">Stacks: Pipeline for building loci from short-read sequences like illumina</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Tensorflow-1.13.1-gpu-py3-jupyter.simg</td>
+<td>TensorFlow with support for GPUs</td>
+<td colspan="2">tensorflow/tensorflow:1.13.1-gpu-py3-jupyter</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Tensorflow-1.13.1-py3-jupyter.simg</td>
+<td>TensorFlow without support for GPUs</td>
+<td colspan="2">tensorflow/tensorflow:1.13.1-py3-jupyter</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>TensorFlow_gpu_py3.simg</td>
+<td>TensorFlow with support for GPUs</td>
+<td colspan="2">tensorflow/tensorflow:latest-gpu-py3</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Ubuntu.simg</td>
+<td colspan="2">Ubuntu Xenial</td>
+<td>ubuntu:xenial</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Visit-2.13.2.simg</td>
+<td colspan="2">Visit: Interactive, scalable, visualization, animation and analysis tool</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Visit-2.13.3.simg</td>
+<td colspan="2">Visit: Interactive, scalable, visualization, animation and analysis tool</td>
+<td>ubuntu:bionic</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Visit-3.1.xenial.simg</td>
+<td colspan="2">Visit: Interactive, scalable, visualization, animation and analysis tool</td>
+<td>ubuntu:xenial</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>wkhtmltox-0.12.simg</td>
+<td colspan="2">wkhtmltopdf  command line tools to render HTML into PDF and other image formats</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>wkhtmltox.simg</td>
+<td colspan="2">wkhtmltopdf  command line tools to render HTML into PDF and other image formats</td>
+<td>ubuntu:trusty</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>xfemm_v1_9_linux64.simg</td>
+<td colspan="2">Cross platform electromagnetics finite element analysis based on FEMM</td>
+<td>debian:latest</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>xfemm_v1_9_linux64.stretch.simg</td>
+<td colspan="2">Cross platform electromagnetics finite element analysis based on FEMM</td>
+<td>debian:strecth</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="92.Commands.html" class="btn btn-neutral float-left" title="Linux Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+.. _ref-centralsoftware:
+
+Software Centrally Managed
+==========================
+
+On Thorny Flat there packages centrally managed from three different sources.
+Packages provided via Environment Modules, Software included in Conda Environments
+and Software built inside Singularity Containers.
+The Software below is a catalog of the software offered on Thorny Flat on
+June 6, 2020. New packages are added over time and some old packages are deprecated
+and eventually removed.
+
+Software via Environment Modules
+--------------------------------
+
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Software Name                         | TIER 0           | Description                                   | Modules                              |
++=======================================+==================+===============================================+======================================+
+| HPL                                   | Benchmarks       | High Performance Linpack Benchmarks           | | benchmarks/hpl/2.3_gcc48           |
+|                                       |                  |                                               | | benchmarks/hpl/2.3_gcc82           |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| CMake                                 | Developers       | Build System                                  | | dev/cmake/3.15.2                   |
+|                                       |                  |                                               | | dev/cmake/3.15.4                   |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Doxygen                               | Developers       | Create documentation from Sources             | | dev/doxygen/1.8.15                 |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| | GNU                                 | Languages        | | Compilers for C, C++,                       | | lang/gcc/7.5.0                     |
+| | Compiler                            |                  | | Fortran and more                            | | lang/gcc/8.2.0                     |
+| | Collection                          |                  |                                               | | lang/gcc/8.4.0                     |
+|                                       |                  |                                               | | lang/gcc/9.3.0                     |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Go Language                           | Languages        | Go Programming Language                       | | lang/go/1.12.7                     |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Intel Compiler Suite                  | Languages        | | Intel Compilers Sute: C, C++ and Fortran    | | lang/intel/2018                    |
+|                                       |                  | | Includes the Math Kernel Library (MKL)      | | lang/intel/2018_u4                 |
+|                                       |                  | | and other Intel optimized Libraries         | | lang/intel/2019                    |
+|                                       |                  |                                               | | lang/intel/2019_u5                 |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Java Developers Kit                   | Languages        | Software to compile and run Java programs     | | lang/java/jdk1.8.0_201             |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Julia                                 | Languages        | | Fast Interpreted Language for               | | lang/julia/1.1.1                   |
+|                                       |                  | | Scientific Computing                        | | lang/julia/1.2.0                   |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| PGI Compiler Suite                    | Languages        | PGI Compilers for C, C++ and Fortran          | | lang/pgi/19.4                      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Python                                | Languages        | | Python Programming Language                 | | lang/python/cpython_3.6.9_gcc82    |
+|                                       |                  | | CPython is the reference C                  | | lang/python/cpython_3.7.2_gcc82    |
+|                                       |                  | | implementation                              | | lang/python/cpython_3.7.4_gcc82    |
+|                                       |                  | | Intel Python offer several optimizations    | | lang/python/intelpython_2.7.14     |
+|                                       |                  | | for Numerical operations via MKL            | | lang/python/intelpython_2.7.16     |
+|                                       |                  | |                                             | | lang/python/intelpython_3.6.3      |
+|                                       |                  | |                                             | | lang/python/intelpython_3.6.9      |
+|                                       |                  | | Pypy is an optimized implementation         | | lang/python/pypy2.7-7.1.1-portable |
+|                                       |                  | | of Python                                   | | lang/python/pypy3.6-7.1.1-portable |
+|                                       |                  |                                               | | lang/python/pypy3.6-v7.1.1-thorny  |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| R Language                            | Languages        | R is a Language used for Statistics           | | lang/r/3.5.2                       |
+|                                       |                  |                                               | | lang/r/3.6.2                       |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| AtomPAW                               | Libraries        | | Projected Augmented Wave code               | | libs/atompaw/4.1.0.5_gcc48         |
+|                                       |                  | | Used by several DFT codes                   | | libs/atompaw/4.1.0.5_intel18       |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Boost                                 | Libraries        | Portable C++ source Libraries                 | | libs/boost/1.70_gcc48_ompi216      |
+|                                       |                  |                                               | | libs/boost/1.70_gcc82_ompi216      |
+|                                       |                  |                                               | | libs/boost/1.70_intel18            |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| CFITSIO                               | Libraries        | FITS subroutine Library                       | | libs/cfitsio/3.47_gcc82            |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| FFTW                                  | Libraries        | Fast Fourier Transforms                       | | libs/fftw/3.3.8_gcc48              |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc75              |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc75_ompi3.1.6    |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc82              |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc82b             |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc82_ompi4        |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc84              |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc84_ompi3.1.6    |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc93              |
+|                                       |                  |                                               | | libs/fftw/3.3.8_gcc93_ompi3.1.6    |
+|                                       |                  |                                               | | libs/fftw/3.3.8_intel18            |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| HDF5                                  | Libraries        | | Open Source File Format for large           | | libs/hdf5/1.10.5_gcc48             |
+|                                       |                  | | and complex Data                            | | libs/hdf5/1.10.5_gcc48_ompi31      |
+|                                       |                  |                                               | | libs/hdf5/1.10.5_gcc82             |
+|                                       |                  |                                               | | libs/hdf5/1.10.5_gcc82_ompi31      |
+|                                       |                  |                                               | | libs/hdf5/1.10.5_intel18           |
+|                                       |                  |                                               | | libs/hdf5/1.10.5_intel18_impi18    |
+|                                       |                  |                                               | | libs/hdf5/1.10.5_intel19           |
+|                                       |                  |                                               | | libs/hdf5/1.10.5_intel19_impi19    |
+|                                       |                  |                                               | | libs/hdf5/1.10.6_gcc82_ompi31      |
+|                                       |                  |                                               | | libs/hdf5/1.12.0_gcc75             |
+|                                       |                  |                                               | | libs/hdf5/1.12.0_gcc75_ompi31      |
+|                                       |                  |                                               | | libs/hdf5/1.12.0_gcc84             |
+|                                       |                  |                                               | | libs/hdf5/1.12.0_gcc84_ompi31      |
+|                                       |                  |                                               | | libs/hdf5/1.12.0_gcc93             |
+|                                       |                  |                                               | | libs/hdf5/1.12.0_gcc93_ompi31      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| LibPSML                               | Libraries        | | Pseudopotential Markup Language             | | libs/libpsml/1.1.7_gcc82           |
+|                                       |                  | | Used by DFT codes                           |                                      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| LibXC                                 | Libraries        | | Library for Exchange Correlation            | | libs/libxc/3.0.1_gcc48             |
+|                                       |                  | | Functionals                                 | | libs/libxc/3.0.1_gcc82             |
+|                                       |                  | | Used by DFT codes                           | | libs/libxc/3.0.1_intel18           |
+|                                       |                  |                                               | | libs/libxc/4.2.3_intel18           |
+|                                       |                  |                                               | | libs/libxc/4.3.4_gcc82             |
+|                                       |                  |                                               | | libs/libxc/4.3.4_intel18           |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Magma                                 | Libraries        | | Dense Linear Algebra for                    | | libs/magma/2.5.1_gcc48             |
+|                                       |                  | | hybrid Multicore+GPUs                       |                                      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| NetCDF                                | Libraries        | | Open Source File Format for                 | | libs/netcdf/4.1.1_gcc48            |
+|                                       |                  | | Scientific Data                             | | libs/netcdf/4.7.1_gcc82            |
+|                                       |                  |                                               | | libs/netcdf/4.7.1_intel18          |
+|                                       |                  |                                               | | libs/netcdf/4.7.1_intel19          |
+|                                       |                  |                                               | | libs/netcdf/4.x_gcc48              |
+|                                       |                  |                                               | | libs/netcdf/4.x_gcc48_ompi2        |
+|                                       |                  |                                               | | libs/netcdf/4.x_gcc82              |
+|                                       |                  |                                               | | libs/netcdf/4.x_gcc82_ompi4        |
+|                                       |                  |                                               | | libs/netcdf/4.x_intel18            |
+|                                       |                  |                                               | | libs/netcdf/4.x_intel18_impi18     |
+|                                       |                  |                                               | | libs/netcdf/fortran-4.5.2_intel18  |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| | BLAS/LAPACK                         | Libraries        | Standard Linear Algebra Routines              | | libs/netlib/3.8.0_gcc82            |
+| | (Netlib)                            |                  |                                               | | libs/netlib/3.8.0_intel18          |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| OpenBLAS                              | Libraries        | | Optimized BLAS/LAPACK with                  | | libs/openblas/0.3.5_gcc48          |
+|                                       |                  | | multithreading and CPU extensions           | | libs/openblas/0.3.5_gcc82          |
+|                                       |                  | | like AVX                                    | | libs/openblas/0.3.7_gcc82          |
+|                                       |                  |                                               | | libs/openblas/0.3.9_gcc75          |
+|                                       |                  |                                               | | libs/openblas/0.3.9_gcc84          |
+|                                       |                  |                                               | | libs/openblas/0.3.9_gcc93          |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| | BLAS/LAPACK                         | Libraries        | Reference Libraries BLAS/LAPACK               | | libs/refblas/3.8_gcc82             |
+| | (Reference)                         |                  |                                               |                                      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Suitesparse                           | Libraries        | | Routines for Sparse Linear Algebra          | | libs/suitesparse/5.4.0_gcc82       |
+|                                       |                  | | operations                                  |                                      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Swig                                  | Libraries        | | Building Scripting Language interfaces      | | libs/swig/4.0.1_gcc82              |
+|                                       |                  | | to C and C++                                |                                      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| XMLF90                                | Libraries        | Support for XML in Fortran 90                 | | libs/xmlf90/1.5.4_gcc48            |
+|                                       |                  |                                               | | libs/xmlf90/1.5.4_gcc82            |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| YaML                                  | Libraries        | Yet Another Markup Language                   | | libs/yaml/0.2.2_gcc82              |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| ZeroMQ                                | Libraries        |                                               | | libs/zeromq/4.3.1_gcc82            |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Cuda                                  | Parallel         | CUDA compiler and runtime                     | | parallel/cuda/10.0.130             |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| HWLOC                                 | Parallel         | Hardware Location library                     | | parallel/hwloc/1.10.1_gcc48        |
+|                                       |                  |                                               | | parallel/hwloc/1.10.1_gcc82        |
+|                                       |                  |                                               | | parallel/hwloc/1.10.1_intel18      |
+|                                       |                  |                                               | | parallel/hwloc/1.11.13_gcc82       |
+|                                       |                  |                                               | | parallel/hwloc/2.0.3_gcc82         |
+|                                       |                  |                                               | | parallel/hwloc/2.0.3_intel18       |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| Intel MPI                             | Parallel         | Intel MPI library 2017                        | | parallel/impi/2017                 |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| MPICH                                 | Parallel         | MPICH Implementation of MPI                   | | parallel/mpich/3.3_gcc82           |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| MVAPICH                               | Parallel         | MVAPICH Implementation of MPI                 | | parallel/mvapich2/2.3.1_gcc82      |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| OpenMPI                               | Parallel         | OpenMPI Implementation of MPI                 | | parallel/openmpi/2.1.2_gcc48       |
+|                                       |                  |                                               | | parallel/openmpi/2.1.6_gcc48       |
+|                                       |                  |                                               | | parallel/openmpi/2.1.6_gcc82       |
+|                                       |                  |                                               | | parallel/openmpi/2.1.6_intel18     |
+|                                       |                  |                                               | | parallel/openmpi/3.1.4_gcc48       |
+|                                       |                  |                                               | | parallel/openmpi/3.1.4_gcc82       |
+|                                       |                  |                                               | | parallel/openmpi/3.1.4_intel18     |
+|                                       |                  |                                               | | parallel/openmpi/3.1.6_gcc75       |
+|                                       |                  |                                               | | parallel/openmpi/3.1.6_gcc84       |
+|                                       |                  |                                               | | parallel/openmpi/3.1.6_gcc93       |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| UCX                                   | Parallel         | UCX library communication framework           | | parallel/ucx/1.5.0_gcc82           |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+| TMUX                                  | Utils            | Terminal Multiplexer                          | | utils/tmux/3.0a                    |
++---------------------------------------+------------------+-----------------------------------------------+--------------------------------------+
+
++---------------------------------------+------------------+-----------------------------------------------+------------------------------------+
+| Software Name                         | TIER 1           | Description                                   | Modules                            |
++=======================================+==================+===============================================+====================================+
+| Conda                                 |                  | Package and Environmnet Management            | conda                              |
++---------------------------------------+------------------+-----------------------------------------------+------------------------------------+
+| Matlab                                |                  | Interactive Scientific Computing              | matlab/2018b                       |
++---------------------------------------+------------------+-----------------------------------------------+------------------------------------+
+| Singularity                           |                  | Containerization for HPC Clusters             | singularity/2.5.2                  |
++---------------------------------------+------------------+-----------------------------------------------+------------------------------------+
+
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Software Name                         | TIER 2           | Description                                                | Modules                                 |
++=======================================+==================+============================================================+=========================================+
+| ANSYS Fluids                          | ANSYS            | Computational Fluid Dynamics                               | | ansys/fluids_19.2                     |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| CASA                                  | Astronomy        | | Common Astronomy Software                                | | astronomy/casa/5.3.0                  |
+|                                       |                  | | Applications                                             | | astronomy/casa/5.4.1                  |
+|                                       |                  |                                                            | | astronomy/casa/5.6.0                  |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| ABINIT                                | Atomistic        | Plane-wave based DFT code                                  | | atomistic/abinit/8.10.2_intel18       |
+|                                       |                  |                                                            | | atomistic/abinit/8.10.3_gcc82         |
+|                                       |                  |                                                            | | atomistic/abinit/8.10.3_gcc82_mpiio   |
+|                                       |                  |                                                            | | atomistic/abinit/8.10.3_intel18       |
+|                                       |                  |                                                            | | atomistic/abinit/9.0.4_gcc82          |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| AMBER                                 | Atomistic        | Molecular Dynamics                                         | | atomistic/amber/18_cuda               |
+|                                       |                  |                                                            | | atomistic/amber/18_mpi                |
+|                                       |                  |                                                            | | atomistic/amber/18_openmp             |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| ELK                                   | Atomistic        | All electron DFT                                           | | atomistic/elk/5.2.14_intel18          |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Espresso                              | Atomistic        | Plane-wave based DFT code                                  | | atomistic/espresso/6.4_intel18_seq    |
+|                                       |                  |                                                            | | atomistic/espresso/6.4_intel18_thd    |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Gaussian                              | Atomistic        | Localized basis DFT code                                   | | atomistic/gaussian/g16                |
+|                                       |                  |                                                            | | atomistic/gaussian/g16_rev1           |
+|                                       |                  |                                                            | | atomistic/gromacs/2016.6              |
+|                                       |                  |                                                            | | atomistic/gromacs/2016.6_cuda         |
+|                                       |                  |                                                            | | atomistic/gromacs/2016.6_gcc48_cuda   |
+|                                       |                  |                                                            | | atomistic/gromacs/2016.6_gcc82        |
+|                                       |                  |                                                            | | atomistic/gromacs/2016.6_plumed_gcc82 |
+|                                       |                  |                                                            | | atomistic/gromacs/2018.8_gcc82        |
+|                                       |                  |                                                            | | atomistic/gromacs/2018.8_plumed_gcc82 |
+|                                       |                  |                                                            | | atomistic/gromacs/2019.3              |
+|                                       |                  |                                                            | | atomistic/gromacs/2019.3_gcc48_cuda   |
+|                                       |                  |                                                            | | atomistic/gromacs/2019.4              |
+|                                       |                  |                                                            | | atomistic/gromacs/2019.4_double       |
+|                                       |                  |                                                            | | atomistic/gromacs/2019.4_gcc82        |
+|                                       |                  |                                                            | | atomistic/gromacs/2019.4_plumed_gcc82 |
+|                                       |                  |                                                            | | atomistic/gromacs/5.1.5_cuda          |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| LAMMPS                                | Atomistic        | Force Field Molecular Dynamics                             | | atomistic/lammps/2018-12-12_gcc82     |
+|                                       |                  |                                                            | | atomistic/lammps/2018-12-12_gcc82_ompi|
+|                                       |                  |                                                            | | atomistic/lammps/2019.06.05           |
+|                                       |                  |                                                            | | atomistic/lammps/2019.08.07_gcc82_ompi|
+|                                       |                  |                                                            | | atomistic/lammps/2019.08.07_intel19_im|
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| NAMD                                  | Atomistic        | Molecular Dynamics                                         | | atomistic/namd/2.13_CPU               |
+|                                       |                  |                                                            | | atomistic/namd/2.13_CUDA              |
+|                                       |                  |                                                            | | atomistic/namd/NAMD_Git-2020-01-02-mpi|
+|                                       |                  |                                                            | | atomistic/namd/NAMD_Git-2020-01-02-mpi|
+|                                       |                  |                                                            | | atomistic/namd/NAMD_Git-2020-01-02-ofi|
+|                                       |                  |                                                            | | atomistic/namd/NAMD_Git-2020-01-02-ofi|
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Octopus                               | Atomistic        | Real Space TD-DFT code                                     | | atomistic/octopus/9.1_gcc82           |
+|                                       |                  |                                                            | | atomistic/octopus/9.1_gcc82_ompi31    |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Orca                                  | Atomistic        | Molecular Dynamics                                         | | atomistic/orca/4.2.1_ompi216          |
+|                                       |                  |                                                            | | atomistic/orca/4.2.1_ompi314          |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Plumed                                | Atomistic        | Molecular Dynamics                                         | | atomistic/plumed/2.5.3_gcc82          |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Siesta                                | Atomistic        | Localized Molecular Dynamics                               | | atomistic/siesta/4.0.2_intel18        |
+|                                       |                  |                                                            | | atomistic/siesta/4.0.2_intel19        |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| VASP                                  | Atomistic        | Plane-wave based DFT code                                  | | atomistic/vasp/5.4.4_intel18_seq      |
+|                                       |                  |                                                            | | atomistic/vasp/5.4.4_intel18_thd      |
+|                                       |                  |                                                            | | atomistic/vasp/5.4.4_intel19_seq      |
+|                                       |                  |                                                            | | atomistic/vasp/5.4.4_intel19_thd      |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Emboss                                | Bioinformatics   | Tools for Sequence Analysis                                | | bioinformatics/emboss/6.6.0           |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| GATK4                                 | Bioinformatics   | Genome Analysis Toolkit                                    | | bioinformatics/gatk/4.1.0             |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| HDFVIEW                               | Data             | Visualize HDF5 files                                       | | data/hdfview/3.1.0                    |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Dakota                                | Math Modeling    | | Mathematical Optimization                                | | math/dakota/6.10                      |
+|                                       |                  | | and Uncertainty Quantification                           | | math/dakota/6.10-UI                   |
+|                                       |                  |                                                            | | math/dakota/6.8                       |
+|                                       |                  |                                                            | | math/dakota/6.8-UI                    |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| GAMS                                  | Math Modeling    | Mathematical Optimization Problems                         | | math/gams/26.1                        |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Graphviz                              | Visualization    | Visualize Graphs                                           | | visual/graphviz/2.40.1_gcc82          |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+| Paraview                              | Visualization    | Scientific Data Visualization Tool                         | | visual/paraview/5.6.0                 |
++---------------------------------------+------------------+------------------------------------------------------------+-----------------------------------------+
+
++---------------------------------------+------------------+------------------------------------------------------------+------------------------------------+
+| Software Name                         | TIER 3           | Description                                                | Modules                            |
++=======================================+==================+============================================================+====================================+
+| Metamodules                           |                  | | GCC + Python + Julia ...                                 | | general_gcc82                    |
+|                                       |                  | | Intel Compilers + Python                                 | | general_intel18                  |
+|                                       |                  | | Jupyter Notebooks                                        | | jupyter_kernels                  |
+|                                       |                  | | R Version 3.5.2                                          | | r/3.5.2                          |
+|                                       |                  | | R Version 3.6.2                                          | | r/3.6.2                          |
++---------------------------------------+------------------+------------------------------------------------------------+------------------------------------+
+
+Software via Conda Environment
+------------------------------
+
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| Conda Environment Name                | Description                                                                                                      |
++=======================================+==================================================================================================================+
+| base                                  | Base conda environment, the first environment when you activate conda                                            |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| genomics-core-2020b                   | Set of packages for Bioinformatics                                                                               |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| neural_gpu                            | Neural Networks and Deep Learning with GPUs                                                                      |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| python27                              | Environment with Python Scientific Packages using Python 2.7                                                     |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| python35                              | Environment with Python Scientific Packages using Python 3.5                                                     |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| python36                              | Environment with Python Scientific Packages using Python 3.6                                                     |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| python37                              | Environment with Python Scientific Packages using Python 3.7                                                     |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+| qiime2-2020.2                         | QIIME2 Next-Generation Microbiome Bioinformatics                                                                 |
++---------------------------------------+------------------------------------------------------------------------------------------------------------------+
+
+Software via Singularity Images
+-------------------------------
+
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Image Name                            | Description                                                                      | Based on               | GUI | GPU |
++=======================================+==================================================================================+========================+=====+=====+
+| casa-5.6.2_centos6.simg               | CASA build on CentOS 6                                                           | centos:centos6         | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| centos-final.simg                     | Example of image using libgraph 1.0.2, run examples                              | centos:latest          | Yes | No  |
+|                                       | "circle", "julia" and "sample"                                                   |                        |     |     |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| dakota-6.10-release-public-rhel7.simg | Dakota 6.10: Sandia software for optimization and                                | centos:latest          | No  | No  |
+|                                       | Uncertainty Quantification                                                       |                        |     |     |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| docs_hpc_wvu.simg                     | Contains Sphinx, pandoc and scripts to create documentation                      | ubuntu:bionic          | No  | No  |
+|                                       | for https://docs.hpc.wvu.edu                                                     |                        |     |     |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| dolmades.simg                         | Windows Apps under Linux using Singularity (using wine)                          | c1t4r/dolmades         | Yes?| No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Grass-7.4.0.simg                      | GRASS (Geographic Resources Analysis Support System), open source GIS            | ubuntu:trusty          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Grass-7.4.simg                        | GRASS (Geographic Resources Analysis Support System), open source GIS            | ubuntu:trusty          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Grass-7.6.1.simg                      | GRASS (Geographic Resources Analysis Support System), open source GIS            | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Jupyter-5.2.2_Python-3.6.8.simg       | Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks          | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| jupyter_conda.simg                    | Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks          | continuumio/miniconda3 | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| jupyter.simg                          | Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks          | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| jupyter-xenial.simg                   | Python 3.5.2 with a number of Scientific Packages and Jupyter Notebooks          | ubuntu:xenial          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Keras-2.1.4_TensorFlow-1.5.0.simg     | Neural Networks and Deep Learning with Keras 2.1.4 and TensorFlow 1.5.0          | gw000/keras-full:2.1.4 | Yes | Yes |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| loos.simg                             | Lightweight Object-Oriented Structure library (LOOS)                             | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| maxwell-b.simg                        | Maxwell is a Multi-GPU FDFD solver                                               | nvidia/cuda:10.0-devel | No  | Yes |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| miniconda3_firefox.simg               | Jupyter from miniconda with Firefox                                              | continuumio/miniconda3 | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| miniconda3.simg                       | Jupyter from miniconda without firefox                                           | continuumio/miniconda3 | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| orp-2.2.6.simg                        | Oyster River Protocol                                                            | macmaneslab/orp:2.2.6  | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| pycbc-el7.simg                        | PyCBC Software for Study Gravitational Waves                                     | pycbc/pycbc-el7:latest | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| ParaView-5.6.0.simg                   | ParaView 5.6: open-source, multi-platform data analysis and visualization        | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| ParaView-5.7.0.simg                   | ParaView 5.7: open-source, multi-platform data analysis and visualization        | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| QGIS.simg                             | QGIS Software for Geographic Information Systems                                 | ubuntu:bionic          | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| RStudio-desktop-1.2.5033_R-3.4.4.simg | RStudio Desktop 1.2 with R 3.4.4                                                 | jekriske/r-base        | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| RStudio-server-1.2.5033_R-3.6.2.simg  | RStudio Server  1.2 with R 3.6.2                                                 | nickjer/singularity-r  | Yes | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Stacks-2.5.simg                       | Stacks: Pipeline for building loci from short-read sequences like illumina       | ubuntu:trusty          | No  | No  |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| Tensorflow-1.13.1-gpu-py3-jupyter.simg| TensorFlow with support for GPUs                           | tensorflow/tensorflow:1.13.1-gpu-py3-jupyter | Yes | No  |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| Tensorflow-1.13.1-py3-jupyter.simg    | TensorFlow without support for GPUs                        | tensorflow/tensorflow:1.13.1-py3-jupyter     | Yes | No  |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| TensorFlow_gpu_py3.simg               | TensorFlow with support for GPUs                           | tensorflow/tensorflow:latest-gpu-py3         | No  | Yes |
++---------------------------------------+------------------------------------------------------------+---------------------+------------------------+-----+-----+
+| Ubuntu.simg                           | Ubuntu Xenial                                                                    | ubuntu:xenial          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Visit-2.13.2.simg                     | Visit: Interactive, scalable, visualization, animation and analysis tool         | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Visit-2.13.3.simg                     | Visit: Interactive, scalable, visualization, animation and analysis tool         | ubuntu:bionic          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| Visit-3.1.xenial.simg                 | Visit: Interactive, scalable, visualization, animation and analysis tool         | ubuntu:xenial          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| wkhtmltox-0.12.simg                   | wkhtmltopdf  command line tools to render HTML into PDF and other image formats  | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| wkhtmltox.simg                        | wkhtmltopdf  command line tools to render HTML into PDF and other image formats  | ubuntu:trusty          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| xfemm_v1_9_linux64.simg               | Cross platform electromagnetics finite element analysis based on FEMM            | debian:latest          | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
+| xfemm_v1_9_linux64.stretch.simg       | Cross platform electromagnetics finite element analysis based on FEMM            | debian:strecth         | No  | No  |
++---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
