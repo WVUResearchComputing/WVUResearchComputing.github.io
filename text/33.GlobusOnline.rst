@@ -63,7 +63,7 @@ Archive Data
 ------------
 
 Globus Online provides an easy mechanism for researchers to archive
-their data sets for free to their MIX Google Drive account via a `Google Drive Connector <https://docs.globus.org/how-to/gcsv5.3/access-google-drive//>`__.
+their data sets for free to their MIX Google Drive account via a `Google Drive Connector <https://docs.globus.org/how-to/gcsv5.3/access-google-drive/>`__.
 All WVU faculty and students have unlimited storage in Google Drive
 through their MIX account. Staff can request a MIX account by contacting
 helpdesk@hpc.wvu.edu. Google Drive gives researchers a safe environment
