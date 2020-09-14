@@ -42,6 +42,8 @@ WVU's Globus Subscription adds the following features:
 
 **Review** https://www.globus.org/researchers/getting-started for a step by step guide on use Globus Online.
 
+For more details, including writen instructions, please visit this `page <https://docs.hpc.wvu.edu/text/33.GlobusOnline.html>`__
+
 Note: For a video on how to utilize Globus Online with Google Drive, please see https://www.youtube.com/watch?v=tDdVsNVK3ko&feature=youtu.be.
 
 Alternative Transfer Methods
