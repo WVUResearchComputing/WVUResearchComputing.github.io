@@ -23,7 +23,7 @@ The path for this tutorial is as follows. First we will demonstrate how to acces
 Accessing the Dashboard
 -----------------------
 
-First, go to `Thorny Flat On Demand Dashboard <htps://ondemand-tf.hpc.wvu.edu>`_
+First, go to `Thorny Flat On Demand Dashboard <https://ondemand-tf.hpc.wvu.edu>`_
 
 The first page you will see is asking for your credentials
 
