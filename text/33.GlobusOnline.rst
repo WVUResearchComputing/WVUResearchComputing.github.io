@@ -1,3 +1,5 @@
+.. _bs-globus:
+
 Globus Online
 =============
 

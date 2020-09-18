@@ -1,3 +1,5 @@
+.. _bs-scratch:
+
 Managing Scratch Contents
 =========================
 

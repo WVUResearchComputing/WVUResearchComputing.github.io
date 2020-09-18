@@ -1,3 +1,5 @@
+.. _bs-modules:
+
 Environment Modules
 ===================
 
