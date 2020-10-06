@@ -574,6 +574,8 @@ The resulting binaries can be copied to the PATH that will be exported with the 
 CASTEP
 ------
 
+CASTEP is a leading code for calculating the properties of materials from first principles. Using density functional theory, it can simulate a wide range of properties of materials proprieties including energetics, structure at the atomic level, vibrational properties, electronic response properties etc. In particular it has a wide range of spectroscopic features that link directly to experiment, such as infra-red and Raman spectroscopies, NMR, and core level spectra.
+
 CASTEP can only be compiled with Intel 2018 due to a bug on Intel 2019 MPI implementation. The code was compiled on both clusters with Intel 2018.
 
 Modules used::
@@ -583,13 +585,15 @@ Modules used::
 
 Compilation line::
 
-  make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 
+  make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+  FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 
 
 A run of a test suite o both clusters passes all tests.
 
 On Spruce::
 
-  $ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 FFTLIBDIR=/shared/software/intel/2018_u4/compilers_and_libraries_2018.5.274/linux/mkl MATHLIBDIR=/shared/software/intel/2018_u4/compilers_and_libraries_2018.5.274/linux/mkl -j 8 check
+  $ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+  FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
 
   Makefile:595: GNU make version 3.82 or later is recommended: proceeding with Make 3.81 
   Some modules may be compiled at unnecessarily low optimisation level
@@ -598,21 +602,24 @@ On Spruce::
   make[1]: Entering directory `/gpfs/shared/src/CASTEP-19.11/Test'
   rm -f */*/*.{castep,dfpt_wvfn,fd_wvfn,wvfn.*,*.err}
   ../bin/testcode.py -q  --processors=4 --total-processors=16  -e /gpfs/shared/src/CASTEP-19.11/obj/linux_x86_64_ifort18--mpi/castep.mpi -c simple
-  ..................................................................................................................................................................................................................................................................................................................................................................................
-  .............................................................................................. [464/464]
+  ................................................................................................................................................
+  ................................................................................................................................................
+  ................................................................................................................................................
+  ................................ [464/464]
   make[1]: Leaving directory `/gpfs/shared/src/CASTEP-19.11/Test'
 
 On Thorny::
 
-  $ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 FFTLIBDIR=/shared/software/intel/2018_u4/compilers_and_libraries_2018.5.274/linux/mkl MATHLIBDIR=/shared/software/intel/2018_u4/compilers_and_libraries_2018.5.274/linux/mkl -j 8 check
+  $ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+  FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
    make -C "Test" ARCH=linux_x86_64_ifort18--mpi check-simple
    make[1]: Entering directory `/gpfs20/shared/src/CASTEP-19.11/Test'
    rm -f */*/*.{castep,dfpt_wvfn,fd_wvfn,wvfn.*,*.err}
    ../bin/testcode.py -q  --processors=4 --total-processors=48  -e /gpfs20/shared/src/CASTEP-19.11/obj/linux_x86_64_ifort18--mpi/castep.mpi -c simple
-   .........................................................................................................................................................................................
-   .........................................................................................................................................................................................
-   .............................................................................................. [464/464]
+   ..................................................................................................................................................
+   ..................................................................................................................................................
+   ..................................................................................................................................................
+   .......................... [464/464]
    make[1]: Leaving directory `/gpfs20/shared/src/CASTEP-19.11/Test'
-
 
 
