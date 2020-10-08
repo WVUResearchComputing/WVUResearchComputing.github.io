@@ -78,8 +78,6 @@ To connect to Spruce Knob use the following command::
 Thorny Flat Connectivity Instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::  **You cannot connect directly to Thorny Flat via SSH. Executing directly from your terminal or ssh client `ssh tf.hpc.wvu.edu` will fail.**
-
 To connect to Thorny Flat, you will first have to connect to WVU's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
 
   $ ssh <username>@ssh.wvu.edu
@@ -91,6 +89,9 @@ More information on WVU's Gateway Service can be found `here <https://wvu.teamdy
 then::
 
   $ ssh tf.hpc.wvu.edu
+
+.. note::  **You cannot connect directly to Thorny Flat via SSH.** Executing directly from your terminal or ssh client ``ssh tf.hpc.wvu.edu`` will always fail.
+
 
 Logging In
 ----------
