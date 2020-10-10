@@ -120,8 +120,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gromacs">Gromacs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#spruce-knob">Spruce Knob</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#thorny-flat">Thorny Flat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gromacs-2019-4-on-spruce-knob">Gromacs 2019.4 on Spruce Knob</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gromacs-2019-4-on-thorny-flat">Gromacs 2019.4 on Thorny Flat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gromacs-5-1-5-on-thorny-flat">Gromacs 5.1.5 on Thorny Flat</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#lammps">LAMMPS</a></li>
@@ -317,15 +318,15 @@ state_analysis.o: state_analysis.F
 <h2>Gromacs<a class="headerlink" href="#gromacs" title="Permalink to this headline">¶</a></h2>
 <p>Gromacs is a Classical Molecular Dynamics code. The version compiled was 2019.4
 It was compiled with MPI support</p>
+<div class="section" id="gromacs-2019-4-on-spruce-knob">
+<h3>Gromacs 2019.4 on Spruce Knob<a class="headerlink" href="#gromacs-2019-4-on-spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.15</span><span class="o">.</span><span class="mi">4</span>
 <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
 </pre></div>
 </div>
-<p>Cmake is only used during configuration and it is not needed for using Gromacs</p>
-<div class="section" id="spruce-knob">
-<h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
+<p>Cmake is only used during configuration and it is not needed at runtime</p>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
@@ -374,8 +375,15 @@ It was compiled with MPI support</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="thorny-flat">
-<h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gromacs-2019-4-on-thorny-flat">
+<h3>Gromacs 2019.4 on Thorny Flat<a class="headerlink" href="#gromacs-2019-4-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>The modules used were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.15</span><span class="o">.</span><span class="mi">4</span>
+<span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
+</pre></div>
+</div>
+<p>Cmake is only used during configuration and it is not needed at runtime</p>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
@@ -418,6 +426,37 @@ It was compiled with MPI support</p>
 <span class="n">UnitTest</span>           <span class="o">=</span>  <span class="mf">90.49</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
 
 <span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2075.93</span> <span class="n">sec</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gromacs-5-1-5-on-thorny-flat">
+<h3>Gromacs 5.1.5 on Thorny Flat<a class="headerlink" href="#gromacs-5-1-5-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>The modules used were:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> <span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.73</span>
+</pre></div>
+</div>
+<p>Cmake is only used during configuration and it is not needed at runtime
+The configuration line for cmake is executed on a folder created to contain the compiled code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
+<span class="n">cd</span> <span class="n">build_intel18</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpiicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREF</span>
+<span class="n">IX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel18</span> <span class="o">..</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
+<span class="n">make</span> <span class="n">check</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>A similar compilation was done using Intel 2019 compilers.
+One test fail from the test suite:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
+                                                                                                                                                          <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>                 <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>       <span class="o">=</span>   <span class="mf">2.01</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">2</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiIntegrationTest</span>    <span class="o">=</span>   <span class="mf">0.56</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">UnitTest</span>              <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">120.90</span> <span class="n">sec</span>
+                                                                                                                                                          <span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
+     <span class="mi">17</span> <span class="o">-</span> <span class="n">SelectionUnitTests</span> <span class="p">(</span><span class="n">Failed</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

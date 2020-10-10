@@ -128,16 +128,16 @@ Gromacs
 Gromacs is a Classical Molecular Dynamics code. The version compiled was 2019.4
 It was compiled with MPI support
 
+Gromacs 2019.4 on Spruce Knob
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The modules used were::
 
   lang/gcc/8.2.0
   dev/cmake/3.15.4
   parallel/openmpi/3.1.4_gcc82
 
-Cmake is only used during configuration and it is not needed for using Gromacs
-
-Spruce Knob
-~~~~~~~~~~~
+Cmake is only used during configuration and it is not needed at runtime
 
 The first configuration is the standard one (Single Precision)
 
@@ -189,8 +189,16 @@ The results of the tests were::
            29 - GmxPreprocessTests (Timeout)
 
 
-Thorny Flat
-~~~~~~~~~~~
+Gromacs 2019.4 on Thorny Flat
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The modules used were::
+
+  lang/gcc/8.2.0
+  dev/cmake/3.15.4
+  parallel/openmpi/3.1.4_gcc82
+
+Cmake is only used during configuration and it is not needed at runtime
 
 The first configuration is the standard one (Single Precision)
 
@@ -237,6 +245,37 @@ The results of the tests were::
   UnitTest           =  90.49 sec*proc (34 tests)
 
   Total Test time (real) = 2075.93 sec
+
+Gromacs 5.1.5 on Thorny Flat
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The modules used were::
+
+  module load lang/intel/2018 dev/cmake/3.18.3 libs/boost/1.73
+
+Cmake is only used during configuration and it is not needed at runtime
+The configuration line for cmake is executed on a folder created to contain the compiled code::
+
+  mkdir build_intel18
+  cd build_intel18
+  cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on -DCMAKE_C_COMPILER=mpiicc -DCMAKE_CXX_COMPILER=mpiicpc -DCMAKE_INSTALL_PREF
+  IX=/shared/software/atomistic/gromacs/5.1.5_intel18 ..
+  make -j12
+  make check
+  make install
+
+A similar compilation was done using Intel 2019 compilers.
+One test fail from the test suite::
+
+    96% tests passed, 1 tests failed out of 26
+                                                                                                                                                              Label Time Summary:
+    GTest                 =   2.29 sec*proc (17 tests)
+    IntegrationTest       =   2.01 sec*proc (2 tests)
+    MpiIntegrationTest    =   0.56 sec*proc (1 test)
+    UnitTest              =   2.29 sec*proc (17 tests)
+    Total Test time (real) = 120.90 sec
+                                                                                                                                                              The following tests FAILED:
+         17 - SelectionUnitTests (Failed)
 
 
 LAMMPS
