@@ -439,8 +439,9 @@ It was compiled with MPI support</p>
 The configuration line for cmake is executed on a folder created to contain the compiled code:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
 <span class="n">cd</span> <span class="n">build_intel18</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpiicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREF</span>
-<span class="n">IX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel18</span> <span class="o">..</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpiicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpiicpc</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel18</span> <span class="o">..</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
 <span class="n">make</span> <span class="n">check</span>
 <span class="n">make</span> <span class="n">install</span>
@@ -449,13 +450,15 @@ The configuration line for cmake is executed on a folder created to contain the 
 <p>A similar compilation was done using Intel 2019 compilers.
 One test fail from the test suite:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
-                                                                                                                                                          <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>                 <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
 <span class="n">IntegrationTest</span>       <span class="o">=</span>   <span class="mf">2.01</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">2</span> <span class="n">tests</span><span class="p">)</span>
 <span class="n">MpiIntegrationTest</span>    <span class="o">=</span>   <span class="mf">0.56</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
 <span class="n">UnitTest</span>              <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">120.90</span> <span class="n">sec</span>
-                                                                                                                                                          <span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">120.90</span> <span class="n">secs</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
      <span class="mi">17</span> <span class="o">-</span> <span class="n">SelectionUnitTests</span> <span class="p">(</span><span class="n">Failed</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -258,8 +258,9 @@ The configuration line for cmake is executed on a folder created to contain the 
 
   mkdir build_intel18
   cd build_intel18
-  cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on -DCMAKE_C_COMPILER=mpiicc -DCMAKE_CXX_COMPILER=mpiicpc -DCMAKE_INSTALL_PREF
-  IX=/shared/software/atomistic/gromacs/5.1.5_intel18 ..
+  cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
+  -DCMAKE_C_COMPILER=mpiicc -DCMAKE_CXX_COMPILER=mpiicpc \
+  -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/5.1.5_intel18 ..
   make -j12
   make check
   make install
@@ -268,13 +269,15 @@ A similar compilation was done using Intel 2019 compilers.
 One test fail from the test suite::
 
     96% tests passed, 1 tests failed out of 26
-                                                                                                                                                              Label Time Summary:
+
+    Label Time Summary:
     GTest                 =   2.29 sec*proc (17 tests)
     IntegrationTest       =   2.01 sec*proc (2 tests)
     MpiIntegrationTest    =   0.56 sec*proc (1 test)
     UnitTest              =   2.29 sec*proc (17 tests)
-    Total Test time (real) = 120.90 sec
-                                                                                                                                                              The following tests FAILED:
+    Total Test time (real) = 120.90 secs.
+
+    The following tests FAILED:
          17 - SelectionUnitTests (Failed)
 
 
