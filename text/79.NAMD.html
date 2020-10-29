@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -217,34 +208,34 @@ for NAMD</p>
 <h2>Downloading the input files<a class="headerlink" href="#downloading-the-input-files" title="Permalink to this headline">¶</a></h2>
 <p>Select a good location for downloading the inputs and executing the simulations.
 For example use $SCRATCH/NAMD:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>mkdir $SCRATCH/NAMD
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir $SCRATCH/NAMD
 cd $SCRATCH/NAMD
 </pre></div>
 </div>
 <p>Download the two examples from the NAMD UIUC webserver:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">apoa1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">apoa1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>The examples are compressed, execute this command to uncompress them on the
 current folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="preparing-the-submission-script">
 <h2>Preparing the submission script<a class="headerlink" href="#preparing-the-submission-script" title="Permalink to this headline">¶</a></h2>
-<p>We will use <code class="docutils literal"><span class="pre">apoa1</span></code> for demonstrate how to create a submission script.
+<p>We will use <code class="docutils literal notranslate"><span class="pre">apoa1</span></code> for demonstrate how to create a submission script.
 ApoA1 has 92K atoms and should run efficiently on a single node.</p>
-<p>First, go to the recently created folder <code class="docutils literal"><span class="pre">apoa1</span></code> and start creating a file
+<p>First, go to the recently created folder <code class="docutils literal notranslate"><span class="pre">apoa1</span></code> and start creating a file
 runjob.pbs with your text editor of choice:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">apoa1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">apoa1</span>
 <span class="n">vim</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
 <p>The content of the submission could be like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -N NAMD
 #PBS -l nodes=1:ppn=2
@@ -277,11 +268,11 @@ The fourth line attach the standard error with the standard output. NAMD will
 almost never write on the standard error, so using this command prevents us from
 having empty files at the end of each simulation.</p>
 <p>The next section clean the list of modules and load the corresponding module for
-NAMD. In this case we are using <code class="docutils literal"><span class="pre">atomistic/namd/2.13_multicore</span></code> that is
+NAMD. In this case we are using <code class="docutils literal notranslate"><span class="pre">atomistic/namd/2.13_multicore</span></code> that is
 intended only for executions on a single node.</p>
 <p>Next line changes the working directory to the place where the submission script
 and inputs are located and from we will submit the job.</p>
-<p>Finally the command for NAMD. <code class="docutils literal"><span class="pre">namd2</span> <span class="pre">+p2</span> <span class="pre">+setcpuaffinity</span> <span class="pre">apoa1.namd</span></code>.
+<p>Finally the command for NAMD. <code class="docutils literal notranslate"><span class="pre">namd2</span> <span class="pre">+p2</span> <span class="pre">+setcpuaffinity</span> <span class="pre">apoa1.namd</span></code>.
 The command tells NAMD to use 2 cores and make those two cores sit on the same
 socket optimizing the usage of Cache Level 3 in some cases. The input file for
 NAMD is apoa1.namd and that completes the submission script.</p>
@@ -289,16 +280,16 @@ NAMD is apoa1.namd and that completes the submission script.</p>
 <div class="section" id="submitting-the-job">
 <h2>Submitting the job<a class="headerlink" href="#submitting-the-job" title="Permalink to this headline">¶</a></h2>
 <p>Submit the job with the following command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
 <p>You should get a line indicating the JobID, I got this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">4731853.</span><span class="n">srih0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4731853.</span><span class="n">srih0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>You can use the number to monitor the state of the job.</p>
 <p>For example executing:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -u $USER
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -u $USER
 
 active jobs------------------------
 JOBID              USERNAME      STATE PROCS   REMAINING            STARTTIME
@@ -310,16 +301,16 @@ JOBID              USERNAME      STATE PROCS   REMAINING            STARTTIME
 </pre></div>
 </div>
 <p>The job is now running and received 4 hours to complete, that is the walltime on
-<code class="docutils literal"><span class="pre">standby</span></code> queue.</p>
-<p>With <code class="docutils literal"><span class="pre">showq</span></code> you can monitor the status of your jobs, if they are in queue or
+<code class="docutils literal notranslate"><span class="pre">standby</span></code> queue.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">showq</span></code> you can monitor the status of your jobs, if they are in queue or
 running.</p>
 <p>This is an small job that completes in minutes. Once the job is complete you
 will see new files on the folder where you execute the job.</p>
 <p>The file NAMD.o&lt;JobID&gt; will contain all the standard output and error produced
-by NAMD during execution. For the job above, my file is <code class="docutils literal"><span class="pre">NAMD.o4731853</span></code></p>
+by NAMD during execution. For the job above, my file is <code class="docutils literal notranslate"><span class="pre">NAMD.o4731853</span></code></p>
 <p>Read the file with care, pay attention to warnings and errors. For the sake of
 simplicity we will just show the last lines:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ENERGY</span><span class="p">:</span>     <span class="mi">499</span>     <span class="mf">20158.0682</span>     <span class="mf">19847.7298</span>      <span class="mf">5722.4089</span>       <span class="mf">178.6361</span>        <span class="o">-</span><span class="mf">337058.4824</span>     <span class="mf">23219.2403</span>         <span class="mf">0.0000</span>         <span class="mf">0.0000</span>     <span class="mf">45439.2653</span>        <span class="o">-</span><span class="mf">222493.1338</span>       <span class="mf">165.2956</span>   <span class="o">-</span><span class="mf">267932.3991</span>   <span class="o">-</span><span class="mf">222047.2061</span>       <span class="mf">165.2956</span>          <span class="o">-</span><span class="mf">2020.8690</span>     <span class="o">-</span><span class="mf">2376.3392</span>    <span class="mf">921491.4634</span>     <span class="o">-</span><span class="mf">2020.8690</span>     <span class="o">-</span><span class="mf">2376.3392</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ENERGY</span><span class="p">:</span>     <span class="mi">499</span>     <span class="mf">20158.0682</span>     <span class="mf">19847.7298</span>      <span class="mf">5722.4089</span>       <span class="mf">178.6361</span>        <span class="o">-</span><span class="mf">337058.4824</span>     <span class="mf">23219.2403</span>         <span class="mf">0.0000</span>         <span class="mf">0.0000</span>     <span class="mf">45439.2653</span>        <span class="o">-</span><span class="mf">222493.1338</span>       <span class="mf">165.2956</span>   <span class="o">-</span><span class="mf">267932.3991</span>   <span class="o">-</span><span class="mf">222047.2061</span>       <span class="mf">165.2956</span>          <span class="o">-</span><span class="mf">2020.8690</span>     <span class="o">-</span><span class="mf">2376.3392</span>    <span class="mf">921491.4634</span>     <span class="o">-</span><span class="mf">2020.8690</span>     <span class="o">-</span><span class="mf">2376.3392</span>
 
 <span class="n">Info</span><span class="p">:</span> <span class="n">Benchmark</span> <span class="n">time</span><span class="p">:</span> <span class="mi">2</span> <span class="n">CPUs</span> <span class="mf">0.384412</span> <span class="n">s</span><span class="o">/</span><span class="n">step</span> <span class="mf">4.44921</span> <span class="n">days</span><span class="o">/</span><span class="n">ns</span> <span class="mi">542</span> <span class="n">MB</span> <span class="n">memory</span>
 <span class="n">TIMING</span><span class="p">:</span> <span class="mi">500</span>  <span class="n">CPU</span><span class="p">:</span> <span class="mf">195.068</span><span class="p">,</span> <span class="mf">0.381542</span><span class="o">/</span><span class="n">step</span>  <span class="n">Wall</span><span class="p">:</span> <span class="mf">195.075</span><span class="p">,</span> <span class="mf">0.381408</span><span class="o">/</span><span class="n">step</span><span class="p">,</span> <span class="mi">0</span> <span class="n">hours</span> <span class="n">remaining</span><span class="p">,</span> <span class="mf">542.000000</span> <span class="n">MB</span> <span class="n">of</span> <span class="n">memory</span> <span class="ow">in</span> <span class="n">use</span><span class="o">.</span>
@@ -345,18 +336,18 @@ and similar jobs. In particular this job too around 4 minutes and 540 MB of memo
 <h2>Running NAMD on GPUs<a class="headerlink" href="#running-namd-on-gpus" title="Permalink to this headline">¶</a></h2>
 <p>Now we will demonstrate the changes to be done when running with GPUs
 Go one folder up where the tar.gz and apoa1 folder is located:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd $SCRATCH/NAMD
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SCRATCH/NAMD
 </pre></div>
 </div>
 <p>Make a copy of the apoa1 folder, we will introduce a few changes to the
 submission script:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">apoa1</span> <span class="n">apoa1</span><span class="o">-</span><span class="n">CUDA</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">apoa1</span> <span class="n">apoa1</span><span class="o">-</span><span class="n">CUDA</span>
 <span class="n">cd</span> <span class="n">apoa1</span><span class="o">-</span><span class="n">CUDA</span>
 <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">NAMD</span><span class="o">.</span><span class="n">o</span><span class="o">*</span>
 </pre></div>
 </div>
 <p>Edit the submission script like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -N NAMD
 #PBS -l nodes=1:ppn=2
@@ -373,14 +364,14 @@ cd $PBS_O_WORKDIR
 namd2 +p2 +setcpuaffinity apoa1.namd
 </pre></div>
 </div>
-<p>We are now using <code class="docutils literal"><span class="pre">comm_gpu</span></code> as the queue, that will give us machines with GPUs
+<p>We are now using <code class="docutils literal notranslate"><span class="pre">comm_gpu</span></code> as the queue, that will give us machines with GPUs
 and load the module for NAMD that support GPUs</p>
 <p>Submit the job as usual:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
 <p>After completion you will see a file NAMD.o&lt;JobID&gt; with a content like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Fri Nov  1 13:36:10 2019
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Fri Nov  1 13:36:10 2019
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
 |-------------------------------+----------------------+----------------------+

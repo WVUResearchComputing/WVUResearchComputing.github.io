@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -200,7 +191,7 @@
 <p>NAMD is a computer software for classical molecular dynamics simulation, written using the Charm++ parallel programming model. It is noted for its parallel efficiency and is often used to simulate large systems (millions of atoms). It has been developed by the collaboration of the Theoretical and Computational Biophysics Group (TCB) and the Parallel Programming Laboratory (PPL) at the University of Illinois at Urbana–Champaign.</p>
 <p>The purpose of this document is to show how Charm++ and NAMD were compiled on Thorny Flat, a cluster build from Skylake CPUs. The current stable sources 2.13 fail compilation using OFI network library. For that reason we will be using the Nightly archived sources available on the official NAMD site.</p>
 <p>The sources can be downloaded for the most recent date at the moment of download. The sources can be download using this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>VERSION=2020-01-02
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VERSION=2020-01-02
 wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
 </pre></div>
 </div>
@@ -208,24 +199,24 @@ wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSIO
 (2020-01-02). The nightly build can be downloaded from the browser on
 <a class="reference external" href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD">https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD</a></p>
 <p>The sources are archived in a tar and compressed file. Untar and uncompress them. Go into the created folder and untar the charm sources too:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>tar -zxvf NAMD_Git-${VERSION}_Source.tar.gz
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar -zxvf NAMD_Git-${VERSION}_Source.tar.gz
 cd NAMD_Git-${VERSION}_Source/
 tar -xvf charm-6.10.0-pre.tar
 </pre></div>
 </div>
 <p>We will compile Charm and NAMD using the Intel Compilers 2019, the latest version at the moment of writing this document:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span>
 </pre></div>
 </div>
 <div class="section" id="compiling-charm">
 <h2>Compiling Charm++<a class="headerlink" href="#compiling-charm" title="Permalink to this headline">¶</a></h2>
-<p>We start compiling charm++, go into the <code class="docutils literal"><span class="pre">charm-6.10.0-pre</span></code> folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pre</span>
+<p>We start compiling charm++, go into the <code class="docutils literal notranslate"><span class="pre">charm-6.10.0-pre</span></code> folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pre</span>
 </pre></div>
 </div>
 <p>We will compile 4 versions. The MPI version and the OFI version for both single threaded and shared memory versions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
 
 <span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="n">smp</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
 
@@ -235,9 +226,9 @@ tar -xvf charm-6.10.0-pre.tar
 </pre></div>
 </div>
 <p>Executing those 4 commands will compile charm++ in a variety of ways that take
-advantage of Intel Omni-Path. The <code class="docutils literal"><span class="pre">smp</span></code> version takes one extra thread for managing communication reducing the amount of usable cores but allows to share memory efficiently allowing for computations with larger systems. That is why having the <code class="docutils literal"><span class="pre">smp</span></code> and <code class="docutils literal"><span class="pre">non-smp</span></code> versions is recommended.</p>
+advantage of Intel Omni-Path. The <code class="docutils literal notranslate"><span class="pre">smp</span></code> version takes one extra thread for managing communication reducing the amount of usable cores but allows to share memory efficiently allowing for computations with larger systems. That is why having the <code class="docutils literal notranslate"><span class="pre">smp</span></code> and <code class="docutils literal notranslate"><span class="pre">non-smp</span></code> versions is recommended.</p>
 <p>You can test those 4 compilations of charm++ with the testsuite provided with the sources. Notice that before each new tests the previous binaries must be deleted. The following commands will perform the 4 tests suite runs:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">charm</span><span class="o">++</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">charm</span><span class="o">++</span>
 <span class="n">make</span> <span class="n">clean</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">test</span>
 <span class="n">cd</span> <span class="o">../../..</span>
 <span class="n">cd</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">charm</span><span class="o">++</span>
@@ -257,7 +248,7 @@ advantage of Intel Omni-Path. The <code class="docutils literal"><span class="pr
 </div>
 <p>The last case is a bit different as one test fail with smp.
 We should now return to the NAMD sources to continue the compilation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
 </div>
@@ -265,7 +256,7 @@ We should now return to the NAMD sources to continue the compilation:</p>
 <h2>Compiling NAMD2<a class="headerlink" href="#compiling-namd2" title="Permalink to this headline">¶</a></h2>
 <p>Now we proceed to compile NAMD.
 Download and install TCL and FFTW libraries asuming that you are now on the root folder for NAMD sources:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">fftw</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">fftw</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="n">xzf</span> <span class="n">fftw</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">mv</span> <span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">fftw</span>
 <span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
@@ -276,12 +267,12 @@ Download and install TCL and FFTW libraries asuming that you are now on the root
 <span class="n">mv</span> <span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">threaded</span> <span class="n">tcl</span><span class="o">-</span><span class="n">threaded</span>
 </pre></div>
 </div>
-<p>The next step is to edit the file <code class="docutils literal"><span class="pre">Make.charm</span></code> to edit the variable <code class="docutils literal"><span class="pre">CHARMBASE</span></code>. Another option is to create a symbolic link called <code class="docutils literal"><span class="pre">charm</span></code> pointing to the location of the charm sources, like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pre</span> <span class="n">charm</span>
+<p>The next step is to edit the file <code class="docutils literal notranslate"><span class="pre">Make.charm</span></code> to edit the variable <code class="docutils literal notranslate"><span class="pre">CHARMBASE</span></code>. Another option is to create a symbolic link called <code class="docutils literal notranslate"><span class="pre">charm</span></code> pointing to the location of the charm sources, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pre</span> <span class="n">charm</span>
 </pre></div>
 </div>
-<p>The configuration of NAMD is done via a text file located at the <code class="docutils literal"><span class="pre">arch</span></code> folder. Create the following files with the commands:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; arch/Linux-x86_64-mpi-mpicxx.arch
+<p>The configuration of NAMD is done via a text file located at the <code class="docutils literal notranslate"><span class="pre">arch</span></code> folder. Create the following files with the commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; arch/Linux-x86_64-mpi-mpicxx.arch
 NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
@@ -344,7 +335,7 @@ EOF
 </div>
 <p>Executing the code above will produce 4 files with the following contents.</p>
 <p>File Linux-x86_64-mpi-mpicxx.arch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
 FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
@@ -359,7 +350,7 @@ COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
 <p>File Linux-x86_64-mpi-smp-mpicxx.arch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
 FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
@@ -374,7 +365,7 @@ COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
 <p>File Linux-x86_64-ofi-icc.arch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-icc
 
 FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
@@ -389,7 +380,7 @@ COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
 <p>File Linux-x86_64-ofi-smp-icc.arch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 
 FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
@@ -404,14 +395,14 @@ COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
 <p>To compile NAMD, the corresponding building folder must be created via the config command. The following commands will create 4 folders for the corresponding versions of charm++ that we will use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">config</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span> <span class="o">--</span><span class="n">charm</span><span class="o">-</span><span class="n">arch</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">mpicxx</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">config</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span> <span class="o">--</span><span class="n">charm</span><span class="o">-</span><span class="n">arch</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">mpicxx</span>
 <span class="o">./</span><span class="n">config</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span> <span class="o">--</span><span class="n">charm</span><span class="o">-</span><span class="n">arch</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span>
 <span class="o">./</span><span class="n">config</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span> <span class="o">--</span><span class="n">charm</span><span class="o">-</span><span class="n">arch</span> <span class="n">ofi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">icc</span>
 <span class="o">./</span><span class="n">config</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span> <span class="o">--</span><span class="n">charm</span><span class="o">-</span><span class="n">arch</span> <span class="n">ofi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ifort</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span>
 </pre></div>
 </div>
-<p>Now we can go inside each folder and compile the code with <code class="docutils literal"><span class="pre">make</span></code>. To speed up the compilation, 16 execution lines will be used:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span>
+<p>Now we can go inside each folder and compile the code with <code class="docutils literal notranslate"><span class="pre">make</span></code>. To speed up the compilation, 16 execution lines will be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">j16</span>
 <span class="n">cd</span> <span class="o">..</span>
 <span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span>
@@ -425,12 +416,12 @@ COPTS = -O2 $(FLOATOPTS)
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
-<p>At the end of those compilations we will have 4 versions of the command <code class="docutils literal"><span class="pre">namd2</span></code>. However, due to a bug on Intel’s <code class="docutils literal"><span class="pre">opa-psm2</span></code> the NAMD binaries will return an error when executed. The error looks similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad0008030000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
+<p>At the end of those compilations we will have 4 versions of the command <code class="docutils literal notranslate"><span class="pre">namd2</span></code>. However, due to a bug on Intel’s <code class="docutils literal notranslate"><span class="pre">opa-psm2</span></code> the NAMD binaries will return an error when executed. The error looks similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad0008030000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
 </pre></div>
 </div>
 <p>For the particular case of Thorny, executing NAMD will return (MPI version):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad00080b0000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad00080b0000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
 <span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
 <span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
@@ -446,7 +437,7 @@ COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
 <p>Or (OFI version):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">provider</span><span class="p">:</span> <span class="n">psm2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">provider</span><span class="p">:</span> <span class="n">psm2</span>
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">control</span> <span class="n">progress</span><span class="p">:</span> <span class="mi">2</span>
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">data</span> <span class="n">progress</span><span class="p">:</span> <span class="mi">2</span>
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">maximum</span> <span class="n">inject</span> <span class="n">message</span> <span class="n">size</span><span class="p">:</span> <span class="mi">64</span>
@@ -482,33 +473,33 @@ COPTS = -O2 $(FLOATOPTS)
 <p>And the solution was posted here:</p>
 <p><a class="reference external" href="https://github.com/intel/opa-psm2/issues/29">https://github.com/intel/opa-psm2/issues/29</a></p>
 <p>One can inspect a binary for this setting using readelf:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">readelf</span> <span class="o">--</span><span class="n">program</span><span class="o">-</span><span class="n">headers</span> <span class="o">./</span><span class="n">namd2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">readelf</span> <span class="o">--</span><span class="n">program</span><span class="o">-</span><span class="n">headers</span> <span class="o">./</span><span class="n">namd2</span>
 </pre></div>
 </div>
-<p>The output from that command will show this for the <code class="docutils literal"><span class="pre">GNU_STACK</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GNU_STACK</span>      <span class="mh">0x0000000000000000</span> <span class="mh">0x0000000000000000</span> <span class="mh">0x0000000000000000</span>
+<p>The output from that command will show this for the <code class="docutils literal notranslate"><span class="pre">GNU_STACK</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GNU_STACK</span>      <span class="mh">0x0000000000000000</span> <span class="mh">0x0000000000000000</span> <span class="mh">0x0000000000000000</span>
                <span class="mh">0x0000000000000000</span> <span class="mh">0x0000000000000000</span>  <span class="n">RWE</span>    <span class="mi">10</span>
 </pre></div>
 </div>
 <p>This issue can be fixed over the binaries already created by executing:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">execstack</span> <span class="o">-</span><span class="n">c</span> <span class="o">./</span><span class="n">namd2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execstack</span> <span class="o">-</span><span class="n">c</span> <span class="o">./</span><span class="n">namd2</span>
 </pre></div>
 </div>
 <p>From the NAMD source folder the following command will fix that for the 4 binaries:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">execstack</span> <span class="o">-</span><span class="n">c</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-*/</span><span class="n">namd2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execstack</span> <span class="o">-</span><span class="n">c</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-*/</span><span class="n">namd2</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="testing-namd2">
 <h2>Testing NAMD2<a class="headerlink" href="#testing-namd2" title="Permalink to this headline">¶</a></h2>
-<p>Now we can start testing the 4 binaries. NAMD offers a very small case for testing on <code class="docutils literal"><span class="pre">src/alanin</span></code>. Execute NAMD on each folder to test the binary:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span>
+<p>Now we can start testing the 4 binaries. NAMD offers a very small case for testing on <code class="docutils literal notranslate"><span class="pre">src/alanin</span></code>. Execute NAMD on each folder to test the binary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span>
 <span class="o">./</span><span class="n">charmrun</span> <span class="o">++</span><span class="n">local</span> <span class="o">+</span><span class="n">p2</span> <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The output will be similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">processors</span><span class="p">:</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">processors</span><span class="p">:</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
 <span class="n">charmrun</span><span class="o">&gt;</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">setarch</span> <span class="n">x86_64</span> <span class="o">-</span><span class="n">R</span>  <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">2</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
 <span class="n">Charm</span><span class="o">++&gt;</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">MPI</span> <span class="n">version</span><span class="p">:</span> <span class="mf">3.1</span>
 <span class="n">Charm</span><span class="o">++&gt;</span> <span class="n">level</span> <span class="n">of</span> <span class="n">thread</span> <span class="n">support</span> <span class="n">used</span><span class="p">:</span> <span class="n">MPI_THREAD_SINGLE</span> <span class="p">(</span><span class="n">desired</span><span class="p">:</span> <span class="n">MPI_THREAD_SINGLE</span><span class="p">)</span>
@@ -524,14 +515,14 @@ COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
 <p>For the next binary we need to set number of worker threads per process to match available cores, reserving one core per process for communication thread.
-The argument <code class="docutils literal"><span class="pre">++ppn</span> <span class="pre">N</span></code> must be declared after the executable <code class="docutils literal"><span class="pre">./namd2</span></code> and the minimal value is 2 meaning 1 communication + 1 execution thread:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span>
+The argument <code class="docutils literal notranslate"><span class="pre">++ppn</span> <span class="pre">N</span></code> must be declared after the executable <code class="docutils literal notranslate"><span class="pre">./namd2</span></code> and the minimal value is 2 meaning 1 communication + 1 execution thread:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span>
 <span class="o">./</span><span class="n">charmrun</span> <span class="o">++</span><span class="n">local</span> <span class="o">+</span><span class="n">p2</span> <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span> <span class="o">++</span><span class="n">ppn2</span>
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The output looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">on</span> <span class="mi">1</span> <span class="n">processors</span><span class="p">:</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span> <span class="o">++</span><span class="n">ppn2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">on</span> <span class="mi">1</span> <span class="n">processors</span><span class="p">:</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span> <span class="o">++</span><span class="n">ppn2</span>
 <span class="n">charmrun</span><span class="o">&gt;</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">setarch</span> <span class="n">x86_64</span> <span class="o">-</span><span class="n">R</span>  <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span> <span class="o">++</span><span class="n">ppn2</span>
 <span class="n">Charm</span><span class="o">++&gt;</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">MPI</span> <span class="n">version</span><span class="p">:</span> <span class="mf">3.1</span>
 <span class="n">Charm</span><span class="o">++&gt;</span> <span class="n">level</span> <span class="n">of</span> <span class="n">thread</span> <span class="n">support</span> <span class="n">used</span><span class="p">:</span> <span class="n">MPI_THREAD_FUNNELED</span> <span class="p">(</span><span class="n">desired</span><span class="p">:</span> <span class="n">MPI_THREAD_FUNNELED</span><span class="p">)</span>
@@ -548,13 +539,13 @@ The argument <code class="docutils literal"><span class="pre">++ppn</span> <span
 </pre></div>
 </div>
 <p>The OFI binaries can be tested in a similar way:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span>
 <span class="o">./</span><span class="n">charmrun</span> <span class="o">++</span><span class="n">local</span> <span class="o">+</span><span class="n">p2</span> <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The output being like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">processors</span><span class="p">:</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">processors</span><span class="p">:</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
 <span class="n">charmrun</span><span class="o">&gt;</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">setarch</span> <span class="n">x86_64</span> <span class="o">-</span><span class="n">R</span>  <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">2</span>  <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span>
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">provider</span><span class="p">:</span> <span class="n">psm2</span>
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">control</span> <span class="n">progress</span><span class="p">:</span> <span class="mi">2</span>
@@ -580,7 +571,7 @@ The argument <code class="docutils literal"><span class="pre">++ppn</span> <span
 </pre></div>
 </div>
 <p>The final binary is tested:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span>
 <span class="o">./</span><span class="n">charmrun</span> <span class="o">++</span><span class="n">local</span> <span class="o">+</span><span class="n">p2</span> <span class="o">./</span><span class="n">namd2</span> <span class="n">src</span><span class="o">/</span><span class="n">alanin</span> <span class="o">++</span><span class="n">ppn</span> <span class="mi">2</span> <span class="o">+</span><span class="n">setcpuaffinity</span>
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
@@ -592,7 +583,7 @@ We will now move into which configuration perform better.</p>
 <div class="section" id="script-summarizing-compilation-of-namd">
 <h2>Script summarizing compilation of NAMD<a class="headerlink" href="#script-summarizing-compilation-of-namd" title="Permalink to this headline">¶</a></h2>
 <p>The next script execute all steps above:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 VERSION=2020-01-02
 
@@ -757,70 +748,70 @@ cd ..
 <p>NAMD has a case often used for Benchmarking. Still small but we can start extracting some performance figures.
 ApoA1 benchmark (92,224 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps):</p>
 <p>Download the code with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">apoa1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">apoa1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="n">xzf</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Once you have untar the package. Edit the input file and change the line for the output. You can do that from the command line with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">apoa1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">apoa1</span>
 <span class="n">cp</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd_BKP</span>
 <span class="n">cat</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd_BKP</span> <span class="o">|</span> <span class="n">sed</span> <span class="s1">&#39;s/\/usr//g&#39;</span> <span class="o">&gt;</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span>
 </pre></div>
 </div>
 <p>We start with a simple execution using 12 cores. Notice that the first time you execute NAMD it will compute the FFT optimization and that could take a several seconds. With 12 cores the simulation last for around a minute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span>
 <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span>
 </pre></div>
 </div>
 <p>At the end of the second run the timing was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">32.377525</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">32.377525</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">2932.089844</span> <span class="n">MB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">32.377525</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">32.377525</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">2932.089844</span> <span class="n">MB</span>
 <span class="p">[</span><span class="n">Partition</span> <span class="mi">0</span><span class="p">][</span><span class="n">Node</span> <span class="mi">0</span><span class="p">]</span> <span class="n">End</span> <span class="n">of</span> <span class="n">program</span>
 </pre></div>
 </div>
 <p>The second version with MPI and SMP is like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span> <span class="o">++</span><span class="n">ppn2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span> <span class="o">++</span><span class="n">ppn2</span>
 <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span> <span class="o">++</span><span class="n">ppn2</span>
 </pre></div>
 </div>
 <p>The timing for this version is similar:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">29.577475</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">29.438684</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">2853.781250</span> <span class="n">MB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">29.577475</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">29.438684</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">2853.781250</span> <span class="n">MB</span>
 <span class="p">[</span><span class="n">Partition</span> <span class="mi">0</span><span class="p">][</span><span class="n">Node</span> <span class="mi">0</span><span class="p">]</span> <span class="n">End</span> <span class="n">of</span> <span class="n">program</span>
 </pre></div>
 </div>
 <p>The OFI versions run like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span>
 <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span>
 </pre></div>
 </div>
 <p>With timings for the second run:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">33.552193</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">33.414692</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">662.109375</span> <span class="n">MB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">33.552193</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">33.414692</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">662.109375</span> <span class="n">MB</span>
 <span class="p">[</span><span class="n">Partition</span> <span class="mi">0</span><span class="p">][</span><span class="n">Node</span> <span class="mi">0</span><span class="p">]</span> <span class="n">End</span> <span class="n">of</span> <span class="n">program</span>
 </pre></div>
 </div>
 <p>The final binary is OFI with SMP enabled:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span> <span class="o">++</span><span class="n">ppn2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span> <span class="o">++</span><span class="n">ppn2</span>
 <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">charmrun</span> <span class="o">+</span><span class="n">p12</span> <span class="o">../</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span><span class="o">/</span><span class="n">namd2</span> <span class="n">apoa1</span><span class="o">.</span><span class="n">namd</span> <span class="o">++</span><span class="n">ppn2</span>
 </pre></div>
 </div>
 <p>With timings:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">34.350666</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">34.264492</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">641.882812</span> <span class="n">MB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">34.350666</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">34.264492</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">641.882812</span> <span class="n">MB</span>
 <span class="p">[</span><span class="n">Partition</span> <span class="mi">0</span><span class="p">][</span><span class="n">Node</span> <span class="mi">0</span><span class="p">]</span> <span class="n">End</span> <span class="n">of</span> <span class="n">program</span>
 </pre></div>
 </div>
 <p>At this point all four binaries perform very similarly. However, this execution was done on the head node, where several user and system processes could be taking CPU time, making any claim about performance misleading.</p>
 <p>Our next step is to move the execution to an isolated compute node where the time could be more accurate.</p>
 <p>To do this lets request an interactive execution on an isolated node:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">q</span> <span class="n">debug</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">pvmem</span><span class="o">=</span><span class="mi">90</span><span class="n">g</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">I</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">q</span> <span class="n">debug</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">pvmem</span><span class="o">=</span><span class="mi">90</span><span class="n">g</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">I</span>
 </pre></div>
 </div>
 <p>Once you log into the compute node, load clean your modules and load the Intel 2019:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span>
 </pre></div>
 </div>
 <p>The following script can be used to execute 4 versions of NAMD under the same conditions multiple times to gather a more precise timing. The first execution will be larger due to NAMD computing the FFT parameter optimization::
-The script could be called <code class="docutils literal"><span class="pre">runtests.sh</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
+The script could be called <code class="docutils literal notranslate"><span class="pre">runtests.sh</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 for i in 0 1 2 3
 do
@@ -844,11 +835,11 @@ done
 </pre></div>
 </div>
 <p>The script can be executed like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>The timings are stored on the output of each execution and can be extracted like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">40</span><span class="n">core_mpi_smp_10_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.227570</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.259064</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4688.945312</span> <span class="n">MB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">40</span><span class="n">core_mpi_smp_10_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.227570</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.259064</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4688.945312</span> <span class="n">MB</span>
 <span class="mi">40</span><span class="n">core_mpi_smp_10_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.695709</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.160561</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4676.308594</span> <span class="n">MB</span>
 <span class="mi">40</span><span class="n">core_mpi_smp_10_2</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.656311</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">122.411018</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4669.125000</span> <span class="n">MB</span>
 <span class="mi">40</span><span class="n">core_mpi_smp_10_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.610092</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.485626</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4674.390625</span> <span class="n">MB</span>
@@ -897,11 +888,11 @@ done
 <p>These preliminar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.</p>
 <p>More significant for measuring the performance of NAMD for large systems comes from the STMV benchmark (1,066,628 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps)</p>
 <p>Download the code from:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Untar and uncompress the package and move into the folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">cd</span> <span class="n">stmv</span>
 </pre></div>
 </div>

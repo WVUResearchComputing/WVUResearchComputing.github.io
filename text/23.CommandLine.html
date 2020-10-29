@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -198,7 +189,7 @@
   <div class="section" id="command-line-interface">
 <span id="qs-command-line"></span><h1>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
 <p>The interaction with a HPC cluster happens most of the time using a Command Line Interface (CLI) also known as terminal. On a terminal, all your interaction is controlled by a program called <em>shell</em>. You identify that you are in <em>shell</em> when you see what is called a <em>prompt</em> message, a set of characters that indicate that the <em>shell</em> is ready to receive instructions to operate.</p>
-<p>To issue a command to the shell you type a command, eventually followed for a few arguments. When you end typing the full command you type the <code class="docutils literal"><span class="pre">ENTER</span></code> key, the command is executed and if the command is programmed to produce screen output it will appear on your terminal as it executes. Once the command is terminated you get a new <em>prompt</em> indicating that the shell is ready for new commands.</p>
+<p>To issue a command to the shell you type a command, eventually followed for a few arguments. When you end typing the full command you type the <code class="docutils literal notranslate"><span class="pre">ENTER</span></code> key, the command is executed and if the command is programmed to produce screen output it will appear on your terminal as it executes. Once the command is terminated you get a new <em>prompt</em> indicating that the shell is ready for new commands.</p>
 <p>The CLI interface is a powerful way to interact with a remote computer for several reasons:</p>
 <ol class="arabic simple">
 <li>It takes little resources on the remote machine allowing the machine to serve tens, hundreds and in some cases even thousands of concurrent users.</li>
@@ -208,67 +199,67 @@
 <p>Using a CLI is probably the biggest obstacle than beginners has to overcome before start taking advantage of a HPC cluster. Here we will offer a short straight to the point introduction to the bare minimal of managing files and folders on the <em>shell</em>.</p>
 <div class="section" id="files-and-folders">
 <h2>Files and Folders<a class="headerlink" href="#files-and-folders" title="Permalink to this headline">¶</a></h2>
-<p>Operating Systems from UNIX legacy, Linux and MacOS being the most prominent examples, uses the idea of <em>folders</em> and <em>files</em> to organize the data on their storage device. Differently from Windows, on UNIX there is no such idea of Drives <code class="docutils literal"><span class="pre">C:</span></code> or <code class="docutils literal"><span class="pre">D:</span></code> or letters for CD Drives or USB Keys. In UNIX every piece of data on any storage device is logically located in some place of a <em>filesystem tree</em>. Think about the <em>filesystem tree</em> where the lowest level is called <em>the root folder</em> and is indicated by <code class="docutils literal"><span class="pre">/</span></code>. From <code class="docutils literal"><span class="pre">/</span></code> you will see branches like <code class="docutils literal"><span class="pre">/bin</span></code>, <code class="docutils literal"><span class="pre">/lib</span></code> and many others, those are folders. Inside each folder, there are potentially more folders and files. The tree structure as a metaphor for storing data is very powerful and in the case of UNIX systems, that data structure is deeply exploited, even hardware devices such as sound cards, CD drives and hard drives receive a file-like entry on the rooted tree.
+<p>Operating Systems from UNIX legacy, Linux and MacOS being the most prominent examples, uses the idea of <em>folders</em> and <em>files</em> to organize the data on their storage device. Differently from Windows, on UNIX there is no such idea of Drives <code class="docutils literal notranslate"><span class="pre">C:</span></code> or <code class="docutils literal notranslate"><span class="pre">D:</span></code> or letters for CD Drives or USB Keys. In UNIX every piece of data on any storage device is logically located in some place of a <em>filesystem tree</em>. Think about the <em>filesystem tree</em> where the lowest level is called <em>the root folder</em> and is indicated by <code class="docutils literal notranslate"><span class="pre">/</span></code>. From <code class="docutils literal notranslate"><span class="pre">/</span></code> you will see branches like <code class="docutils literal notranslate"><span class="pre">/bin</span></code>, <code class="docutils literal notranslate"><span class="pre">/lib</span></code> and many others, those are folders. Inside each folder, there are potentially more folders and files. The tree structure as a metaphor for storing data is very powerful and in the case of UNIX systems, that data structure is deeply exploited, even hardware devices such as sound cards, CD drives and hard drives receive a file-like entry on the rooted tree.
 When you insert a USB drive, Modern Linux distributions and MacOS will <em>mount</em> it automatically, meaning that it will receive a location on the tree, in the case of Linux, the mounting point is usually somewhere inside <em>/media/</em>, in MacOS the mounting point is <em>/Volumes</em>.</p>
-<p>In the particular case of your interaction with the HPC cluster, there are two important folders that you should be aware of. They are so important that they receive special variables to tell you what they are. The <code class="docutils literal"><span class="pre">$HOME</span></code> and <code class="docutils literal"><span class="pre">$SCRATCH</span></code>, each user gets assigned a unique location for both folders.
+<p>In the particular case of your interaction with the HPC cluster, there are two important folders that you should be aware of. They are so important that they receive special variables to tell you what they are. The <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, each user gets assigned a unique location for both folders.
 On them the user has the rights to create, modify and delete files and folders as he/she wants. In Linux the names of files and folders are basically arbitrary. Most linux filesystems are case sensitive, meaning that changing the file in lowercase and uppercase refers to different files. Using spaces for files and folders is allowed but discouraged as it force you to enclose the filename in quotes `` ” and “`` for declare them or escaping the spaces like,
-<code class="docutils literal"><span class="pre">This\</span> <span class="pre">file\</span> <span class="pre">has\</span> <span class="pre">spaces</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">This\</span> <span class="pre">file\</span> <span class="pre">has\</span> <span class="pre">spaces</span></code>.</p>
 </div>
 <div class="section" id="the-echo-and-cat-commands">
 <h2>The <em>echo</em> and <em>cat</em> commands<a class="headerlink" href="#the-echo-and-cat-commands" title="Permalink to this headline">¶</a></h2>
 <p>Your fist command will show you what those locations are. Execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; echo $HOME
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; echo $HOME
 /users/&lt;username&gt;
 $&gt; echo $SCRATCH
 /scratch/&lt;username&gt;
 </pre></div>
 </div>
-<p>The first command to learn is <code class="docutils literal"><span class="pre">echo</span></code>. The command above uses <code class="docutils literal"><span class="pre">echo</span></code> to show the contents of two shell variables <code class="docutils literal"><span class="pre">$HOME</span></code> and <code class="docutils literal"><span class="pre">$SCRATCH</span></code>. Shell variables are ways to store information in such a way that the shell can use it when needed. Each user on the cluster receives appropriated values for those variables.</p>
-<p>Let us explore a bit more the usage of <code class="docutils literal"><span class="pre">echo</span></code>. Enter this command line and execute <code class="docutils literal"><span class="pre">ENTER</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; echo &quot;I am learning UNIX Commands&quot;
+<p>The first command to learn is <code class="docutils literal notranslate"><span class="pre">echo</span></code>. The command above uses <code class="docutils literal notranslate"><span class="pre">echo</span></code> to show the contents of two shell variables <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>. Shell variables are ways to store information in such a way that the shell can use it when needed. Each user on the cluster receives appropriated values for those variables.</p>
+<p>Let us explore a bit more the usage of <code class="docutils literal notranslate"><span class="pre">echo</span></code>. Enter this command line and execute <code class="docutils literal notranslate"><span class="pre">ENTER</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; echo &quot;I am learning UNIX Commands&quot;
 I am learning UNIX Commands
 </pre></div>
 </div>
 <p>The shell is actually able to do basic arithmetical operations, execute this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; echo $((23+45*2))
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; echo $((23+45*2))
 113
 </pre></div>
 </div>
 <p>Notice that as customary in mathematics products take precedence over addition. That is called the PEMDAS order of operations, ie “Parentheses, Exponents, Multiplication and Division, and Addition and Subtraction”. Check your understanding of the PEMDAS rule with this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; echo $(((1+2**3*(4+5)-7)/2+9))
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; echo $(((1+2**3*(4+5)-7)/2+9))
 42
 </pre></div>
 </div>
-<p>Notice that the exponential operation is expressed with the <code class="docutils literal"><span class="pre">**</span></code> operator.
-The usage of <code class="docutils literal"><span class="pre">echo</span></code> is important, otherwise, if you execute the command without <code class="docutils literal"><span class="pre">echo</span></code> the shell will do the operation and will try to execute a command called <code class="docutils literal"><span class="pre">42</span></code> that does not exist on the system. Try by yourself:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; $ $(((1+2**3*(4+5)-7)/2+9))
+<p>Notice that the exponential operation is expressed with the <code class="docutils literal notranslate"><span class="pre">**</span></code> operator.
+The usage of <code class="docutils literal notranslate"><span class="pre">echo</span></code> is important, otherwise, if you execute the command without <code class="docutils literal notranslate"><span class="pre">echo</span></code> the shell will do the operation and will try to execute a command called <code class="docutils literal notranslate"><span class="pre">42</span></code> that does not exist on the system. Try by yourself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; $ $(((1+2**3*(4+5)-7)/2+9))
 -bash: 42: command not found
 </pre></div>
 </div>
 <p>As you have seen before, when you execute a command on the terminal in most cases you see the output printed on the screen.
 The next thing to learn is how to redirect the output of a command into a file.
 This will be very important later to submit jobs and control where and how the output is produced. Execute the following command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; echo &quot;I am learning UNIX Commands&quot; &gt; report.log
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; echo &quot;I am learning UNIX Commands&quot; &gt; report.log
 </pre></div>
 </div>
-<p>With the character <code class="docutils literal"><span class="pre">&gt;</span></code> redirects the output from <code class="docutils literal"><span class="pre">echo</span></code> into a file called <em>report.log</em>. No output is printed on the screen. If the file does not exist it will be created. If the file exists previously, the file is erased and only the new contents are stored.</p>
+<p>With the character <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> redirects the output from <code class="docutils literal notranslate"><span class="pre">echo</span></code> into a file called <em>report.log</em>. No output is printed on the screen. If the file does not exist it will be created. If the file exists previously, the file is erased and only the new contents are stored.</p>
 <p>To check that the file actually contains the line produced by echo, execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cat report.log
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cat report.log
 I am learning UNIX Commands
 </pre></div>
 </div>
 <p>The cat (concatenate) command displays the contents of one or several files. In the case of multiple files the files are printed in the order they are described in the command line, concatenating the output so the name of the command.</p>
-<p>You can even use a nice trick to write a small text on a file. Execute the following command, followed by the text that you want to write, sat the end execute <code class="docutils literal"><span class="pre">Ctrl-D</span></code> (<code class="docutils literal"><span class="pre">^D</span></code>), the <em>Control Key</em> followed by the <code class="docutils literal"><span class="pre">D</span></code> key.
-I am annotating below the location where <code class="docutils literal"><span class="pre">^D</span></code> should be executed:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cat &gt; report.log
+<p>You can even use a nice trick to write a small text on a file. Execute the following command, followed by the text that you want to write, sat the end execute <code class="docutils literal notranslate"><span class="pre">Ctrl-D</span></code> (<code class="docutils literal notranslate"><span class="pre">^D</span></code>), the <em>Control Key</em> followed by the <code class="docutils literal notranslate"><span class="pre">D</span></code> key.
+I am annotating below the location where <code class="docutils literal notranslate"><span class="pre">^D</span></code> should be executed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cat &gt; report.log
 I am learning UNIX Commands^D
 $&gt; cat report.log
 I am learning UNIX Commands
 </pre></div>
 </div>
 <p>In fact, there are hundreds of commands, most of them with a variety of options that change the behavior of the original command. You can feel bewildered t first by a large number of existing commands, but in fact most of the time you will be using a very little number of them. Learning those will speed up your learning curve.</p>
-<p>Another very simple command that is very useful in HPC is <code class="docutils literal"><span class="pre">date</span></code>. Without any arguments, it prints the current date to the screen. Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; date
+<p>Another very simple command that is very useful in HPC is <code class="docutils literal notranslate"><span class="pre">date</span></code>. Without any arguments, it prints the current date to the screen. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; date
 Mon Nov  5 12:05:58 EST 2018
 </pre></div>
 </div>
@@ -276,58 +267,58 @@ Mon Nov  5 12:05:58 EST 2018
 <div class="section" id="folder-commands">
 <h2>Folder commands<a class="headerlink" href="#folder-commands" title="Permalink to this headline">¶</a></h2>
 <p>As we mentioned before, UNIX organizes data in storage devices as a tree.
-The commands <code class="docutils literal"><span class="pre">pwd</span></code>, <code class="docutils literal"><span class="pre">cd</span></code> and <code class="docutils literal"><span class="pre">mkdir</span></code> will allow you to know where you are, move your location on the tree and create new folders. Later we will see how to move folders from one location on the tree to another.</p>
-<p>The first command is <code class="docutils literal"><span class="pre">pwd</span></code>. Just execute the command on the terminal:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; $ pwd
+The commands <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code> and <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> will allow you to know where you are, move your location on the tree and create new folders. Later we will see how to move folders from one location on the tree to another.</p>
+<p>The first command is <code class="docutils literal notranslate"><span class="pre">pwd</span></code>. Just execute the command on the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; $ pwd
 /users/&lt;username&gt;
 </pre></div>
 </div>
 <p>It is very important at all times to know where in the tree you are. Doing research usually involves dealing with an important amount of data, exploring several parameters or physical conditions. Organize properly all the data in meaningful folders is very important to research endeavors.</p>
-<p>When you log into a cluster, by default you are located on your <code class="docutils literal"><span class="pre">$HOME</span></code> folder. That is why most likely the command <code class="docutils literal"><span class="pre">pwd</span></code> will return that location in a first instance.</p>
-<p>The next command is <code class="docutils literal"><span class="pre">cd</span></code>. This command is used to <em>change directory</em>. The directory is another name for <em>folder</em>.
+<p>When you log into a cluster, by default you are located on your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder. That is why most likely the command <code class="docutils literal notranslate"><span class="pre">pwd</span></code> will return that location in a first instance.</p>
+<p>The next command is <code class="docutils literal notranslate"><span class="pre">cd</span></code>. This command is used to <em>change directory</em>. The directory is another name for <em>folder</em>.
 The term <em>directory</em> is also widely used.
 At least in UNIX the terms <em>directory</em> and <em>folder</em> are exchangeable.
 Other Desktop Operating Systems like Windows and MacOS have the concept of <em>smart folders</em> or <em>virtual folders</em>, where the <em>folder</em> that you see on screen has no correlation with a directory in the filesystem.
 In those cases the distinction is relevant.</p>
-<p>There is another important folder defined in our clusters, its called the scratch folder and each user has its own. The location of the folder is stored in the variable <code class="docutils literal"><span class="pre">$SCRATCH</span></code>. Notice that this is internal convection and is not observed in other HPC clusters.</p>
+<p>There is another important folder defined in our clusters, its called the scratch folder and each user has its own. The location of the folder is stored in the variable <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>. Notice that this is internal convection and is not observed in other HPC clusters.</p>
 <p>Use the next command to go to that folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cd $SCRATCH
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd $SCRATCH
 $&gt; pwd
 /scratch/&lt;username&gt;
 </pre></div>
 </div>
 <p>Notice that the location is different now, if you are using this account for the first time you will not have files on this folder.
 It is time to learn another command to list the contents of a <em>folder</em>, execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ls
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ls
 $&gt;
 </pre></div>
 </div>
-<p>Assuming that you are using your HPC account for the first time, you will not have anything on your <code class="docutils literal"><span class="pre">$SCRATCH</span></code> folder.
+<p>Assuming that you are using your HPC account for the first time, you will not have anything on your <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> folder.
 This is a good opportunity to start creating one folder there and change your location inside, execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mkdir test_folder
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir test_folder
 $&gt; cd test_folder
 </pre></div>
 </div>
-<p>We have use two new commands here, <code class="docutils literal"><span class="pre">mkdir``allows</span> <span class="pre">you</span> <span class="pre">to</span> <span class="pre">create</span> <span class="pre">folders</span> <span class="pre">in</span> <span class="pre">places</span> <span class="pre">where</span> <span class="pre">you</span> <span class="pre">are</span> <span class="pre">authorized</span> <span class="pre">to</span> <span class="pre">do</span> <span class="pre">so.</span> <span class="pre">For</span> <span class="pre">example</span> <span class="pre">your</span> <span class="pre">``$HOME</span></code> and <code class="docutils literal"><span class="pre">$SCRATCH</span></code> folders. Try this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mkdir /test_folder
+<p>We have use two new commands here, <code class="docutils literal notranslate"><span class="pre">mkdir``allows</span> <span class="pre">you</span> <span class="pre">to</span> <span class="pre">create</span> <span class="pre">folders</span> <span class="pre">in</span> <span class="pre">places</span> <span class="pre">where</span> <span class="pre">you</span> <span class="pre">are</span> <span class="pre">authorized</span> <span class="pre">to</span> <span class="pre">do</span> <span class="pre">so.</span> <span class="pre">For</span> <span class="pre">example</span> <span class="pre">your</span> <span class="pre">``$HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> folders. Try this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir /test_folder
 mkdir: cannot create directory `/test_folder&#39;: Permission denied
 </pre></div>
 </div>
-<p>There is an important difference between <code class="docutils literal"><span class="pre">test_folder</span></code> and <code class="docutils literal"><span class="pre">/test_folder</span></code>.
-The former is a location in your current working directory (CWD), the later is a location starting on the root directory <code class="docutils literal"><span class="pre">/</span></code>. A normal user has no rights to create folders on that directory so <code class="docutils literal"><span class="pre">mkdir</span></code> will fail and an error message will be shown on your screen.</p>
-<p>The name of the folder is <code class="docutils literal"><span class="pre">test_folder</span></code>, notice the underscore between <em>test</em> and <em>folder</em>. In UNIX, there is no restriction having files or directories with spaces but using them become a nuisance on the command line. If you want to create the folder with spaces from the command line, here are the options:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mkdir &quot;test folder with spaces&quot;
+<p>There is an important difference between <code class="docutils literal notranslate"><span class="pre">test_folder</span></code> and <code class="docutils literal notranslate"><span class="pre">/test_folder</span></code>.
+The former is a location in your current working directory (CWD), the later is a location starting on the root directory <code class="docutils literal notranslate"><span class="pre">/</span></code>. A normal user has no rights to create folders on that directory so <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> will fail and an error message will be shown on your screen.</p>
+<p>The name of the folder is <code class="docutils literal notranslate"><span class="pre">test_folder</span></code>, notice the underscore between <em>test</em> and <em>folder</em>. In UNIX, there is no restriction having files or directories with spaces but using them become a nuisance on the command line. If you want to create the folder with spaces from the command line, here are the options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir &quot;test folder with spaces&quot;
 $&gt; mkdir another\ test\ folder\ with\ spaces
 </pre></div>
 </div>
 <p>In any case, you have to type extra characters to prevent the command line application of considering those spaces as separators for several arguments in your command. Try executing the following:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mkdir another folder with spaces
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir another folder with spaces
 $&gt; ls
 another folder with spaces  folder  spaces  test_folder  test folder with spaces  with
 </pre></div>
 </div>
-<p>Maybe is not clear what is happening here. There is an option for <code class="docutils literal"><span class="pre">ls</span></code> that present the contents of a directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt;ls -l
+<p>Maybe is not clear what is happening here. There is an option for <code class="docutils literal notranslate"><span class="pre">ls</span></code> that present the contents of a directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt;ls -l
 total 0
 drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 another
 drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 another folder with spaces
@@ -338,16 +329,16 @@ drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 test folder with spaces
 drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 with
 </pre></div>
 </div>
-<p>It should be clear, now what happens when the spaces are not contained in quotes <code class="docutils literal"><span class="pre">&quot;test</span> <span class="pre">folder</span> <span class="pre">with</span> <span class="pre">spaces&quot;</span></code> or escaped as <code class="docutils literal"><span class="pre">another\</span> <span class="pre">folder\</span> <span class="pre">with\</span> <span class="pre">spaces</span></code>.
+<p>It should be clear, now what happens when the spaces are not contained in quotes <code class="docutils literal notranslate"><span class="pre">&quot;test</span> <span class="pre">folder</span> <span class="pre">with</span> <span class="pre">spaces&quot;</span></code> or escaped as <code class="docutils literal notranslate"><span class="pre">another\</span> <span class="pre">folder\</span> <span class="pre">with\</span> <span class="pre">spaces</span></code>.
 This is the perfect opportunity to learn how to delete empty folders. Execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; rmdir another
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rmdir another
 $&gt; rmdir folder spaces with
 </pre></div>
 </div>
 <p>You can delete one or several folders, but all those folders must be empty.
 If those folders contain files or more folders, the command will fail and an error message will be displayed.</p>
-<p>After deleting those folders created by mistake, let’s check the contents of the current directory. The command <code class="docutils literal"><span class="pre">ls</span> <span class="pre">-1</span></code> will list the contents of a file one per line, something very convenient for future scripting:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ls -1
+<p>After deleting those folders created by mistake, let’s check the contents of the current directory. The command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-1</span></code> will list the contents of a file one per line, something very convenient for future scripting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ls -1
 another folder with spaces
 test_folder
 test folder with spaces
@@ -356,67 +347,67 @@ test folder with spaces
 </div>
 <div class="section" id="commands-for-copy-and-move">
 <h2>Commands for copy and move<a class="headerlink" href="#commands-for-copy-and-move" title="Permalink to this headline">¶</a></h2>
-<p>The next two commands are <code class="docutils literal"><span class="pre">cp</span></code> and <code class="docutils literal"><span class="pre">mv</span></code>. They are used to copy or move files or folders from one location to another. In its simplest usage, those two commands take two arguments, the first argument is the source and the last one the destination. In the case of more than two arguments, the destination must be a directory. The effect will be to copy or move all the source items into the folder indicated as the destination.</p>
-<p>Before doing a few examples with <code class="docutils literal"><span class="pre">cp</span></code> and <code class="docutils literal"><span class="pre">mv``let's</span> <span class="pre">use</span> <span class="pre">a</span> <span class="pre">very</span> <span class="pre">handy</span> <span class="pre">command</span> <span class="pre">to</span> <span class="pre">create</span> <span class="pre">files.</span> <span class="pre">The</span> <span class="pre">command</span> <span class="pre">``touch</span></code> is used to update the access and modification times of a file or folder to the current time. In case there is not such a file, the command will create a new empty file. We will use that feature to create some empty files for the purpose of demonstrating how to use <code class="docutils literal"><span class="pre">cp</span></code> and <code class="docutils literal"><span class="pre">mv</span></code>.</p>
+<p>The next two commands are <code class="docutils literal notranslate"><span class="pre">cp</span></code> and <code class="docutils literal notranslate"><span class="pre">mv</span></code>. They are used to copy or move files or folders from one location to another. In its simplest usage, those two commands take two arguments, the first argument is the source and the last one the destination. In the case of more than two arguments, the destination must be a directory. The effect will be to copy or move all the source items into the folder indicated as the destination.</p>
+<p>Before doing a few examples with <code class="docutils literal notranslate"><span class="pre">cp</span></code> and <code class="docutils literal notranslate"><span class="pre">mv``let's</span> <span class="pre">use</span> <span class="pre">a</span> <span class="pre">very</span> <span class="pre">handy</span> <span class="pre">command</span> <span class="pre">to</span> <span class="pre">create</span> <span class="pre">files.</span> <span class="pre">The</span> <span class="pre">command</span> <span class="pre">``touch</span></code> is used to update the access and modification times of a file or folder to the current time. In case there is not such a file, the command will create a new empty file. We will use that feature to create some empty files for the purpose of demonstrating how to use <code class="docutils literal notranslate"><span class="pre">cp</span></code> and <code class="docutils literal notranslate"><span class="pre">mv</span></code>.</p>
 <p>Lets create a few files and directories:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mkdir even odd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir even odd
 $&gt; touch f01 f02 f03 f05 f07 f11
 </pre></div>
 </div>
-<p>Now, lets copy some of those existing files to complete all the numbers up to <code class="docutils literal"><span class="pre">f11</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cp f03 f04
+<p>Now, lets copy some of those existing files to complete all the numbers up to <code class="docutils literal notranslate"><span class="pre">f11</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cp f03 f04
 $&gt; cp f05 f06
 $&gt; cp f07 f08
 $&gt; cp f07 f09
 $&gt; cp f07 f10
 </pre></div>
 </div>
-<p>This is good opportunity to present the <code class="docutils literal"><span class="pre">*</span></code> <em>wildcard</em>, use it to replace an arbitrary sequence of characters. For instance, execute this command to  list all the files created above:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ls f*
+<p>This is good opportunity to present the <code class="docutils literal notranslate"><span class="pre">*</span></code> <em>wildcard</em>, use it to replace an arbitrary sequence of characters. For instance, execute this command to  list all the files created above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ls f*
 f01  f02  f03  f04  f05  f06  f07  f08  f09  f10  f11
 </pre></div>
 </div>
 <p>The <em>wildcard</em> is able to replace zero or more arbitrary characters, see for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ls f*1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ls f*1
 f01  f11
 </pre></div>
 </div>
 <p>There is another way of representing files or directories that follow a pattern,
 execute this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ls f0[3,5,7]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ls f0[3,5,7]
 f03  f05  f07
 </pre></div>
 </div>
-<p>The files selected are those whose last character is on the list <code class="docutils literal"><span class="pre">[3,5,7]</span></code>. Similarly, a range of characters can be represented. See:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ls f0[3-7]
+<p>The files selected are those whose last character is on the list <code class="docutils literal notranslate"><span class="pre">[3,5,7]</span></code>. Similarly, a range of characters can be represented. See:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ls f0[3-7]
 f03  f04  f05  f06  f07
 </pre></div>
 </div>
 <p>We will use those special character to move files based on its parity. Execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mv f[0,1][1,3,5,7,9] odd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mv f[0,1][1,3,5,7,9] odd
 $&gt; mv f[0,1][0,2,4,6,8] even
 </pre></div>
 </div>
 <p>The command above is equivalent to execute the explicit listing of sources:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mv f01 f03 f05 f07 f09 f11 odd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mv f01 f03 f05 f07 f09 f11 odd
 $&gt; mv f02 f04 f06 f08 f10 even
 </pre></div>
 </div>
 </div>
 <div class="section" id="delete-files-and-folders">
 <h2>Delete files and Folders<a class="headerlink" href="#delete-files-and-folders" title="Permalink to this headline">¶</a></h2>
-<p>As we mentioned above, empty folders can be deleted with the command <code class="docutils literal"><span class="pre">rmdir</span></code> but that only works if there are no subfolders or files inside the folder that you want to delete. See for example what happens if you try to delete the folder called <code class="docutils literal"><span class="pre">odd</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; rmdir odd
+<p>As we mentioned above, empty folders can be deleted with the command <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> but that only works if there are no subfolders or files inside the folder that you want to delete. See for example what happens if you try to delete the folder called <code class="docutils literal notranslate"><span class="pre">odd</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rmdir odd
 rmdir: failed to remove `odd&#39;: Directory not empty
 </pre></div>
 </div>
-<p>If you want to delete odd, you can do it in two ways. The command <code class="docutils literal"><span class="pre">rm``allows</span> <span class="pre">you</span> <span class="pre">to</span> <span class="pre">delete</span> <span class="pre">one</span> <span class="pre">or</span> <span class="pre">more</span> <span class="pre">files</span> <span class="pre">entered</span> <span class="pre">as</span> <span class="pre">arguments.</span> <span class="pre">Let's</span> <span class="pre">delete</span> <span class="pre">all</span> <span class="pre">the</span> <span class="pre">files</span> <span class="pre">inside</span> <span class="pre">odd,</span> <span class="pre">followed</span> <span class="pre">by</span> <span class="pre">the</span> <span class="pre">deletion</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">folder</span> <span class="pre">``odd</span></code> itself:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; rm odd/*
+<p>If you want to delete odd, you can do it in two ways. The command <code class="docutils literal notranslate"><span class="pre">rm``allows</span> <span class="pre">you</span> <span class="pre">to</span> <span class="pre">delete</span> <span class="pre">one</span> <span class="pre">or</span> <span class="pre">more</span> <span class="pre">files</span> <span class="pre">entered</span> <span class="pre">as</span> <span class="pre">arguments.</span> <span class="pre">Let's</span> <span class="pre">delete</span> <span class="pre">all</span> <span class="pre">the</span> <span class="pre">files</span> <span class="pre">inside</span> <span class="pre">odd,</span> <span class="pre">followed</span> <span class="pre">by</span> <span class="pre">the</span> <span class="pre">deletion</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">folder</span> <span class="pre">``odd</span></code> itself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rm odd/*
 $&gt; rmdir odd
 </pre></div>
 </div>
 <p>Another option is to delete a folder recursively, this is a powerful but also dangerous option. Even if deleting a file is not actually filling with zeros the location of the data, on HPC systems the recovery of data is practice unfeasible. Let’s delete the folder even recursively:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; rm -r even
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rm -r even
 </pre></div>
 </div>
 </div>
@@ -438,110 +429,110 @@ $&gt; rmdir odd
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">echo</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">echo</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Display a given message on the screen</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">echo</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">message&quot;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">echo</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">message&quot;</span></code></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">cat</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">cat</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Display the contents of a file on screen</div>
 <div class="line">Concatenate files</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">cat</span> <span class="pre">my_file</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">cat</span> <span class="pre">my_file</span></code></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">date</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">date</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Shows the current date on screen</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">date</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">date</span></code></div>
 <div class="line">Wed Nov 7 10:40:05 EST 2018</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">pwd</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">pwd</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Return the path to the current working directory</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">pwd</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">pwd</span></code></div>
 <div class="line">/users/username</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">cd</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">cd</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Change directory</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">cd</span> <span class="pre">sub_folder</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">cd</span> <span class="pre">sub_folder</span></code></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mkdir</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">mkdir</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Create directory</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">mkdir</span> <span class="pre">new_folder</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">mkdir</span> <span class="pre">new_folder</span></code></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">touch</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">touch</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Change the access and modification time of a file</div>
 <div class="line">Create empty files</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">touch</span> <span class="pre">new_file</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">touch</span> <span class="pre">new_file</span></code></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">cp</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">cp</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Copy a file in another location.</div>
 <div class="line">Copy several files into a destination directory</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">cp</span> <span class="pre">old_file</span> <span class="pre">new_file</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">cp</span> <span class="pre">old_file</span> <span class="pre">new_file</span></code></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">mv</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">mv</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Move a file in another location.</div>
 <div class="line">Move several files into a destination directory</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">mv</span> <span class="pre">old_name</span> <span class="pre">new_name</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">mv</span> <span class="pre">old_name</span> <span class="pre">new_name</span></code></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">rm</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">rm</span></code></td>
 <td><div class="first last line-block">
 <div class="line">Remove one or more files from the file system tree</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">rm</span> <span class="pre">trash_file</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$&gt;</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">full_folder</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">rm</span> <span class="pre">trash_file</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$&gt;</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">full_folder</span></code></div>
 </div>
 </td>
 </tr>

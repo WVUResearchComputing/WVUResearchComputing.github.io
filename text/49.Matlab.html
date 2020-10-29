@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -202,11 +193,11 @@
 <h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
 To access MATLAB on Spruce Knob use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">a</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">a</span>
 </pre></div>
 </div>
 <p>To access MATLAB on Thorny Flat use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">b</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -221,14 +212,14 @@ of a function to find extrema and inflection points of a given function.</p>
 <p><a class="reference external" href="Media:derivatives.zip">derivatives.zip</a></p>
 <p>You can create a directory for this, for example MATLAB and uncompress
 there the file derivatives.zip:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">derivatives</span><span class="o">.</span><span class="n">zip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">derivatives</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
 <p>It will uncompress a file called “derivatives.m”, that is the actual
 matlab code that we would like to execute on the cluster.</p>
 <p>The submission script is very simple, for this example we will use a
 single core (On Spruce):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
 #PBS -l nodes=1:ppn=1
@@ -258,21 +249,21 @@ without opening the graphical user interface (GUI). Notive that you
 should execute matlab -nodisplay -r derivatives without adding the “.m”.
 Matlab will always search for a file called “derivatives.m”</p>
 <p>You submit the job from the command line executing:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$qsub runjob.pbs
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$qsub runjob.pbs
 987788.srih0001.hpc.wvu.edu
 </pre></div>
 </div>
 <p>You should get like above the JobID, an identifier that allow you to
 keep track of your execution. You can monitor the execution like this:
 When in queue, ie, waiting for execution:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - ------
 987788.srih0001            MATLAB           gufranco               0 Q debug
 </pre></div>
 </div>
 <p>When running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
 Job ID                    Name             User            Time Use S Queue
 
 ------------------------- ---------------- --------------- -------- - ------
@@ -280,7 +271,7 @@ Job ID                    Name             Use
 </pre></div>
 </div>
 <p>When finished:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
 
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - -----
@@ -288,7 +279,7 @@ Job ID                    Name             Use
 </pre></div>
 </div>
 <p>When the job concludes, you will get the files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>derivatives.fig
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>derivatives.fig
 derivatives.m
 derivatives.png
 MATLAB.e987788
@@ -302,7 +293,7 @@ job. The output of your execution is stored at MATLAB.o987788</p>
 <img alt="derivatives.png" src="../_images/derivatives.png" />
 <p class="caption"><span class="caption-text">derivatives.png</span></p>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
                   <span class="n">Copyright</span> <span class="mi">1984</span><span class="o">-</span><span class="mi">2014</span> <span class="n">The</span> <span class="n">MathWorks</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
                     <span class="n">R2014a</span> <span class="p">(</span><span class="mf">8.3</span><span class="o">.</span><span class="mf">0.532</span><span class="p">)</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="p">(</span><span class="n">glnxa64</span><span class="p">)</span>
                              <span class="n">February</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2014</span>
@@ -378,7 +369,7 @@ job. The output of your execution is stored at MATLAB.o987788</p>
 <blockquote>
 <div>module&nbsp;load&nbsp;statistics/matlab/2014a</div></blockquote>
 <p>Prepare the compilation environment with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ mbuild -setup``
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mbuild -setup``
 MBUILD configured to use &#39;gcc&#39; for C language compilation.``
 
 To choose a different language, execute one from the following:``
@@ -391,16 +382,16 @@ To choose a different language, execute one from the following:``
 <p>So we will use another script for this tutorial.</p>
 <p><a class="reference external" href="Media:mandelbrot.zip">mandelbrot.zip</a></p>
 <p>After uncompress the file “mandelbrot.m”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mcc</span> <span class="o">-</span><span class="n">m</span> <span class="n">mandelbrot</span><span class="o">.</span><span class="n">m</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mcc</span> <span class="o">-</span><span class="n">m</span> <span class="n">mandelbrot</span><span class="o">.</span><span class="n">m</span>
 </pre></div>
 </div>
 <p>It takes a while, when finished you will get some extra files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mandelbrot</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mandelbrot</span>
 <span class="n">run_mandelbrot</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>The submission script changes to (On Spruce):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
 #PBS -l nodes=1:ppn=1
@@ -416,7 +407,7 @@ cd $PBS_O_WORKDIR
 </pre></div>
 </div>
 <p>After submit the job with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
 <p>You get the results on “MATLAB.o#######” with the corresponding JobID</p>

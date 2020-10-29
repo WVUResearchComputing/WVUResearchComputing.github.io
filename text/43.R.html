@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -208,18 +199,18 @@
 <p>On Spruce Knob R is preinstalled from RHEL repositories. The RHEL version is 3.0.2 and it is considered too old for most scientific applications.
 You should consider using the environment module for R which activates R 3.5.2 a far more recent version and compatible with most recent R packages.
 To activate R 3.5.2 use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>On Thorny Flat, R is not preinstalled and the only choice is to use the environment module, execute the command below to activate it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="o">.</span><span class="mf">8.0</span><span class="n">_201</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="o">.</span><span class="mf">8.0_201</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="using-r-from-the-terminal">
 <h2>Using R from the Terminal<a class="headerlink" href="#using-r-from-the-terminal" title="Permalink to this headline">¶</a></h2>
 <p>The R package includes two executables, <cite>R</cite> and <cite>Rscript</cite>. The command R is used to start a text-based interactive session, on the terminal execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; R
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; R
 
 R version 3.5.2 (2018-12-20) -- &quot;Eggshell Igloo&quot;
 Copyright (C) 2018 The R Foundation for Statistical Computing
@@ -243,8 +234,8 @@ Type &#39;q()&#39; to quit R.
 </pre></div>
 </div>
 <p>From there you can start typing R commands. Another way of working in R, and more suited for HPC environments is using R scripts.
-To do so, first write your script in a <code class="docutils literal"><span class="pre">.R</span></code> file, for example, lets create a file <code class="docutils literal"><span class="pre">hello.R</span></code> like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env Rscript</span>
+To do so, first write your script in a <code class="docutils literal notranslate"><span class="pre">.R</span></code> file, for example, lets create a file <code class="docutils literal notranslate"><span class="pre">hello.R</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env Rscript</span>
 <span class="n">sayHello</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(){</span>
    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -253,17 +244,17 @@ To do so, first write your script in a <code class="docutils literal"><span clas
 </pre></div>
 </div>
 <p>The first line indicate to the shell that this is a R script. The next step is to change permissions to the file to become executable:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; chmod +x hello.R
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; chmod +x hello.R
 </pre></div>
 </div>
 <p>The script is ready for execution. As this is such small program you can run it directly on the head node:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ./hello.R
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./hello.R
 [1] &quot;hello&quot;
 </pre></div>
 </div>
 <p>However, for large executions, you should always create a submission script.
 Create a file “runjob.pbs” with this content (For Spruce):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -N MY_R_SCRIPT
 #PBS -q debug
@@ -278,12 +269,12 @@ module load lang/R/3.5.2
 ./hello.R
 </pre></div>
 </div>
-<p>The name of the job is declared with <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-N</span> <span class="pre">MY_R_SCRIPT</span></code>. The queue is declared with <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-q</span> <span class="pre">debug</span></code>, for executions that run in less than 4 hours <code class="docutils literal"><span class="pre">standby</span></code> is the preferable choice. The line <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-j</span> <span class="pre">oe</span></code> joins the error with the output in a single file. The line <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-l</span> <span class="pre">nodes=1:ppn=1</span></code> is equivalent with the default requesting a single node and a single core for the execution. In most cases R run serially but we will discuss some parallel executions below.
-The line <code class="docutils literal"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR</span></code> change directory to the place where the command <code class="docutils literal"><span class="pre">qsub</span></code> was executed.
-The line <code class="docutils literal"><span class="pre">module</span> <span class="pre">purge</span></code> clean the environment of any modules and <code class="docutils literal"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">lang/R/3.5.2</span></code>, this is the only line that changes between running on Spruce or Thorny as the names of the modules are different. The names of modules is converging so the need of this change will be less likely in the future.</p>
-<p>Finally <code class="docutils literal"><span class="pre">./hello.R</span></code> executes the script and the output will be written in a file like <code class="docutils literal"><span class="pre">MY_R_SCRIPT.o4714619</span></code> with a different JobID at the end.
+<p>The name of the job is declared with <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-N</span> <span class="pre">MY_R_SCRIPT</span></code>. The queue is declared with <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-q</span> <span class="pre">debug</span></code>, for executions that run in less than 4 hours <code class="docutils literal notranslate"><span class="pre">standby</span></code> is the preferable choice. The line <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-j</span> <span class="pre">oe</span></code> joins the error with the output in a single file. The line <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-l</span> <span class="pre">nodes=1:ppn=1</span></code> is equivalent with the default requesting a single node and a single core for the execution. In most cases R run serially but we will discuss some parallel executions below.
+The line <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR</span></code> change directory to the place where the command <code class="docutils literal notranslate"><span class="pre">qsub</span></code> was executed.
+The line <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> clean the environment of any modules and <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">lang/R/3.5.2</span></code>, this is the only line that changes between running on Spruce or Thorny as the names of the modules are different. The names of modules is converging so the need of this change will be less likely in the future.</p>
+<p>Finally <code class="docutils literal notranslate"><span class="pre">./hello.R</span></code> executes the script and the output will be written in a file like <code class="docutils literal notranslate"><span class="pre">MY_R_SCRIPT.o4714619</span></code> with a different JobID at the end.
 The contents of the file are shown below:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat MY_R_SCRIPT.o4714619
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat MY_R_SCRIPT.o4714619
 [1] &quot;hello&quot;
 </pre></div>
 </div>
@@ -291,11 +282,11 @@ The contents of the file are shown below:</p>
 <div class="section" id="installing-r-packages-in-default-directories">
 <h2>Installing R Packages in default Directories<a class="headerlink" href="#installing-r-packages-in-default-directories" title="Permalink to this headline">¶</a></h2>
 <p>The two usual ways to install R packages from CRAN is either executing</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>from the R prompt. Or using the command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>from the command line. The second command only works if you have already
@@ -307,7 +298,7 @@ install in a local directory from within your home directory. This
 folder will also be checked automatically when you run R for packages,
 allowing you to use anything you install in this way.</p>
 <p>For example, lets assume that you want to install the package “dplyr”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;dplyr&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;dplyr&quot;)
 Installing package into ‘/gpfs/home/&lt;username&gt;/R/x86_64-pc-linux-gnu-library/3.5’
 (as ‘lib’ is unspecified)
 --- Please select a CRAN mirror for use in this session ---
@@ -328,7 +319,7 @@ Selection: 63
 also installing the dependencies ‘backports’, ‘ellipsis’, ‘digest’, ‘zeallot’, ‘utf8’, ‘vctrs’, ‘cli’, ‘crayon’, ‘fansi’, ‘pillar’, ‘purrr’, ‘assertthat’, ‘glue’, ‘magrittr’, ‘pkgconfig’, ‘R6’, ‘Rcpp’, ‘rlang’, ‘tibble’, ‘tidyselect’, ‘BH’, ‘plogr’
 </pre></div>
 </div>
-<p>After some downloads and compilations the code will be installed on your local folder <code class="docutils literal"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/3.5</span></code></p>
+<p>After some downloads and compilations the code will be installed on your local folder <code class="docutils literal notranslate"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/3.5</span></code></p>
 </div>
 <div class="section" id="installing-r-packages-in-non-default-directories">
 <h2>Installing R Packages in non-default directories<a class="headerlink" href="#installing-r-packages-in-non-default-directories" title="Permalink to this headline">¶</a></h2>
@@ -336,7 +327,7 @@ also installing the dependencies ‘backports’, ‘ellipsis’, ‘digest’, 
 <h3>Using install.packages()<a class="headerlink" href="#using-install-packages" title="Permalink to this headline">¶</a></h3>
 <p>To use install.packages from the R prompt, before you start R you need
 to modify the R_LIBS environment variable</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Then inside the R prompt you execute install.packages() as normal (see
@@ -346,7 +337,7 @@ above).</p>
 <h3>Using R CMD INSTALL<a class="headerlink" href="#using-r-cmd-install" title="Permalink to this headline">¶</a></h3>
 <p>For ‘R CMD INSTALL’ command, you can specify the path with the l flag
 (lowercase ‘L’)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -355,7 +346,7 @@ above).</p>
 <p>To use locally installed packages, before you execute R you just need to
 modify the R_LIBS environment variable to tell R where to search for
 local packages.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>

@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -46,7 +37,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Environment Modules" href="34.EnvModules.html" />
+    <link rel="next" title="Interactive Scientific Computing" href="34.InteractiveSC.html" />
     <link rel="prev" title="Using the Queuing system" href="33.JobSubmission.html" /> 
 </head>
 
@@ -104,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.JobSubmission.html">Using the Queuing system</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Samples of Job Submission scripts</a><ul>
@@ -112,10 +103,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#script-for-running-an-array-batch-queue">Script for running an array batch queue</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="34.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="34.InteractiveSC.html">Interactive Scientific Computing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="35.Scratch.html">Managing Scratch Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="36.XWindow.html">XWindow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="37.FromHome.html">Effective Research Computing from Home</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
@@ -203,7 +193,7 @@ text editors (i.e. vi, emacs, etc…)</p>
 <p>The below script has PBS directives to set-up commonly used variables
 such as job name, resources needed, e-mail address upon job completion
 and abnormal termination and specify a queue to run on</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#This is an example script for executing generic jobs with</span>
 <span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
@@ -244,7 +234,7 @@ and abnormal termination and specify a queue to run on</p>
 <h2>Script for running an array batch queue<a class="headerlink" href="#script-for-running-an-array-batch-queue" title="Permalink to this headline">¶</a></h2>
 <p>Script is the same as above, but adds PBS -t to execute array request
 job submissions.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#This is an example script for executing genetic jobs with</span>
 <span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
@@ -301,7 +291,7 @@ job submissions.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="34.EnvModules.html" class="btn btn-neutral float-right" title="Environment Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="34.InteractiveSC.html" class="btn btn-neutral float-right" title="Interactive Scientific Computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="33.JobSubmission.html" class="btn btn-neutral float-left" title="Using the Queuing system" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

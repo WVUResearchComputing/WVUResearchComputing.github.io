@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -210,7 +201,7 @@
 <p>Octopus is a Real Space DFT code. The serial version was compiled with
 GCC 8.2.</p>
 <p>The modules loaded for compilation were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
 <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc82</span>
 <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.</span><span class="n">x_gcc82</span>
@@ -222,7 +213,7 @@ GCC 8.2.</p>
 <div class="section" id="serial-version">
 <h3>Serial version<a class="headerlink" href="#serial-version" title="Permalink to this headline">¶</a></h3>
 <p>The configure line was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">9.1</span><span class="n">_gcc82</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">9.1</span><span class="n">_gcc82</span> \
 <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">libxc</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span> \
 <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">blas</span><span class="o">=</span><span class="s2">&quot;-L/shared/software/libs/openblas/0.3.7_gcc82 -lopenblas&quot;</span> \
 <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">fftw</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span> \
@@ -230,7 +221,7 @@ GCC 8.2.</p>
 </pre></div>
 </div>
 <p>On Spruce the results from the testsuite were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
   <span class="n">Passed</span><span class="p">:</span>  <span class="mi">160</span> <span class="o">/</span> <span class="mi">174</span>
   <span class="n">Skipped</span><span class="p">:</span> <span class="mi">13</span> <span class="o">/</span> <span class="mi">174</span>
   <span class="n">Failed</span><span class="p">:</span>  <span class="mi">1</span> <span class="o">/</span> <span class="mi">174</span>
@@ -243,7 +234,7 @@ GCC 8.2.</p>
 </pre></div>
 </div>
 <p>On Thorny Flat the results from the testsuite were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
   <span class="n">Passed</span><span class="p">:</span>  <span class="mi">159</span> <span class="o">/</span> <span class="mi">174</span>
   <span class="n">Skipped</span><span class="p">:</span> <span class="mi">13</span> <span class="o">/</span> <span class="mi">174</span>
   <span class="n">Failed</span><span class="p">:</span>  <span class="mi">2</span> <span class="o">/</span> <span class="mi">174</span>
@@ -268,7 +259,7 @@ The version compiled was 4.0.2. The code was compiled with Intel Compilers 2018
 and 2019</p>
 <p>To compile the code a arch.make needs to be created. The contents of the file
 are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SIESTA_ARCH=intel-mpi
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SIESTA_ARCH=intel-mpi
 
 FC=mpiifort
 FFLAGS=-g -xHost -O3 -prec-div -prec-sqrt -fp-model precise -qopt-prefetch -fPIC -m64
@@ -321,7 +312,7 @@ It was compiled with MPI support</p>
 <div class="section" id="gromacs-2019-4-on-spruce-knob">
 <h3>Gromacs 2019.4 on Spruce Knob<a class="headerlink" href="#gromacs-2019-4-on-spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.15</span><span class="o">.</span><span class="mi">4</span>
 <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
 </pre></div>
@@ -329,13 +320,13 @@ It was compiled with MPI support</p>
 <p>Cmake is only used during configuration and it is not needed at runtime</p>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
 <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> <span class="o">-</span><span class="n">DGMX_HWLOC</span><span class="o">=</span><span class="n">off</span> \
 <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_gcc82</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>              <span class="o">=</span> <span class="mf">162.72</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
@@ -352,14 +343,14 @@ It was compiled with MPI support</p>
 </div>
 <p>The second configuration enables the double precision for gromacs:</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
 <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> <span class="o">-</span><span class="n">DGMX_HWLOC</span><span class="o">=</span><span class="n">off</span> \
 <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_double_gcc82</span> \
 <span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>              <span class="o">=</span>  <span class="mf">85.42</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
@@ -378,7 +369,7 @@ It was compiled with MPI support</p>
 <div class="section" id="gromacs-2019-4-on-thorny-flat">
 <h3>Gromacs 2019.4 on Thorny Flat<a class="headerlink" href="#gromacs-2019-4-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.15</span><span class="o">.</span><span class="mi">4</span>
 <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
 </pre></div>
@@ -386,13 +377,13 @@ It was compiled with MPI support</p>
 <p>Cmake is only used during configuration and it is not needed at runtime</p>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
 <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
 <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_gcc82</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>              <span class="o">=</span> <span class="mf">162.72</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
@@ -409,14 +400,14 @@ It was compiled with MPI support</p>
 </div>
 <p>The second configuration enables the double precision for gromacs:</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
 <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
 <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_double_gcc82</span> \
 <span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>              <span class="o">=</span> <span class="mf">117.18</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
@@ -432,12 +423,12 @@ It was compiled with MPI support</p>
 <div class="section" id="gromacs-5-1-5-on-thorny-flat">
 <h3>Gromacs 5.1.5 on Thorny Flat<a class="headerlink" href="#gromacs-5-1-5-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> <span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.73</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> <span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.73</span>
 </pre></div>
 </div>
 <p>Cmake is only used during configuration and it is not needed at runtime
 The configuration line for cmake is executed on a folder created to contain the compiled code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
 <span class="n">cd</span> <span class="n">build_intel18</span>
 <span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
 <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpiicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpiicpc</span> \
@@ -449,7 +440,7 @@ The configuration line for cmake is executed on a folder created to contain the 
 </div>
 <p>A similar compilation was done using Intel 2019 compilers.
 One test fail from the test suite:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>                 <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
@@ -468,20 +459,20 @@ One test fail from the test suite:</p>
 <h2>LAMMPS<a class="headerlink" href="#lammps" title="Permalink to this headline">¶</a></h2>
 <p>Two versions on LAMMPS are compiled using GCC 8.2 with OpenMPI 3.1 and using Intel Compilers 20019.
 Download the code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lammps</span><span class="o">.</span><span class="n">sandia</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">tars</span><span class="o">/</span><span class="n">lammps</span><span class="o">-</span><span class="mi">9</span><span class="n">Jan20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lammps</span><span class="o">.</span><span class="n">sandia</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">tars</span><span class="o">/</span><span class="n">lammps</span><span class="o">-</span><span class="mi">9</span><span class="n">Jan20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Uncompress the code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">9</span><span class="n">Jan20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">9</span><span class="n">Jan20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Change to the src folder inside the uncompressed folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">7</span><span class="n">Aug19</span><span class="o">/</span><span class="n">src</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">7</span><span class="n">Aug19</span><span class="o">/</span><span class="n">src</span>
 </pre></div>
 </div>
 <p>There are two files with the configurations for the intel and gcc compilers.
 The file for Intel 2019 is called “Makefile.intel19_impi19”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Makefile.intel19_impi19
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Makefile.intel19_impi19
 # mpi = MPI with its default compiler
 
 SHELL = /bin/sh
@@ -599,7 +590,7 @@ sinclude .depend
 </pre></div>
 </div>
 <p>The file for GCC 8.2 is called “Makefile.gcc82_ompi31”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Makefile.gcc82_ompi31
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Makefile.gcc82_ompi31
 # mpi = MPI with its default compiler
 
 SHELL = /bin/sh
@@ -717,7 +708,7 @@ sinclude .depend
 </pre></div>
 </div>
 <p>The difference between those two files include change the FFT library that will be used and adding JPG support. The difference is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ diff MAKE/Makefile.intel19_impi19 MAKE/Makefile.gcc82_ompi31
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ diff MAKE/Makefile.intel19_impi19 MAKE/Makefile.gcc82_ompi31
 10c10
 &lt; CCFLAGS =     -g -O2
 ---
@@ -750,7 +741,7 @@ sinclude .depend
 </div>
 <p>Those two files should be located inside “src/MAKE” and “src/MAKE/MACHINES”.
 Now inside the “src” folder there is a Makefile that allow you to select which packages will be compiled along side with LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="nb">all</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="nb">all</span>
 <span class="n">make</span> <span class="n">no</span><span class="o">-</span><span class="n">lib</span>
 <span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">PYTHON</span>
 <span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">COLVARS</span>
@@ -759,37 +750,37 @@ Now inside the “src” folder there is a Makefile that allow you to select whi
 </pre></div>
 </div>
 <p>On Thorny, there is no module for Python 2.x and the RHEL python has not the development packages installed. As a result, the PYTHON module must be disable:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">no</span><span class="o">-</span><span class="n">PYTHON</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">no</span><span class="o">-</span><span class="n">PYTHON</span>
 </pre></div>
 </div>
 <p>The environment modules needed for the GCC82 are loaded.
 On Spruce:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">15</span><span class="n">_gcc82</span>
 </pre></div>
 </div>
 <p>On Thorny:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span>
 </pre></div>
 </div>
 <p>The COLVARS library needs to be compiled:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">lib</span><span class="o">-</span><span class="n">colvars</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-m mpi&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">lib</span><span class="o">-</span><span class="n">colvars</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-m mpi&quot;</span>
 <span class="n">make</span> <span class="n">lib</span><span class="o">-</span><span class="n">colvars</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-m gcc82_ompi31&quot;</span>
 </pre></div>
 </div>
 <p>And LAMMPS itself after that:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">gcc82_ompi31</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">gcc82_ompi31</span>
 </pre></div>
 </div>
-<p>After compiled the binary is called <code class="docutils literal"><span class="pre">lmp_gcc82_ompi31</span></code></p>
+<p>After compiled the binary is called <code class="docutils literal notranslate"><span class="pre">lmp_gcc82_ompi31</span></code></p>
 <p>Compiling the Intel version. On Spruce and Thorny:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_2</span><span class="o">.</span><span class="mf">7.16</span>
 </pre></div>
 </div>
 <p>And compile the code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">intel19_impi19</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">intel19_impi19</span>
 </pre></div>
 </div>
 <p>The resulting binaries can be copied to the PATH that will be exported with the environment module.</p>
@@ -799,18 +790,18 @@ On Spruce:</p>
 <p>CASTEP is a leading code for calculating the properties of materials from first principles. Using density functional theory, it can simulate a wide range of properties of materials proprieties including energetics, structure at the atomic level, vibrational properties, electronic response properties etc. In particular it has a wide range of spectroscopic features that link directly to experiment, such as infra-red and Raman spectroscopies, NMR, and core level spectra.</p>
 <p>CASTEP can only be compiled with Intel 2018 due to a bug on Intel 2019 MPI implementation. The code was compiled on both clusters with Intel 2018.</p>
 <p>Modules used:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_2</span><span class="o">.</span><span class="mf">7.16</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span>
 </pre></div>
 </div>
 <p>Compilation line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8
 </pre></div>
 </div>
 <p>A run of a test suite o both clusters passes all tests.</p>
 <p>On Spruce:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
 
 Makefile:595: GNU make version 3.82 or later is recommended: proceeding with Make 3.81
@@ -828,7 +819,7 @@ make[1]: Leaving directory `/gpfs/shared/src/CASTEP-19.11/Test&#39;
 </pre></div>
 </div>
 <p>On Thorny:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
  make -C &quot;Test&quot; ARCH=linux_x86_64_ifort18--mpi check-simple
  make[1]: Entering directory `/gpfs20/shared/src/CASTEP-19.11/Test&#39;
