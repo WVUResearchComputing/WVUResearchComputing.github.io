@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Environment Modules &mdash; WVU-RC 1.0 documentation</title>
+  <title>Parallel Programming &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Jupyter Notebooks" href="48.Jupyter.html" />
-    <link rel="prev" title="GPU Computing" href="46.GPU.html" /> 
+    <link rel="next" title="Parallel Computing: GPU Programming" href="59.GPU.html" />
+    <link rel="prev" title="Parallel Computing: OpenMP" href="57.OpenMP.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,19 +94,20 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Python.html">Python Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43.R.html">R Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="44.Perl.html">Perl Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="45.Conda.html">Conda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="46.GPU.html">GPU Computing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Environment Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="48.Jupyter.html">Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="49.Matlab.html">MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html">Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#gcc-the-gnu-compiler-collection">GCC: The GNU Compiler Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="53.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="54.Julia.html">GCC: The GNU Compiler Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="55.Matlab.html">MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="56.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="57.OpenMP.html">Parallel Computing: OpenMP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parallel Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="59.GPU.html">Parallel Computing: GPU Programming</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
@@ -157,15 +158,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
+          <li><a href="50.ProgrammingLanguages.html">Programming Languages</a> &raquo;</li>
         
-      <li>Environment Modules</li>
+      <li>Parallel Programming</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/47.Modules.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/58.MPI.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,10 +179,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="environment-modules">
-<span id="ad-modules"></span><h1>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
-<p>The Environment Modules system is a tool to help users manage their Unix or Linux shell environment, by allowing groups of related environment-variable settings to be made or removed dynamically.</p>
-<p>Modules has been around since the early 1990s and is used mostly at HPC clusters.</p>
+  <div class="section" id="parallel-programming">
+<h1>Parallel Programming<a class="headerlink" href="#parallel-programming" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -192,10 +191,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="48.Jupyter.html" class="btn btn-neutral float-right" title="Jupyter Notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="59.GPU.html" class="btn btn-neutral float-right" title="Parallel Computing: GPU Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="46.GPU.html" class="btn btn-neutral float-left" title="GPU Computing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="57.OpenMP.html" class="btn btn-neutral float-left" title="Parallel Computing: OpenMP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

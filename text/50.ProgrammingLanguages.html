@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>For Advanced Users &mdash; WVU-RC 1.0 documentation</title>
+  <title>Programming Languages &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Singularity Containers" href="41.Singularity.html" />
-    <link rel="prev" title="XWindow" href="36.XWindow.html" /> 
+    <link rel="next" title="Programming Languages" href="51.C_CPP_Fortran.html" />
+    <link rel="prev" title="Jupyter Notebooks" href="45.Jupyter.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,15 +94,20 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">For Advanced Users</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html">Conda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43.UsingGPUs.html">GPU Computing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="44.Modules.html">Environment Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="45.Jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming Languages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html">Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#gcc-the-gnu-compiler-collection">GCC: The GNU Compiler Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="53.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="54.Julia.html">GCC: The GNU Compiler Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="55.Matlab.html">MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="56.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="57.OpenMP.html">Parallel Computing: OpenMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="58.MPI.html">Parallel Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="59.GPU.html">Parallel Computing: GPU Programming</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
@@ -153,13 +158,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>For Advanced Users</li>
+      <li>Programming Languages</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/40.AdvancedUser.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/50.ProgrammingLanguages.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,8 +177,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="for-advanced-users">
-<span id="chap-advanced-user"></span><h1>For Advanced Users<a class="headerlink" href="#for-advanced-users" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="programming-languages">
+<span id="chap-developers"></span><h1>Programming Languages<a class="headerlink" href="#programming-languages" title="Permalink to this headline">¶</a></h1>
 <p>The contents on this section are intended for users who demand more control on the system, the ability to install or execute codes not provided by central installation.</p>
 <p>The different topics on this section are mostly independent of each other. The few instances where two topics are connected will be treated as self consistently as possible even with the drawback of some redundancy.</p>
 <p>We start with <a class="reference internal" href="41.Singularity.html#ad-singularity"><span class="std std-ref">Singularity Containers</span></a> a virtualization software platform that can package an application and its dependencies in a virtual container that can run on any Linux server. Singularity brings many of the features of Docker for HPC usage. Docker a well known platform virtualization software but due to design it requires to run with superuser privileges that cannot be offered on a shared resourced like an HPC cluster.</p>
@@ -187,41 +192,53 @@
 <p>Finally, section <a class="reference internal" href="55.Matlab.html#ad-matlab"><span class="std std-ref">MATLAB</span></a> shows how to run Matlab non-interactively with a couple of examples.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html#activating-singularity">Activating Singularity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html#singularity-images">Singularity Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html#interactive-job-with-x11-forwarding">Interactive Job with X11 forwarding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html#non-interactive-execution-with-submission-scripts">Non-interactive execution with Submission scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html#gpu-support-and-singularity">GPU Support and Singularity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="51.C_CPP_Fortran.html">Programming Languages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#r-language">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#c-and-c">C and C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#fortran">Fortran</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="42.Conda.html">Conda</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#anaconda-vs-minicoda">Anaconda vs Minicoda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#activating-conda-on-spruce-and-thorny-flat">Activating Conda on Spruce and Thorny Flat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#conda-environments">Conda Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#knowing-which-environments-are-available">Knowing which environments are available</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#activating-an-existing-environment">Activating an existing environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#deactivating-the-current-environment">Deactivating the current environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#create-a-new-environment">Create a new environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#conda-and-python">Conda and Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#managing-packages-and-channels">Managing packages and channels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#creating-a-new-environment-from-a-yml-file">Creating a new environment from a YML file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#listing-the-packages-inside-one-environment">Listing the packages inside one environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#using-a-conda-environment-in-a-submission-script">Using a conda environment in a submission script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#deleting-a-environment">Deleting a environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#more-documentation">More documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#downloading-miniconda">Downloading Miniconda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="42.Conda.html#no-installing-anything">No installing anything</a></li>
+<li class="toctree-l1"><a class="reference internal" href="51.C_CPP_Fortran.html#gcc-the-gnu-compiler-collection">GCC: The GNU Compiler Collection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#packages-included">Packages included</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51.C_CPP_Fortran.html#older-modules-it-obsoletes">Older Modules it obsoletes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="43.UsingGPUs.html">GPU Computing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="43.UsingGPUs.html#hardware-configurations">Hardware configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43.UsingGPUs.html#interactive-computing-with-gpus">Interactive computing with GPUs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="43.UsingGPUs.html#checking-the-presence-of-gpus">Checking the presence of GPUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="52.Python.html">Python Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html#red-hat-linux-native-python">Red Hat Linux Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html#python-from-environment-modules">Python from environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html#packages-included">Packages included</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html#installing-python-packages-as-user-with-pip">Installing python packages as user with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html#installing-python-packages-with-a-custom-prefix">Installing python packages with a custom prefix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.Python.html#using-python-virtualenv">Using Python virtualenv</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="44.Modules.html">Environment Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="45.Jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="53.R.html">R Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="53.R.html#activating-r">Activating R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="53.R.html#using-r-from-the-terminal">Using R from the Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="53.R.html#installing-r-packages-in-default-directories">Installing R Packages in default Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="53.R.html#installing-r-packages-in-non-default-directories">Installing R Packages in non-default directories</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="54.Julia.html">GCC: The GNU Compiler Collection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="54.Julia.html#packages-included">Packages included</a></li>
+<li class="toctree-l2"><a class="reference internal" href="54.Julia.html#older-modules-it-obsoletes">Older Modules it obsoletes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="55.Matlab.html">MATLAB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="55.Matlab.html#loading-environment-modules">Loading Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="55.Matlab.html#running-matlab-scripts-on-a-hpc-cluster">Running Matlab scripts on a HPC cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="56.Perl.html">Perl Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="56.Perl.html#using-the-cpan-module">Using the CPAN module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="56.Perl.html#preparing-the-cpan-shell">Preparing the CPAN Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="56.Perl.html#installing-perl-modules">Installing Perl modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="57.OpenMP.html">Parallel Computing: OpenMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="58.MPI.html">Parallel Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="59.GPU.html">Parallel Computing: GPU Programming</a></li>
 </ul>
 </div>
 </div>
@@ -234,10 +251,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="41.Singularity.html" class="btn btn-neutral float-right" title="Singularity Containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="51.C_CPP_Fortran.html" class="btn btn-neutral float-right" title="Programming Languages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="36.XWindow.html" class="btn btn-neutral float-left" title="XWindow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="45.Jupyter.html" class="btn btn-neutral float-left" title="Jupyter Notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

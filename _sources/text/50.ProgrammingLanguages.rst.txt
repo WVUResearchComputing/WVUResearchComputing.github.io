@@ -1,7 +1,7 @@
-.. _chap-advanced-user:
+.. _chap-developers:
 
-For Advanced Users
-##################
+Programming Languages
+#####################
 
 The contents on this section are intended for users who demand more control on the system, the ability to install or execute codes not provided by central installation.
 
@@ -25,11 +25,17 @@ On section :ref:`ad-jupyter` we discuss about Jupyter notebooks. A Jupyter Noteb
 
 Finally, section :ref:`ad-matlab` shows how to run Matlab non-interactively with a couple of examples.
 
+
 .. toctree::
     :maxdepth: 2
 
-    41.Singularity
-    42.Conda
-    43.UsingGPUs
-    44.Modules
-    45.Jupyter
+    51.C_CPP_Fortran
+    52.Python
+    53.R
+    54.Julia
+    55.Matlab
+    56.Perl
+    57.OpenMP
+    58.MPI
+    59.GPU
+

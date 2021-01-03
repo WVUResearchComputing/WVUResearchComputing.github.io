@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>For Developers &mdash; WVU-RC 1.0 documentation</title>
+  <title>Jupyter Notebooks &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Programming Languages" href="51.Programming.html" />
-    <link rel="prev" title="MATLAB" href="49.Matlab.html" /> 
+    <link rel="next" title="Programming Languages" href="50.ProgrammingLanguages.html" />
+    <link rel="prev" title="Environment Modules" href="44.Modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,13 +94,15 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">For Developers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="51.Programming.html">Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="52.Parallel.html">Parallel Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="53.GCC.html">GCC: The GNU Compiler Collection</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Conda.html">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.UsingGPUs.html">GPU Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Modules.html">Environment Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Jupyter Notebooks</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
@@ -151,13 +153,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>For Developers</li>
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
+        
+      <li>Jupyter Notebooks</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/50.Developers.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/45.Jupyter.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,25 +174,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="for-developers">
-<span id="chap-developers"></span><h1>For Developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="51.Programming.html">Programming Languages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="51.Programming.html#python">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="51.Programming.html#r-language">R Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="51.Programming.html#c-and-c">C and C++</a></li>
-<li class="toctree-l2"><a class="reference internal" href="51.Programming.html#fortran">Fortran</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="52.Parallel.html">Parallel Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="53.GCC.html">GCC: The GNU Compiler Collection</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="53.GCC.html#packages-included">Packages included</a></li>
-<li class="toctree-l2"><a class="reference internal" href="53.GCC.html#older-modules-it-obsoletes">Older Modules it obsoletes</a></li>
-</ul>
-</li>
-</ul>
-</div>
+  <div class="section" id="jupyter-notebooks">
+<span id="ad-jupyter"></span><h1>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>A Jupyter Notebook (formerly IPython Notebooks) is a web-based interactive computational environment for creating Jupyter notebook documents. The “notebook” term can colloquially make reference to many different entities, mainly the Jupyter web application, Jupyter Python web server, or Jupyter document format depending on context. A Jupyter Notebook document is a JSON document, following a versioned schema, and containing an ordered list of input/output cells which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the “.ipynb” extension.</p>
+<p>A Jupyter Notebook can be converted to a number of open standard output formats (HTML, presentation slides, LaTeX, PDF, ReStructuredText, Markdown, Python) through “Download As” in the web interface, via the nbconvert library or “jupyter nbconvert” command line interface in a shell.</p>
 </div>
 
 
@@ -199,10 +188,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="51.Programming.html" class="btn btn-neutral float-right" title="Programming Languages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="50.ProgrammingLanguages.html" class="btn btn-neutral float-right" title="Programming Languages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="49.Matlab.html" class="btn btn-neutral float-left" title="MATLAB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="44.Modules.html" class="btn btn-neutral float-left" title="Environment Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
