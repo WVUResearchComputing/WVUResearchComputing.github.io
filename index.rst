@@ -50,7 +50,7 @@ Main Responsible for Documentation and Scientific Outreach
    text/20.QuickStart
    text/30.BasicUser
    text/40.AdvancedUser
-   text/50.Developers
+   text/50.ProgrammingLanguages
    text/60.Administrators
    text/70.DomainSpecific
    text/80.ClusterSpecific
