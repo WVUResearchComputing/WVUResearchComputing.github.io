@@ -9,7 +9,7 @@ Research Computing at West Virginia University
 .. image:: /_static/ResearchComputing.png
 
 West Virginia University Research Computing (WVU-RC) is a team inside WVU's
-Information Technology Services (ITS) dedicated to supporting, enabling and
+Research Office dedicated to supporting, enabling and
 advancing computational research at WVU.
 
 This site contains information about how to use the various technologies
@@ -26,8 +26,8 @@ The contents of this website can be downloaded as a single PDF here:
 There are several websites associated with WVU-RC activities, here is a list of
 the most relevant ones:
 
-The official webpage in ITS portal about the Research Computing Division
-   `WVU Research Computing - ITS Website <https://it.wvu.edu/research/research-computing/high-performance-computing>`_
+The official webpage in Research Office portal about the Research Computing Division
+   `WVU Research Computing - Research Office <https://research.wvu.edu/researchers/computational-research/hpc>`_
 
 The legacy documentation was a Wiki website continue to be online for a while
    `WVU Research Computing - Legacy Wiki <https://wiki.hpc.wvu.edu/hpc_wiki/index.php/Main_Page>`_
