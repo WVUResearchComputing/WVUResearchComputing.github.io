@@ -1,5 +1,11 @@
+.. _pl-gpu:
 
-Parallel Computing: GPU Programming
+Parallel Programming: Accelerators
 ===================================
 
-GPU Programming
+OpenACC
+-------
+
+
+CUDA
+----

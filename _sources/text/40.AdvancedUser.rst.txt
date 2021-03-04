@@ -9,12 +9,6 @@ The different topics on this section are mostly independent of each other. The f
 
 We start with :ref:`ad-singularity` a virtualization software platform that can package an application and its dependencies in a virtual container that can run on any Linux server. Singularity brings many of the features of Docker for HPC usage. Docker a well known platform virtualization software but due to design it requires to run with superuser privileges that cannot be offered on a shared resourced like an HPC cluster.
 
-Next, we discuss :ref:`ad-python`, the different environment modules for Python and how to install packages as user with pip. We will also cover the use of IPython for interactive computing.
-
-On section :ref:`ad-r`, the R versions available and how to install packages as user from the Comprehensive R Archive Network (CRAN), a repository of R packages. We also cover RStudio, a user friendly interface for the R language.
-
-The Comprehensive Perl Archive Network (CPAN) is a repository of software modules and accompanying documentation of codes written in the Perl programming language. :ref:`ad-perl` shows how to install perl packages from CPAN as user.
-
 Conda :ref:`ad-conda`, is an open source package management system and environment management system. Originally created for Python programs, it can package and distribute software for any language. We will show how to easily create, save, load and switch between environments. We also include information about installing software from specialized channels.
 
 General Purpose Graphics Processing Units (GPGPUs) is the usage of GPUs for numerical calculation, also called GPU accelerators, GPU-based high performance computers are starting to play a significant role in HPC. On our cluster we have nodes with dedicated GPU cards for computing. In :ref:`ad-gpu` we discuss how to use GPUs in several situations.
@@ -22,8 +16,6 @@ General Purpose Graphics Processing Units (GPGPUs) is the usage of GPUs for nume
 Environment Modules system is a tool to help users manage their Unix or Linux shell environment, by allowing groups of related environment-variable settings to be made or removed dynamically. On :ref:`ad-modules` we show how to create modules and create a private repository for them.
 
 On section :ref:`ad-jupyter` we discuss about Jupyter notebooks. A Jupyter Notebook (formerly IPython Notebook) is a web-based interactive computational environment computational notebooks.  A Jupyter Notebook document is a JSON document, following a versioned schema, and containing an ordered list of input/output cells which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the ".ipynb" extension. Originally create for the Python language nowadays it supports a number of languages including Python, R, Julia and Haskell.
-
-Finally, section :ref:`ad-matlab` shows how to run Matlab non-interactively with a couple of examples.
 
 .. toctree::
     :maxdepth: 2

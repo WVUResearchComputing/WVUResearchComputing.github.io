@@ -1,2 +1,4 @@
-Parallel Programming
-====================
+.. _pl-mpi:
+
+Parallel Programming: MPI
+=========================

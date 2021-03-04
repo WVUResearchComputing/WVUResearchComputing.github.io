@@ -1,4 +1,4 @@
-.. _ad-python:
+.. _pl-python:
 
 Python Language
 ===============

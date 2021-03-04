@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="31.Editors.html#id1">Terminal-based Text Editors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="32.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Queuing system</a><ul>
@@ -103,6 +104,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#batch-shell-scripts">Batch Shell Scripts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qsub-environment-variables">Qsub Environment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-specification">Resource Specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#e-mail-options">E-mail options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-file-specification">Output file specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requesting-array-jobs">Requesting Array jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-jobs">Interactive Jobs</a></li>
@@ -398,8 +403,9 @@ options</td>
 pbs command at the terminal. Further an extensive list of qsub options
 including environment variables can be found using the man qsub
 command.</strong></p>
+</div>
 <div class="section" id="resource-specification">
-<h4>Resource Specification<a class="headerlink" href="#resource-specification" title="Permalink to this headline">¶</a></h4>
+<h3>Resource Specification<a class="headerlink" href="#resource-specification" title="Permalink to this headline">¶</a></h3>
 <p>The #PBS -l option is used to specify resources such as number of CPUs,
 nodes, and length of Walltime for the job specified. The three most
 common resources specified for the Mountaineer cluster are</p>
@@ -454,7 +460,7 @@ job (procs=1). <strong>Note:</strong>Resources specifying per node request are
 given with the nodes directive and seperated with a :, on the same line
 in your script.</p>
 <div class="section" id="requesting-memory-specifications">
-<h5>Requesting Memory Specifications<a class="headerlink" href="#requesting-memory-specifications" title="Permalink to this headline">¶</a></h5>
+<h4>Requesting Memory Specifications<a class="headerlink" href="#requesting-memory-specifications" title="Permalink to this headline">¶</a></h4>
 <p>Requesting memory specifications for jobs is done with the attributes
 vmem or pvmem through the PBS -l directive (resource specification). The
 man pages of pbs will specify two other memory related attributes: mem
@@ -494,7 +500,7 @@ resource directive line:</p>
 job.</p>
 </div>
 <div class="section" id="requesting-certain-node-types">
-<h5>Requesting Certain Node Types<a class="headerlink" href="#requesting-certain-node-types" title="Permalink to this headline">¶</a></h5>
+<h4>Requesting Certain Node Types<a class="headerlink" href="#requesting-certain-node-types" title="Permalink to this headline">¶</a></h4>
 <p>There might be times where you want to be able to request a node with a
 particular feature or processor. The following will allow you to
 accomplish this task. Replace ‘feature_name” with one of the features in
@@ -509,7 +515,7 @@ following:</p>
 </div>
 </div>
 <div class="section" id="available-features">
-<h5>Available Features<a class="headerlink" href="#available-features" title="Permalink to this headline">¶</a></h5>
+<h4>Available Features<a class="headerlink" href="#available-features" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -553,7 +559,7 @@ following:</p>
 </div>
 </div>
 <div class="section" id="e-mail-options">
-<h4>E-mail options<a class="headerlink" href="#e-mail-options" title="Permalink to this headline">¶</a></h4>
+<h3>E-mail options<a class="headerlink" href="#e-mail-options" title="Permalink to this headline">¶</a></h3>
 <p>The #PBS -m and #PBS -M options are used to specify when and to whom the
 scheduler will send e-mails. The -m option consists of either the single
 character “n”, or one or more of the characters “a”, “b”, and “e”.</p>
@@ -590,7 +596,7 @@ aborted, or when the job is completed. To specify more than one e-mail
 address with the -M option, each address should be separated with a
 comma without any spaces.</p>
 <div class="section" id="to-receive-no-e-mails-even-on-aborts">
-<h5>To Receive no e-mails even on aborts<a class="headerlink" href="#to-receive-no-e-mails-even-on-aborts" title="Permalink to this headline">¶</a></h5>
+<h4>To Receive no e-mails even on aborts<a class="headerlink" href="#to-receive-no-e-mails-even-on-aborts" title="Permalink to this headline">¶</a></h4>
 <p>Even with the ‘n’ option of ‘-m’ directive, the system will still send
 an e-mail if the job is cancelled or aborts. To provide the ability for
 our users to circumvent this response, we have set-up an alias e-mail
@@ -605,7 +611,7 @@ the ‘n’ option:</p>
 </div>
 </div>
 <div class="section" id="output-file-specification">
-<h4>Output file specification<a class="headerlink" href="#output-file-specification" title="Permalink to this headline">¶</a></h4>
+<h3>Output file specification<a class="headerlink" href="#output-file-specification" title="Permalink to this headline">¶</a></h3>
 <p>Default standard output and standard error of the job will be placed in
 files named <em>jobname</em>.<strong>o</strong><em>jobid</em> and <em>jobname</em>.<strong>e</strong><em>jobid</em>,
 respectfully. These files will be written to the directory in which the
@@ -639,7 +645,7 @@ standard output streams, respectively.</p>
 directory</strong></p>
 </div>
 <div class="section" id="requesting-array-jobs">
-<h4>Requesting Array jobs<a class="headerlink" href="#requesting-array-jobs" title="Permalink to this headline">¶</a></h4>
+<h3>Requesting Array jobs<a class="headerlink" href="#requesting-array-jobs" title="Permalink to this headline">¶</a></h3>
 <p>By using the directive #PBS -t , you can request a job to be repeated by
 a single script a number of times. This is useful if you have data where
 you want a single parameter to range over a section of numbers. For
@@ -681,7 +687,6 @@ need to share a queue with another user</p>
 </div>
 <p>The above directive will only launch ten jobs to the queue at a time
 until all 200 job requests have been executed.</p>
-</div>
 </div>
 </div>
 <div class="section" id="interactive-jobs">

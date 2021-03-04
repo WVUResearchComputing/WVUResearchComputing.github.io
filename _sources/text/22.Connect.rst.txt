@@ -34,7 +34,7 @@ Connecting to WVU's Clusters via SSH
 Currently, WVU has two clusters available for access.  Depending on which cluster you are using, the instructions for connecting slightly differ.
 
 General SSH Connection Instructions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On MacOS and Unix/Linux, open a terminal shell and type::
 
@@ -65,7 +65,7 @@ We currently have two clusters *Thorny Flat and *Spruce Knob* the hostnames are:
      - Operational
 
 Spruce Knob Connectivity Instructions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 To connect to Spruce Knob use the following command::
@@ -76,7 +76,7 @@ To connect to Spruce Knob use the following command::
 
 
 Thorny Flat Connectivity Instructions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To connect to Thorny Flat, you will first have to connect to WVU's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
 

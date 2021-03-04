@@ -206,7 +206,7 @@ including environment variables can be found using the man qsub
 command.**
 
 Resource Specification
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 The #PBS -l option is used to specify resources such as number of CPUs,
 nodes, and length of Walltime for the job specified. The three most
@@ -341,7 +341,7 @@ Available Features
 +-----------+------------------------------------+
 
 E-mail options
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 The #PBS -m and #PBS -M options are used to specify when and to whom the
 scheduler will send e-mails. The -m option consists of either the single
@@ -390,7 +390,7 @@ the 'n' option:
    #PBS -m noemail@hpc.wvu.edu
 
 Output file specification
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Default standard output and standard error of the job will be placed in
 files named *jobname*.\ **o**\ *jobid* and *jobname*.\ **e**\ *jobid*,
@@ -421,7 +421,7 @@ standard output streams, respectively.
 directory**
 
 Requesting Array jobs
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 By using the directive #PBS -t , you can request a job to be repeated by
 a single script a number of times. This is useful if you have data where

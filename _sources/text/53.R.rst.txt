@@ -1,4 +1,4 @@
-.. _ad-r:
+.. _pl-r:
 
 R Language
 ==========
@@ -9,8 +9,8 @@ R provides a wide variety of statistical (linear and nonlinear modelling, classi
 
 One of R’s strengths is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
 
-Activating R
-------------
+Loading Environment Modules
+---------------------------
 
 On Spruce Knob R is preinstalled from RHEL repositories. The RHEL version is 3.0.2 and it is considered too old for most scientific applications.
 You should consider using the environment module for R which activates R 3.5.2 a far more recent version and compatible with most recent R packages.
