@@ -1,4 +1,4 @@
-.. _ad-perl:
+.. _pl-perl:
 
 Perl Language
 =============

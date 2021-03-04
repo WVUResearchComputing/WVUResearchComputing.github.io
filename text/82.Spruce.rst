@@ -8,19 +8,20 @@ Overview
 --------
 
 Resource manager and system scheduler
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Torque v. 6.1.x
-* Moab Cluster Manager v. 9.1.x 
+* Moab Cluster Manager v. 9.1.x
 
 Total Compute Resources
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 * 3,376 Cores
 * 176 Compute Nodes
 * 4 Management Nodes
 * 18 GPUs
 
 Shared Interconnect
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
+
 * Mellanox SX6512 Infiniband Switch
 * 216 ports all non-blocking
 * FDR (56 Gb/s) speed
@@ -31,19 +32,19 @@ Hardware
 --------
 
 Phase 0/1 Hardware
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 Phase 2 Hardware
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 Phase 3a Hardware
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 Phase 3b Hardware
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 Phase 4 Hardware
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 
 Queues

@@ -7,28 +7,32 @@ Hardware
 --------
 
 Log in Node
-^^^^^^^^^^^
+~~~~~~~~~~~
+
 * Dual CPU E5-2650 v4 @ 2.20GHz
 * 24 Cores Total
 * 256GB Memory
 * 500 GB Raw Space
 
 Name Node
-^^^^^^^^^
+~~~~~~~~~
+
 * Dual Intel 2620 v3 @ 2.4 GHz
 * 12 Cores Total
 * 64 GB Memory
 * 3.4 TB Raw Space
 
 3 Worker Nodes
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
+
 * Dual Intel 2650 v3 @ 2.3 GHz
 * 20 Cores Each (60 Total)
 * 128 GB RAM Each (384 GB Total)
 * 21 TB Combined Worker Node Storage (7 TB usable)
 
 Additional Features
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
+
 * 10 Gbps Ethernet Interconnect
 * Shares HPC resources (i.e. additional storage).
 
@@ -36,4 +40,3 @@ Usage
 -----
 
 Users connect to Citrix through MasterApps.wvu.edu. In Citrix the user should have IE and Firefox browsers they can launch. After launching one of them they can go to gbef4001.hpc.wvu.edu to access RStudio Server and work within RStudio. Jobs can be launched through Hadoop or Spark 2.
-

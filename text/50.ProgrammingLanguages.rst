@@ -3,28 +3,40 @@
 Programming Languages
 #####################
 
-The contents on this section are intended for users who demand more control on the system, the ability to install or execute codes not provided by central installation.
+Scientific Computing is done in a variety of programming languages. From open languages to proprietary ones. From low level languages, closer to the machine to high level languages that are closer to human language. A variety of language serve an equal diverse research areas and levels of expertise.
 
-The different topics on this section are mostly independent of each other. The few instances where two topics are connected will be treated as self consistently as possible even with the drawback of some redundancy.
+From all those languages we have chosen a limited set of languages and describe for them which are the ways under which those languages can be accessed on our clusters. The purpose of this chapter is not to teach any of the languages that will be presented, learning a programming language is not possible on a single chapter even less to explain the details of a number of different languages some of them very different from each other.
 
-We start with :ref:`ad-singularity` a virtualization software platform that can package an application and its dependencies in a virtual container that can run on any Linux server. Singularity brings many of the features of Docker for HPC usage. Docker a well known platform virtualization software but due to design it requires to run with superuser privileges that cannot be offered on a shared resourced like an HPC cluster.
+Programming languages can be classified for how close they are to the machine when expressing operations. With low level languages you have to declare the type of each variable and operations such as conditionals, loops and functions (routines or methods) are the building blocks for those languages. The three low level languages more used in scientific computing are Fortran, C and C++.
+First section in this chapter we will devote to these three languages. The different compilers available for them and how to compile basic source code written in those languages.
 
-Next, we discuss :ref:`ad-python`, the different environment modules for Python and how to install packages as user with pip. We will also cover the use of IPython for interactive computing.
+The next section is dedicated to Python :ref:`pl-python`.
+Python is a high level language that is often used in scientific computing due to its expressiveness and the large set of scientific libraries that have been written for it. We will show the various Python implementations available on our clusters and the use of IPython and Jupyter as effective tools for interactive scientific computing.
 
-On section :ref:`ad-r`, the R versions available and how to install packages as user from the Comprehensive R Archive Network (CRAN), a repository of R packages. We also cover RStudio, a user friendly interface for the R language.
+The second high level language is R :ref:`pl-r`. R is a commonly used language for scientific computing involving statistical operations. Many packages are available for it thanks to the Comprehensive R Archive Network (CRAN), a repository of thousands of R packages. We also cover RStudio, a user friendly interface for interactive computing in R as well as Jupyter that also offers a kernel for interacting with the language.
 
-The Comprehensive Perl Archive Network (CPAN) is a repository of software modules and accompanying documentation of codes written in the Perl programming language. :ref:`ad-perl` shows how to install perl packages from CPAN as user.
+The next section is dedicated to Julia :ref:`pl-julia`.
+Julia is a modern language with a syntax that is clean and modern but with the ability to type variables and offering some modern features that make this language comparable to low level languages in terms of performance. We will demonstrate some of the nice features of the language and the use of Jupyter with a Julia kernel for interactive scientific computing.
 
-Conda :ref:`ad-conda`, is an open source package management system and environment management system. Originally created for Python programs, it can package and distribute software for any language. We will show how to easily create, save, load and switch between environments. We also include information about installing software from specialized channels.
+After our 2 triads of languages. Fortran, C and C++ for the low level and Python, R and Julia for the high level. We will include a couple of sections describing two other languages used in scientific computing.
 
-General Purpose Graphics Processing Units (GPGPUs) is the usage of GPUs for numerical calculation, also called GPU accelerators, GPU-based high performance computers are starting to play a significant role in HPC. On our cluster we have nodes with dedicated GPU cards for computing. In :ref:`ad-gpu` we discuss how to use GPUs in several situations.
+The section dedicated to MATLAB :ref:`pl-matlab`. MATLAB is a commercial product offering a high level language with an impressive variety of subpackages for most areas in science and engineering. WVU has a license for this package on our clusters.
 
-Environment Modules system is a tool to help users manage their Unix or Linux shell environment, by allowing groups of related environment-variable settings to be made or removed dynamically. On :ref:`ad-modules` we show how to create modules and create a private repository for them.
+The next section is about Perl :ref:`pl-perl`. Perl is a popular programming language still in use specially in bioinformatics due to its particular ability to deal with patterns. There is a large collection of packages for Perl.
+The Comprehensive Perl Archive Network (CPAN) is a repository of software modules and accompanying documentation of codes written in the Perl programming language. We will shows how to install perl packages from CPAN as user.
 
-On section :ref:`ad-jupyter` we discuss about Jupyter notebooks. A Jupyter Notebook (formerly IPython Notebook) is a web-based interactive computational environment computational notebooks.  A Jupyter Notebook document is a JSON document, following a versioned schema, and containing an ordered list of input/output cells which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the ".ipynb" extension. Originally create for the Python language nowadays it supports a number of languages including Python, R, Julia and Haskell.
+Parallel Programming is at the core of High Performance Computing. On an HPC cluster, compute nodes have tens of cores, large amounts of RAM and sometimes include accelerators such as GPUs. Those nodes are interconnected using expensive networking. The main reason for all this is to take advantage of parallelism at various level to speed up scientific calculations that are too complex for a normal desktop machine. There are several strategies for parallel computing and the final 3 sections explore those models.
 
-Finally, section :ref:`ad-matlab` shows how to run Matlab non-interactively with a couple of examples.
+The first of those three chapters is dedicated to OpenMP :ref:`pl-openmp`.
+Computers today are multicore, in striking difference with desktop computers in the 20th century that only have a single core on a single CPU chip. Being multicore means that the CPU offers several computing cores, complete processing units as capable of running processes as a single CPU. The cores on the machine are able to see all the memory (RAM) of the computer. Muticore machines allow for a special kind of parallelism called "shared memory multiprocessing" and OpenMP is a prominent example of this kind of parallelism.
 
+The next section is about Message Passing Interface (MPI) :ref:`pl-mpi`.
+A more general parallelism is achieved when several machines each one of them with their own memory work in concert on a given problem. That model of parallelism is called "Distributed Parallel Computing".
+The machines at some point need to communicate information to the other partners and that is done by passing messages between the different compute nodes. MPI is the dominant interface for this kind of parallel programming. Several implementations of MPI exist and we will describe how to compile and run calculations that uses MPI.
+
+The last section is dedicated to GPU computing :ref:`pl-gpu`.
+Modern HPC cluster now rely more and mode on accelerators. Accelerators are electronic devices specially dedicated for certain kinds of tasks for which they excel compared to a normal CPU.
+General Purpose Graphics Processing Units (GPGPUs) is the usage of GPUs for numerical calculation, also called accelerators, GPU-based high performance computers are starting to play a significant role in HPC.
 
 .. toctree::
     :maxdepth: 2
@@ -38,4 +50,3 @@ Finally, section :ref:`ad-matlab` shows how to run Matlab non-interactively with
     57.OpenMP
     58.MPI
     59.GPU
-

@@ -1,3 +1,4 @@
+.. _pl-openmp:
 
 Parallel Computing: OpenMP
 ==========================

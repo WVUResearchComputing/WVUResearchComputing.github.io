@@ -36,12 +36,14 @@ specifically compiled and optimized for the hardware architecture.
 
 
 Resource manager and system scheduler
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * Torque v. 6.1.x
 * Moab Cluster Manager v. 9.1.x
 
 Total Compute Resources
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
+
 * 4,208 Cores
 * 101 Compute Nodes
 * 7 Compute Nodes
@@ -49,7 +51,7 @@ Total Compute Resources
 * 4 Management Nodes
 
 Shared Interconnect
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~^
 * Intel Omnipath 100 Gbps
 * 5:1 Blocking
 
@@ -57,7 +59,7 @@ Hardware
 --------
 
 Phase 0/1 Hardware
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 +---------------+-------------------------------------------+-----------+-------+-------+
 | Node Type     | Description                               | Community | Condo | Total |

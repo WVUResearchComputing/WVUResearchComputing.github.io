@@ -1,3 +1,4 @@
+.. _pl-gpu:
 
 Parallel Computing: GPU Programming
 ===================================
