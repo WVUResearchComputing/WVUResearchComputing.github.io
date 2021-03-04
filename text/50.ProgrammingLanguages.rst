@@ -7,7 +7,8 @@ Scientific Computing is done in a variety of programming languages. From open la
 
 From all those languages we have chosen a limited set of languages and describe for them which are the ways under which those languages can be accessed on our clusters. The purpose of this chapter is not to teach any of the languages that will be presented, learning a programming language is not possible on a single chapter even less to explain the details of a number of different languages some of them very different from each other.
 
-Programming languages can be classified for how close they are to the machine when expressing operations. With low level languages you have to declare the type of each variable and operations such as conditionals, loops and functions (routines or methods) are the building blocks for those languages. The three low level languages more used in scientific computing are Fortran, C and C++.
+Programming languages can be classified for how close they are to the machine when expressing operations. With low level languages you have to declare the type of each variable and operations such as conditionals, loops and functions (routines or methods) are the building blocks for those languages. The three low level languages more used in scientific computing are Fortran, C and C++
+:ref:`pl-fortran_c_cpp`.
 First section in this chapter we will devote to these three languages. The different compilers available for them and how to compile basic source code written in those languages.
 
 The next section is dedicated to Python :ref:`pl-python`.
@@ -41,7 +42,7 @@ General Purpose Graphics Processing Units (GPGPUs) is the usage of GPUs for nume
 .. toctree::
     :maxdepth: 2
 
-    51.C_CPP_Fortran
+    51.Fortran_C_CPP
     52.Python
     53.R
     54.Julia
