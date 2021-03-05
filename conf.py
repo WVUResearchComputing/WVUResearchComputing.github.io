@@ -45,7 +45,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'WVU-RC'
-copyright = '2019, West Virginia University'
+copyright = '2021, West Virginia University'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -256,8 +256,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'WVU-RC', 'WVU-RC Documentation',
-   'Guillermo Avendano-Franco', 'WVU-RC', 'One line description of project.',
-   'Miscellaneous'),
+   'Guillermo Avendano-Franco', 'WVU-RC', 'High Performance Computing',
+   'Parallel Computing'),
 ]
 
 # Documents to append as an appendix to all manuals.
