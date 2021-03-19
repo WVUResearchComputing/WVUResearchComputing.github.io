@@ -7,13 +7,13 @@ R Language
   :width: 200
   :alt: R logo
 
-R is a language and environment for scientific computing with a particular emphasis on statistical analysis and graphics. The R project is supported by the R Foundation and it is released with a GNU license. The R language itself was created to be similar to the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. Originally, R was considered as a different implementation of S, it has since grown into a major environment for statistical computing. There are some important differences with the original S language, but much code written for S runs unaltered under R.
+R is a language and environment for scientific computing with a particular emphasis on statistical analysis and plotting. The R project is supported by the R Foundation and it is released with a GNU license. The R language itself was created to be similar to the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. Originally, R was considered as a different implementation of S, it has since grown into a major environment for statistical computing. There are some important differences with the original S language, but much code written for S runs unaltered under R.
 
-The R source code is written primarily in C and Fortran, with some higher-level pieces of code in R itself. R provides a wide variety of statistical (linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, and others), it is capable of publication-ready graphics and is highly extensible. The S language is often the vehicle of choice for research in statistical methodology, and R provides an open source alternative to academic research.
+The R source code is written primarily in C and Fortran, with some higher-level pieces of code in R itself. R provides a wide variety of statistical (linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, and others), it is capable of publication-ready graphics and is highly extensible. The R language is often the vehicle of choice for research in statistical methodology, and R provides an open source alternative for practitioners of statistical tools and academic research in the area.
 
-One of R’s strengths is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
+R is particularly powerful several reasons, one is the large collection of packages that have been created for R, literally thousands of packages all available in the the Comprehensive R Archive Network (CRAN). Another strength  is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
 
-Although R has a command-line interface, there are several third-party graphical user interfaces (GUIs). One is RStudio, an integrated development environment (IDE), another being Jupyter, with notebook interface. We will show here how you can access all those GUI interfaces, but first lets focus on the basic command line interface (CLI).
+Although R has a command-line interface, there are several third-party graphical user interfaces (GUIs). One is RStudio, an integrated development environment (IDE), another being Jupyter, with notebook interface. We will show here how you can access all those GUI interfaces. But before using GUIs it is important first focus on the basic command line interface (CLI).
 
 Accessing the R interpreter
 ---------------------------
@@ -95,7 +95,7 @@ Using R from the Terminal
 Regardless of how you access R, the R package includes two executables, `R` and `Rscript`. The command ``R`` is used to start a text-based interactive session, on the terminal execute the command ``R``.
 
 .. image:: /_static/R_terminal.png
-  :width: 200
+  :width: 600
   :alt: Terminal with R interpreter
 
 From there you can start typing R commands and getting output interactively::
@@ -255,3 +255,24 @@ Graphical Interfaces: RStudio and Jupyter
 -----------------------------------------
 
 RStudio is a GUI application that allows you to interact with R from a window environment on your computer and a web interface on an HPC cluster. We will demonstrate how to access RStudio on the cluster.
+
+We offer access to RStudio via Open On-Demand. Open On-Demand is web service that offers interactive access to the the cluster from a web interface. A job is created transparently to the user and a RStudio can run from a compute node for a certain amount of time.
+
+The first step is to open a web browser on your local computer and go to `<https://ondemant-tf.hpc.wvu.edu>`_
+
+
+.. image:: /_static/R_OOD_dashboard.png
+  :width: 600
+  :alt: OOD dashboard
+
+.. image:: /_static/R_OOD_form.png
+  :width: 600
+  :alt: OOD dashboard
+
+.. image:: /_static/R_OOD_connect.png
+  :width: 600
+  :alt: OOD dashboard
+
+.. image:: /_static/R_OOD_rstudio.png
+  :width: 600
+  :alt: OOD dashboard
