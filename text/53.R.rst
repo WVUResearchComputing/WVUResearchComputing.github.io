@@ -260,18 +260,27 @@ We offer access to RStudio via Open On-Demand. Open On-Demand is web service tha
 
 The first step is to open a web browser on your local computer and go to `<https://ondemant-tf.hpc.wvu.edu>`_
 
+Once you enter your credientials, you land on the Open On-Demand Dashboard
 
 .. image:: /_static/R_OOD_dashboard.png
   :width: 600
   :alt: OOD dashboard
 
+Go to `Interactive Apps` and select `RStudio 1.2 over Singularity`. A form will be there for filling all the details needed to create a RStudio job.
+
 .. image:: /_static/R_OOD_form.png
   :width: 600
   :alt: OOD dashboard
 
+The form as for the Singularity image that you want to use for launching the server. Several images are present build from different versions of Ubuntu as the base filesystem. A good default value could be RStudio 1.2 with R 4.0.4 with Ubuntu focal as base filesystem. The next question is about the queue to run the job. You can get 4 hours using the `standby` queue and that is a good choice in most cases. The next field is the number of hours to run the job. Using `standby` the max walltime is 4 hours, so we use that. Finally the number of cores (called nodes in the form). This is the number of cores to ask, the max number of cores on machines of Thorny is 40 but without special routines, R will be running serially, which means that no matter how many cores you ask only one core will be used. We are setting 1 core in this case. Finally, press `Launch` to submit the job request.
+
+The next screen will show the job being created for you. After a few seconds, you will see a button `Connect to RStudio Server`. Press the button.
+
 .. image:: /_static/R_OOD_connect.png
   :width: 600
   :alt: OOD dashboard
+
+RStudio will be running, and showing the IDE interface, from this interface you can execute R commands, see the variables declared and the plots being generated. The interface is very powerful for advanced users of R.
 
 .. image:: /_static/R_OOD_rstudio.png
   :width: 600
