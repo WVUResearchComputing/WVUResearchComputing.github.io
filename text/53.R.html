@@ -111,7 +111,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#manual-installation-with-r-cmd-install">Manual installation with R CMD INSTALL</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#graphical-interfaces-rstudio-and-jupyter">Graphical Interfaces: RStudio and Jupyter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphical-interfaces-rstudio">Graphical Interfaces: RStudio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphical-interfaces-jupyter">Graphical Interfaces: Jupyter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-computing-with-r">Parallel Computing with R</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-fortran-inside-r">Using Fortran inside R</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="54.Julia.html">Julia Language</a></li>
@@ -196,18 +199,18 @@
   <div class="section" id="r-language">
 <span id="pl-r"></span><h1>R Language<a class="headerlink" href="#r-language" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="../_images/R_logo.svg.png"><img alt="R logo" src="../_images/R_logo.svg.png" style="width: 200px;" /></a>
-<p>R is a language and environment for scientific computing with a particular emphasis on statistical analysis and plotting. The R project is supported by the R Foundation and it is released with a GNU license. The R language itself was created to be similar to the S language and environment which was developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues. Originally, R was considered as a different implementation of S, it has since grown into a major environment for statistical computing. There are some important differences with the original S language, but much code written for S runs unaltered under R.</p>
-<p>The R source code is written primarily in C and Fortran, with some higher-level pieces of code in R itself. R provides a wide variety of statistical (linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, and others), it is capable of publication-ready graphics and is highly extensible. The R language is often the vehicle of choice for research in statistical methodology, and R provides an open source alternative for practitioners of statistical tools and academic research in the area.</p>
-<p>R is particularly powerful several reasons, one is the large collection of packages that have been created for R, literally thousands of packages all available in the the Comprehensive R Archive Network (CRAN). Another strength  is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.</p>
-<p>Although R has a command-line interface, there are several third-party graphical user interfaces (GUIs). One is RStudio, an integrated development environment (IDE), another being Jupyter, with notebook interface. We will show here how you can access all those GUI interfaces. But before using GUIs it is important first focus on the basic command line interface (CLI).</p>
+<p>R is a programming language and environment for scientific computing with a particular emphasis on statistical analysis and plotting. The R project is supported by the R Foundation and it is released under a GNU license. The R language itself was created to be similar to the S language and environment which was developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues. Originally, R was considered as a different implementation of S, it has since grown into a major environment for statistical computing. There are some important differences with the original S language, but much code written for S runs unaltered under R.</p>
+<p>The R source code is written primarily in C and Fortran, with some higher-level pieces of code in R itself. R provides a wide variety of statistical tools  such as linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, and many others. R is capable of publication-ready graphics and is highly extensible. The R language is often the vehicle of choice for research in statistical methodology, and R provides an open source alternative for practitioners of statistical tools and academic research in the area.</p>
+<p>R is particularly powerful for several reasons. R has an extensive collection of packages, literally thousands of packages available in the the Comprehensive R Archive Network (CRAN). Another strength  is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.</p>
+<p>Although R comes only with a command-line interface (CLI), there are several third-party graphical user interfaces (GUIs). One is RStudio, an integrated development environment (IDE), another being Jupyter, with a notebook interface. We will show here how you can access all those GUI interfaces. But before using GUIs it is important first focus on the basic command line interface (CLI).</p>
 <div class="section" id="accessing-the-r-interpreter">
 <h2>Accessing the R interpreter<a class="headerlink" href="#accessing-the-r-interpreter" title="Permalink to this headline">¶</a></h2>
 <p>The R interpreter is the basic software that allows you to interact with R.
-From the user point of view, there are two commands in R. The command <code class="docutils literal notranslate"><span class="pre">R</span></code> that opens the command-line-based interactive interface, and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> which is a command used to create scripts that run as commands by themselves.</p>
-<p>There are three ways of accessing the R commands on our clusters. Using the R version installed by default from the OS repositories. Using an environment module or using a singularity <cite>container</cite> that provides R inside. We will explore those options in the contexts of our two clusters, Spruce Knob and Thorny Flat.</p>
+From the user point of view, there are two commands in R. The command <code class="docutils literal notranslate"><span class="pre">R</span></code> that opens the text-based interactive interface, and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> which is a command used to create scripts that run as normal programs.</p>
+<p>There are three ways of accessing the different R installations on our clusters: Using the R version installed by default from the OS repositories, using an environment module or using a singularity <cite>container</cite> that provides R inside. We will explore those options in the contexts of our two clusters, Spruce Knob and Thorny Flat.</p>
 <div class="section" id="spruce-knob">
 <h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
-<p>On Spruce Knob, R is preinstalled from RHEL repositories. The RHEL version is 3.0.2 and it is considered too old for most scientific applications. You should not have much reason to use that version in research.</p>
+<p>On Spruce Knob, R is preinstalled from RHEL repositories. The RHEL version is 3.0.2 and it is considered too old for most scientific applications today. You should not have much reason to use that version in research.</p>
 <p>In terms of environment modules Spruce Knob offers two versions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc101</span>
 <span class="n">lang</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc101</span>
@@ -228,7 +231,7 @@ First, you need to load the singularity environment module:</p>
 <span class="n">RStudio</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">5042</span><span class="n">_R</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mf">2.</span><span class="n">sif</span>
 </pre></div>
 </div>
-<p>Despite including extra software such as RStudio they can be used as R interpreters, especially if you are interested in older versions of R such as 3.4.4. To access the R interpreter you can get a shell inside the image with:</p>
+<p>Despite including extra software such as RStudio they can be used for their internal R interpreters, especially if you are interested in older versions of R such as 3.4.4. To access the R interpreter you can get a shell inside the image with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
 </pre></div>
 </div>
@@ -240,7 +243,7 @@ First, you need to load the singularity environment module:</p>
 <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc102</span>
 </pre></div>
 </div>
-<p>To load the module, use the command <cite>module</cite>:</p>
+<p>To load the module, use the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc102</span>
 </pre></div>
 </div>
@@ -279,9 +282,10 @@ A shortcut to access the R interpreter in one single step is with the <cite>run<
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p>Another way of working in R, and more suited for HPC environments are using R scripts.
-To do so, first, write your script in a file. It is customary to add the <code class="docutils literal notranslate"><span class="pre">.R</span></code> extension to the file. Consider for example a very minimal script, lets create a file <code class="docutils literal notranslate"><span class="pre">hello.R</span></code> with the content below:</p>
+<p>Another way of working in R, and more suited for an HPC environment, is using R scripts.
+To do so, first, write your R commands as script in a file. It is customary to add the <code class="docutils literal notranslate"><span class="pre">.R</span></code> extension to the file. Consider for example a very minimal script, lets create a file <code class="docutils literal notranslate"><span class="pre">hello.R</span></code> with the content below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env Rscript</span>
+
 <span class="n">sayHello</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(){</span>
    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -289,7 +293,7 @@ To do so, first, write your script in a file. It is customary to add the <code c
 <span class="n">sayHello</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The first line of the file must be <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">Rscript</span></code>. This line instructs the shell that this is an R script, meaning that all commands below the first line must be processed by the R internal interpreter.</p>
+<p>The first line of the file must be <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">Rscript</span></code>. This line instructs the shell that this is a R script, meaning that all commands below the first line must be processed by the R internal interpreter.</p>
 <p>To make this script like any other executable, we need to change permissions to the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; chmod +x hello.R
 </pre></div>
@@ -300,7 +304,7 @@ To do so, first, write your script in a file. It is customary to add the <code c
 </pre></div>
 </div>
 <p>However, for large executions, you should always create a submission script and never run numerical intensive operations on the head node.
-Create a file “runjob.pbs” with this content:</p>
+Create a file <code class="docutils literal notranslate"><span class="pre">runjob.pbs</span></code> with this content:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -N MY_R_SCRIPT
@@ -328,7 +332,7 @@ The contents of the file are shown below:</p>
 </div>
 <div class="section" id="installing-r-packages-as-a-normal-user">
 <h2>Installing R Packages as a normal user<a class="headerlink" href="#installing-r-packages-as-a-normal-user" title="Permalink to this headline">¶</a></h2>
-<p>The system-wide location for installed packages is not writable for normal users. That does not prevent you from installing packages for your usage. Packages installed as a user will be installed at <code class="docutils literal notranslate"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/&lt;R_VERSION&gt;</span></code> and will be accessible to you as any system-wide package.
+<p>The system-wide location for installed packages is not writable for normal users. That does not prevent you from installing packages for your usage. Packages installed as user will be installed at <code class="docutils literal notranslate"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/&lt;R_VERSION&gt;</span></code> and will be accessible to you as any system-wide package.
 For the versions that we currently have on our clusters, <code class="docutils literal notranslate"><span class="pre">&lt;R_VERSION&gt;</span></code> could be 3.6 or 4.0.</p>
 <p>Packages can only be installed from the head node both on Thorny and Spruce.
 Compute nodes do not have internet access, so they are not capable to access CRAN from the internet to download any package.</p>
@@ -361,7 +365,11 @@ Secure CRAN mirrors
 
 Selection: 63
 
-also installing the dependencies ‘backports’, ‘ellipsis’, ‘digest’, ‘zeallot’, ‘utf8’, ‘vctrs’, ‘cli’, ‘crayon’, ‘fansi’, ‘pillar’, ‘purrr’, ‘assertthat’, ‘glue’, ‘magrittr’, ‘pkgconfig’, ‘R6’, ‘Rcpp’, ‘rlang’, ‘tibble’, ‘tidyselect’, ‘BH’, ‘plogr’
+also installing the dependencies ‘backports’, ‘ellipsis’,\
+ ‘digest’, ‘zeallot’, ‘utf8’, ‘vctrs’, ‘cli’, ‘crayon’, \
+ ‘fansi’, ‘pillar’, ‘purrr’, ‘assertthat’, ‘glue’, \
+ ‘magrittr’, ‘pkgconfig’, ‘R6’, ‘Rcpp’, ‘rlang’, \
+ ‘tibble’, ‘tidyselect’, ‘BH’, ‘plogr’
 </pre></div>
 </div>
 <p>After some downloads and compilations the code will be installed on your local folder <code class="docutils literal notranslate"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/3.6</span></code></p>
@@ -418,20 +426,125 @@ Second, as a normal user, you must specify the path with the <code class="docuti
 <p>You need to be careful not to mix R packages created with different major versions of R, those are usually incompatible if you create the package with one version and try to use it with a different version. That is the reason why more automatic installers create separate folders for different R versions.</p>
 </div>
 </div>
-<div class="section" id="graphical-interfaces-rstudio-and-jupyter">
-<h2>Graphical Interfaces: RStudio and Jupyter<a class="headerlink" href="#graphical-interfaces-rstudio-and-jupyter" title="Permalink to this headline">¶</a></h2>
-<p>RStudio is a GUI application that allows you to interact with R from a window environment on your computer and a web interface on an HPC cluster. We will demonstrate how to access RStudio on the cluster.</p>
-<p>We offer access to RStudio via Open On-Demand. Open On-Demand is web service that offers interactive access to the the cluster from a web interface. A job is created transparently to the user and a RStudio can run from a compute node for a certain amount of time.</p>
-<p>The first step is to open a web browser on your local computer and go to <a class="reference external" href="https://ondemant-tf.hpc.wvu.edu">https://ondemant-tf.hpc.wvu.edu</a></p>
-<p>Once you enter your credientials, you land on the Open On-Demand Dashboard</p>
-<a class="reference internal image-reference" href="../_images/R_OOD_dashboard.png"><img alt="OOD dashboard" src="../_images/R_OOD_dashboard.png" style="width: 600px;" /></a>
-<p>Go to <cite>Interactive Apps</cite> and select <cite>RStudio 1.2 over Singularity</cite>. A form will be there for filling all the details needed to create a RStudio job.</p>
-<a class="reference internal image-reference" href="../_images/R_OOD_form.png"><img alt="OOD dashboard" src="../_images/R_OOD_form.png" style="width: 600px;" /></a>
-<p>The form as for the Singularity image that you want to use for launching the server. Several images are present build from different versions of Ubuntu as the base filesystem. A good default value could be RStudio 1.2 with R 4.0.4 with Ubuntu focal as base filesystem. The next question is about the queue to run the job. You can get 4 hours using the <cite>standby</cite> queue and that is a good choice in most cases. The next field is the number of hours to run the job. Using <cite>standby</cite> the max walltime is 4 hours, so we use that. Finally the number of cores (called nodes in the form). This is the number of cores to ask, the max number of cores on machines of Thorny is 40 but without special routines, R will be running serially, which means that no matter how many cores you ask only one core will be used. We are setting 1 core in this case. Finally, press <cite>Launch</cite> to submit the job request.</p>
+<div class="section" id="graphical-interfaces-rstudio">
+<h2>Graphical Interfaces: RStudio<a class="headerlink" href="#graphical-interfaces-rstudio" title="Permalink to this headline">¶</a></h2>
+<p>RStudio is a GUI application that allows you to interact with R from a window environment on your computer or a web interface on an HPC cluster. We will demonstrate how to access RStudio on the cluster.</p>
+<p>We offer access to RStudio via Open On-Demand. Open On-Demand is web service that offers interactive access to the cluster over internet. A job is created transparently to the user and RStudio can run from a compute node for a certain amount of time.</p>
+<p>The first step is to open a web browser on your local computer and go to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">https://ondemand-tf.hpc.wvu.edu</a></p>
+<p>Once you enter your credentials, you land on the Open On-Demand Dashboard</p>
+<a class="reference internal image-reference" href="../_images/R_OOD_dashboard1.png"><img alt="OOD dashboard" src="../_images/R_OOD_dashboard1.png" style="width: 600px;" /></a>
+<p>Go to <cite>Interactive Apps</cite> and select <cite>RStudio Server 1.2</cite>. A form will be there for filling all the details needed to create a RStudio job.</p>
+<a class="reference internal image-reference" href="../_images/R_OOD_form_rstudio.png"><img alt="OOD Form RStudio" src="../_images/R_OOD_form_rstudio.png" style="width: 600px;" /></a>
+<p>The form ask for the Singularity image that you want to use for launching the server. Several images are presently available built from different versions of Ubuntu as the base filesystem. A good default value could be RStudio 1.2 with R 4.0.4 with Ubuntu focal as base filesystem. The next question is about the queue to run the job. You can get 4 hours using the <cite>standby</cite> queue and that is a good choice in most cases. The next field is the number of hours to run the job. Using <cite>standby</cite>, the max walltime is 4 hours, so we use that. Finally the number of cores (called nodes in the form). This is the number of cores to ask, the max number of cores on machines of Thorny is 40 but without special routines, R will be running serially, which means that no matter how many cores you ask only one core will be used. We are setting 1 core in this case. Finally, press <cite>Launch</cite> to submit the job request.</p>
 <p>The next screen will show the job being created for you. After a few seconds, you will see a button <cite>Connect to RStudio Server</cite>. Press the button.</p>
-<a class="reference internal image-reference" href="../_images/R_OOD_connect.png"><img alt="OOD dashboard" src="../_images/R_OOD_connect.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/R_OOD_connect1.png"><img alt="OOD connect" src="../_images/R_OOD_connect1.png" style="width: 600px;" /></a>
 <p>RStudio will be running, and showing the IDE interface, from this interface you can execute R commands, see the variables declared and the plots being generated. The interface is very powerful for advanced users of R.</p>
-<a class="reference internal image-reference" href="../_images/R_OOD_rstudio.png"><img alt="OOD dashboard" src="../_images/R_OOD_rstudio.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/R_OOD_rstudio.png"><img alt="OOD RStudio" src="../_images/R_OOD_rstudio.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="graphical-interfaces-jupyter">
+<h2>Graphical Interfaces: Jupyter<a class="headerlink" href="#graphical-interfaces-jupyter" title="Permalink to this headline">¶</a></h2>
+<p>An alternative GUI for R is Jupyter. Jupyter presents a Notebook interface, where there are boxes with code and boxes with text, including titles, subtitles, and even equations.</p>
+<p>Go to <cite>Interactive Apps</cite> and select <cite>Jupyter Official Images</cite>. A form will be there for filling all the details needed to create a RStudio job.</p>
+<a class="reference internal image-reference" href="../_images/R_OOD_form_jupyter.png"><img alt="OOD Form Jupyter" src="../_images/R_OOD_form_jupyter.png" style="width: 600px;" /></a>
+<p>Select one of the images that include R, one of them is for example <cite>r_notebook</cite>.
+The next question is about the queue to run the job. You can get 4 hours using the <cite>standby</cite> queue and that is a good choice in most cases. The next field is the number of hours to run the job. Using <cite>standby</cite> the max walltime is 4 hours, so we use that. Finally the number of cores. This is the number of cores to use on the compute node, the max number of cores on one machine on Thorny is 40 but without special routines, R will be running serially, which means that no matter how many cores you ask only one core will be used. We are setting 4 cores in this case. Finally, press <cite>Launch</cite> to submit the job request.</p>
+<p>The next screen will show the job being created for you. After a few seconds, you will see a button <cite>Connect to Jupyter</cite>. Press the button.</p>
+<a class="reference internal image-reference" href="../_images/R_OOD_connect2.png"><img alt="OOD connect" src="../_images/R_OOD_connect2.png" style="width: 600px;" /></a>
+<p>Jupyter will be running, and showing the Jupyter File Manager interface, from the manager you select <cite>New &gt;&gt; R</cite> and another tab on your browser will open with the Jupyter Notebook running a R kernel.
+From this interface you can execute R commands, commands can be entered in the boxes and executed with <code class="docutils literal notranslate"><span class="pre">SHIFT</span> <span class="pre">ENTER</span></code>. Boxes can also serve for text including titles, subtitles and text with equations.</p>
+<a class="reference internal image-reference" href="../_images/R_OOD_jupyter.png"><img alt="OOD Jupyter" src="../_images/R_OOD_jupyter.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="parallel-computing-with-r">
+<h2>Parallel Computing with R<a class="headerlink" href="#parallel-computing-with-r" title="Permalink to this headline">¶</a></h2>
+<p>By default R only uses one core, which is a big limitation when dealing with large amounts of data or complex calculations. However, R includes by default the <cite>parallel</cite> package which is the foundational tool for parallel computing in R. There are several other third-party tools for parallelism but we will be focusing on the tools available on any R installation.</p>
+<p>The <cite>parallel</cite> package came installed by default on all modern versions of R. The package needs to be loaded before use with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="s2">&quot;parallel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once the library is loaded several routines became available that are able to take advantage of share memory systems, on machines such as Thorny, most compute nodes have 40 cores, however it is up to you to indicate the number of cores that you want to use and that should match the amount of resources that you requested via your submission script or your interactive job.</p>
+<p>The first function that we will use from <cite>parallel</cite> is <code class="docutils literal notranslate"><span class="pre">detectCores()</span></code>. The function will return the total number of cores on the compute node, not the total number of cores that you requested for the job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">detectCores</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">40</span>
+</pre></div>
+</div>
+<p>The <cite>parallel</cite> package offers a number of functions that replace the serial versions of <cite>Apply</cite> functions such as <code class="docutils literal notranslate"><span class="pre">lapply</span></code>, <code class="docutils literal notranslate"><span class="pre">sapply</span></code> and <code class="docutils literal notranslate"><span class="pre">apply</span></code>. The parallel replacements being <code class="docutils literal notranslate"><span class="pre">parLapply</span></code>, <code class="docutils literal notranslate"><span class="pre">parSapply</span></code> and <code class="docutils literal notranslate"><span class="pre">parApply</span></code>.
+To use any of those functions we need first to create a <cite>cluster</cite> and internal structure for the <cite>parallel</cite> package that instructs the number of cores that can be used when parallelizing the apply functions.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">makeCluster()</span></code> will create a cluster. If you have created a job asking to use 4 cores, you can create a <cite>cluster</cite> with 4 cores like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cl &lt;- makeCluster(4)
+&gt; cl
+socket cluster with 4 nodes on host ‘localhost’
+</pre></div>
+</div>
+<p>Now with the <cite>cluster</cite> <code class="docutils literal notranslate"><span class="pre">cl</span></code> we can execute any of the alternative versions of <code class="docutils literal notranslate"><span class="pre">apply</span></code> functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">ans</span> <span class="o">&lt;-</span> <span class="n">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>This function will apply <code class="docutils literal notranslate"><span class="pre">function(x)</span></code> as it was defined for the first 10 million positive integers returning a vector of equal number of floats stored in <code class="docutils literal notranslate"><span class="pre">ans</span></code>.</p>
+<p>To compute this function R will be using a cluster build from 4 execution instances and will take a fraction of the time compared with the serial version of <code class="docutils literal notranslate"><span class="pre">lapply</span></code>. We can see some timings here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span>
+ <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span>
+ <span class="mf">1.787</span>   <span class="mf">0.093</span>   <span class="mf">3.721</span>
+<span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span>
+ <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span>
+ <span class="mf">6.484</span>   <span class="mf">0.023</span>   <span class="mf">6.522</span>
+</pre></div>
+</div>
+<p>We got almost an execution that was almost 4 times shorter than for the serial case. It is never the case that we get a perfect scaling, in more practical cases you should always expect that some time is lost in communication and extra overhead in orchestrating the parallel execution. The parallel versions of <cite>apply</cite> functions are an easy way of taking advantage of multicore architectures present of modern computers.</p>
+<p>At the end of execution is always important to close the cluster with the <code class="docutils literal notranslate"><span class="pre">stopCluster</span></code> function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should always stop the cluster to free resources. In more practical scenarios you should always ensure that <code class="docutils literal notranslate"><span class="pre">stopCluster</span></code> is called no matter if the function fails for some reason. For doing that you can use the <code class="docutils literal notranslate"><span class="pre">on.exit()</span></code> function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simulate</span>  <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">ncores</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">cl</span> <span class="o">=</span> <span class="n">makeCluster</span><span class="p">(</span><span class="n">ncores</span><span class="p">)</span>
+<span class="n">on</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">))</span>
+
+<span class="c1"># The core of the function belows</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-fortran-inside-r">
+<h2>Using Fortran inside R<a class="headerlink" href="#using-fortran-inside-r" title="Permalink to this headline">¶</a></h2>
+<p>R itself is not a fast language. Speed is not the designed goal of the language. The goal is to create a tool that makes data analysis and statistics easier for people who uses those tools. In many cases practitioners of statistical tools are not programmers, the are not planning to create the fastest code, they just need to have the analysis done and move on.
+R is slow compared to other programming languages, and sometimes users who are not very attentive to good programming best practices usually make things worse, however, for many purposes, R is fast enough.</p>
+<p>People with knowledge on programming could improve the performance of R by
+executing numerical intensive operations on a different language retaining the advantages of working for most part on a high level language like R.</p>
+<p>We will demonstrate how to achieve that with a code written in Fortran. Fortran is a low level language. A low level language uses an explicit compiler, a program that converts the source code into code that the computer can execute.</p>
+<p>Consider the following Fortran code (facto.f90):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!
+! simple subroutine to compute factorial
+!
+subroutine facto(n, answer)
+    integer n, answer, i
+
+    answer = 1
+    do i = 2,n
+        answer = answer * i
+    end do
+end subroutine
+</pre></div>
+</div>
+<p>This routine in fortran computes the factorial of a number <code class="docutils literal notranslate"><span class="pre">n</span></code> and return the result in the variable <code class="docutils literal notranslate"><span class="pre">`answer</span></code>.</p>
+<p>We can compile this file with the GNU fortran compiler called <code class="docutils literal notranslate"><span class="pre">gfortran</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; gfortran -c facto.f90
+</pre></div>
+</div>
+<p>The result of the compilation is a file called <code class="docutils literal notranslate"><span class="pre">facto.o</span></code>. The next step is to create a shared library from this function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; gfortran -shared -o facto.so facto.o
+</pre></div>
+</div>
+<p>The resulting file is <code class="docutils literal notranslate"><span class="pre">facto.so</span></code> that can be imported from R and used (R Terminal):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; dyn.load(&quot;facto.so&quot;)
+&gt; .Fortran(&quot;facto&quot;,n=as.integer(40),answer=as.numeric(1.0))
+$n
+[1] 40
+
+$answer
+[1] 8.159153e+47
+</pre></div>
+</div>
 </div>
 </div>
 
