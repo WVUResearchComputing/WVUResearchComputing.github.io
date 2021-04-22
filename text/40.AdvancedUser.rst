@@ -17,6 +17,8 @@ Environment Modules system is a tool to help users manage their Unix or Linux sh
 
 On section :ref:`ad-jupyter` we discuss about Jupyter notebooks. A Jupyter Notebook (formerly IPython Notebook) is a web-based interactive computational environment computational notebooks.  A Jupyter Notebook document is a JSON document, following a versioned schema, and containing an ordered list of input/output cells which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the ".ipynb" extension. Originally create for the Python language nowadays it supports a number of languages including Python, R, Julia and Haskell.
 
+On section :ref:`ad-hdf5` one example of using HDF5 for storing numerical data in binary format.
+
 .. toctree::
     :maxdepth: 2
 
@@ -25,3 +27,4 @@ On section :ref:`ad-jupyter` we discuss about Jupyter notebooks. A Jupyter Noteb
     43.UsingGPUs
     44.Modules
     45.Jupyter
+    46.HDF5

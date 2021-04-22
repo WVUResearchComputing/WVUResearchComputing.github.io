@@ -1,0 +1,26 @@
+.. _ad-hdf5:
+
+HDF5: Hierarchical Data Format
+==============================
+
+Hierarchical Data Format version (HDF5) is a file format designed to store and organize large amounts of data, in particular numerical data.
+
+Originally developed at the National Center for Supercomputing Applications.
+During the 90s, NASA investigated 15 different file formats for use in the Earth Observing System (EOS) project. After a two-year review process, HDF was selected as the standard data and information system. The format and standard implementations are now supported by The HDF Group, a non-profit corporation. HDF is supported by many commercial and non-commercial software platforms and programming languages. HDF5, differs significantly from its predecessor, the HDF4 formal both in in design and API. Despite of HDF4 being still supported we will concentrate on this section to HDF5 as it should be the natural choice for any new development.
+
+In terms of programming languages, HDF5 is officially supported in the three major languages for scientific computing: Fortran, C and C++. The same is true for high level languages such as Python, R and Julia. Python supports HDF5 via  `h5py` and via PyTables. The popular package for data analysis, pandas, can import from and export to HDF5 via `PyTables`. There are two packages for R that offers support, the `rhdf5` and `hdf5r` packages. In Julia, the package HDF5 is available.
+
+The plan of this simple tutorial is to create a HDF5 file from a Numpy array, using Python and `h5py` and read the file and extract a particular row using a small code in C.
+
+The first part is very simple, with `h5py`, the code below will create a numpy array 100x7 of random numbers. The array will be stored in a HDF5 file::
+
+  #!/usr/bin/env python3
+
+  import h5py
+  import numpy as np
+  data=np.random.rand(100,7)
+  with h5py.File("testfile.h5", "w") as f:
+    dset = f.create_dataset("dset", data=data)
+  f.close()
+
+After executing this code in a Python interpreter or writing a script from it, you end up with a file called ``testfile.h5`` this is a file in HDF5 file format that contains an array of numbers with 100 rows and 7 columns. Now we will demonstrate how to write a C code that is able to read the file.
