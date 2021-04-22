@@ -378,42 +378,42 @@ And deactivate the environment with::
   conda deactivate
 
 
-Installing python packages as user with pip
--------------------------------------------
+Installing python packages with pip
+-----------------------------------
 
-However, you are not constrained to use just those packages. You can also
-install your own or create entire new environments with the packages and
-versions that you want.
+The package `pip` is a popular way of installing python packages.
+You cannot install packages on system-wide locations, but you still can install them on your ``$HOME`` folder for personal use.
 
+To install Python modules locally (within your user ``$HOME`` directory) is by adding ``--user`` as argument for the command ``pip install``. It is important to notice that in cases where you have Python 2.x and Python 3.x you need to pay attention to which ``pip`` command to use.
+The command ``pip`` usually refers to Python 2.x and there is an equivalent command ``pip3`` for Python 3.x. As we are using Python 3.x, ``pip3`` is the command that we will be using.
 
-An easy way to install Python modules locally (within your user
-directory) is by using the ``--user`` flag::
+There are two ways of using the command ``pip3``. One is calling the command directly::
 
-    pip install --user <package_name>
+  pip3 install --user <package_name>
+
+Another is using `pip` indirectly as a module::
+
+  python3 -m pip install --user <package_name>
 
 The ``--user`` flag directs python to install the package in a user location
-rather than a system wide location where you are not allowed to alter files.
+rather than a system-wide location where you are not allow to alter files.
 
 The user location for python packages is ``$HOME/.local/lib/pythonX.Y/site-packages``,
-This is generally the preferred method of locally installing new python packages as this
-user site package is by default in the python library path: meaning
-modules installed this way can be used as if they were installed
-system-wide.
+This is generally the preferred method of locally installing new python packages. There is no disadvantage on using a user installation other that the package is only available to you.
 
 Installing python packages with a custom prefix
 -----------------------------------------------
 
 Another way to install Python modules locally is by using the ``--target`` flag::
 
-    pip install --target <dir> <package_name>
+    pip3 install --target <dir> <package_name>
 
 representing the directory location you want the package installed into.
 These flags essentially do the same thing by directing Python to install
 the module in the specified directory. These directories will not be
 searched by default with Python. Therefore, in order to use these
 modules in your Python scripts you will have to modify the ``$PYTHONPATH``
-environment variable to include the specified directory. Or
-alternatively, modify sys.path from within your python script (for this
+environment variable to include the specified directory. Or alternatively, modify sys.path from within your python script (for this
 method, consult `python documentation <https://docs.python.org>`__.
 
 ::
@@ -426,9 +426,7 @@ Using Python virtualenv
 The installing with ``pip install --user`` or ``pip install --target <dir>``
 those locations are all searched secondary to the system-wide site packages.
 
-This is could be an issue if you are trying to install locally a different version of a
-module already installed system-wide. A way to get around this is by
-using Python Virtual Environments.
+This is could be an issue if you are trying to install locally a different version of a module already installed system-wide. A way to get around this is by using Python Virtual Environments.
 
 Python virtual environments are used to build completely isolated python
 workflows. Primarily they are used to solve the need for multiple
@@ -451,25 +449,19 @@ First, load which version of python2 you would like to use as your base
 python interpreter. For instance, if you want python 2.7.10, then load
 the 2.7.10 python modefule. If you want to use the default system python
 (v. 2.6), then you do not need to load a python modulefile. However, you
-do need to load the virtualenv modulefile.
-
-::
+do need to load the virtualenv modulefile::
 
   module load lang/gcc/8.2.0 lang/python/2.7.15_gcc82
 
 
-Then create a virtualenv directory with the 'virtualenv' command.
-
-::
+Then create a virtualenv directory with the 'virtualenv' command::
 
     virtualenv workflow1
 
 You should now have a directory called 'workflow1'. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
-virtualenv.
-
-::
+virtualenv::
 
     source workflow1/bin/activate
 
@@ -482,24 +474,18 @@ Using Virtual Environments with python3
 
 First, load the python3 modulefile. The python3 modulefile comes with
 it's own virtual environment utility, so you do not need to load the
-virtualenv modulefile.
-
-::
+virtualenv modulefile::
 
     module load lang/gcc/8.2.0 lang/python/cpython_3.7.4_gcc82
 
-Then create a virtualenv directry with the 'pyvenv' command.
-
-::
+Then create a virtualenv directry with the 'pyvenv' command::
 
     pyvenv workflow1
 
 You should now have a directory called 'workflow1'. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
-virtualenv.
-
-::
+virtualenv::
 
     source workflow1/bin/activate
 
@@ -521,7 +507,7 @@ Using site-wide system packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The centrally installed python interpreters (python loaded with
-modelefiles), have some common scientific packages installed
+modulefiles), have some common scientific packages installed
 with them by default. To have your virtualenv keep using
 these packages you do not need to install them in your virtualenv,
 using the --system-site-packages option.

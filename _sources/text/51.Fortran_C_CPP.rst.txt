@@ -13,10 +13,10 @@ C++ is the third language in the list. C++ is in many ways an extension of C wit
 
 Fortran, C and C++ shared a number of attributes. These languages need a compiler that translates the source code into machine code. Parallelization interfaces such as MPI are written with explicit support for those three languages and compiler suites such as GCC, Intel and NVIDIA HPC include those languages by default.
 
-Compiling Code
---------------
+Accessing C, C++ and Fortran Compilers
+--------------------------------------
 
-In an HPC cluster is customary to include compilers for Fortran, C and C++ by default. On Linux machines the usual compilers are from the GNU Compiler Collection (GCC). However, the versions of those compilers is old for the purpose of many scientific packages and do not support CPU extensions and parallelization extensions such as OpenMP or OpenACC. For example, on Thorny Flat the default versions of the compilers are 4.8 as you can see::
+In an HPC cluster is customary to include compilers for Fortran, C and C++ by default. On Linux machines the usual compilers are from the GNU Compiler Collection (GCC). However, the versions of those compilers is old for the purpose of many scientific packages and do not support recent CPU extensions and parallelization extensions such as OpenMP or OpenACC. For example, on Thorny Flat the default versions of the compilers are 4.8, one way of identifying the version of gcc compilers is running the command::
 
   $ gfortran -v
   Using built-in specs.

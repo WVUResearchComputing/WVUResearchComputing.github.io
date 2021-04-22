@@ -104,9 +104,10 @@
 <li class="toctree-l2"><a class="reference internal" href="65.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="66.HDF5_NetCDF.html">Compiling HDF5 and NetCDF</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Compiling Atomistic Codes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#serial-version">Serial version</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#parallel-version">Parallel version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abinit">ABINIT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1">Parallel version with GCC 9.3 and MPICH 3.4.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1">CUDA Version with GCC 9.3, MPICH 3.4.1 and CUDA 11.1</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a></li>
@@ -198,58 +199,215 @@
 <h1>Compiling Atomistic Codes<a class="headerlink" href="#compiling-atomistic-codes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="octopus">
 <h2>Octopus<a class="headerlink" href="#octopus" title="Permalink to this headline">¶</a></h2>
-<p>Octopus is a Real Space DFT code. The serial version was compiled with
-GCC 8.2.</p>
+<p>Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3</p>
 <p>The modules loaded for compilation were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
-<span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc82</span>
-<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.</span><span class="n">x_gcc82</span>
-<span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
-<span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span>
-<span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span>  \
+<span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.7</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">10</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span> \
+<span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
-<div class="section" id="serial-version">
-<h3>Serial version<a class="headerlink" href="#serial-version" title="Permalink to this headline">¶</a></h3>
+<p>The sources can be downloaded from the developers and uncompressed with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">octopus</span><span class="o">-</span><span class="n">code</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">10.4</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>It is customary to compile codes on a separate folder from the sources.
+The foler <code class="docutils literal notranslate"><span class="pre">build_gcc93</span></code> is created inside the sources for that purpose:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span>
+<span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
+<span class="n">cd</span> <span class="n">build_gcc93_mpich341</span>
+</pre></div>
+</div>
 <p>The configure line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">9.1</span><span class="n">_gcc82</span> \
-<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">libxc</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span> \
-<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">blas</span><span class="o">=</span><span class="s2">&quot;-L/shared/software/libs/openblas/0.3.7_gcc82 -lopenblas&quot;</span> \
-<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">fftw</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span> \
-<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">netcdf</span><span class="o">-</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.</span><span class="n">x_gcc82</span>
-</pre></div>
-</div>
-<p>On Spruce the results from the testsuite were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
-  <span class="n">Passed</span><span class="p">:</span>  <span class="mi">160</span> <span class="o">/</span> <span class="mi">174</span>
-  <span class="n">Skipped</span><span class="p">:</span> <span class="mi">13</span> <span class="o">/</span> <span class="mi">174</span>
-  <span class="n">Failed</span><span class="p">:</span>  <span class="mi">1</span> <span class="o">/</span> <span class="mi">174</span>
-
-  <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
-  <span class="o">------------------------------------------------------------------------------</span>
-  <span class="n">functionals</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">sic</span><span class="o">.</span><span class="n">test</span>                                     <span class="mi">1</span>
-
-<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">42</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
+--with-libxc-prefix=${MD_LIBXC} --with-blas=&quot; -L${MD_OPENBLAS} -lopenblas&quot; \
+--with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
+--with-mpi=${MD_MPICH} --enable-mpi
 </pre></div>
 </div>
 <p>On Thorny Flat the results from the testsuite were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">1</span> <span class="n">failures</span>
-  <span class="n">Passed</span><span class="p">:</span>  <span class="mi">159</span> <span class="o">/</span> <span class="mi">174</span>
-  <span class="n">Skipped</span><span class="p">:</span> <span class="mi">13</span> <span class="o">/</span> <span class="mi">174</span>
-  <span class="n">Failed</span><span class="p">:</span>  <span class="mi">2</span> <span class="o">/</span> <span class="mi">174</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">************************</span>
+<span class="n">Passed</span><span class="p">:</span>  <span class="mi">184</span> <span class="o">/</span> <span class="mi">200</span>
+<span class="n">Skipped</span><span class="p">:</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">200</span>
 
-  <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
-  <span class="o">------------------------------------------------------------------------------</span>
-  <span class="n">real_time</span><span class="o">/</span><span class="mi">14</span><span class="o">-</span><span class="n">absorption</span><span class="o">-</span><span class="n">spinors</span><span class="o">.</span><span class="n">test</span>                        <span class="mi">1</span>
-  <span class="n">functionals</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">sic</span><span class="o">.</span><span class="n">test</span>                                     <span class="mi">1</span>
+<span class="n">Everything</span> <span class="n">seems</span> <span class="n">to</span> <span class="n">be</span> <span class="n">OK</span>
 
-<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">57</span>
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">42</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="parallel-version">
-<h3>Parallel version<a class="headerlink" href="#parallel-version" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="abinit">
+<h2>ABINIT<a class="headerlink" href="#abinit" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="parallel-version-with-gcc-9-3-and-mpich-3-4-1">
+<h3>Parallel version with GCC 9.3 and MPICH 3.4.1<a class="headerlink" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1" title="Permalink to this headline">¶</a></h3>
+<p>Abinit 9.4.1 was compiled with the following modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.4</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">10</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">10</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.7</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span>
+</pre></div>
+</div>
+<p>ABINIT uses a configure file, a template can be found at <code class="docutils literal notranslate"><span class="pre">doc/build/config-template.ac9</span></code>. The lines to be changed from the template are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>prefix=&quot;/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341&quot;
+with_mpi=&quot;${MD_MPICH}&quot;
+LINALG_LIBS=&quot;-L${MD_OPENBLAS}/lib -lopenblas -lpthread &quot;
+with_fft_flavor=&quot;fftw3&quot;
+FFTW3_LIBS=&quot;-L${MD_FFTW} -lfftw3 -lfftw3f&quot;
+with_libxc=${MD_LIBXC}
+with_libxml2=&quot;${MD_GCC}&quot;
+with_hdf5=&quot;${MD_HDF5}&quot;
+NETCDF_FCFLAGS=&quot;-I${MD_NETCDF}/include&quot;
+NETCDF_LIBS=&quot;-L${MD_NETCDF}/lib -lnetcdf&quot;
+NETCDF_FORTRAN_FCFLAGS=&quot;-I${MD_NETCDF_FORTRAN}/include&quot;
+NETCDF_FORTRAN_LIBS=&quot;-L${MD_NETCDF_FORTRAN}/lib -lnetcdff&quot;
+LIBPSML_FCFLAGS=&quot;-I${MD_LIBPSML}/include&quot;
+LIBPSML_LIBS=&quot;-L${MD_LIBPSML}/lib -lpsml&quot;
+with_xmlf90=&quot;${MD_XMLF90}&quot;
+</pre></div>
+</div>
+<p>These lines will use environment variables declared on the corresponding modules loaded above. The configure ac9 is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">build_gcc93_mpic341</span><span class="o">.</span><span class="n">ac9</span>
+</pre></div>
+</div>
+<p>To configure ABINIT is customary to create a build folder, ABINIT was build inside the folder <code class="docutils literal notranslate"><span class="pre">build_gcc93_mpic341</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
+<span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
+</pre></div>
+</div>
+<p>Execute the configure with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">file</span><span class="o">=../</span><span class="n">build_gcc93_mpic341</span><span class="o">.</span><span class="n">ac9</span>
+</pre></div>
+</div>
+<p>The resulting summary of the configurations for building ABINIT are these:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Core</span> <span class="n">build</span> <span class="n">parameters</span>
+<span class="o">---------------------</span>
+
+  <span class="o">*</span> <span class="n">C</span> <span class="n">compiler</span>        <span class="p">:</span> <span class="n">gnu</span> <span class="n">version</span> <span class="mf">9.3</span>
+  <span class="o">*</span> <span class="n">Fortran</span> <span class="n">compiler</span>  <span class="p">:</span> <span class="n">gnu</span> <span class="n">version</span> <span class="mf">9.3</span>
+  <span class="o">*</span> <span class="n">architecture</span>      <span class="p">:</span> <span class="n">intel</span> <span class="n">xeon</span> <span class="p">(</span><span class="mi">64</span> <span class="n">bits</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">debugging</span>         <span class="p">:</span> <span class="n">basic</span>
+  <span class="o">*</span> <span class="n">optimizations</span>     <span class="p">:</span> <span class="n">standard</span>
+
+  <span class="o">*</span> <span class="n">OpenMP</span> <span class="n">enabled</span>    <span class="p">:</span> <span class="n">no</span> <span class="p">(</span><span class="n">collapse</span><span class="p">:</span> <span class="n">ignored</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">MPI</span>    <span class="n">enabled</span>    <span class="p">:</span> <span class="n">yes</span> <span class="p">(</span><span class="n">flavor</span><span class="p">:</span> <span class="n">auto</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">MPI</span>    <span class="ow">in</span><span class="o">-</span><span class="n">place</span>   <span class="p">:</span> <span class="n">no</span>
+  <span class="o">*</span> <span class="n">MPI</span><span class="o">-</span><span class="n">IO</span> <span class="n">enabled</span>    <span class="p">:</span> <span class="n">yes</span>
+  <span class="o">*</span> <span class="n">GPU</span>    <span class="n">enabled</span>    <span class="p">:</span> <span class="n">no</span> <span class="p">(</span><span class="n">flavor</span><span class="p">:</span> <span class="n">none</span><span class="p">)</span>
+
+  <span class="o">*</span> <span class="n">LibXML2</span> <span class="n">enabled</span>   <span class="p">:</span> <span class="n">yes</span>
+  <span class="o">*</span> <span class="n">LibPSML</span> <span class="n">enabled</span>   <span class="p">:</span> <span class="n">yes</span>
+  <span class="o">*</span> <span class="n">XMLF90</span>  <span class="n">enabled</span>   <span class="p">:</span> <span class="n">yes</span>
+  <span class="o">*</span> <span class="n">HDF5</span> <span class="n">enabled</span>      <span class="p">:</span> <span class="n">yes</span> <span class="p">(</span><span class="n">MPI</span> <span class="n">support</span><span class="p">:</span> <span class="n">no</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">NetCDF</span> <span class="n">enabled</span>    <span class="p">:</span> <span class="n">yes</span> <span class="p">(</span><span class="n">MPI</span> <span class="n">support</span><span class="p">:</span> <span class="n">no</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">NetCDF</span><span class="o">-</span><span class="n">F</span> <span class="n">enabled</span>  <span class="p">:</span> <span class="n">yes</span> <span class="p">(</span><span class="n">MPI</span> <span class="n">support</span><span class="p">:</span> <span class="n">no</span><span class="p">)</span>
+
+  <span class="o">*</span> <span class="n">FFT</span> <span class="n">flavor</span>        <span class="p">:</span> <span class="n">fftw3</span> <span class="p">(</span><span class="n">libs</span><span class="p">:</span> <span class="n">user</span><span class="o">-</span><span class="n">defined</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">LINALG</span> <span class="n">flavor</span>     <span class="p">:</span> <span class="n">netlib</span> <span class="p">(</span><span class="n">libs</span><span class="p">:</span> <span class="n">auto</span><span class="o">-</span><span class="n">detected</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">SCALAPACK</span> <span class="n">enabled</span> <span class="p">:</span> <span class="n">no</span>
+  <span class="o">*</span> <span class="n">ELPA</span> <span class="n">enabled</span>      <span class="p">:</span> <span class="n">no</span>
+
+  <span class="o">*</span> <span class="n">FCFLAGS</span>           <span class="p">:</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">ffree</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">length</span><span class="o">-</span><span class="n">none</span>    <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="mf">4.7</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">-</span><span class="n">fortran</span><span class="o">/</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span>  <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">4</span><span class="n">_</span>
+<span class="n">gcc93</span><span class="o">/</span><span class="n">include</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span>
+  <span class="o">*</span> <span class="n">CPATH</span>             <span class="p">:</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">-</span><span class="n">fortran</span><span class="o">/</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="mf">4.7</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">hdf</span>
+<span class="mi">5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span>
+<span class="o">.</span><span class="mi">10</span><span class="n">_gcc9</span><span class="o">.</span><span class="mf">3.0</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">3.9</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span><span class="p">:</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">include</span>
+
+  <span class="o">*</span> <span class="n">Build</span> <span class="n">workflow</span>    <span class="p">:</span> <span class="n">monolith</span>
+
+<span class="mi">0</span> <span class="n">deprecated</span> <span class="n">options</span> <span class="n">have</span> <span class="n">been</span> <span class="n">used</span><span class="p">:</span><span class="o">.</span>
+
+<span class="n">Configuration</span> <span class="n">complete</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">may</span> <span class="n">now</span> <span class="nb">type</span> <span class="s2">&quot;make&quot;</span> <span class="n">to</span> <span class="n">build</span> <span class="n">Abinit</span><span class="o">.</span>
+<span class="p">(</span><span class="ow">or</span> <span class="s2">&quot;make -j&lt;n&gt;&quot;</span><span class="p">,</span> <span class="n">where</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">available</span> <span class="n">processors</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ABINIT can now be build with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
+</pre></div>
+</div>
+<p>Running the testsuite produces these results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
+<span class="n">atompaw</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">bigdft</span>                <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">19</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.01</span>
+<span class="n">bigdft_paral</span>          <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">built</span><span class="o">-</span><span class="ow">in</span>              <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">5</span>        <span class="mi">2</span>         <span class="mi">0</span>      <span class="mf">18.92</span>      <span class="mf">18.93</span>
+<span class="n">etsf_io</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">8</span>        <span class="mi">0</span>         <span class="mi">0</span>      <span class="mf">71.88</span>      <span class="mf">72.11</span>
+<span class="n">fast</span>                  <span class="mi">0</span>       <span class="mi">1</span>         <span class="mi">10</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">114.94</span>     <span class="mf">115.72</span>
+<span class="n">gpu</span>                   <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">7</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">libxc</span>                 <span class="mi">1</span>       <span class="mi">7</span>         <span class="mi">27</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1217.96</span>    <span class="mf">1220.14</span>
+<span class="n">mpiio</span>                 <span class="mi">1</span>       <span class="mi">0</span>         <span class="mi">12</span>        <span class="mi">4</span>         <span class="mi">0</span>    <span class="mf">2298.48</span>    <span class="mf">2306.73</span>
+<span class="n">paral</span>                 <span class="mi">1</span>      <span class="mi">11</span>         <span class="mi">33</span>       <span class="mi">76</span>         <span class="mi">0</span>    <span class="mf">6497.65</span>    <span class="mf">6502.18</span>
+<span class="n">psml</span>                  <span class="mi">0</span>       <span class="mi">2</span>         <span class="mi">12</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">536.08</span>     <span class="mf">536.88</span>
+<span class="n">seq</span>                   <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">18</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.01</span>
+<span class="n">tutomultibinit</span>        <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">6</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">248.18</span>     <span class="mf">250.11</span>
+<span class="n">tutoparal</span>             <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">1</span>       <span class="mi">26</span>         <span class="mi">0</span>     <span class="mf">154.05</span>     <span class="mf">154.50</span>
+<span class="n">tutoplugs</span>             <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">tutorespfn</span>            <span class="mi">1</span>       <span class="mi">8</span>         <span class="mi">20</span>        <span class="mi">2</span>         <span class="mi">0</span>    <span class="mf">4046.58</span>    <span class="mf">4050.13</span>
+<span class="n">tutorial</span>              <span class="mi">2</span>      <span class="mi">10</span>         <span class="mi">47</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1655.70</span>    <span class="mf">1659.39</span>
+<span class="n">unitary</span>               <span class="mi">0</span>       <span class="mi">1</span>         <span class="mi">17</span>       <span class="mi">20</span>         <span class="mi">0</span>     <span class="mf">107.07</span>     <span class="mf">107.41</span>
+<span class="n">v1</span>                    <span class="mi">0</span>       <span class="mi">1</span>         <span class="mi">73</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">529.11</span>     <span class="mf">532.30</span>
+<span class="n">v2</span>                    <span class="mi">0</span>      <span class="mi">10</span>         <span class="mi">69</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">601.61</span>     <span class="mf">606.15</span>
+<span class="n">v3</span>                    <span class="mi">0</span>      <span class="mi">14</span>         <span class="mi">64</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">597.51</span>     <span class="mf">602.62</span>
+<span class="n">v4</span>                    <span class="mi">0</span>      <span class="mi">12</span>         <span class="mi">49</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">559.48</span>     <span class="mf">563.87</span>
+<span class="n">v5</span>                    <span class="mi">2</span>      <span class="mi">12</span>         <span class="mi">59</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">2705.48</span>    <span class="mf">2712.52</span>
+<span class="n">v6</span>                    <span class="mi">0</span>       <span class="mi">7</span>         <span class="mi">54</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1491.29</span>    <span class="mf">1495.96</span>
+<span class="n">v67mbpt</span>               <span class="mi">1</span>       <span class="mi">9</span>         <span class="mi">15</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">645.63</span>     <span class="mf">648.78</span>
+<span class="n">v7</span>                    <span class="mi">1</span>      <span class="mi">14</span>         <span class="mi">50</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">2800.01</span>    <span class="mf">2806.79</span>
+<span class="n">v8</span>                    <span class="mi">0</span>      <span class="mi">17</span>         <span class="mi">52</span>        <span class="mi">2</span>         <span class="mi">0</span>    <span class="mf">3690.55</span>    <span class="mf">3696.26</span>
+<span class="n">v9</span>                    <span class="mi">0</span>       <span class="mi">9</span>         <span class="mi">42</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1196.94</span>    <span class="mf">1200.38</span>
+<span class="n">vdwxc</span>                 <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">1</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">wannier90</span>             <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">8</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+
+<span class="n">Completed</span> <span class="ow">in</span> <span class="mf">3760.01</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span> <span class="n">Average</span> <span class="n">time</span> <span class="k">for</span> <span class="n">test</span><span class="o">=</span><span class="mf">36.12</span> <span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="n">stdev</span><span class="o">=</span><span class="mf">97.31</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span>
+<span class="n">Summary</span><span class="p">:</span> <span class="n">failed</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">succeeded</span><span class="o">=</span><span class="mi">725</span><span class="p">,</span> <span class="n">passed</span><span class="o">=</span><span class="mi">145</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="mi">195</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1">
+<h3>CUDA Version with GCC 9.3, MPICH 3.4.1 and CUDA 11.1<a class="headerlink" href="#cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1" title="Permalink to this headline">¶</a></h3>
+<p>Similar to the parallel version above with the addition of this module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.1</span>
+</pre></div>
+</div>
+<p>The configue file was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>prefix=&quot;/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341_gpu&quot;
+with_mpi=&quot;${MD_MPICH}&quot;
+with_gpu=&quot;/usr/local/cuda&quot;
+with_gpu_flavor=&quot;cuda-double&quot;
+GPU_CPPFLAGS=&quot;-I/usr/local/cuda/include&quot;
+GPU_CFLAGS=&quot;-I/usr/local/cuda/include&quot;
+GPU_CXXFLAGS=&quot;-std=c++&quot;
+GPU_FCFLAGS=&quot;-I/usr/local/cuda/include&quot;
+GPU_LDFLAGS=&quot;-L/usr/local/cuda/lib64 -lcublas -lcufft -lcudart -lstdc++&quot;
+GPU_LIBS=&quot;-L/usr/local/cuda/lib64 -lcublas -lcufft -lcudart -lstdc++&quot;
+LINALG_LIBS=&quot;-L${MD_OPENBLAS}/lib -lopenblas -lpthread &quot;
+with_fft_flavor=&quot;fftw3&quot;
+FFTW3_LIBS=&quot;-L${MD_FFTW} -lfftw3 -lfftw3f&quot;
+with_libxc=${MD_LIBXC}
+with_libxml2=&quot;${MD_GCC}&quot;
+with_hdf5=&quot;${MD_HDF5}&quot;
+NETCDF_FCFLAGS=&quot;-I${MD_NETCDF}/include&quot;
+NETCDF_LIBS=&quot;-L${MD_NETCDF}/lib -lnetcdf&quot;
+NETCDF_FORTRAN_FCFLAGS=&quot;-I${MD_NETCDF_FORTRAN}/include&quot;
+NETCDF_FORTRAN_LIBS=&quot;-L${MD_NETCDF_FORTRAN}/lib -lnetcdff&quot;
+LIBPSML_FCFLAGS=&quot;-I${MD_LIBPSML}/include&quot;
+LIBPSML_LIBS=&quot;-L${MD_LIBPSML}/lib -lpsml&quot;
+with_xmlf90=&quot;${MD_XMLF90}&quot;
+</pre></div>
+</div>
+<p>The code must be compiled from a compute node with GPUs as the CUDA toolkit is only present there.</p>
 </div>
 </div>
 <div class="section" id="siesta">

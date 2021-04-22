@@ -102,7 +102,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#spruce">Spruce</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-as-user-with-pip">Installing python packages as user with pip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-with-pip">Installing python packages with pip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-with-a-custom-prefix">Installing python packages with a custom prefix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-python-virtualenv">Using Python virtualenv</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#using-virtual-environments-with-python2">Using Virtual Environments with python2</a></li>
@@ -666,28 +666,29 @@ Executing transaction: done
 </div>
 </div>
 </div>
-<div class="section" id="installing-python-packages-as-user-with-pip">
-<h2>Installing python packages as user with pip<a class="headerlink" href="#installing-python-packages-as-user-with-pip" title="Permalink to this headline">¶</a></h2>
-<p>However, you are not constrained to use just those packages. You can also
-install your own or create entire new environments with the packages and
-versions that you want.</p>
-<p>An easy way to install Python modules locally (within your user
-directory) is by using the <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+<div class="section" id="installing-python-packages-with-pip">
+<h2>Installing python packages with pip<a class="headerlink" href="#installing-python-packages-with-pip" title="Permalink to this headline">¶</a></h2>
+<p>The package <cite>pip</cite> is a popular way of installing python packages.
+You cannot install packages on system-wide locations, but you still can install them on your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder for personal use.</p>
+<p>To install Python modules locally (within your user <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory) is by adding <code class="docutils literal notranslate"><span class="pre">--user</span></code> as argument for the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>. It is important to notice that in cases where you have Python 2.x and Python 3.x you need to pay attention to which <code class="docutils literal notranslate"><span class="pre">pip</span></code> command to use.
+The command <code class="docutils literal notranslate"><span class="pre">pip</span></code> usually refers to Python 2.x and there is an equivalent command <code class="docutils literal notranslate"><span class="pre">pip3</span></code> for Python 3.x. As we are using Python 3.x, <code class="docutils literal notranslate"><span class="pre">pip3</span></code> is the command that we will be using.</p>
+<p>There are two ways of using the command <code class="docutils literal notranslate"><span class="pre">pip3</span></code>. One is calling the command directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Another is using <cite>pip</cite> indirectly as a module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag directs python to install the package in a user location
-rather than a system wide location where you are not allowed to alter files.</p>
+rather than a system-wide location where you are not allow to alter files.</p>
 <p>The user location for python packages is <code class="docutils literal notranslate"><span class="pre">$HOME/.local/lib/pythonX.Y/site-packages</span></code>,
-This is generally the preferred method of locally installing new python packages as this
-user site package is by default in the python library path: meaning
-modules installed this way can be used as if they were installed
-system-wide.</p>
+This is generally the preferred method of locally installing new python packages. There is no disadvantage on using a user installation other that the package is only available to you.</p>
 </div>
 <div class="section" id="installing-python-packages-with-a-custom-prefix">
 <h2>Installing python packages with a custom prefix<a class="headerlink" href="#installing-python-packages-with-a-custom-prefix" title="Permalink to this headline">¶</a></h2>
 <p>Another way to install Python modules locally is by using the <code class="docutils literal notranslate"><span class="pre">--target</span></code> flag:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">target</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">target</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>representing the directory location you want the package installed into.
@@ -695,8 +696,7 @@ These flags essentially do the same thing by directing Python to install
 the module in the specified directory. These directories will not be
 searched by default with Python. Therefore, in order to use these
 modules in your Python scripts you will have to modify the <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code>
-environment variable to include the specified directory. Or
-alternatively, modify sys.path from within your python script (for this
+environment variable to include the specified directory. Or alternatively, modify sys.path from within your python script (for this
 method, consult <a class="reference external" href="https://docs.python.org">python documentation</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
@@ -706,9 +706,7 @@ method, consult <a class="reference external" href="https://docs.python.org">pyt
 <h2>Using Python virtualenv<a class="headerlink" href="#using-python-virtualenv" title="Permalink to this headline">¶</a></h2>
 <p>The installing with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--target</span> <span class="pre">&lt;dir&gt;</span></code>
 those locations are all searched secondary to the system-wide site packages.</p>
-<p>This is could be an issue if you are trying to install locally a different version of a
-module already installed system-wide. A way to get around this is by
-using Python Virtual Environments.</p>
+<p>This is could be an issue if you are trying to install locally a different version of a module already installed system-wide. A way to get around this is by using Python Virtual Environments.</p>
 <p>Python virtual environments are used to build completely isolated python
 workflows. Primarily they are used to solve the need for multiple
 versions within python modules. Often, you might have the need to use
@@ -727,18 +725,18 @@ them is no different than using python it’s self.</p>
 python interpreter. For instance, if you want python 2.7.10, then load
 the 2.7.10 python modefule. If you want to use the default system python
 (v. 2.6), then you do not need to load a python modulefile. However, you
-do need to load the virtualenv modulefile.</p>
+do need to load the virtualenv modulefile:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">15</span><span class="n">_gcc82</span>
 </pre></div>
 </div>
-<p>Then create a virtualenv directory with the ‘virtualenv’ command.</p>
+<p>Then create a virtualenv directory with the ‘virtualenv’ command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">workflow1</span>
 </pre></div>
 </div>
 <p>You should now have a directory called ‘workflow1’. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
-virtualenv.</p>
+virtualenv:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
@@ -750,18 +748,18 @@ pip, and easy_install just as you would regularly.</p>
 <h3>Using Virtual Environments with python3<a class="headerlink" href="#using-virtual-environments-with-python3" title="Permalink to this headline">¶</a></h3>
 <p>First, load the python3 modulefile. The python3 modulefile comes with
 it’s own virtual environment utility, so you do not need to load the
-virtualenv modulefile.</p>
+virtualenv modulefile:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">7.4</span><span class="n">_gcc82</span>
 </pre></div>
 </div>
-<p>Then create a virtualenv directry with the ‘pyvenv’ command.</p>
+<p>Then create a virtualenv directry with the ‘pyvenv’ command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="n">workflow1</span>
 </pre></div>
 </div>
 <p>You should now have a directory called ‘workflow1’. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
-virtualenv.</p>
+virtualenv:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
@@ -780,7 +778,7 @@ the ‘activate’ file. Instead, you need to source the activate.csh file.</p>
 <div class="section" id="using-site-wide-system-packages">
 <h3>Using site-wide system packages<a class="headerlink" href="#using-site-wide-system-packages" title="Permalink to this headline">¶</a></h3>
 <p>The centrally installed python interpreters (python loaded with
-modelefiles), have some common scientific packages installed
+modulefiles), have some common scientific packages installed
 with them by default. To have your virtualenv keep using
 these packages you do not need to install them in your virtualenv,
 using the –system-site-packages option.</p>
