@@ -1,7 +1,7 @@
 Thorny Flat Cluster
 ===================
 
-Thorny Flat is WVU Latest HPC Cluster.  It was deployed in Feburary 2019 and funded in large part by NSF Major Research Instrumentation (MRI) Grant Award #1726534. The cluster is a 4,208 core cluster spread over 108 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phases and currently is in phase 0.
+Thorny Flat is WVU Latest HPC Cluster.  It was deployed in Feburary 2019 and funded in large part by NSF Major Research Instrumentation (MRI) Grant Award #1726534. The cluster has a total of 6196 CPU cores spread over 170 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phases and currently is in phase 2.
 
 Overview
 --------
@@ -14,7 +14,7 @@ higher education institutions in West Virginia. It is hosted in Pittsburgh
 Supercomputer Center and was built thanks to NSF Major Research Instrumentation
 (MRI) Grant Award #1726534
 
-Thorny Flat is a cluster of 108 compute nodes plus 4 management nodes.
+Thorny Flat is a cluster of 170 compute nodes plus 4 management nodes.
 101 nodes have a dual-socket motherboard with Intel(R) Xeon(R) Gold 6138
 Processors for a total of 40 cores per node.
 The remaining 7 nodes have dual socket motherboard with Intel(R) Xeon(R) Gold
@@ -44,10 +44,11 @@ Resource manager and system scheduler
 Total Compute Resources
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* 4,208 Cores
-* 101 Compute Nodes
-* 7 Compute Nodes
-* 21 GPUs
+* 6196 Cores
+* 159 Compute Nodes (CPU only)
+* 7 Compute nodes with 3 NVIDIA P6000 (21 GPU cards)
+* 3 Compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)
+* 1 Compute node with 2 NVIDIA A100
 * 4 Management Nodes
 
 Shared Interconnect
