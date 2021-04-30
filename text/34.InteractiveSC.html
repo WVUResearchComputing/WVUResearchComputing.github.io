@@ -101,6 +101,8 @@
 <li class="toctree-l2"><a class="reference internal" href="33.JobSubmission.html">Using the Queuing system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Interactive Scientific Computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-computing-from-the-terminal">Interactive Computing from the Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-computing-from-a-web-interface">Interactive Computing from a web interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-the-dashboard">Accessing the Dashboard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-applications">Interactive applications</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#jupyter">Jupyter</a></li>
@@ -191,15 +193,100 @@
             
   <div class="section" id="interactive-scientific-computing">
 <span id="bs-interactive"></span><h1>Interactive Scientific Computing<a class="headerlink" href="#interactive-scientific-computing" title="Permalink to this headline">¶</a></h1>
-<p>The term Interactive Scientific Computing is here understood as using a computer in a similar way as you use a handheld calculator. You enter some input and you expect that input to be processed right away to produce results.
-It does not mean that you get the answer immediately, but calculations are done take an amount of time that allow a human to wait before a new command is submitted.</p>
-<p>Non-interactive computing refers to the way people typically interact with Supercomputers. Supercomputers are large computing devices usually build as clusters of individual computers. Supercomputers in many cases are used by tens or hundreds of users at the same time. For the typical use of Supercomputers, the computations are programmed in advance, the user submit jobs expecting that those jobs start being executed sometime in the future and produce the result that will be analyzed later on.</p>
-<p>The idea of using a Supercomputer like a HPC cluster could be intimidating for beginners. However, you could have strong motivations for start using this kind of machines. Your research have scaled to a point where your desktop computer or laptop is not longer capable of managing the task, you need specialized software packages and you do not want to spent time compiling or installing software and you would like to rely on software that is already present on the HPC cluster.</p>
-<p>For taking advantage of WVU’s High Performance Computing cluster for interactive scientific computing all that you need is a web browser. On this lesson you will not have to learn Linux commands, you just need to execute one for the purpose of downloading all the materials for the tutorials but beyond that your interaction will take place on a friendly web interface. You do not have to manually submitting jobs or editing submission scripts, these are tasks very important for HPC but they will delegated for other lesson.</p>
+<p>The term Interactive Scientific Computing consists on using a computer in a similar way as you use a handheld calculator.
+On a handheld calculator, you type some input and you expect that input to be processed right away to produce results.
+The result does not need to return inmediately, but you expect that calculations are done take an amount of time that allow a human to wait before a new command is submitted.</p>
+<p>Interactive Scientific Computing is different from the way we use to work in High Performance Computing (HPC).
+On a HPC supercomputer, you use the computer with a queue system on what we called non-interactive computing.
+Supercomputers are large computing devices usually build as clusters of individual computers. Supercomputers in many cases are used by tens or hundreds of users at the same time. For the typical use of Supercomputers, the computations are programmed in advance, the user submit jobs expecting that those jobs start being executed sometime in the future and produce the result that will be analyzed later on.</p>
+<p>Despite of the usual usage of a HPC supercomputing, you could have strong motivations for use a computer far more powerful than your own desktop or laptop. Your research have scaled to a point where your desktop computer or laptop is not longer capable of managing the task, you need specialized software packages and you do not want to spent time compiling or installing software and you would like to rely on software that is already present on the HPC cluster.</p>
+<p>There are several ways to a HPC cluster for Interactive Computing. You can execute interactive computing directly from the terminal or using a web interfact such as Open-On Demand and one interactive environments such as Jupyter of RStudio. We will describe both alternatives.</p>
+<div class="section" id="interactive-computing-from-the-terminal">
+<h2>Interactive Computing from the Terminal<a class="headerlink" href="#interactive-computing-from-the-terminal" title="Permalink to this headline">¶</a></h2>
+<p>First, connect to the cluster using the instructions described on here:ref:<cite>qs-connect:</cite>. Once on the head node you can request an interactive session with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I
+</pre></div>
+</div>
+<p>This is the simplest command for requesting an interactive session. Under this command, the queue selected will be <code class="docutils literal notranslate"><span class="pre">standby</span></code> with a walltime of 4 hours. The job will allocate one node and one core on the node for the execution.</p>
+<p>You can request more cores for your interactive job, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -l nodes=1:ppn=4
+</pre></div>
+</div>
+<p>On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. A way of requesting an entire node could be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -n
+</pre></div>
+</div>
+<p>Requesting more than 1 core does not necessarily means that your code  will actually using those extra cores. It all depends on your code being able to work in parallel directly or indirectly. Directly means that the code use some sort of paralelization such as multithreading such as pthreads or OpenMP, or multiprocessing such as MPI, or any other paralleization in languages such as R or Python that offer libraries for explicit parallelism. Indirectly paralleization means that underlying libraries such as FFTW or OpenBLAS could have been compiled with multithreading support meaning that codes that uses those libraries could take indirectly advantage of parallelism.</p>
+<p>You can also request GPUs for an interactive job, in that case you have to explicitly request a queue such as <cite>comm_gpu_inter</cite> that offers compute nodes with GPU cards and explicitly request the number of GPUs that you want to use.
+For example if you want to use one GPU card for your execution use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -q comm_gpu_inter -l nodes=1:ppn=8:gpus=1
+</pre></div>
+</div>
+<p>After you submit your request for interactive jobs, you will have to wait a few minutes before you are assigned a compute node. After getting access to the compute node, you can load modules and execute commands as you were on a machine. There are several text-based environments for interactive computing.</p>
+<p>One is R and you can access it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/r/4.0.4_gcc102
+$&gt; R
+
+R version 4.0.4 (2021-02-15) -- &quot;Lost Library Book&quot;
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type &#39;contributors()&#39; for more information and
+&#39;citation()&#39; on how to cite R or R packages in publications.
+
+Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or
+&#39;help.start()&#39; for an HTML browser interface to help.
+Type &#39;q()&#39; to quit R.
+
+[Previously saved workspace restored]
+
+&gt;
+</pre></div>
+</div>
+<p>Another text-based interactive environment is IPython, to use it execute for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/python/cpython_3.8.6_gcc93
+$&gt; ipython
+Python 3.8.6 (default, Oct  1 2020, 21:54:10)
+Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
+IPython 7.18.1 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
+
+In [1]:
+</pre></div>
+</div>
+<p>Matlab is another software that offers interactive environment. Usually MATLAB is accessed on a graphical interface but MATLAB can also work from a text-based interface:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/8.2.0 matlab/2020b
+$&gt; matlab -nodesktop
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                                   &lt; M A T L A B (R) &gt;
+                         Copyright 1984-2020 The MathWorks, Inc.
+                         R2020b (9.9.0.1467703) 64-bit (glnxa64)
+                                     August 26, 2020
+
+
+To get started, type doc.
+For product information, visit www.mathworks.com.
+
+&gt;&gt;
+</pre></div>
+</div>
+<p>These are just examples of several enviroments for interactive computing from the terminal. On the next section we will see how to perform interactive execution from a web interface using Open-On Demand. A web service available for Thorny Flat.</p>
+</div>
+<div class="section" id="interactive-computing-from-a-web-interface">
+<h2>Interactive Computing from a web interface<a class="headerlink" href="#interactive-computing-from-a-web-interface" title="Permalink to this headline">¶</a></h2>
+<p>For taking advantage of WVU’s High Performance Computing cluster for interactive scientific computing another alternative is from a web browser. On this lesson you will not have to learn Linux commands, you just need to execute one for the purpose of downloading all the materials for the tutorials but beyond that your interaction will take place on a friendly web interface. You do not have to manually submitting jobs or editing submission scripts, these are tasks very important for HPC but they will delegated for other lesson.</p>
 <p>We will be using a tool, a web-based client portal, that hides all that complexity and allow you to start using powerful computers for your research from a web interface, with minimal effort and fast learning curve.</p>
 <p>Several technologies are involved here and it is important to understand how those different pieces are interconnected.</p>
 <p>Open OnDemand is a web-based client, based on the Ohio Supercomputer Center’s proven “OSC On Demand” platform, that enables HPC centers to install and deploy advanced web and graphical interfaces for their users. HPC resources are accessible from a web browser without the user having to install any special software or plugin.</p>
 <p>The path for this tutorial is as follows. First we will demonstrate how to access the open on demand portal. Next we will create Jupyter and RStudio sessions and opening a terminal and a file manager.</p>
+</div>
 <div class="section" id="accessing-the-dashboard">
 <h2>Accessing the Dashboard<a class="headerlink" href="#accessing-the-dashboard" title="Permalink to this headline">¶</a></h2>
 <p>First, go to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">Thorny Flat On Demand Dashboard</a></p>

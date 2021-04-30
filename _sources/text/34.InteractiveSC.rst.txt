@@ -3,14 +3,104 @@
 Interactive Scientific Computing
 ================================
 
-The term Interactive Scientific Computing is here understood as using a computer in a similar way as you use a handheld calculator. You enter some input and you expect that input to be processed right away to produce results.
-It does not mean that you get the answer immediately, but calculations are done take an amount of time that allow a human to wait before a new command is submitted.
+The term Interactive Scientific Computing consists on using a computer in a similar way as you use a handheld calculator.
+On a handheld calculator, you type some input and you expect that input to be processed right away to produce results.
+The result does not need to return inmediately, but you expect that calculations are done take an amount of time that allow a human to wait before a new command is submitted.
 
-Non-interactive computing refers to the way people typically interact with Supercomputers. Supercomputers are large computing devices usually build as clusters of individual computers. Supercomputers in many cases are used by tens or hundreds of users at the same time. For the typical use of Supercomputers, the computations are programmed in advance, the user submit jobs expecting that those jobs start being executed sometime in the future and produce the result that will be analyzed later on.
+Interactive Scientific Computing is different from the way we use to work in High Performance Computing (HPC).
+On a HPC supercomputer, you use the computer with a queue system on what we called non-interactive computing.
+Supercomputers are large computing devices usually build as clusters of individual computers. Supercomputers in many cases are used by tens or hundreds of users at the same time. For the typical use of Supercomputers, the computations are programmed in advance, the user submit jobs expecting that those jobs start being executed sometime in the future and produce the result that will be analyzed later on.
 
-The idea of using a Supercomputer like a HPC cluster could be intimidating for beginners. However, you could have strong motivations for start using this kind of machines. Your research have scaled to a point where your desktop computer or laptop is not longer capable of managing the task, you need specialized software packages and you do not want to spent time compiling or installing software and you would like to rely on software that is already present on the HPC cluster.
+Despite of the usual usage of a HPC supercomputing, you could have strong motivations for use a computer far more powerful than your own desktop or laptop. Your research have scaled to a point where your desktop computer or laptop is not longer capable of managing the task, you need specialized software packages and you do not want to spent time compiling or installing software and you would like to rely on software that is already present on the HPC cluster.
 
-For taking advantage of WVU’s High Performance Computing cluster for interactive scientific computing all that you need is a web browser. On this lesson you will not have to learn Linux commands, you just need to execute one for the purpose of downloading all the materials for the tutorials but beyond that your interaction will take place on a friendly web interface. You do not have to manually submitting jobs or editing submission scripts, these are tasks very important for HPC but they will delegated for other lesson.
+There are several ways to a HPC cluster for Interactive Computing. You can execute interactive computing directly from the terminal or using a web interfact such as Open-On Demand and one interactive environments such as Jupyter of RStudio. We will describe both alternatives.
+
+Interactive Computing from the Terminal
+---------------------------------------
+
+First, connect to the cluster using the instructions described on here:ref:`qs-connect:`. Once on the head node you can request an interactive session with::
+
+  $> qsub -I
+
+This is the simplest command for requesting an interactive session. Under this command, the queue selected will be ``standby`` with a walltime of 4 hours. The job will allocate one node and one core on the node for the execution.
+
+You can request more cores for your interactive job, for example::
+
+  $> qsub -I -l nodes=1:ppn=4
+
+On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. A way of requesting an entire node could be::
+
+  $> qsub -I -n
+
+Requesting more than 1 core does not necessarily means that your code  will actually using those extra cores. It all depends on your code being able to work in parallel directly or indirectly. Directly means that the code use some sort of paralelization such as multithreading such as pthreads or OpenMP, or multiprocessing such as MPI, or any other paralleization in languages such as R or Python that offer libraries for explicit parallelism. Indirectly paralleization means that underlying libraries such as FFTW or OpenBLAS could have been compiled with multithreading support meaning that codes that uses those libraries could take indirectly advantage of parallelism.
+
+You can also request GPUs for an interactive job, in that case you have to explicitly request a queue such as `comm_gpu_inter` that offers compute nodes with GPU cards and explicitly request the number of GPUs that you want to use.
+For example if you want to use one GPU card for your execution use::
+
+  $> qsub -I -q comm_gpu_inter -l nodes=1:ppn=8:gpus=1
+
+After you submit your request for interactive jobs, you will have to wait a few minutes before you are assigned a compute node. After getting access to the compute node, you can load modules and execute commands as you were on a machine. There are several text-based environments for interactive computing.
+
+One is R and you can access it with::
+
+  $> module load lang/r/4.0.4_gcc102
+  $> R
+
+  R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+  Copyright (C) 2021 The R Foundation for Statistical Computing
+  Platform: x86_64-pc-linux-gnu (64-bit)
+
+  R is free software and comes with ABSOLUTELY NO WARRANTY.
+  You are welcome to redistribute it under certain conditions.
+  Type 'license()' or 'licence()' for distribution details.
+
+    Natural language support but running in an English locale
+
+  R is a collaborative project with many contributors.
+  Type 'contributors()' for more information and
+  'citation()' on how to cite R or R packages in publications.
+
+  Type 'demo()' for some demos, 'help()' for on-line help, or
+  'help.start()' for an HTML browser interface to help.
+  Type 'q()' to quit R.
+
+  [Previously saved workspace restored]
+
+  >
+
+Another text-based interactive environment is IPython, to use it execute for example::
+
+  $> module load lang/python/cpython_3.8.6_gcc93
+  $> ipython
+  Python 3.8.6 (default, Oct  1 2020, 21:54:10)
+  Type 'copyright', 'credits' or 'license' for more information
+  IPython 7.18.1 -- An enhanced Interactive Python. Type '?' for help.
+
+  In [1]:
+
+Matlab is another software that offers interactive environment. Usually MATLAB is accessed on a graphical interface but MATLAB can also work from a text-based interface::
+
+  $> module load lang/gcc/8.2.0 matlab/2020b
+  $> matlab -nodesktop
+  MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                                     < M A T L A B (R) >
+                           Copyright 1984-2020 The MathWorks, Inc.
+                           R2020b (9.9.0.1467703) 64-bit (glnxa64)
+                                       August 26, 2020
+
+
+  To get started, type doc.
+  For product information, visit www.mathworks.com.
+
+  >>
+
+These are just examples of several enviroments for interactive computing from the terminal. On the next section we will see how to perform interactive execution from a web interface using Open-On Demand. A web service available for Thorny Flat.
+
+Interactive Computing from a web interface
+------------------------------------------
+
+For taking advantage of WVU’s High Performance Computing cluster for interactive scientific computing another alternative is from a web browser. On this lesson you will not have to learn Linux commands, you just need to execute one for the purpose of downloading all the materials for the tutorials but beyond that your interaction will take place on a friendly web interface. You do not have to manually submitting jobs or editing submission scripts, these are tasks very important for HPC but they will delegated for other lesson.
 
 We will be using a tool, a web-based client portal, that hides all that complexity and allow you to start using powerful computers for your research from a web interface, with minimal effort and fast learning curve.
 
