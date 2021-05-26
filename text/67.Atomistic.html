@@ -104,6 +104,13 @@
 <li class="toctree-l2"><a class="reference internal" href="65.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="66.HDF5_NetCDF.html">Compiling HDF5 and NetCDF</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Compiling Atomistic Codes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plumed">Plumed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amber">AMBER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gcc-9-3-mpich-3-4-1">GCC 9.3 + MPICH 3.4.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gcc-9-3-mpich-3-4-1-cuda">GCC 9.3 + MPICH 3.4.1 (CUDA)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intel-19-and-intel-mpi-19">Intel 19 and Intel MPI 19</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#abinit">ABINIT</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1">Parallel version with GCC 9.3 and MPICH 3.4.1</a></li>
@@ -112,13 +119,14 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gromacs">Gromacs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#gromacs-2019-4-on-spruce-knob">Gromacs 2019.4 on Spruce Knob</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gromacs-2019-4-on-thorny-flat">Gromacs 2019.4 on Thorny Flat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gromacs-2021-2-on-thorny-flat">Gromacs 2021.2 on Thorny Flat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gromacs-5-1-5-on-thorny-flat">Gromacs 5.1.5 on Thorny Flat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gromacs-2019-4-on-spruce-knob">Gromacs 2019.4 on Spruce Knob</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#lammps">LAMMPS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#castep">CASTEP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vasp-6-2-1">VASP 6.2.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="68.BLAS_Lapack.html">BLAS and LAPACK</a></li>
@@ -197,6 +205,327 @@
             
   <div class="section" id="compiling-atomistic-codes">
 <h1>Compiling Atomistic Codes<a class="headerlink" href="#compiling-atomistic-codes" title="Permalink to this headline">¶</a></h1>
+<p>These are instructions for compiling a variety of atomistic codes. By atomistic codes we include codes that simulate the behavior of particles such as LAMMPS, codes for Classical Molecular Dynamics (CMD) such as AMBER, GROMACS and NAMD,
+Tight Binding codes such as DFTB+ and DFT codes such as ABINIT, OCTOPUS, VASP and Quantum Espresso.</p>
+<p>For compiling these codes we need Fortran, C and C++ compilers, we will use GCC 9.3 and Intel 2019 for most of these codes.</p>
+<p>A set of numerical libraries are used very often by these codes. Dense Linear Algebra routines such as BLAS and LAPACK are used. Optimized versions such as OpenBLAS and Intel MKL are preferable over the reference versions from NetLIB.</p>
+<p>All atomistic codes in our list take advantage of parallelization, either OpenMP, MPI or support GPUs. OpenMP is implemented on modern compilers such as GCC, Intel and NVIDIA. For MPI we will use MPICH 3.4.1, OpenMPI 3.1.6 and Intel MPI from 2019.</p>
+<p>Other libraries needed for compiling these codes include a FFT library such as FFTW 3.3.9 or the implementation in MKL. The libraries need to be compiled for single and double precision as some code use both. A HDF5 and NetCDF libraries
+provide hierarchical data storage for numerical data. Finally, a Python implementation is often needed, because these codes include a Python interface or use it for building or testing.</p>
+<p>We will start with PLUMED, a library for sampling algorithms, free-energy calculations and other high level calculations on top of MD packages. W</p>
+<div class="section" id="plumed">
+<h2>Plumed<a class="headerlink" href="#plumed" title="Permalink to this headline">¶</a></h2>
+<p>PLUMED is an open-source library that provides a wide range of different methods that work on top of other Molecular Dynamics codes. Capabilities of the code include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Enhanced-sampling algorithms</li>
+<li>Free-energy methods</li>
+<li>Tools to analyze the vast amounts of data produced by molecular dynamics (MD) simulations.</li>
+</ul>
+</div></blockquote>
+<p>We compile PLUMED with the following modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> \
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span>
+</pre></div>
+</div>
+<p>Download PLUMED from:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">plumed2</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mf">7.1</span><span class="o">/</span><span class="n">plumed</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mf">1.</span><span class="n">tgz</span>
+</pre></div>
+</div>
+<p>Uncompress and configure the build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar -zxvf plumed-2.7.1.tgz
+cd plumed-2.7.1
+./configure --prefix=/shared/software/atomistic/plumed/2.7.1_gcc93_mpic341 PYTHON_BIN=python3 --enable-external-blas --enable-external-lapack LDFLAGS=-L${MD_OPENBLAS}/lib LIBS=-lopenblas
+</pre></div>
+</div>
+<p>After configuring the build. Execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">12</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>PLUMED includes a testsuite and it is always a good practice to test the compilation. Call make to run the testsuite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">check</span>
+</pre></div>
+</div>
+<p>The final lines of the tests show no failures:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
++ check file ves/rt-td-vonmises/report.txt for more information
++ test ves/rt-VesDeltaF/ NOT APPLICABLE
++ check file ves/rt-VesDeltaF/report.txt for more information
++ test ves/rt-VesDeltaF-mwalkers/ NOT APPLICABLE
++ check file ves/rt-VesDeltaF-mwalkers/report.txt for more information
++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Final report:
++ 298 tests performed, 223 tests not applicable
++ 0 errors found
++ Well done!!
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+make[1]: Leaving directory &#39;/gpfs20/shared/src/plumed-2.7.1/regtest&#39;
+</pre></div>
+</div>
+<p>After installation, PLUMED offers a very convenient prepared modulefile.
+The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">modulefile</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">tier2</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span>
+</pre></div>
+</div>
+<p>The only change needed for this modulefile is adding one line loading the other modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#%Module1.0##############################################</span>
+
+<span class="c1"># Manually add here dependencies and conflicts</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="amber">
+<h2>AMBER<a class="headerlink" href="#amber" title="Permalink to this headline">¶</a></h2>
+<p>Amber is a suite of biomolecular simulation programs. It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.</p>
+<p>AMBER was compiled using GCC 9.3 and MPICH 3.4.1. The first build is done without CUDA and with some small adjustments the CUDA version can be build from a GPU compute node.</p>
+<p>Amber as a package is composed from two pieces, Amber itself and AmberTools.
+Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license. AmberTools is a free package that collect open-source code to be used in conjunction with Amber. The latest version is Amber 20.</p>
+<p>We start with two files, <code class="docutils literal notranslate"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools20.tar.bz2</span></code>. The first step is to uncompress both of them. The two tars uncompress on the same target folder <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">Amber20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">AmberTools20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">cd</span> <span class="n">amber20_src</span>
+</pre></div>
+</div>
+<p>AMBER20 was compiled using GCC without and with CUDA, and Intel 2019 without CUDA.</p>
+<div class="section" id="gcc-9-3-mpich-3-4-1">
+<h3>GCC 9.3 + MPICH 3.4.1<a class="headerlink" href="#gcc-9-3-mpich-3-4-1" title="Permalink to this headline">¶</a></h3>
+<p>The modules used for compiling Amber are GCC 9.3 and MPICH 3.4.1. The first modules to load are the compiler and MPI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span>
+</pre></div>
+</div>
+<p>Amber uses CMAKE as software builder. The version included with RedHat 7.x (2.18) is too old for most scientific codes. A module is needed to update the version of cmake to 3.18.3</p>
+<blockquote>
+<div>module load dev/cmake/3.18.3</div></blockquote>
+<p>It is always convenient to build the code on a folder separated from the sources. A folder inside <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code> is created for building Amber inside:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
+<span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
+</pre></div>
+</div>
+<p>In the folder <code class="docutils literal notranslate"><span class="pre">amber20_src/build/run_cmake.sample</span></code> there a script that can be used to build Amber with a good set of predefined cmake FLAGS. Amber will be build first disabling CUDA but enabling MPI and OpenMP. The script after modifications looks like this (run_cmake.gcc93_mpic341):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#  This file gives some sample cmake invocations.  You may wish to
+#  edit some options that are chosen here.
+
+#  For information on how to get cmake, visit this page:
+#  https://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Quick-Start
+
+#  For information on common options for cmake, visit this page:
+#  http://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Common-Options
+
+#  (Note that you can change the value of CMAKE_INSTALL_PREFIX from what
+#  is suggested below, but it cannot coincide with the amber20_src
+#  folder.)
+
+AMBER_PREFIX=$(dirname $(dirname `pwd`))
+PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_nocuda
+
+if [ `uname -s|awk &#39;{print $1}&#39;` = &quot;Darwin&quot; ]; then
+
+#  For macOS:
+
+  if [ -x /Applications/CMake.app/Contents/bin/cmake ]; then
+     cmake=/Applications/CMake.app/Contents/bin/cmake
+  else
+     cmake=cmake
+  fi
+
+  $cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
+    -DCOMPILER=CLANG  -DBLA_VENDOR=Apple \
+    -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2&gt;&amp;1 | tee cmake.log
+
+else
+
+#  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
+    -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2&gt;&amp;1 | tee  cmake.log
+
+fi
+
+if [ ! -s cmake.log ]; then
+  echo &quot;&quot;
+  echo &quot;Error:  No cmake.log file created: you may need to edit run_cmake&quot;
+  exit 1
+fi
+
+echo &quot;&quot;
+echo &quot;If the cmake build report looks OK, you should now do the following:&quot;
+echo &quot;&quot;
+echo &quot;    make install&quot;
+echo &quot;    source $AMBER_PREFIX/amber20/amber.sh&quot;
+echo &quot;&quot;
+echo &quot;Consider adding the last line to your login startup script, e.g. ~/.bashrc&quot;
+echo &quot;&quot;
+</pre></div>
+</div>
+<p>When running the script, Miniconda will be downloaded and installed, this is the portion of the execution that requires internet access and cannot be executed from a GPU node.</p>
+<p>After CMAKE have prepared the folder with for compilation, execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
+</pre></div>
+</div>
+<p>The code will compile in a few minutes. To install the the build execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>To run the testsuite, create a load the module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span><span class="o">.</span><span class="n">parallel</span>
+</pre></div>
+</div>
+<p>The results from the testsuite were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">185</span> <span class="n">file</span> <span class="n">comparisons</span> <span class="n">passed</span>
+<span class="mi">4</span> <span class="n">file</span> <span class="n">comparisons</span> <span class="n">failed</span> <span class="p">(</span><span class="mi">1</span> <span class="n">of</span> <span class="n">which</span> <span class="n">can</span> <span class="n">be</span> <span class="n">ignored</span><span class="p">)</span>
+<span class="mi">0</span> <span class="n">tests</span> <span class="n">experienced</span> <span class="n">an</span> <span class="n">error</span>
+<span class="n">Test</span> <span class="n">log</span> <span class="n">file</span> <span class="n">saved</span> <span class="k">as</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_nocuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_parallel</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26_10</span><span class="o">-</span><span class="mi">57</span><span class="o">-</span><span class="mf">52.</span><span class="n">log</span>
+<span class="n">Test</span> <span class="n">diffs</span> <span class="n">file</span> <span class="n">saved</span> <span class="k">as</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_nocuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_parallel</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26_10</span><span class="o">-</span><span class="mi">57</span><span class="o">-</span><span class="mf">52.</span><span class="n">diff</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gcc-9-3-mpich-3-4-1-cuda">
+<h3>GCC 9.3 + MPICH 3.4.1 (CUDA)<a class="headerlink" href="#gcc-9-3-mpich-3-4-1-cuda" title="Permalink to this headline">¶</a></h3>
+<p>Using the previous build a CUDA version can be compiled from a compute node.
+Make a copy of <code class="docutils literal notranslate"><span class="pre">run_cmake.gcc93_mpic341</span></code> and edit the PREFIX and the FLAG enabling CUDA:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ diff ../run_cmake.gcc93_mpic341 ../run_cmake.gcc93_mpic341_cuda
+17c17
+&lt; PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_nocuda
+---
+&gt; PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_cuda
+41a42
+&gt;     -DCUDA_TOOLKIT_ROOT_DIR=${MD_CUDA} \
+43c44
+&lt;     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+---
+&gt;     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+</pre></div>
+</div>
+<p>Go to a compute node and load the module for CUDA 11.3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.3</span>
+</pre></div>
+</div>
+<p>Delete the file <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> before running the script again. That will recreate the file with values for the CUDA compilation.</p>
+<p>Execute the same commands for compiling and installing, the compilation happens inside a GPU node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests either serial or parallel. Here are the results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==&gt;</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_cuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_cuda</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26_11</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mf">03.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">diffing</span> <span class="n">md_SC_NVT_MBAR_SC_2</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">DPFP</span> <span class="k">with</span> <span class="n">md_SC_NVT_MBAR_SC_2</span><span class="o">.</span><span class="n">o</span>
+<span class="n">PASSED</span>
+<span class="o">==============================================================</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs20/shared/src/AMBER/amber20/amber20_src/test/cuda&#39;</span>
+
+<span class="n">Finished</span> <span class="n">CUDA</span> <span class="n">test</span> <span class="n">suite</span> <span class="k">for</span> <span class="n">Amber</span> <span class="mi">20</span> <span class="n">at</span> <span class="n">Wed</span> <span class="n">May</span> <span class="mi">26</span> <span class="mi">11</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">28</span> <span class="n">EDT</span> <span class="mf">2021.</span>
+
+<span class="mi">242</span> <span class="n">file</span> <span class="n">comparisons</span> <span class="n">passed</span>
+<span class="mi">7</span> <span class="n">file</span> <span class="n">comparisons</span> <span class="n">failed</span> <span class="p">(</span><span class="mi">1</span> <span class="n">of</span> <span class="n">which</span> <span class="n">can</span> <span class="n">be</span> <span class="n">ignored</span><span class="p">)</span>
+<span class="mi">0</span> <span class="n">tests</span> <span class="n">experienced</span> <span class="n">errors</span>
+
+<span class="o">==&gt;</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_cuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_cuda_parallel</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26_11</span><span class="o">-</span><span class="mi">42</span><span class="o">-</span><span class="mf">11.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">exceptions</span> <span class="n">are</span> <span class="n">signalling</span><span class="p">:</span> <span class="n">IEEE_DENORMAL</span>
+<span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">exceptions</span> <span class="n">are</span> <span class="n">signalling</span><span class="p">:</span> <span class="n">IEEE_DENORMAL</span>
+<span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">exceptions</span> <span class="n">are</span> <span class="n">signalling</span><span class="p">:</span> <span class="n">IEEE_DENORMAL</span>
+<span class="n">diffing</span> <span class="n">mdout</span><span class="o">.</span><span class="n">pme</span><span class="o">.</span><span class="n">gamd3</span><span class="o">.</span><span class="n">GPU_DPFP</span> <span class="k">with</span> <span class="n">mdout</span><span class="o">.</span><span class="n">pme</span><span class="o">.</span><span class="n">gamd3</span>
+<span class="n">PASSED</span>
+<span class="o">==============================================================</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs20/shared/src/AMBER/amber20/amber20_src/test/cuda&#39;</span>
+<span class="mi">179</span> <span class="n">file</span> <span class="n">comparisons</span> <span class="n">passed</span>
+<span class="mi">43</span> <span class="n">file</span> <span class="n">comparisons</span> <span class="n">failed</span> <span class="p">(</span><span class="mi">3</span> <span class="n">of</span> <span class="n">which</span> <span class="n">can</span> <span class="n">be</span> <span class="n">ignored</span><span class="p">)</span>
+<span class="mi">2</span> <span class="n">tests</span> <span class="n">experienced</span> <span class="n">errors</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="intel-19-and-intel-mpi-19">
+<h3>Intel 19 and Intel MPI 19<a class="headerlink" href="#intel-19-and-intel-mpi-19" title="Permalink to this headline">¶</a></h3>
+<p>Another build uses Intel Compiler Suite, including the Intel MPI implementation. The script that runs cmake is (run_cmake.intel19_impi19):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#  This file gives some sample cmake invocations.  You may wish to
+#  edit some options that are chosen here.
+
+#  For information on how to get cmake, visit this page:
+#  https://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Quick-Start
+
+#  For information on common options for cmake, visit this page:
+#  http://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Common-Options
+
+#  (Note that you can change the value of CMAKE_INSTALL_PREFIX from what
+#  is suggested below, but it cannot coincide with the amber20_src
+#  folder.)
+
+AMBER_PREFIX=$(dirname $(dirname `pwd`))
+PREFIX=/shared/software/atomistic/amber/20_intel19_impi19_nocuda
+
+#  Assume this is Linux:
+
+cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=INTEL \
+    -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2&gt;&amp;1 | tee  cmake.log
+
+if [ ! -s cmake.log ]; then
+  echo &quot;&quot;
+  echo &quot;Error:  No cmake.log file created: you may need to edit run_cmake&quot;
+  exit 1
+fi
+
+echo &quot;&quot;
+echo &quot;If the cmake build report looks OK, you should now do the following:&quot;
+echo &quot;&quot;
+echo &quot;    make install&quot;
+echo &quot;    source $AMBER_PREFIX/amber20/amber.sh&quot;
+echo &quot;&quot;
+echo &quot;Consider adding the last line to your login startup script, e.g. ~/.bashrc&quot;
+echo &quot;&quot;
+</pre></div>
+</div>
+<p>To run the testsuite, the modulefile needs to be created and loaded. The module must set the variable <code class="docutils literal notranslate"><span class="pre">$AMBERHOME</span></code> needed to run the tests.
+Go to the folder <code class="docutils literal notranslate"><span class="pre">amber20_src/test</span></code> that contains the tests, set the variable <code class="docutils literal notranslate"><span class="pre">$DO_PARALLEL</span></code> as shown here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DO_PARALLEL</span><span class="o">=</span><span class="s2">&quot;mpirun -np 4&quot;</span>
+</pre></div>
+</div>
+<p>Run all the parallel tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span><span class="o">.</span><span class="n">parallel</span>
+</pre></div>
+</div>
+<p>The final lines after running the testsuite are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Testing scaledMD with PME
+diffing mdout.save with mdout
+PASSED
+==============================================================
+make[2]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test/scaledMD&#39;
+make[1]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test&#39;
+make[1]: Entering directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test&#39;
+
+Finished parallel test suite for Amber 20 at Wed May 26 09:29:04 EDT 2021.
+Some tests require 4 threads to run, while some will not
+run with more than 2.  Please run further parallel tests with the
+appropriate number of processors. See /shared/software/atomistic/amber/20_intel19_impi19_nocuda/test/README.
+
+make[1]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test&#39;
+185 file comparisons passed
+4 file comparisons failed (1 of which can be ignored)
+0 tests experienced an error
+Test log file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.log
+Test diffs file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.diff
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="octopus">
 <h2>Octopus<a class="headerlink" href="#octopus" title="Permalink to this headline">¶</a></h2>
 <p>Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3</p>
@@ -465,8 +794,117 @@ state_analysis.o: state_analysis.F
 </div>
 <div class="section" id="gromacs">
 <h2>Gromacs<a class="headerlink" href="#gromacs" title="Permalink to this headline">¶</a></h2>
-<p>Gromacs is a Classical Molecular Dynamics code. The version compiled was 2019.4
-It was compiled with MPI support</p>
+<p>Gromacs is a Classical Molecular Dynamics code. The version compiled was 2021.2
+Several versions were compiled using GCC 9.3 and 11.1</p>
+<div class="section" id="gromacs-2021-2-on-thorny-flat">
+<h3>Gromacs 2021.2 on Thorny Flat<a class="headerlink" href="#gromacs-2021-2-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>The download page is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manual</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span>
+</pre></div>
+</div>
+<p>It is a good practice to compile from a separate folder instead of compiling directly along side with the sources, create a folder <code class="docutils literal notranslate"><span class="pre">build_gcc93_mpic341</span></code> inside the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">/</span>
+<span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
+<span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
+</pre></div>
+</div>
+<p>Cmake is only used during configuration and it is not needed at runtime
+The modules can be loaded with this command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> \
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span>
+</pre></div>
+</div>
+<p>The first configuration is the standard one (Single Precision)</p>
+<p>The cmake configuration line was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+  <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+  <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
+  <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
+  <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2021.2</span><span class="n">_gcc93_mpic341</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>The results of the tests were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="o">...</span>
+<span class="mi">70</span><span class="o">/</span><span class="mi">73</span> <span class="n">Test</span> <span class="c1">#70: regressiontests/complex ...............   Passed  135.38 sec</span>
+      <span class="n">Start</span> <span class="mi">71</span><span class="p">:</span> <span class="n">regressiontests</span><span class="o">/</span><span class="n">freeenergy</span>
+<span class="mi">71</span><span class="o">/</span><span class="mi">73</span> <span class="n">Test</span> <span class="c1">#71: regressiontests/freeenergy ............   Passed   34.09 sec</span>
+      <span class="n">Start</span> <span class="mi">72</span><span class="p">:</span> <span class="n">regressiontests</span><span class="o">/</span><span class="n">rotation</span>
+<span class="mi">72</span><span class="o">/</span><span class="mi">73</span> <span class="n">Test</span> <span class="c1">#72: regressiontests/rotation ..............   Passed   28.83 sec</span>
+      <span class="n">Start</span> <span class="mi">73</span><span class="p">:</span> <span class="n">regressiontests</span><span class="o">/</span><span class="n">essentialdynamics</span>
+<span class="mi">73</span><span class="o">/</span><span class="mi">73</span> <span class="n">Test</span> <span class="c1">#73: regressiontests/essentialdynamics .....   Passed   10.23 sec</span>
+
+<span class="mi">100</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">0</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">73</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">108.89</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">67</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">32.96</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">20</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiTest</span>            <span class="o">=</span>  <span class="mf">52.50</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">10</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">57.26</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">8</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">UnitTest</span>           <span class="o">=</span>  <span class="mf">18.67</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">39</span> <span class="n">tests</span><span class="p">)</span>
+
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">317.75</span> <span class="n">sec</span>
+<span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span> <span class="n">Built</span> <span class="n">target</span> <span class="n">run</span><span class="o">-</span><span class="n">ctest</span><span class="o">-</span><span class="n">nophys</span>
+<span class="n">Scanning</span> <span class="n">dependencies</span> <span class="n">of</span> <span class="n">target</span> <span class="n">check</span>
+<span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span> <span class="n">Built</span> <span class="n">target</span> <span class="n">check</span>
+</pre></div>
+</div>
+<p>The second configuration enables the double precision for gromacs:</p>
+<p>The cmake configuration line was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>   <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span>   <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2021.2</span><span class="n">_double_gcc93_mpic341</span> <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> <span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>The results of the tests were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">117.18</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">13.81</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiTest</span>            <span class="o">=</span>   <span class="mf">2.60</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">12.88</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">UnitTest</span>           <span class="o">=</span>  <span class="mf">90.49</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
+
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2075.93</span> <span class="n">sec</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gromacs-5-1-5-on-thorny-flat">
+<h3>Gromacs 5.1.5 on Thorny Flat<a class="headerlink" href="#gromacs-5-1-5-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>The modules used were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> <span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.73</span>
+</pre></div>
+</div>
+<p>Cmake is only used during configuration and it is not needed at runtime
+The configuration line for cmake is executed on a folder created to contain the compiled code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
+<span class="n">cd</span> <span class="n">build_intel18</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpiicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpiicpc</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel18</span> <span class="o">..</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
+<span class="n">make</span> <span class="n">check</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>A similar compilation was done using Intel 2019 compilers.
+One test fail from the test suite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
+
+<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="n">GTest</span>                 <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">IntegrationTest</span>       <span class="o">=</span>   <span class="mf">2.01</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">2</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">MpiIntegrationTest</span>    <span class="o">=</span>   <span class="mf">0.56</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">UnitTest</span>              <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
+<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">120.90</span> <span class="n">secs</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
+     <span class="mi">17</span> <span class="o">-</span> <span class="n">SelectionUnitTests</span> <span class="p">(</span><span class="n">Failed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="gromacs-2019-4-on-spruce-knob">
 <h3>Gromacs 2019.4 on Spruce Knob<a class="headerlink" href="#gromacs-2019-4-on-spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
@@ -524,114 +962,32 @@ It was compiled with MPI support</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="gromacs-2019-4-on-thorny-flat">
-<h3>Gromacs 2019.4 on Thorny Flat<a class="headerlink" href="#gromacs-2019-4-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
-<p>The modules used were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.15</span><span class="o">.</span><span class="mi">4</span>
-<span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
-</pre></div>
-</div>
-<p>Cmake is only used during configuration and it is not needed at runtime</p>
-<p>The first configuration is the standard one (Single Precision)</p>
-<p>The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
-<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
-<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_gcc82</span> <span class="o">..</span>
-</pre></div>
-</div>
-<p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
-
-<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
-<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">162.72</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">11.37</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">MpiTest</span>            <span class="o">=</span>  <span class="mf">12.06</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">13.23</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
-<span class="n">UnitTest</span>           <span class="o">=</span> <span class="mf">138.12</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
-
-<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2085.68</span> <span class="n">sec</span>
-
-<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
-         <span class="mi">29</span> <span class="o">-</span> <span class="n">GmxPreprocessTests</span> <span class="p">(</span><span class="n">Timeout</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The second configuration enables the double precision for gromacs:</p>
-<p>The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
-<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
-<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_double_gcc82</span> \
-<span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
-</pre></div>
-</div>
-<p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
-
-<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
-<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">117.18</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">13.81</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">MpiTest</span>            <span class="o">=</span>   <span class="mf">2.60</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">12.88</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
-<span class="n">UnitTest</span>           <span class="o">=</span>  <span class="mf">90.49</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
-
-<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2075.93</span> <span class="n">sec</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="gromacs-5-1-5-on-thorny-flat">
-<h3>Gromacs 5.1.5 on Thorny Flat<a class="headerlink" href="#gromacs-5-1-5-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
-<p>The modules used were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> <span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.73</span>
-</pre></div>
-</div>
-<p>Cmake is only used during configuration and it is not needed at runtime
-The configuration line for cmake is executed on a folder created to contain the compiled code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
-<span class="n">cd</span> <span class="n">build_intel18</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
-<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpiicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpiicpc</span> \
-<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel18</span> <span class="o">..</span>
-<span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
-<span class="n">make</span> <span class="n">check</span>
-<span class="n">make</span> <span class="n">install</span>
-</pre></div>
-</div>
-<p>A similar compilation was done using Intel 2019 compilers.
-One test fail from the test suite:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
-
-<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
-<span class="n">GTest</span>                 <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">IntegrationTest</span>       <span class="o">=</span>   <span class="mf">2.01</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">2</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">MpiIntegrationTest</span>    <span class="o">=</span>   <span class="mf">0.56</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
-<span class="n">UnitTest</span>              <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">120.90</span> <span class="n">secs</span><span class="o">.</span>
-
-<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
-     <span class="mi">17</span> <span class="o">-</span> <span class="n">SelectionUnitTests</span> <span class="p">(</span><span class="n">Failed</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="lammps">
 <h2>LAMMPS<a class="headerlink" href="#lammps" title="Permalink to this headline">¶</a></h2>
-<p>Two versions on LAMMPS are compiled using GCC 8.2 with OpenMPI 3.1 and using Intel Compilers 20019.
-Download the code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lammps</span><span class="o">.</span><span class="n">sandia</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">tars</span><span class="o">/</span><span class="n">lammps</span><span class="o">-</span><span class="mi">9</span><span class="n">Jan20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<p>LAMMPS is a packages for atomistic and particle simulations. The latests stable version by the time (May 2021) is from October 29, 2020. LAMMPS was compiled using these modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span><span class="n">_gcc111</span>
+<span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc111</span>
+<span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span><span class="n">_gcc111</span>
+</pre></div>
+</div>
+<p>LAMMPS was compiled using GCC 11.1, OpenMPI 3.4.1, FFTW 3.3.9 and HDF5 1.12</p>
+<p>The first step is to download the code from:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lammps</span><span class="o">.</span><span class="n">sandia</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">tars</span><span class="o">/</span><span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Uncompress the code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">9</span><span class="n">Jan20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Change to the src folder inside the uncompressed folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">7</span><span class="n">Aug19</span><span class="o">/</span><span class="n">src</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">/</span><span class="n">src</span>
 </pre></div>
 </div>
-<p>There are two files with the configurations for the intel and gcc compilers.
-The file for Intel 2019 is called “Makefile.intel19_impi19”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Makefile.intel19_impi19
-# mpi = MPI with its default compiler
+<p>You need a customized Makefile for compiling LAMMPS with the right compilers and libraries. The file is called Makefile.gcc111_ompi316 and must be located at
+<code class="docutils literal notranslate"><span class="pre">src/MAKE</span></code>, the content of the file follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># mpi = MPI with its default compiler
 
 SHELL = /bin/sh
 
@@ -640,12 +996,12 @@ SHELL = /bin/sh
 # specify flags and libraries needed for your compiler
 
 CC =            mpicxx
-CCFLAGS =       -g -O2
+CCFLAGS =       -g -O3
 SHFLAGS =       -fPIC
 DEPFLAGS =      -M
 
 LINK =          mpicxx
-LINKFLAGS =     -g -O2
+LINKFLAGS =     -g -O3
 LIB =
 SIZE =          size
 
@@ -659,12 +1015,12 @@ SHLIBFLAGS =    -shared
 # if you change any -D setting, do full re-compile after &quot;make clean&quot;
 
 # LAMMPS ifdef settings
-# see possible settings in Section 2.2 (step 4) of manual
+# see possible settings in Section 3.5 of the manual
 
-LMP_INC =       -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64
+LMP_INC =       -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64  # -DLAMMPS_CXX98
 
 # MPI library
-# see discussion in Section 2.2 (step 5) of manual
+# see discussion in Section 3.4 of the manual
 # MPI wrapper compiler/linker can provide this info
 # can point to dummy MPI library in src/STUBS as in Makefile.serial
 # use -D MPICH and OMPI settings in INC to avoid C++ lib conflicts
@@ -672,130 +1028,12 @@ LMP_INC =       -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64
 # PATH = path for MPI library
 # LIB = name of MPI library
 
-MPI_INC =       -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1
+MPI_INC = -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1
 MPI_PATH =
 MPI_LIB =
 
 # FFT library
-# see discussion in Section 2.2 (step 6) of manual
-# can be left blank to use provided KISS FFT library
-# INC = -DFFT setting, e.g. -DFFT_FFTW, FFT compiler settings
-# PATH = path for FFT library
-# LIB = name of FFT library
-
-FFT_INC = -DFFT_MKL
-FFT_PATH =
-FFT_LIB = -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl -lirc -lintlc
-
-# JPEG and/or PNG library
-# see discussion in Section 2.2 (step 7) of manual
-# only needed if -DLAMMPS_JPEG or -DLAMMPS_PNG listed with LMP_INC
-# INC = path(s) for jpeglib.h and/or png.h
-# PATH = path(s) for JPEG library and/or PNG library
-# LIB = name(s) of JPEG library and/or PNG library
-
-JPG_INC =
-JPG_PATH =
-JPG_LIB =
-
-# ---------------------------------------------------------------------
-# build rules and dependencies
-# do not edit this section
-
-include Makefile.package.settings
-include Makefile.package
-
-EXTRA_INC = $(LMP_INC) $(PKG_INC) $(MPI_INC) $(FFT_INC) $(JPG_INC) $(PKG_SYSINC)
-EXTRA_PATH = $(PKG_PATH) $(MPI_PATH) $(FFT_PATH) $(JPG_PATH) $(PKG_SYSPATH)
-EXTRA_LIB = $(PKG_LIB) $(MPI_LIB) $(FFT_LIB) $(JPG_LIB) $(PKG_SYSLIB)
-EXTRA_CPP_DEPENDS = $(PKG_CPP_DEPENDS)
-EXTRA_LINK_DEPENDS = $(PKG_LINK_DEPENDS)
-
-# Path to src files
-
-vpath %.cpp ..
-vpath %.h ..
-
-# Link target
-
-$(EXE): $(OBJ) $(EXTRA_LINK_DEPENDS)
-        $(LINK) $(LINKFLAGS) $(EXTRA_PATH) $(OBJ) $(EXTRA_LIB) $(LIB) -o $(EXE)
-        $(SIZE) $(EXE)
-
-# Library targets
-
-lib:    $(OBJ) $(EXTRA_LINK_DEPENDS)
-        $(ARCHIVE) $(ARFLAGS) $(EXE) $(OBJ)
-
-shlib:  $(OBJ) $(EXTRA_LINK_DEPENDS)
-        $(CC) $(CCFLAGS) $(SHFLAGS) $(SHLIBFLAGS) $(EXTRA_PATH) -o $(EXE) \
-        $(OBJ) $(EXTRA_LIB) $(LIB)
-
-# Compilation rules
-
-%.o:%.cpp
-        $(CC) $(CCFLAGS) $(SHFLAGS) $(EXTRA_INC) -c $&lt;
-
-# Individual dependencies
-
-depend : fastdep.exe $(SRC)
-        @./fastdep.exe $(EXTRA_INC) -- $^ &gt; .depend || exit 1
-
-fastdep.exe: ../DEPEND/fastdep.c
-        cc -O -o $@ $&lt;
-
-sinclude .depend
-</pre></div>
-</div>
-<p>The file for GCC 8.2 is called “Makefile.gcc82_ompi31”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Makefile.gcc82_ompi31
-# mpi = MPI with its default compiler
-
-SHELL = /bin/sh
-
-# ---------------------------------------------------------------------
-# compiler/linker settings
-# specify flags and libraries needed for your compiler
-
-CC =            mpicxx
-CCFLAGS =       -g -O2 -pipe
-SHFLAGS =       -fPIC
-DEPFLAGS =      -M
-
-LINK =          mpicxx
-LINKFLAGS =     -g -O2 -pipe
-LIB =
-SIZE =          size
-
-ARCHIVE =       ar
-ARFLAGS =       -rc
-SHLIBFLAGS =    -shared
-
-# ---------------------------------------------------------------------
-# LAMMPS-specific settings, all OPTIONAL
-# specify settings for LAMMPS features you will use
-# if you change any -D setting, do full re-compile after &quot;make clean&quot;
-
-# LAMMPS ifdef settings
-# see possible settings in Section 2.2 (step 4) of manual
-
-LMP_INC =       -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64 -DLAMMPS_PNG
-
-# MPI library
-# see discussion in Section 2.2 (step 5) of manual
-# MPI wrapper compiler/linker can provide this info
-# can point to dummy MPI library in src/STUBS as in Makefile.serial
-# use -D MPICH and OMPI settings in INC to avoid C++ lib conflicts
-# INC = path for mpi.h, MPI compiler settings
-# PATH = path for MPI library
-# LIB = name of MPI library
-
-MPI_INC =       -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1
-MPI_PATH =
-MPI_LIB =
-
-# FFT library
-# see discussion in Section 2.2 (step 6) of manual
+# see discussion in Section 3.5.2 of manual
 # can be left blank to use provided KISS FFT library
 # INC = -DFFT setting, e.g. -DFFT_FFTW, FFT compiler settings
 # PATH = path for FFT library
@@ -803,17 +1041,17 @@ MPI_LIB =
 
 FFT_INC = -DFFT_FFTW3
 FFT_PATH =
-FFT_LIB =       -lfftw3
+FFT_LIB =  -L${MD_FFTW}/lib -lfftw3
 
 # JPEG and/or PNG library
-# see discussion in Section 2.2 (step 7) of manual
+# see discussion in Section 3.5.4 of manual
 # only needed if -DLAMMPS_JPEG or -DLAMMPS_PNG listed with LMP_INC
 # INC = path(s) for jpeglib.h and/or png.h
 # PATH = path(s) for JPEG library and/or PNG library
 # LIB = name(s) of JPEG library and/or PNG library
 
-JPG_INC = -I/shared/software/lang/gcc/8.2.0/include
-JPG_PATH = -L/shared/software/lang/gcc/8.2.0/lib
+JPG_INC = -I${MD_GCC}/include
+JPG_PATH = -L${MD_GCC}/lib
 JPG_LIB = -lpng -ljpeg -lz
 
 # ---------------------------------------------------------------------
@@ -836,18 +1074,23 @@ vpath %.h ..
 
 # Link target
 
-$(EXE): $(OBJ) $(EXTRA_LINK_DEPENDS)
-        $(LINK) $(LINKFLAGS) $(EXTRA_PATH) $(OBJ) $(EXTRA_LIB) $(LIB) -o $(EXE)
-        $(SIZE) $(EXE)
+$(EXE): main.o $(LMPLIB) $(EXTRA_LINK_DEPENDS)
+        $(LINK) $(LINKFLAGS) main.o $(EXTRA_PATH) $(LMPLINK) $(EXTRA_LIB) $(LIB) -o $@
+        $(SIZE) $@
 
 # Library targets
 
-lib:    $(OBJ) $(EXTRA_LINK_DEPENDS)
-        $(ARCHIVE) $(ARFLAGS) $(EXE) $(OBJ)
+$(ARLIB): $(OBJ) $(EXTRA_LINK_DEPENDS)
+        @rm -f ../$(ARLIB)
+        $(ARCHIVE) $(ARFLAGS) ../$(ARLIB) $(OBJ)
+        @rm -f $(ARLIB)
+        @ln -s ../$(ARLIB) $(ARLIB)
 
-shlib:  $(OBJ) $(EXTRA_LINK_DEPENDS)
-        $(CC) $(CCFLAGS) $(SHFLAGS) $(SHLIBFLAGS) $(EXTRA_PATH) -o $(EXE) \
-        $(OBJ) $(EXTRA_LIB) $(LIB)
+$(SHLIB): $(OBJ) $(EXTRA_LINK_DEPENDS)
+        $(CC) $(CCFLAGS) $(SHFLAGS) $(SHLIBFLAGS) $(EXTRA_PATH) -o ../$(SHLIB) \
+                $(OBJ) $(EXTRA_LIB) $(LIB)
+        @rm -f $(SHLIB)
+        @ln -s ../$(SHLIB) $(SHLIB)
 
 # Compilation rules
 
@@ -865,83 +1108,86 @@ fastdep.exe: ../DEPEND/fastdep.c
 sinclude .depend
 </pre></div>
 </div>
-<p>The difference between those two files include change the FFT library that will be used and adding JPG support. The difference is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ diff MAKE/Makefile.intel19_impi19 MAKE/Makefile.gcc82_ompi31
-10c10
-&lt; CCFLAGS =     -g -O2
----
-&gt; CCFLAGS =     -g -O2 -pipe
-15c15
-&lt; LINKFLAGS =   -g -O2
----
-&gt; LINKFLAGS =   -g -O2 -pipe
-31c31
-&lt; LMP_INC =     -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64
----
-&gt; LMP_INC =     -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64 -DLAMMPS_PNG
-53c53
-&lt; FFT_INC = -DFFT_MKL
----
-&gt; FFT_INC = -DFFT_FFTW3
-55c55
-&lt; FFT_LIB = -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl -lirc -lintlc
----
-&gt; FFT_LIB =     -lfftw3
-64,66c64,66
-&lt; JPG_INC =
-&lt; JPG_PATH =
-&lt; JPG_LIB =
----
-&gt; JPG_INC = -I/shared/software/lang/gcc/8.2.0/include
-&gt; JPG_PATH = -L/shared/software/lang/gcc/8.2.0/lib
-&gt; JPG_LIB = -lpng -ljpeg -lz
-</pre></div>
-</div>
-<p>Those two files should be located inside “src/MAKE” and “src/MAKE/MACHINES”.
+<p>The file should be located inside “src/MAKE” or “src/MAKE/MACHINES”.
 Now inside the “src” folder there is a Makefile that allow you to select which packages will be compiled along side with LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="nb">all</span>
 <span class="n">make</span> <span class="n">no</span><span class="o">-</span><span class="n">lib</span>
-<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">PYTHON</span>
-<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">COLVARS</span>
-<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">MOLFILE</span>
-<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">MPIIO</span>
+<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">reaxc</span>
+<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">molfile</span>
 </pre></div>
 </div>
-<p>On Thorny, there is no module for Python 2.x and the RHEL python has not the development packages installed. As a result, the PYTHON module must be disable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">no</span><span class="o">-</span><span class="n">PYTHON</span>
-</pre></div>
-</div>
-<p>The environment modules needed for the GCC82 are loaded.
-On Spruce:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">15</span><span class="n">_gcc82</span>
-</pre></div>
-</div>
-<p>On Thorny:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">8</span><span class="n">_gcc82</span>
-</pre></div>
-</div>
-<p>The COLVARS library needs to be compiled:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">lib</span><span class="o">-</span><span class="n">colvars</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-m mpi&quot;</span>
-<span class="n">make</span> <span class="n">lib</span><span class="o">-</span><span class="n">colvars</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-m gcc82_ompi31&quot;</span>
+<p>A few external subpackages must be configure first. We want to add HDF5 and COLVARS with the following lines compiling the corresponding subpackages and enabling them for LAMMPS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">lib</span><span class="o">/</span><span class="n">h5md</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">f</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">h5cc</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">src</span><span class="o">/</span>
+<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">h5md</span>
+<span class="n">make</span> <span class="n">lib</span><span class="o">-</span><span class="n">colvars</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-m mpi&quot;</span>
+<span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">colvars</span>
 </pre></div>
 </div>
 <p>And LAMMPS itself after that:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">gcc82_ompi31</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">gcc111_ompi316</span>
 </pre></div>
 </div>
 <p>After compiled the binary is called <code class="docutils literal notranslate"><span class="pre">lmp_gcc82_ompi31</span></code></p>
-<p>Compiling the Intel version. On Spruce and Thorny:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_2</span><span class="o">.</span><span class="mf">7.16</span>
+<p>For testing the build, you can use one of the benchmarks inside the <cite>bench</cite>
+folder. The benchmark run on one of the compute nodes using 40 cores. The simulation involves more than 10 million atoms.
+The command line is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">40</span> <span class="n">lmp_mpi</span> <span class="o">-</span><span class="n">var</span> <span class="n">x</span> <span class="mi">4</span> <span class="o">-</span><span class="n">var</span> <span class="n">y</span> <span class="mi">8</span> <span class="o">-</span><span class="n">var</span> <span class="n">z</span> <span class="mi">10</span> <span class="o">-</span><span class="ow">in</span> <span class="ow">in</span><span class="o">.</span><span class="n">rhodo</span><span class="o">.</span><span class="n">scaled</span>
 </pre></div>
 </div>
-<p>And compile the code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">intel19_impi19</span>
+<p>This is the final output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Loop</span> <span class="n">time</span> <span class="n">of</span> <span class="mf">303.71</span> <span class="n">on</span> <span class="mi">40</span> <span class="n">procs</span> <span class="k">for</span> <span class="mi">100</span> <span class="n">steps</span> <span class="k">with</span> <span class="mi">10240000</span> <span class="n">atoms</span>
+
+<span class="n">Performance</span><span class="p">:</span> <span class="mf">0.057</span> <span class="n">ns</span><span class="o">/</span><span class="n">day</span><span class="p">,</span> <span class="mf">421.820</span> <span class="n">hours</span><span class="o">/</span><span class="n">ns</span><span class="p">,</span> <span class="mf">0.329</span> <span class="n">timesteps</span><span class="o">/</span><span class="n">s</span>
+<span class="mf">99.1</span><span class="o">%</span> <span class="n">CPU</span> <span class="n">use</span> <span class="k">with</span> <span class="mi">40</span> <span class="n">MPI</span> <span class="n">tasks</span> <span class="n">x</span> <span class="n">no</span> <span class="n">OpenMP</span> <span class="n">threads</span>
+
+<span class="n">MPI</span> <span class="n">task</span> <span class="n">timing</span> <span class="n">breakdown</span><span class="p">:</span>
+<span class="n">Section</span> <span class="o">|</span>  <span class="nb">min</span> <span class="n">time</span>  <span class="o">|</span>  <span class="n">avg</span> <span class="n">time</span>  <span class="o">|</span>  <span class="nb">max</span> <span class="n">time</span>  <span class="o">|%</span><span class="n">varavg</span><span class="o">|</span> <span class="o">%</span><span class="n">total</span>
+<span class="o">---------------------------------------------------------------</span>
+<span class="n">Pair</span>    <span class="o">|</span> <span class="mf">201.28</span>     <span class="o">|</span> <span class="mf">205.41</span>     <span class="o">|</span> <span class="mf">210.7</span>      <span class="o">|</span>  <span class="mf">15.7</span> <span class="o">|</span> <span class="mf">67.63</span>
+<span class="n">Bond</span>    <span class="o">|</span> <span class="mf">9.4133</span>     <span class="o">|</span> <span class="mf">9.5518</span>     <span class="o">|</span> <span class="mf">9.7418</span>     <span class="o">|</span>   <span class="mf">2.2</span> <span class="o">|</span>  <span class="mf">3.15</span>
+<span class="n">Kspace</span>  <span class="o">|</span> <span class="mf">31.517</span>     <span class="o">|</span> <span class="mf">36.816</span>     <span class="o">|</span> <span class="mf">40.964</span>     <span class="o">|</span>  <span class="mf">36.8</span> <span class="o">|</span> <span class="mf">12.12</span>
+<span class="n">Neigh</span>   <span class="o">|</span> <span class="mf">36.55</span>      <span class="o">|</span> <span class="mf">36.561</span>     <span class="o">|</span> <span class="mf">36.571</span>     <span class="o">|</span>   <span class="mf">0.1</span> <span class="o">|</span> <span class="mf">12.04</span>
+<span class="n">Comm</span>    <span class="o">|</span> <span class="mf">1.3529</span>     <span class="o">|</span> <span class="mf">1.5481</span>     <span class="o">|</span> <span class="mf">1.6872</span>     <span class="o">|</span>   <span class="mf">7.0</span> <span class="o">|</span>  <span class="mf">0.51</span>
+<span class="n">Output</span>  <span class="o">|</span> <span class="mf">0.0038965</span>  <span class="o">|</span> <span class="mf">0.0040967</span>  <span class="o">|</span> <span class="mf">0.0043541</span>  <span class="o">|</span>   <span class="mf">0.1</span> <span class="o">|</span>  <span class="mf">0.00</span>
+<span class="n">Modify</span>  <span class="o">|</span> <span class="mf">12.757</span>     <span class="o">|</span> <span class="mf">13.067</span>     <span class="o">|</span> <span class="mf">13.53</span>      <span class="o">|</span>   <span class="mf">5.7</span> <span class="o">|</span>  <span class="mf">4.30</span>
+<span class="n">Other</span>   <span class="o">|</span>            <span class="o">|</span> <span class="mf">0.7489</span>     <span class="o">|</span>            <span class="o">|</span>       <span class="o">|</span>  <span class="mf">0.25</span>
+
+<span class="n">Nlocal</span><span class="p">:</span>       <span class="mf">256000.0</span> <span class="n">ave</span>      <span class="mi">256004</span> <span class="nb">max</span>      <span class="mi">255996</span> <span class="nb">min</span>
+<span class="n">Histogram</span><span class="p">:</span> <span class="mi">8</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">24</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">8</span>
+<span class="n">Nghost</span><span class="p">:</span>       <span class="mf">163342.0</span> <span class="n">ave</span>      <span class="mi">163347</span> <span class="nb">max</span>      <span class="mi">163335</span> <span class="nb">min</span>
+<span class="n">Histogram</span><span class="p">:</span> <span class="mi">8</span> <span class="mi">0</span> <span class="mi">8</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">8</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">16</span>
+<span class="n">Neighs</span><span class="p">:</span>    <span class="mf">9.62247e+07</span> <span class="n">ave</span> <span class="mf">9.65195e+07</span> <span class="nb">max</span> <span class="mf">9.59192e+07</span> <span class="nb">min</span>
+<span class="n">Histogram</span><span class="p">:</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">0</span> <span class="mi">8</span> <span class="mi">0</span> <span class="mi">8</span> <span class="mi">8</span> <span class="mi">0</span> <span class="mi">4</span> <span class="mi">4</span>
+
+<span class="n">Total</span> <span class="c1"># of neighbors = 3.8489892e+09</span>
+<span class="n">Ave</span> <span class="n">neighs</span><span class="o">/</span><span class="n">atom</span> <span class="o">=</span> <span class="mf">375.87785</span>
+<span class="n">Ave</span> <span class="n">special</span> <span class="n">neighs</span><span class="o">/</span><span class="n">atom</span> <span class="o">=</span> <span class="mf">7.4318750</span>
+<span class="n">Neighbor</span> <span class="nb">list</span> <span class="n">builds</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">Dangerous</span> <span class="n">builds</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Total</span> <span class="n">wall</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">13</span>
 </pre></div>
 </div>
-<p>The resulting binaries can be copied to the PATH that will be exported with the environment module.</p>
+<p>The table below shows the timings using the different builds created.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="63%" />
+<col width="37%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Module</td>
+<td>Total wall time</td>
+</tr>
+<tr class="row-even"><td>atomistic/lammps/2020.10.29_gcc111_impi19
+atomistic/lammps/2020.10.29_gcc111_ompi316
+atomistic/lammps/2020.10.29_gcc93_mpic341</td>
+<td>0:04:54
+0:05:13
+0:05:11</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="castep">
 <h2>CASTEP<a class="headerlink" href="#castep" title="Permalink to this headline">¶</a></h2>
@@ -988,6 +1234,146 @@ FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
  ..................................................................................................................................................
  .......................... [464/464]
  make[1]: Leaving directory `/gpfs20/shared/src/CASTEP-19.11/Test&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="vasp-6-2-1">
+<h2>VASP 6.2.1<a class="headerlink" href="#vasp-6-2-1" title="Permalink to this headline">¶</a></h2>
+<p>The Vienna Ab initio Simulation Package (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.</p>
+<p>VASP 6.2.1 was compiled with Intel 2019 on both Thorny and Spruce.
+There are two builds of VASP, one compiled with a MKL running the rutines sequential mode (no multithreading) and another build with OpenMP enabled and MKL running in multithreaded mode.</p>
+<p>VASP is a proprietary code that require a license to legally run the code.
+The downloaded file is called <code class="docutils literal notranslate"><span class="pre">vasp.6.2.1.tar.gz</span></code> that uncompress into a folder <code class="docutils literal notranslate"><span class="pre">vasp.6.2.1</span></code>.</p>
+<p>Before compiling VASP, you need to edit the file <cite>makefile.include</cite> for the sequential version. The files for Spruce include multidispaching code for the various CPUs on that cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
+CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
+           -DMPI -DMPI_BLOCK=8000 \
+           -Duse_collective \
+           -DCACHE_SIZE=4000 \
+           -DscaLAPACK \
+           -Dvasp6 \
+           -Duse_bse_te \
+           -Dtbdyn \
+           -Dfock_dblbuf
+
+CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+FC         = mpiifort
+FCL        = mpiifort
+
+FREE       = -free -names lowercase
+
+FFLAGS     = -assume byterecl -w -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc -traceback -g
+OFLAG      = -O2
+OFLAG_IN   = $(OFLAG)
+DEBUG      = -O0
+
+MKL_PATH   = $(MKLROOT)/lib/intel64
+BLAS       = ${MKLROOT}/lib/intel64/libmkl_core.a
+LAPACK     = ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a
+BLACS      = ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a
+SCALAPACK  = ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+
+OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+INCS       = -I${MKLROOT}/include -I$(MKLROOT)/include/fftw
+
+LLIBS      =  $(SCALAPACK) -Wl,--start-group $(LAPACK) $(BLAS) $(BLACS) -Wl,--end-group -lpthread -lm -ldl
+
+OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+OBJECTS_O2 += fft3dlib.o
+
+# For what used to be vasp.5.lib
+CPP_LIB    = $(CPP)
+FC_LIB     = $(FC)
+CC_LIB     = icc
+CFLAGS_LIB = -O -static-libgcc -axSANDYBRIDGE,IVYBRIDGE,HASWELL
+FFLAGS_LIB = -O2 -static-libgcc -axSANDYBRIDGE,IVYBRIDGE,HASWELL
+FREE_LIB   = $(FREE)
+
+OBJECTS_LIB= linpack_double.o getshmem.o
+
+# For the parser library
+CXX_PARS   = icpc
+LLIBS      += -lstdc++ -static-libstdc++ -static-libgcc -static-intel
+
+# Normally no need to change this
+SRCDIR     = ../../src
+BINDIR     = ../../bin
+</pre></div>
+</div>
+<p>The version that runs MKL with multithreading and enables OpenMP is like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
+CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
+           -DMPI -DMPI_BLOCK=8000 \
+           -Duse_collective \
+           -DCACHE_SIZE=4000 \
+           -DscaLAPACK \
+           -Dvasp6 \
+           -Duse_bse_te \
+           -Dtbdyn \
+           -Dfock_dblbuf \
+           -D_OPENMP
+
+CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+FC         = mpiifort
+FCL        = mpiifort
+
+FREE       = -free -names lowercase
+
+FFLAGS     = -assume byterecl -w -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-intel -static-libgcc -traceback -g -qopenmp
+OFLAG      = -O2
+OFLAG_IN   = $(OFLAG)
+DEBUG      = -O0
+
+MKL_PATH   = $(MKLROOT)/lib/intel64
+BLAS       = ${MKLROOT}/lib/intel64/libmkl_core.a
+LAPACK     = ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_intel_thread.a
+BLACS      = ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a
+SCALAPACK  = ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+
+OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+INCS       = -I${MKLROOT}/include -I$(MKLROOT)/include/fftw
+
+LLIBS      = $(SCALAPACK) -Wl,--start-group $(LAPACK) $(BLAS) $(BLACS) -Wl,--end-group -liomp5 -lpthread -lm -ldl
+
+OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+OBJECTS_O2 += fft3dlib.o
+
+# For what used to be vasp.5.lib
+CPP_LIB    = $(CPP)
+FC_LIB     = $(FC)
+CC_LIB     = icc
+CFLAGS_LIB = -O -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc
+FFLAGS_LIB = -O2 -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc
+FREE_LIB   = $(FREE)
+
+OBJECTS_LIB= linpack_double.o getshmem.o
+
+# For the parser library
+CXX_PARS   = icpc
+LLIBS      += -lstdc++ -static-libstdc++ -static-libgcc -static-intel
+
+# Normally no need to change this
+SRCDIR     = ../../src
+BINDIR     = ../../bin
+</pre></div>
+</div>
+<p>The only module needed to compile VASP is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span>
+</pre></div>
+</div>
+<p>VASP includes a testsuite and running it produces this final results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==================================================================</span>
+<span class="n">SUMMARY</span><span class="p">:</span>
+<span class="o">==================================================================</span>
+<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">failed</span><span class="p">,</span> <span class="n">please</span> <span class="n">check</span> <span class="n">the</span> <span class="n">output</span> <span class="n">file</span> <span class="n">manually</span><span class="p">:</span>
+<span class="n">bulk_SiO2_LOPTICS</span> <span class="n">bulk_SiO2_LOPTICS_nosym</span> <span class="n">bulk_SiO2_LOPTICS_RPR</span>
+<span class="n">bulk_SiO2_LPEAD</span> <span class="n">bulk_SiO2_LPEAD_nosym</span> <span class="n">bulk_SiO2_LPEAD_RPR</span>
+<span class="n">C_2x2x2_CORE_CON</span> <span class="n">C_2x2x2_CORE_CON_RPR</span>
 </pre></div>
 </div>
 </div>
