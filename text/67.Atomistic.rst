@@ -6,7 +6,7 @@ Tight Binding codes such as DFTB+ and DFT codes such as ABINIT, OCTOPUS, VASP an
 
 For compiling these codes we need Fortran, C and C++ compilers, we will use GCC 9.3 and Intel 2019 for most of these codes.
 
-A set of numerical libraries are use very often by these codes. Dense Linear Algebra routines such as BLAS and LAPACK are used. Optimized versions such as OpenBLAS and Intel MKL are preferable over the reference versions from NetLIB.
+A set of numerical libraries are used very often by these codes. Dense Linear Algebra routines such as BLAS and LAPACK are used. Optimized versions such as OpenBLAS and Intel MKL are preferable over the reference versions from NetLIB.
 
 All atomistic codes in our list take advantage of parallelization, either OpenMP, MPI or support GPUs. OpenMP is implemented on modern compilers such as GCC, Intel and NVIDIA. For MPI we will use MPICH 3.4.1, OpenMPI 3.1.6 and Intel MPI from 2019.
 
@@ -26,7 +26,9 @@ PLUMED is an open-source library that provides a wide range of different methods
 
 We compile PLUMED with the following modules::
 
-  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 lang/python/cpython_3.9.5_gcc93 libs/openblas/0.3.13_gcc93 libs/fftw/3.3.9_gcc93
+  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 \
+  lang/python/cpython_3.9.5_gcc93 libs/openblas/0.3.13_gcc93 \
+  libs/fftw/3.3.9_gcc93
 
 Download PLUMED from::
 
@@ -64,6 +66,7 @@ The final lines of the tests show no failures::
 
   make[1]: Leaving directory '/gpfs20/shared/src/plumed-2.7.1/regtest'
 
+
 After installation, PLUMED offers a very convenient prepared modulefile.
 The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation::
 
@@ -95,8 +98,8 @@ We start with two files, ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2``. The f
 
 AMBER20 was compiled using GCC without and with CUDA, and Intel 2019 without CUDA.
 
-GCC 9.3 + MPICH 3.4.1 (NO CUDA)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GCC 9.3 + MPICH 3.4.1
+~~~~~~~~~~~~~~~~~~~~~
 
 The modules used for compiling Amber are GCC 9.3 and MPICH 3.4.1. The first modules to load are the compiler and MPI::
 
@@ -176,9 +179,7 @@ In the folder ``amber20_src/build/run_cmake.sample`` there a script that can be 
   echo "Consider adding the last line to your login startup script, e.g. ~/.bashrc"
   echo ""
 
-When running the script, Miniconda will be downloaded and installed, this is the portion of the execution that requieres internet access and cannot be executed from a GPU node.
-
-Once Miniconda is downloaded and installed. All that is needed is to preserve the folder and further compilations will not require internet access.
+When running the script, Miniconda will be downloaded and installed, this is the portion of the execution that requires internet access and cannot be executed from a GPU node.
 
 After CMAKE have prepared the folder with for compilation, execute::
 
@@ -188,7 +189,7 @@ The code will compile in a few minutes. To install the the build execute::
 
   make install
 
-To run the testsuite, create a load the module
+To run the testsuite, create a load the module::
 
   make test.parallel
 
@@ -199,8 +200,6 @@ The results from the testsuite were::
   0 tests experienced an error
   Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_nocuda/logs/test_amber_parallel/2021-05-26_10-57-52.log
   Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_nocuda/logs/test_amber_parallel/2021-05-26_10-57-52.diff
-
-
 
 GCC 9.3 + MPICH 3.4.1 (CUDA)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -335,7 +334,6 @@ The final lines after running the testsuite are::
   Test log file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.log
   Test diffs file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.diff
 
-There are 3 effective tests failing with this build.
 
 Octopus
 -------
@@ -1060,3 +1058,147 @@ On Thorny::
    ..................................................................................................................................................
    .......................... [464/464]
    make[1]: Leaving directory `/gpfs20/shared/src/CASTEP-19.11/Test'
+
+
+VASP 6.2.1
+----------
+
+The Vienna Ab initio Simulation Package (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
+
+VASP 6.2.1 was compiled with Intel 2019 on both Thorny and Spruce.
+There are two builds of VASP, one compiled with a MKL running the rutines sequential mode (no multithreading) and another build with OpenMP enabled and MKL running in multithreaded mode.
+
+VASP is a proprietary code that require a license to legally run the code.
+The downloaded file is called ``vasp.6.2.1.tar.gz`` that uncompress into a folder ``vasp.6.2.1``.
+
+Before compiling VASP, you need to edit the file `makefile.include` for the sequential version. The files for Spruce include multidispaching code for the various CPUs on that cluster::
+
+  # Precompiler options
+  CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
+             -DMPI -DMPI_BLOCK=8000 \
+             -Duse_collective \
+             -DCACHE_SIZE=4000 \
+             -DscaLAPACK \
+             -Dvasp6 \
+             -Duse_bse_te \
+             -Dtbdyn \
+             -Dfock_dblbuf
+
+  CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+  FC         = mpiifort
+  FCL        = mpiifort
+
+  FREE       = -free -names lowercase
+
+  FFLAGS     = -assume byterecl -w -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc -traceback -g
+  OFLAG      = -O2
+  OFLAG_IN   = $(OFLAG)
+  DEBUG      = -O0
+
+  MKL_PATH   = $(MKLROOT)/lib/intel64
+  BLAS       = ${MKLROOT}/lib/intel64/libmkl_core.a
+  LAPACK     = ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a
+  BLACS      = ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a
+  SCALAPACK  = ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+
+  OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+  INCS       = -I${MKLROOT}/include -I$(MKLROOT)/include/fftw
+
+  LLIBS      =  $(SCALAPACK) -Wl,--start-group $(LAPACK) $(BLAS) $(BLACS) -Wl,--end-group -lpthread -lm -ldl
+
+  OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+  OBJECTS_O2 += fft3dlib.o
+
+  # For what used to be vasp.5.lib
+  CPP_LIB    = $(CPP)
+  FC_LIB     = $(FC)
+  CC_LIB     = icc
+  CFLAGS_LIB = -O -static-libgcc -axSANDYBRIDGE,IVYBRIDGE,HASWELL
+  FFLAGS_LIB = -O2 -static-libgcc -axSANDYBRIDGE,IVYBRIDGE,HASWELL
+  FREE_LIB   = $(FREE)
+
+  OBJECTS_LIB= linpack_double.o getshmem.o
+
+  # For the parser library
+  CXX_PARS   = icpc
+  LLIBS      += -lstdc++ -static-libstdc++ -static-libgcc -static-intel
+
+  # Normally no need to change this
+  SRCDIR     = ../../src
+  BINDIR     = ../../bin
+
+The version that runs MKL with multithreading and enables OpenMP is like this::
+
+  # Precompiler options
+  CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
+             -DMPI -DMPI_BLOCK=8000 \
+             -Duse_collective \
+             -DCACHE_SIZE=4000 \
+             -DscaLAPACK \
+             -Dvasp6 \
+             -Duse_bse_te \
+             -Dtbdyn \
+             -Dfock_dblbuf \
+             -D_OPENMP
+
+  CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+  FC         = mpiifort
+  FCL        = mpiifort
+
+  FREE       = -free -names lowercase
+
+  FFLAGS     = -assume byterecl -w -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-intel -static-libgcc -traceback -g -qopenmp
+  OFLAG      = -O2
+  OFLAG_IN   = $(OFLAG)
+  DEBUG      = -O0
+
+  MKL_PATH   = $(MKLROOT)/lib/intel64
+  BLAS       = ${MKLROOT}/lib/intel64/libmkl_core.a
+  LAPACK     = ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_intel_thread.a
+  BLACS      = ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a
+  SCALAPACK  = ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+
+  OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+  INCS       = -I${MKLROOT}/include -I$(MKLROOT)/include/fftw
+
+  LLIBS      = $(SCALAPACK) -Wl,--start-group $(LAPACK) $(BLAS) $(BLACS) -Wl,--end-group -liomp5 -lpthread -lm -ldl
+
+  OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+  OBJECTS_O2 += fft3dlib.o
+
+  # For what used to be vasp.5.lib
+  CPP_LIB    = $(CPP)
+  FC_LIB     = $(FC)
+  CC_LIB     = icc
+  CFLAGS_LIB = -O -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc
+  FFLAGS_LIB = -O2 -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc
+  FREE_LIB   = $(FREE)
+
+  OBJECTS_LIB= linpack_double.o getshmem.o
+
+  # For the parser library
+  CXX_PARS   = icpc
+  LLIBS      += -lstdc++ -static-libstdc++ -static-libgcc -static-intel
+
+  # Normally no need to change this
+  SRCDIR     = ../../src
+  BINDIR     = ../../bin
+
+The only module needed to compile VASP is::
+
+  module purge
+  module load lang/intel/2019
+
+VASP includes a testsuite and running it produces this final results::
+
+  ==================================================================
+  SUMMARY:
+  ==================================================================
+  The following tests failed, please check the output file manually:
+  bulk_SiO2_LOPTICS bulk_SiO2_LOPTICS_nosym bulk_SiO2_LOPTICS_RPR
+  bulk_SiO2_LPEAD bulk_SiO2_LPEAD_nosym bulk_SiO2_LPEAD_RPR
+  C_2x2x2_CORE_CON C_2x2x2_CORE_CON_RPR
