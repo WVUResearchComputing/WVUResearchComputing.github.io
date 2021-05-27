@@ -1,0 +1,472 @@
+Density Functional Theory
+=========================
+
+Octopus
+-------
+
+Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3
+
+The modules loaded for compilation were::
+
+  module load lang/gcc/9.3.0 libs/libxc/4.3.4_gcc93  \
+  libs/hdf5/1.12.0_gcc93 \
+  libs/netcdf/4.7.4_gcc93 \
+  libs/netcdf/fortran-4.5.3_gcc93 \
+  libs/openblas/0.3.10_gcc93 \
+  libs/fftw/3.3.9_gcc93 \
+  parallel/mpich/3.4.1_gcc93
+
+The sources can be downloaded from the developers and uncompressed with::
+
+  wget https://octopus-code.org/download/10.4/octopus-10.4.tar.gz
+  tar -zxvf octopus-10.4.tar.gz
+
+It is customary to compile codes on a separate folder from the sources.
+The foler ``build_gcc93`` is created inside the sources for that purpose::
+
+  cd octopus-10.4
+  mkdir build_gcc93_mpic341
+  cd build_gcc93_mpich341
+
+The configure line was::
+
+  ../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
+  --with-libxc-prefix=${MD_LIBXC} --with-blas=" -L${MD_OPENBLAS} -lopenblas" \
+  --with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
+  --with-mpi=${MD_MPICH} --enable-mpi
+
+
+On Thorny Flat the results from the testsuite were::
+
+
+  ************************
+  Passed:  184 / 200
+  Skipped: 16 / 200
+
+  Everything seems to be OK
+
+  Total run-time of the testsuite: 00:20:42
+
+ABINIT
+------
+
+Parallel version with GCC 9.3 and MPICH 3.4.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Abinit 9.4.1 was compiled with the following modules::
+
+  module load lang/gcc/9.3.0
+  module load lang/python/cpython_3.9.4_gcc93
+  module load parallel/mpich/3.4.1_gcc93
+  module load libs/openblas/0.3.10_gcc93
+  module load libs/libxc/4.3.4_gcc93
+  module load libs/xmlf90/1.5.4_gcc93
+  module load libs/libpsml/1.1.7_gcc93
+  module load libs/openblas/0.3.10_gcc93
+  module load libs/hdf5/1.12.0_gcc93
+  module load libs/netcdf/4.7.4_gcc93
+  module load libs/netcdf/fortran-4.5.3_gcc93
+  module load libs/fftw/3.3.9_gcc93
+
+ABINIT uses a configure file, a template can be found at ``doc/build/config-template.ac9``. The lines to be changed from the template are::
+
+  prefix="/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341"
+  with_mpi="${MD_MPICH}"
+  LINALG_LIBS="-L${MD_OPENBLAS}/lib -lopenblas -lpthread "
+  with_fft_flavor="fftw3"
+  FFTW3_LIBS="-L${MD_FFTW} -lfftw3 -lfftw3f"
+  with_libxc=${MD_LIBXC}
+  with_libxml2="${MD_GCC}"
+  with_hdf5="${MD_HDF5}"
+  NETCDF_FCFLAGS="-I${MD_NETCDF}/include"
+  NETCDF_LIBS="-L${MD_NETCDF}/lib -lnetcdf"
+  NETCDF_FORTRAN_FCFLAGS="-I${MD_NETCDF_FORTRAN}/include"
+  NETCDF_FORTRAN_LIBS="-L${MD_NETCDF_FORTRAN}/lib -lnetcdff"
+  LIBPSML_FCFLAGS="-I${MD_LIBPSML}/include"
+  LIBPSML_LIBS="-L${MD_LIBPSML}/lib -lpsml"
+  with_xmlf90="${MD_XMLF90}"
+
+These lines will use environment variables declared on the corresponding modules loaded above. The configure ac9 is::
+
+  build_gcc93_mpic341.ac9
+
+To configure ABINIT is customary to create a build folder, ABINIT was build inside the folder ``build_gcc93_mpic341``::
+
+  mkdir build_gcc93_mpic341
+  cd build_gcc93_mpic341
+
+Execute the configure with::
+
+  ../configure --with-config-file=../build_gcc93_mpic341.ac9
+
+The resulting summary of the configurations for building ABINIT are these::
+
+  Core build parameters
+  ---------------------
+
+    * C compiler        : gnu version 9.3
+    * Fortran compiler  : gnu version 9.3
+    * architecture      : intel xeon (64 bits)
+    * debugging         : basic
+    * optimizations     : standard
+
+    * OpenMP enabled    : no (collapse: ignored)
+    * MPI    enabled    : yes (flavor: auto)
+    * MPI    in-place   : no
+    * MPI-IO enabled    : yes
+    * GPU    enabled    : no (flavor: none)
+
+    * LibXML2 enabled   : yes
+    * LibPSML enabled   : yes
+    * XMLF90  enabled   : yes
+    * HDF5 enabled      : yes (MPI support: no)
+    * NetCDF enabled    : yes (MPI support: no)
+    * NetCDF-F enabled  : yes (MPI support: no)
+
+    * FFT flavor        : fftw3 (libs: user-defined)
+    * LINALG flavor     : netlib (libs: auto-detected)
+    * SCALAPACK enabled : no
+    * ELPA enabled      : no
+
+    * FCFLAGS           : -g -ffree-line-length-none    -I/shared/software/libs/netcdf-c/4.7.4_gcc93/include -I/shared/software/libs/netcdf-fortran/4.5.3_gcc93/include  -I/shared/software/libs/xmlf90/1.5.4_
+  gcc93/include -I/shared/software/libs/libpsml/1.1.7_gcc93/include
+    * CPATH             : /shared/software/libs/fftw/3.3.9_gcc93/include:/shared/software/libs/netcdf-fortran/4.5.3_gcc93/include:/shared/software/libs/netcdf-c/4.7.4_gcc93/include:/shared/software/libs/hdf
+  5/1.12.0_gcc93/include:/shared/software/libs/libpsml/1.1.7_gcc93/include:/shared/software/libs/xmlf90/1.5.4_gcc93/include:/shared/software/libs/libxc/4.3.4_gcc93/include:/shared/software/libs/openblas/0.3
+  .10_gcc9.3.0/include:/shared/software/parallel/mpich/3.4.1_gcc93/include:/shared/software/lang/python/3.9.4_gcc93/include:/shared/software/lang/gcc/9.3.0/include
+
+    * Build workflow    : monolith
+
+  0 deprecated options have been used:.
+
+  Configuration complete.
+  You may now type "make" to build Abinit.
+  (or "make -j<n>", where <n> is the number of available processors)
+
+ABINIT can now be build with::
+
+  make -j12
+
+Running the testsuite produces these results::
+
+  Suite            failed  passed  succeeded  skipped  disabled  run_etime  tot_etime
+  atompaw               0       0          0        2         0       0.00       0.00
+  bigdft                0       0          0       19         0       0.00       0.01
+  bigdft_paral          0       0          0        4         0       0.00       0.00
+  built-in              0       0          5        2         0      18.92      18.93
+  etsf_io               0       0          8        0         0      71.88      72.11
+  fast                  0       1         10        0         0     114.94     115.72
+  gpu                   0       0          0        7         0       0.00       0.00
+  libxc                 1       7         27        0         0    1217.96    1220.14
+  mpiio                 1       0         12        4         0    2298.48    2306.73
+  paral                 1      11         33       76         0    6497.65    6502.18
+  psml                  0       2         12        0         0     536.08     536.88
+  seq                   0       0          0       18         0       0.00       0.01
+  tutomultibinit        0       0          6        0         0     248.18     250.11
+  tutoparal             0       0          1       26         0     154.05     154.50
+  tutoplugs             0       0          0        4         0       0.00       0.00
+  tutorespfn            1       8         20        2         0    4046.58    4050.13
+  tutorial              2      10         47        0         0    1655.70    1659.39
+  unitary               0       1         17       20         0     107.07     107.41
+  v1                    0       1         73        0         0     529.11     532.30
+  v2                    0      10         69        0         0     601.61     606.15
+  v3                    0      14         64        0         0     597.51     602.62
+  v4                    0      12         49        0         0     559.48     563.87
+  v5                    2      12         59        0         0    2705.48    2712.52
+  v6                    0       7         54        0         0    1491.29    1495.96
+  v67mbpt               1       9         15        0         0     645.63     648.78
+  v7                    1      14         50        0         0    2800.01    2806.79
+  v8                    0      17         52        2         0    3690.55    3696.26
+  v9                    0       9         42        0         0    1196.94    1200.38
+  vdwxc                 0       0          0        1         0       0.00       0.00
+  wannier90             0       0          0        8         0       0.00       0.00
+
+  Completed in 3760.01 [s]. Average time for test=36.12 [s], stdev=97.31 [s]
+  Summary: failed=10, succeeded=725, passed=145, skipped=195, disabled=0
+
+
+CUDA Version with GCC 9.3, MPICH 3.4.1 and CUDA 11.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Similar to the parallel version above with the addition of this module::
+
+  parallel/cuda/11.1
+
+The configue file was::
+
+  prefix="/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341_gpu"
+  with_mpi="${MD_MPICH}"
+  with_gpu="/usr/local/cuda"
+  with_gpu_flavor="cuda-double"
+  GPU_CPPFLAGS="-I/usr/local/cuda/include"
+  GPU_CFLAGS="-I/usr/local/cuda/include"
+  GPU_CXXFLAGS="-std=c++"
+  GPU_FCFLAGS="-I/usr/local/cuda/include"
+  GPU_LDFLAGS="-L/usr/local/cuda/lib64 -lcublas -lcufft -lcudart -lstdc++"
+  GPU_LIBS="-L/usr/local/cuda/lib64 -lcublas -lcufft -lcudart -lstdc++"
+  LINALG_LIBS="-L${MD_OPENBLAS}/lib -lopenblas -lpthread "
+  with_fft_flavor="fftw3"
+  FFTW3_LIBS="-L${MD_FFTW} -lfftw3 -lfftw3f"
+  with_libxc=${MD_LIBXC}
+  with_libxml2="${MD_GCC}"
+  with_hdf5="${MD_HDF5}"
+  NETCDF_FCFLAGS="-I${MD_NETCDF}/include"
+  NETCDF_LIBS="-L${MD_NETCDF}/lib -lnetcdf"
+  NETCDF_FORTRAN_FCFLAGS="-I${MD_NETCDF_FORTRAN}/include"
+  NETCDF_FORTRAN_LIBS="-L${MD_NETCDF_FORTRAN}/lib -lnetcdff"
+  LIBPSML_FCFLAGS="-I${MD_LIBPSML}/include"
+  LIBPSML_LIBS="-L${MD_LIBPSML}/lib -lpsml"
+  with_xmlf90="${MD_XMLF90}"
+
+The code must be compiled from a compute node with GPUs as the CUDA toolkit is only present there.
+
+
+
+Siesta
+------
+
+Siesta is a electronic structure code using linear scaling algorithms.
+The version compiled was 4.0.2. The code was compiled with Intel Compilers 2018
+and 2019
+
+To compile the code a arch.make needs to be created. The contents of the file
+are::
+
+  SIESTA_ARCH=intel-mpi
+
+  FC=mpiifort
+  FFLAGS=-g -xHost -O3 -prec-div -prec-sqrt -fp-model precise -qopt-prefetch -fPIC -m64
+
+  DUMMY_FOX=--enable-dummy
+  FFLAGS_DEBUG=-g -O2 -debug full -traceback -C
+  LDFLAGS= -static-intel -static-libgcc
+  RANLIB=ranlib
+  FC_SERIAL=ifort
+  FPPFLAGS_CDF=
+
+  MPI_INTERFACE=libmpi_f90.a
+  MKL_INCLUDE=-I$(MKLROOT)/include
+  MPI_LIBS=-L$(I_MPI_ROOT)/intel64/lib -lmpi
+  MKL_LIBS=$(MKLROOT)/lib/intel64
+  MPI_INCLUDE=-I$(I_MPI_ROOT)/intel64/include
+  INCFLAGS=$(MPI_INCLUDE) $(MKL_INCLUDE)
+
+  FPPFLAGS_MPI=-DMPI -DMPI_TIMING -DFC_HAVE_FLUSH -DFC_HAVE_ABORT -DSIESTA__NO_MRRR
+
+  NETCDF_LIBS=
+  NETCDF_INTERFACE=
+
+  LIBS=-mkl=cluster $(MPI_LIBS) -qopenmp -lpthread -lstdc++ -ldl
+
+  SYS=nag
+  FPPFLAGS= $(FPPFLAGS_CDF) $(FPPFLAGS_MPI)
+
+
+  atom.o: atom.F
+          $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+  state_analysis.o: state_analysis.F
+          $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+
+  .F.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $<
+  .f.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $<
+  .F90.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $<
+  .f90.o:
+          $(FC) -c $(FFLAGS) $(INCFLAGS) $<
+
+
+CASTEP
+------
+
+CASTEP is a leading code for calculating the properties of materials from first principles. Using density functional theory, it can simulate a wide range of properties of materials proprieties including energetics, structure at the atomic level, vibrational properties, electronic response properties etc. In particular it has a wide range of spectroscopic features that link directly to experiment, such as infra-red and Raman spectroscopies, NMR, and core level spectra.
+
+CASTEP can only be compiled with Intel 2018 due to a bug on Intel 2019 MPI implementation. The code was compiled on both clusters with Intel 2018.
+
+Modules used::
+
+  module purge
+  module load lang/python/intelpython_2.7.16 lang/intel/2018
+
+Compilation line::
+
+  make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+  FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8
+
+A run of a test suite o both clusters passes all tests.
+
+On Spruce::
+
+  $ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+  FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
+
+  Makefile:595: GNU make version 3.82 or later is recommended: proceeding with Make 3.81
+  Some modules may be compiled at unnecessarily low optimisation level
+
+  make -C "Test" ARCH=linux_x86_64_ifort18--mpi check-simple
+  make[1]: Entering directory `/gpfs/shared/src/CASTEP-19.11/Test'
+  rm -f */*/*.{castep,dfpt_wvfn,fd_wvfn,wvfn.*,*.err}
+  ../bin/testcode.py -q  --processors=4 --total-processors=16  -e /gpfs/shared/src/CASTEP-19.11/obj/linux_x86_64_ifort18--mpi/castep.mpi -c simple
+  ................................................................................................................................................
+  ................................................................................................................................................
+  ................................................................................................................................................
+  ................................ [464/464]
+  make[1]: Leaving directory `/gpfs/shared/src/CASTEP-19.11/Test'
+
+On Thorny::
+
+  $ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+  FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
+   make -C "Test" ARCH=linux_x86_64_ifort18--mpi check-simple
+   make[1]: Entering directory `/gpfs20/shared/src/CASTEP-19.11/Test'
+   rm -f */*/*.{castep,dfpt_wvfn,fd_wvfn,wvfn.*,*.err}
+   ../bin/testcode.py -q  --processors=4 --total-processors=48  -e /gpfs20/shared/src/CASTEP-19.11/obj/linux_x86_64_ifort18--mpi/castep.mpi -c simple
+   ..................................................................................................................................................
+   ..................................................................................................................................................
+   ..................................................................................................................................................
+   .......................... [464/464]
+   make[1]: Leaving directory `/gpfs20/shared/src/CASTEP-19.11/Test'
+
+
+VASP 6.2.1
+----------
+
+The Vienna Ab initio Simulation Package (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
+
+VASP 6.2.1 was compiled with Intel 2019 on both Thorny and Spruce.
+There are two builds of VASP, one compiled with a MKL running the rutines sequential mode (no multithreading) and another build with OpenMP enabled and MKL running in multithreaded mode.
+
+VASP is a proprietary code that require a license to legally run the code.
+The downloaded file is called ``vasp.6.2.1.tar.gz`` that uncompress into a folder ``vasp.6.2.1``.
+
+Before compiling VASP, you need to edit the file `makefile.include` for the sequential version. The files for Spruce include multidispaching code for the various CPUs on that cluster::
+
+  # Precompiler options
+  CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
+             -DMPI -DMPI_BLOCK=8000 \
+             -Duse_collective \
+             -DCACHE_SIZE=4000 \
+             -DscaLAPACK \
+             -Dvasp6 \
+             -Duse_bse_te \
+             -Dtbdyn \
+             -Dfock_dblbuf
+
+  CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+  FC         = mpiifort
+  FCL        = mpiifort
+
+  FREE       = -free -names lowercase
+
+  FFLAGS     = -assume byterecl -w -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc -traceback -g
+  OFLAG      = -O2
+  OFLAG_IN   = $(OFLAG)
+  DEBUG      = -O0
+
+  MKL_PATH   = $(MKLROOT)/lib/intel64
+  BLAS       = ${MKLROOT}/lib/intel64/libmkl_core.a
+  LAPACK     = ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a
+  BLACS      = ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a
+  SCALAPACK  = ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+
+  OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+  INCS       = -I${MKLROOT}/include -I$(MKLROOT)/include/fftw
+
+  LLIBS      =  $(SCALAPACK) -Wl,--start-group $(LAPACK) $(BLAS) $(BLACS) -Wl,--end-group -lpthread -lm -ldl
+
+  OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+  OBJECTS_O2 += fft3dlib.o
+
+  # For what used to be vasp.5.lib
+  CPP_LIB    = $(CPP)
+  FC_LIB     = $(FC)
+  CC_LIB     = icc
+  CFLAGS_LIB = -O -static-libgcc -axSANDYBRIDGE,IVYBRIDGE,HASWELL
+  FFLAGS_LIB = -O2 -static-libgcc -axSANDYBRIDGE,IVYBRIDGE,HASWELL
+  FREE_LIB   = $(FREE)
+
+  OBJECTS_LIB= linpack_double.o getshmem.o
+
+  # For the parser library
+  CXX_PARS   = icpc
+  LLIBS      += -lstdc++ -static-libstdc++ -static-libgcc -static-intel
+
+  # Normally no need to change this
+  SRCDIR     = ../../src
+  BINDIR     = ../../bin
+
+The version that runs MKL with multithreading and enables OpenMP is like this::
+
+  # Precompiler options
+  CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
+             -DMPI -DMPI_BLOCK=8000 \
+             -Duse_collective \
+             -DCACHE_SIZE=4000 \
+             -DscaLAPACK \
+             -Dvasp6 \
+             -Duse_bse_te \
+             -Dtbdyn \
+             -Dfock_dblbuf \
+             -D_OPENMP
+
+  CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+  FC         = mpiifort
+  FCL        = mpiifort
+
+  FREE       = -free -names lowercase
+
+  FFLAGS     = -assume byterecl -w -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-intel -static-libgcc -traceback -g -qopenmp
+  OFLAG      = -O2
+  OFLAG_IN   = $(OFLAG)
+  DEBUG      = -O0
+
+  MKL_PATH   = $(MKLROOT)/lib/intel64
+  BLAS       = ${MKLROOT}/lib/intel64/libmkl_core.a
+  LAPACK     = ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_intel_thread.a
+  BLACS      = ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a
+  SCALAPACK  = ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+
+  OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+  INCS       = -I${MKLROOT}/include -I$(MKLROOT)/include/fftw
+
+  LLIBS      = $(SCALAPACK) -Wl,--start-group $(LAPACK) $(BLAS) $(BLACS) -Wl,--end-group -liomp5 -lpthread -lm -ldl
+
+  OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+  OBJECTS_O2 += fft3dlib.o
+
+  # For what used to be vasp.5.lib
+  CPP_LIB    = $(CPP)
+  FC_LIB     = $(FC)
+  CC_LIB     = icc
+  CFLAGS_LIB = -O -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc
+  FFLAGS_LIB = -O2 -axSANDYBRIDGE,IVYBRIDGE,HASWELL -static-libgcc
+  FREE_LIB   = $(FREE)
+
+  OBJECTS_LIB= linpack_double.o getshmem.o
+
+  # For the parser library
+  CXX_PARS   = icpc
+  LLIBS      += -lstdc++ -static-libstdc++ -static-libgcc -static-intel
+
+  # Normally no need to change this
+  SRCDIR     = ../../src
+  BINDIR     = ../../bin
+
+The only module needed to compile VASP is::
+
+  module purge
+  module load lang/intel/2019
+
+VASP includes a testsuite and running it produces this final results::
+
+  ==================================================================
+  SUMMARY:
+  ==================================================================
+  The following tests failed, please check the output file manually:
+  bulk_SiO2_LOPTICS bulk_SiO2_LOPTICS_nosym bulk_SiO2_LOPTICS_RPR
+  bulk_SiO2_LPEAD bulk_SiO2_LPEAD_nosym bulk_SiO2_LPEAD_RPR
+  C_2x2x2_CORE_CON C_2x2x2_CORE_CON_RPR

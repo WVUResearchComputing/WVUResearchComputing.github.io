@@ -1,5 +1,5 @@
-Compiling Boost
-===============
+Boost
+=====
 
 Boost provides free peer-reviewed portable C++ source libraries.
 

@@ -1,5 +1,5 @@
-BLAS and LAPACK
-===============
+Linear Algebra
+==============
 
 Linear Algebra is at the core of many of the algorithms used in High Performance Computing.
 Operations like the addition of two vectors or the product of matrices have been

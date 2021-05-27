@@ -1,5 +1,5 @@
-Using MPI on RC HPC Clusters
-============================
+Message Passing Interface
+=========================
 
 Many parallel programs take advantage of Message Passing Interface (MPI)
 to communicate across compute nodes and efficiently scale up

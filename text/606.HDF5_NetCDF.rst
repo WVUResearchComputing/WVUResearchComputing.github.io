@@ -1,5 +1,5 @@
-Compiling HDF5 and NetCDF
-=========================
+HDF5 and NetCDF
+===============
 
 HDF5 and NetCDF are open source formats for storing large numerical data in
 binary format. The latest version of NetCDF uses HDF5 as underling format so
