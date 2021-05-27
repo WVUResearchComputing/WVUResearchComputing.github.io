@@ -16,7 +16,7 @@ The chapter :ref:`chap-developers` is intended for users with interest in develo
 build systems, parallel programming, debugging, profiling and optimization.
 Developers can be considered as an advanced user who programs their own codes or integrates other codes in more than a simple linear workflow.
 
-In the chapter :ref:`chap-administrators` we make reference to the various tools that can be used to monitor the global health of the clusters. In general, users do not need to have that global view but knowing how the entire cluster works can give them insights about their own role in having an effective usage of the cluster.
+In the chapter :ref:`chap-soft_admin` we make reference to the various tools that can be used to monitor the global health of the clusters. In general, users do not need to have that global view but knowing how the entire cluster works can give them insights about their own role in having an effective usage of the cluster.
 
 The next chapter, :ref:`chap-domain-specific` collects sections for various packages that are relevant for a restrict number of researchers.
 

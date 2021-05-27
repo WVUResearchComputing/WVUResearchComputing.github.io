@@ -1,0 +1,733 @@
+Force Field Molecular Dynamics
+==============================
+
+These are instructions for compiling a variety of atomistic codes. By atomistic codes we include codes that simulate the behavior of particles such as LAMMPS, codes for Classical Molecular Dynamics (CMD) such as AMBER, GROMACS and NAMD,
+Tight Binding codes such as DFTB+ and DFT codes such as ABINIT, OCTOPUS, VASP and Quantum Espresso.
+
+For compiling these codes we need Fortran, C and C++ compilers, we will use GCC 9.3 and Intel 2019 for most of these codes.
+
+A set of numerical libraries are used very often by these codes. Dense Linear Algebra routines such as BLAS and LAPACK are used. Optimized versions such as OpenBLAS and Intel MKL are preferable over the reference versions from NetLIB.
+
+All atomistic codes in our list take advantage of parallelization, either OpenMP, MPI or support GPUs. OpenMP is implemented on modern compilers such as GCC, Intel and NVIDIA. For MPI we will use MPICH 3.4.1, OpenMPI 3.1.6 and Intel MPI from 2019.
+
+Other libraries needed for compiling these codes include a FFT library such as FFTW 3.3.9 or the implementation in MKL. The libraries need to be compiled for single and double precision as some code use both. A HDF5 and NetCDF libraries
+provide hierarchical data storage for numerical data. Finally, a Python implementation is often needed, because these codes include a Python interface or use it for building or testing.
+
+We will start with PLUMED, a library for sampling algorithms, free-energy calculations and other high level calculations on top of MD packages. W
+
+Plumed
+------
+
+PLUMED is an open-source library that provides a wide range of different methods that work on top of other Molecular Dynamics codes. Capabilities of the code include:
+
+ * Enhanced-sampling algorithms
+ * Free-energy methods
+ * Tools to analyze the vast amounts of data produced by molecular dynamics (MD) simulations.
+
+We compile PLUMED with the following modules::
+
+  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 \
+  lang/python/cpython_3.9.5_gcc93 libs/openblas/0.3.13_gcc93 \
+  libs/fftw/3.3.9_gcc93
+
+Download PLUMED from::
+
+  wget https://github.com/plumed/plumed2/releases/download/v2.7.1/plumed-2.7.1.tgz
+
+Uncompress and configure the build::
+
+  tar -zxvf plumed-2.7.1.tgz
+  cd plumed-2.7.1
+  ./configure --prefix=/shared/software/atomistic/plumed/2.7.1_gcc93_mpic341 PYTHON_BIN=python3 --enable-external-blas --enable-external-lapack LDFLAGS=-L${MD_OPENBLAS}/lib LIBS=-lopenblas
+
+After configuring the build. Execute::
+
+  make -j 12
+  make install
+
+PLUMED includes a testsuite and it is always a good practice to test the compilation. Call make to run the testsuite::
+
+  make check
+
+The final lines of the tests show no failures::
+
+  ...
+  + check file ves/rt-td-vonmises/report.txt for more information
+  + test ves/rt-VesDeltaF/ NOT APPLICABLE
+  + check file ves/rt-VesDeltaF/report.txt for more information
+  + test ves/rt-VesDeltaF-mwalkers/ NOT APPLICABLE
+  + check file ves/rt-VesDeltaF-mwalkers/report.txt for more information
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++
+  + Final report:
+  + 298 tests performed, 223 tests not applicable
+  + 0 errors found
+  + Well done!!
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  make[1]: Leaving directory '/gpfs20/shared/src/plumed-2.7.1/regtest'
+
+
+After installation, PLUMED offers a very convenient prepared modulefile.
+The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation::
+
+  cp /shared/software/atomistic/plumed/2.7.1_gcc93_mpic341/lib/plumed/modulefile /shared/modulefiles/tier2/atomistic/plumed/2.7.1_gcc93_mpic341
+
+The only change needed for this modulefile is adding one line loading the other modules::
+
+  #%Module1.0##############################################
+
+  # Manually add here dependencies and conflicts
+  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 lang/python/cpython_3.9.5_gcc93 libs/openblas/0.3.13_gcc93 libs/fftw/3.3.9_gcc93
+  ...
+
+AMBER
+-----
+
+Amber is a suite of biomolecular simulation programs. It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.
+
+AMBER was compiled using GCC 9.3 and MPICH 3.4.1. The first build is done without CUDA and with some small adjustments the CUDA version can be build from a GPU compute node.
+
+Amber as a package is composed from two pieces, Amber itself and AmberTools.
+Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license. AmberTools is a free package that collect open-source code to be used in conjunction with Amber. The latest version is Amber 20.
+
+We start with two files, ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2``. The first step is to uncompress both of them. The two tars uncompress on the same target folder ``amber20_src``::
+
+  tar -jxvf Amber20.tar.bz2
+  tar -jxvf AmberTools20.tar.bz2
+  cd amber20_src
+
+AMBER20 was compiled using GCC without and with CUDA, and Intel 2019 without CUDA.
+
+GCC 9.3 + MPICH 3.4.1
+~~~~~~~~~~~~~~~~~~~~~
+
+The modules used for compiling Amber are GCC 9.3 and MPICH 3.4.1. The first modules to load are the compiler and MPI::
+
+  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93
+
+Amber uses CMAKE as software builder. The version included with RedHat 7.x (2.18) is too old for most scientific codes. A module is needed to update the version of cmake to 3.18.3
+
+  module load dev/cmake/3.18.3
+
+It is always convenient to build the code on a folder separated from the sources. A folder inside ``amber20_src`` is created for building Amber inside::
+
+  mkdir build_gcc93_mpic341
+  cd build_gcc93_mpic341
+
+In the folder ``amber20_src/build/run_cmake.sample`` there a script that can be used to build Amber with a good set of predefined cmake FLAGS. Amber will be build first disabling CUDA but enabling MPI and OpenMP. The script after modifications looks like this (run_cmake.gcc93_mpic341)::
+
+  #!/bin/bash
+
+  #  This file gives some sample cmake invocations.  You may wish to
+  #  edit some options that are chosen here.
+
+  #  For information on how to get cmake, visit this page:
+  #  https://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Quick-Start
+
+  #  For information on common options for cmake, visit this page:
+  #  http://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Common-Options
+
+  #  (Note that you can change the value of CMAKE_INSTALL_PREFIX from what
+  #  is suggested below, but it cannot coincide with the amber20_src
+  #  folder.)
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_nocuda
+
+  if [ `uname -s|awk '{print $1}'` = "Darwin" ]; then
+
+  #  For macOS:
+
+    if [ -x /Applications/CMake.app/Contents/bin/cmake ]; then
+       cmake=/Applications/CMake.app/Contents/bin/cmake
+    else
+       cmake=cmake
+    fi
+
+    $cmake $AMBER_PREFIX/amber20_src \
+      -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
+      -DCOMPILER=CLANG  -DBLA_VENDOR=Apple \
+      -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+      -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+      2>&1 | tee cmake.log
+
+  else
+
+  #  Assume this is Linux:
+
+    cmake $AMBER_PREFIX/amber20_src \
+      -DCMAKE_INSTALL_PREFIX=$PREFIX \
+      -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
+      -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+      -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+      2>&1 | tee  cmake.log
+
+  fi
+
+  if [ ! -s cmake.log ]; then
+    echo ""
+    echo "Error:  No cmake.log file created: you may need to edit run_cmake"
+    exit 1
+  fi
+
+  echo ""
+  echo "If the cmake build report looks OK, you should now do the following:"
+  echo ""
+  echo "    make install"
+  echo "    source $AMBER_PREFIX/amber20/amber.sh"
+  echo ""
+  echo "Consider adding the last line to your login startup script, e.g. ~/.bashrc"
+  echo ""
+
+When running the script, Miniconda will be downloaded and installed, this is the portion of the execution that requires internet access and cannot be executed from a GPU node.
+
+After CMAKE have prepared the folder with for compilation, execute::
+
+  make -j12
+
+The code will compile in a few minutes. To install the the build execute::
+
+  make install
+
+To run the testsuite, create a load the module::
+
+  make test.parallel
+
+The results from the testsuite were::
+
+  185 file comparisons passed
+  4 file comparisons failed (1 of which can be ignored)
+  0 tests experienced an error
+  Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_nocuda/logs/test_amber_parallel/2021-05-26_10-57-52.log
+  Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_nocuda/logs/test_amber_parallel/2021-05-26_10-57-52.diff
+
+GCC 9.3 + MPICH 3.4.1 (CUDA)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using the previous build a CUDA version can be compiled from a compute node.
+Make a copy of ``run_cmake.gcc93_mpic341`` and edit the PREFIX and the FLAG enabling CUDA::
+
+  $ diff ../run_cmake.gcc93_mpic341 ../run_cmake.gcc93_mpic341_cuda
+  17c17
+  < PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_nocuda
+  ---
+  > PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_cuda
+  41a42
+  >     -DCUDA_TOOLKIT_ROOT_DIR=${MD_CUDA} \
+  43c44
+  <     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+  ---
+  >     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+
+Go to a compute node and load the module for CUDA 11.3::
+
+  module load parallel/cuda/11.3
+
+Delete the file ``CMakeCache.txt`` before running the script again. That will recreate the file with values for the CUDA compilation.
+
+Execute the same commands for compiling and installing, the compilation happens inside a GPU node::
+
+  make -j12
+  make install
+
+Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests either serial or parallel. Here are the results::
+
+  ==> /shared/software/atomistic/amber/20_gcc93_mpic341_cuda/logs/test_amber_cuda/2021-05-26_11-31-03.log <==
+  diffing md_SC_NVT_MBAR_SC_2.o.DPFP with md_SC_NVT_MBAR_SC_2.o
+  PASSED
+  ==============================================================
+  make[1]: Leaving directory '/gpfs20/shared/src/AMBER/amber20/amber20_src/test/cuda'
+
+  Finished CUDA test suite for Amber 20 at Wed May 26 11:40:28 EDT 2021.
+
+  242 file comparisons passed
+  7 file comparisons failed (1 of which can be ignored)
+  0 tests experienced errors
+
+  ==> /shared/software/atomistic/amber/20_gcc93_mpic341_cuda/logs/test_amber_cuda_parallel/2021-05-26_11-42-11.log <==
+  Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+  Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+  Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+  diffing mdout.pme.gamd3.GPU_DPFP with mdout.pme.gamd3
+  PASSED
+  ==============================================================
+  make[1]: Leaving directory '/gpfs20/shared/src/AMBER/amber20/amber20_src/test/cuda'
+  179 file comparisons passed
+  43 file comparisons failed (3 of which can be ignored)
+  2 tests experienced errors
+
+Intel 19 and Intel MPI 19
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Another build uses Intel Compiler Suite, including the Intel MPI implementation. The script that runs cmake is (run_cmake.intel19_impi19)::
+
+  #!/bin/bash
+
+  #  This file gives some sample cmake invocations.  You may wish to
+  #  edit some options that are chosen here.
+
+  #  For information on how to get cmake, visit this page:
+  #  https://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Quick-Start
+
+  #  For information on common options for cmake, visit this page:
+  #  http://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Common-Options
+
+  #  (Note that you can change the value of CMAKE_INSTALL_PREFIX from what
+  #  is suggested below, but it cannot coincide with the amber20_src
+  #  folder.)
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_intel19_impi19_nocuda
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+      -DCMAKE_INSTALL_PREFIX=$PREFIX \
+      -DCOMPILER=INTEL \
+      -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+      -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+      2>&1 | tee  cmake.log
+
+  if [ ! -s cmake.log ]; then
+    echo ""
+    echo "Error:  No cmake.log file created: you may need to edit run_cmake"
+    exit 1
+  fi
+
+  echo ""
+  echo "If the cmake build report looks OK, you should now do the following:"
+  echo ""
+  echo "    make install"
+  echo "    source $AMBER_PREFIX/amber20/amber.sh"
+  echo ""
+  echo "Consider adding the last line to your login startup script, e.g. ~/.bashrc"
+  echo ""
+
+To run the testsuite, the modulefile needs to be created and loaded. The module must set the variable ``$AMBERHOME`` needed to run the tests.
+Go to the folder ``amber20_src/test`` that contains the tests, set the variable ``$DO_PARALLEL`` as shown here::
+
+  export DO_PARALLEL="mpirun -np 4"
+
+Run all the parallel tests::
+
+  make test.parallel
+
+The final lines after running the testsuite are::
+
+  Testing scaledMD with PME
+  diffing mdout.save with mdout
+  PASSED
+  ==============================================================
+  make[2]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test/scaledMD'
+  make[1]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test'
+  make[1]: Entering directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test'
+
+  Finished parallel test suite for Amber 20 at Wed May 26 09:29:04 EDT 2021.
+  Some tests require 4 threads to run, while some will not
+  run with more than 2.  Please run further parallel tests with the
+  appropriate number of processors. See /shared/software/atomistic/amber/20_intel19_impi19_nocuda/test/README.
+
+  make[1]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test'
+  185 file comparisons passed
+  4 file comparisons failed (1 of which can be ignored)
+  0 tests experienced an error
+  Test log file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.log
+  Test diffs file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.diff
+
+
+Gromacs
+-------
+
+Gromacs is a Classical Molecular Dynamics code. The version compiled was 2021.2
+Several versions were compiled using GCC 9.3 and 11.1
+
+Gromacs 2021.2 on Thorny Flat
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The download page is::
+
+  https://manual.gromacs.org
+
+It is a good practice to compile from a separate folder instead of compiling directly along side with the sources, create a folder ``build_gcc93_mpic341`` inside the sources::
+
+  wget https://ftp.gromacs.org/gromacs/gromacs-2021.2.tar.gz
+  tar -zxvf gromacs-2021.2.tar.gz
+  cd gromacs-2021.2/
+  mkdir build_gcc93_mpic341
+  cd build_gcc93_mpic341
+
+Cmake is only used during configuration and it is not needed at runtime
+The modules can be loaded with this command line::
+
+  module purge
+  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 dev/cmake/3.18.3 \
+  lang/python/cpython_3.9.5_gcc93 libs/openblas/0.3.13_gcc93
+
+The first configuration is the standard one (Single Precision)
+
+The cmake configuration line was::
+
+  cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
+    -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx \
+    -DGMX_LAPACK_USER="-L${MD_OPENBLAS}/lib -lopenblas" \
+    -DGMX_BLAS_USER="-L${MD_OPENBLAS}/lib -lopenblas" \
+    -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2021.2_gcc93_mpic341 ..
+
+The results of the tests were::
+
+  ...
+  ...
+  70/73 Test #70: regressiontests/complex ...............   Passed  135.38 sec
+        Start 71: regressiontests/freeenergy
+  71/73 Test #71: regressiontests/freeenergy ............   Passed   34.09 sec
+        Start 72: regressiontests/rotation
+  72/73 Test #72: regressiontests/rotation ..............   Passed   28.83 sec
+        Start 73: regressiontests/essentialdynamics
+  73/73 Test #73: regressiontests/essentialdynamics .....   Passed   10.23 sec
+
+  100% tests passed, 0 tests failed out of 73
+
+  Label Time Summary:
+  GTest              = 108.89 sec*proc (67 tests)
+  IntegrationTest    =  32.96 sec*proc (20 tests)
+  MpiTest            =  52.50 sec*proc (10 tests)
+  SlowTest           =  57.26 sec*proc (8 tests)
+  UnitTest           =  18.67 sec*proc (39 tests)
+
+  Total Test time (real) = 317.75 sec
+  [100%] Built target run-ctest-nophys
+  Scanning dependencies of target check
+  [100%] Built target check
+
+The second configuration enables the double precision for gromacs:
+
+The cmake configuration line was::
+
+  cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on   -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx   -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2021.2_double_gcc93_mpic341 -DGMX_LAPACK_USER="-L${MD_OPENBLAS}/lib -lopenblas" -DGMX_BLAS_USER="-L${MD_OPENBLAS}/lib -lopenblas" -DGMX_DOUBLE=on ..
+
+The results of the tests were::
+
+  98% tests passed, 1 tests failed out of 46
+
+  Label Time Summary:
+  GTest              = 117.18 sec*proc (40 tests)
+  IntegrationTest    =  13.81 sec*proc (5 tests)
+  MpiTest            =   2.60 sec*proc (3 tests)
+  SlowTest           =  12.88 sec*proc (1 test)
+  UnitTest           =  90.49 sec*proc (34 tests)
+
+  Total Test time (real) = 2075.93 sec
+
+Gromacs 5.1.5 on Thorny Flat
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The modules used were::
+
+  module load lang/intel/2018 dev/cmake/3.18.3 libs/boost/1.73
+
+Cmake is only used during configuration and it is not needed at runtime
+The configuration line for cmake is executed on a folder created to contain the compiled code::
+
+  mkdir build_intel18
+  cd build_intel18
+  cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
+  -DCMAKE_C_COMPILER=mpiicc -DCMAKE_CXX_COMPILER=mpiicpc \
+  -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/5.1.5_intel18 ..
+  make -j12
+  make check
+  make install
+
+A similar compilation was done using Intel 2019 compilers.
+One test fail from the test suite::
+
+    96% tests passed, 1 tests failed out of 26
+
+    Label Time Summary:
+    GTest                 =   2.29 sec*proc (17 tests)
+    IntegrationTest       =   2.01 sec*proc (2 tests)
+    MpiIntegrationTest    =   0.56 sec*proc (1 test)
+    UnitTest              =   2.29 sec*proc (17 tests)
+    Total Test time (real) = 120.90 secs.
+
+    The following tests FAILED:
+         17 - SelectionUnitTests (Failed)
+
+Gromacs 2019.4 on Spruce Knob
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The modules used were::
+
+ lang/gcc/8.2.0
+ dev/cmake/3.15.4
+ parallel/openmpi/3.1.4_gcc82
+
+Cmake is only used during configuration and it is not needed at runtime
+
+The first configuration is the standard one (Single Precision)
+
+The cmake configuration line was::
+
+ cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
+ -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DGMX_HWLOC=off \
+ -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2019.4_gcc82 ..
+
+The results of the tests were::
+
+ 98% tests passed, 1 tests failed out of 46
+
+ Label Time Summary:
+ GTest              = 162.72 sec*proc (40 tests)
+ IntegrationTest    =  11.37 sec*proc (5 tests)
+ MpiTest            =  12.06 sec*proc (3 tests)
+ SlowTest           =  13.23 sec*proc (1 test)
+ UnitTest           = 138.12 sec*proc (34 tests)
+
+ Total Test time (real) = 2085.68 sec
+
+ The following tests FAILED:
+          29 - GmxPreprocessTests (Timeout)
+
+The second configuration enables the double precision for gromacs:
+
+The cmake configuration line was::
+
+ cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
+ -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DGMX_HWLOC=off \
+ -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2019.4_double_gcc82 \
+ -DGMX_DOUBLE=on ..
+
+The results of the tests were::
+
+ 98% tests passed, 1 tests failed out of 46
+
+ Label Time Summary:
+ GTest              =  85.42 sec*proc (40 tests)
+ IntegrationTest    =  10.96 sec*proc (5 tests)
+ MpiTest            =   1.01 sec*proc (3 tests)
+ SlowTest           =  23.99 sec*proc (1 test)
+ UnitTest           =  50.47 sec*proc (34 tests)
+
+ Total Test time (real) = 493.51 sec
+
+ The following tests FAILED:
+          29 - GmxPreprocessTests (Timeout)
+
+
+LAMMPS
+------
+
+LAMMPS is a packages for atomistic and particle simulations. The latests stable version by the time (May 2021) is from October 29, 2020. LAMMPS was compiled using these modules::
+
+  lang/gcc/11.1.0
+  parallel/openmpi/3.1.6_gcc111
+  libs/fftw/3.3.9_gcc111
+  libs/hdf5/1.12.0_gcc111
+
+LAMMPS was compiled using GCC 11.1, OpenMPI 3.4.1, FFTW 3.3.9 and HDF5 1.12
+
+The first step is to download the code from::
+
+  wget https://lammps.sandia.gov/tars/lammps-29Oct20.tar.gz
+
+Uncompress the code::
+
+  tar -zxvf lammps-29Oct20.tar.gz
+
+Change to the src folder inside the uncompressed folder::
+
+  cd lammps-29Oct20/src
+
+You need a customized Makefile for compiling LAMMPS with the right compilers and libraries. The file is called Makefile.gcc111_ompi316 and must be located at
+``src/MAKE``, the content of the file follows::
+
+  # mpi = MPI with its default compiler
+
+  SHELL = /bin/sh
+
+  # ---------------------------------------------------------------------
+  # compiler/linker settings
+  # specify flags and libraries needed for your compiler
+
+  CC =            mpicxx
+  CCFLAGS =       -g -O3
+  SHFLAGS =       -fPIC
+  DEPFLAGS =      -M
+
+  LINK =          mpicxx
+  LINKFLAGS =     -g -O3
+  LIB =
+  SIZE =          size
+
+  ARCHIVE =       ar
+  ARFLAGS =       -rc
+  SHLIBFLAGS =    -shared
+
+  # ---------------------------------------------------------------------
+  # LAMMPS-specific settings, all OPTIONAL
+  # specify settings for LAMMPS features you will use
+  # if you change any -D setting, do full re-compile after "make clean"
+
+  # LAMMPS ifdef settings
+  # see possible settings in Section 3.5 of the manual
+
+  LMP_INC =       -DLAMMPS_GZIP -DLAMMPS_MEMALIGN=64  # -DLAMMPS_CXX98
+
+  # MPI library
+  # see discussion in Section 3.4 of the manual
+  # MPI wrapper compiler/linker can provide this info
+  # can point to dummy MPI library in src/STUBS as in Makefile.serial
+  # use -D MPICH and OMPI settings in INC to avoid C++ lib conflicts
+  # INC = path for mpi.h, MPI compiler settings
+  # PATH = path for MPI library
+  # LIB = name of MPI library
+
+  MPI_INC = -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX=1
+  MPI_PATH =
+  MPI_LIB =
+
+  # FFT library
+  # see discussion in Section 3.5.2 of manual
+  # can be left blank to use provided KISS FFT library
+  # INC = -DFFT setting, e.g. -DFFT_FFTW, FFT compiler settings
+  # PATH = path for FFT library
+  # LIB = name of FFT library
+
+  FFT_INC = -DFFT_FFTW3
+  FFT_PATH =
+  FFT_LIB =  -L${MD_FFTW}/lib -lfftw3
+
+  # JPEG and/or PNG library
+  # see discussion in Section 3.5.4 of manual
+  # only needed if -DLAMMPS_JPEG or -DLAMMPS_PNG listed with LMP_INC
+  # INC = path(s) for jpeglib.h and/or png.h
+  # PATH = path(s) for JPEG library and/or PNG library
+  # LIB = name(s) of JPEG library and/or PNG library
+
+  JPG_INC = -I${MD_GCC}/include
+  JPG_PATH = -L${MD_GCC}/lib
+  JPG_LIB = -lpng -ljpeg -lz
+
+  # ---------------------------------------------------------------------
+  # build rules and dependencies
+  # do not edit this section
+
+  include Makefile.package.settings
+  include Makefile.package
+
+  EXTRA_INC = $(LMP_INC) $(PKG_INC) $(MPI_INC) $(FFT_INC) $(JPG_INC) $(PKG_SYSINC)
+  EXTRA_PATH = $(PKG_PATH) $(MPI_PATH) $(FFT_PATH) $(JPG_PATH) $(PKG_SYSPATH)
+  EXTRA_LIB = $(PKG_LIB) $(MPI_LIB) $(FFT_LIB) $(JPG_LIB) $(PKG_SYSLIB)
+  EXTRA_CPP_DEPENDS = $(PKG_CPP_DEPENDS)
+  EXTRA_LINK_DEPENDS = $(PKG_LINK_DEPENDS)
+
+  # Path to src files
+
+  vpath %.cpp ..
+  vpath %.h ..
+
+  # Link target
+
+  $(EXE): main.o $(LMPLIB) $(EXTRA_LINK_DEPENDS)
+          $(LINK) $(LINKFLAGS) main.o $(EXTRA_PATH) $(LMPLINK) $(EXTRA_LIB) $(LIB) -o $@
+          $(SIZE) $@
+
+  # Library targets
+
+  $(ARLIB): $(OBJ) $(EXTRA_LINK_DEPENDS)
+          @rm -f ../$(ARLIB)
+          $(ARCHIVE) $(ARFLAGS) ../$(ARLIB) $(OBJ)
+          @rm -f $(ARLIB)
+          @ln -s ../$(ARLIB) $(ARLIB)
+
+  $(SHLIB): $(OBJ) $(EXTRA_LINK_DEPENDS)
+          $(CC) $(CCFLAGS) $(SHFLAGS) $(SHLIBFLAGS) $(EXTRA_PATH) -o ../$(SHLIB) \
+                  $(OBJ) $(EXTRA_LIB) $(LIB)
+          @rm -f $(SHLIB)
+          @ln -s ../$(SHLIB) $(SHLIB)
+
+  # Compilation rules
+
+  %.o:%.cpp
+          $(CC) $(CCFLAGS) $(SHFLAGS) $(EXTRA_INC) -c $<
+
+  # Individual dependencies
+
+  depend : fastdep.exe $(SRC)
+          @./fastdep.exe $(EXTRA_INC) -- $^ > .depend || exit 1
+
+  fastdep.exe: ../DEPEND/fastdep.c
+          cc -O -o $@ $<
+
+  sinclude .depend
+
+The file should be located inside "src/MAKE" or "src/MAKE/MACHINES".
+Now inside the "src" folder there is a Makefile that allow you to select which packages will be compiled along side with LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few::
+
+  make yes-all
+  make no-lib
+  make yes-user-reaxc
+  make yes-user-molfile
+
+A few external subpackages must be configure first. We want to add HDF5 and COLVARS with the following lines compiling the corresponding subpackages and enabling them for LAMMPS::
+
+  cd ../lib/h5md
+  make -f Makefile.h5cc
+  cd ../../src/
+  make yes-user-h5md
+  make lib-colvars args="-m mpi"
+  make yes-user-colvars
+
+And LAMMPS itself after that::
+
+  make gcc111_ompi316
+
+After compiled the binary is called ``lmp_gcc82_ompi31``
+
+For testing the build, you can use one of the benchmarks inside the `bench`
+folder. The benchmark run on one of the compute nodes using 40 cores. The simulation involves more than 10 million atoms.
+The command line is::
+
+  mpirun -np 40 lmp_mpi -var x 4 -var y 8 -var z 10 -in in.rhodo.scaled
+
+This is the final output::
+
+  Loop time of 303.71 on 40 procs for 100 steps with 10240000 atoms
+
+  Performance: 0.057 ns/day, 421.820 hours/ns, 0.329 timesteps/s
+  99.1% CPU use with 40 MPI tasks x no OpenMP threads
+
+  MPI task timing breakdown:
+  Section |  min time  |  avg time  |  max time  |%varavg| %total
+  ---------------------------------------------------------------
+  Pair    | 201.28     | 205.41     | 210.7      |  15.7 | 67.63
+  Bond    | 9.4133     | 9.5518     | 9.7418     |   2.2 |  3.15
+  Kspace  | 31.517     | 36.816     | 40.964     |  36.8 | 12.12
+  Neigh   | 36.55      | 36.561     | 36.571     |   0.1 | 12.04
+  Comm    | 1.3529     | 1.5481     | 1.6872     |   7.0 |  0.51
+  Output  | 0.0038965  | 0.0040967  | 0.0043541  |   0.1 |  0.00
+  Modify  | 12.757     | 13.067     | 13.53      |   5.7 |  4.30
+  Other   |            | 0.7489     |            |       |  0.25
+
+  Nlocal:       256000.0 ave      256004 max      255996 min
+  Histogram: 8 0 0 0 0 24 0 0 0 8
+  Nghost:       163342.0 ave      163347 max      163335 min
+  Histogram: 8 0 8 0 0 0 8 0 0 16
+  Neighs:    9.62247e+07 ave 9.65195e+07 max 9.59192e+07 min
+  Histogram: 4 4 0 8 0 8 8 0 4 4
+
+  Total # of neighbors = 3.8489892e+09
+  Ave neighs/atom = 375.87785
+  Ave special neighs/atom = 7.4318750
+  Neighbor list builds = 11
+  Dangerous builds = 0
+  Total wall time: 0:05:13
+
+The table below shows the timings using the different builds created.
+
++--------------------------------------------+--------------------------+
+| Module                                     | Total wall time          |
++--------------------------------------------+--------------------------+
+| atomistic/lammps/2020.10.29_gcc111_impi19  |        0:04:54           |
+| atomistic/lammps/2020.10.29_gcc111_ompi316 |        0:05:13           |
+| atomistic/lammps/2020.10.29_gcc93_mpic341  |        0:05:11           |
++--------------------------------------------+--------------------------+
