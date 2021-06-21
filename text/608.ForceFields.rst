@@ -83,9 +83,11 @@ The only change needed for this modulefile is adding one line loading the other 
 AMBER
 -----
 
-Amber is a suite of biomolecular simulation programs. It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.
+Amber is a suite of biomolecular simulation programs.
+It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.
 
-AMBER was compiled using GCC 9.3 and MPICH 3.4.1. The first build is done without CUDA and with some small adjustments the CUDA version can be build from a GPU compute node.
+AMBER was compiled using GCC 9.3 and MPICH 3.4.1.
+The first build is done without CUDA and with very small adjustments the CUDA version can be build from a GPU compute node.
 
 Amber as a package is composed from two pieces, Amber itself and AmberTools.
 Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license. AmberTools is a free package that collect open-source code to be used in conjunction with Amber. The latest version is Amber 20.
@@ -219,11 +221,12 @@ Make a copy of ``run_cmake.gcc93_mpic341`` and edit the PREFIX and the FLAG enab
   ---
   >     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
 
-Go to a compute node and load the module for CUDA 11.3::
+Using SSH, go to a GPU compute node, where the CUDA Toolkit is installed, and load the module for CUDA 11.3::
 
   module load parallel/cuda/11.3
 
-Delete the file ``CMakeCache.txt`` before running the script again. That will recreate the file with values for the CUDA compilation.
+Delete the file ``CMakeCache.txt`` before running the script again.
+That will recreate the file with values for the CUDA compilation.
 
 Execute the same commands for compiling and installing, the compilation happens inside a GPU node::
 
