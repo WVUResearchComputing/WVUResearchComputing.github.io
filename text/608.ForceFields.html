@@ -96,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="60.Administrators.html">Software Administration</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="601.SphinxDocs.html">Editing these documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="602.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="603.LinearAlgebra.html">Linear Algebra</a></li>
@@ -175,7 +175,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="60.Administrators.html">Software Administration</a> &raquo;</li>
+          <li><a href="600.SoftAdmin.html">Software Administration</a> &raquo;</li>
         
       <li>Force Field Molecular Dynamics</li>
     
@@ -274,8 +274,10 @@ The file can be copied along with the rest of modulefiles with a simple edit for
 </div>
 <div class="section" id="amber">
 <h2>AMBER<a class="headerlink" href="#amber" title="Permalink to this headline">¶</a></h2>
-<p>Amber is a suite of biomolecular simulation programs. It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.</p>
-<p>AMBER was compiled using GCC 9.3 and MPICH 3.4.1. The first build is done without CUDA and with some small adjustments the CUDA version can be build from a GPU compute node.</p>
+<p>Amber is a suite of biomolecular simulation programs.
+It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.</p>
+<p>AMBER was compiled using GCC 9.3 and MPICH 3.4.1.
+The first build is done without CUDA and with very small adjustments the CUDA version can be build from a GPU compute node.</p>
 <p>Amber as a package is composed from two pieces, Amber itself and AmberTools.
 Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license. AmberTools is a free package that collect open-source code to be used in conjunction with Amber. The latest version is Amber 20.</p>
 <p>We start with two files, <code class="docutils literal notranslate"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools20.tar.bz2</span></code>. The first step is to uncompress both of them. The two tars uncompress on the same target folder <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code>:</p>
@@ -403,11 +405,12 @@ Make a copy of <code class="docutils literal notranslate"><span class="pre">run_
 &gt;     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
 </pre></div>
 </div>
-<p>Go to a compute node and load the module for CUDA 11.3:</p>
+<p>Using SSH, go to a GPU compute node, where the CUDA Toolkit is installed, and load the module for CUDA 11.3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.3</span>
 </pre></div>
 </div>
-<p>Delete the file <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> before running the script again. That will recreate the file with values for the CUDA compilation.</p>
+<p>Delete the file <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> before running the script again.
+That will recreate the file with values for the CUDA compilation.</p>
 <p>Execute the same commands for compiling and installing, the compilation happens inside a GPU node:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
 <span class="n">make</span> <span class="n">install</span>
