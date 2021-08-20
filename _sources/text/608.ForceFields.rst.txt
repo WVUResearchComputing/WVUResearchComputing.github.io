@@ -107,7 +107,7 @@ The modules used for compiling Amber are GCC 9.3 and MPICH 3.4.1. The first modu
 
   module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93
 
-Amber uses CMAKE as software builder. The version included with RedHat 7.x (2.18) is too old for most scientific codes. A module is needed to update the version of cmake to 3.18.3
+Amber uses CMAKE as software builder. The version included with RedHat 7.x (2.18) is too old for most scientific codes. A module is needed to update the version of cmake to 3.18.3::
 
   module load dev/cmake/3.18.3
 

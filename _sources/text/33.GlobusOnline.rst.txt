@@ -95,9 +95,7 @@ attach to your MIX Google Drive Account to transfer data to/from.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  **Note:** In step one, when searching all endpoints you will need to
-   search for ‘wvu#googledrive’ and then choose the endpointed named 'WVU Google Drive' which will likely appear near the bottom of the list.
-   
-- **Note:** This step is only required now if you want to share your Google Drive with other collaborators. Other wise you can just search for the endpoint within the File Manager to directly access it.   
+   search for ‘wvu#googledrive’.
 
 To transfer files to your MIX Google Drive Account, review the “Transfer
 Data” Section above. You will want to select the name of the Shared

@@ -293,9 +293,10 @@ Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is di
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
-<p>Amber uses CMAKE as software builder. The version included with RedHat 7.x (2.18) is too old for most scientific codes. A module is needed to update the version of cmake to 3.18.3</p>
-<blockquote>
-<div>module load dev/cmake/3.18.3</div></blockquote>
+<p>Amber uses CMAKE as software builder. The version included with RedHat 7.x (2.18) is too old for most scientific codes. A module is needed to update the version of cmake to 3.18.3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span>
+</pre></div>
+</div>
 <p>It is always convenient to build the code on a folder separated from the sources. A folder inside <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code> is created for building Amber inside:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
 <span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
