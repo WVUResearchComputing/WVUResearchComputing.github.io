@@ -86,152 +86,283 @@ AMBER
 Amber is a suite of biomolecular simulation programs.
 It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.
 
-AMBER was compiled using GCC 9.3 and MPICH 3.4.1.
-The first build is done without CUDA and with very small adjustments the CUDA version can be build from a GPU compute node.
+In this document we provide instructions to compile Amber using GCC 9.3, 11.1 and Intel Compilers 2021
+Amber can be compiled with a variety of options for parallelization.
+Amber can be compiled as pure serial code,  using multithreading with OpenMP, distributed parallelism with MPI and using GPUs with CUDA.
+We will be building Amber with each individual option and one final compilation enabling OpenMP, MPI and CUDA.
 
 Amber as a package is composed from two pieces, Amber itself and AmberTools.
-Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license. AmberTools is a free package that collect open-source code to be used in conjunction with Amber. The latest version is Amber 20.
+Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license.
+AmberTools is a free package that collect open-source code to be used in conjunction with Amber.
+The version used to produce this notes is Amber 20, the latest version available by mid 2021.
 
-We start with two files, ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2``. The first step is to uncompress both of them. The two tars uncompress on the same target folder ``amber20_src``::
+We start with two files, ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2``.
+The first step is to uncompress both of them.
+The two compressed tars will uncompress on the same target folder ``amber20_src``::
 
   tar -jxvf Amber20.tar.bz2
   tar -jxvf AmberTools20.tar.bz2
   cd amber20_src
 
-AMBER20 was compiled using GCC without and with CUDA, and Intel 2019 without CUDA.
+We start with GCC 9.3 where most of the tools can be enable and the compilation is easier.
+We start with a pure Serial build, we move after to enable OpenMP, after that, we disable OpenMP and enable MPI.
+We move the building process to a GPU node to compile a CUDA version disabling OpenMP and MPI and we finalize enabling all options for a final build.
+The reason for doing this is that keeping just one parallelization active will facilitate the usage for casual users, instead of dealing with complex combinations of threads, MPI processes and GPU cards.
 
-GCC 9.3 + MPICH 3.4.1
-~~~~~~~~~~~~~~~~~~~~~
 
-The modules used for compiling Amber are GCC 9.3 and MPICH 3.4.1. The first modules to load are the compiler and MPI::
+GCC 9.3 (Serial)
+~~~~~~~~~~~~~~~~
 
-  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93
+Decompressing ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2`` will create a folder ``amber20_src``.
+There is one file ``amber20_src/build/run_cmake.sample`` that we will use as template changing it for each build from now on.
+It is always convenient to build the code on a folder separated from the sources. 
+Create a folder for each build, for the serial case, we suggest::
 
-Amber uses CMAKE as software builder. The version included with RedHat 7.x (2.18) is too old for most scientific codes. A module is needed to update the version of cmake to 3.18.3::
+   cd amber20_src
+   mkdir build_gcc93_mpic341
 
-  module load dev/cmake/3.18.3
+The reason for the name is that in this folder we will compile all builds, including the MPI version using MPICH 3.4.1
+Inside this folder copy the file ``amber20_src/build/run_cmake.sample`` 
+The orginal content of this file is::
 
-It is always convenient to build the code on a folder separated from the sources. A folder inside ``amber20_src`` is created for building Amber inside::
+	#!/bin/bash
 
-  mkdir build_gcc93_mpic341
-  cd build_gcc93_mpic341
+	#  This file gives some sample cmake invocations.  You may wish to
+	#  edit some options that are chosen here.
 
-In the folder ``amber20_src/build/run_cmake.sample`` there a script that can be used to build Amber with a good set of predefined cmake FLAGS. Amber will be build first disabling CUDA but enabling MPI and OpenMP. The script after modifications looks like this (run_cmake.gcc93_mpic341)::
+	#  For information on how to get cmake, visit this page:
+	#  https://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Quick-Start
 
-  #!/bin/bash
+	#  For information on common options for cmake, visit this page:
+	#  http://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Common-Options
 
-  #  This file gives some sample cmake invocations.  You may wish to
-  #  edit some options that are chosen here.
+	#  (Note that you can change the value of CMAKE_INSTALL_PREFIX from what
+	#  is suggested below, but it cannot coincide with the amber20_src
+	#  folder.)
 
-  #  For information on how to get cmake, visit this page:
-  #  https://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Quick-Start
+	AMBER_PREFIX=$(dirname $(dirname `pwd`))
 
-  #  For information on common options for cmake, visit this page:
-  #  http://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Common-Options
+	if [ `uname -s|awk '{print $1}'` = "Darwin" ]; then
 
-  #  (Note that you can change the value of CMAKE_INSTALL_PREFIX from what
-  #  is suggested below, but it cannot coincide with the amber20_src
-  #  folder.)
+	#  For macOS:
+
+	  if [ -x /Applications/CMake.app/Contents/bin/cmake ]; then
+		 cmake=/Applications/CMake.app/Contents/bin/cmake
+	  else
+		 cmake=cmake
+	  fi
+
+	  $cmake $AMBER_PREFIX/amber20_src \
+		-DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
+		-DCOMPILER=CLANG  -DBLA_VENDOR=Apple \
+		-DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+		-DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+		2>&1 | tee cmake.log
+
+	else
+
+	#  Assume this is Linux:
+
+	  cmake $AMBER_PREFIX/amber20_src \
+		-DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
+		-DCOMPILER=GNU  \
+		-DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+		-DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+		2>&1 | tee  cmake.log
+
+	fi
+
+	if [ ! -s cmake.log ]; then
+	  echo ""
+	  echo "Error:  No cmake.log file created: you may need to edit run_cmake"
+	  exit 1
+	fi
+
+	echo ""
+	echo "If the cmake build report looks OK, you should now do the following:"
+	echo ""
+	echo "    make install"
+	echo "    source $AMBER_PREFIX/amber20/amber.sh"
+	echo ""
+	echo "Consider adding the last line to your login startup script, e.g. ~/.bashrc"
+	echo ""
+
+
+We will only make modifications to this file in two locations.
+We add an extra variable for defining the PREFIX::
 
   AMBER_PREFIX=$(dirname $(dirname `pwd`))
-  PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_nocuda
+  PREFIX=/shared/software/atomistic/amber/20_gcc93_serial
 
-  if [ `uname -s|awk '{print $1}'` = "Darwin" ]; then
-
-  #  For macOS:
-
-    if [ -x /Applications/CMake.app/Contents/bin/cmake ]; then
-       cmake=/Applications/CMake.app/Contents/bin/cmake
-    else
-       cmake=cmake
-    fi
-
-    $cmake $AMBER_PREFIX/amber20_src \
-      -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
-      -DCOMPILER=CLANG  -DBLA_VENDOR=Apple \
-      -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
-      -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
-      2>&1 | tee cmake.log
-
-  else
+This is the PREFIX that we will use for the Serial compilation
+The other change is inside the block for running cmake for the Linux build::
 
   #  Assume this is Linux:
 
-    cmake $AMBER_PREFIX/amber20_src \
-      -DCMAKE_INSTALL_PREFIX=$PREFIX \
-      -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
-      -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
-      -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
-      2>&1 | tee  cmake.log
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
+    -DOPENMP=FALSE -DMPI=FALSE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
 
-  fi
+The lines above are for a purely serial build of Amber.
 
-  if [ ! -s cmake.log ]; then
-    echo ""
-    echo "Error:  No cmake.log file created: you may need to edit run_cmake"
-    exit 1
-  fi
+Now we need to load some modules for compiling the code.
+Amber uses CMAKE as software builder. 
+The version included with RedHat 7.x (2.18) is too old for most scientific codes. 
+We will load modules for cmake 3.21.1 and GCC 9.3::
 
-  echo ""
-  echo "If the cmake build report looks OK, you should now do the following:"
-  echo ""
-  echo "    make install"
-  echo "    source $AMBER_PREFIX/amber20/amber.sh"
-  echo ""
-  echo "Consider adding the last line to your login startup script, e.g. ~/.bashrc"
-  echo ""
+  module load dev/cmake/3.21.1 lang/gcc/9.3.0 lang/python/cpython_3.9.5_gcc93
+
+There is a bug in the script for Miniconda, that will prevent cmake of building a complete environment.
+On the line 153 of ``amber20_src/cmake/UseMiniconda.cmake`` add a line to install pip via conda::
+
+    execute_process(COMMAND ${CONDA} update conda -y)
+    execute_process(COMMAND ${CONDA} install pip -y)
+    execute_process(COMMAND ${MINICONDA_PYTHON} -m pip install pip --upgrade)
+
+If you do skip this step, conda will remove pip after update and several other python packages that are installed with pip will fail.
+This is the only change in the sources.
+No other changes will be done directly to sources, if something fails, we simply disable the corresponging package. 
+Run the ``run_cmake`` inside the corresponding build folder::
+
+	cd build_gcc93_mpic341
+    ./run_cmake
 
 When running the script, Miniconda will be downloaded and installed, this is the portion of the execution that requires internet access and cannot be executed from a GPU node.
+We will preserve this folder for all other builds, in particular those for CUDA that are executed inside GPU nodes with no internet accesss.
 
-After CMAKE have prepared the folder with for compilation, execute::
+After CMAKE have prepared the folder for compilation, execute::
 
-  make -j12
+  make
 
 The code will compile in a few minutes. To install the the build execute::
 
   make install
 
-To run the testsuite, create a load the module::
+GCC 9.3 (OpenMP)
+~~~~~~~~~~~~~~~~
 
-  make test.parallel
+The variable defining the PREFIX will be::
 
-The results from the testsuite were::
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_gcc93_openmp
 
-  185 file comparisons passed
-  4 file comparisons failed (1 of which can be ignored)
-  0 tests experienced an error
-  Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_nocuda/logs/test_amber_parallel/2021-05-26_10-57-52.log
-  Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_nocuda/logs/test_amber_parallel/2021-05-26_10-57-52.diff
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
 
-GCC 9.3 + MPICH 3.4.1 (CUDA)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #  Assume this is Linux:
 
-Using the previous build a CUDA version can be compiled from a compute node.
-Make a copy of ``run_cmake.gcc93_mpic341`` and edit the PREFIX and the FLAG enabling CUDA::
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
+    -DOPENMP=TRUE -DMPI=FALSE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
 
-  $ diff ../run_cmake.gcc93_mpic341 ../run_cmake.gcc93_mpic341_cuda
-  17c17
-  < PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_nocuda
-  ---
-  > PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_cuda
-  41a42
-  >     -DCUDA_TOOLKIT_ROOT_DIR=${MD_CUDA} \
-  43c44
-  <     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
-  ---
-  >     -DMPI=TRUE -DOPENMP=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+After this execute::
 
-Using SSH, go to a GPU compute node, where the CUDA Toolkit is installed, and load the module for CUDA 11.3::
+	./run_cmake
+    make install
 
-  module load parallel/cuda/11.3
+The running of ``make`` followed by ``make install`` is not actually necessary, the later will run make and build the binaries before installing them.
 
-Delete the file ``CMakeCache.txt`` before running the script again.
-That will recreate the file with values for the CUDA compilation.
+GCC 9.3 (MPICH 3.4.1)
+~~~~~~~~~~~~~~~~~~~~~
 
-Execute the same commands for compiling and installing, the compilation happens inside a GPU node::
+We will add a new module::
 
-  make -j12
-  make install
+	module load parallel/mpich/3.4.1_gcc93
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
+    -DOPENMP=FALSE -DMPI=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
+GCC 9.3 (CUDA)
+~~~~~~~~~~~~~~
+
+This build is done on a GPU node, request an interactive execution::
+
+	qsub -I -l nodes=1:ppn=8:gpus=3 -q comm_gpu_inter
+
+Load all the modules used in the previous builds adding the module for CUDA::
+
+   module load dev/cmake/3.21.1 lang/gcc/9.3.0 lang/python/cpython_3.9.5_gcc93 parallel/mpich/3.4.1_gcc93 parallel/cuda/11.3
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_gcc93_cuda113
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
+    -DOPENMP=FALSE -DMPI=FALSE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
+GCC 9.3 (OpenMP + MPI + CUDA)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This build is done on a GPU node, reuse the previous interactive session or request a new one::
+
+	qsub -I -l nodes=1:ppn=8:gpus=3 -q comm_gpu_inter
+
+Load all the modules used in the previous builds adding the module for CUDA::
+
+   module load dev/cmake/3.21.1 lang/gcc/9.3.0 lang/python/cpython_3.9.5_gcc93 parallel/mpich/3.4.1_gcc93 parallel/cuda/11.3
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_cuda113
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
+    -DOPENMP=TRUE -DMPI=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
 
 Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests either serial or parallel. Here are the results::
 
@@ -259,52 +390,192 @@ Once AMBER is compiled and the modulefile created, use a GPU node to run the tes
   43 file comparisons failed (3 of which can be ignored)
   2 tests experienced errors
 
-Intel 19 and Intel MPI 19
-~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Another build uses Intel Compiler Suite, including the Intel MPI implementation. The script that runs cmake is (run_cmake.intel19_impi19)::
+GCC 11.1 (Serial)
+~~~~~~~~~~~~~~~~~
 
-  #!/bin/bash
-
-  #  This file gives some sample cmake invocations.  You may wish to
-  #  edit some options that are chosen here.
-
-  #  For information on how to get cmake, visit this page:
-  #  https://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Quick-Start
-
-  #  For information on common options for cmake, visit this page:
-  #  http://ambermd.org/pmwiki/pmwiki.php/Main/CMake-Common-Options
-
-  #  (Note that you can change the value of CMAKE_INSTALL_PREFIX from what
-  #  is suggested below, but it cannot coincide with the amber20_src
-  #  folder.)
+The variable defining the PREFIX will be::
 
   AMBER_PREFIX=$(dirname $(dirname `pwd`))
-  PREFIX=/shared/software/atomistic/amber/20_intel19_impi19_nocuda
+  PREFIX=/shared/software/atomistic/amber/20_gcc111_serial
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
 
   #  Assume this is Linux:
 
   cmake $AMBER_PREFIX/amber20_src \
-      -DCMAKE_INSTALL_PREFIX=$PREFIX \
-      -DCOMPILER=INTEL \
-      -DMPI=TRUE -DOPENMP=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
-      -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
-      2>&1 | tee  cmake.log
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU -DDISABLE_TOOLS="gbnsr6;cifparse;gbnsr6;sff" \
+    -DCMAKE_Fortran_FLAGS="-fallow-invalid-boz -fallow-argument-mismatch" \
+    -DBZIP2_LIBRARIES=/shared/software/lang/gcc/11.1.0/lib/libbz2.a \
+    -DOPENMP=FALSE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
 
-  if [ ! -s cmake.log ]; then
-    echo ""
-    echo "Error:  No cmake.log file created: you may need to edit run_cmake"
-    exit 1
-  fi
+After this execute::
 
-  echo ""
-  echo "If the cmake build report looks OK, you should now do the following:"
-  echo ""
-  echo "    make install"
-  echo "    source $AMBER_PREFIX/amber20/amber.sh"
-  echo ""
-  echo "Consider adding the last line to your login startup script, e.g. ~/.bashrc"
-  echo ""
+	./run_cmake
+    make install
+
+
+GCC 11.1 (OpenMP)
+~~~~~~~~~~~~~~~~~
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_gcc111_openmp
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU -DDISABLE_TOOLS="gbnsr6;cifparse;gbnsr6;sff" \
+    -DCMAKE_Fortran_FLAGS="-fallow-invalid-boz -fallow-argument-mismatch" \
+    -DBZIP2_LIBRARIES=/shared/software/lang/gcc/11.1.0/lib/libbz2.a \
+    -DOPENMP=TRUE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
+GCC 11.1 (OpenMPI 4.1.1)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Loading the modules::
+
+   module load lang/python/cpython_3.9.5_gcc111 parallel/openmpi/4.1.1_gcc111
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_gcc111_ompi411
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=GNU -DDISABLE_TOOLS="gbnsr6;cifparse;gbnsr6;sff" \
+    -DCMAKE_Fortran_FLAGS="-fallow-invalid-boz -fallow-argument-mismatch" \
+    -DBZIP2_LIBRARIES=/shared/software/lang/gcc/11.1.0/lib/libbz2.a \
+    -DOPENMP=FALSE -DMPI=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
+Intel Compilers 2021 (Serial)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Loading the modules::
+
+   module load dev/cmake/3.21.1 compiler/2021.2.0 mpi/2021.2.0 mkl/2021.2.0 lang/gcc/9.3.0
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_intel21_serial
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=INTEL -DDISABLE_TOOLS="reduce" \
+    -DBISON_EXECUTABLE=/shared/software/lang/gcc/9.3.0/bin/bison \
+    -DOPENMP=FALSE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
+
+Intel Compilers 2021 (OpenMP)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Loading the modules::
+
+   module load dev/cmake/3.21.1 compiler/2021.2.0 mpi/2021.2.0 mkl/2021.2.0 lang/gcc/9.3.0
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_intel21_openmp
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=INTEL -DDISABLE_TOOLS="reduce" \
+    -DBISON_EXECUTABLE=/shared/software/lang/gcc/9.3.0/bin/bison \
+    -DOPENMP=TRUE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
+Intel Compilers 2021 (Intel MPI 2021)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Loading the modules::
+
+   module load dev/cmake/3.21.1 compiler/2021.2.0 mpi/2021.2.0 mkl/2021.2.0 lang/gcc/9.3.0
+
+The variable defining the PREFIX will be::
+
+  AMBER_PREFIX=$(dirname $(dirname `pwd`))
+  PREFIX=/shared/software/atomistic/amber/20_intel21_impi21
+
+This is the PREFIX that we will use for the OpenMP compilation.
+The other change is inside the block for running cmake for the Linux build::
+
+  #  Assume this is Linux:
+
+  cmake $AMBER_PREFIX/amber20_src \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCOMPILER=INTEL -DDISABLE_TOOLS="reduce" \
+    -DBISON_EXECUTABLE=/shared/software/lang/gcc/9.3.0/bin/bison \
+    -DOPENMP=FALSE -DMPI=TRUE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
+    -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
+    2>&1 | tee  cmake.log
+
+After this execute::
+
+	./run_cmake
+    make install
+
+Intel Compilers 2021 (CUDA)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nvidia CUDA compiler nvcc does not support Intel Compilers 2021 as the base compiler for CUDA builds.
+
+
+Running Tests
+~~~~~~~~~~~~~
 
 To run the testsuite, the modulefile needs to be created and loaded. The module must set the variable ``$AMBERHOME`` needed to run the tests.
 Go to the folder ``amber20_src/test`` that contains the tests, set the variable ``$DO_PARALLEL`` as shown here::
