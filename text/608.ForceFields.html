@@ -763,34 +763,73 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="running-tests">
 <h3>Running Tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h3>
 <p>To run the testsuite, the modulefile needs to be created and loaded. The module must set the variable <code class="docutils literal notranslate"><span class="pre">$AMBERHOME</span></code> needed to run the tests.
-Go to the folder <code class="docutils literal notranslate"><span class="pre">amber20_src/test</span></code> that contains the tests, set the variable <code class="docutils literal notranslate"><span class="pre">$DO_PARALLEL</span></code> as shown here:</p>
+Go to the folder <code class="docutils literal notranslate"><span class="pre">amber20_src/test</span></code> that contains the tests.
+For the parallel tests, set the variable <code class="docutils literal notranslate"><span class="pre">$DO_PARALLEL</span></code> to the right command for running MPI executions, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DO_PARALLEL</span><span class="o">=</span><span class="s2">&quot;mpirun -np 4&quot;</span>
 </pre></div>
 </div>
-<p>Run all the parallel tests:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span><span class="o">.</span><span class="n">parallel</span>
+<p>These are the results of several tests:</p>
+<p>GCC 9.3 Serial:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./test_amber_serial.sh
+...
+...
+Finished serial test suite for Amber 20 at Sat Aug 21 17:52:10 EDT 2021.
+                                                                                                                                                                                                            196 file comparisons passed
+0 file comparisons failed
+0 tests experienced errors
+Test log file saved as /shared/software/atomistic/amber/20_gcc93_serial/logs/test_amber_serial/2021-08-21_17-45-18.log
+No test diffs to save!
 </pre></div>
 </div>
-<p>The final lines after running the testsuite are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Testing scaledMD with PME
-diffing mdout.save with mdout
-PASSED
-==============================================================
-make[2]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test/scaledMD&#39;
-make[1]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test&#39;
-make[1]: Entering directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test&#39;
+<p>GCC 9.3 OpenMP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./test_amber_serial.sh
+...
+...
+Finished serial test suite for Amber 20 at Sat Aug 21 18:04:09 EDT 2021.
 
-Finished parallel test suite for Amber 20 at Wed May 26 09:29:04 EDT 2021.
+196 file comparisons passed
+0 file comparisons failed
+0 tests experienced errors
+Test log file saved as /shared/software/atomistic/amber/20_gcc93_openmp/logs/test_amber_serial/2021-08-21_17-57-23.log
+No test diffs to save!
+</pre></div>
+</div>
+<p>GCC 9.3 CUDA:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./test_amber_cuda_serial.sh
+...
+...
+Finished CUDA test suite for Amber 20 at Sat Aug 21 18:15:52 EDT 2021.
+
+243 file comparisons passed
+6 file comparisons failed (1 of which can be ignored)
+0 tests experienced errors
+Test log file saved as /shared/software/atomistic/amber/20_gcc93_cuda113/logs/test_amber_cuda/2021-08-21_18-12-26.log
+Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_cuda113/logs/test_amber_cuda/2021-08-21_18-12-26.diff
+</pre></div>
+</div>
+<p>GCC 9.3 MPICH 3.4.1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export DO_PARALLEL=&quot;mpirun -np 8&quot;
+$&gt; ./test_amber_parallel.sh
+Finished parallel test suite for Amber 20 at Sat Aug 21 18:31:15 EDT 2021.
 Some tests require 4 threads to run, while some will not
 run with more than 2.  Please run further parallel tests with the
-appropriate number of processors. See /shared/software/atomistic/amber/20_intel19_impi19_nocuda/test/README.
+appropriate number of processors. See /shared/software/atomistic/amber/20_gcc93_mpic341/test/README.
 
-make[1]: Leaving directory `/gpfs20/shared/src/AMBER/amber20/amber20_src/test&#39;
-185 file comparisons passed
+274 file comparisons passed
 4 file comparisons failed (1 of which can be ignored)
 0 tests experienced an error
-Test log file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.log
-Test diffs file saved as /shared/software/atomistic/amber/20_intel19_impi19_nocuda/logs/test_amber_parallel/2021-05-26_09-25-34.diff
+Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341/logs/test_amber_parallel/2021-08-21_18-27-41.log
+Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341/logs/test_amber_parallel/2021-08-21_18-27-41.diff
+</pre></div>
+</div>
+<p>GCC 9.3 OpenMP + MPI + CUDA:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export DO_PARALLEL=&quot;mpirun -np 1&quot;
+$&gt; ./test_amber_cuda_parallel.sh
+120 file comparisons passed
+4 file comparisons failed (1 of which can be ignored)
+0 tests experienced errors
+Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_18-42-31.log
+Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_18-42-31.diff
 </pre></div>
 </div>
 </div>
