@@ -227,7 +227,7 @@ This is the only change in the sources.
 No other changes will be done directly to sources, if something fails, we simply disable the corresponging package.
 Run the ``run_cmake`` inside the corresponding build folder::
 
-	cd build_gcc93_mpic341
+    cd build_gcc93_mpic341
     ./run_cmake
 
 When running the script, Miniconda will be downloaded and installed, this is the portion of the execution that requires internet access and cannot be executed from a GPU node.
