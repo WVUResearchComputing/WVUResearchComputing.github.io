@@ -263,7 +263,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 The running of ``make`` followed by ``make install`` is not actually necessary, the later will run make and build the binaries before installing them.
@@ -294,7 +294,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 GCC 9.3 (CUDA)
@@ -327,7 +327,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 GCC 9.3 (OpenMP + MPI + CUDA)
@@ -360,7 +360,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 
