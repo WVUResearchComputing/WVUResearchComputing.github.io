@@ -626,7 +626,9 @@ GCC 9.3 CUDA::
 GCC 9.3 MPICH 3.4.1::
 
     $> export DO_PARALLEL="mpirun -np 8"
-    $> ./test_amber_parallel.sh 
+    $> ./test_amber_parallel.sh
+    ...
+    ...
     Finished parallel test suite for Amber 20 at Sat Aug 21 18:31:15 EDT 2021.
     Some tests require 4 threads to run, while some will not
     run with more than 2.  Please run further parallel tests with the
@@ -641,15 +643,16 @@ GCC 9.3 MPICH 3.4.1::
 
 GCC 9.3 OpenMP + MPI + CUDA::
 
-    $> export DO_PARALLEL="mpirun -np 1"
+    $> cat $PBS_NODEFILE | uniq > NODEFILE
+    $> export DO_PARALLEL="mpirun -np 2 -f /shared/src/AMBER/amber20/amber20_src/test/NODEFILE"
     $> ./test_amber_cuda_parallel.sh
-    120 file comparisons passed
-    4 file comparisons failed (1 of which can be ignored)
+    ...
+    ...
+    135 file comparisons passed
+    13 file comparisons failed (1 of which can be ignored)
     0 tests experienced errors
-    Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_18-42-31.log
-    Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_18-42-31.diff
-
-
+    Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_19-27-18.log
+    Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_19-27-18.diff
 
 Gromacs
 -------
