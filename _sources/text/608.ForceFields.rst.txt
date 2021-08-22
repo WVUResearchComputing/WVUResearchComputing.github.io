@@ -415,7 +415,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 
@@ -443,7 +443,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 GCC 11.1 (OpenMPI 4.1.1)
@@ -474,7 +474,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 Intel Compilers 2021 (Serial)
@@ -504,7 +504,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 
@@ -535,7 +535,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 Intel Compilers 2021 (Intel MPI 2021)
@@ -565,7 +565,7 @@ The other change is inside the block for running cmake for the Linux build::
 
 After this execute::
 
-	./run_cmake
+    ./run_cmake
     make install
 
 Intel Compilers 2021 (CUDA)
@@ -653,6 +653,7 @@ GCC 9.3 OpenMP + MPI + CUDA::
     0 tests experienced errors
     Test log file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_19-27-18.log
     Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341_cuda113/logs/test_amber_cuda_parallel/2021-08-21_19-27-18.diff
+
 
 Gromacs
 -------
