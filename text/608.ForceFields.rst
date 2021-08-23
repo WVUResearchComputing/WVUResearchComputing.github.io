@@ -1,19 +1,19 @@
 Force Field Molecular Dynamics
 ==============================
 
-These are instructions for compiling a variety of atomistic codes. By atomistic codes we include codes that simulate the behavior of particles such as LAMMPS, codes for Classical Molecular Dynamics (CMD) such as AMBER, GROMACS and NAMD,
-Tight Binding codes such as DFTB+ and DFT codes such as ABINIT, OCTOPUS, VASP and Quantum Espresso.
+These are instructions for compiling a variety of atomistic codes. By atomistic codes, we include codes that simulate the behavior of particles such as LAMMPS, codes for Classical Molecular Dynamics (CMD) such as AMBER, GROMACS, and NAMD,
+Tight Binding codes such as DFTB+ and DFT codes such as ABINIT, OCTOPUS, VASP, and Quantum Espresso.
 
-For compiling these codes we need Fortran, C and C++ compilers, we will use GCC 9.3 and Intel 2019 for most of these codes.
+For compiling these codes we need Fortran, C, and C++ compilers, we will use GCC 9.3 and Intel 2019 for most of these codes.
 
 A set of numerical libraries are used very often by these codes. Dense Linear Algebra routines such as BLAS and LAPACK are used. Optimized versions such as OpenBLAS and Intel MKL are preferable over the reference versions from NetLIB.
 
-All atomistic codes in our list take advantage of parallelization, either OpenMP, MPI or support GPUs. OpenMP is implemented on modern compilers such as GCC, Intel and NVIDIA. For MPI we will use MPICH 3.4.1, OpenMPI 3.1.6 and Intel MPI from 2019.
+All atomistic codes in our list take advantage of parallelization, either OpenMP, MPI, or support GPUs. OpenMP is implemented on modern compilers such as GCC, Intel, and NVIDIA. For MPI we will use MPICH 3.4.1, OpenMPI 3.1.6, and Intel MPI from 2019.
 
-Other libraries needed for compiling these codes include a FFT library such as FFTW 3.3.9 or the implementation in MKL. The libraries need to be compiled for single and double precision as some code use both. A HDF5 and NetCDF libraries
+Other libraries needed for compiling these codes include an FFT library such as FFTW 3.3.9 or the implementation in MKL. The libraries need to be compiled for single and double precision as some codes use both. An HDF5 and NetCDF libraries
 provide hierarchical data storage for numerical data. Finally, a Python implementation is often needed, because these codes include a Python interface or use it for building or testing.
 
-We will start with PLUMED, a library for sampling algorithms, free-energy calculations and other high level calculations on top of MD packages. W
+We will start with PLUMED, a library for sampling algorithms, free-energy calculations, and other high-level calculations on top of MD packages. W
 
 Plumed
 ------
@@ -45,7 +45,7 @@ After configuring the build. Execute::
   make -j 12
   make install
 
-PLUMED includes a testsuite and it is always a good practice to test the compilation. Call make to run the testsuite::
+PLUMED includes a test suite and it is always a good practice to test the compilation. Call make to run the test suite::
 
   make check
 
@@ -67,7 +67,7 @@ The final lines of the tests show no failures::
   make[1]: Leaving directory '/gpfs20/shared/src/plumed-2.7.1/regtest'
 
 
-After installation, PLUMED offers a very convenient prepared modulefile.
+After installation, PLUMED offers a very convenient prepared module file.
 The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation::
 
   cp /shared/software/atomistic/plumed/2.7.1_gcc93_mpic341/lib/plumed/modulefile /shared/modulefiles/tier2/atomistic/plumed/2.7.1_gcc93_mpic341
@@ -86,15 +86,15 @@ AMBER
 Amber is a suite of biomolecular simulation programs.
 It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.
 
-In this document we provide instructions to compile Amber using GCC 9.3, 11.1 and Intel Compilers 2021
+In this document, we provide instructions to compile Amber using GCC 9.3, 11.1, and Intel Compilers 2021
 Amber can be compiled with a variety of options for parallelization.
-Amber can be compiled as pure serial code,  using multithreading with OpenMP, distributed parallelism with MPI and using GPUs with CUDA.
-We will be building Amber with each individual option and one final compilation enabling OpenMP, MPI and CUDA.
+Amber can be compiled as pure serial code,  using multithreading with OpenMP, distributed parallelism with MPI, and using GPUs with CUDA.
+We will be building Amber with each option and one final compilation enabling OpenMP, MPI, and CUDA.
 
-Amber as a package is composed from two pieces, Amber itself and AmberTools.
+Amber as a package is composed of two pieces, Amber itself and AmberTools.
 Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license.
 AmberTools is a free package that collect open-source code to be used in conjunction with Amber.
-The version used to produce this notes is Amber 20, the latest version available by mid 2021.
+The version used to produce these notes is Amber 20, the latest version available by mid-2021.
 
 We start with two files, ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2``.
 The first step is to uncompress both of them.
@@ -104,17 +104,17 @@ The two compressed tars will uncompress on the same target folder ``amber20_src`
   tar -jxvf AmberTools20.tar.bz2
   cd amber20_src
 
-We start with GCC 9.3 where most of the tools can be enable and the compilation is easier.
+We start with GCC 9.3 where most of the tools can be enabled and the compilation is easier.
 We start with a pure Serial build, we move after to enable OpenMP, after that, we disable OpenMP and enable MPI.
 We move the building process to a GPU node to compile a CUDA version disabling OpenMP and MPI and we finalize enabling all options for a final build.
-The reason for doing this is that keeping just one parallelization active will facilitate the usage for casual users, instead of dealing with complex combinations of threads, MPI processes and GPU cards.
+The reason for doing this is that keeping just one parallelization active will facilitate the usage for casual users, instead of dealing with complex combinations of threads, MPI processes, and GPU cards.
 
 
 GCC 9.3 (Serial)
 ~~~~~~~~~~~~~~~~
 
 Decompressing ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2`` will create a folder ``amber20_src``.
-There is one file ``amber20_src/build/run_cmake.sample`` that we will use as template changing it for each build from now on.
+There is one file ``amber20_src/build/run_cmake.sample`` that we will use as a template changing it for each build from now on.
 It is always convenient to build the code on a folder separated from the sources.
 Create a folder for each build, for the serial case, we suggest::
 
@@ -209,7 +209,7 @@ The other change is inside the block for running cmake for the Linux build::
 The lines above are for a purely serial build of Amber.
 
 Now we need to load some modules for compiling the code.
-Amber uses CMAKE as software builder.
+Amber uses CMAKE as a software builder.
 The version included with RedHat 7.x (2.18) is too old for most scientific codes.
 We will load modules for cmake 3.21.1 and GCC 9.3::
 
@@ -222,9 +222,9 @@ On the line 153 of ``amber20_src/cmake/UseMiniconda.cmake`` add a line to instal
     execute_process(COMMAND ${CONDA} install pip -y)
     execute_process(COMMAND ${MINICONDA_PYTHON} -m pip install pip --upgrade)
 
-If you do skip this step, conda will remove pip after update and several other python packages that are installed with pip will fail.
+If you do skip this step, conda will remove pip after the update and several other python packages that are installed with pip will fail.
 This is the only change in the sources.
-No other changes will be done directly to sources, if something fails, we simply disable the corresponging package.
+No other changes will be done directly to sources, if something fails, we simply disable the corresponding package.
 Run the ``run_cmake`` inside the corresponding build folder::
 
     cd build_gcc93_mpic341
@@ -237,7 +237,7 @@ After CMAKE have prepared the folder for compilation, execute::
 
   make
 
-The code will compile in a few minutes. To install the the build execute::
+The code will compile in a few minutes. To install the build execute::
 
   make install
 
@@ -266,7 +266,7 @@ After this execute::
     ./run_cmake
     make install
 
-The running of ``make`` followed by ``make install`` is not actually necessary, the later will run make and build the binaries before installing them.
+The running of ``make`` followed by ``make install`` is not necessary, the later will run make and build the binaries before installing them.
 
 GCC 9.3 (MPICH 3.4.1)
 ~~~~~~~~~~~~~~~~~~~~~
@@ -364,7 +364,7 @@ After this execute::
     make install
 
 
-Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests either serial or parallel. Here are the results::
+Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests are either serial or parallel. Here are the results::
 
   ==> /shared/software/atomistic/amber/20_gcc93_mpic341_cuda/logs/test_amber_cuda/2021-05-26_11-31-03.log <==
   diffing md_SC_NVT_MBAR_SC_2.o.DPFP with md_SC_NVT_MBAR_SC_2.o
@@ -629,10 +629,9 @@ GCC 9.3 MPICH 3.4.1::
     $> ./test_amber_parallel.sh
     ...
     ...
-    Finished parallel test suite for Amber 20 at Sat Aug 21 18:31:15 EDT 2021.
+    Finished parallel test suite for Amber 20 on Sat Aug 21 18:31:15 EDT 2021.
     Some tests require 4 threads to run, while some will not
-    run with more than 2.  Please run further parallel tests with the
-    appropriate number of processors. See /shared/software/atomistic/amber/20_gcc93_mpic341/test/README.
+    run with more than 2.  Please run further parallel tests with the appropriate number of processors. See /shared/software/atomistic/amber/20_gcc93_mpic341/test/README.
 
     274 file comparisons passed
     4 file comparisons failed (1 of which can be ignored)
@@ -668,7 +667,7 @@ The download page is::
 
   https://manual.gromacs.org
 
-It is a good practice to compile from a separate folder instead of compiling directly along side with the sources, create a folder ``build_gcc93_mpic341`` inside the sources::
+It is a good practice to compile from a separate folder instead of compiling directly alongside with the sources, create a folder ``build_gcc93_mpic341`` inside the sources::
 
   wget https://ftp.gromacs.org/gromacs/gromacs-2021.2.tar.gz
   tar -zxvf gromacs-2021.2.tar.gz
@@ -758,7 +757,7 @@ The configuration line for cmake is executed on a folder created to contain the 
   make install
 
 A similar compilation was done using Intel 2019 compilers.
-One test fail from the test suite::
+One test fails from the test suite::
 
     96% tests passed, 1 tests failed out of 26
 
@@ -843,7 +842,7 @@ LAMMPS is a packages for atomistic and particle simulations. The latests stable 
   libs/fftw/3.3.9_gcc111
   libs/hdf5/1.12.0_gcc111
 
-LAMMPS was compiled using GCC 11.1, OpenMPI 3.4.1, FFTW 3.3.9 and HDF5 1.12
+LAMMPS was compiled using GCC 11.1, OpenMPI 3.4.1, FFTW 3.3.9, and HDF5 1.12
 
 The first step is to download the code from::
 
@@ -981,14 +980,14 @@ You need a customized Makefile for compiling LAMMPS with the right compilers and
   sinclude .depend
 
 The file should be located inside "src/MAKE" or "src/MAKE/MACHINES".
-Now inside the "src" folder there is a Makefile that allow you to select which packages will be compiled along side with LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few::
+Now inside the "src" folder, there is a Makefile that allow you to select which packages will be compiled along side LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few::
 
   make yes-all
   make no-lib
   make yes-user-reaxc
   make yes-user-molfile
 
-A few external subpackages must be configure first. We want to add HDF5 and COLVARS with the following lines compiling the corresponding subpackages and enabling them for LAMMPS::
+A few external subpackages must be configured first. We want to add HDF5 and COLVARS with the following lines compiling the corresponding subpackages and enabling them for LAMMPS::
 
   cd ../lib/h5md
   make -f Makefile.h5cc
@@ -1004,7 +1003,7 @@ And LAMMPS itself after that::
 After compiled the binary is called ``lmp_gcc82_ompi31``
 
 For testing the build, you can use one of the benchmarks inside the `bench`
-folder. The benchmark run on one of the compute nodes using 40 cores. The simulation involves more than 10 million atoms.
+folder. The benchmark runs on one of the compute nodes using 40 cores. The simulation involves more than 10 million atoms.
 The command line is::
 
   mpirun -np 40 lmp_mpi -var x 4 -var y 8 -var z 10 -in in.rhodo.scaled
