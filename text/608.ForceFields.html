@@ -395,7 +395,7 @@ The other change is inside the block for running cmake for the Linux build:</p>
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
-  -DOPENMP=FALSE -DMPI=FALSE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+  -DOPENMP=FALSE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
   -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
   2&gt;&amp;1 | tee  cmake.log
 </pre></div>
@@ -448,7 +448,7 @@ The other change is inside the block for running cmake for the Linux build:</p>
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
-  -DOPENMP=TRUE -DMPI=FALSE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+  -DOPENMP=TRUE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
   -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
   2&gt;&amp;1 | tee  cmake.log
 </pre></div>
