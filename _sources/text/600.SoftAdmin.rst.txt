@@ -17,3 +17,4 @@ Software Administration
   609.CHARM++_NAMD.rst
   610.DFT.rst
   611.BigData.rst
+  612.Python.rst
