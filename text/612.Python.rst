@@ -1,0 +1,64 @@
+Python 3.9.x
+============
+
+Instructions to compile Python on both clusters are very similar.
+We will follow generic instructions for any Python 3.9.x version.
+The latest version at the time of writing this document (August 2021) is 3.9.6.
+A few particularities related to architecture will be mentioned in due place.
+
+Modules
+-------
+
+We will compile Python 3.9 using GCC 9.3 which is a relatively recent version
+compared to those provided by RedHat 6.x and 7.x (4.4 and 4.7 respectively).
+
+Download
+--------
+
+Download  the sources on the canonical location for sources ``/shared/src``.
+Uncompress and move into the folder::
+
+  $> wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz
+  $> tar -zxvf Python-3.9.6.tgz
+  $> cd Python-3.9.6
+
+
+Configure
+---------
+
+Edit the file ``setup.py`` from the base source dir.
+Add a line pointing to the include folder of the corresponding GCC version::
+
+    def detect_sqlite(self):
+        # The sqlite interface
+        sqlite_setup_debug = False   # verbose debug prints from this script?
+
+        # We hunt for #define SQLITE_VERSION "n.n.n"
+        # We need to find >= sqlite version 3.3.9, for sqlite3_prepare_v2
+        sqlite_incdir = sqlite_libdir = None
+        sqlite_inc_paths = [ '/shared/software/lang/gcc/9.3.0/include',
+                             '/usr/include',
+                             '/usr/include/sqlite',
+                             '/usr/include/sqlite3',
+                             '/usr/local/include',
+                             '/usr/local/include/sqlite',
+                             '/usr/local/include/sqlite3',
+                             ]
+
+Configure Python 3.9.x enabling optimizations, shared libraries, and setting the
+prefix for installation.
+
+  $> LDFLAGS="-L${MD_GCC}/lib -L${MD_GCC}/lib64" ../configure \
+  --enable-shared --enable-optimizations \
+  --prefix=/shared/software/lang/python/3.9.6_gcc93 \
+  --with-tcltk-libs="-L${MD_GCC}/lib -ltcl8.6 -ltk8.6" \
+  --with-tcltk-includes=-L${MD_GCC}/include
+
+Compilation and Installation
+----------------------------
+
+Execute make with a reasonable number of compilation threads::
+
+  $> make -j 6
+
+The last output lines looks like::
