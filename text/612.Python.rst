@@ -1,9 +1,9 @@
-Python 3.9.x
+Python 3.9.7
 ============
 
 Instructions to compile Python on both clusters are very similar.
 We will follow generic instructions for any Python 3.9.x version.
-The latest version at the time of writing this document (August 2021) is 3.9.6.
+The latest version at the time of writing this document (August 30, 2021) is 3.9.7.
 A few particularities related to architecture will be mentioned in due place.
 
 Modules
@@ -18,9 +18,9 @@ Download
 Download  the sources on the canonical location for sources ``/shared/src``.
 Uncompress and move into the folder::
 
-  $> wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz
-  $> tar -zxvf Python-3.9.6.tgz
-  $> cd Python-3.9.6
+  $> wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz
+  $> tar -zxvf Python-3.9.7.tgz
+  $> cd Python-3.9.7
 
 
 Configure
@@ -46,19 +46,98 @@ Add a line pointing to the include folder of the corresponding GCC version::
                              ]
 
 Configure Python 3.9.x enabling optimizations, shared libraries, and setting the
-prefix for installation.
+prefix for installation::
 
-  $> LDFLAGS="-L${MD_GCC}/lib -L${MD_GCC}/lib64" ../configure \
-  --enable-shared --enable-optimizations \
-  --prefix=/shared/software/lang/python/3.9.6_gcc93 \
-  --with-tcltk-libs="-L${MD_GCC}/lib -ltcl8.6 -ltk8.6" \
-  --with-tcltk-includes=-L${MD_GCC}/include
+  $> ../configure --enable-shared --enable-optimizations \
+  --prefix=/shared/software/lang/python/3.9.7_gcc93 \
+  --with-tcltk-libs="-L/shared/software/lang/gcc/9.3.0/lib -ltcl8.6 -ltk8.6" \
+  --with-tcltk-includes="-L/shared/software/lang/gcc/9.3.0/include"
+  --with-lto LDFLAGS="-L${MD_GCC}/lib"
 
-Compilation and Installation
+Compile and install::
+
+  $> make
+  $> make install
+
+The test suite::
+
+  $> make test
+
+The results::
+
+  Ran 3 tests in 0.010s
+
+  FAILED (failures=2, skipped=1)
+  test test_pathlib failed
+  0:02:28 load avg: 1.97 Re-running test_zipfile in verbose mode (matching: test_add_file_after_2107)
+  test_add_file_after_2107 (test.test_zipfile.StoredTestsWithSourceFile) ... ERROR
+
+  ======================================================================
+  ERROR: test_add_file_after_2107 (test.test_zipfile.StoredTestsWithSourceFile)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+    File "/gpfs20/shared/src/Python-3.9.7/Lib/test/test_zipfile.py", line 618, in test_add_file_after_2107
+      os.utime(TESTFN, (ts, ts))
+  OSError: [Errno 75] Value too large for defined data type
+
+  ----------------------------------------------------------------------
+
+  Ran 1 test in 0.002s
+
+  FAILED (errors=1)
+  test test_zipfile failed
+  2 tests failed again:
+      test_pathlib test_zipfile
+
+  == Tests result: FAILURE then FAILURE ==
+
+  409 tests OK.
+
+  2 tests failed:
+      test_pathlib test_zipfile
+
+  14 tests skipped:
+      test_devpoll test_gdb test_ioctl test_kqueue test_msilib
+      test_ossaudiodev test_startfile test_tix test_tk test_ttk_guionly
+      test_winconsoleio test_winreg test_winsound test_zipfile64
+
+  Total duration: 2 min 28 sec
+  Tests result: FAILURE then FAILURE
+  make: *** [Makefile:1209: test] Error 2
+
+
+Numpy and Scipy
 ----------------------------
 
-Execute make with a reasonable number of compilation threads::
+Download the latest versions of Numpy and Scipy::
 
-  $> make -j 6
+  wget https://github.com/numpy/numpy/releases/download/v1.21.2/numpy-1.21.2.tar.gz
+  wget https://github.com/scipy/scipy/releases/download/v1.7.1/scipy-1.7.1.tar.gz
 
-The last output lines looks like::
+On each folder, create a file ``site.cfg`` with the following lines::
+
+  [openblas]
+  libraries = openblas
+  library_dirs = /shared/software/libs/openblas/0.3.13_gcc93/lib
+  include_dirs = /shared/software/libs/openblas/0.3.13_gcc93/include
+  runtime_library_dirs = /shared/software/libs/openblas/0.3.13_gcc93/lib
+
+Load the module::
+
+  module load libs/openblas/0.3.13_gcc93
+
+Install dependencies::
+
+  python3 -m pip install pybind11 Cython
+
+Install numpy with::
+
+  python3 -m pip install -v --compile -v .
+
+Similarly inside Scipy folder::
+
+  python3 -m pip install -v --compile -v .
+
+Install a set::
+
+  python3 -m pip install pandas pyyaml networkx seaborn matplotlib ipython jupyter jupyterlab scikit-learn
