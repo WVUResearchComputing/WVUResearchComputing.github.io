@@ -100,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="601.SphinxDocs.html">Editing these documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="602.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="603.LinearAlgebra.html">Linear Algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="604.Boost.html">Boost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="604.Boost.html">Boost 1.77</a></li>
 <li class="toctree-l2"><a class="reference internal" href="605.MPI.html">Message Passing Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
@@ -134,6 +134,7 @@
 <li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
@@ -208,14 +209,14 @@
             
   <div class="section" id="force-field-molecular-dynamics">
 <h1>Force Field Molecular Dynamics<a class="headerlink" href="#force-field-molecular-dynamics" title="Permalink to this headline">¶</a></h1>
-<p>These are instructions for compiling a variety of atomistic codes. By atomistic codes we include codes that simulate the behavior of particles such as LAMMPS, codes for Classical Molecular Dynamics (CMD) such as AMBER, GROMACS and NAMD,
-Tight Binding codes such as DFTB+ and DFT codes such as ABINIT, OCTOPUS, VASP and Quantum Espresso.</p>
-<p>For compiling these codes we need Fortran, C and C++ compilers, we will use GCC 9.3 and Intel 2019 for most of these codes.</p>
+<p>These are instructions for compiling a variety of atomistic codes. By atomistic codes, we include codes that simulate the behavior of particles such as LAMMPS, codes for Classical Molecular Dynamics (CMD) such as AMBER, GROMACS, and NAMD,
+Tight Binding codes such as DFTB+ and DFT codes such as ABINIT, OCTOPUS, VASP, and Quantum Espresso.</p>
+<p>For compiling these codes we need Fortran, C, and C++ compilers, we will use GCC 9.3 and Intel 2019 for most of these codes.</p>
 <p>A set of numerical libraries are used very often by these codes. Dense Linear Algebra routines such as BLAS and LAPACK are used. Optimized versions such as OpenBLAS and Intel MKL are preferable over the reference versions from NetLIB.</p>
-<p>All atomistic codes in our list take advantage of parallelization, either OpenMP, MPI or support GPUs. OpenMP is implemented on modern compilers such as GCC, Intel and NVIDIA. For MPI we will use MPICH 3.4.1, OpenMPI 3.1.6 and Intel MPI from 2019.</p>
-<p>Other libraries needed for compiling these codes include a FFT library such as FFTW 3.3.9 or the implementation in MKL. The libraries need to be compiled for single and double precision as some code use both. A HDF5 and NetCDF libraries
+<p>All atomistic codes in our list take advantage of parallelization, either OpenMP, MPI, or support GPUs. OpenMP is implemented on modern compilers such as GCC, Intel, and NVIDIA. For MPI we will use MPICH 3.4.1, OpenMPI 3.1.6, and Intel MPI from 2019.</p>
+<p>Other libraries needed for compiling these codes include an FFT library such as FFTW 3.3.9 or the implementation in MKL. The libraries need to be compiled for single and double precision as some codes use both. An HDF5 and NetCDF libraries
 provide hierarchical data storage for numerical data. Finally, a Python implementation is often needed, because these codes include a Python interface or use it for building or testing.</p>
-<p>We will start with PLUMED, a library for sampling algorithms, free-energy calculations and other high level calculations on top of MD packages. W</p>
+<p>We will start with PLUMED, a library for sampling algorithms, free-energy calculations, and other high-level calculations on top of MD packages. W</p>
 <div class="section" id="plumed">
 <h2>Plumed<a class="headerlink" href="#plumed" title="Permalink to this headline">¶</a></h2>
 <p>PLUMED is an open-source library that provides a wide range of different methods that work on top of other Molecular Dynamics codes. Capabilities of the code include:</p>
@@ -247,7 +248,7 @@ cd plumed-2.7.1
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>PLUMED includes a testsuite and it is always a good practice to test the compilation. Call make to run the testsuite:</p>
+<p>PLUMED includes a test suite and it is always a good practice to test the compilation. Call make to run the test suite:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">check</span>
 </pre></div>
 </div>
@@ -268,7 +269,7 @@ cd plumed-2.7.1
 make[1]: Leaving directory &#39;/gpfs20/shared/src/plumed-2.7.1/regtest&#39;
 </pre></div>
 </div>
-<p>After installation, PLUMED offers a very convenient prepared modulefile.
+<p>After installation, PLUMED offers a very convenient prepared module file.
 The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">modulefile</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">tier2</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span>
 </pre></div>
@@ -286,14 +287,14 @@ The file can be copied along with the rest of modulefiles with a simple edit for
 <h2>AMBER<a class="headerlink" href="#amber" title="Permalink to this headline">¶</a></h2>
 <p>Amber is a suite of biomolecular simulation programs.
 It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.</p>
-<p>In this document we provide instructions to compile Amber using GCC 9.3, 11.1 and Intel Compilers 2021
+<p>In this document, we provide instructions to compile Amber using GCC 9.3, 11.1, and Intel Compilers 2021
 Amber can be compiled with a variety of options for parallelization.
-Amber can be compiled as pure serial code,  using multithreading with OpenMP, distributed parallelism with MPI and using GPUs with CUDA.
-We will be building Amber with each individual option and one final compilation enabling OpenMP, MPI and CUDA.</p>
-<p>Amber as a package is composed from two pieces, Amber itself and AmberTools.
+Amber can be compiled as pure serial code,  using multithreading with OpenMP, distributed parallelism with MPI, and using GPUs with CUDA.
+We will be building Amber with each option and one final compilation enabling OpenMP, MPI, and CUDA.</p>
+<p>Amber as a package is composed of two pieces, Amber itself and AmberTools.
 Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license.
 AmberTools is a free package that collect open-source code to be used in conjunction with Amber.
-The version used to produce this notes is Amber 20, the latest version available by mid 2021.</p>
+The version used to produce these notes is Amber 20, the latest version available by mid-2021.</p>
 <p>We start with two files, <code class="docutils literal notranslate"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools20.tar.bz2</span></code>.
 The first step is to uncompress both of them.
 The two compressed tars will uncompress on the same target folder <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code>:</p>
@@ -302,14 +303,14 @@ The two compressed tars will uncompress on the same target folder <code class="d
 <span class="n">cd</span> <span class="n">amber20_src</span>
 </pre></div>
 </div>
-<p>We start with GCC 9.3 where most of the tools can be enable and the compilation is easier.
+<p>We start with GCC 9.3 where most of the tools can be enabled and the compilation is easier.
 We start with a pure Serial build, we move after to enable OpenMP, after that, we disable OpenMP and enable MPI.
 We move the building process to a GPU node to compile a CUDA version disabling OpenMP and MPI and we finalize enabling all options for a final build.
-The reason for doing this is that keeping just one parallelization active will facilitate the usage for casual users, instead of dealing with complex combinations of threads, MPI processes and GPU cards.</p>
+The reason for doing this is that keeping just one parallelization active will facilitate the usage for casual users, instead of dealing with complex combinations of threads, MPI processes, and GPU cards.</p>
 <div class="section" id="gcc-9-3-serial">
 <h3>GCC 9.3 (Serial)<a class="headerlink" href="#gcc-9-3-serial" title="Permalink to this headline">¶</a></h3>
 <p>Decompressing <code class="docutils literal notranslate"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools20.tar.bz2</span></code> will create a folder <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code>.
-There is one file <code class="docutils literal notranslate"><span class="pre">amber20_src/build/run_cmake.sample</span></code> that we will use as template changing it for each build from now on.
+There is one file <code class="docutils literal notranslate"><span class="pre">amber20_src/build/run_cmake.sample</span></code> that we will use as a template changing it for each build from now on.
 It is always convenient to build the code on a folder separated from the sources.
 Create a folder for each build, for the serial case, we suggest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">amber20_src</span>
@@ -395,14 +396,14 @@ The other change is inside the block for running cmake for the Linux build:</p>
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
-  -DOPENMP=FALSE -DMPI=FALSE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+  -DOPENMP=FALSE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
   -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
   2&gt;&amp;1 | tee  cmake.log
 </pre></div>
 </div>
 <p>The lines above are for a purely serial build of Amber.</p>
 <p>Now we need to load some modules for compiling the code.
-Amber uses CMAKE as software builder.
+Amber uses CMAKE as a software builder.
 The version included with RedHat 7.x (2.18) is too old for most scientific codes.
 We will load modules for cmake 3.21.1 and GCC 9.3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span>
@@ -415,9 +416,9 @@ execute_process(COMMAND ${CONDA} install pip -y)
 execute_process(COMMAND ${MINICONDA_PYTHON} -m pip install pip --upgrade)
 </pre></div>
 </div>
-<p>If you do skip this step, conda will remove pip after update and several other python packages that are installed with pip will fail.
+<p>If you do skip this step, conda will remove pip after the update and several other python packages that are installed with pip will fail.
 This is the only change in the sources.
-No other changes will be done directly to sources, if something fails, we simply disable the corresponging package.
+No other changes will be done directly to sources, if something fails, we simply disable the corresponding package.
 Run the <code class="docutils literal notranslate"><span class="pre">run_cmake</span></code> inside the corresponding build folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
 <span class="o">./</span><span class="n">run_cmake</span>
@@ -429,7 +430,7 @@ We will preserve this folder for all other builds, in particular those for CUDA 
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
 </pre></div>
 </div>
-<p>The code will compile in a few minutes. To install the the build execute:</p>
+<p>The code will compile in a few minutes. To install the build execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -448,7 +449,7 @@ The other change is inside the block for running cmake for the Linux build:</p>
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
-  -DOPENMP=TRUE -DMPI=FALSE -DCUDA=TRUE -DINSTALL_TESTS=TRUE \
+  -DOPENMP=TRUE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
   -DDOWNLOAD_MINICONDA=TRUE -DMINICONDA_USE_PY3=TRUE \
   2&gt;&amp;1 | tee  cmake.log
 </pre></div>
@@ -458,7 +459,7 @@ cmake $AMBER_PREFIX/amber20_src \
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>The running of <code class="docutils literal notranslate"><span class="pre">make</span></code> followed by <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> is not actually necessary, the later will run make and build the binaries before installing them.</p>
+<p>The running of <code class="docutils literal notranslate"><span class="pre">make</span></code> followed by <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> is not necessary, the later will run make and build the binaries before installing them.</p>
 </div>
 <div class="section" id="gcc-9-3-mpich-3-4-1">
 <h3>GCC 9.3 (MPICH 3.4.1)<a class="headerlink" href="#gcc-9-3-mpich-3-4-1" title="Permalink to this headline">¶</a></h3>
@@ -554,7 +555,7 @@ cmake $AMBER_PREFIX/amber20_src \
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests either serial or parallel. Here are the results:</p>
+<p>Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests are either serial or parallel. Here are the results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==&gt;</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_cuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_cuda</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26_11</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mf">03.</span><span class="n">log</span> <span class="o">&lt;==</span>
 <span class="n">diffing</span> <span class="n">md_SC_NVT_MBAR_SC_2</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">DPFP</span> <span class="k">with</span> <span class="n">md_SC_NVT_MBAR_SC_2</span><span class="o">.</span><span class="n">o</span>
 <span class="n">PASSED</span>
@@ -812,10 +813,9 @@ Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_cuda113/logs/
 $&gt; ./test_amber_parallel.sh
 ...
 ...
-Finished parallel test suite for Amber 20 at Sat Aug 21 18:31:15 EDT 2021.
+Finished parallel test suite for Amber 20 on Sat Aug 21 18:31:15 EDT 2021.
 Some tests require 4 threads to run, while some will not
-run with more than 2.  Please run further parallel tests with the
-appropriate number of processors. See /shared/software/atomistic/amber/20_gcc93_mpic341/test/README.
+run with more than 2.  Please run further parallel tests with the appropriate number of processors. See /shared/software/atomistic/amber/20_gcc93_mpic341/test/README.
 
 274 file comparisons passed
 4 file comparisons failed (1 of which can be ignored)
@@ -849,7 +849,7 @@ Several versions were compiled using GCC 9.3 and 11.1</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manual</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span>
 </pre></div>
 </div>
-<p>It is a good practice to compile from a separate folder instead of compiling directly along side with the sources, create a folder <code class="docutils literal notranslate"><span class="pre">build_gcc93_mpic341</span></code> inside the sources:</p>
+<p>It is a good practice to compile from a separate folder instead of compiling directly alongside with the sources, create a folder <code class="docutils literal notranslate"><span class="pre">build_gcc93_mpic341</span></code> inside the sources:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">cd</span> <span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">/</span>
@@ -937,7 +937,7 @@ The configuration line for cmake is executed on a folder created to contain the 
 </pre></div>
 </div>
 <p>A similar compilation was done using Intel 2019 compilers.
-One test fail from the test suite:</p>
+One test fails from the test suite:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
@@ -1019,7 +1019,7 @@ One test fail from the test suite:</p>
 <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span><span class="n">_gcc111</span>
 </pre></div>
 </div>
-<p>LAMMPS was compiled using GCC 11.1, OpenMPI 3.4.1, FFTW 3.3.9 and HDF5 1.12</p>
+<p>LAMMPS was compiled using GCC 11.1, OpenMPI 3.4.1, FFTW 3.3.9, and HDF5 1.12</p>
 <p>The first step is to download the code from:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lammps</span><span class="o">.</span><span class="n">sandia</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">tars</span><span class="o">/</span><span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
@@ -1156,14 +1156,14 @@ sinclude .depend
 </pre></div>
 </div>
 <p>The file should be located inside “src/MAKE” or “src/MAKE/MACHINES”.
-Now inside the “src” folder there is a Makefile that allow you to select which packages will be compiled along side with LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few:</p>
+Now inside the “src” folder, there is a Makefile that allow you to select which packages will be compiled along side LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="nb">all</span>
 <span class="n">make</span> <span class="n">no</span><span class="o">-</span><span class="n">lib</span>
 <span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">reaxc</span>
 <span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">molfile</span>
 </pre></div>
 </div>
-<p>A few external subpackages must be configure first. We want to add HDF5 and COLVARS with the following lines compiling the corresponding subpackages and enabling them for LAMMPS:</p>
+<p>A few external subpackages must be configured first. We want to add HDF5 and COLVARS with the following lines compiling the corresponding subpackages and enabling them for LAMMPS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">lib</span><span class="o">/</span><span class="n">h5md</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">f</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">h5cc</span>
 <span class="n">cd</span> <span class="o">../../</span><span class="n">src</span><span class="o">/</span>
@@ -1178,7 +1178,7 @@ Now inside the “src” folder there is a Makefile that allow you to select whi
 </div>
 <p>After compiled the binary is called <code class="docutils literal notranslate"><span class="pre">lmp_gcc82_ompi31</span></code></p>
 <p>For testing the build, you can use one of the benchmarks inside the <cite>bench</cite>
-folder. The benchmark run on one of the compute nodes using 40 cores. The simulation involves more than 10 million atoms.
+folder. The benchmark runs on one of the compute nodes using 40 cores. The simulation involves more than 10 million atoms.
 The command line is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">40</span> <span class="n">lmp_mpi</span> <span class="o">-</span><span class="n">var</span> <span class="n">x</span> <span class="mi">4</span> <span class="o">-</span><span class="n">var</span> <span class="n">y</span> <span class="mi">8</span> <span class="o">-</span><span class="n">var</span> <span class="n">z</span> <span class="mi">10</span> <span class="o">-</span><span class="ow">in</span> <span class="ow">in</span><span class="o">.</span><span class="n">rhodo</span><span class="o">.</span><span class="n">scaled</span>
 </pre></div>

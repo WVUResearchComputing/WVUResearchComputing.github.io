@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Boost &mdash; WVU-RC 1.0 documentation</title>
+  <title>Boost 1.77 &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -100,9 +100,9 @@
 <li class="toctree-l2"><a class="reference internal" href="601.SphinxDocs.html">Editing these documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="602.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="603.LinearAlgebra.html">Linear Algebra</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Boost</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Boost 1.77</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-the-code">Downloading the code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bootstraping-the-building-scripts">Bootstraping the building scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrap-for-gcc-9-3">Bootstrap for GCC 9.3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compile-and-install-boost">Compile and install boost</a></li>
 </ul>
 </li>
@@ -113,6 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
@@ -166,7 +167,7 @@
         
           <li><a href="600.SoftAdmin.html">Software Administration</a> &raquo;</li>
         
-      <li>Boost</li>
+      <li>Boost 1.77</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,48 +186,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="boost">
-<h1>Boost<a class="headerlink" href="#boost" title="Permalink to this headline">¶</a></h1>
-<p>Boost provides free peer-reviewed portable C++ source libraries.</p>
-<p>Compilation is a bit unusual, and requires eding a file for adding MPI support.</p>
+  <div class="section" id="boost-1-77">
+<h1>Boost 1.77<a class="headerlink" href="#boost-1-77" title="Permalink to this headline">¶</a></h1>
+<p>Boost provides free peer-reviewed portable C++ source libraries.
+Many scientific codes uses Boost as it provides template-based sources that facilitate development of numerical algorithms.</p>
+<p>Compilation of boost libraries is a bit unusual.
+Boost can be used a template only library with no compilation involved.
+However, if you want to use any of the separately-compiled Boost libraries, you’ll need to acquire library binaries.
+In this document we will compile Boost in 3 cases.
+A direct build using the version of GCC from the OS, using GCC 9.3 and using the latest Intel Compilers available on each cluster.
+The instructions are valid on both clusters, Spruce Knob and Thorny Flat.
+When some particular step only applies to one cluster the comment will be made.</p>
 <div class="section" id="downloading-the-code">
 <h2>Downloading the code<a class="headerlink" href="#downloading-the-code" title="Permalink to this headline">¶</a></h2>
-<p>By the time of writting this document, the latest version was 1.70 that can be downloaded as <a class="reference external" href="https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2">boost_1_70_0.tar.bz2</a></p>
-<p>On Thorny Flat the canonical location for sources is <code class="docutils literal notranslate"><span class="pre">/shared/src</span></code> so download there and uncompress:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dl</span><span class="o">.</span><span class="n">bintray</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">boostorg</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="mf">1.70</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">boost_1_70_0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
-<span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span>  <span class="n">boost_1_70_0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
-<span class="n">cd</span> <span class="n">boost_1_70_0</span>
+<p>By August 11, 2021, the latest version available is 1.77 that can be downloaded as <a class="reference external" href="wgethttps://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.bz2">boost_1_77_0.tar.bz2</a></p>
+<p>On the clusters the canonical location for sources is <code class="docutils literal notranslate"><span class="pre">/shared/src</span></code>.
+Download the archive there and uncompress it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">boostorg</span><span class="o">.</span><span class="n">jfrog</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">artifactory</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="mf">1.77</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">boost_1_77_0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">boost_1_77_0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">cd</span> <span class="n">boost_1_77_0</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="bootstraping-the-building-scripts">
-<h2>Bootstraping the building scripts<a class="headerlink" href="#bootstraping-the-building-scripts" title="Permalink to this headline">¶</a></h2>
-<p>Load the required modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">hwloc</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc82</span>  <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span><span class="n">_gcc82</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc82</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">7.2</span><span class="n">_gcc82</span>
+<div class="section" id="bootstrap-for-gcc-9-3">
+<h2>Bootstrap for GCC 9.3<a class="headerlink" href="#bootstrap-for-gcc-9-3" title="Permalink to this headline">¶</a></h2>
+<p>The version of GCC on RedHat 6.x is too old for compiling boost.
+To compile GCC we are using GCC 9.3 and Python 3.9.6:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.6</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
-<p>And execute the bootstrap script:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">bootstrap</span>
+<p>With those two modules, before compiling boost, run the bootstrap script indicating python 3.x executable and location for installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">python</span><span class="o">=</span><span class="n">python3</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.77</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
-<p>Edit the <code class="docutils literal notranslate"><span class="pre">project-config.jam</span></code> file, one of the files generated by the bootstrap script. The lines below show how to add python and MPI support:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Python configuration
-import python ;
-if ! [ python.configured ]
-{
-    using python : 3.7 : /shared/software/lang/python/3.7.2_gcc82 ;
-}
-
-# MPI
-using mpi ;
-</pre></div>
-</div>
-<p>Notice the space between mpi a the semicolon. That space is important.</p>
 </div>
 <div class="section" id="compile-and-install-boost">
 <h2>Compile and install boost<a class="headerlink" href="#compile-and-install-boost" title="Permalink to this headline">¶</a></h2>
 <p>Boost libraries can be compiled and installed with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">b2</span> <span class="n">install</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.70</span><span class="n">_gcc82</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">b2</span> <span class="n">install</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.77</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
 </div>

@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python 3.9.7 &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Domain Specific Details" href="70.DomainSpecific.html" />
+    <link rel="prev" title="Big Data" href="611.BigData.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="601.SphinxDocs.html">Editing these documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="602.UserInstallation.html">Installing Packages in User Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="603.LinearAlgebra.html">Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="604.Boost.html">Boost 1.77</a></li>
+<li class="toctree-l2"><a class="reference internal" href="605.MPI.html">Message Passing Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python 3.9.7</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure">Configure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numpy-and-scipy">Numpy and Scipy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="600.SoftAdmin.html">Software Administration</a> &raquo;</li>
+        
+      <li>Python 3.9.7</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/612.Python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-3-9-7">
+<h1>Python 3.9.7<a class="headerlink" href="#python-3-9-7" title="Permalink to this headline">¶</a></h1>
+<p>Instructions to compile Python on both clusters are very similar.
+We will follow generic instructions for any Python 3.9.x version.
+The latest version at the time of writing this document (August 30, 2021) is 3.9.7.
+A few particularities related to architecture will be mentioned in due place.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>We will compile Python 3.9 using GCC 9.3 which is a relatively recent version
+compared to those provided by RedHat 6.x and 7.x (4.4 and 4.7 respectively).</p>
+</div>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>Download  the sources on the canonical location for sources <code class="docutils literal notranslate"><span class="pre">/shared/src</span></code>.
+Uncompress and move into the folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz
+$&gt; tar -zxvf Python-3.9.7.tgz
+$&gt; cd Python-3.9.7
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure">
+<h2>Configure<a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> from the base source dir.
+Add a line pointing to the include folder of the corresponding GCC version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detect_sqlite</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># The sqlite interface</span>
+    <span class="n">sqlite_setup_debug</span> <span class="o">=</span> <span class="kc">False</span>   <span class="c1"># verbose debug prints from this script?</span>
+
+    <span class="c1"># We hunt for #define SQLITE_VERSION &quot;n.n.n&quot;</span>
+    <span class="c1"># We need to find &gt;= sqlite version 3.3.9, for sqlite3_prepare_v2</span>
+    <span class="n">sqlite_incdir</span> <span class="o">=</span> <span class="n">sqlite_libdir</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">sqlite_inc_paths</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;/shared/software/lang/gcc/9.3.0/include&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;/usr/include&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;/usr/include/sqlite&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;/usr/include/sqlite3&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;/usr/local/include&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;/usr/local/include/sqlite&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;/usr/local/include/sqlite3&#39;</span><span class="p">,</span>
+                         <span class="p">]</span>
+</pre></div>
+</div>
+<p>Configure Python 3.9.x enabling optimizations, shared libraries, and setting the
+prefix for installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure --enable-shared --enable-optimizations \
+--prefix=/shared/software/lang/python/3.9.7_gcc93 \
+--with-tcltk-libs=&quot;-L/shared/software/lang/gcc/9.3.0/lib -ltcl8.6 -ltk8.6&quot; \
+--with-tcltk-includes=&quot;-L/shared/software/lang/gcc/9.3.0/include&quot;
+--with-lto LDFLAGS=&quot;-L${MD_GCC}/lib&quot;
+</pre></div>
+</div>
+<p>Compile and install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+$&gt; make install
+</pre></div>
+</div>
+<p>The test suite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make test
+</pre></div>
+</div>
+<p>The results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ran</span> <span class="mi">3</span> <span class="n">tests</span> <span class="ow">in</span> <span class="mf">0.010</span><span class="n">s</span>
+
+<span class="n">FAILED</span> <span class="p">(</span><span class="n">failures</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test</span> <span class="n">test_pathlib</span> <span class="n">failed</span>
+<span class="mi">0</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">28</span> <span class="n">load</span> <span class="n">avg</span><span class="p">:</span> <span class="mf">1.97</span> <span class="n">Re</span><span class="o">-</span><span class="n">running</span> <span class="n">test_zipfile</span> <span class="ow">in</span> <span class="n">verbose</span> <span class="n">mode</span> <span class="p">(</span><span class="n">matching</span><span class="p">:</span> <span class="n">test_add_file_after_2107</span><span class="p">)</span>
+<span class="n">test_add_file_after_2107</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">test_zipfile</span><span class="o">.</span><span class="n">StoredTestsWithSourceFile</span><span class="p">)</span> <span class="o">...</span> <span class="n">ERROR</span>
+
+<span class="o">======================================================================</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">test_add_file_after_2107</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">test_zipfile</span><span class="o">.</span><span class="n">StoredTestsWithSourceFile</span><span class="p">)</span>
+<span class="o">----------------------------------------------------------------------</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/gpfs20/shared/src/Python-3.9.7/Lib/test/test_zipfile.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">618</span><span class="p">,</span> <span class="ow">in</span> <span class="n">test_add_file_after_2107</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">utime</span><span class="p">(</span><span class="n">TESTFN</span><span class="p">,</span> <span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ts</span><span class="p">))</span>
+<span class="ne">OSError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">75</span><span class="p">]</span> <span class="n">Value</span> <span class="n">too</span> <span class="n">large</span> <span class="k">for</span> <span class="n">defined</span> <span class="n">data</span> <span class="nb">type</span>
+
+<span class="o">----------------------------------------------------------------------</span>
+
+<span class="n">Ran</span> <span class="mi">1</span> <span class="n">test</span> <span class="ow">in</span> <span class="mf">0.002</span><span class="n">s</span>
+
+<span class="n">FAILED</span> <span class="p">(</span><span class="n">errors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test</span> <span class="n">test_zipfile</span> <span class="n">failed</span>
+<span class="mi">2</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">again</span><span class="p">:</span>
+    <span class="n">test_pathlib</span> <span class="n">test_zipfile</span>
+
+<span class="o">==</span> <span class="n">Tests</span> <span class="n">result</span><span class="p">:</span> <span class="n">FAILURE</span> <span class="n">then</span> <span class="n">FAILURE</span> <span class="o">==</span>
+
+<span class="mi">409</span> <span class="n">tests</span> <span class="n">OK</span><span class="o">.</span>
+
+<span class="mi">2</span> <span class="n">tests</span> <span class="n">failed</span><span class="p">:</span>
+    <span class="n">test_pathlib</span> <span class="n">test_zipfile</span>
+
+<span class="mi">14</span> <span class="n">tests</span> <span class="n">skipped</span><span class="p">:</span>
+    <span class="n">test_devpoll</span> <span class="n">test_gdb</span> <span class="n">test_ioctl</span> <span class="n">test_kqueue</span> <span class="n">test_msilib</span>
+    <span class="n">test_ossaudiodev</span> <span class="n">test_startfile</span> <span class="n">test_tix</span> <span class="n">test_tk</span> <span class="n">test_ttk_guionly</span>
+    <span class="n">test_winconsoleio</span> <span class="n">test_winreg</span> <span class="n">test_winsound</span> <span class="n">test_zipfile64</span>
+
+<span class="n">Total</span> <span class="n">duration</span><span class="p">:</span> <span class="mi">2</span> <span class="nb">min</span> <span class="mi">28</span> <span class="n">sec</span>
+<span class="n">Tests</span> <span class="n">result</span><span class="p">:</span> <span class="n">FAILURE</span> <span class="n">then</span> <span class="n">FAILURE</span>
+<span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">1209</span><span class="p">:</span> <span class="n">test</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="numpy-and-scipy">
+<h2>Numpy and Scipy<a class="headerlink" href="#numpy-and-scipy" title="Permalink to this headline">¶</a></h2>
+<p>Download the latest versions of Numpy and Scipy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">21.2</span><span class="o">/</span><span class="n">numpy</span><span class="o">-</span><span class="mf">1.21</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">7.1</span><span class="o">/</span><span class="n">scipy</span><span class="o">-</span><span class="mf">1.7</span><span class="o">.</span><span class="mf">1.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>On each folder, create a file <code class="docutils literal notranslate"><span class="pre">site.cfg</span></code> with the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">openblas</span><span class="p">]</span>
+<span class="n">libraries</span> <span class="o">=</span> <span class="n">openblas</span>
+<span class="n">library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">lib</span>
+<span class="n">include_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span>
+<span class="n">runtime_library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">lib</span>
+</pre></div>
+</div>
+<p>Load the module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span>
+</pre></div>
+</div>
+<p>Install dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pybind11</span> <span class="n">Cython</span>
+</pre></div>
+</div>
+<p>Install numpy with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="nb">compile</span> <span class="o">-</span><span class="n">v</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>Similarly inside Scipy folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="nb">compile</span> <span class="o">-</span><span class="n">v</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>Install a set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">pyyaml</span> <span class="n">networkx</span> <span class="n">seaborn</span> <span class="n">matplotlib</span> <span class="n">ipython</span> <span class="n">jupyter</span> <span class="n">jupyterlab</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="70.DomainSpecific.html" class="btn btn-neutral float-right" title="Domain Specific Details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="611.BigData.html" class="btn btn-neutral float-left" title="Big Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,54 +1,131 @@
 Density Functional Theory
 =========================
 
-Octopus
--------
-
-Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3
-
-The modules loaded for compilation were::
-
-  module load lang/gcc/9.3.0 libs/libxc/4.3.4_gcc93  \
-  libs/hdf5/1.12.0_gcc93 \
-  libs/netcdf/4.7.4_gcc93 \
-  libs/netcdf/fortran-4.5.3_gcc93 \
-  libs/openblas/0.3.10_gcc93 \
-  libs/fftw/3.3.9_gcc93 \
-  parallel/mpich/3.4.1_gcc93
-
-The sources can be downloaded from the developers and uncompressed with::
-
-  wget https://octopus-code.org/download/10.4/octopus-10.4.tar.gz
-  tar -zxvf octopus-10.4.tar.gz
-
-It is customary to compile codes on a separate folder from the sources.
-The foler ``build_gcc93`` is created inside the sources for that purpose::
-
-  cd octopus-10.4
-  mkdir build_gcc93_mpic341
-  cd build_gcc93_mpich341
-
-The configure line was::
-
-  ../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
-  --with-libxc-prefix=${MD_LIBXC} --with-blas=" -L${MD_OPENBLAS} -lopenblas" \
-  --with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
-  --with-mpi=${MD_MPICH} --enable-mpi
-
-
-On Thorny Flat the results from the testsuite were::
-
-
-  ************************
-  Passed:  184 / 200
-  Skipped: 16 / 200
-
-  Everything seems to be OK
-
-  Total run-time of the testsuite: 00:20:42
-
 ABINIT
 ------
+
+ABINIT 9.4.2 on Spruce using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the canonical configuration for Spruce module ``dft_intel19``::
+
+  module load dft_intel19
+
+The list of modules loaded are::
+
+  $> module list
+  Currently Loaded Modulefiles:
+    1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
+    2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
+    3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
+    4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
+    5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
+
+The building folder is::
+
+  /gpfs/shared/src/abinit-9.4.2/build_intel19
+
+Create a ac9 file for autoconfigure. The file must have the same name as the
+headnode with extension ``.ac9`` (For Spruce it will be ``srih0001.ac9``)::
+
+  $ cat srih0001.ac9
+  prefix="/shared/software/atomistic/abinit/9.4.2_intel19_impi19"
+
+  with_debug_flavor="verbose"
+  with_optim_flavor="standard"
+
+  FCFLAGS_EXTRA="-heap-arrays 1 -axAVX,CORE-AVX2,CORE-AVX-I"
+  FC_LIBS="-lstdc++ -ldl"
+  CPP="icc -E"
+
+  CC=mpiicc
+  CXX=mpiicpc
+  FC=mpiifort
+  enable_mpi_io="no"
+
+  #with_libxc=/gpfs/shared/src/abinit-9.4.2/build_intel19/fallbacks/install_fb/intel/19.0/libxc/4.3.4
+  #with_hdf5=/gpfs/shared/src/abinit-9.4.2/build_intel19/fallbacks/install_fb/intel/19.0/hdf5/1.10.6
+  #with_netcdf=/gpfs/shared/src/abinit-9.4.2/build_intel19/fallbacks/install_fb/intel/19.0/netcdf4/4.6.3
+  #with_netcdf_fortran=/gpfs/shared/src/abinit-9.4.2/build_intel19/fallbacks/install_fb/intel/19.0/netcdf4_fortran/4.5.2
+  #with_xmlf90=/gpfs/shared/src/abinit-9.4.2/build_intel19/fallbacks/install_fb/intel/19.0/xmlf90/1.5.3.1
+  #with_libpsml=/gpfs/shared/src/abinit-9.4.2/build_intel19/fallbacks/install_fb/intel/19.0/libpsml/1.1.7
+
+The last 6 lines are commented as they will be used after compiling the fallbacks.
+Run a first configure with this ac9::
+
+  ../configure
+
+This first configure will prepare the folders for building the fallbacks::
+
+  $> cd fallbacks
+  $> CC=mpiicc CXX=mpiicpc FC=mpiifort ./build-abinit-fallbacks.sh
+
+After compiling the fallbacks, move one folder up and remove the comments to the last six lines of the ac9 file enabling the fallbacks for the next configure::
+
+  $> cd ..
+  $> tail -n 8 srih0001.ac9
+
+  with_libxc=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/intel/19.0/libxc/4.3.4
+  with_hdf5=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/intel/19.0/hdf5/1.10.6
+  with_netcdf=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/intel/19.0/netcdf4/4.6.3
+  with_netcdf_fortran=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/intel/19.0/netcdf4_fortran/4.5.2
+  with_xmlf90=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/intel/19.0/xmlf90/1.5.3.1
+  with_libpsml=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/intel/19.0/libpsml/1.1.7
+
+Now proceed to configure again::
+
+  $> CC=mpiicc CXX=mpiicpc FC=mpiifort ../configure
+
+Execute make with a appropiated number of compilation threads::
+
+  $> make -j16
+  $> make install
+
+To run the testsuite go to the tests folder and execute::
+
+  $> cd tests
+  $> python3 ../../tests/runtests.py -j4 -n4
+
+On Spruce the results of the testsuite are::
+
+  Suite            failed  passed  succeeded  skipped  disabled  run_etime  tot_etime
+  atompaw               0       0          0        2         0       0.00       0.00
+  bigdft                0       0          0       19         0       0.00       0.03
+  bigdft_paral          0       0          0        4         0       0.00       0.01
+  built-in              0       0          5        2         0      24.60      24.61
+  etsf_io               0       0          8        0         0      24.32      24.91
+  fast                  0       0         11        0         0      45.27      46.23
+  gpu                   0       0          0        7         0       0.00       0.01
+  libxc                 0       9         26        0         0     417.28     419.47
+  mpiio                 0       0          0       17         0       0.00       0.02
+  paral                11       8         26       76         0     399.02     402.03
+  psml                  0       2         12        0         0      79.79      80.39
+  seq                   0       0          0       18         0       0.00       0.02
+  tutomultibinit        0       0          3        3         0      29.94      31.10
+  tutoparal             0       1          0       27         0      33.91      34.53
+  tutoplugs             0       0          0        4         0       0.00       0.00
+  tutorespfn            1       9         19        2         0     987.28     991.43
+  tutorial              4       7         48        0         0     573.78     576.74
+  unitary               0       0         18       20         0      97.45      97.74
+  v1                    0       0         74        0         0     254.83     257.99
+  v2                    0      12         67        0         0     280.23     283.74
+  v3                    0      12         66        0         0     414.27     420.35
+  v4                    0      10         51        0         0     302.68     306.88
+  v5                    2      14         57        0         0     857.25     864.74
+  v6                    0       8         53        0         0     528.13     533.83
+  v67mbpt               0       9         16        0         0     251.67     254.97
+  v7                    1      15         49        0         0     929.57     936.62
+  v8                    0      17         50        4         0    1193.84    1199.95
+  v9                    0      15         34        2         0     952.27     956.56
+  vdwxc                 0       0          0        1         0       0.00       0.00
+  wannier90             0       0          0        8         0       0.00       0.01
+
+  Completed in 2381.46 [s]. Average time for test=10.09 [s], stdev=22.42 [s]
+  Summary: failed=19, succeeded=693, passed=148, skipped=216, disabled=0
+
+  Execution completed.
+  Results in HTML format are available in Test_suite/suite_report.html
+
 
 Parallel version with GCC 9.3 and MPICH 3.4.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,6 +298,142 @@ The code must be compiled from a compute node with GPUs as the CUDA toolkit is o
 
 
 
+Octopus
+-------
+
+Octopus 11.0 on Spruce using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the canonical configuration for Spruce module ``dft_intel19``::
+
+  module load dft_intel19
+
+The list of modules loaded are::
+
+  $> module list
+  Currently Loaded Modulefiles:
+    1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
+    2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
+    3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
+    4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
+    5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
+
+The building folder is::
+
+  /shared/src/octopus-11.0/build_intel19
+
+Execute this configure line::
+
+  CC=mpiicc CXX=mpiicpc FC=mpiifort ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 --with-lapack="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" --with-blas="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" --with-blacs="${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a" --with-scalapack="${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+
+Build the software and install::
+
+  $> make
+  $> make install
+
+Running the tests with::
+
+  $> make check
+
+The results were::
+
+  Status: 8 failures
+      Passed:  217 / 223
+      Skipped: 1 / 223
+      Failed:  5 / 223
+
+      testfile                                                    # failed testcases
+      ------------------------------------------------------------------------------
+      maxwell/02-external-current.test                            3
+      periodic_systems/06-h2o_pol_lr.test                         2
+      linear_response/01-casida.test                              16
+      pseudopotentials/14-carbon_dojo_psp8.test                   1
+      functionals/18-mgga.test                                    8
+
+
+  Total run-time of the testsuite: 02:16:08
+
+  make[3]: *** [Makefile:876: check-base] Error 5
+  make[3]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
+  make[2]: *** [Makefile:865: check-wrapper] Error 2
+  make[2]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
+  make[1]: *** [Makefile:853: check] Error 2
+  make[1]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
+  make: *** [Makefile:545: check-recursive] Error 1
+
+
+Octopus 10.4 with GCC 9.3
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3
+
+The modules loaded for compilation were::
+
+  module load lang/gcc/9.3.0 libs/libxc/4.3.4_gcc93  \
+  libs/hdf5/1.12.0_gcc93 \
+  libs/netcdf/4.7.4_gcc93 \
+  libs/netcdf/fortran-4.5.3_gcc93 \
+  libs/openblas/0.3.10_gcc93 \
+  libs/fftw/3.3.9_gcc93 \
+  parallel/mpich/3.4.1_gcc93
+
+The sources can be downloaded from the developers and uncompressed with::
+
+  wget https://octopus-code.org/download/10.4/octopus-10.4.tar.gz
+  tar -zxvf octopus-10.4.tar.gz
+
+It is customary to compile codes on a separate folder from the sources.
+The foler ``build_gcc93`` is created inside the sources for that purpose::
+
+  cd octopus-10.4
+  mkdir build_gcc93_mpic341
+  cd build_gcc93_mpich341
+
+The configure line was::
+
+  ../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
+  --with-libxc-prefix=${MD_LIBXC} --with-blas=" -L${MD_OPENBLAS} -lopenblas" \
+  --with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
+  --with-mpi=${MD_MPICH} --enable-mpi
+
+
+On Thorny Flat the results from the testsuite were::
+
+
+  ************************
+  Passed:  184 / 200
+  Skipped: 16 / 200
+
+  Everything seems to be OK
+
+  Total run-time of the testsuite: 00:20:42
+
+Quantum Espresso
+----------------
+
+Quantum Espresso 6.8 on Spruce using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the canonical configuration for Spruce module ``dft_intel19``::
+
+  module load dft_intel19
+
+The list of modules loaded are::
+
+  $> module list
+  Currently Loaded Modulefiles:
+    1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
+    2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
+    3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
+    4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
+    5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
+
+The building folder is::
+
+  /shared/src/qe-6.8
+
+Create
+
 Siesta
 ------
 
@@ -328,8 +541,8 @@ On Thorny::
    make[1]: Leaving directory `/gpfs20/shared/src/CASTEP-19.11/Test'
 
 
-VASP 6.2.1
-----------
+VASP
+----
 
 The Vienna Ab initio Simulation Package (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
 
@@ -470,3 +683,94 @@ VASP includes a testsuite and running it produces this final results::
   bulk_SiO2_LOPTICS bulk_SiO2_LOPTICS_nosym bulk_SiO2_LOPTICS_RPR
   bulk_SiO2_LPEAD bulk_SiO2_LPEAD_nosym bulk_SiO2_LPEAD_RPR
   C_2x2x2_CORE_CON C_2x2x2_CORE_CON_RPR
+
+VASP 6.2.1 on Spruce using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the canonical configuration for Spruce module ``dft_intel19``::
+
+  module load dft_intel19
+
+The list of modules loaded are::
+
+  $> module list
+  Currently Loaded Modulefiles:
+    1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
+    2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
+    3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
+    4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
+    5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
+
+In case of having a previous build, erase the folder::
+
+  rm -rf build/*
+
+Create a file ``makefile.include`` with the contents as follows::
+
+  # Precompiler options
+  CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
+               -DMPI -DMPI_BLOCK=8000 \
+               -DCACHE_SIZE=4000 \
+               -DscaLAPACK \
+               -Dvasp6 \
+               -Duse_bse_te \
+               -Dtbdyn \
+               -Dfock_dblbuf
+
+  CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+  FC         = mpiifort
+  FCL        = mpiifort
+
+  FREE       = -free -names lowercase
+
+  FFLAGS     = -assume byterecl -w -traceback -static-libstdc++ -static-libgcc -heap-arrays 1 -axAVX,CORE-AVX2,CORE-AVX-I
+  OFLAG      = -O2 -g3
+  OFLAG_IN   = $(OFLAG)
+  DEBUG      = -O0 -g3
+
+  MKL_PATH   = $(MKLROOT)/lib/intel64
+  BLAS       = -mkl=sequential -static-intel
+  LAPACK     =
+  BLACS      = -lmkl_blacs_intelmpi_lp64
+  SCALAPACK  = $(MKL_PATH)/libmkl_scalapack_lp64.a $(BLACS)
+
+  OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+  INCS       =-I$(MKLROOT)/include/fftw
+
+  LLIBS      = $(SCALAPACK) $(LAPACK) $(BLAS)
+
+  OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+  OBJECTS_O2 += fft3dlib.o
+
+  # For what used to be vasp.5.lib
+  CPP_LIB    = $(CPP)
+  FC_LIB     = $(FC)
+  CC_LIB     = icc
+  CFLAGS_LIB = -O -static-libgcc -axAVX,CORE-AVX2,CORE-AVX-I
+  FFLAGS_LIB = -O1 -static-libgcc -axAVX,CORE-AVX2,CORE-AVX-I
+  FREE_LIB   = $(FREE)
+
+  OBJECTS_LIB= linpack_double.o getshmem.o
+
+  # For the parser library
+  CXX_PARS   = icpc
+  LLIBS      += -lstdc++ -static-libstdc++ -axAVX,CORE-AVX2,CORE-AVX-I
+
+  # Normally no need to change this
+  SRCDIR     = ../../src
+  BINDIR     = ../../bin
+
+Execute make, do not try to use multiple compilations threads as this fails::
+
+  make
+
+Installation is manual and consists of copying the 3 binaries to the folder that will be added to the $PATH::
+
+  rsync -av bin/ /shared/software/atomistic/vasp/6.2.1_intel19/bin/
+
+Testsuite can be run by going into testsuite and running::
+
+  cd testsuite
+  ./runtest
