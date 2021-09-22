@@ -125,7 +125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#gromacs">Gromacs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#gromacs-2021-2-on-thorny-flat">Gromacs 2021.2 on Thorny Flat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gromacs-5-1-5-on-thorny-flat">Gromacs 5.1.5 on Thorny Flat</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gromacs-2019-4-on-spruce-knob">Gromacs 2019.4 on Spruce Knob</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gromacs-2021-3-on-spruce-knob">Gromacs 2021.3 on Spruce Knob</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#lammps">LAMMPS</a></li>
@@ -952,60 +952,122 @@ One test fails from the test suite:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="gromacs-2019-4-on-spruce-knob">
-<h3>Gromacs 2019.4 on Spruce Knob<a class="headerlink" href="#gromacs-2019-4-on-spruce-knob" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gromacs-2021-3-on-spruce-knob">
+<h3>Gromacs 2021.3 on Spruce Knob<a class="headerlink" href="#gromacs-2021-3-on-spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.15</span><span class="o">.</span><span class="mi">4</span>
-<span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc82</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
+$&gt; module load  lang/gcc/9.3.0 parallel/mpich/3.3.2_gcc93 dev/cmake/3.15.2 lang/python/cpython_3.9.7_gcc93 libs/openblas/0.3.10_gcc93
+</pre></div>
+</div>
+<p>Download and uncompress the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://ftp.gromacs.org/gromacs/gromacs-2021.3.tar.gz
+$&gt; tar -zxvf gromacs-2021.3.tar.gz
+$&gt; cd gromacs-2021.3
+$&gt; mkdir build_gcc93
+$&gt; cd build_gcc93
 </pre></div>
 </div>
 <p>Cmake is only used during configuration and it is not needed at runtime</p>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
-<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> <span class="o">-</span><span class="n">DGMX_HWLOC</span><span class="o">=</span><span class="n">off</span> \
-<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_gcc82</span> <span class="o">..</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>  \
+ <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+ <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
+ <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
+ <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2021.3</span><span class="n">_gcc93_mpic332</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>After configuration compile and install the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+$&gt; make install
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make check
 
-<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
-<span class="n">GTest</span>              <span class="o">=</span> <span class="mf">162.72</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">11.37</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">MpiTest</span>            <span class="o">=</span>  <span class="mf">12.06</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">13.23</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
-<span class="n">UnitTest</span>           <span class="o">=</span> <span class="mf">138.12</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
+67/73 Test #67: GmxapiMpiTests ........................   Passed    2.46 sec
+          Start 68: GmxapiInternalInterfaceTests
+68/73 Test #68: GmxapiInternalInterfaceTests ..........   Passed    0.76 sec
+          Start 69: GmxapiInternalsMpiTests
+69/73 Test #69: GmxapiInternalsMpiTests ...............   Passed    0.86 sec
+          Start 70: regressiontests/complex
+70/73 Test #70: regressiontests/complex ...............   Passed   45.75 sec
+          Start 71: regressiontests/freeenergy
+71/73 Test #71: regressiontests/freeenergy ............   Passed   14.99 sec
+          Start 72: regressiontests/rotation
+72/73 Test #72: regressiontests/rotation ..............   Passed   10.50 sec
+          Start 73: regressiontests/essentialdynamics
+73/73 Test #73: regressiontests/essentialdynamics .....   Passed    4.22 sec
 
-<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2085.68</span> <span class="n">sec</span>
+100% tests passed, 0 tests failed out of 73
 
-<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
-         <span class="mi">29</span> <span class="o">-</span> <span class="n">GmxPreprocessTests</span> <span class="p">(</span><span class="n">Timeout</span><span class="p">)</span>
+Label Time Summary:
+GTest              = 105.49 sec*proc (67 tests)
+IntegrationTest    =  22.65 sec*proc (20 tests)
+MpiTest            =  68.16 sec*proc (10 tests)
+SlowTest           =  79.18 sec*proc (8 tests)
+UnitTest           =   3.66 sec*proc (39 tests)
+
+Total Test time (real) = 181.11 sec
+make[3]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_gcc93&#39;
+[100%] Built target run-ctest-nophys
+make[3]: Entering directory &#39;/gpfs/shared/src/gromacs-2021.3/build_gcc93&#39;
+Scanning dependencies of target check
+make[3]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_gcc93&#39;
+[100%] Built target check
+make[2]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_gcc93&#39;
+make[1]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_gcc93&#39;
 </pre></div>
 </div>
-<p>The second configuration enables the double precision for gromacs:</p>
-<p>The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
-<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> <span class="o">-</span><span class="n">DGMX_HWLOC</span><span class="o">=</span><span class="n">off</span> \
-<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2019.4</span><span class="n">_double_gcc82</span> \
-<span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
+<p>The second configuration enables double precision floating point numbers.
+The cmake configuration line was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>  \
+<span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
+<span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
+<span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2021.3</span><span class="n">_double_gcc93_mpic332</span> <span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make check
 
-<span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
-<span class="n">GTest</span>              <span class="o">=</span>  <span class="mf">85.42</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">IntegrationTest</span>    <span class="o">=</span>  <span class="mf">10.96</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">5</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">MpiTest</span>            <span class="o">=</span>   <span class="mf">1.01</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">3</span> <span class="n">tests</span><span class="p">)</span>
-<span class="n">SlowTest</span>           <span class="o">=</span>  <span class="mf">23.99</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">1</span> <span class="n">test</span><span class="p">)</span>
-<span class="n">UnitTest</span>           <span class="o">=</span>  <span class="mf">50.47</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">34</span> <span class="n">tests</span><span class="p">)</span>
+Start 65: MdrunSimulatorComparison
+65/73 Test #65: MdrunSimulatorComparison ..............   Passed    5.42 sec
+          Start 66: GmxapiExternalInterfaceTests
+66/73 Test #66: GmxapiExternalInterfaceTests ..........   Passed    3.32 sec
+          Start 67: GmxapiMpiTests
+67/73 Test #67: GmxapiMpiTests ........................   Passed    3.19 sec
+          Start 68: GmxapiInternalInterfaceTests
+68/73 Test #68: GmxapiInternalInterfaceTests ..........   Passed    0.98 sec
+          Start 69: GmxapiInternalsMpiTests
+69/73 Test #69: GmxapiInternalsMpiTests ...............   Passed    1.42 sec
+          Start 70: regressiontests/complex
+70/73 Test #70: regressiontests/complex ...............   Passed   49.69 sec
+          Start 71: regressiontests/freeenergy
+71/73 Test #71: regressiontests/freeenergy ............   Passed   16.65 sec
+          Start 72: regressiontests/rotation
+72/73 Test #72: regressiontests/rotation ..............   Passed   12.70 sec
+          Start 73: regressiontests/essentialdynamics
+73/73 Test #73: regressiontests/essentialdynamics .....   Passed    4.17 sec
 
-<span class="n">Total</span> <span class="n">Test</span> <span class="n">time</span> <span class="p">(</span><span class="n">real</span><span class="p">)</span> <span class="o">=</span> <span class="mf">493.51</span> <span class="n">sec</span>
+100% tests passed, 0 tests failed out of 73
 
-<span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">FAILED</span><span class="p">:</span>
-         <span class="mi">29</span> <span class="o">-</span> <span class="n">GmxPreprocessTests</span> <span class="p">(</span><span class="n">Timeout</span><span class="p">)</span>
+Label Time Summary:
+GTest              = 138.11 sec*proc (67 tests)
+IntegrationTest    =  34.03 sec*proc (20 tests)
+MpiTest            =  89.03 sec*proc (10 tests)
+SlowTest           = 100.02 sec*proc (8 tests)
+UnitTest           =   4.06 sec*proc (39 tests)
+
+Total Test time (real) = 221.48 sec
+make[3]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_double_gcc93&#39;
+[100%] Built target run-ctest-nophys
+make[3]: Entering directory &#39;/gpfs/shared/src/gromacs-2021.3/build_double_gcc93&#39;
+Scanning dependencies of target check
+make[3]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_double_gcc93&#39;
+[100%] Built target check
+make[2]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_double_gcc93&#39;
+make[1]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_double_gcc93&#39;
 </pre></div>
 </div>
 </div>

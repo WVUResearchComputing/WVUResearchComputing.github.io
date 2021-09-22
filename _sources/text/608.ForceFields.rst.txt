@@ -771,14 +771,21 @@ One test fails from the test suite::
     The following tests FAILED:
          17 - SelectionUnitTests (Failed)
 
-Gromacs 2019.4 on Spruce Knob
+Gromacs 2021.3 on Spruce Knob
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The modules used were::
 
- lang/gcc/8.2.0
- dev/cmake/3.15.4
- parallel/openmpi/3.1.4_gcc82
+	$> module purge
+	$> module load  lang/gcc/9.3.0 parallel/mpich/3.3.2_gcc93 dev/cmake/3.15.2 lang/python/cpython_3.9.7_gcc93 libs/openblas/0.3.10_gcc93
+
+Download and uncompress the sources::
+	
+	$> wget https://ftp.gromacs.org/gromacs/gromacs-2021.3.tar.gz
+	$> tar -zxvf gromacs-2021.3.tar.gz
+	$> cd gromacs-2021.3
+	$> mkdir build_gcc93
+	$> cd build_gcc93
 
 Cmake is only used during configuration and it is not needed at runtime
 
@@ -786,50 +793,106 @@ The first configuration is the standard one (Single Precision)
 
 The cmake configuration line was::
 
- cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
- -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DGMX_HWLOC=off \
- -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2019.4_gcc82 ..
+	cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on  \
+	 -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx \
+	 -DGMX_LAPACK_USER="-L${MD_OPENBLAS}/lib -lopenblas" \
+	 -DGMX_BLAS_USER="-L${MD_OPENBLAS}/lib -lopenblas" \
+	 -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2021.3_gcc93_mpic332 ..
+
+After configuration compile and install the code::
+	
+	$> make
+	$> make install
 
 The results of the tests were::
 
- 98% tests passed, 1 tests failed out of 46
+	$> make check
 
- Label Time Summary:
- GTest              = 162.72 sec*proc (40 tests)
- IntegrationTest    =  11.37 sec*proc (5 tests)
- MpiTest            =  12.06 sec*proc (3 tests)
- SlowTest           =  13.23 sec*proc (1 test)
- UnitTest           = 138.12 sec*proc (34 tests)
+	67/73 Test #67: GmxapiMpiTests ........................   Passed    2.46 sec
+		  Start 68: GmxapiInternalInterfaceTests
+	68/73 Test #68: GmxapiInternalInterfaceTests ..........   Passed    0.76 sec
+		  Start 69: GmxapiInternalsMpiTests
+	69/73 Test #69: GmxapiInternalsMpiTests ...............   Passed    0.86 sec
+		  Start 70: regressiontests/complex
+	70/73 Test #70: regressiontests/complex ...............   Passed   45.75 sec
+		  Start 71: regressiontests/freeenergy
+	71/73 Test #71: regressiontests/freeenergy ............   Passed   14.99 sec
+		  Start 72: regressiontests/rotation
+	72/73 Test #72: regressiontests/rotation ..............   Passed   10.50 sec
+		  Start 73: regressiontests/essentialdynamics
+	73/73 Test #73: regressiontests/essentialdynamics .....   Passed    4.22 sec
 
- Total Test time (real) = 2085.68 sec
+	100% tests passed, 0 tests failed out of 73
 
- The following tests FAILED:
-          29 - GmxPreprocessTests (Timeout)
+	Label Time Summary:
+	GTest              = 105.49 sec*proc (67 tests)
+	IntegrationTest    =  22.65 sec*proc (20 tests)
+	MpiTest            =  68.16 sec*proc (10 tests)
+	SlowTest           =  79.18 sec*proc (8 tests)
+	UnitTest           =   3.66 sec*proc (39 tests)
 
-The second configuration enables the double precision for gromacs:
+	Total Test time (real) = 181.11 sec
+	make[3]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_gcc93'
+	[100%] Built target run-ctest-nophys
+	make[3]: Entering directory '/gpfs/shared/src/gromacs-2021.3/build_gcc93'
+	Scanning dependencies of target check
+	make[3]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_gcc93'
+	[100%] Built target check
+	make[2]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_gcc93'
+	make[1]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_gcc93'
 
+
+The second configuration enables double precision floating point numbers.
 The cmake configuration line was::
 
- cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on \
- -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DGMX_HWLOC=off \
- -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2019.4_double_gcc82 \
- -DGMX_DOUBLE=on ..
+    cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=on  \
+    -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx \
+    -DGMX_LAPACK_USER="-L${MD_OPENBLAS}/lib -lopenblas" \
+    -DGMX_BLAS_USER="-L${MD_OPENBLAS}/lib -lopenblas" \
+    -DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/gromacs/2021.3_double_gcc93_mpic332 -DGMX_DOUBLE=on ..
 
 The results of the tests were::
 
- 98% tests passed, 1 tests failed out of 46
+	$> make check
 
- Label Time Summary:
- GTest              =  85.42 sec*proc (40 tests)
- IntegrationTest    =  10.96 sec*proc (5 tests)
- MpiTest            =   1.01 sec*proc (3 tests)
- SlowTest           =  23.99 sec*proc (1 test)
- UnitTest           =  50.47 sec*proc (34 tests)
+	Start 65: MdrunSimulatorComparison
+	65/73 Test #65: MdrunSimulatorComparison ..............   Passed    5.42 sec
+		  Start 66: GmxapiExternalInterfaceTests
+	66/73 Test #66: GmxapiExternalInterfaceTests ..........   Passed    3.32 sec
+		  Start 67: GmxapiMpiTests
+	67/73 Test #67: GmxapiMpiTests ........................   Passed    3.19 sec
+		  Start 68: GmxapiInternalInterfaceTests
+	68/73 Test #68: GmxapiInternalInterfaceTests ..........   Passed    0.98 sec
+		  Start 69: GmxapiInternalsMpiTests
+	69/73 Test #69: GmxapiInternalsMpiTests ...............   Passed    1.42 sec
+		  Start 70: regressiontests/complex
+	70/73 Test #70: regressiontests/complex ...............   Passed   49.69 sec
+		  Start 71: regressiontests/freeenergy
+	71/73 Test #71: regressiontests/freeenergy ............   Passed   16.65 sec
+		  Start 72: regressiontests/rotation
+	72/73 Test #72: regressiontests/rotation ..............   Passed   12.70 sec
+		  Start 73: regressiontests/essentialdynamics
+	73/73 Test #73: regressiontests/essentialdynamics .....   Passed    4.17 sec
 
- Total Test time (real) = 493.51 sec
+	100% tests passed, 0 tests failed out of 73
 
- The following tests FAILED:
-          29 - GmxPreprocessTests (Timeout)
+	Label Time Summary:
+	GTest              = 138.11 sec*proc (67 tests)
+	IntegrationTest    =  34.03 sec*proc (20 tests)
+	MpiTest            =  89.03 sec*proc (10 tests)
+	SlowTest           = 100.02 sec*proc (8 tests)
+	UnitTest           =   4.06 sec*proc (39 tests)
+
+	Total Test time (real) = 221.48 sec
+	make[3]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_double_gcc93'
+	[100%] Built target run-ctest-nophys
+	make[3]: Entering directory '/gpfs/shared/src/gromacs-2021.3/build_double_gcc93'
+	Scanning dependencies of target check
+	make[3]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_double_gcc93'
+	[100%] Built target check
+	make[2]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_double_gcc93'
+	make[1]: Leaving directory '/gpfs/shared/src/gromacs-2021.3/build_double_gcc93'
+
 
 
 LAMMPS

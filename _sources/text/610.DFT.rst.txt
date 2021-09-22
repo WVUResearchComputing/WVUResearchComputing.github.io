@@ -762,7 +762,7 @@ Create a file ``makefile.include`` with the contents as follows::
   SRCDIR     = ../../src
   BINDIR     = ../../bin
 
-Execute make, do not try to use multiple compilations threads as this fails::
+Execute make, do not try to use multiple compilations threads as this fails.
 
   make
 
@@ -774,3 +774,7 @@ Testsuite can be run by going into testsuite and running::
 
   cd testsuite
   ./runtest
+
+The results were::
+
+  
