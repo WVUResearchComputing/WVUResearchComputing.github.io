@@ -8,7 +8,7 @@ The purpose of this document is to show how Charm++ and NAMD were compiled on Th
 
 The sources can be downloaded for the most recent date at the moment of download. The sources can be download using this command::
 
-  VERSION=2020-01-02
+  VERSION=2021-09-30
   wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
 
 This is the current Nightly build by the time of writing this document
@@ -19,19 +19,19 @@ The sources are archived in a tar and compressed file. Untar and uncompress them
 
   tar -zxvf NAMD_Git-${VERSION}_Source.tar.gz
   cd NAMD_Git-${VERSION}_Source/
-  tar -xvf charm-6.10.0-pre.tar
+  tar -xvf charm-6.10.2.tar
 
-We will compile Charm and NAMD using the Intel Compilers 2019, the latest version at the moment of writing this document::
+We will compile Charm and NAMD using the Intel Compilers 2021, the latest version at the moment of writing this document::
 
   module purge
-  module load lang/intel/2019
+  module load compiler/2021.2.0 mkl/2021.2.0 mpi/2021.2.0
 
 Compiling Charm++
 -----------------
 
-We start compiling charm++, go into the ``charm-6.10.0-pre`` folder::
+We start compiling charm++, go into the ``charm-6.10.2`` folder::
 
-  cd charm-6.10.0-pre
+  cd charm-6.10.2
 
 We will compile 4 versions. The MPI version and the OFI version for both single threaded and shared memory versions::
 
@@ -155,7 +155,7 @@ The configuration of NAMD is done via a text file located at the ``arch`` folder
 
 Executing the code above will produce 4 files with the following contents.
 
-File Linux-x86_64-mpi-mpicxx.arch::
+File `Linux-x86_64-mpi-mpicxx.arch`::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
@@ -170,7 +170,7 @@ File Linux-x86_64-mpi-mpicxx.arch::
   CC = icc
   COPTS = -O2 $(FLOATOPTS)
 
-File Linux-x86_64-mpi-smp-mpicxx.arch::
+File `Linux-x86_64-mpi-smp-mpicxx.arch`::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
@@ -185,7 +185,7 @@ File Linux-x86_64-mpi-smp-mpicxx.arch::
   CC = icc
   COPTS = -O2 $(FLOATOPTS)
 
-File Linux-x86_64-ofi-icc.arch::
+File `Linux-x86_64-ofi-icc.arch`::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-icc
@@ -200,7 +200,7 @@ File Linux-x86_64-ofi-icc.arch::
   CC = icc
   COPTS = -O2 $(FLOATOPTS)
 
-File Linux-x86_64-ofi-smp-icc.arch::
+File `Linux-x86_64-ofi-smp-icc.arch`::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-smp-icc

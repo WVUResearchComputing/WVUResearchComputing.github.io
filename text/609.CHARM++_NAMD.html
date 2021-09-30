@@ -100,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="601.SphinxDocs.html">Editing these documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="602.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="603.LinearAlgebra.html">Linear Algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="604.Boost.html">Boost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="604.Boost.html">Boost 1.77</a></li>
 <li class="toctree-l2"><a class="reference internal" href="605.MPI.html">Message Passing Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
@@ -116,6 +116,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
@@ -193,7 +194,7 @@
 <p>NAMD is a computer software for classical molecular dynamics simulation, written using the Charm++ parallel programming model. It is noted for its parallel efficiency and is often used to simulate large systems (millions of atoms). It has been developed by the collaboration of the Theoretical and Computational Biophysics Group (TCB) and the Parallel Programming Laboratory (PPL) at the University of Illinois at Urbana–Champaign.</p>
 <p>The purpose of this document is to show how Charm++ and NAMD were compiled on Thorny Flat, a cluster build from Skylake CPUs. The current stable sources 2.13 fail compilation using OFI network library. For that reason we will be using the Nightly archived sources available on the official NAMD site.</p>
 <p>The sources can be downloaded for the most recent date at the moment of download. The sources can be download using this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VERSION=2020-01-02
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VERSION=2021-09-30
 wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
 </pre></div>
 </div>
@@ -203,18 +204,18 @@ wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSIO
 <p>The sources are archived in a tar and compressed file. Untar and uncompress them. Go into the created folder and untar the charm sources too:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar -zxvf NAMD_Git-${VERSION}_Source.tar.gz
 cd NAMD_Git-${VERSION}_Source/
-tar -xvf charm-6.10.0-pre.tar
+tar -xvf charm-6.10.2.tar
 </pre></div>
 </div>
-<p>We will compile Charm and NAMD using the Intel Compilers 2019, the latest version at the moment of writing this document:</p>
+<p>We will compile Charm and NAMD using the Intel Compilers 2021, the latest version at the moment of writing this document:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 <div class="section" id="compiling-charm">
 <h2>Compiling Charm++<a class="headerlink" href="#compiling-charm" title="Permalink to this headline">¶</a></h2>
-<p>We start compiling charm++, go into the <code class="docutils literal notranslate"><span class="pre">charm-6.10.0-pre</span></code> folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pre</span>
+<p>We start compiling charm++, go into the <code class="docutils literal notranslate"><span class="pre">charm-6.10.2</span></code> folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>We will compile 4 versions. The MPI version and the OFI version for both single threaded and shared memory versions:</p>
@@ -336,7 +337,7 @@ EOF
 </pre></div>
 </div>
 <p>Executing the code above will produce 4 files with the following contents.</p>
-<p>File Linux-x86_64-mpi-mpicxx.arch:</p>
+<p>File <cite>Linux-x86_64-mpi-mpicxx.arch</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
@@ -351,7 +352,7 @@ CC = icc
 COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
-<p>File Linux-x86_64-mpi-smp-mpicxx.arch:</p>
+<p>File <cite>Linux-x86_64-mpi-smp-mpicxx.arch</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
@@ -366,7 +367,7 @@ CC = icc
 COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
-<p>File Linux-x86_64-ofi-icc.arch:</p>
+<p>File <cite>Linux-x86_64-ofi-icc.arch</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-icc
 
@@ -381,7 +382,7 @@ CC = icc
 COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
-<p>File Linux-x86_64-ofi-smp-icc.arch:</p>
+<p>File <cite>Linux-x86_64-ofi-smp-icc.arch</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 

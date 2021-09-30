@@ -608,6 +608,10 @@ The foler <code class="docutils literal notranslate"><span class="pre">build_gcc
 <h2>Quantum Espresso<a class="headerlink" href="#quantum-espresso" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="quantum-espresso-6-8-on-spruce-using-intel-2019">
 <h3>Quantum Espresso 6.8 on Spruce using Intel 2019<a class="headerlink" href="#quantum-espresso-6-8-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
+<p>Download the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">QEF</span><span class="o">/</span><span class="n">q</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">-</span><span class="n">ReleasePack</span><span class="o">.</span><span class="n">tgz</span>
+</pre></div>
+</div>
 <p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
@@ -615,18 +619,32 @@ The foler <code class="docutils literal notranslate"><span class="pre">build_gcc
 <p>The list of modules loaded are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
 Currently Loaded Modulefiles:
-  1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
-  2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
-  3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
-  4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
-  5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
+  1) lang/gcc/9.3.0                       10) libs/gridxc/0.9.6_intel19
+  2) lang/intel/2019                      11) atomistic/abinit/9.4.2_intel19
+  3) lang/python/cpython_3.9.7_gcc93      12) atomistic/vasp/6.2.1_intel19
+  4) libs/libxc/5.1.5_intel19             13) atomistic/octopus/11.0_intel19
+  5) libs/hdf5/1.12.1_intel19             14) atomistic/espresso/6.8_intel19
+  6) libs/fftw/3.3.8_intel19              15) atomistic/elk/7.2.42_intel19
+  7) libs/arpack-ng/3.8.0_intel19         16) atomistic/siesta/4.1.5_intel19
+  8) libs/xmlf90/1.5.4_intel19            17) atomistic/siesta/4.1.5_psml_intel19
+  9) libs/psml/1.1.10_intel19             18) dft_intel19
 </pre></div>
 </div>
-<p>The building folder is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span>
+<p>Uncompress the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf qe-6.8-ReleasePack.tgz
+$&gt; cd qe-6.8
 </pre></div>
 </div>
-<p>Create</p>
+<p>Configure the sources to use HDF5, libXC and FFTW 3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel --prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
+</pre></div>
+</div>
+<p>Build the binaries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+$&gt; make install
+$&gt; make check
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="siesta">
@@ -958,7 +976,6 @@ BINDIR     = ../../bin
 <span class="o">./</span><span class="n">runtest</span>
 </pre></div>
 </div>
-<p>The results were:</p>
 </div>
 </div>
 </div>
