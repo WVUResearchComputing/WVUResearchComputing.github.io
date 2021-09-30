@@ -89,7 +89,7 @@ Download and install TCL and FFTW libraries asuming that you are now on the root
 
 The next step is to edit the file ``Make.charm`` to edit the variable ``CHARMBASE``. Another option is to create a symbolic link called ``charm`` pointing to the location of the charm sources, like this::
 
-  ln -s charm-6.10.0-pre charm
+  ln -s charm-6.10.2 charm
 
 The configuration of NAMD is done via a text file located at the ``arch`` folder. Create the following files with the commands::
 
@@ -155,7 +155,7 @@ The configuration of NAMD is done via a text file located at the ``arch`` folder
 
 Executing the code above will produce 4 files with the following contents.
 
-File `Linux-x86_64-mpi-mpicxx.arch`::
+File ``Linux-x86_64-mpi-mpicxx.arch``::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
@@ -170,7 +170,7 @@ File `Linux-x86_64-mpi-mpicxx.arch`::
   CC = icc
   COPTS = -O2 $(FLOATOPTS)
 
-File `Linux-x86_64-mpi-smp-mpicxx.arch`::
+File ``Linux-x86_64-mpi-smp-mpicxx.arch``::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
@@ -185,7 +185,7 @@ File `Linux-x86_64-mpi-smp-mpicxx.arch`::
   CC = icc
   COPTS = -O2 $(FLOATOPTS)
 
-File `Linux-x86_64-ofi-icc.arch`::
+File ``Linux-x86_64-ofi-icc.arch``::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-icc
@@ -200,7 +200,7 @@ File `Linux-x86_64-ofi-icc.arch`::
   CC = icc
   COPTS = -O2 $(FLOATOPTS)
 
-File `Linux-x86_64-ofi-smp-icc.arch`::
+File ``Linux-x86_64-ofi-smp-icc.arch``::
 
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
