@@ -271,7 +271,7 @@ Download and install TCL and FFTW libraries asuming that you are now on the root
 </pre></div>
 </div>
 <p>The next step is to edit the file <code class="docutils literal notranslate"><span class="pre">Make.charm</span></code> to edit the variable <code class="docutils literal notranslate"><span class="pre">CHARMBASE</span></code>. Another option is to create a symbolic link called <code class="docutils literal notranslate"><span class="pre">charm</span></code> pointing to the location of the charm sources, like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pre</span> <span class="n">charm</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">2</span> <span class="n">charm</span>
 </pre></div>
 </div>
 <p>The configuration of NAMD is done via a text file located at the <code class="docutils literal notranslate"><span class="pre">arch</span></code> folder. Create the following files with the commands:</p>
@@ -337,7 +337,7 @@ EOF
 </pre></div>
 </div>
 <p>Executing the code above will produce 4 files with the following contents.</p>
-<p>File <cite>Linux-x86_64-mpi-mpicxx.arch</cite>:</p>
+<p>File <code class="docutils literal notranslate"><span class="pre">Linux-x86_64-mpi-mpicxx.arch</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
@@ -352,7 +352,7 @@ CC = icc
 COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
-<p>File <cite>Linux-x86_64-mpi-smp-mpicxx.arch</cite>:</p>
+<p>File <code class="docutils literal notranslate"><span class="pre">Linux-x86_64-mpi-smp-mpicxx.arch</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
@@ -367,7 +367,7 @@ CC = icc
 COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
-<p>File <cite>Linux-x86_64-ofi-icc.arch</cite>:</p>
+<p>File <code class="docutils literal notranslate"><span class="pre">Linux-x86_64-ofi-icc.arch</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-icc
 
@@ -382,7 +382,7 @@ CC = icc
 COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
-<p>File <cite>Linux-x86_64-ofi-smp-icc.arch</cite>:</p>
+<p>File <code class="docutils literal notranslate"><span class="pre">Linux-x86_64-ofi-smp-icc.arch</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 
