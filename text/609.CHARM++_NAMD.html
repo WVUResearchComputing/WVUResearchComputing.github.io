@@ -219,13 +219,13 @@ tar -xvf charm-6.10.2.tar
 </pre></div>
 </div>
 <p>We will compile 4 versions. The MPI version and the OFI version for both single threaded and shared memory versions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="o">-</span><span class="n">j12</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
 
-<span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="n">smp</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
+<span class="n">MPICXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">mpi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">mpicxx</span> <span class="n">ifort</span> <span class="n">smp</span> <span class="o">-</span><span class="n">j12</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
 
-<span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">ofi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">icc</span> <span class="n">ifort</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
+<span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">ofi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">icc</span> <span class="n">ifort</span> <span class="o">-</span><span class="n">j12</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
 
-<span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">ofi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">icc</span> <span class="n">ifort</span> <span class="n">smp</span> <span class="o">-</span><span class="n">j16</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
+<span class="o">./</span><span class="n">build</span> <span class="n">charm</span><span class="o">++</span> <span class="n">ofi</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">icc</span> <span class="n">ifort</span> <span class="n">smp</span> <span class="o">-</span><span class="n">j12</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">production</span>
 </pre></div>
 </div>
 <p>Executing those 4 commands will compile charm++ in a variety of ways that take
@@ -341,7 +341,7 @@ EOF
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 $(FLOATOPTS)
@@ -356,7 +356,7 @@ COPTS = -O2 $(FLOATOPTS)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 $(FLOATOPTS)
@@ -371,7 +371,7 @@ COPTS = -O2 $(FLOATOPTS)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-icc
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 $(FLOATOPTS)
@@ -386,7 +386,7 @@ COPTS = -O2 $(FLOATOPTS)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 $(FLOATOPTS)
@@ -406,16 +406,16 @@ COPTS = -O2 $(FLOATOPTS)
 </div>
 <p>Now we can go inside each folder and compile the code with <code class="docutils literal notranslate"><span class="pre">make</span></code>. To speed up the compilation, 16 execution lines will be used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">mpicxx</span>
-<span class="n">make</span> <span class="o">-</span><span class="n">j16</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
 <span class="n">cd</span> <span class="o">..</span>
 <span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">mpicxx</span>
-<span class="n">make</span> <span class="o">-</span><span class="n">j16</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
 <span class="n">cd</span> <span class="o">..</span>
 <span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">icc</span>
-<span class="n">make</span> <span class="o">-</span><span class="n">j16</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
 <span class="n">cd</span> <span class="o">..</span>
 <span class="n">cd</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">ofi</span><span class="o">-</span><span class="n">smp</span><span class="o">-</span><span class="n">icc</span>
-<span class="n">make</span> <span class="o">-</span><span class="n">j16</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
 <span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>

@@ -35,13 +35,13 @@ We start compiling charm++, go into the ``charm-6.10.2`` folder::
 
 We will compile 4 versions. The MPI version and the OFI version for both single threaded and shared memory versions::
 
-  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort -j16 --with-production
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort -j12 --with-production
 
-  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort smp -j16 --with-production
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort smp -j12 --with-production
 
-  ./build charm++ ofi-linux-x86_64 icc ifort -j16 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort -j12 --with-production
 
-  ./build charm++ ofi-linux-x86_64 icc ifort smp -j16 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort smp -j12 --with-production
 
 Executing those 4 commands will compile charm++ in a variety of ways that take
 advantage of Intel Omni-Path. The ``smp`` version takes one extra thread for managing communication reducing the amount of usable cores but allows to share memory efficiently allowing for computations with larger systems. That is why having the ``smp`` and ``non-smp`` versions is recommended.
@@ -160,7 +160,7 @@ File ``Linux-x86_64-mpi-mpicxx.arch``::
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 $(FLOATOPTS)
@@ -175,7 +175,7 @@ File ``Linux-x86_64-mpi-smp-mpicxx.arch``::
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 $(FLOATOPTS)
@@ -190,7 +190,7 @@ File ``Linux-x86_64-ofi-icc.arch``::
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-icc
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 $(FLOATOPTS)
@@ -205,7 +205,7 @@ File ``Linux-x86_64-ofi-smp-icc.arch``::
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 $(FLOATOPTS)
@@ -225,16 +225,16 @@ To compile NAMD, the corresponding building folder must be created via the confi
 Now we can go inside each folder and compile the code with ``make``. To speed up the compilation, 16 execution lines will be used::
 
   cd Linux-x86_64-mpi-mpicxx
-  make -j16
+  make -j12
   cd ..
   cd Linux-x86_64-mpi-smp-mpicxx
-  make -j16
+  make -j12
   cd ..
   cd Linux-x86_64-ofi-icc
-  make -j16
+  make -j12
   cd ..
   cd Linux-x86_64-ofi-smp-icc
-  make -j16
+  make -j12
   cd ..
 
 At the end of those compilations we will have 4 versions of the command ``namd2``. However, due to a bug on Intel's ``opa-psm2`` the NAMD binaries will return an error when executed. The error looks similar to this::
