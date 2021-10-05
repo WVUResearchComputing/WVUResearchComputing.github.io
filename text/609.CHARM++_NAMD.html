@@ -194,7 +194,7 @@
 <p>NAMD is a computer software for classical molecular dynamics simulation, written using the Charm++ parallel programming model. It is noted for its parallel efficiency and is often used to simulate large systems (millions of atoms). It has been developed by the collaboration of the Theoretical and Computational Biophysics Group (TCB) and the Parallel Programming Laboratory (PPL) at the University of Illinois at Urbana–Champaign.</p>
 <p>The purpose of this document is to show how Charm++ and NAMD were compiled on Thorny Flat, a cluster build from Skylake CPUs. The current stable sources 2.13 fail compilation using OFI network library. For that reason we will be using the Nightly archived sources available on the official NAMD site.</p>
 <p>The sources can be downloaded for the most recent date at the moment of download. The sources can be download using this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VERSION=2021-09-30
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VERSION=2021-10-05
 wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
 </pre></div>
 </div>
@@ -279,7 +279,7 @@ Download and install TCL and FFTW libraries asuming that you are now on the root
 NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 \$(FLOATOPTS)
@@ -294,7 +294,7 @@ cat &lt;&lt; EOF &gt; arch/Linux-x86_64-mpi-smp-mpicxx.arch
 NAMD_ARCH = Linux-x86_64
 CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 \$(FLOATOPTS)
@@ -309,7 +309,7 @@ cat &lt;&lt; EOF &gt; arch/Linux-x86_64-ofi-icc.arch
 NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-icc
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 \$(FLOATOPTS)
@@ -324,7 +324,7 @@ cat &lt;&lt; EOF &gt; arch/Linux-x86_64-ofi-smp-icc.arch
 NAMD_ARCH = Linux-x86_64
 CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 
-FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
 CXX = icpc -std=c++11
 CXXOPTS = -O2 \$(FLOATOPTS)

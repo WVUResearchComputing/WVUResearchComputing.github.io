@@ -8,7 +8,7 @@ The purpose of this document is to show how Charm++ and NAMD were compiled on Th
 
 The sources can be downloaded for the most recent date at the moment of download. The sources can be download using this command::
 
-  VERSION=2021-09-30
+  VERSION=2021-10-05
   wget https://www.ks.uiuc.edu/Research/namd/cvs/download/741376/NAMD_Git-${VERSION}_Source.tar.gz
 
 This is the current Nightly build by the time of writing this document
@@ -97,7 +97,7 @@ The configuration of NAMD is done via a text file located at the ``arch`` folder
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
@@ -112,7 +112,7 @@ The configuration of NAMD is done via a text file located at the ``arch`` folder
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
@@ -127,7 +127,7 @@ The configuration of NAMD is done via a text file located at the ``arch`` folder
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-icc
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
@@ -142,7 +142,7 @@ The configuration of NAMD is done via a text file located at the ``arch`` folder
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
