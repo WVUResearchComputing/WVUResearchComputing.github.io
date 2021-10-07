@@ -222,7 +222,7 @@ To compile NAMD, the corresponding building folder must be created via the confi
   ./config Linux-x86_64-ofi-icc --charm-arch ofi-linux-x86_64-ifort-icc
   ./config Linux-x86_64-ofi-smp-icc --charm-arch ofi-linux-x86_64-ifort-smp-icc
 
-Now we can go inside each folder and compile the code with ``make``. To speed up the compilation, 16 execution lines will be used::
+Now we can go inside each folder and compile the code with ``make``. To speed up the compilation, 12 execution lines will be used::
 
   cd Linux-x86_64-mpi-mpicxx
   make -j12
@@ -314,97 +314,143 @@ From the NAMD source folder the following command will fix that for the 4 binari
 
   execstack -c Linux-x86_64-*/namd2
 
-Testing NAMD2
--------------
+Quick test NAMD2 for Alanin
+---------------------------
 
-Now we can start testing the 4 binaries. NAMD offers a very small case for testing on ``src/alanin``. Execute NAMD on each folder to test the binary::
+Now we can start testing the 4 binaries of ``namd2``. 
+NAMD offers a very small case for testing on ``src/alanin``. 
+Execute NAMD on each folder to test the binary. 
+Notice that for the SMP binaries a couple of extra arguments are needed::
 
-  cd Linux-x86_64-mpi-mpicxx
-  ./charmrun ++local +p2 ./namd2 src/alanin
-  cd ..
+    cd Linux-x86_64-mpi-mpicxx 
+    ./charmrun ++local +p2 ./namd2 src/alanin
+    cd ..
+    cd Linux-x86_64-ofi-icc
+    ./charmrun ++local +p2 ./namd2 src/alanin
+    cd ..
+    cd Linux-x86_64-mpi-smp-mpicxx
+    ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2 +setcpuaffinity
+    cd ..
+    cd Linux-x86_64-ofi-smp-icc
+    ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2 +setcpuaffinity
+    cd ..
 
-The output will be similar to this::
+The MPI-based non-SMP binary is executed as follows::
 
-  Running on 2 processors:  ./namd2 src/alanin
-  charmrun>  /usr/bin/setarch x86_64 -R  mpirun -np 2  ./namd2 src/alanin
-  Charm++> Running on MPI version: 3.1
-  Charm++> level of thread support used: MPI_THREAD_SINGLE (desired: MPI_THREAD_SINGLE)
-  Charm++> Running in non-SMP mode: 2 processes (PEs)
-  Charm++> Using recursive bisection (scheme 3) for topology aware partitions
-  Converse/Charm++ Commit ID: v6.10.0-rc2-9-g717093c-namd-charm-6.10.0-build-2019-Oct-31-14158
-  Charm++> MPI timer is synchronized
-  CharmLB> Load balancer assumes all CPUs are same.
-  Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
-  Charm++> cpu topology info is gathered in 0.001 seconds.
-  Info: NAMD Git-2019-12-20 for Linux-x86_64-MPI
-  ...
+    $ ./charmrun ++local +p2 ./namd2 src/alanin
 
-For the next binary we need to set number of worker threads per process to match available cores, reserving one core per process for communication thread.
-The argument ``++ppn N`` must be declared after the executable ``./namd2`` and the minimal value is 2 meaning 1 communication + 1 execution thread::
+    Running on 2 processors:  ./namd2 src/alanin                                    
+    charmrun>  /bin/setarch x86_64 -R  mpirun -np 2  ./namd2 src/alanin 
+    Charm++> Running on MPI version: 3.1                                                                                                                            
+    Charm++> level of thread support used: MPI_THREAD_SINGLE (desired: MPI_THREAD_SINGLE)
+    Charm++> Running in non-SMP mode: 2 processes (PEs)                             
+    Charm++> Using recursive bisection (scheme 3) for topology aware partitions                                                                                     
+    Converse/Charm++ Commit ID: v6.10.2-0-g7bf00fa-namd-charm-6.10.2-build-2020-Aug-05-556
+    CharmLB> Load balancer assumes all CPUs are same.
+    Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)                                                                                         
+    Charm++> cpu topology info is gathered in 0.001 seconds.                        
+    Info: NAMD Git-2021-10-05 for Linux-x86_64-MPI                                  
+    ...
 
-  cd Linux-x86_64-mpi-smp-mpicxx
-  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2
-  cd ..
+The OFI non-SMP binaries can be tested in a similar way::
 
-The output looks like this::
+	$ ./charmrun ++local +p2 ./namd2 src/alanin 
+																					
+	Running on 2 processors:  ./namd2 src/alanin                                                                                                                    
+	charmrun>  /bin/setarch x86_64 -R  mpirun -np 2  ./namd2 src/alanin             
+	Charm++>ofi> provider: psm2                                                     
+	Charm++>ofi> control progress: 2                                                                                                                                
+	Charm++>ofi> data progress: 2                                                   
+	Charm++>ofi> maximum inject message size: 64                                    
+	Charm++>ofi> eager maximum message size: 65536 (maximum header size: 40)        
+	Charm++>ofi> cq entries count: 8                                                
+	Charm++>ofi> use inject: 1                                                      
+	Charm++>ofi> maximum rma size: 4294963200                                       
+	Charm++>ofi> mr mode: 0x1                                                                                                                                       
+	Charm++>ofi> use memory pool: 0                                                 
+	Charm++>ofi> use request cache: 0                                               
+	Charm++>ofi> number of pre-allocated recvs: 8                                                                                                                   
+	Charm++>ofi> exchanging addresses over OFI                                      
+	Charm++> Running in non-SMP mode: 2 processes (PEs)                             
+	Charm++> Using recursive bisection (scheme 3) for topology aware partitions                                                                                     
+	Converse/Charm++ Commit ID: v6.10.2-0-g7bf00fa-namd-charm-6.10.2-build-2020-Aug-05-556
+	CharmLB> Load balancer assumes all CPUs are same.
+	Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)                                                                                         
+	Charm++> cpu topology info is gathered in 0.001 seconds.                        
+	Info: NAMD Git-2021-10-05 for Linux-x86_64-ofi                                  
+	...
 
-  Running on 1 processors:  ./namd2 src/alanin ++ppn2
-  charmrun>  /usr/bin/setarch x86_64 -R  mpirun -np 1  ./namd2 src/alanin ++ppn2
-  Charm++> Running on MPI version: 3.1
-  Charm++> level of thread support used: MPI_THREAD_FUNNELED (desired: MPI_THREAD_FUNNELED)
-  Charm++> Running in SMP mode: 1 processes, 2 worker threads (PEs) + 1 comm threads per process, 2 PEs total
-  Charm++> The comm. thread both sends and receives messages
-  Charm++> Using recursive bisection (scheme 3) for topology aware partitions
-  Converse/Charm++ Commit ID: v6.10.0-rc2-9-g717093c-namd-charm-6.10.0-build-2019-Oct-31-14158
-  Charm++ communication thread will sleep due to single-process run.
-  CharmLB> Load balancer assumes all CPUs are same.
-  Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
-  Charm++> cpu topology info is gathered in 0.001 seconds.
-  Info: NAMD Git-2019-12-20 for Linux-x86_64-MPI-smp
-  ...
+The SMP binaries are special in the arguments needed to run.
+The binary at ``Linux-x86_64-mpi-smp-mpicxx`` needs at least an extra argument ``++ppn``::
 
-The OFI binaries can be tested in a similar way::
+	$ ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2 
+																			
+	Running on 1 processors:  ./namd2 src/alanin ++ppn2                             
+	charmrun>  /bin/setarch x86_64 -R  mpirun -np 1  ./namd2 src/alanin ++ppn2      
+	Charm++> Running on MPI version: 3.1                                                                                                                            
+	Charm++> level of thread support used: MPI_THREAD_FUNNELED (desired: MPI_THREAD_FUNNELED)
+	Charm++> Running in SMP mode: 1 processes, 2 worker threads (PEs) + 1 comm threads per process, 2 PEs total
+	Charm++> The comm. thread both sends and receives messages                                                                                                      
+	Charm++> Using recursive bisection (scheme 3) for topology aware partitions     
+	Converse/Charm++ Commit ID: v6.10.2-0-g7bf00fa-namd-charm-6.10.2-build-2020-Aug-05-556
+	Charm++ communication thread will sleep due to single-process run.                                                                                              
+	CharmLB> Load balancer assumes all CPUs are same.                               
+	Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
+	Charm++> cpu topology info is gathered in 0.001 seconds.                                                                                                        
+	Info: NAMD Git-2021-10-05 for Linux-x86_64-MPI-smp                              
+	...
 
-  cd ../Linux-x86_64-ofi-icc
-  ./charmrun ++local +p2 ./namd2 src/alanin
-  cd ..
+The OFI SMP binaries ``Linux-x86_64-ofi-smp-icc`` needs ``+setcpuaffinity`` because at least one thread for communication and that will oversubscribe the number of worker processes plus one communication thread::
 
-The output being like this::
+	$ ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2 +setcpuaffinity       
+																					
+	Running on 1 processors:  ./namd2 src/alanin ++ppn2 +setcpuaffinity             
+	charmrun>  /bin/setarch x86_64 -R  mpirun -np 1  ./namd2 src/alanin ++ppn2 +setcpuaffinity                                                                      
+	Charm++>ofi> provider: psm2                                                                                                                                     
+	Charm++>ofi> control progress: 2
+	Charm++>ofi> data progress: 2
+	Charm++>ofi> maximum inject message size: 64
+	Charm++>ofi> eager maximum message size: 65536 (maximum header size: 40)
+	Charm++>ofi> cq entries count: 8
+	Charm++>ofi> use inject: 1
+	Charm++>ofi> maximum rma size: 4294963200
+	Charm++>ofi> mr mode: 0x1
+	Charm++>ofi> use memory pool: 0
+	Charm++>ofi> use request cache: 0
+	Charm++>ofi> number of pre-allocated recvs: 8
+	Charm++>ofi> exchanging addresses over OFI
+	Charm++> Running in SMP mode: 1 processes, 2 worker threads (PEs) + 1 comm threads per process, 2 PEs total
+	Charm++> The comm. thread both sends and receives messages
+	Charm++> Using recursive bisection (scheme 3) for topology aware partitions
+	Converse/Charm++ Commit ID: v6.10.2-0-g7bf00fa-namd-charm-6.10.2-build-2020-Aug-05-556
+	Charm++ communication thread will sleep due to single-process run.
+	CharmLB> Load balancer assumes all CPUs are same.
+	Charm++> cpu affinity enabled. 
+	Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
+	Charm++> cpu topology info is gathered in 0.013 seconds.
+	Info: NAMD Git-2021-10-05 for Linux-x86_64-ofi-smp
+	...
 
-  Running on 2 processors:  ./namd2 src/alanin
-  charmrun>  /usr/bin/setarch x86_64 -R  mpirun -np 2  ./namd2 src/alanin
-  Charm++>ofi> provider: psm2
-  Charm++>ofi> control progress: 2
-  Charm++>ofi> data progress: 2
-  Charm++>ofi> maximum inject message size: 64
-  Charm++>ofi> eager maximum message size: 65536 (maximum header size: 40)
-  Charm++>ofi> cq entries count: 8
-  Charm++>ofi> use inject: 1
-  Charm++>ofi> maximum rma size: 4294967295
-  Charm++>ofi> mr mode: 0x1
-  Charm++>ofi> use memory pool: 0
-  Charm++>ofi> use request cache: 0
-  Charm++>ofi> number of pre-allocated recvs: 8
-  Charm++>ofi> exchanging addresses over OFI
-  Charm++> Running in non-SMP mode: 2 processes (PEs)
-  Charm++> Using recursive bisection (scheme 3) for topology aware partitions
-  Converse/Charm++ Commit ID: v6.10.0-rc2-9-g717093c-namd-charm-6.10.0-build-2019-Oct-31-14158
-  CharmLB> Load balancer assumes all CPUs are same.
-  Charm++> Running on 1 hosts (2 sockets x 12 cores x 2 PUs = 48-way SMP)
-  Charm++> cpu topology info is gathered in 0.001 seconds.
-  Info: NAMD Git-2019-12-20 for Linux-x86_64-ofi
-  ...
-
-The final binary is tested::
-
-  cd Linux-x86_64-ofi-smp-icc
-  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn 2 +setcpuaffinity
-  cd ..
-
-The extra argument is needed as multiple PEs get assigned to same core. Setting +setcpuaffinity will prevent that.
+The extra argument is needed as multiple PEs get assigned to same core.
+Setting +setcpuaffinity will prevent that.
 
 You should not pay much attention to timings for this case. The purpose of the executions above is to proof than NAMD works at least for a simple execution.
-We will now move into which configuration perform better.
+The memory used start showing important changes between the 4 binaries::
+
+	11:52:06-build@trcis001:/shared/src/NAMD_Git-2021-10-05_Source/Linux-x86_64-mpi-mpicxx$ 
+	WallClock: 0.018382  CPUTime: 0.018382  Memory: 4145.171875 MB
+
+	11:52:20-build@trcis001:/shared/src/NAMD_Git-2021-10-05_Source/Linux-x86_64-ofi-icc$
+	WallClock: 0.019521  CPUTime: 0.016802  Memory: 318.988281 MB
+
+	11:52:11-build@trcis001:/shared/src/NAMD_Git-2021-10-05_Source/Linux-x86_64-mpi-smp-mpicxx$
+	WallClock: 0.019347  CPUTime: 0.015666  Memory: 2610.667969 MB
+
+	11:52:01-build@trcis001:/shared/src/NAMD_Git-2021-10-05_Source/Linux-x86_64-ofi-smp-icc$
+	WallClock: 0.064102  CPUTime: 0.028695  Memory: 458.476562 MB
+
+The OFI binaries use less memory than the MPI versions. 
+The SMP versions use less memory than the non-SMP versions but the difference is lower compared with the OFI vs MPI binaries.
 
 Script summarizing compilation of NAMD
 --------------------------------------
@@ -413,7 +459,7 @@ The next script execute all steps above::
 
   #!/bin/bash
 
-  VERSION=2020-01-02
+  VERSION=2021-10-06
 
   if [ ! -f NAMD_Git-${VERSION}_Source.tar.gz ]
   then
@@ -426,32 +472,31 @@ The next script execute all steps above::
   fi
 
   cd NAMD_Git-${VERSION}_Source/
-  if  [ ! -d charm-6.10.0-pre ]
+  if  [ ! -d charm-6.10.2 ]
   then
-      tar -xvf charm-6.10.0-pre.tar
+      tar -xvf charm-6.10.2.tar
   fi
-  cd charm-6.10.0-pre
+  cd charm-6.10.2
 
-  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort -j16 --with-production
-  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort smp -j16 --with-production
-  ./build charm++ ofi-linux-x86_64 icc ifort -j16 --with-production
-  ./build charm++ ofi-linux-x86_64 icc ifort smp -j16 --with-production
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort -j12 --with-production
+  MPICXX=mpiicpc ./build charm++ mpi-linux-x86_64 mpicxx ifort smp -j12 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort -j12 --with-production
+  ./build charm++ ofi-linux-x86_64 icc ifort smp -j12 --with-production
 
   cd mpi-linux-x86_64-ifort-mpicxx/tests/charm++
-  make clean && make && make test
-  cd ../../..
+  make clean && make && cd megatest && make && make test
+  cd ../../../..
   cd mpi-linux-x86_64-ifort-smp-mpicxx/tests/charm++
-  make clean && make && make test
-  cd ../../..
+  make clean && make && cd megatest && make && make test
+  cd ../../../..
   cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
-  make clean && make && make test
-  cd ../../..
+  make clean && make && cd megatest && make && make test
+  cd ../../../..
   cd ofi-linux-x86_64-ifort-icc/tests/charm++
-  make clean && make && make test
-  cd ../../..
+  make clean && make && cd megatest && make && make test
+  cd ../../../..
   cd ofi-linux-x86_64-ifort-smp-icc/tests/charm++
-  make clean && make
-  cd megatest && make && make test
+  make clean && make && cd megatest && make && make test
   cd ../../../..
 
   cd ..
@@ -466,14 +511,13 @@ The next script execute all steps above::
   mv tcl8.5.9-linux-x86_64 tcl
   mv tcl8.5.9-linux-x86_64-threaded tcl-threaded
 
-
-  ln -s charm-6.10.0-pre charm
+  ln -s charm-6.10.2 charm
 
   cat << EOF > arch/Linux-x86_64-mpi-mpicxx.arch
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-mpicxx
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
@@ -488,7 +532,7 @@ The next script execute all steps above::
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = mpi-linux-x86_64-ifort-smp-mpicxx
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
@@ -503,7 +547,7 @@ The next script execute all steps above::
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-icc
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
@@ -518,7 +562,7 @@ The next script execute all steps above::
   NAMD_ARCH = Linux-x86_64
   CHARMARCH = ofi-linux-x86_64-ifort-smp-icc
 
-  FLOATOPTS = -ip -xSKYLAKE-AVX512 -qopenmp-simd
+  FLOATOPTS = -ip -axSKYLAKE-AVX512,CASCADELAKE -qopenmp-simd
 
   CXX = icpc -std=c++11
   CXXOPTS = -O2 \$(FLOATOPTS)
@@ -535,16 +579,16 @@ The next script execute all steps above::
   ./config Linux-x86_64-ofi-smp-icc --charm-arch ofi-linux-x86_64-ifort-smp-icc
 
   cd Linux-x86_64-mpi-mpicxx
-  make -j16
+  make -j12
   cd ..
   cd Linux-x86_64-mpi-smp-mpicxx
-  make -j16
+  make -j12
   cd ..
   cd Linux-x86_64-ofi-icc
-  make -j16
+  make -j12
   cd ..
   cd Linux-x86_64-ofi-smp-icc
-  make -j16
+  make -j12
   cd ..
 
   execstack -c Linux-x86_64-*/namd2
@@ -565,7 +609,7 @@ The next script execute all steps above::
   cd ..
 
   cd Linux-x86_64-ofi-smp-icc
-  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn 2 +setcpuaffinity
+  ./charmrun ++local +p2 ./namd2 src/alanin ++ppn2 +setcpuaffinity
   make release
   cd ..
 
@@ -632,37 +676,47 @@ Our next step is to move the execution to an isolated compute node where the tim
 
 To do this lets request an interactive execution on an isolated node::
 
-  qsub -q debug -l nodes=1:ppn=1,pvmem=90g -n -I
+  qsub -I -n -l nodes=1:ppn=40
 
-Once you log into the compute node, load clean your modules and load the Intel 2019::
+Once you log into the compute node, load clean your modules and load the Intel Compilers 2021::
 
   module purge
-  module load lang/intel/2019
+  module load compiler/2021.2.0 mpi/2021.2.0 mkl/2021.2.0
 
-The following script can be used to execute 4 versions of NAMD under the same conditions multiple times to gather a more precise timing. The first execution will be larger due to NAMD computing the FFT parameter optimization::
+The following script can be used to execute 4 versions of NAMD under the same conditions multiple times to gather a more precise timing. 
+The first execution will be larger due to NAMD computing the FFT parameter optimization.
 The script could be called ``runtests.sh``::
 
-  #!/bin/bash
+	#!/bin/bash
 
-  for i in 0 1 2 3
-  do
-  ../Linux-x86_64-mpi-mpicxx/charmrun +p20 ../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd > mpi_$i.dat
-  done
+	for j in 2 4 8 10 20 40
+	do
 
-  for i in 0 1 2 3
-  do
-  ../Linux-x86_64-mpi-smp-mpicxx/charmrun +p20 ../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 > mpi_smp_$i.dat
-  done
+	for i in 0 1 2 3
+	do
+		echo Linux-x86_64-mpi-mpicxx ${j} ${i}
+		../Linux-x86_64-mpi-mpicxx/charmrun +p$j ../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd > mpi_${j}_${i}.dat
+	done
 
-  for i in 0 1 2 3
-  do
-  ../Linux-x86_64-ofi-icc/charmrun +p20 ../Linux-x86_64-ofi-icc/namd2 apoa1.namd > ofi_$i.dat
-  done
+	for i in 0 1 2 3
+	do
+		echo Linux-x86_64-mpi-smp-mpicxx ${j} ${i}
+		../Linux-x86_64-mpi-smp-mpicxx/charmrun +p$j ../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 > mpi_smp_${j}_${i}.dat
+	done
 
-  for i in 0 1 2 3
-  do
-  ../Linux-x86_64-ofi-smp-icc/charmrun +p20 ../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 > ofi_smp_$i.dat
-  done
+	for i in 0 1 2 3
+	do
+		echo Linux-x86_64-ofi-icc ${j} ${i}
+		../Linux-x86_64-ofi-icc/charmrun +p$j ../Linux-x86_64-ofi-icc/namd2 apoa1.namd > ofi_${j}_${i}.dat
+	done
+
+	for i in 0 1 2 3
+	do
+		echo Linux-x86_64-ofi-smp-icc ${j} ${i}
+		../Linux-x86_64-ofi-smp-icc/charmrun +p$j ../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 +setcpuaffinity > ofi_smp_${j}_${i}.dat
+	done
+
+	done
 
 The script can be executed like this::
 
@@ -719,12 +773,9 @@ These preliminar results shows and small advantage for the non-smp versions over
 
 More significant for measuring the performance of NAMD for large systems comes from the STMV benchmark (1,066,628 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps)
 
-Download the code from::
+Download the input for the STMV benchmark, untar and uncompress the package and move into the folder::
 
   wget https://www.ks.uiuc.edu/Research/namd/utilities/stmv.tar.gz
-
-Untar and uncompress the package and move into the folder::
-
   tar -zxvf stmv.tar.gz
   cd stmv
 
