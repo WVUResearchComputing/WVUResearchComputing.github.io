@@ -688,29 +688,30 @@ The first execution will be larger due to NAMD computing the FFT parameter optim
 The script could be called ``run_apoa1.sh``::
 
 
-	#!/bin/bash
+    #!/bin/bash
 
-	for j in 2 4 8 10 20 40
-	do
+    for j in 2 4 8 10 20 40
+    do
 
-		for i in 0 1 2 3
-		do
+    for i in 0 1 2 3
+    do
 
-			echo Linux-x86_64-mpi-mpicxx ${j} ${i}
-			../Linux-x86_64-mpi-mpicxx/charmrun +p$j \
-				../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd > mpi_${j}_${i}.dat
-			echo Linux-x86_64-mpi-smp-mpicxx ${j} ${i}
-			../Linux-x86_64-mpi-smp-mpicxx/charmrun +p$j \
-				../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 > mpi_smp_${j}_${i}.dat
-			echo Linux-x86_64-ofi-icc ${j} ${i}
-			../Linux-x86_64-ofi-icc/charmrun +p$j \
-				../Linux-x86_64-ofi-icc/namd2 apoa1.namd > ofi_${j}_${i}.dat
-			echo Linux-x86_64-ofi-smp-icc ${j} ${i}
-			../Linux-x86_64-ofi-smp-icc/charmrun +p$j \
-				../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 +setcpuaffinity > ofi_smp_${j}_${i}.dat
-		done
+    echo Linux-x86_64-mpi-mpicxx ${j} ${i}
+    ../Linux-x86_64-mpi-mpicxx/charmrun +p$j \
+        ../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd > mpi_${j}_${i}.dat
+    echo Linux-x86_64-mpi-smp-mpicxx ${j} ${i}
+    ../Linux-x86_64-mpi-smp-mpicxx/charmrun +p$j \
+        ../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 > mpi_smp_${j}_${i}.dat
+    echo Linux-x86_64-ofi-icc ${j} ${i}
+    ../Linux-x86_64-ofi-icc/charmrun +p$j \
+        ../Linux-x86_64-ofi-icc/namd2 apoa1.namd > ofi_${j}_${i}.dat
+    echo Linux-x86_64-ofi-smp-icc ${j} ${i}
+    ../Linux-x86_64-ofi-smp-icc/charmrun +p$j \
+        ../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 +setcpuaffinity > ofi_smp_${j}_${i}.dat
 
-	done
+    done
+
+    done
 
 The script can be executed like this::
 
