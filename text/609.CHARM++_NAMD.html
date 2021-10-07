@@ -864,22 +864,23 @@ The script could be called <code class="docutils literal notranslate"><span clas
 for j in 2 4 8 10 20 40
 do
 
-        for i in 0 1 2 3
-        do
+for i in 0 1 2 3
+do
 
-                echo Linux-x86_64-mpi-mpicxx ${j} ${i}
-                ../Linux-x86_64-mpi-mpicxx/charmrun +p$j \
-                        ../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd &gt; mpi_${j}_${i}.dat
-                echo Linux-x86_64-mpi-smp-mpicxx ${j} ${i}
-                ../Linux-x86_64-mpi-smp-mpicxx/charmrun +p$j \
-                        ../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 &gt; mpi_smp_${j}_${i}.dat
-                echo Linux-x86_64-ofi-icc ${j} ${i}
-                ../Linux-x86_64-ofi-icc/charmrun +p$j \
-                        ../Linux-x86_64-ofi-icc/namd2 apoa1.namd &gt; ofi_${j}_${i}.dat
-                echo Linux-x86_64-ofi-smp-icc ${j} ${i}
-                ../Linux-x86_64-ofi-smp-icc/charmrun +p$j \
-                        ../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 +setcpuaffinity &gt; ofi_smp_${j}_${i}.dat
-        done
+echo Linux-x86_64-mpi-mpicxx ${j} ${i}
+../Linux-x86_64-mpi-mpicxx/charmrun +p$j \
+    ../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd &gt; mpi_${j}_${i}.dat
+echo Linux-x86_64-mpi-smp-mpicxx ${j} ${i}
+../Linux-x86_64-mpi-smp-mpicxx/charmrun +p$j \
+    ../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 &gt; mpi_smp_${j}_${i}.dat
+echo Linux-x86_64-ofi-icc ${j} ${i}
+../Linux-x86_64-ofi-icc/charmrun +p$j \
+    ../Linux-x86_64-ofi-icc/namd2 apoa1.namd &gt; ofi_${j}_${i}.dat
+echo Linux-x86_64-ofi-smp-icc ${j} ${i}
+../Linux-x86_64-ofi-smp-icc/charmrun +p$j \
+    ../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 +setcpuaffinity &gt; ofi_smp_${j}_${i}.dat
+
+done
 
 done
 </pre></div>
