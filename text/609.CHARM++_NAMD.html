@@ -858,41 +858,34 @@ ApoA1 benchmark (92,224 atoms, periodic; 2fs timestep with rigid bonds, 12A cuto
 </div>
 <p>The following script can be used to execute 4 versions of NAMD under the same conditions multiple times to gather a more precise timing.
 The first execution will be larger due to NAMD computing the FFT parameter optimization.
-The script could be called <code class="docutils literal notranslate"><span class="pre">runtests.sh</span></code>:</p>
+The script could be called <code class="docutils literal notranslate"><span class="pre">run_apoa1.sh</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 for j in 2 4 8 10 20 40
 do
 
-for i in 0 1 2 3
-do
-        echo Linux-x86_64-mpi-mpicxx ${j} ${i}
-        ../Linux-x86_64-mpi-mpicxx/charmrun +p$j ../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd &gt; mpi_${j}_${i}.dat
-done
+        for i in 0 1 2 3
+        do
 
-for i in 0 1 2 3
-do
-        echo Linux-x86_64-mpi-smp-mpicxx ${j} ${i}
-        ../Linux-x86_64-mpi-smp-mpicxx/charmrun +p$j ../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 &gt; mpi_smp_${j}_${i}.dat
-done
-
-for i in 0 1 2 3
-do
-        echo Linux-x86_64-ofi-icc ${j} ${i}
-        ../Linux-x86_64-ofi-icc/charmrun +p$j ../Linux-x86_64-ofi-icc/namd2 apoa1.namd &gt; ofi_${j}_${i}.dat
-done
-
-for i in 0 1 2 3
-do
-        echo Linux-x86_64-ofi-smp-icc ${j} ${i}
-        ../Linux-x86_64-ofi-smp-icc/charmrun +p$j ../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 +setcpuaffinity &gt; ofi_smp_${j}_${i}.dat
-done
+                echo Linux-x86_64-mpi-mpicxx ${j} ${i}
+                ../Linux-x86_64-mpi-mpicxx/charmrun +p$j \
+                        ../Linux-x86_64-mpi-mpicxx/namd2 apoa1.namd &gt; mpi_${j}_${i}.dat
+                echo Linux-x86_64-mpi-smp-mpicxx ${j} ${i}
+                ../Linux-x86_64-mpi-smp-mpicxx/charmrun +p$j \
+                        ../Linux-x86_64-mpi-smp-mpicxx/namd2 apoa1.namd ++ppn2 &gt; mpi_smp_${j}_${i}.dat
+                echo Linux-x86_64-ofi-icc ${j} ${i}
+                ../Linux-x86_64-ofi-icc/charmrun +p$j \
+                        ../Linux-x86_64-ofi-icc/namd2 apoa1.namd &gt; ofi_${j}_${i}.dat
+                echo Linux-x86_64-ofi-smp-icc ${j} ${i}
+                ../Linux-x86_64-ofi-smp-icc/charmrun +p$j \
+                        ../Linux-x86_64-ofi-smp-icc/namd2 apoa1.namd ++ppn2 +setcpuaffinity &gt; ofi_smp_${j}_${i}.dat
+        done
 
 done
 </pre></div>
 </div>
 <p>The script can be executed like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_apoa1</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>The timings are stored on the output of each execution and can be extracted like this:</p>
