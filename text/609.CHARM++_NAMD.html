@@ -889,6 +889,7 @@ done
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_apoa1</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
+<p>&lt;!–</p>
 <p>The timings are stored on the output of each execution and can be extracted like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">40</span><span class="n">core_mpi_smp_10_0</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.227570</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.259064</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4688.945312</span> <span class="n">MB</span>
 <span class="mi">40</span><span class="n">core_mpi_smp_10_1</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">155.695709</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">123.160561</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4676.308594</span> <span class="n">MB</span>
@@ -936,7 +937,14 @@ done
 <span class="n">mpi_80_3</span><span class="o">.</span><span class="n">dat</span><span class="p">:</span><span class="n">WallClock</span><span class="p">:</span> <span class="mf">80.146004</span>  <span class="n">CPUTime</span><span class="p">:</span> <span class="mf">80.146004</span>  <span class="n">Memory</span><span class="p">:</span> <span class="mf">4639.136719</span> <span class="n">MB</span>
 </pre></div>
 </div>
+<p>–&gt;</p>
 <p>These preliminar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.</p>
+<div class="figure">
+<img alt="apoa1_bench.png" src="../_images/apoa1_bench.png" />
+</div>
+<p>From the figure above we can see that the MPI versions consume more memory as we increase the number of cores.
+The scaling is computed based on the calculation for 2 cores as reference.
+Notice that there is an small advantage for the non-SMP versions (MPI and OFI) and with a high penalty for the 40 core case with scaling under 25%.</p>
 <p>More significant for measuring the performance of NAMD for large systems comes from the STMV benchmark (1,066,628 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps)</p>
 <p>Download the input for the STMV benchmark, untar and uncompress the package and move into the folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">utilities</span><span class="o">/</span><span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>

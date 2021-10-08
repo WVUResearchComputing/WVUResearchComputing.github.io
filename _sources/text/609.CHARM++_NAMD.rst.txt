@@ -717,6 +717,8 @@ The script can be executed like this::
 
    ./run_apoa1.sh
 
+<!-- 
+
 The timings are stored on the output of each execution and can be extracted like this::
 
   40core_mpi_smp_10_0.dat:WallClock: 155.227570  CPUTime: 123.259064  Memory: 4688.945312 MB
@@ -764,7 +766,16 @@ The timings are stored on the output of each execution and can be extracted like
   mpi_80_2.dat:WallClock: 80.023216  CPUTime: 80.023216  Memory: 4635.136719 MB
   mpi_80_3.dat:WallClock: 80.146004  CPUTime: 80.146004  Memory: 4639.136719 MB
 
+-->
+
 These preliminar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.
+
+.. figure:: /_static/apoa1_bench.png
+    :alt: apoa1_bench.png
+
+From the figure above we can see that the MPI versions consume more memory as we increase the number of cores.
+The scaling is computed based on the calculation for 2 cores as reference. 
+Notice that there is an small advantage for the non-SMP versions (MPI and OFI) and with a high penalty for the 40 core case with scaling under 25%.
 
 More significant for measuring the performance of NAMD for large systems comes from the STMV benchmark (1,066,628 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps)
 
