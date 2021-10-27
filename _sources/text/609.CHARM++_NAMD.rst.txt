@@ -717,64 +717,12 @@ The script can be executed like this::
 
    ./run_apoa1.sh
 
-<!-- 
-
-The timings are stored on the output of each execution and can be extracted like this::
-
-  40core_mpi_smp_10_0.dat:WallClock: 155.227570  CPUTime: 123.259064  Memory: 4688.945312 MB
-  40core_mpi_smp_10_1.dat:WallClock: 155.695709  CPUTime: 123.160561  Memory: 4676.308594 MB
-  40core_mpi_smp_10_2.dat:WallClock: 155.656311  CPUTime: 122.411018  Memory: 4669.125000 MB
-  40core_mpi_smp_10_3.dat:WallClock: 155.610092  CPUTime: 123.485626  Memory: 4674.390625 MB
-  40core_mpi_smp_20_0.dat:WallClock: 149.466599  CPUTime: 121.044876  Memory: 6597.683594 MB
-  40core_mpi_smp_20_1.dat:WallClock: 150.627670  CPUTime: 121.731064  Memory: 6579.105469 MB
-  40core_mpi_smp_20_2.dat:WallClock: 151.018372  CPUTime: 121.831726  Memory: 6570.664062 MB
-  40core_mpi_smp_20_3.dat:WallClock: 150.703796  CPUTime: 120.617912  Memory: 6580.136719 MB
-  40core_mpi_smp_2_0.dat:WallClock: 304.661163  CPUTime: 165.003647  Memory: 4063.429688 MB
-  40core_mpi_smp_2_1.dat:WallClock: 261.148773  CPUTime: 127.608749  Memory: 4061.234375 MB
-  40core_mpi_smp_2_2.dat:WallClock: 267.194000  CPUTime: 125.475502  Memory: 4048.324219 MB
-  40core_mpi_smp_2_3.dat:WallClock: 263.977295  CPUTime: 128.551437  Memory: 4067.074219 MB
-  40core_mpi_smp_40_0.dat:WallClock: 136.069626  CPUTime: 124.950996  Memory: 8210.808594 MB
-  40core_mpi_smp_40_1.dat:WallClock: 136.036179  CPUTime: 125.778336  Memory: 8210.804688 MB
-  40core_mpi_smp_40_2.dat:WallClock: 136.111237  CPUTime: 123.779816  Memory: 8210.804688 MB
-  40core_mpi_smp_40_3.dat:WallClock: 136.662827  CPUTime: 126.436882  Memory: 8211.011719 MB
-  40core_mpi_smp_5_0.dat:WallClock: 170.709076  CPUTime: 121.197380  Memory: 4060.437500 MB
-  40core_mpi_smp_5_1.dat:WallClock: 170.846603  CPUTime: 122.806618  Memory: 4060.964844 MB
-  40core_mpi_smp_5_2.dat:WallClock: 170.953751  CPUTime: 122.650635  Memory: 4060.734375 MB
-  40core_mpi_smp_5_3.dat:WallClock: 171.682648  CPUTime: 122.736526  Memory: 4060.371094 MB
-  mpi_120_0.dat:WallClock: 97.641594  CPUTime: 97.641594  Memory: 4637.144531 MB
-  mpi_120_1.dat:WallClock: 56.845337  CPUTime: 56.845337  Memory: 4641.140625 MB
-  mpi_120_2.dat:WallClock: 57.044777  CPUTime: 57.044777  Memory: 4639.140625 MB
-  mpi_120_3.dat:WallClock: 57.095589  CPUTime: 57.095585  Memory: 4639.140625 MB
-  mpi_160_0.dat:WallClock: 87.904030  CPUTime: 87.904030  Memory: 4673.871094 MB
-  mpi_160_1.dat:WallClock: 47.383121  CPUTime: 47.383121  Memory: 4640.863281 MB
-  mpi_160_2.dat:WallClock: 87.837677  CPUTime: 87.837677  Memory: 4631.820312 MB
-  mpi_160_3.dat:WallClock: 47.469536  CPUTime: 47.469536  Memory: 4638.867188 MB
-  mpi_200_0.dat:WallClock: 81.231453  CPUTime: 81.231453  Memory: 4639.152344 MB
-  mpi_200_1.dat:WallClock: 40.415939  CPUTime: 40.415939  Memory: 4612.089844 MB
-  mpi_200_2.dat:WallClock: 40.618484  CPUTime: 40.618484  Memory: 4614.089844 MB
-  mpi_200_3.dat:WallClock: 40.277576  CPUTime: 40.277576  Memory: 4680.089844 MB
-  mpi_20_0.dat:WallClock: 254.534271  CPUTime: 254.534271  Memory: 3908.117188 MB
-  mpi_20_1.dat:WallClock: 206.488068  CPUTime: 206.488068  Memory: 3907.054688 MB
-  mpi_20_2.dat:WallClock: 206.536240  CPUTime: 206.536240  Memory: 3908.660156 MB
-  mpi_20_3.dat:WallClock: 206.065628  CPUTime: 206.065628  Memory: 3852.343750 MB
-  mpi_40_0.dat:WallClock: 150.173309  CPUTime: 150.173309  Memory: 4824.882812 MB
-  mpi_40_1.dat:WallClock: 136.239975  CPUTime: 136.239975  Memory: 4822.230469 MB
-  mpi_40_2.dat:WallClock: 136.077591  CPUTime: 136.077591  Memory: 4824.234375 MB
-  mpi_40_3.dat:WallClock: 135.873062  CPUTime: 135.873062  Memory: 4822.234375 MB
-  mpi_80_0.dat:WallClock: 121.231468  CPUTime: 121.231468  Memory: 4637.136719 MB
-  mpi_80_1.dat:WallClock: 79.989479  CPUTime: 79.989479  Memory: 4637.136719 MB
-  mpi_80_2.dat:WallClock: 80.023216  CPUTime: 80.023216  Memory: 4635.136719 MB
-  mpi_80_3.dat:WallClock: 80.146004  CPUTime: 80.146004  Memory: 4639.136719 MB
-
--->
-
-These preliminar results shows and small advantage for the non-smp versions over the smp builds. More important, the OFI versions have much smaller memory utilization which could be of relevance for large executions.
-
 .. figure:: /_static/apoa1_bench.png
     :alt: apoa1_bench.png
 
-From the figure above we can see that the MPI versions consume more memory as we increase the number of cores.
-The scaling is computed based on the calculation for 2 cores as reference. 
+From the figure above we can see that the MPI versions consume more memory as we use more cores and the memory usage is larger compared with the OFI versions.
+For computing the strong scaling we use the timing for 2 cores as reference.
+The equation for strong scaling is t1/(tn*N) where t1 is the runtime for 1 core, tn is the time when N cores are used.
 Notice that there is an small advantage for the non-SMP versions (MPI and OFI) and with a high penalty for the 40 core case with scaling under 25%.
 
 More significant for measuring the performance of NAMD for large systems comes from the STMV benchmark (1,066,628 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps)
