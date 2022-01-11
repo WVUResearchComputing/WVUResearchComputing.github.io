@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Matlab N-D multithreaded matrix operations (MMX) &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Matlab N-D multithreaded matrix operations (MMX)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/613.Matlab_MMX.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="matlab-n-d-multithreaded-matrix-operations-mmx">
+<h1>Matlab N-D multithreaded matrix operations (MMX)<a class="headerlink" href="#matlab-n-d-multithreaded-matrix-operations-mmx" title="Permalink to this headline">¶</a></h1>
+<p>MMX is a Matlab plugin for N-D multithreaded matrix operations.
+The File Exchange page for it is:</p>
+<p><a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx?ue">https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx?ue</a></p>
+<p>The source code is hosted on Github:</p>
+<p><a class="reference external" href="https://github.com/yuvaltassa/mmx">https://github.com/yuvaltassa/mmx</a></p>
+<div class="section" id="download-the-code">
+<h2>Download the code<a class="headerlink" href="#download-the-code" title="Permalink to this headline">¶</a></h2>
+<p>The original code can be downloaded with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yuvaltassa</span><span class="o">/</span><span class="n">mmx</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>The original instructions for installing MMX does not work in general.
+MKL path is hardcoded and the name of the static MKL library is wrong.
+These instructions were created to help others to compile this Matlab plugin on Thorny Flat.
+That means that the names of environment modules and path for Intel MKL are specific for this cluster.
+However, the instructions are general enough so other people can compile this code on other
+computers, regardless of having superusers priviledges or not.</p>
+<p>We start by getting access to Matlab 2021a, the latest version installed on Thorny.
+Thorny Flat runs RHEL 7.x and the version of GCC is old (4.8), we have GCC 9.3 as the stable compiler on this cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2021</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>Other Linux machines could have recent versions of GCC supported by Matlab see this webpage to check which
+compilers are accepted.</p>
+<p><a class="reference external" href="https://www.mathworks.com/support/requirements/supported-compilers.html">https://www.mathworks.com/support/requirements/supported-compilers.html</a></p>
+<p>Recent versions of Matlab support GCC up to 9.x</p>
+<p>Download the code with the git command mentioned above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yuvaltassa</span><span class="o">/</span><span class="n">mmx</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Go to the folder <code class="docutils literal notranslate"><span class="pre">mmx/src</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mmx</span><span class="o">/</span><span class="n">src</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Enter in Matlab:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matlab</span>
+</pre></div>
+</div>
+<p>Execute the command build_mmx() (This command will fail):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">build_mmx</span><span class="p">()</span>
+
+<span class="n">Compilation</span> <span class="n">of</span> <span class="s1">&#39;mmx_mkl_single&#39;</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">error</span><span class="p">:</span>
+<span class="n">ls</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">access</span> <span class="o">*</span><span class="n">small_mkl_ilp64</span><span class="o">.*</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+
+<span class="o">==========</span>
+<span class="n">Trying</span> <span class="n">to</span> <span class="nb">compile</span> <span class="s1">&#39;mmx_mkl_multi&#39;</span><span class="p">,</span> <span class="n">using</span>
+<span class="n">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;\$CXXFLAGS -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64 &quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">lmwblas</span><span class="p">,</span> <span class="o">-</span><span class="n">lmwlapack</span><span class="p">,</span> <span class="o">-</span><span class="n">lpthread</span><span class="p">,</span> <span class="o">-</span><span class="n">DUNIX_SYSTEM</span><span class="p">,</span> <span class="o">-</span><span class="n">DUSE_BLAS</span><span class="p">,</span>
+<span class="n">Compilation</span> <span class="n">of</span> <span class="s1">&#39;mmx_mkl_multi&#39;</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">error</span><span class="p">:</span>
+<span class="n">Access</span> <span class="n">denied</span><span class="p">;</span> <span class="n">check</span> <span class="n">that</span> <span class="n">you</span> <span class="n">have</span> <span class="n">permissions</span> <span class="n">to</span> <span class="n">access</span> <span class="s1">&#39;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64&#39;</span><span class="o">.</span>
+<span class="o">==========</span>
+<span class="n">Trying</span> <span class="n">to</span> <span class="nb">compile</span> <span class="s1">&#39;mmx_naive&#39;</span><span class="p">,</span> <span class="n">using</span>
+<span class="o">-</span><span class="n">lpthread</span><span class="p">,</span> <span class="o">-</span><span class="n">DUNIX_SYSTEM</span><span class="p">,</span>
+<span class="n">Compilation</span> <span class="n">of</span> <span class="s1">&#39;mmx_naive&#39;</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">error</span><span class="p">:</span>
+<span class="n">Access</span> <span class="n">denied</span><span class="p">;</span> <span class="n">check</span> <span class="n">that</span> <span class="n">you</span> <span class="n">have</span> <span class="n">permissions</span> <span class="n">to</span> <span class="n">access</span> <span class="s1">&#39;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64&#39;</span><span class="o">.</span>
+<span class="o">&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="edit-the-building-script">
+<h2>Edit the building script<a class="headerlink" href="#edit-the-building-script" title="Permalink to this headline">¶</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">build_mmx.m</span></code>, adjust several lines of code to make it work.
+The differences are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ diff -u build_mmx.m /shared/software/matlab/r2021a/extern/lib/glnxa64/build_mmx.m
+--- build_mmx.m 2022-01-10 10:22:56.969414000 -0500
++++ /shared/software/matlab/r2021a/extern/lib/glnxa64/build_mmx.m       2022-01-09 10:19:34.160261000 -0500
+@@ -126,7 +126,7 @@
+                                link     = {&#39;mwblas&#39;,&#39;mwlapack&#39;,&#39;pthread&#39;};
+                                define   = {&#39;UNIX_SYSTEM&#39;,&#39;USE_BLAS&#39;};
+                         case &#39;mmx_mkl_single&#39;
+-               root = &#39;/opt/intel/mkl&#39;;
++               root = &#39;/shared/software/intel/2021.4/mkl/2021.4.0&#39;;
+                                inc_dir  = [ root &#39;/include&#39;];
+                                if strcmp(arch,&#39;glnx86&#39;)
+                                 link_dir  = [matlabroot &#39;/extern/lib/glnx86&#39;];
+@@ -134,7 +134,7 @@
+                                 define   = {&#39;UNIX_SYSTEM&#39;, &#39;USE_BLAS&#39;, &#39;MKL_32&#39;};
+                                else
+                                 link_dir  = [matlabroot &#39;/extern/lib/glnxa64&#39;];
+-                link     = {&#39;small_mkl_ilp64&#39;,&#39;pthread&#39;};
++                link     = {&#39;single_mkl_ilp64&#39;,&#39;pthread&#39;};
+                                 define   = {&#39;UNIX_SYSTEM&#39;, &#39;USE_BLAS&#39;, &#39;MKL_ILP64&#39;};
+                                end
+                  end
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-a-custom-mkl-library">
+<h2>Build a custom MKL library<a class="headerlink" href="#build-a-custom-mkl-library" title="Permalink to this headline">¶</a></h2>
+<p>Build the custom MKL library, first load module for Intel MKL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">mkl</span>
+</pre></div>
+</div>
+<p>Choose a folder to build the MKL custom library, it could be the same mmx/src folder and we will use it here
+Concatenate the list of Linear Algebra routines BLAS and LAPACK from MKL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat ${MKLROOT}/tools/builder/blas_example_list &gt; blas_lapack_list
+cat ${MKLROOT}/tools/builder/lapack_example_list &gt;&gt; blas_lapack_list
+</pre></div>
+</div>
+<p>Copy the makefile from the MKL builder folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cp ${MKLROOT}/tools/builder/makefile .
+</pre></div>
+</div>
+<p>And build the library from it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">libintel64</span> <span class="n">interface</span><span class="o">=</span><span class="n">ilp64</span> <span class="n">export</span><span class="o">=</span><span class="n">blas_lapack_list</span> <span class="n">name</span><span class="o">=</span><span class="n">libsingle_mkl_ilp64</span> <span class="n">threading</span><span class="o">=</span><span class="n">sequential</span>
+</pre></div>
+</div>
+<p>Verify that you have reach this step correctly by checking for the file <code class="docutils literal notranslate"><span class="pre">libsingle_mkl_ilp64.so</span></code></p>
+</div>
+<div class="section" id="compile-mmx">
+<h2>Compile MMX<a class="headerlink" href="#compile-mmx" title="Permalink to this headline">¶</a></h2>
+<p>Now we can compile mmx as a Matlab MEX file</p>
+<p>The output is extensive but illustrative of the 3 compilations of MMX that are done. build_mmx will try to compile from the most efficient to the simplest version.
+The first time it succeeds compiles the “official” mmx MEX library</p>
+<p>This is the complete output in verbose mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ matlab
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                                                              &lt; M A T L A B (R) &gt;
+                                                    Copyright 1984-2021 The MathWorks, Inc.
+                                                    R2021a (9.10.0.1602886) 64-bit (glnxa64)
+                                                               February 17, 2021
+
+
+To get started, type doc.
+For product information, visit www.mathworks.com.
+
+&gt;&gt; build_mmx(verbose=true)
+Error using build_mmx
+Too many input arguments.
+
+&gt;&gt; build_mmx(true)
+
+==========
+Trying to compile &#39;mmx_mkl_single&#39;, using
+-v, CXXFLAGS=&quot;\$CXXFLAGS -I/shared/software/intel/2021.4/mkl/2021.4.0/include &quot;, LDFLAGS=&quot;\$LDFLAGS -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64 &quot;, -lsingle_mkl_ilp64, -lpthread, -DUNIX_SYSTEM, -DUSE_BLAS, -DMKL_ILP64,
+Verbose mode is on.
+No MEX options file identified; looking for an implicit selection.
+... Looking for compiler &#39;g++&#39; ...
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Executing command &#39;g++ -print-file-name=libstdc++.so&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so&#39;).
+... Executing command &#39;g++ -dumpversion&#39; ...Yes (&#39;9.3.0&#39;).
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Looking for folder &#39;/shared/software/lang/gcc/9.3.0&#39; ...Yes.
+... Executing command &#39;g++ -dumpmachine&#39; ...Yes (&#39;x86_64-pc-linux-gnu&#39;).
+Found installed compiler &#39;g++&#39;.
+Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+Options file details
+-------------------------------------------------------------------
+    Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+    Options file: /gpfs20/shared/software/matlab/r2021a/bin/glnxa64/mexopts/g++_glnxa64.xml
+    CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
+    CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE
+    MATLABMEX : -DMATLAB_MEX_FILE
+    CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
+    CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include
+    INCLUDE : -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot;
+    CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
+    CXXDEBUGFLAGS : -g
+    LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    LDFLAGS : \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64
+    LDTYPE : -shared
+    LINKEXPORT : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;
+    LINKEXPORTVER : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot;
+    LINKLIBS : -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat
+    LDOPTIMFLAGS : -O
+    LDDEBUGFLAGS : -g
+    MWCPPLIB : &quot;/gpfs20/shared/software/matlab/r2021a/sys/os/glnxa64/orig/libstdc++.so.6&quot;
+    OBJEXT : .o
+    LDEXT : .mexa64
+    SETENV : CC=&quot;gcc&quot;
+                CXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                CFLAGS=&quot;-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                CXXFLAGS=&quot;\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                COPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CXXOPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CDEBUGFLAGS=&quot;-g&quot;
+                CXXDEBUGFLAGS=&quot;-g&quot;
+                MW_GLIBC_SHIM=&quot;$MW_GLIBC_SHIM&quot;
+                LD=&quot;gcc&quot;
+                LDXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                LDFLAGS=&quot;\-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;&quot;
+                LDDEBUGFLAGS=&quot;-g&quot;
+    GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+    CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+    VER : 9.3.0
+    GCCDIR : /shared/software/lang/gcc/9.3.0
+    GCC_TARGET : x86_64-pc-linux-gnu
+    MATLABROOT : /gpfs20/shared/software/matlab/r2021a
+    ARCH : glnxa64
+    SRC : &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot;;&quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot;
+    OBJ : /tmp/mex_59078790081513512_46067/mmx.o;/tmp/mex_59078790081513512_46067/cpp_mexapi_version.o
+    OBJS : /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o
+    SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+    DEF : /tmp/mex_59078790081513512_46067/mmx_mkl_single.def
+    EXP : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.exp&quot;
+    LIB : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.lib&quot;
+    EXE : /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
+    ILK : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.ilk&quot;
+    MANIFEST : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64.manifest&quot;
+    TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_mkl_single
+    EXEDIR : /gpfs20/users/vh0010/mmx/src/
+    EXENAME : mmx_mkl_single
+    OPTIM : -O2 -fwrapv -DNDEBUG
+    LINKOPTIM : -O
+    CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078790081513512_46067/mmx.o
+    CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o
+-------------------------------------------------------------------
+Building with &#39;g++&#39;.
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078790081513512_46067/mmx.o
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o
+/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
+Recompile embedded version with &#39;-DMATLAB_MEXCMD_RELEASE=R2017b&#39;
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
+MEX completed successfully.
+Compilation of &#39;mmx_mkl_single&#39; succeeded.
+Compiling again to &#39;mmx&#39; target using &#39;mmx_mkl_single&#39; build.
+Verbose mode is on.
+... Looking for compiler &#39;g++&#39; ...
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Executing command &#39;g++ -print-file-name=libstdc++.so&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so&#39;).
+... Executing command &#39;g++ -dumpversion&#39; ...Yes (&#39;9.3.0&#39;).
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Looking for folder &#39;/shared/software/lang/gcc/9.3.0&#39; ...Yes.
+... Executing command &#39;g++ -dumpmachine&#39; ...Yes (&#39;x86_64-pc-linux-gnu&#39;).
+Found installed compiler &#39;g++&#39;.
+Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+Options file details
+-------------------------------------------------------------------
+    Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+    Options file: /gpfs20/shared/software/matlab/r2021a/bin/glnxa64/mexopts/g++_glnxa64.xml
+    CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64
+    CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE
+    MATLABMEX : -DMATLAB_MEX_FILE
+    CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
+    CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include
+    INCLUDE : -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot;
+    CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
+    CXXDEBUGFLAGS : -g
+    LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    LDFLAGS : \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64
+    LDTYPE : -shared
+    LINKEXPORT : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;
+    LINKEXPORTVER : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot;
+    LINKLIBS : -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat
+    LDOPTIMFLAGS : -O
+    LDDEBUGFLAGS : -g
+    MWCPPLIB : &quot;/gpfs20/shared/software/matlab/r2021a/sys/os/glnxa64/orig/libstdc++.so.6&quot;
+    OBJEXT : .o
+    LDEXT : .mexa64
+    SETENV : CC=&quot;gcc&quot;
+                CXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                CFLAGS=&quot;-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                CXXFLAGS=&quot;\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                COPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CXXOPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CDEBUGFLAGS=&quot;-g&quot;
+                CXXDEBUGFLAGS=&quot;-g&quot;
+                MW_GLIBC_SHIM=&quot;$MW_GLIBC_SHIM&quot;
+                LD=&quot;gcc&quot;
+                LDXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                LDFLAGS=&quot;\-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;&quot;
+                LDDEBUGFLAGS=&quot;-g&quot;
+    GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+    CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+    VER : 9.3.0
+    GCCDIR : /shared/software/lang/gcc/9.3.0
+    GCC_TARGET : x86_64-pc-linux-gnu
+    MATLABROOT : /gpfs20/shared/software/matlab/r2021a
+    ARCH : glnxa64
+    SRC : &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot;;&quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot;
+    OBJ : /tmp/mex_59078796776035188_46067/mmx.o;/tmp/mex_59078796776035188_46067/cpp_mexapi_version.o
+    OBJS : /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o
+    SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+    DEF : /tmp/mex_59078796776035188_46067/mmx.def
+    EXP : &quot;/gpfs20/users/vh0010/mmx/src/mmx.exp&quot;
+    LIB : &quot;/gpfs20/users/vh0010/mmx/src/mmx.lib&quot;
+    EXE : /gpfs20/users/vh0010/mmx/src/mmx.mexa64
+    ILK : &quot;/gpfs20/users/vh0010/mmx/src/mmx.ilk&quot;
+    MANIFEST : &quot;/gpfs20/users/vh0010/mmx/src/mmx.mexa64.manifest&quot;
+    TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx
+    EXEDIR : /gpfs20/users/vh0010/mmx/src/
+    EXENAME : mmx
+    OPTIM : -O2 -fwrapv -DNDEBUG
+    LINKOPTIM : -O
+    CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078796776035188_46067/mmx.o
+    CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o
+-------------------------------------------------------------------
+Building with &#39;g++&#39;.
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078796776035188_46067/mmx.o
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o
+/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64
+Recompile embedded version with &#39;-DMATLAB_MEXCMD_RELEASE=R2017b&#39;
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2021.4/mkl/2021.4.0/include  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64
+MEX completed successfully.
+==========
+Trying to compile &#39;mmx_mkl_multi&#39;, using
+-v, CXXFLAGS=&quot;\$CXXFLAGS -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64 &quot;, -lmwblas, -lmwlapack, -lpthread, -DUNIX_SYSTEM, -DUSE_BLAS,
+Verbose mode is on.
+... Looking for compiler &#39;g++&#39; ...
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Executing command &#39;g++ -print-file-name=libstdc++.so&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so&#39;).
+... Executing command &#39;g++ -dumpversion&#39; ...Yes (&#39;9.3.0&#39;).
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Looking for folder &#39;/shared/software/lang/gcc/9.3.0&#39; ...Yes.
+... Executing command &#39;g++ -dumpmachine&#39; ...Yes (&#39;x86_64-pc-linux-gnu&#39;).
+Found installed compiler &#39;g++&#39;.
+Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+Options file details
+-------------------------------------------------------------------
+    Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+    Options file: /gpfs20/shared/software/matlab/r2021a/bin/glnxa64/mexopts/g++_glnxa64.xml
+    CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
+    CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE
+    MATLABMEX : -DMATLAB_MEX_FILE
+    CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
+    CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64
+    INCLUDE : -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot;
+    CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
+    CXXDEBUGFLAGS : -g
+    LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    LDFLAGS : -pthread -Wl,--no-undefined
+    LDTYPE : -shared
+    LINKEXPORT : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;
+    LINKEXPORTVER : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot;
+    LINKLIBS : -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat
+    LDOPTIMFLAGS : -O
+    LDDEBUGFLAGS : -g
+    MWCPPLIB : &quot;/gpfs20/shared/software/matlab/r2021a/sys/os/glnxa64/orig/libstdc++.so.6&quot;
+    OBJEXT : .o
+    LDEXT : .mexa64
+    SETENV : CC=&quot;gcc&quot;
+                CXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                CFLAGS=&quot;-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                CXXFLAGS=&quot;\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                COPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CXXOPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CDEBUGFLAGS=&quot;-g&quot;
+                CXXDEBUGFLAGS=&quot;-g&quot;
+                MW_GLIBC_SHIM=&quot;$MW_GLIBC_SHIM&quot;
+                LD=&quot;gcc&quot;
+                LDXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                LDFLAGS=&quot;-pthread -Wl,--no-undefined  -shared -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;&quot;
+                LDDEBUGFLAGS=&quot;-g&quot;
+    GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+    CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+    VER : 9.3.0
+    GCCDIR : /shared/software/lang/gcc/9.3.0
+    GCC_TARGET : x86_64-pc-linux-gnu
+    MATLABROOT : /gpfs20/shared/software/matlab/r2021a
+    ARCH : glnxa64
+    SRC : &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot;;&quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot;
+    OBJ : /tmp/mex_59078799484017262_46067/mmx.o;/tmp/mex_59078799484017262_46067/cpp_mexapi_version.o
+    OBJS : /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o
+    SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+    DEF : /tmp/mex_59078799484017262_46067/mmx_mkl_multi.def
+    EXP : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.exp&quot;
+    LIB : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.lib&quot;
+    EXE : /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
+    ILK : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.ilk&quot;
+    MANIFEST : &quot;/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64.manifest&quot;
+    TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi
+    EXEDIR : /gpfs20/users/vh0010/mmx/src/
+    EXENAME : mmx_mkl_multi
+    OPTIM : -O2 -fwrapv -DNDEBUG
+    LINKOPTIM : -O
+    CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078799484017262_46067/mmx.o
+    CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o
+-------------------------------------------------------------------
+Building with &#39;g++&#39;.
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078799484017262_46067/mmx.o
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o
+/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
+Recompile embedded version with &#39;-DMATLAB_MEXCMD_RELEASE=R2017b&#39;
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
+MEX completed successfully.
+Compilation of &#39;mmx_mkl_multi&#39; succeeded.
+==========
+Trying to compile &#39;mmx_naive&#39;, using
+-v, -lpthread, -DUNIX_SYSTEM,
+Verbose mode is on.
+... Looking for compiler &#39;g++&#39; ...
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Executing command &#39;g++ -print-file-name=libstdc++.so&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so&#39;).
+... Executing command &#39;g++ -dumpversion&#39; ...Yes (&#39;9.3.0&#39;).
+... Executing command &#39;which g++&#39; ...Yes (&#39;/shared/software/lang/gcc/9.3.0/bin/g++&#39;).
+... Looking for folder &#39;/shared/software/lang/gcc/9.3.0&#39; ...Yes.
+... Executing command &#39;g++ -dumpmachine&#39; ...Yes (&#39;x86_64-pc-linux-gnu&#39;).
+Found installed compiler &#39;g++&#39;.
+Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+Options file details
+-------------------------------------------------------------------
+    Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+    Options file: /gpfs20/shared/software/matlab/r2021a/bin/glnxa64/mexopts/g++_glnxa64.xml
+    CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
+    CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    DEFINES : -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE
+    MATLABMEX : -DMATLAB_MEX_FILE
+    CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
+    CXXFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11
+    INCLUDE : -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot;
+    CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
+    CXXDEBUGFLAGS : -g
+    LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+    LDFLAGS : -pthread -Wl,--no-undefined
+    LDTYPE : -shared
+    LINKEXPORT : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;
+    LINKEXPORTVER : -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot;
+    LINKLIBS : -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat
+    LDOPTIMFLAGS : -O
+    LDDEBUGFLAGS : -g
+    MWCPPLIB : &quot;/gpfs20/shared/software/matlab/r2021a/sys/os/glnxa64/orig/libstdc++.so.6&quot;
+    OBJEXT : .o
+    LDEXT : .mexa64
+    SETENV : CC=&quot;gcc&quot;
+                CXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                CFLAGS=&quot;-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                CXXFLAGS=&quot;-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE &quot;
+                COPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CXXOPTIMFLAGS=&quot;-O2 -fwrapv -DNDEBUG&quot;
+                CDEBUGFLAGS=&quot;-g&quot;
+                CXXDEBUGFLAGS=&quot;-g&quot;
+                MW_GLIBC_SHIM=&quot;$MW_GLIBC_SHIM&quot;
+                LD=&quot;gcc&quot;
+                LDXX=&quot;/shared/software/lang/gcc/9.3.0/bin/g++&quot;
+                LDFLAGS=&quot;-pthread -Wl,--no-undefined  -shared -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/mexFunction.map&quot;&quot;
+                LDDEBUGFLAGS=&quot;-g&quot;
+    GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+    CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+    VER : 9.3.0
+    GCCDIR : /shared/software/lang/gcc/9.3.0
+    GCC_TARGET : x86_64-pc-linux-gnu
+    MATLABROOT : /gpfs20/shared/software/matlab/r2021a
+    ARCH : glnxa64
+    SRC : &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot;;&quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot;
+    OBJ : /tmp/mex_59078801684538554_46067/mmx.o;/tmp/mex_59078801684538554_46067/cpp_mexapi_version.o
+    OBJS : /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o
+    SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+    DEF : /tmp/mex_59078801684538554_46067/mmx_naive.def
+    EXP : &quot;/gpfs20/users/vh0010/mmx/src/mmx_naive.exp&quot;
+    LIB : &quot;/gpfs20/users/vh0010/mmx/src/mmx_naive.lib&quot;
+    EXE : /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
+    ILK : &quot;/gpfs20/users/vh0010/mmx/src/mmx_naive.ilk&quot;
+    MANIFEST : &quot;/gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64.manifest&quot;
+    TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_naive
+    EXEDIR : /gpfs20/users/vh0010/mmx/src/
+    EXENAME : mmx_naive
+    OPTIM : -O2 -fwrapv -DNDEBUG
+    LINKOPTIM : -O
+    CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078801684538554_46067/mmx.o
+    CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o
+-------------------------------------------------------------------
+Building with &#39;g++&#39;.
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG &quot;/gpfs20/users/vh0010/mmx/src/mmx.cpp&quot; -o /tmp/mex_59078801684538554_46067/mmx.o
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o
+/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
+Recompile embedded version with &#39;-DMATLAB_MEXCMD_RELEASE=R2017b&#39;
+/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I&quot;/gpfs20/shared/software/matlab/r2021a/extern/include&quot; -I&quot;/gpfs20/shared/software/matlab/r2021a/simulink/include&quot; -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG &quot;/gpfs20/shared/software/matlab/r2021a/extern/version/cpp_mexapi_version.cpp&quot; -o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,&quot;/gpfs20/shared/software/matlab/r2021a/extern/lib/glnxa64/c_exportsmexfileversion.map&quot; /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/bin/glnxa64&quot; -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64 -L&quot;/gpfs20/shared/software/matlab/r2021a/extern/bin/glnxa64&quot; -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
+MEX completed successfully.
+Compilation of &#39;mmx_naive&#39; succeeded.
+&gt;&gt;
+</pre></div>
+</div>
+<p>This is working because <code class="docutils literal notranslate"><span class="pre">libsingle_mkl_ilp64.so</span></code> on the MATLAB’s glnxa64 folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls /shared/software/matlab/r2021a/extern/lib/glnxa64/libsingle_mkl_ilp64.so
+/shared/software/matlab/r2021a/extern/lib/glnxa64/libsingle_mkl_ilp64.so
+</pre></div>
+</div>
+<p>To compile without requiring special privileges, extra editing to the <code class="docutils literal notranslate"><span class="pre">build_mmx</span></code> is needed. Basically redirecting the library paths to the location where lib single_mkl_ilp6.so is present.
+Edit <code class="docutils literal notranslate"><span class="pre">build_mmx.m</span></code> to search for a library in the current location (<code class="docutils literal notranslate"><span class="pre">-L.</span></code>):</p>
+<p>At the end of the compilation these files are created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mmx</span><span class="o">.</span><span class="n">mexa64</span>             <span class="o">&lt;--</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">equivalent</span> <span class="n">to</span> <span class="n">mmx_mkl_single</span><span class="o">.</span><span class="n">mexa64</span>
+<span class="n">mmx_mkl_multi</span><span class="o">.</span><span class="n">mexa64</span>
+<span class="n">mmx_mkl_single</span><span class="o">.</span><span class="n">mexa64</span>
+<span class="n">mmx_naive</span><span class="o">.</span><span class="n">mexa64</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="teting-the-3-compilations-of-mmx">
+<h2>Teting the 3 compilations of MMX<a class="headerlink" href="#teting-the-3-compilations-of-mmx" title="Permalink to this headline">¶</a></h2>
+<p>Now lets test the library with some examples:</p>
+<p>For using MMX, there is no need to be inside <code class="docutils literal notranslate"><span class="pre">mmx/src</span></code> but we need to declare the folder as a path for searching MEX files:</p>
+<p>This is one simple example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ matlab
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                                                              &lt; M A T L A B (R) &gt;
+                                                    Copyright 1984-2021 The MathWorks, Inc.
+                                                    R2021a (9.10.0.1602886) 64-bit (glnxa64)
+                                                               February 17, 2021
+
+
+To get started, type doc.
+For product information, visit www.mathworks.com.
+
+&gt;&gt; addpath(&quot;mmx/src&quot;)
+&gt;&gt; A = randn(5,4,3,10,1);
+&gt;&gt; B = randn(4,6,3,1 ,6);
+&gt;&gt; C = randn(5,6,3,10,6);
+&gt;&gt; C = mmx(&#39;mult&#39;, A, B)
+</pre></div>
+</div>
+<p>The output will show the resulting C array. As we are using mmx() this is the most efficient compilation using MKL.</p>
+<p>Now is time to try all the versions to check how they perform in extreme cases.</p>
+<p>We will try a simple exercise with large matrices using the 3 versions of MMX that we compiled</p>
+<div class="section" id="mmx-naive">
+<h3>mmx_naive<a class="headerlink" href="#mmx-naive" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
+<span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="n">f_naive</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">mmx_naive</span><span class="p">(</span><span class="s1">&#39;mult&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="n">timeit</span><span class="p">(</span><span class="n">f_naive</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using an interactive job and running on a SKYLAKE machine with 40 cores this is the average result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">22.5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mmx-mkl-multi">
+<h3>mmx_mkl_multi<a class="headerlink" href="#mmx-mkl-multi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
+<span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="n">f_mkl_multi</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">mmx_mkl_multi</span><span class="p">(</span><span class="s1">&#39;mult&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="n">timeit</span><span class="p">(</span><span class="n">f_naive</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Average result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.95</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mmx-mkl-single">
+<h3>mmx_mkl_single<a class="headerlink" href="#mmx-mkl-single" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
+<span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span> <span class="n">f_mkl_single</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">mmx_mkl_single</span><span class="p">(</span><span class="s1">&#39;mult&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="n">timeit</span><span class="p">(</span><span class="n">f_naive</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Average result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.72</span>
+</pre></div>
+</div>
+<p>The best version of mmx is <code class="docutils literal notranslate"><span class="pre">mkl_single</span></code> which the C++ code for MMX compiled directly with MKL using the sequential libraries.
+For this case it performs better than the native MKL from Matlab or the naive version. See comments from build_mmx:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head -n 16 mmx/src/build_mmx.m
+function build_mmx(verbose)
+% BUILD_MMX - compiles mmx() for different platforms and provides help
+%            regarding compilation.
+%
+%  BUILD_MMX will try to compile, in this order, 3 different builds of mmx:
+%  mmx_mkl_single    - linked to Intel&#39;s single-threaded MKL library (usually fastest)
+%  mmx_mkl_multi     - linked to the multithreaded BLAS/LAPACK libraries that come
+%                      with Matlab.
+%  mmx_naive         - does not link to anything, uses simple C-loops.
+%
+%  The first time BUILD_MMX succeeds, it will compile again to &#39;mmx&#39;, so
+%  that the mex-file mmx should be the fastest possible build on your
+%  system.
+%
+%  BUILD_MMX has been tested on Win32, Win64, OSX, Linux 64
+%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>In this page we show how to compile MMX, a C++ Matlab plugin (MEX file) that uses Intel MKL.
+The code was compiled without access to superuser privileges on a normal user folder.</p>
+<p>MMX was compiled in 3 different flavors and a simple test example was used to demonstrate the performance of those 3 cases for large matrices.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

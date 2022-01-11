@@ -239,12 +239,15 @@ First, you need to load the singularity environment module:</p>
 <div class="section" id="thorny-flat">
 <h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>On Thorny Flat the R interpreter is not preinstalled from RHEL packages and the only two options are to use the environment modules or using a singularity image. The environment modules for R available on Thorny are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc102</span>
-<span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc102</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc112</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc112</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">2</span><span class="n">_gcc112</span>
 </pre></div>
 </div>
-<p>To load the module, use the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc102</span>
+<p>To load the module, use the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> including <code class="docutils literal notranslate"><span class="pre">lang/gcc/11.2</span></code> before the module to be added as dependency:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc112</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc112</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">2</span><span class="n">_gcc112</span>
 </pre></div>
 </div>
 <p>After that, the command <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> became available on the shell.
@@ -337,14 +340,19 @@ For the versions that we currently have on our clusters, <code class="docutils l
 <p>Packages can only be installed from the head node both on Thorny and Spruce.
 Compute nodes do not have internet access, so they are not capable to access CRAN from the internet to download any package.</p>
 <p>There are two main ways to install R packages from CRAN. You can install packages from inside the interactive R interpreter. Execute the command <cite>R</cite> and from there install the package with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;https://cran.rstudio.com&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;file:///gpfs21/mirror.math.princeton.edu/pub/CRAN&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Another alternative is using the command <cite>Rscript</cite>, this time from the normal shell:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; Rscript -e &#39;install.packages(&#39;&lt;Package Name&gt;&#39;, repos=&quot;https://cran.rstudio.com&quot;)&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; Rscript -e &#39;install.packages(&quot;&lt;PACKAGE&gt;&quot;, repos=&quot;file:///gpfs21/mirror.math.princeton.edu/pub/CRAN&quot;)&#39;
 </pre></div>
 </div>
-<p>With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration <code class="docutils literal notranslate"><span class="pre">repos=&quot;https://cran.rstudio.com&quot;</span></code> is optional. Now declaring a URL for downloads and you will get a list of known mirrors where you can download the package.</p>
+<p>With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration <code class="docutils literal notranslate"><span class="pre">repos=&quot;file:///gpfs21/mirror.math.princeton.edu/pub/CRAN&quot;</span></code> is optional.
+Now declaring a URL for downloads and you will get a list of known mirrors where you can download the package.
+The local CRAN mirror on Thorny Flat is preferable to install packages from a remote internet server such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;https://cran.rstudio.com&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>With any of those methods, R will automatically detect that you do not have permission to write in the system-wide R library folder and will prompt if you would like to install in a local directory from within your home directory. This folder will also be checked automatically when you run R for packages, allowing you to use anything you already installed.</p>
 <p>For example, lets assume that you want to install the package <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;dplyr&quot;)
