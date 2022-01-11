@@ -57,12 +57,16 @@ Thorny Flat
 
 On Thorny Flat the R interpreter is not preinstalled from RHEL packages and the only two options are to use the environment modules or using a singularity image. The environment modules for R available on Thorny are::
 
-  lang/r/3.6.3_gcc102
-  lang/r/4.0.4_gcc102
+    lang/r/3.6.3_gcc112 
+    lang/r/4.0.5_gcc112 
+    lang/r/4.1.2_gcc112
 
-To load the module, use the command ``module load``::
+To load the module, use the command ``module load`` including ``lang/gcc/11.2`` before the module to be added as dependency::
 
-   module load lang/r/4.0.4_gcc102
+   module load lang/gcc/11.2.0 lang/r/3.6.3_gcc112
+   module load lang/gcc/11.2.0 lang/r/4.0.5_gcc112
+   module load lang/gcc/11.2.0 lang/r/4.1.2_gcc112
+
 
 After that, the command ``R`` and ``Rscript`` became available on the shell.
 Another option for accessing the R interpreter is via a singularity `container`.
@@ -163,13 +167,18 @@ Compute nodes do not have internet access, so they are not capable to access CRA
 
 There are two main ways to install R packages from CRAN. You can install packages from inside the interactive R interpreter. Execute the command `R` and from there install the package with::
 
-  install.packages('<Package Name>', repos="https://cran.rstudio.com")
+    install.packages('<Package Name>', repos="file:///gpfs21/mirror.math.princeton.edu/pub/CRAN")
 
 Another alternative is using the command `Rscript`, this time from the normal shell::
 
-  $> Rscript -e 'install.packages('<Package Name>', repos="https://cran.rstudio.com")'
+    $> Rscript -e 'install.packages("<PACKAGE>", repos="file:///gpfs21/mirror.math.princeton.edu/pub/CRAN")'
 
-With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration ``repos="https://cran.rstudio.com"`` is optional. Now declaring a URL for downloads and you will get a list of known mirrors where you can download the package.
+With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration ``repos="file:///gpfs21/mirror.math.princeton.edu/pub/CRAN"`` is optional. 
+Now declaring a URL for downloads and you will get a list of known mirrors where you can download the package.
+The local CRAN mirror on Thorny Flat is preferable to install packages from a remote internet server such as::
+
+    install.packages('<Package Name>', repos="https://cran.rstudio.com")
+
 
 With any of those methods, R will automatically detect that you do not have permission to write in the system-wide R library folder and will prompt if you would like to install in a local directory from within your home directory. This folder will also be checked automatically when you run R for packages, allowing you to use anything you already installed.
 
@@ -419,3 +428,4 @@ The resulting file is ``facto.so`` that can be imported from R and used (R Termi
 
   $answer
   [1] 8.159153e+47
+

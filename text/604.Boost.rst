@@ -1,4 +1,4 @@
-Boost 1.77
+Boost 1.78
 ==========
 
 Boost provides free peer-reviewed portable C++ source libraries.
@@ -7,43 +7,37 @@ Many scientific codes uses Boost as it provides template-based sources that faci
 Compilation of boost libraries is a bit unusual.
 Boost can be used a template only library with no compilation involved.
 However, if you want to use any of the separately-compiled Boost libraries, you'll need to acquire library binaries.
-In this document we will compile Boost in 3 cases.
-A direct build using the version of GCC from the OS, using GCC 9.3 and using the latest Intel Compilers available on each cluster. 
-The instructions are valid on both clusters, Spruce Knob and Thorny Flat. 
-When some particular step only applies to one cluster the comment will be made.
 
+On Spruce and Thorny, the native versions of GCC and Python are too old for compiling boost.
+For that reason, GCC 9.3 and Python 3.9.7 will be used instead.
 
 Downloading the code
 ~~~~~~~~~~~~~~~~~~~~
 
-By August 11, 2021, the latest version available is 1.77 that can be downloaded as `boost_1_77_0.tar.bz2 <wget https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.bz2>`_
+By December 20, 2021, the latest version available is 1.78 that can be downloaded with `boost_1_78_0.tar.bz2 <wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.bz2>`_
 
 On the clusters the canonical location for sources is ``/shared/src``.
 Download the archive there and uncompress it::
 
-   wget https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.bz2
-   tar -jxvf boost_1_77_0.tar.bz2
-   cd boost_1_77_0
-
+   wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.bz2
+   tar -jxvf boost_1_78_0.tar.bz2
+   cd boost_1_78_0
 
 Bootstrap for GCC 9.3
 ~~~~~~~~~~~~~~~~~~~~~
 
-The version of GCC on RedHat 6.x is too old for compiling boost.
-To compile GCC we are using GCC 9.3 and Python 3.9.6::
+Load the modules for GCC and Python::
 
-   module load lang/gcc/9.3.0 lang/python/cpython_3.9.6_gcc93
+   module load lang/gcc/9.3.0 lang/python/cpython_3.9.7_gcc93
 
 With those two modules, before compiling boost, run the bootstrap script indicating python 3.x executable and location for installation::
 
-   ./bootstrap.sh --with-python=python3 --prefix=/shared/software/libs/boost/1.77_gcc93
-
+   ./bootstrap.sh --with-python=python3 --prefix=/shared/software/libs/boost/1.78_gcc93
 
 Compile and install boost
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Boost libraries can be compiled and installed with::
 
-  ./b2 install --prefix=/shared/software/libs/boost/1.77_gcc93
-
+  ./b2 install --prefix=/shared/software/libs/boost/1.78_gcc93
 
