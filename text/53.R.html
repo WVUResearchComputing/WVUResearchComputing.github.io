@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="51.Fortran_C_CPP.html">Fortran, C and C++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="52.Python.html">Python Language</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">R Language</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-the-r-interpreter">Accessing the R interpreter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-r-interpreter-and-cran">The R interpreter and CRAN</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#spruce-knob">Spruce Knob</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#thorny-flat">Thorny Flat</a></li>
 </ul>
@@ -203,38 +203,54 @@
 <p>The R source code is written primarily in C and Fortran, with some higher-level pieces of code in R itself. R provides a wide variety of statistical tools  such as linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, and many others. R is capable of publication-ready graphics and is highly extensible. The R language is often the vehicle of choice for research in statistical methodology, and R provides an open source alternative for practitioners of statistical tools and academic research in the area.</p>
 <p>R is particularly powerful for several reasons. R has an extensive collection of packages, literally thousands of packages available in the the Comprehensive R Archive Network (CRAN). Another strength  is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.</p>
 <p>Although R comes only with a command-line interface (CLI), there are several third-party graphical user interfaces (GUIs). One is RStudio, an integrated development environment (IDE), another being Jupyter, with a notebook interface. We will show here how you can access all those GUI interfaces. But before using GUIs it is important first focus on the basic command line interface (CLI).</p>
-<div class="section" id="accessing-the-r-interpreter">
-<h2>Accessing the R interpreter<a class="headerlink" href="#accessing-the-r-interpreter" title="Permalink to this headline">¶</a></h2>
-<p>The R interpreter is the basic software that allows you to interact with R.
-From the user point of view, there are two commands in R. The command <code class="docutils literal notranslate"><span class="pre">R</span></code> that opens the text-based interactive interface, and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> which is a command used to create scripts that run as normal programs.</p>
-<p>There are three ways of accessing the different R installations on our clusters: Using the R version installed by default from the OS repositories, using an environment module or using a singularity <cite>container</cite> that provides R inside. We will explore those options in the contexts of our two clusters, Spruce Knob and Thorny Flat.</p>
-<div class="section" id="spruce-knob">
-<h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
-<p>On Spruce Knob, R is preinstalled from RHEL repositories. The RHEL version is 3.0.2 and it is considered too old for most scientific applications today. You should not have much reason to use that version in research.</p>
-<p>In terms of environment modules Spruce Knob offers two versions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc101</span>
-<span class="n">lang</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc101</span>
+<div class="section" id="the-r-interpreter-and-cran">
+<h2>The R interpreter and CRAN<a class="headerlink" href="#the-r-interpreter-and-cran" title="Permalink to this headline">¶</a></h2>
+<p>The R interpreter is the software that allows you to interact with R.
+There are two commands in R.
+The command <code class="docutils literal notranslate"><span class="pre">R</span></code> opens a text-based interactive interface, and the command <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> run scripts written in R language</p>
+<p>Around R, a ecosystem of external packages have been delevoped many of them accesible in a repository called CRAN.
+The Comprehensive R Archive Network (CRAN) is a network of ftp and web servers around the world that store identical, up-to-date, versions of code and documentation for R.
+On Thorny Flat there is a weekly updated mirror of the CRAN repository located at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">CRAN</span>
 </pre></div>
 </div>
-<p>You can load any of those modules with the <code class="docutils literal notranslate"><span class="pre">module</span></code> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc101</span>
+<p>There several ways of accessing the different R on our clusters.
+The Operating System comes with its own installation of R, usually the version is too old for research purposes.
+There are also environment modules providing compiled versions of R centrally managed along many other scientific software packages.
+Another alternatve is to use containers, containers are filesystems usually archived on a single file and including all the software needed to run R.
+Finally, you can create your own conda environments and choose between a variety of R versions.
+We will explore these options in the contexts of our two clusters: Spruce Knob and Thorny Flat.</p>
+<div class="section" id="spruce-knob">
+<h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
+<p>On Spruce Knob, R is preinstalled from RedHat Enterprise Linux (RHEL) repositories.
+Spruce runs Red Hat Enterprise Linux Server release 6.10 (Santiago).
+On this Linux distribution, R is included with version 3.0.2.
+This version is too old for most scientific applications today.
+You should not have much reason to use that version.</p>
+<p>In terms of environment modules Spruce Knob offers two versions 3.6.3 and 4.0.4.
+You can load any of those modules with the <code class="docutils literal notranslate"><span class="pre">module</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/R/3.6.3_gcc101
+$&gt; module load lang/R/4.0.4_gcc101
 </pre></div>
 </div>
 <p>After that, the command <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> became available on the shell.
 The third way of accessing the R interpreter is via a Singularity <cite>container</cite>.
 First, you need to load the singularity environment module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load singularity
 </pre></div>
 </div>
-<p>There are two images that include the R interpreter inside:</p>
+<p>Singularity images are located at <code class="docutils literal notranslate"><span class="pre">/shared/software/containers/</span></code> and the variable <code class="docutils literal notranslate"><span class="pre">$SNG_PATH</span></code> contains this path.
+There are two images that include the R interpreter inside:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RStudio</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">5042</span><span class="n">_R</span><span class="o">-</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">4.</span><span class="n">sif</span>
 <span class="n">RStudio</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">5042</span><span class="n">_R</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mf">2.</span><span class="n">sif</span>
 </pre></div>
 </div>
-<p>Despite including extra software such as RStudio they can be used for their internal R interpreters, especially if you are interested in older versions of R such as 3.4.4. To access the R interpreter you can get a shell inside the image with:</p>
+<p>Getting shell access to inside any of these containers to access <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
+singularity shell $SNG_PATH/RStudio-desktop-1.2.5042_R-3.4.4.sif
 </pre></div>
 </div>
+<p>Despite including extra software such as RStudio they can be used for their internal R interpreters, especially if you are interested in older versions of R such as 3.4.4.</p>
 </div>
 <div class="section" id="thorny-flat">
 <h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
@@ -245,33 +261,55 @@ First, you need to load the singularity environment module:</p>
 </pre></div>
 </div>
 <p>To load the module, use the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> including <code class="docutils literal notranslate"><span class="pre">lang/gcc/11.2</span></code> before the module to be added as dependency:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc112</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc112</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">2</span><span class="n">_gcc112</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/11.2.0 lang/r/3.6.3_gcc112
+$&gt; module load lang/gcc/11.2.0 lang/r/4.0.5_gcc112
+$&gt; module load lang/gcc/11.2.0 lang/r/4.1.2_gcc112
 </pre></div>
 </div>
 <p>After that, the command <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> became available on the shell.
 Another option for accessing the R interpreter is via a singularity <cite>container</cite>.</p>
 <p>Several images include the R interpreter, in particular, the two images below offer an alternative to equivalent versions from environment modules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mf">3.</span><span class="n">sif</span>
-<span class="n">R</span><span class="o">-</span><span class="mf">4.0</span><span class="o">.</span><span class="mf">4.</span><span class="n">sif</span>
+<span class="n">R</span><span class="o">-</span><span class="mf">4.0</span><span class="o">.</span><span class="mf">5.</span><span class="n">sif</span>
 </pre></div>
 </div>
 <p>To get a shell prompt inside any of those images load the singularity module first:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load singularity
 </pre></div>
 </div>
 <p>After that, a shell inside the image can be obtained with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity shell $SNG_PATH3/R-3.6.3.sif
-</pre></div>
-</div>
-<p>or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity shell $SNG_PATH3/R-4.0.4.sif
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; singularity shell $SNG_PATH3/R-3.6.3.sif
+$&gt; singularity shell $SNG_PATH3/R-4.0.5.sif
+$&gt; singularity shell $SNG_PATH3/R-4.1.2.sif
 </pre></div>
 </div>
 <p>After getting a shell inside the <cite>container</cite> the commands <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> became available.
 A shortcut to access the R interpreter in one single step is with the <cite>run</cite> option, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity run $SNG_PATH3/R-4.0.4.sif
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; singularity run $SNG_PATH3/R-4.1.2.sif
+</pre></div>
+</div>
+<p>Another way of getting R is using a conda environments.
+You can create your own conda environment and install the version of R that better fits your needs.
+For example, these are the commands to create a conda environment called <code class="docutils literal notranslate"><span class="pre">R351</span></code> with R version 3.5.1 installed from the conda-forge channel.</p>
+<p>Load conda module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load conda
+</pre></div>
+</div>
+<p>Create a new conda environment, here we are calling it <code class="docutils literal notranslate"><span class="pre">R351</span></code> but the name is arbitrary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda create -n R351
+</pre></div>
+</div>
+<p>Activate the new conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda activate R351
+</pre></div>
+</div>
+<p>And install the version of conda of your preference.
+To see the list of conda versions execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda search -c conda-forge r
+</pre></div>
+</div>
+<p>And to install a particular version execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda install -c conda-forge r=3.5.1
 </pre></div>
 </div>
 </div>
@@ -340,14 +378,14 @@ For the versions that we currently have on our clusters, <code class="docutils l
 <p>Packages can only be installed from the head node both on Thorny and Spruce.
 Compute nodes do not have internet access, so they are not capable to access CRAN from the internet to download any package.</p>
 <p>There are two main ways to install R packages from CRAN. You can install packages from inside the interactive R interpreter. Execute the command <cite>R</cite> and from there install the package with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;file:///gpfs21/mirror.math.princeton.edu/pub/CRAN&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;file:///gpfs21/pub/CRAN&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Another alternative is using the command <cite>Rscript</cite>, this time from the normal shell:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; Rscript -e &#39;install.packages(&quot;&lt;PACKAGE&gt;&quot;, repos=&quot;file:///gpfs21/mirror.math.princeton.edu/pub/CRAN&quot;)&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; Rscript -e &#39;install.packages(&quot;&lt;PACKAGE&gt;&quot;, repos=&quot;file:///gpfs21/pub/CRAN&quot;)&#39;
 </pre></div>
 </div>
-<p>With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration <code class="docutils literal notranslate"><span class="pre">repos=&quot;file:///gpfs21/mirror.math.princeton.edu/pub/CRAN&quot;</span></code> is optional.
+<p>With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration <code class="docutils literal notranslate"><span class="pre">repos=&quot;file:///gpfs21/pub/CRAN&quot;</span></code> is optional.
 Now declaring a URL for downloads and you will get a list of known mirrors where you can download the package.
 The local CRAN mirror on Thorny Flat is preferable to install packages from a remote internet server such as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;https://cran.rstudio.com&quot;</span><span class="p">)</span>

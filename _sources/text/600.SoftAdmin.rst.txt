@@ -18,3 +18,5 @@ Software Administration
   610.DFT.rst
   611.BigData.rst
   612.Python.rst
+  613.Matlab_MMX.rst
+
