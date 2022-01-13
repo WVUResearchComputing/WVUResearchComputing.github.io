@@ -64,8 +64,8 @@ There are two images that include the R interpreter inside::
 
 Getting shell access to inside any of these containers to access ``R`` and ``Rscript``::
 
-    singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
-    singularity shell $SNG_PATH/RStudio-desktop-1.2.5042_R-3.4.4.sif
+    $> singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
+    $> singularity shell $SNG_PATH/RStudio-desktop-1.2.5042_R-3.4.4.sif
 
 Despite including extra software such as RStudio they can be used for their internal R interpreters, especially if you are interested in older versions of R such as 3.4.4. 
 
@@ -136,7 +136,7 @@ And to install a particular version execute::
 Using R from the Terminal
 -------------------------
 
-Regardless of how you access R, the R package includes two executables, `R` and `Rscript`. The command ``R`` is used to start a text-based interactive session, on the terminal execute the command ``R``.
+Regardless of how you access R, the R package includes two executables, ``R`` and ``Rscript``. The command ``R`` is used to start a text-based interactive session, on the terminal execute the command ``R``.
 
 .. image:: /_static/R_terminal.png
   :width: 600
@@ -144,8 +144,8 @@ Regardless of how you access R, the R package includes two executables, `R` and 
 
 From there you can start typing R commands and getting output interactively::
 
-  > 2 + 2
-  [1] 4
+    > 2 + 2
+    [1] 4
 
 Another way of working in R, and more suited for an HPC environment, is using R scripts.
 To do so, first, write your R commands as script in a file. It is customary to add the ``.R`` extension to the file. Consider for example a very minimal script, lets create a file ``hello.R`` with the content below::
@@ -162,12 +162,12 @@ The first line of the file must be ``#!/usr/bin/env Rscript``. This line instruc
 
 To make this script like any other executable, we need to change permissions to the file::
 
-  $> chmod +x hello.R
+    $> chmod +x hello.R
 
 The script is ready for execution. As this is such a small program you can run it directly on the head node::
 
-  $> ./hello.R
-  [1] "hello"
+    $> ./hello.R
+    [1] "hello"
 
 However, for large executions, you should always create a submission script and never run numerical intensive operations on the head node.
 Create a file ``runjob.pbs`` with this content::
@@ -193,8 +193,8 @@ The line ``module purge``cleans the environment of any modules and ``module load
 Finally ``./hello.R`` executes the script and the output will be written in a file like ``MY_R_SCRIPT.o<JobID>`` where JobID is a number that identifies the job in the queue system.
 The contents of the file are shown below::
 
-  $ cat MY_R_SCRIPT.o4714619
-  [1] "hello"
+    $> cat MY_R_SCRIPT.o4714619
+    [1] "hello"
 
 Installing R Packages as a normal user
 --------------------------------------
@@ -209,7 +209,7 @@ There are two main ways to install R packages from CRAN. You can install package
 
     install.packages('<Package Name>', repos="file:///gpfs21/pub/CRAN")
 
-Another alternative is using the command `Rscript`, this time from the normal shell::
+Another alternative is using the command ``Rscript``, this time from the normal shell::
 
     $> Rscript -e 'install.packages("<PACKAGE>", repos="file:///gpfs21/pub/CRAN")'
 
@@ -218,7 +218,6 @@ Now declaring a URL for downloads and you will get a list of known mirrors where
 The local CRAN mirror on Thorny Flat is preferable to install packages from a remote internet server such as::
 
     install.packages('<Package Name>', repos="https://cran.rstudio.com")
-
 
 With any of those methods, R will automatically detect that you do not have permission to write in the system-wide R library folder and will prompt if you would like to install in a local directory from within your home directory. This folder will also be checked automatically when you run R for packages, allowing you to use anything you already installed.
 
@@ -257,7 +256,7 @@ To use locally installed packages, before you execute R you just need to
 modify the ``R_LIBS`` environment variable to tell R where to search for
 local packages::
 
-  export R_LIBS=<dir>
+    $> export R_LIBS=<dir>
 
 Using install.packages()
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -265,7 +264,7 @@ Using install.packages()
 To use install.packages from the R prompt, before you start R you need
 to modify the `R_LIBS` environment variable::
 
-  export R_LIBS=<dir>
+    $> export R_LIBS=<dir>
 
 Then inside the R prompt, you execute any of the procedures above such as `install.packages()` inside the R interactive shell.
 
@@ -278,30 +277,30 @@ There are several restrictions to use this command:
 First, this option only works if you have already downloaded a copy of the package from CRAN, any of its mirrors, or an external site that provides a tar package.
 Second, as a normal user, you must specify the path with the ``-l`` flag, otherwise, the command will refuse to work as you have no write access to the system-wide location. The command must be used like this::
 
-  R CMD INSTALL -l <dir> <package_name>
+    $> R CMD INSTALL -l <dir> <package_name>
 
 The folder ``<dir>`` is the location where the package will be installed and the folder must be created in advance. ``<package_name>`` is the name of the package and you must ensure that all dependencies are already installed for the package, meaning that you will have to install several other packages before you can install the package that you want.
 
 Consider for example installing the package ``parallelly``, this package has no dependencies beyond those that already came with the R installation. The sources are available on CRAN and can be downloaded from one of its many mirrors. You can first download the package with::
 
- wget https://cran.r-project.org/src/contrib/parallelly_1.24.0.tar.gz
+    $> wget https://cran.r-project.org/src/contrib/parallelly_1.24.0.tar.gz
 
 Once the package is downloaded, ensure that the folder where you want to install the software exists, for example, if you want to install packages at
 ``~/R/local_packages``, create the folder with::
 
-  mkdir -p ~/R/local_packages
+    $> mkdir -p ~/R/local_packages
 
 Finally, install the packages with::
 
-  R CMD INSTALL -l ~/R/local_packages parallelly_1.24.0.tar.gz
+    $> R CMD INSTALL -l ~/R/local_packages parallelly_1.24.0.tar.gz
 
 The package is now installed but it can only become visible if you set up the ``R_LIBS`` environment for it::
 
-  export R_LIBS=~/R/local_packages
+    $> export R_LIBS=~/R/local_packages
 
 Finally load the package with::
 
-  > library("parallelly")
+    > library("parallelly")
 
 You need to be careful not to mix R packages created with different major versions of R, those are usually incompatible if you create the package with one version and try to use it with a different version. That is the reason why more automatic installers create separate folders for different R versions.
 
@@ -374,14 +373,14 @@ By default R only uses one core, which is a big limitation when dealing with lar
 
 The `parallel` package came installed by default on all modern versions of R. The package needs to be loaded before use with::
 
-  > library("parallel")
+    > library("parallel")
 
 Once the library is loaded several routines became available that are able to take advantage of share memory systems, on machines such as Thorny, most compute nodes have 40 cores, however it is up to you to indicate the number of cores that you want to use and that should match the amount of resources that you requested via your submission script or your interactive job.
 
 The first function that we will use from `parallel` is ``detectCores()``. The function will return the total number of cores on the compute node, not the total number of cores that you requested for the job::
 
-  > detectCores()
-  [1] 40
+    > detectCores()
+    [1] 40
 
 The `parallel` package offers a number of functions that replace the serial versions of `Apply` functions such as ``lapply``, ``sapply`` and ``apply``. The parallel replacements being ``parLapply``, ``parSapply`` and ``parApply``.
 To use any of those functions we need first to create a `cluster` and internal structure for the `parallel` package that instructs the number of cores that can be used when parallelizing the apply functions.
@@ -389,40 +388,40 @@ To use any of those functions we need first to create a `cluster` and internal s
 
 The function ``makeCluster()`` will create a cluster. If you have created a job asking to use 4 cores, you can create a `cluster` with 4 cores like this::
 
-  > cl <- makeCluster(4)
-  > cl
-  socket cluster with 4 nodes on host ‘localhost’
+    > cl <- makeCluster(4)
+    > cl
+    socket cluster with 4 nodes on host ‘localhost’
 
 Now with the `cluster` ``cl`` we can execute any of the alternative versions of ``apply`` functions::
 
-  > ans <- parLapply(cl, 1:10000000, function(x) sqrt(x^(1/3)) + sqrt(x^(1/2)))
+    > ans <- parLapply(cl, 1:10000000, function(x) sqrt(x^(1/3)) + sqrt(x^(1/2)))
 
 This function will apply ``function(x)`` as it was defined for the first 10 million positive integers returning a vector of equal number of floats stored in ``ans``.
 
 To compute this function R will be using a cluster build from 4 execution instances and will take a fraction of the time compared with the serial version of ``lapply``. We can see some timings here::
 
-  > system.time(parLapply(cl, 1:10000000, function(x) sqrt(x^(1/3)) + sqrt(x^(1/2))))
-   user  system elapsed
-   1.787   0.093   3.721
-  > system.time(lapply(1:10000000, function(x) sqrt(x^(1/3)) + sqrt(x^(1/2))))
-   user  system elapsed
-   6.484   0.023   6.522
+    > system.time(parLapply(cl, 1:10000000, function(x) sqrt(x^(1/3)) + sqrt(x^(1/2))))
+    user  system elapsed
+    1.787   0.093   3.721
+    > system.time(lapply(1:10000000, function(x) sqrt(x^(1/3)) + sqrt(x^(1/2))))
+    user  system elapsed
+    6.484   0.023   6.522
 
 We got almost an execution that was almost 4 times shorter than for the serial case. It is never the case that we get a perfect scaling, in more practical cases you should always expect that some time is lost in communication and extra overhead in orchestrating the parallel execution. The parallel versions of `apply` functions are an easy way of taking advantage of multicore architectures present of modern computers.
 
 At the end of execution is always important to close the cluster with the ``stopCluster`` function::
 
-  > stopCluster(cl)
+    > stopCluster(cl)
 
 You should always stop the cluster to free resources. In more practical scenarios you should always ensure that ``stopCluster`` is called no matter if the function fails for some reason. For doing that you can use the ``on.exit()`` function::
 
-  simulate  <- function(ncores) {
-  cl = makeCluster(ncores)
-  on.exit(stopCluster(cl))
+    simulate  <- function(ncores) {
+    cl = makeCluster(ncores)
+    on.exit(stopCluster(cl))
 
-  # The core of the function belows
+    # The core of the function belows
 
-  }
+    }
 
 Using Fortran inside R
 ----------------------
@@ -453,11 +452,11 @@ This routine in fortran computes the factorial of a number ``n`` and return the 
 
 We can compile this file with the GNU fortran compiler called ``gfortran``::
 
-  $> gfortran -c facto.f90
+    $> gfortran -c facto.f90
 
 The result of the compilation is a file called ``facto.o``. The next step is to create a shared library from this function::
 
-  $> gfortran -shared -o facto.so facto.o
+    $> gfortran -shared -o facto.so facto.o
 
 The resulting file is ``facto.so`` that can be imported from R and used (R Terminal)::
 

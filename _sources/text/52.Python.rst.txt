@@ -22,10 +22,10 @@ Many packages have been abandoning compatibility with Python 2.x and as such the
 
 There are four ways of accessing the different Python installations on our clusters: Using a Python version installed by default from the OS repositories, using an *environment module*, creating a *conda* environment or using a *singularity container* that provides Python inside. We will explore those options in the contexts of our two clusters, Spruce Knob and Thorny Flat.
 
-Spruce
-~~~~~~
+Spruce Knob
+~~~~~~~~~~~
 
-On Spruce Python is installed by default and its version is 2.6.6::
+The Operating System on Spruce comes with Python 2.6.6 preinstalled::
 
   $ python --version
   Python 2.6.6
@@ -62,6 +62,46 @@ In particular Intel Python includes MKL optimized versions of Numpy, Scipy and S
 The modules with prefix ``pypy`` offers an alternative implementation of the Python programming language.
 PyPy often runs faster than CPython, because PyPy is a just-in-time compiler, while CPython is uses a more traditional approach. Most Python code runs well on PyPy, except for code that depends on CPython extensions, which either does not work or incurs some overhead when run in PyPy.
 
+
+Thorny Flat
+~~~~~~~~~~~
+
+The Operating System on Thorny Flat comes with Python 2.7.5 preinstalled::
+
+  $ python --version
+    Python 2.7.5
+
+No scientific packages are installed along with this version of Python making it unsuitable for most scientific purposes.
+
+On Thorny there are a several environment modules for Python.
+These modules include a good variety of scientific computing packages preinstalled for the corresponding version of Python.
+The modules available on Thorny Flat are::
+
+    lang/python/cpython_3.10.1_gcc112
+    lang/python/cpython_3.7.4_gcc82
+    lang/python/cpython_3.8.10_gcc82
+    lang/python/cpython_3.8.10_gcc93
+    lang/python/cpython_3.8.12_gcc112
+    lang/python/cpython_3.9.5_gcc82
+    lang/python/cpython_3.9.5_gcc93
+    lang/python/cpython_3.9.7_gcc93
+    lang/python/cpython_3.9.9_gcc112
+    lang/python/intelpython2_2019.5
+    lang/python/intelpython_2.7.14
+    lang/python/intelpython_2.7.16
+    lang/python/intelpython3_2019.5
+    lang/python/intelpython3_2020.2
+    lang/python/intelpython_3.6.3
+    lang/python/intelpython_3.6.9
+    lang/python/pypy2.7-v7.3.2-linux64
+    lang/python/pypy3.6-v7.1.1-thorny
+    lang/python/pypy3.6-v7.3.2-linux64
+    lang/python/pypy3.7-v7.3.2-linux64
+
+Packages installed with CPython modules
+---------------------------------------
+
+In the particular case of CPython modules a number of scientific packages were included.
 The following table shows the list and version of the packages included on the CPython modules.
 
 

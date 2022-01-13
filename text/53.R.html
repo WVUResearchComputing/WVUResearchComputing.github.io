@@ -246,8 +246,8 @@ There are two images that include the R interpreter inside:</p>
 </pre></div>
 </div>
 <p>Getting shell access to inside any of these containers to access <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
-singularity shell $SNG_PATH/RStudio-desktop-1.2.5042_R-3.4.4.sif
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
+$&gt; singularity shell $SNG_PATH/RStudio-desktop-1.2.5042_R-3.4.4.sif
 </pre></div>
 </div>
 <p>Despite including extra software such as RStudio they can be used for their internal R interpreters, especially if you are interested in older versions of R such as 3.4.4.</p>
@@ -316,7 +316,7 @@ To see the list of conda versions execute:</p>
 </div>
 <div class="section" id="using-r-from-the-terminal">
 <h2>Using R from the Terminal<a class="headerlink" href="#using-r-from-the-terminal" title="Permalink to this headline">¶</a></h2>
-<p>Regardless of how you access R, the R package includes two executables, <cite>R</cite> and <cite>Rscript</cite>. The command <code class="docutils literal notranslate"><span class="pre">R</span></code> is used to start a text-based interactive session, on the terminal execute the command <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+<p>Regardless of how you access R, the R package includes two executables, <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>. The command <code class="docutils literal notranslate"><span class="pre">R</span></code> is used to start a text-based interactive session, on the terminal execute the command <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
 <a class="reference internal image-reference" href="../_images/R_terminal.png"><img alt="Terminal with R interpreter" src="../_images/R_terminal.png" style="width: 600px;" /></a>
 <p>From there you can start typing R commands and getting output interactively:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
@@ -366,7 +366,7 @@ The line <code class="docutils literal notranslate"><span class="pre">cd</span> 
 The line <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge``cleans</span> <span class="pre">the</span> <span class="pre">environment</span> <span class="pre">of</span> <span class="pre">any</span> <span class="pre">modules</span> <span class="pre">and</span> <span class="pre">``module</span> <span class="pre">load</span> <span class="pre">lang/r/4.0.4_gcc102</span></code> will load the module for executing R. The name of the module is for Thorny Flat, on Spruce you need to use the modules mentioned above for that cluster.</p>
 <p>Finally <code class="docutils literal notranslate"><span class="pre">./hello.R</span></code> executes the script and the output will be written in a file like <code class="docutils literal notranslate"><span class="pre">MY_R_SCRIPT.o&lt;JobID&gt;</span></code> where JobID is a number that identifies the job in the queue system.
 The contents of the file are shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat MY_R_SCRIPT.o4714619
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cat MY_R_SCRIPT.o4714619
 [1] &quot;hello&quot;
 </pre></div>
 </div>
@@ -381,7 +381,7 @@ Compute nodes do not have internet access, so they are not capable to access CRA
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;file:///gpfs21/pub/CRAN&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Another alternative is using the command <cite>Rscript</cite>, this time from the normal shell:</p>
+<p>Another alternative is using the command <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>, this time from the normal shell:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; Rscript -e &#39;install.packages(&quot;&lt;PACKAGE&gt;&quot;, repos=&quot;file:///gpfs21/pub/CRAN&quot;)&#39;
 </pre></div>
 </div>
@@ -425,14 +425,14 @@ also installing the dependencies ‘backports’, ‘ellipsis’,\
 <p>To use locally installed packages, before you execute R you just need to
 modify the <code class="docutils literal notranslate"><span class="pre">R_LIBS</span></code> environment variable to tell R where to search for
 local packages:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=&lt;dir&gt;
 </pre></div>
 </div>
 <div class="section" id="using-install-packages">
 <h3>Using install.packages()<a class="headerlink" href="#using-install-packages" title="Permalink to this headline">¶</a></h3>
 <p>To use install.packages from the R prompt, before you start R you need
 to modify the <cite>R_LIBS</cite> environment variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=&lt;dir&gt;
 </pre></div>
 </div>
 <p>Then inside the R prompt, you execute any of the procedures above such as <cite>install.packages()</cite> inside the R interactive shell.</p>
@@ -444,25 +444,25 @@ to modify the <cite>R_LIBS</cite> environment variable:</p>
 There are several restrictions to use this command:
 First, this option only works if you have already downloaded a copy of the package from CRAN, any of its mirrors, or an external site that provides a tar package.
 Second, as a normal user, you must specify the path with the <code class="docutils literal notranslate"><span class="pre">-l</span></code> flag, otherwise, the command will refuse to work as you have no write access to the system-wide location. The command must be used like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; R CMD INSTALL -l &lt;dir&gt; &lt;package_name&gt;
 </pre></div>
 </div>
 <p>The folder <code class="docutils literal notranslate"><span class="pre">&lt;dir&gt;</span></code> is the location where the package will be installed and the folder must be created in advance. <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;</span></code> is the name of the package and you must ensure that all dependencies are already installed for the package, meaning that you will have to install several other packages before you can install the package that you want.</p>
 <p>Consider for example installing the package <code class="docutils literal notranslate"><span class="pre">parallelly</span></code>, this package has no dependencies beyond those that already came with the R installation. The sources are available on CRAN and can be downloaded from one of its many mirrors. You can first download the package with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cran</span><span class="o">.</span><span class="n">r</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">contrib</span><span class="o">/</span><span class="n">parallelly_1</span><span class="o">.</span><span class="mf">24.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://cran.r-project.org/src/contrib/parallelly_1.24.0.tar.gz
 </pre></div>
 </div>
 <p>Once the package is downloaded, ensure that the folder where you want to install the software exists, for example, if you want to install packages at
 <code class="docutils literal notranslate"><span class="pre">~/R/local_packages</span></code>, create the folder with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">R</span><span class="o">/</span><span class="n">local_packages</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir -p ~/R/local_packages
 </pre></div>
 </div>
 <p>Finally, install the packages with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">-</span><span class="n">l</span> <span class="o">~/</span><span class="n">R</span><span class="o">/</span><span class="n">local_packages</span> <span class="n">parallelly_1</span><span class="o">.</span><span class="mf">24.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; R CMD INSTALL -l ~/R/local_packages parallelly_1.24.0.tar.gz
 </pre></div>
 </div>
 <p>The package is now installed but it can only become visible if you set up the <code class="docutils literal notranslate"><span class="pre">R_LIBS</span></code> environment for it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=~/</span><span class="n">R</span><span class="o">/</span><span class="n">local_packages</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=~/R/local_packages
 </pre></div>
 </div>
 <p>Finally load the package with:</p>
@@ -528,11 +528,11 @@ socket cluster with 4 nodes on host ‘localhost’
 <p>This function will apply <code class="docutils literal notranslate"><span class="pre">function(x)</span></code> as it was defined for the first 10 million positive integers returning a vector of equal number of floats stored in <code class="docutils literal notranslate"><span class="pre">ans</span></code>.</p>
 <p>To compute this function R will be using a cluster build from 4 execution instances and will take a fraction of the time compared with the serial version of <code class="docutils literal notranslate"><span class="pre">lapply</span></code>. We can see some timings here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span>
- <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span>
- <span class="mf">1.787</span>   <span class="mf">0.093</span>   <span class="mf">3.721</span>
+<span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span>
+<span class="mf">1.787</span>   <span class="mf">0.093</span>   <span class="mf">3.721</span>
 <span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span>
- <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span>
- <span class="mf">6.484</span>   <span class="mf">0.023</span>   <span class="mf">6.522</span>
+<span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span>
+<span class="mf">6.484</span>   <span class="mf">0.023</span>   <span class="mf">6.522</span>
 </pre></div>
 </div>
 <p>We got almost an execution that was almost 4 times shorter than for the serial case. It is never the case that we get a perfect scaling, in more practical cases you should always expect that some time is lost in communication and extra overhead in orchestrating the parallel execution. The parallel versions of <cite>apply</cite> functions are an easy way of taking advantage of multicore architectures present of modern computers.</p>
