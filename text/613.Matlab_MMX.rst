@@ -489,7 +489,7 @@ This is working because ``libsingle_mkl_ilp64.so`` on the MATLAB's glnxa64 folde
     /shared/software/matlab/r2021a/extern/lib/glnxa64/libsingle_mkl_ilp64.so
 
 To compile without requiring special privileges, extra editing to the ``build_mmx`` is needed. Basically redirecting the library paths to the location where lib single_mkl_ilp6.so is present.
-Edit ``build_mmx.m`` to search for a library in the current location (``-L.``)::
+Edit ``build_mmx.m`` to search for a library in the current location (``-L.``).
 
 At the end of the compilation these files are created:: 
 
