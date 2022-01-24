@@ -672,7 +672,7 @@ Compilation of &#39;mmx_naive&#39; succeeded.
 </pre></div>
 </div>
 <p>To compile without requiring special privileges, extra editing to the <code class="docutils literal notranslate"><span class="pre">build_mmx</span></code> is needed. Basically redirecting the library paths to the location where lib single_mkl_ilp6.so is present.
-Edit <code class="docutils literal notranslate"><span class="pre">build_mmx.m</span></code> to search for a library in the current location (<code class="docutils literal notranslate"><span class="pre">-L.</span></code>):</p>
+Edit <code class="docutils literal notranslate"><span class="pre">build_mmx.m</span></code> to search for a library in the current location (<code class="docutils literal notranslate"><span class="pre">-L.</span></code>).</p>
 <p>At the end of the compilation these files are created:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mmx</span><span class="o">.</span><span class="n">mexa64</span>             <span class="o">&lt;--</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">equivalent</span> <span class="n">to</span> <span class="n">mmx_mkl_single</span><span class="o">.</span><span class="n">mexa64</span>
 <span class="n">mmx_mkl_multi</span><span class="o">.</span><span class="n">mexa64</span>
