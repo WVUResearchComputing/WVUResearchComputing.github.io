@@ -11,7 +11,7 @@ The CLI interface is a powerful way to interact with a remote computer for sever
 
 1. It takes little resources on the remote machine allowing the machine to serve tens, hundreds and in some cases even thousands of concurrent users.
 
-2. The *shell* is far more than command reader and executioner, it is actually a complete programming language. You can create complex sets of instructions by doing what is called *Shell Programming* actually, the ability to do shell programming is what we use in this document to differentiate a basic user from an advanced user.
+2. The *shell* is far more than command reader and executioner, it is actually a complete programming language. You can create complex sets of instructions by doing what is called *Shell Programming* actually, the ability to do shell programming is what we use in this document to differentiate a basic user from an advanced user..
 
 3. Despite of the learning curve being steeper, the CLI give you far more control on the machine, so as you become more comfortable using it you will be able to do things than on a Graphical User Interface (GUI) are too cumbersome.
 
