@@ -114,6 +114,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#octopus-11-3-on-thorny-flat-using-intel-2021-4">Octopus 11.3 on Thorny Flat using Intel 2021.4</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#octopus-11-0-on-spruce-using-intel-2019">Octopus 11.0 on Spruce using Intel 2019</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#octopus-10-4-with-gcc-9-3">Octopus 10.4 with GCC 9.3</a></li>
 </ul>
@@ -501,6 +502,75 @@ with_xmlf90=&quot;${MD_XMLF90}&quot;
 </div>
 <div class="section" id="octopus">
 <h2>Octopus<a class="headerlink" href="#octopus" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="octopus-11-3-on-thorny-flat-using-intel-2021-4">
+<h3>Octopus 11.3 on Thorny Flat using Intel 2021.4<a class="headerlink" href="#octopus-11-3-on-thorny-flat-using-intel-2021-4" title="Permalink to this headline">¶</a></h3>
+<p>Use the metamodule for DFT codes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
+$&gt; module load dft_intel21
+</pre></div>
+</div>
+<p>Resulting in these modules being loaded:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
+ <span class="mi">1</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>                            <span class="mi">15</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">arpack</span><span class="o">-</span><span class="n">ng</span><span class="o">/</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span><span class="n">_intel21_impi21</span>
+ <span class="mi">2</span><span class="p">)</span> <span class="n">tbb</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">16</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel21</span>
+ <span class="mi">3</span><span class="p">)</span> <span class="n">compiler</span><span class="o">-</span><span class="n">rt</span><span class="o">/</span><span class="n">latest</span>                        <span class="mi">17</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">10</span><span class="n">_intel21</span>
+ <span class="mi">4</span><span class="p">)</span> <span class="n">compiler</span><span class="o">/</span><span class="n">latest</span>                           <span class="mi">18</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">gridxc</span><span class="o">/</span><span class="mf">0.9</span><span class="o">.</span><span class="mi">6</span><span class="n">_intel21</span>
+ <span class="mi">5</span><span class="p">)</span> <span class="n">mpi</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">19</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">wannier90</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span><span class="n">_intel21</span>
+ <span class="mi">6</span><span class="p">)</span> <span class="n">mkl</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">20</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">abinit</span><span class="o">/</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="n">_intel21_impi21</span>
+ <span class="mi">7</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.7</span><span class="n">_gcc93</span>           <span class="mi">21</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">vasp</span><span class="o">/</span><span class="mf">6.2</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel21</span>
+ <span class="mi">8</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">17</span><span class="n">_intel21</span>              <span class="mi">22</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">11.0</span><span class="n">_intel21</span>
+ <span class="mi">9</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">7</span><span class="n">_intel21</span>                  <span class="mi">23</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">espresso</span><span class="o">/</span><span class="mf">6.8</span><span class="n">_intel21</span>
+<span class="mi">10</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel21</span>                  <span class="mi">24</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">elk</span><span class="o">/</span><span class="mf">8.3</span><span class="o">.</span><span class="mi">15</span><span class="n">_intel21</span>
+<span class="mi">11</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel21_impi21</span>           <span class="mi">25</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">siesta</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel21</span>
+<span class="mi">12</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.8</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel21_impi21</span>          <span class="mi">26</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">siesta</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_psml_intel21</span>
+<span class="mi">13</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">3</span><span class="n">_intel21_impi21</span>  <span class="mi">27</span><span class="p">)</span> <span class="n">dft_intel21</span>
+<span class="mi">14</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_intel21_impi21</span>
+</pre></div>
+</div>
+<p>The building folder is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.3</span><span class="o">/</span><span class="n">build_intel21</span>
+</pre></div>
+</div>
+<p>Run the configure script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+--with-lapack=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
+--with-blas=&quot;-L/${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
+--with-blacs=${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a \
+--with-scalapack=${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a \
+--with-boost=/shared/software/libs/boost/1.78_gcc93 \
+--with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
+CC=mpiicc CXX=mpiicpc FC=mpiifort
+</pre></div>
+</div>
+<p>Compile the code using 12 compilation threads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make -j 12
+</pre></div>
+</div>
+<p>Run the testsuite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ulimit -s unlimited
+$&gt; make check
+</pre></div>
+</div>
+<p>The results of the testsuite were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">16</span> <span class="n">failures</span>
+<span class="n">Passed</span><span class="p">:</span>  <span class="mi">220</span> <span class="o">/</span> <span class="mi">228</span>
+<span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">228</span>
+<span class="n">Failed</span><span class="p">:</span>  <span class="mi">7</span> <span class="o">/</span> <span class="mi">228</span>
+
+<span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
+<span class="o">------------------------------------------------------------------------------</span>
+<span class="n">lda_u</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">ACBN0</span><span class="o">.</span><span class="n">test</span>                                         <span class="mi">1</span>
+<span class="n">periodic_systems</span><span class="o">/</span><span class="mi">17</span><span class="o">-</span><span class="n">aluminium</span><span class="o">.</span><span class="n">test</span>                          <span class="mi">1</span>
+<span class="n">periodic_systems</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">TiO2</span><span class="o">.</span><span class="n">test</span>                               <span class="mi">1</span>
+<span class="n">lda_u</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">nio</span><span class="o">.</span><span class="n">test</span>                                           <span class="mi">1</span>
+<span class="n">lda_u</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">noncollinear</span><span class="o">.</span><span class="n">test</span>                                  <span class="mi">2</span>
+<span class="n">functionals</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">mgga</span><span class="o">.</span><span class="n">test</span>                                    <span class="mi">8</span>
+<span class="n">linear_response</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">casida</span><span class="o">.</span><span class="n">test</span>                              <span class="mi">16</span>
+
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">25</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="octopus-11-0-on-spruce-using-intel-2019">
 <h3>Octopus 11.0 on Spruce using Intel 2019<a class="headerlink" href="#octopus-11-0-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
 <p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>

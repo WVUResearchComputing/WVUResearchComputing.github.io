@@ -301,6 +301,76 @@ The code must be compiled from a compute node with GPUs as the CUDA toolkit is o
 Octopus
 -------
 
+Octopus 11.3 on Thorny Flat using Intel 2021.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the metamodule for DFT codes::
+
+    $> module purge
+    $> module load dft_intel21
+
+Resulting in these modules being loaded::
+
+    Currently Loaded Modulefiles:
+     1) lang/gcc/9.3.0                            15) libs/arpack-ng/3.8.0_intel21_impi21
+     2) tbb/latest                                16) libs/xmlf90/1.5.5_intel21
+     3) compiler-rt/latest                        17) libs/libpsml/1.1.10_intel21
+     4) compiler/latest                           18) libs/gridxc/0.9.6_intel21
+     5) mpi/latest                                19) atomistic/wannier90/3.1.0_intel21
+     6) mkl/latest                                20) atomistic/abinit/9.6.2_intel21_impi21
+     7) lang/python/cpython_3.9.7_gcc93           21) atomistic/vasp/6.2.1_intel21
+     8) libs/openblas/0.3.17_intel21              22) atomistic/octopus/11.0_intel21
+     9) libs/libxc/5.1.7_intel21                  23) atomistic/espresso/6.8_intel21
+    10) libs/hdf5/1.12.1_intel21                  24) atomistic/elk/8.3.15_intel21
+    11) libs/hdf5/1.12.1_intel21_impi21           25) atomistic/siesta/4.1.5_intel21
+    12) libs/netcdf/4.8.1_intel21_impi21          26) atomistic/siesta/4.1.5_psml_intel21
+    13) libs/netcdf/fortran-4.5.3_intel21_impi21  27) dft_intel21
+    14) libs/fftw/3.3.9_intel21_impi21
+
+The building folder is::
+
+    /shared/src/octopus-11.3/build_intel21
+
+Run the configure script::
+
+    ../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+    --with-lapack="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
+    --with-blas="-L/${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
+    --with-blacs=${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a \
+    --with-scalapack=${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a \
+    --with-boost=/shared/software/libs/boost/1.78_gcc93 \
+    --with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
+    CC=mpiicc CXX=mpiicpc FC=mpiifort
+
+Compile the code using 12 compilation threads::
+
+    $> make -j 12
+
+Run the testsuite::
+
+    $> ulimit -s unlimited
+    $> make check
+
+The results of the testsuite were::
+
+    Status: 16 failures
+    Passed:  220 / 228
+    Skipped: 1 / 228
+    Failed:  7 / 228
+
+    testfile                                                    # failed testcases
+    ------------------------------------------------------------------------------
+    lda_u/02-ACBN0.test                                         1
+    periodic_systems/17-aluminium.test                          1
+    periodic_systems/18-TiO2.test                               1
+    lda_u/01-nio.test                                           1
+    lda_u/07-noncollinear.test                                  2
+    functionals/18-mgga.test                                    8
+    linear_response/01-casida.test                              16
+
+    Total run-time of the testsuite: 00:09:25
+
+
 Octopus 11.0 on Spruce using Intel 2019
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
