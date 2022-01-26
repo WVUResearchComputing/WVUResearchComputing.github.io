@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Density Functional Theory</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#abinit">ABINIT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#abinit-9-6-2-on-thorny-using-intel-2021-4">ABINIT 9.6.2 on Thorny using Intel 2021.4</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#abinit-9-4-2-on-spruce-using-intel-2019">ABINIT 9.4.2 on Spruce using Intel 2019</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1">Parallel version with GCC 9.3 and MPICH 3.4.1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1">CUDA Version with GCC 9.3, MPICH 3.4.1 and CUDA 11.1</a></li>
@@ -210,6 +211,80 @@
 <h1>Density Functional Theory<a class="headerlink" href="#density-functional-theory" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="abinit">
 <h2>ABINIT<a class="headerlink" href="#abinit" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="abinit-9-6-2-on-thorny-using-intel-2021-4">
+<h3>ABINIT 9.6.2 on Thorny using Intel 2021.4<a class="headerlink" href="#abinit-9-6-2-on-thorny-using-intel-2021-4" title="Permalink to this headline">¶</a></h3>
+<p>This is the canonical configuration DFT codes for Thorny module <code class="docutils literal notranslate"><span class="pre">dft_intel21</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel21</span>
+</pre></div>
+</div>
+<p>The ac9 file for this build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/shared/software/atomistic/abinit/9.6.2_intel21_impi21&quot;</span>
+
+<span class="n">with_debug_flavor</span><span class="o">=</span><span class="s2">&quot;verbose&quot;</span>
+<span class="n">with_optim_flavor</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span>
+
+<span class="n">FCFLAGS_EXTRA</span><span class="o">=</span><span class="s2">&quot;-g -traceback -heap-arrays 1 -xSKYLAKE-AVX512&quot;</span>
+<span class="n">FC_LIBS</span><span class="o">=</span><span class="s2">&quot;-lstdc++ -ldl&quot;</span>
+<span class="n">CPP</span><span class="o">=</span><span class="s2">&quot;icc -E&quot;</span>
+
+<span class="n">WANNIER90_LIBS</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_WANNIER90}</span><span class="s2">/lib -lwannier&quot;</span>
+<span class="n">with_libxml2</span><span class="o">=</span><span class="s2">&quot;/shared/software/lang/gcc/9.3.0&quot;</span>
+
+<span class="n">CC</span><span class="o">=</span><span class="n">mpiicc</span>
+<span class="n">CXX</span><span class="o">=</span><span class="n">mpiicpc</span>
+<span class="n">FC</span><span class="o">=</span><span class="n">mpiifort</span>
+
+<span class="n">with_libxc</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel21</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mf">2021.4</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span>
+<span class="n">with_hdf5</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel21</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mf">2021.4</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">6</span>
+<span class="n">with_netcdf</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel21</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mf">2021.4</span><span class="o">/</span><span class="n">netcdf4</span><span class="o">/</span><span class="mf">4.6</span><span class="o">.</span><span class="mi">3</span>
+<span class="n">with_netcdf_fortran</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel21</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mf">2021.4</span><span class="o">/</span><span class="n">netcdf4_fortran</span><span class="o">/</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">with_xmlf90</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel21</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mf">2021.4</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mf">3.1</span>
+<span class="n">with_libpsml</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel21</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mf">2021.4</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>Run make and make install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+$&gt; make install
+</pre></div>
+</div>
+<p>The results of the testsuite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
+<span class="n">atompaw</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.02</span>
+<span class="n">bigdft</span>                <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">19</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.05</span>
+<span class="n">bigdft_paral</span>          <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">built</span><span class="o">-</span><span class="ow">in</span>              <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">6</span>        <span class="mi">1</span>         <span class="mi">0</span>      <span class="mf">19.79</span>      <span class="mf">19.82</span>
+<span class="n">etsf_io</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">8</span>        <span class="mi">0</span>         <span class="mi">0</span>      <span class="mf">27.45</span>      <span class="mf">27.69</span>
+<span class="n">fast</span>                  <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">11</span>        <span class="mi">0</span>         <span class="mi">0</span>      <span class="mf">43.82</span>      <span class="mf">44.49</span>
+<span class="n">gpu</span>                   <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">7</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.01</span>
+<span class="n">libxc</span>                 <span class="mi">1</span>       <span class="mi">8</span>         <span class="mi">26</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">457.34</span>     <span class="mf">459.65</span>
+<span class="n">mpiio</span>                 <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">13</span>        <span class="mi">4</span>         <span class="mi">0</span>     <span class="mf">134.70</span>     <span class="mf">140.90</span>
+<span class="n">paral</span>                 <span class="mi">1</span>       <span class="mi">8</span>         <span class="mi">39</span>       <span class="mi">84</span>         <span class="mi">0</span>     <span class="mf">591.17</span>     <span class="mf">595.17</span>
+<span class="n">psml</span>                  <span class="mi">0</span>       <span class="mi">2</span>         <span class="mi">12</span>        <span class="mi">0</span>         <span class="mi">0</span>      <span class="mf">90.26</span>      <span class="mf">90.91</span>
+<span class="n">seq</span>                   <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">18</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.02</span>
+<span class="n">tutomultibinit</span>        <span class="mi">0</span>       <span class="mi">2</span>          <span class="mi">4</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">163.75</span>     <span class="mf">165.02</span>
+<span class="n">tutoparal</span>             <span class="mi">0</span>       <span class="mi">1</span>          <span class="mi">0</span>       <span class="mi">27</span>         <span class="mi">0</span>      <span class="mf">46.55</span>      <span class="mf">46.97</span>
+<span class="n">tutoplugs</span>             <span class="mi">0</span>       <span class="mi">4</span>          <span class="mi">0</span>        <span class="mi">0</span>         <span class="mi">0</span>      <span class="mf">52.90</span>      <span class="mf">53.11</span>
+<span class="n">tutorespfn</span>            <span class="mi">1</span>       <span class="mi">8</span>         <span class="mi">20</span>        <span class="mi">2</span>         <span class="mi">0</span>     <span class="mf">922.51</span>     <span class="mf">926.44</span>
+<span class="n">tutorial</span>              <span class="mi">2</span>      <span class="mi">10</span>         <span class="mi">47</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">2210.86</span>    <span class="mf">2213.49</span>
+<span class="n">unitary</span>               <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">18</span>       <span class="mi">20</span>         <span class="mi">0</span>      <span class="mf">75.31</span>      <span class="mf">75.71</span>
+<span class="n">v1</span>                    <span class="mi">0</span>       <span class="mi">1</span>         <span class="mi">73</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">259.79</span>     <span class="mf">262.73</span>
+<span class="n">v2</span>                    <span class="mi">1</span>      <span class="mi">14</span>         <span class="mi">64</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">260.72</span>     <span class="mf">263.70</span>
+<span class="n">v3</span>                    <span class="mi">2</span>      <span class="mi">12</span>         <span class="mi">64</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">333.02</span>     <span class="mf">337.28</span>
+<span class="n">v4</span>                    <span class="mi">0</span>      <span class="mi">10</span>         <span class="mi">51</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">242.36</span>     <span class="mf">245.63</span>
+<span class="n">v5</span>                    <span class="mi">3</span>      <span class="mi">12</span>         <span class="mi">58</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">690.92</span>     <span class="mf">696.28</span>
+<span class="n">v6</span>                    <span class="mi">0</span>       <span class="mi">8</span>         <span class="mi">53</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">422.96</span>     <span class="mf">426.97</span>
+<span class="n">v67mbpt</span>               <span class="mi">0</span>       <span class="mi">9</span>         <span class="mi">16</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">185.33</span>     <span class="mf">187.75</span>
+<span class="n">v7</span>                    <span class="mi">1</span>      <span class="mi">17</span>         <span class="mi">47</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">706.63</span>     <span class="mf">712.59</span>
+<span class="n">v8</span>                    <span class="mi">0</span>      <span class="mi">17</span>         <span class="mi">50</span>        <span class="mi">2</span>         <span class="mi">0</span>     <span class="mf">620.94</span>     <span class="mf">625.90</span>
+<span class="n">v9</span>                    <span class="mi">0</span>      <span class="mi">16</span>         <span class="mi">41</span>        <span class="mi">4</span>         <span class="mi">0</span>     <span class="mf">501.88</span>     <span class="mf">504.46</span>
+<span class="n">vdwxc</span>                 <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">1</span>        <span class="mi">0</span>         <span class="mi">0</span>       <span class="mf">7.03</span>       <span class="mf">7.05</span>
+<span class="n">wannier90</span>             <span class="mi">2</span>       <span class="mi">5</span>          <span class="mi">1</span>        <span class="mi">0</span>         <span class="mi">0</span>      <span class="mf">32.28</span>      <span class="mf">32.53</span>
+
+<span class="n">Completed</span> <span class="ow">in</span> <span class="mf">2400.30</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span> <span class="n">Average</span> <span class="n">time</span> <span class="k">for</span> <span class="n">test</span><span class="o">=</span><span class="mf">10.10</span> <span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="n">stdev</span><span class="o">=</span><span class="mf">45.74</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span>
+<span class="n">Summary</span><span class="p">:</span> <span class="n">failed</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">succeeded</span><span class="o">=</span><span class="mi">723</span><span class="p">,</span> <span class="n">passed</span><span class="o">=</span><span class="mi">164</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="mi">194</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="abinit-9-4-2-on-spruce-using-intel-2019">
 <h3>ABINIT 9.4.2 on Spruce using Intel 2019<a class="headerlink" href="#abinit-9-4-2-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
 <p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
@@ -518,7 +593,7 @@ $&gt; module load dft_intel21
  <span class="mi">5</span><span class="p">)</span> <span class="n">mpi</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">19</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">wannier90</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span><span class="n">_intel21</span>
  <span class="mi">6</span><span class="p">)</span> <span class="n">mkl</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">20</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">abinit</span><span class="o">/</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="n">_intel21_impi21</span>
  <span class="mi">7</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.7</span><span class="n">_gcc93</span>           <span class="mi">21</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">vasp</span><span class="o">/</span><span class="mf">6.2</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel21</span>
- <span class="mi">8</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">17</span><span class="n">_intel21</span>              <span class="mi">22</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">11.0</span><span class="n">_intel21</span>
+ <span class="mi">8</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">17</span><span class="n">_intel21</span>              <span class="mi">22</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">11.3</span><span class="n">_intel21_impi21</span>
  <span class="mi">9</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">7</span><span class="n">_intel21</span>                  <span class="mi">23</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">espresso</span><span class="o">/</span><span class="mf">6.8</span><span class="n">_intel21</span>
 <span class="mi">10</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel21</span>                  <span class="mi">24</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">elk</span><span class="o">/</span><span class="mf">8.3</span><span class="o">.</span><span class="mi">15</span><span class="n">_intel21</span>
 <span class="mi">11</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel21_impi21</span>           <span class="mi">25</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">siesta</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel21</span>
@@ -532,14 +607,16 @@ $&gt; module load dft_intel21
 </pre></div>
 </div>
 <p>Run the configure script:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
---with-lapack=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
---with-blas=&quot;-L/${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
---with-blacs=${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a \
---with-scalapack=${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MKL=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl&quot;
+
+../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+--with-blas=&quot;${MKL}&quot; \
+--with-lapack=&quot;${MKL}&quot; \
+--enable-mpi \
+--with-libxc-prefix=$MD_LIBXC \
 --with-boost=/shared/software/libs/boost/1.78_gcc93 \
 --with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
-CC=mpiicc CXX=mpiicpc FC=mpiifort
+CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS=&quot;-g -traceback -heap-arrays 1 -O2 -fp-model=precise&quot;
 </pre></div>
 </div>
 <p>Compile the code using 12 compilation threads:</p>
@@ -552,22 +629,19 @@ $&gt; make check
 </pre></div>
 </div>
 <p>The results of the testsuite were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">16</span> <span class="n">failures</span>
-<span class="n">Passed</span><span class="p">:</span>  <span class="mi">220</span> <span class="o">/</span> <span class="mi">228</span>
-<span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">228</span>
-<span class="n">Failed</span><span class="p">:</span>  <span class="mi">7</span> <span class="o">/</span> <span class="mi">228</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
+        <span class="n">Passed</span><span class="p">:</span>  <span class="mi">223</span> <span class="o">/</span> <span class="mi">228</span>
+        <span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">228</span>
+        <span class="n">Failed</span><span class="p">:</span>  <span class="mi">4</span> <span class="o">/</span> <span class="mi">228</span>
 
-<span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
-<span class="o">------------------------------------------------------------------------------</span>
-<span class="n">lda_u</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">ACBN0</span><span class="o">.</span><span class="n">test</span>                                         <span class="mi">1</span>
-<span class="n">periodic_systems</span><span class="o">/</span><span class="mi">17</span><span class="o">-</span><span class="n">aluminium</span><span class="o">.</span><span class="n">test</span>                          <span class="mi">1</span>
-<span class="n">periodic_systems</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">TiO2</span><span class="o">.</span><span class="n">test</span>                               <span class="mi">1</span>
-<span class="n">lda_u</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">nio</span><span class="o">.</span><span class="n">test</span>                                           <span class="mi">1</span>
-<span class="n">lda_u</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">noncollinear</span><span class="o">.</span><span class="n">test</span>                                  <span class="mi">2</span>
-<span class="n">functionals</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">mgga</span><span class="o">.</span><span class="n">test</span>                                    <span class="mi">8</span>
-<span class="n">linear_response</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">casida</span><span class="o">.</span><span class="n">test</span>                              <span class="mi">16</span>
+        <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
+        <span class="o">------------------------------------------------------------------------------</span>
+        <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">17</span><span class="o">-</span><span class="n">aluminium</span><span class="o">.</span><span class="n">test</span>                          <span class="mi">4</span>
+        <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">TiO2</span><span class="o">.</span><span class="n">test</span>                               <span class="mi">2</span>
+        <span class="n">lda_u</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">noncollinear</span><span class="o">.</span><span class="n">test</span>                                  <span class="mi">3</span>
+        <span class="n">functionals</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">mgga</span><span class="o">.</span><span class="n">test</span>                                    <span class="mi">8</span>
 
-<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">25</span>
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">11</span>
 </pre></div>
 </div>
 </div>

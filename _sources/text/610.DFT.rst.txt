@@ -4,6 +4,81 @@ Density Functional Theory
 ABINIT
 ------
 
+ABINIT 9.6.2 on Thorny using Intel 2021.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the canonical configuration DFT codes for Thorny module ``dft_intel21``::
+
+  module load dft_intel21
+
+The ac9 file for this build::
+
+    prefix="/shared/software/atomistic/abinit/9.6.2_intel21_impi21"
+
+    with_debug_flavor="verbose"
+    with_optim_flavor="standard"
+
+    FCFLAGS_EXTRA="-g -traceback -heap-arrays 1 -xSKYLAKE-AVX512"
+    FC_LIBS="-lstdc++ -ldl"
+    CPP="icc -E"
+
+    WANNIER90_LIBS="-L${MD_WANNIER90}/lib -lwannier"
+    with_libxml2="/shared/software/lang/gcc/9.3.0"
+
+    CC=mpiicc
+    CXX=mpiicpc
+    FC=mpiifort
+
+    with_libxc=/shared/src/abinit-9.6.2/build_intel21/fallbacks/install_fb/intel/2021.4/libxc/4.3.4
+    with_hdf5=/shared/src/abinit-9.6.2/build_intel21/fallbacks/install_fb/intel/2021.4/hdf5/1.10.6
+    with_netcdf=/shared/src/abinit-9.6.2/build_intel21/fallbacks/install_fb/intel/2021.4/netcdf4/4.6.3
+    with_netcdf_fortran=/shared/src/abinit-9.6.2/build_intel21/fallbacks/install_fb/intel/2021.4/netcdf4_fortran/4.5.2
+    with_xmlf90=/shared/src/abinit-9.6.2/build_intel21/fallbacks/install_fb/intel/2021.4/xmlf90/1.5.3.1
+    with_libpsml=/shared/src/abinit-9.6.2/build_intel21/fallbacks/install_fb/intel/2021.4/libpsml/1.1.7
+
+Run make and make install::
+
+    $> make 
+    $> make install
+
+The results of the testsuite::
+
+    Suite            failed  passed  succeeded  skipped  disabled  run_etime  tot_etime
+    atompaw               0       0          0        2         0       0.00       0.02
+    bigdft                0       0          0       19         0       0.00       0.05
+    bigdft_paral          0       0          0        4         0       0.00       0.00
+    built-in              0       0          6        1         0      19.79      19.82
+    etsf_io               0       0          8        0         0      27.45      27.69
+    fast                  0       0         11        0         0      43.82      44.49
+    gpu                   0       0          0        7         0       0.00       0.01
+    libxc                 1       8         26        0         0     457.34     459.65
+    mpiio                 0       0         13        4         0     134.70     140.90
+    paral                 1       8         39       84         0     591.17     595.17
+    psml                  0       2         12        0         0      90.26      90.91
+    seq                   0       0          0       18         0       0.00       0.02
+    tutomultibinit        0       2          4        0         0     163.75     165.02
+    tutoparal             0       1          0       27         0      46.55      46.97
+    tutoplugs             0       4          0        0         0      52.90      53.11
+    tutorespfn            1       8         20        2         0     922.51     926.44
+    tutorial              2      10         47        0         0    2210.86    2213.49
+    unitary               0       0         18       20         0      75.31      75.71
+    v1                    0       1         73        0         0     259.79     262.73
+    v2                    1      14         64        0         0     260.72     263.70
+    v3                    2      12         64        0         0     333.02     337.28
+    v4                    0      10         51        0         0     242.36     245.63
+    v5                    3      12         58        0         0     690.92     696.28
+    v6                    0       8         53        0         0     422.96     426.97
+    v67mbpt               0       9         16        0         0     185.33     187.75
+    v7                    1      17         47        0         0     706.63     712.59
+    v8                    0      17         50        2         0     620.94     625.90
+    v9                    0      16         41        4         0     501.88     504.46
+    vdwxc                 0       0          1        0         0       7.03       7.05
+    wannier90             2       5          1        0         0      32.28      32.53
+
+    Completed in 2400.30 [s]. Average time for test=10.10 [s], stdev=45.74 [s]
+    Summary: failed=14, succeeded=723, passed=164, skipped=194, disabled=0
+
+
 ABINIT 9.4.2 on Spruce using Intel 2019
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -319,7 +394,7 @@ Resulting in these modules being loaded::
      5) mpi/latest                                19) atomistic/wannier90/3.1.0_intel21
      6) mkl/latest                                20) atomistic/abinit/9.6.2_intel21_impi21
      7) lang/python/cpython_3.9.7_gcc93           21) atomistic/vasp/6.2.1_intel21
-     8) libs/openblas/0.3.17_intel21              22) atomistic/octopus/11.0_intel21
+     8) libs/openblas/0.3.17_intel21              22) atomistic/octopus/11.3_intel21_impi21
      9) libs/libxc/5.1.7_intel21                  23) atomistic/espresso/6.8_intel21
     10) libs/hdf5/1.12.1_intel21                  24) atomistic/elk/8.3.15_intel21
     11) libs/hdf5/1.12.1_intel21_impi21           25) atomistic/siesta/4.1.5_intel21
@@ -333,15 +408,17 @@ The building folder is::
 
 Run the configure script::
 
-    ../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
-    --with-lapack="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
-    --with-blas="-L/${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
-    --with-blacs=${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a \
-    --with-scalapack=${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a \
-    --with-boost=/shared/software/libs/boost/1.78_gcc93 \
-    --with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
-    CC=mpiicc CXX=mpiicpc FC=mpiifort
+	MKL="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl"
 
+	../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+	--with-blas="${MKL}" \
+	--with-lapack="${MKL}" \
+	--enable-mpi \
+	--with-libxc-prefix=$MD_LIBXC \
+	--with-boost=/shared/software/libs/boost/1.78_gcc93 \
+	--with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
+	CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS="-g -traceback -heap-arrays 1 -O2 -fp-model=precise"
+    
 Compile the code using 12 compilation threads::
 
     $> make -j 12
@@ -353,22 +430,19 @@ Run the testsuite::
 
 The results of the testsuite were::
 
-    Status: 16 failures
-    Passed:  220 / 228
-    Skipped: 1 / 228
-    Failed:  7 / 228
+	Status: 8 failures
+		Passed:  223 / 228
+		Skipped: 1 / 228
+		Failed:  4 / 228
 
-    testfile                                                    # failed testcases
-    ------------------------------------------------------------------------------
-    lda_u/02-ACBN0.test                                         1
-    periodic_systems/17-aluminium.test                          1
-    periodic_systems/18-TiO2.test                               1
-    lda_u/01-nio.test                                           1
-    lda_u/07-noncollinear.test                                  2
-    functionals/18-mgga.test                                    8
-    linear_response/01-casida.test                              16
+		testfile                                                    # failed testcases
+		------------------------------------------------------------------------------
+		periodic_systems/17-aluminium.test                          4
+		periodic_systems/18-TiO2.test                               2
+		lda_u/07-noncollinear.test                                  3
+		functionals/18-mgga.test                                    8
 
-    Total run-time of the testsuite: 00:09:25
+	Total run-time of the testsuite: 00:10:11
 
 
 Octopus 11.0 on Spruce using Intel 2019
