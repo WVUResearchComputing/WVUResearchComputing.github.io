@@ -127,7 +127,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#castep">CASTEP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vasp">VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vasp-6-2-1-on-thorny-flat-with-intel-2021-4">VASP 6.2.1 on Thorny Flat with Intel 2021.4</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vasp-6-2-1-on-spruce-using-intel-2019">VASP 6.2.1 on Spruce using Intel 2019</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">VASP 6.2.1 on Spruce using Intel 2019</a></li>
 </ul>
 </li>
 </ul>
@@ -895,12 +897,77 @@ FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
 </div>
 <div class="section" id="vasp">
 <h2>VASP<a class="headerlink" href="#vasp" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vasp-6-2-1-on-thorny-flat-with-intel-2021-4">
+<h3>VASP 6.2.1 on Thorny Flat with Intel 2021.4<a class="headerlink" href="#vasp-6-2-1-on-thorny-flat-with-intel-2021-4" title="Permalink to this headline">¶</a></h3>
 <p>The Vienna Ab initio Simulation Package (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.</p>
-<p>VASP 6.2.1 was compiled with Intel 2019 on both Thorny and Spruce.
+<p>VASP 6.2.1 was compiled with Intel 2021.4 on Thorny Flat.
 There are two builds of VASP, one compiled with a MKL running the rutines sequential mode (no multithreading) and another build with OpenMP enabled and MKL running in multithreaded mode.</p>
 <p>VASP is a proprietary code that require a license to legally run the code.
 The downloaded file is called <code class="docutils literal notranslate"><span class="pre">vasp.6.2.1.tar.gz</span></code> that uncompress into a folder <code class="docutils literal notranslate"><span class="pre">vasp.6.2.1</span></code>.</p>
-<p>Before compiling VASP, you need to edit the file <cite>makefile.include</cite> for the sequential version. The files for Spruce include multidispaching code for the various CPUs on that cluster:</p>
+<p>Before compiling VASP, you need to edit the file <cite>makefile.include</cite> for the sequential version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
+CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
+                         -DMPI -DMPI_BLOCK=8000 \
+                         -DCACHE_SIZE=4000 \
+                         -DscaLAPACK \
+                         -Dvasp6 \
+                         -Duse_bse_te \
+                         -Dtbdyn \
+                         -Dfock_dblbuf
+
+CPP        = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS)
+
+FC         = mpiifort
+FCL        = mpiifort
+
+FREE       = -free -names lowercase
+
+FFLAGS     = -assume byterecl -w -traceback -static-libstdc++ -static-libgcc -heap-arrays 1 -xSKYLAKE-AVX512
+OFLAG      = -O2 -g3
+OFLAG_IN   = $(OFLAG)
+DEBUG      = -O0 -g3
+
+MKL_PATH   = $(MKLROOT)/lib/intel64
+BLAS       = -qmkl=sequential -static-intel
+LAPACK     =
+BLACS      = -lmkl_blacs_intelmpi_lp64
+SCALAPACK  = $(MKL_PATH)/libmkl_scalapack_lp64.a $(BLACS)
+
+OBJECTS    = fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d.o
+
+INCS       =-I$(MKLROOT)/include/fftw
+
+LLIBS      = $(SCALAPACK) $(LAPACK) $(BLAS)
+
+OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+OBJECTS_O2 += fft3dlib.o
+
+# For what used to be vasp.5.lib
+CPP_LIB    = $(CPP)
+FC_LIB     = $(FC)
+CC_LIB     = icc
+CFLAGS_LIB = -O -static-libgcc -xSKYLAKE-AVX512
+FFLAGS_LIB = -O1 -static-libgcc -xSKYLAKE-AVX512
+FREE_LIB   = $(FREE)
+
+OBJECTS_LIB= linpack_double.o getshmem.o
+
+# For the parser library
+CXX_PARS   = icpc
+LLIBS      += -lstdc++ -static-libstdc++ -xSKYLAKE-AVX512
+
+# Normally no need to change this
+SRCDIR     = ../../src
+BINDIR     = ../../bin
+</pre></div>
+</div>
+<p>Running tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make test
+</pre></div>
+</div>
+</div>
+<div class="section" id="vasp-6-2-1-on-spruce-using-intel-2019">
+<h3>VASP 6.2.1 on Spruce using Intel 2019<a class="headerlink" href="#vasp-6-2-1-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
 CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
            -DMPI -DMPI_BLOCK=8000 \
@@ -1032,8 +1099,9 @@ BINDIR     = ../../bin
 <span class="n">C_2x2x2_CORE_CON</span> <span class="n">C_2x2x2_CORE_CON_RPR</span>
 </pre></div>
 </div>
-<div class="section" id="vasp-6-2-1-on-spruce-using-intel-2019">
-<h3>VASP 6.2.1 on Spruce using Intel 2019<a class="headerlink" href="#vasp-6-2-1-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<h3>VASP 6.2.1 on Spruce using Intel 2019<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
