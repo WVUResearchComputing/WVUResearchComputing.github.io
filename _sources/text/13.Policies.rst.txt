@@ -6,7 +6,7 @@ Policies
 Running Jobs on Login Node
 --------------------------
 
-Running jobs/tasks on the login node are not permitted. When the RC admin
+Running jobs/tasks on the login node (i.e., what you are interacting with immediately after you log in) are not permitted. When the RC admin
 team notices this occurring, the processes will be killed immediately to
 ensure system stability. If you are having trouble submitting jobs
 through the scheduler, please follow instructions on :ref:`int-getting-help` and we would be happy to help.
@@ -82,7 +82,7 @@ X11 Forwarding - Running visualization software
 -----------------------------------------------
 
 Non compute intensive processes for visualization purposes can be run on
-the login node. These processes include "could" Gnuplot, R, and Matlab.
+the login node. These processes can include Gnuplot, R, and Matlab.
 However, if your visualization job requires computing data before
 producing graphs and figures, it is best to run these jobs through the
 scheduler in batch mode. Compute-intensive jobs, visualization or not,

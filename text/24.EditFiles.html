@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -200,7 +209,7 @@ For this tutorial we will focus on <strong>nano</strong>, for editing short text
 <div class="section" id="opening-gnu-nano">
 <h2>Opening GNU nano<a class="headerlink" href="#opening-gnu-nano" title="Permalink to this headline">¶</a></h2>
 <p>On a terminal execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nano &lt;name_of_file&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; nano &lt;name_of_file&gt;
 </pre></div>
 </div>
 <p>You will get a text application that looks like this:</p>
@@ -209,29 +218,29 @@ For this tutorial we will focus on <strong>nano</strong>, for editing short text
 <div class="section" id="using-gnu-nano">
 <h2>Using GNU nano<a class="headerlink" href="#using-gnu-nano" title="Permalink to this headline">¶</a></h2>
 <p>The bottom two lines show the commands to use.
-The symbol <code class="docutils literal notranslate"><span class="pre">^</span></code> means press the <strong>CONTROL KEY</strong> (left or right) and keep it pressed until you press the command key. The character of the command is not case sensitive so pressing <code class="docutils literal notranslate"><span class="pre">^X</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">^x</span></code>.</p>
-<p>Executing commands with nano will sometimes change the list of subcommands, some of them are indicated like <code class="docutils literal notranslate"><span class="pre">M-C</span></code>, in that case <code class="docutils literal notranslate"><span class="pre">M</span></code> means the <code class="docutils literal notranslate"><span class="pre">META</span></code> character that in modern keyboards is indicated like <code class="docutils literal notranslate"><span class="pre">Alt</span></code>.</p>
-<p>The command <code class="docutils literal notranslate"><span class="pre">^G</span></code> display a complete list of keystrokes available from the main window. To exit from the help page, execute <code class="docutils literal notranslate"><span class="pre">^X</span></code></p>
+The symbol <code class="docutils literal"><span class="pre">^</span></code> means press the <strong>CONTROL KEY</strong> (left or right) and keep it pressed until you press the command key. The character of the command is not case sensitive so pressing <code class="docutils literal"><span class="pre">^X</span></code> is equivalent to <code class="docutils literal"><span class="pre">^x</span></code>.</p>
+<p>Executing commands with nano will sometimes change the list of subcommands, some of them are indicated like <code class="docutils literal"><span class="pre">M-C</span></code>, in that case <code class="docutils literal"><span class="pre">M</span></code> means the <code class="docutils literal"><span class="pre">META</span></code> character that in modern keyboards is indicated like <code class="docutils literal"><span class="pre">Alt</span></code>.</p>
+<p>The command <code class="docutils literal"><span class="pre">^G</span></code> display a complete list of keystrokes available from the main window. To exit from the help page, execute <code class="docutils literal"><span class="pre">^X</span></code></p>
 <p><strong>GNU nano</strong> offers a fairly complete set of basic utilities to edit files.</p>
-<p>Search for text with <code class="docutils literal notranslate"><span class="pre">^W</span></code> and the text to find.
-The command <code class="docutils literal notranslate"><span class="pre">^_</span></code> allows you to go to a specific line number.</p>
+<p>Search for text with <code class="docutils literal"><span class="pre">^W</span></code> and the text to find.
+The command <code class="docutils literal"><span class="pre">^_</span></code> allows you to go to a specific line number.</p>
 </div>
 <div class="section" id="copy-cut-and-paste">
 <h2>Copy, Cut and Paste<a class="headerlink" href="#copy-cut-and-paste" title="Permalink to this headline">¶</a></h2>
-<p>The command <code class="docutils literal notranslate"><span class="pre">^K</span></code> and <code class="docutils literal notranslate"><span class="pre">^U</span></code> only serve to cut and paste the line where the cursor is located. When you cut the text, its contents are stored in what is called the <em>cut buffer</em>. The command <code class="docutils literal notranslate"><span class="pre">^U</span></code> just takes the contents of the <em>cut buffer</em> and write its contents to the location of the cursor. As the contents of the <em>cut buffer</em> are not erased you can use <code class="docutils literal notranslate"><span class="pre">^U</span></code> to repeat the same contents as many times as you want.</p>
+<p>The command <code class="docutils literal"><span class="pre">^K</span></code> and <code class="docutils literal"><span class="pre">^U</span></code> only serve to cut and paste the line where the cursor is located. When you cut the text, its contents are stored in what is called the <em>cut buffer</em>. The command <code class="docutils literal"><span class="pre">^U</span></code> just takes the contents of the <em>cut buffer</em> and write its contents to the location of the cursor. As the contents of the <em>cut buffer</em> are not erased you can use <code class="docutils literal"><span class="pre">^U</span></code> to repeat the same contents as many times as you want.</p>
 <p>For more advanced copy and paste, you need to learn how to select blocks of text before cutting them to the <em>cut buffer</em>
-First, move the cursor to the start of the text you want to select, press the <code class="docutils literal notranslate"><span class="pre">M-A</span></code> key combination (<em>Alt-A</em> in modern keyboards) to mark the start, then move the cursor to the end of the section you want to select.
-Once you have marked the beginning and end of the text, the <code class="docutils literal notranslate"><span class="pre">^^</span></code> (Esc-6) and <code class="docutils literal notranslate"><span class="pre">^K</span></code> key combinations can be used to copy or cut it, respectively.
-In a command like <code class="docutils literal notranslate"><span class="pre">^^</span></code>, the meaning of that is press the <em>Control Key</em> followed by the <em>carret symbol</em> <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p>
+First, move the cursor to the start of the text you want to select, press the <code class="docutils literal"><span class="pre">M-A</span></code> key combination (<em>Alt-A</em> in modern keyboards) to mark the start, then move the cursor to the end of the section you want to select.
+Once you have marked the beginning and end of the text, the <code class="docutils literal"><span class="pre">^^</span></code> (Esc-6) and <code class="docutils literal"><span class="pre">^K</span></code> key combinations can be used to copy or cut it, respectively.
+In a command like <code class="docutils literal"><span class="pre">^^</span></code>, the meaning of that is press the <em>Control Key</em> followed by the <em>carret symbol</em> <code class="docutils literal"><span class="pre">^</span></code>.</p>
 </div>
 <div class="section" id="quitting-nano">
 <h2>Quitting Nano<a class="headerlink" href="#quitting-nano" title="Permalink to this headline">¶</a></h2>
-<p>To quit nano, use the <code class="docutils literal notranslate"><span class="pre">^X</span></code> key combination. If the file you are working on has been modified since the last time you saved it, you will be asked to save the file first. Type <em>y</em> to save the file, or <em>n</em> to exit nano without saving the file.</p>
+<p>To quit nano, use the <code class="docutils literal"><span class="pre">^X</span></code> key combination. If the file you are working on has been modified since the last time you saved it, you will be asked to save the file first. Type <em>y</em> to save the file, or <em>n</em> to exit nano without saving the file.</p>
 </div>
 <div class="section" id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>As an exercise, take the opportunity to write the source code of a simple parallel program, open nano and write the code below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;mpi.h&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &lt;mpi.h&gt;</span>
 <span class="c1">#include &lt;stdio.h&gt;</span>
 
 <span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
@@ -260,7 +269,7 @@ In a command like <code class="docutils literal notranslate"><span class="pre">^
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The code is in C, a well known programming language for a variety of purposes, including scientific computing. In C, tabulations are not mandatory but helps the legibility of the code, pay special attention to semicolons at the end of each instruction. All lines starting with double slash <code class="docutils literal notranslate"><span class="pre">//</span></code> are comments, so you can ignore those lines if you want.</p>
+<p>The code is in C, a well known programming language for a variety of purposes, including scientific computing. In C, tabulations are not mandatory but helps the legibility of the code, pay special attention to semicolons at the end of each instruction. All lines starting with double slash <code class="docutils literal"><span class="pre">//</span></code> are comments, so you can ignore those lines if you want.</p>
 <p>In the next chapter, we will show how to compile the code and execute it on the cluster using the queue manager.</p>
 </div>
 </div>

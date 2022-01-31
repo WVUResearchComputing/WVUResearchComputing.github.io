@@ -14,7 +14,7 @@ We operate 2 High-Performance computing Clusters "Spruce Knob" and "Thorny Flat"
 
 The High-Performance Computing facilities are funded by the National Science Foundation EPSCoR Research Infrastructure Improvement Cooperative Agreement #1003907, the state of West Virginia (WVEPSCoR via the Higher Education Policy Commission), the WVU Research Corporation and faculty investments.
 
-*Mountaineer* was WVU's first shared cluster and it was a 384 core Intel high-density computing cluster based on Xeon Westmere processors. Each node had 12 cores and 48GB of RAM, providing 4GB per node average. Storage was provided by a direct-attached SAN unit with 10TB of formatted disk space, as well as a network attached storage system with 60 TB of storage capacity. Mountaineer stop operation in April 2019 when the new cluster *Thorny Flat* started.
+*Mountaineer* was WVU's first shared cluster and it was a 384 core Intel high-density computing cluster based on Xeon Westmere processors. Each node had 12 cores and 48GB of RAM, providing 4GB per core average. Storage was provided by a direct-attached SAN unit with 10TB of formatted disk space, as well as a network attached storage system with 60 TB of storage capacity. Mountaineer stop operation in April 2019 when the new cluster *Thorny Flat* started.
 
 *Spruce Knob* is WVU’s current HPC system. This system is 176 nodes, 3,376 core heterogeneous high-density computing cluster based on Intel Xeon Sandy Bridge, Ivy Bridge, Haswell, and Broadwell processors. Spruce Knob follows a condo model where faculty members can purchase direct access to nodes on the cluster making them part owners of the cluster.
 

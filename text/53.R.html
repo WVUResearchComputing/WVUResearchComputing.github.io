@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -207,11 +216,11 @@
 <h2>The R interpreter and CRAN<a class="headerlink" href="#the-r-interpreter-and-cran" title="Permalink to this headline">¶</a></h2>
 <p>The R interpreter is the software that allows you to interact with R.
 There are two commands in R.
-The command <code class="docutils literal notranslate"><span class="pre">R</span></code> opens a text-based interactive interface, and the command <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> run scripts written in R language</p>
+The command <code class="docutils literal"><span class="pre">R</span></code> opens a text-based interactive interface, and the command <code class="docutils literal"><span class="pre">Rscript</span></code> run scripts written in R language</p>
 <p>Around R, a ecosystem of external packages have been delevoped many of them accesible in a repository called CRAN.
 The Comprehensive R Archive Network (CRAN) is a network of ftp and web servers around the world that store identical, up-to-date, versions of code and documentation for R.
 On Thorny Flat there is a weekly updated mirror of the CRAN repository located at:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">CRAN</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">CRAN</span>
 </pre></div>
 </div>
 <p>There several ways of accessing the different R on our clusters.
@@ -228,25 +237,25 @@ On this Linux distribution, R is included with version 3.0.2.
 This version is too old for most scientific applications today.
 You should not have much reason to use that version.</p>
 <p>In terms of environment modules Spruce Knob offers two versions 3.6.3 and 4.0.4.
-You can load any of those modules with the <code class="docutils literal notranslate"><span class="pre">module</span></code> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/R/3.6.3_gcc101
+You can load any of those modules with the <code class="docutils literal"><span class="pre">module</span></code> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/R/3.6.3_gcc101
 $&gt; module load lang/R/4.0.4_gcc101
 </pre></div>
 </div>
-<p>After that, the command <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> became available on the shell.
+<p>After that, the command <code class="docutils literal"><span class="pre">R</span></code> and <code class="docutils literal"><span class="pre">Rscript</span></code> became available on the shell.
 The third way of accessing the R interpreter is via a Singularity <cite>container</cite>.
 First, you need to load the singularity environment module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load singularity
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load singularity
 </pre></div>
 </div>
-<p>Singularity images are located at <code class="docutils literal notranslate"><span class="pre">/shared/software/containers/</span></code> and the variable <code class="docutils literal notranslate"><span class="pre">$SNG_PATH</span></code> contains this path.
+<p>Singularity images are located at <code class="docutils literal"><span class="pre">/shared/software/containers/</span></code> and the variable <code class="docutils literal"><span class="pre">$SNG_PATH</span></code> contains this path.
 There are two images that include the R interpreter inside:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RStudio</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">5042</span><span class="n">_R</span><span class="o">-</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">4.</span><span class="n">sif</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RStudio</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">5042</span><span class="n">_R</span><span class="o">-</span><span class="mf">3.4</span><span class="o">.</span><span class="mf">4.</span><span class="n">sif</span>
 <span class="n">RStudio</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">5042</span><span class="n">_R</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mf">2.</span><span class="n">sif</span>
 </pre></div>
 </div>
-<p>Getting shell access to inside any of these containers to access <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
+<p>Getting shell access to inside any of these containers to access <code class="docutils literal"><span class="pre">R</span></code> and <code class="docutils literal"><span class="pre">Rscript</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; singularity shell $SNG_PATH/RStudio-server-1.2.5042_R-3.6.2.sif
 $&gt; singularity shell $SNG_PATH/RStudio-desktop-1.2.5042_R-3.4.4.sif
 </pre></div>
 </div>
@@ -255,77 +264,77 @@ $&gt; singularity shell $SNG_PATH/RStudio-desktop-1.2.5042_R-3.4.4.sif
 <div class="section" id="thorny-flat">
 <h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>On Thorny Flat the R interpreter is not preinstalled from RHEL packages and the only two options are to use the environment modules or using a singularity image. The environment modules for R available on Thorny are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc112</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc112</span>
 <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc112</span>
 <span class="n">lang</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">2</span><span class="n">_gcc112</span>
 </pre></div>
 </div>
-<p>To load the module, use the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> including <code class="docutils literal notranslate"><span class="pre">lang/gcc/11.2</span></code> before the module to be added as dependency:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/11.2.0 lang/r/3.6.3_gcc112
+<p>To load the module, use the command <code class="docutils literal"><span class="pre">module</span> <span class="pre">load</span></code> including <code class="docutils literal"><span class="pre">lang/gcc/11.2</span></code> before the module to be added as dependency:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/11.2.0 lang/r/3.6.3_gcc112
 $&gt; module load lang/gcc/11.2.0 lang/r/4.0.5_gcc112
 $&gt; module load lang/gcc/11.2.0 lang/r/4.1.2_gcc112
 </pre></div>
 </div>
-<p>After that, the command <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> became available on the shell.
+<p>After that, the command <code class="docutils literal"><span class="pre">R</span></code> and <code class="docutils literal"><span class="pre">Rscript</span></code> became available on the shell.
 Another option for accessing the R interpreter is via a singularity <cite>container</cite>.</p>
 <p>Several images include the R interpreter, in particular, the two images below offer an alternative to equivalent versions from environment modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mf">3.</span><span class="n">sif</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mf">3.</span><span class="n">sif</span>
 <span class="n">R</span><span class="o">-</span><span class="mf">4.0</span><span class="o">.</span><span class="mf">5.</span><span class="n">sif</span>
 </pre></div>
 </div>
 <p>To get a shell prompt inside any of those images load the singularity module first:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load singularity
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load singularity
 </pre></div>
 </div>
 <p>After that, a shell inside the image can be obtained with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; singularity shell $SNG_PATH3/R-3.6.3.sif
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; singularity shell $SNG_PATH3/R-3.6.3.sif
 $&gt; singularity shell $SNG_PATH3/R-4.0.5.sif
 $&gt; singularity shell $SNG_PATH3/R-4.1.2.sif
 </pre></div>
 </div>
-<p>After getting a shell inside the <cite>container</cite> the commands <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> became available.
+<p>After getting a shell inside the <cite>container</cite> the commands <code class="docutils literal"><span class="pre">R</span></code> and <code class="docutils literal"><span class="pre">Rscript</span></code> became available.
 A shortcut to access the R interpreter in one single step is with the <cite>run</cite> option, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; singularity run $SNG_PATH3/R-4.1.2.sif
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; singularity run $SNG_PATH3/R-4.1.2.sif
 </pre></div>
 </div>
 <p>Another way of getting R is using a conda environments.
 You can create your own conda environment and install the version of R that better fits your needs.
-For example, these are the commands to create a conda environment called <code class="docutils literal notranslate"><span class="pre">R351</span></code> with R version 3.5.1 installed from the conda-forge channel.</p>
+For example, these are the commands to create a conda environment called <code class="docutils literal"><span class="pre">R351</span></code> with R version 3.5.1 installed from the conda-forge channel.</p>
 <p>Load conda module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load conda
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load conda
 </pre></div>
 </div>
-<p>Create a new conda environment, here we are calling it <code class="docutils literal notranslate"><span class="pre">R351</span></code> but the name is arbitrary:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda create -n R351
+<p>Create a new conda environment, here we are calling it <code class="docutils literal"><span class="pre">R351</span></code> but the name is arbitrary:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; conda create -n R351
 </pre></div>
 </div>
 <p>Activate the new conda environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda activate R351
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; conda activate R351
 </pre></div>
 </div>
 <p>And install the version of conda of your preference.
 To see the list of conda versions execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda search -c conda-forge r
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; conda search -c conda-forge r
 </pre></div>
 </div>
 <p>And to install a particular version execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda install -c conda-forge r=3.5.1
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; conda install -c conda-forge r=3.5.1
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="using-r-from-the-terminal">
 <h2>Using R from the Terminal<a class="headerlink" href="#using-r-from-the-terminal" title="Permalink to this headline">¶</a></h2>
-<p>Regardless of how you access R, the R package includes two executables, <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>. The command <code class="docutils literal notranslate"><span class="pre">R</span></code> is used to start a text-based interactive session, on the terminal execute the command <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+<p>Regardless of how you access R, the R package includes two executables, <code class="docutils literal"><span class="pre">R</span></code> and <code class="docutils literal"><span class="pre">Rscript</span></code>. The command <code class="docutils literal"><span class="pre">R</span></code> is used to start a text-based interactive session, on the terminal execute the command <code class="docutils literal"><span class="pre">R</span></code>.</p>
 <a class="reference internal image-reference" href="../_images/R_terminal.png"><img alt="Terminal with R interpreter" src="../_images/R_terminal.png" style="width: 600px;" /></a>
 <p>From there you can start typing R commands and getting output interactively:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>Another way of working in R, and more suited for an HPC environment, is using R scripts.
-To do so, first, write your R commands as script in a file. It is customary to add the <code class="docutils literal notranslate"><span class="pre">.R</span></code> extension to the file. Consider for example a very minimal script, lets create a file <code class="docutils literal notranslate"><span class="pre">hello.R</span></code> with the content below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env Rscript</span>
+To do so, first, write your R commands as script in a file. It is customary to add the <code class="docutils literal"><span class="pre">.R</span></code> extension to the file. Consider for example a very minimal script, lets create a file <code class="docutils literal"><span class="pre">hello.R</span></code> with the content below:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env Rscript</span>
 
 <span class="n">sayHello</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(){</span>
    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
@@ -334,19 +343,19 @@ To do so, first, write your R commands as script in a file. It is customary to a
 <span class="n">sayHello</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The first line of the file must be <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">Rscript</span></code>. This line instructs the shell that this is a R script, meaning that all commands below the first line must be processed by the R internal interpreter.</p>
+<p>The first line of the file must be <code class="docutils literal"><span class="pre">#!/usr/bin/env</span> <span class="pre">Rscript</span></code>. This line instructs the shell that this is a R script, meaning that all commands below the first line must be processed by the R internal interpreter.</p>
 <p>To make this script like any other executable, we need to change permissions to the file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; chmod +x hello.R
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; chmod +x hello.R
 </pre></div>
 </div>
 <p>The script is ready for execution. As this is such a small program you can run it directly on the head node:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./hello.R
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ./hello.R
 [1] &quot;hello&quot;
 </pre></div>
 </div>
 <p>However, for large executions, you should always create a submission script and never run numerical intensive operations on the head node.
-Create a file <code class="docutils literal notranslate"><span class="pre">runjob.pbs</span></code> with this content:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+Create a file <code class="docutils literal"><span class="pre">runjob.pbs</span></code> with this content:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -N MY_R_SCRIPT
 #PBS -q standby
@@ -361,39 +370,39 @@ module load lang/r/4.0.4_gcc102
 ./hello.R
 </pre></div>
 </div>
-<p>The name of the job is declared with <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-N</span> <span class="pre">MY_R_SCRIPT</span></code>. The queue is declared with <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-q</span> <span class="pre">standby</span></code>, for executions that run in less than 4 hours <code class="docutils literal notranslate"><span class="pre">standby</span></code> is the preferable choice. The line <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-j</span> <span class="pre">oe</span></code> joins the error with the output in a single file. The line <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-l</span> <span class="pre">nodes=1:ppn=1</span></code> is asking to run on a single node and using a single core for the execution. In most cases, R runs serially but we will discuss some parallel executions below.
-The line <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR``changes</span> <span class="pre">the</span> <span class="pre">directory</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">place</span> <span class="pre">where</span> <span class="pre">the</span> <span class="pre">command</span> <span class="pre">``qsub</span></code> was executed.
-The line <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge``cleans</span> <span class="pre">the</span> <span class="pre">environment</span> <span class="pre">of</span> <span class="pre">any</span> <span class="pre">modules</span> <span class="pre">and</span> <span class="pre">``module</span> <span class="pre">load</span> <span class="pre">lang/r/4.0.4_gcc102</span></code> will load the module for executing R. The name of the module is for Thorny Flat, on Spruce you need to use the modules mentioned above for that cluster.</p>
-<p>Finally <code class="docutils literal notranslate"><span class="pre">./hello.R</span></code> executes the script and the output will be written in a file like <code class="docutils literal notranslate"><span class="pre">MY_R_SCRIPT.o&lt;JobID&gt;</span></code> where JobID is a number that identifies the job in the queue system.
+<p>The name of the job is declared with <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-N</span> <span class="pre">MY_R_SCRIPT</span></code>. The queue is declared with <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-q</span> <span class="pre">standby</span></code>, for executions that run in less than 4 hours <code class="docutils literal"><span class="pre">standby</span></code> is the preferable choice. The line <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-j</span> <span class="pre">oe</span></code> joins the error with the output in a single file. The line <code class="docutils literal"><span class="pre">#PBS</span> <span class="pre">-l</span> <span class="pre">nodes=1:ppn=1</span></code> is asking to run on a single node and using a single core for the execution. In most cases, R runs serially but we will discuss some parallel executions below.
+The line <code class="docutils literal"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR``changes</span> <span class="pre">the</span> <span class="pre">directory</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">place</span> <span class="pre">where</span> <span class="pre">the</span> <span class="pre">command</span> <span class="pre">``qsub</span></code> was executed.
+The line <code class="docutils literal"><span class="pre">module</span> <span class="pre">purge``cleans</span> <span class="pre">the</span> <span class="pre">environment</span> <span class="pre">of</span> <span class="pre">any</span> <span class="pre">modules</span> <span class="pre">and</span> <span class="pre">``module</span> <span class="pre">load</span> <span class="pre">lang/r/4.0.4_gcc102</span></code> will load the module for executing R. The name of the module is for Thorny Flat, on Spruce you need to use the modules mentioned above for that cluster.</p>
+<p>Finally <code class="docutils literal"><span class="pre">./hello.R</span></code> executes the script and the output will be written in a file like <code class="docutils literal"><span class="pre">MY_R_SCRIPT.o&lt;JobID&gt;</span></code> where JobID is a number that identifies the job in the queue system.
 The contents of the file are shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cat MY_R_SCRIPT.o4714619
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cat MY_R_SCRIPT.o4714619
 [1] &quot;hello&quot;
 </pre></div>
 </div>
 </div>
 <div class="section" id="installing-r-packages-as-a-normal-user">
 <h2>Installing R Packages as a normal user<a class="headerlink" href="#installing-r-packages-as-a-normal-user" title="Permalink to this headline">¶</a></h2>
-<p>The system-wide location for installed packages is not writable for normal users. That does not prevent you from installing packages for your usage. Packages installed as user will be installed at <code class="docutils literal notranslate"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/&lt;R_VERSION&gt;</span></code> and will be accessible to you as any system-wide package.
-For the versions that we currently have on our clusters, <code class="docutils literal notranslate"><span class="pre">&lt;R_VERSION&gt;</span></code> could be 3.6 or 4.0.</p>
+<p>The system-wide location for installed packages is not writable for normal users. That does not prevent you from installing packages for your usage. Packages installed as user will be installed at <code class="docutils literal"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/&lt;R_VERSION&gt;</span></code> and will be accessible to you as any system-wide package.
+For the versions that we currently have on our clusters, <code class="docutils literal"><span class="pre">&lt;R_VERSION&gt;</span></code> could be 3.6 or 4.0.</p>
 <p>Packages can only be installed from the head node both on Thorny and Spruce.
 Compute nodes do not have internet access, so they are not capable to access CRAN from the internet to download any package.</p>
 <p>There are two main ways to install R packages from CRAN. You can install packages from inside the interactive R interpreter. Execute the command <cite>R</cite> and from there install the package with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;file:///gpfs21/pub/CRAN&quot;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;file:///gpfs21/pub/CRAN&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Another alternative is using the command <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>, this time from the normal shell:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; Rscript -e &#39;install.packages(&quot;&lt;PACKAGE&gt;&quot;, repos=&quot;file:///gpfs21/pub/CRAN&quot;)&#39;
+<p>Another alternative is using the command <code class="docutils literal"><span class="pre">Rscript</span></code>, this time from the normal shell:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; Rscript -e &#39;install.packages(&quot;&lt;PACKAGE&gt;&quot;, repos=&quot;file:///gpfs21/pub/CRAN&quot;)&#39;
 </pre></div>
 </div>
-<p>With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration <code class="docutils literal notranslate"><span class="pre">repos=&quot;file:///gpfs21/pub/CRAN&quot;</span></code> is optional.
+<p>With those commands, you will automatically download the package from CRAN and eventually all dependencies needed for that package. The declaration <code class="docutils literal"><span class="pre">repos=&quot;file:///gpfs21/pub/CRAN&quot;</span></code> is optional.
 Now declaring a URL for downloads and you will get a list of known mirrors where you can download the package.
 The local CRAN mirror on Thorny Flat is preferable to install packages from a remote internet server such as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;https://cran.rstudio.com&quot;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s2">&quot;https://cran.rstudio.com&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>With any of those methods, R will automatically detect that you do not have permission to write in the system-wide R library folder and will prompt if you would like to install in a local directory from within your home directory. This folder will also be checked automatically when you run R for packages, allowing you to use anything you already installed.</p>
-<p>For example, lets assume that you want to install the package <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;dplyr&quot;)
+<p>For example, lets assume that you want to install the package <code class="docutils literal"><span class="pre">dplyr</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;dplyr&quot;)
 Installing package into ‘/gpfs/home/&lt;username&gt;/R/x86_64-pc-linux-gnu-library/3.6’
 (as ‘lib’ is unspecified)
 --- Please select a CRAN mirror for use in this session ---
@@ -418,21 +427,21 @@ also installing the dependencies ‘backports’, ‘ellipsis’,\
  ‘tibble’, ‘tidyselect’, ‘BH’, ‘plogr’
 </pre></div>
 </div>
-<p>After some downloads and compilations the code will be installed on your local folder <code class="docutils literal notranslate"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/3.6</span></code></p>
+<p>After some downloads and compilations the code will be installed on your local folder <code class="docutils literal"><span class="pre">$HOME/R/x86_64-pc-linux-gnu-library/3.6</span></code></p>
 </div>
 <div class="section" id="installing-r-packages-in-non-default-directories">
 <h2>Installing R Packages in non-default directories<a class="headerlink" href="#installing-r-packages-in-non-default-directories" title="Permalink to this headline">¶</a></h2>
 <p>To use locally installed packages, before you execute R you just need to
-modify the <code class="docutils literal notranslate"><span class="pre">R_LIBS</span></code> environment variable to tell R where to search for
+modify the <code class="docutils literal"><span class="pre">R_LIBS</span></code> environment variable to tell R where to search for
 local packages:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=&lt;dir&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=&lt;dir&gt;
 </pre></div>
 </div>
 <div class="section" id="using-install-packages">
 <h3>Using install.packages()<a class="headerlink" href="#using-install-packages" title="Permalink to this headline">¶</a></h3>
 <p>To use install.packages from the R prompt, before you start R you need
 to modify the <cite>R_LIBS</cite> environment variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=&lt;dir&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=&lt;dir&gt;
 </pre></div>
 </div>
 <p>Then inside the R prompt, you execute any of the procedures above such as <cite>install.packages()</cite> inside the R interactive shell.</p>
@@ -440,33 +449,33 @@ to modify the <cite>R_LIBS</cite> environment variable:</p>
 <div class="section" id="manual-installation-with-r-cmd-install">
 <h3>Manual installation with R CMD INSTALL<a class="headerlink" href="#manual-installation-with-r-cmd-install" title="Permalink to this headline">¶</a></h3>
 <p>There is a very manual way of installing packages in R using the command
-<code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">CMD</span> <span class="pre">INSTALL</span></code>.
+<code class="docutils literal"><span class="pre">R</span> <span class="pre">CMD</span> <span class="pre">INSTALL</span></code>.
 There are several restrictions to use this command:
 First, this option only works if you have already downloaded a copy of the package from CRAN, any of its mirrors, or an external site that provides a tar package.
-Second, as a normal user, you must specify the path with the <code class="docutils literal notranslate"><span class="pre">-l</span></code> flag, otherwise, the command will refuse to work as you have no write access to the system-wide location. The command must be used like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; R CMD INSTALL -l &lt;dir&gt; &lt;package_name&gt;
+Second, as a normal user, you must specify the path with the <code class="docutils literal"><span class="pre">-l</span></code> flag, otherwise, the command will refuse to work as you have no write access to the system-wide location. The command must be used like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; R CMD INSTALL -l &lt;dir&gt; &lt;package_name&gt;
 </pre></div>
 </div>
-<p>The folder <code class="docutils literal notranslate"><span class="pre">&lt;dir&gt;</span></code> is the location where the package will be installed and the folder must be created in advance. <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;</span></code> is the name of the package and you must ensure that all dependencies are already installed for the package, meaning that you will have to install several other packages before you can install the package that you want.</p>
-<p>Consider for example installing the package <code class="docutils literal notranslate"><span class="pre">parallelly</span></code>, this package has no dependencies beyond those that already came with the R installation. The sources are available on CRAN and can be downloaded from one of its many mirrors. You can first download the package with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://cran.r-project.org/src/contrib/parallelly_1.24.0.tar.gz
+<p>The folder <code class="docutils literal"><span class="pre">&lt;dir&gt;</span></code> is the location where the package will be installed and the folder must be created in advance. <code class="docutils literal"><span class="pre">&lt;package_name&gt;</span></code> is the name of the package and you must ensure that all dependencies are already installed for the package, meaning that you will have to install several other packages before you can install the package that you want.</p>
+<p>Consider for example installing the package <code class="docutils literal"><span class="pre">parallelly</span></code>, this package has no dependencies beyond those that already came with the R installation. The sources are available on CRAN and can be downloaded from one of its many mirrors. You can first download the package with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; wget https://cran.r-project.org/src/contrib/parallelly_1.24.0.tar.gz
 </pre></div>
 </div>
 <p>Once the package is downloaded, ensure that the folder where you want to install the software exists, for example, if you want to install packages at
-<code class="docutils literal notranslate"><span class="pre">~/R/local_packages</span></code>, create the folder with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir -p ~/R/local_packages
+<code class="docutils literal"><span class="pre">~/R/local_packages</span></code>, create the folder with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mkdir -p ~/R/local_packages
 </pre></div>
 </div>
 <p>Finally, install the packages with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; R CMD INSTALL -l ~/R/local_packages parallelly_1.24.0.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; R CMD INSTALL -l ~/R/local_packages parallelly_1.24.0.tar.gz
 </pre></div>
 </div>
-<p>The package is now installed but it can only become visible if you set up the <code class="docutils literal notranslate"><span class="pre">R_LIBS</span></code> environment for it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=~/R/local_packages
+<p>The package is now installed but it can only become visible if you set up the <code class="docutils literal"><span class="pre">R_LIBS</span></code> environment for it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; export R_LIBS=~/R/local_packages
 </pre></div>
 </div>
 <p>Finally load the package with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="s2">&quot;parallelly&quot;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="s2">&quot;parallelly&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You need to be careful not to mix R packages created with different major versions of R, those are usually incompatible if you create the package with one version and try to use it with a different version. That is the reason why more automatic installers create separate folders for different R versions.</p>
@@ -497,37 +506,37 @@ The next question is about the queue to run the job. You can get 4 hours using t
 <p>The next screen will show the job being created for you. After a few seconds, you will see a button <cite>Connect to Jupyter</cite>. Press the button.</p>
 <a class="reference internal image-reference" href="../_images/R_OOD_connect2.png"><img alt="OOD connect" src="../_images/R_OOD_connect2.png" style="width: 600px;" /></a>
 <p>Jupyter will be running, and showing the Jupyter File Manager interface, from the manager you select <cite>New &gt;&gt; R</cite> and another tab on your browser will open with the Jupyter Notebook running a R kernel.
-From this interface you can execute R commands, commands can be entered in the boxes and executed with <code class="docutils literal notranslate"><span class="pre">SHIFT</span> <span class="pre">ENTER</span></code>. Boxes can also serve for text including titles, subtitles and text with equations.</p>
+From this interface you can execute R commands, commands can be entered in the boxes and executed with <code class="docutils literal"><span class="pre">SHIFT</span> <span class="pre">ENTER</span></code>. Boxes can also serve for text including titles, subtitles and text with equations.</p>
 <a class="reference internal image-reference" href="../_images/R_OOD_jupyter.png"><img alt="OOD Jupyter" src="../_images/R_OOD_jupyter.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="parallel-computing-with-r">
 <h2>Parallel Computing with R<a class="headerlink" href="#parallel-computing-with-r" title="Permalink to this headline">¶</a></h2>
 <p>By default R only uses one core, which is a big limitation when dealing with large amounts of data or complex calculations. However, R includes by default the <cite>parallel</cite> package which is the foundational tool for parallel computing in R. There are several other third-party tools for parallelism but we will be focusing on the tools available on any R installation.</p>
 <p>The <cite>parallel</cite> package came installed by default on all modern versions of R. The package needs to be loaded before use with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="s2">&quot;parallel&quot;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="s2">&quot;parallel&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Once the library is loaded several routines became available that are able to take advantage of share memory systems, on machines such as Thorny, most compute nodes have 40 cores, however it is up to you to indicate the number of cores that you want to use and that should match the amount of resources that you requested via your submission script or your interactive job.</p>
-<p>The first function that we will use from <cite>parallel</cite> is <code class="docutils literal notranslate"><span class="pre">detectCores()</span></code>. The function will return the total number of cores on the compute node, not the total number of cores that you requested for the job:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">detectCores</span><span class="p">()</span>
+<p>The first function that we will use from <cite>parallel</cite> is <code class="docutils literal"><span class="pre">detectCores()</span></code>. The function will return the total number of cores on the compute node, not the total number of cores that you requested for the job:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">detectCores</span><span class="p">()</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">40</span>
 </pre></div>
 </div>
-<p>The <cite>parallel</cite> package offers a number of functions that replace the serial versions of <cite>Apply</cite> functions such as <code class="docutils literal notranslate"><span class="pre">lapply</span></code>, <code class="docutils literal notranslate"><span class="pre">sapply</span></code> and <code class="docutils literal notranslate"><span class="pre">apply</span></code>. The parallel replacements being <code class="docutils literal notranslate"><span class="pre">parLapply</span></code>, <code class="docutils literal notranslate"><span class="pre">parSapply</span></code> and <code class="docutils literal notranslate"><span class="pre">parApply</span></code>.
+<p>The <cite>parallel</cite> package offers a number of functions that replace the serial versions of <cite>Apply</cite> functions such as <code class="docutils literal"><span class="pre">lapply</span></code>, <code class="docutils literal"><span class="pre">sapply</span></code> and <code class="docutils literal"><span class="pre">apply</span></code>. The parallel replacements being <code class="docutils literal"><span class="pre">parLapply</span></code>, <code class="docutils literal"><span class="pre">parSapply</span></code> and <code class="docutils literal"><span class="pre">parApply</span></code>.
 To use any of those functions we need first to create a <cite>cluster</cite> and internal structure for the <cite>parallel</cite> package that instructs the number of cores that can be used when parallelizing the apply functions.</p>
-<p>The function <code class="docutils literal notranslate"><span class="pre">makeCluster()</span></code> will create a cluster. If you have created a job asking to use 4 cores, you can create a <cite>cluster</cite> with 4 cores like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cl &lt;- makeCluster(4)
+<p>The function <code class="docutils literal"><span class="pre">makeCluster()</span></code> will create a cluster. If you have created a job asking to use 4 cores, you can create a <cite>cluster</cite> with 4 cores like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt; cl &lt;- makeCluster(4)
 &gt; cl
 socket cluster with 4 nodes on host ‘localhost’
 </pre></div>
 </div>
-<p>Now with the <cite>cluster</cite> <code class="docutils literal notranslate"><span class="pre">cl</span></code> we can execute any of the alternative versions of <code class="docutils literal notranslate"><span class="pre">apply</span></code> functions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">ans</span> <span class="o">&lt;-</span> <span class="n">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<p>Now with the <cite>cluster</cite> <code class="docutils literal"><span class="pre">cl</span></code> we can execute any of the alternative versions of <code class="docutils literal"><span class="pre">apply</span></code> functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">ans</span> <span class="o">&lt;-</span> <span class="n">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
 </pre></div>
 </div>
-<p>This function will apply <code class="docutils literal notranslate"><span class="pre">function(x)</span></code> as it was defined for the first 10 million positive integers returning a vector of equal number of floats stored in <code class="docutils literal notranslate"><span class="pre">ans</span></code>.</p>
-<p>To compute this function R will be using a cluster build from 4 execution instances and will take a fraction of the time compared with the serial version of <code class="docutils literal notranslate"><span class="pre">lapply</span></code>. We can see some timings here:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span>
+<p>This function will apply <code class="docutils literal"><span class="pre">function(x)</span></code> as it was defined for the first 10 million positive integers returning a vector of equal number of floats stored in <code class="docutils literal"><span class="pre">ans</span></code>.</p>
+<p>To compute this function R will be using a cluster build from 4 execution instances and will take a fraction of the time compared with the serial version of <code class="docutils literal"><span class="pre">lapply</span></code>. We can see some timings here:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span>
 <span class="n">user</span>  <span class="n">system</span> <span class="n">elapsed</span>
 <span class="mf">1.787</span>   <span class="mf">0.093</span>   <span class="mf">3.721</span>
 <span class="o">&gt;</span> <span class="n">system</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))))</span>
@@ -536,12 +545,12 @@ socket cluster with 4 nodes on host ‘localhost’
 </pre></div>
 </div>
 <p>We got almost an execution that was almost 4 times shorter than for the serial case. It is never the case that we get a perfect scaling, in more practical cases you should always expect that some time is lost in communication and extra overhead in orchestrating the parallel execution. The parallel versions of <cite>apply</cite> functions are an easy way of taking advantage of multicore architectures present of modern computers.</p>
-<p>At the end of execution is always important to close the cluster with the <code class="docutils literal notranslate"><span class="pre">stopCluster</span></code> function:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<p>At the end of execution is always important to close the cluster with the <code class="docutils literal"><span class="pre">stopCluster</span></code> function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You should always stop the cluster to free resources. In more practical scenarios you should always ensure that <code class="docutils literal notranslate"><span class="pre">stopCluster</span></code> is called no matter if the function fails for some reason. For doing that you can use the <code class="docutils literal notranslate"><span class="pre">on.exit()</span></code> function:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simulate</span>  <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">ncores</span><span class="p">)</span> <span class="p">{</span>
+<p>You should always stop the cluster to free resources. In more practical scenarios you should always ensure that <code class="docutils literal"><span class="pre">stopCluster</span></code> is called no matter if the function fails for some reason. For doing that you can use the <code class="docutils literal"><span class="pre">on.exit()</span></code> function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">simulate</span>  <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">ncores</span><span class="p">)</span> <span class="p">{</span>
 <span class="n">cl</span> <span class="o">=</span> <span class="n">makeCluster</span><span class="p">(</span><span class="n">ncores</span><span class="p">)</span>
 <span class="n">on</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">))</span>
 
@@ -559,7 +568,7 @@ R is slow compared to other programming languages, and sometimes users who are n
 executing numerical intensive operations on a different language retaining the advantages of working for most part on a high level language like R.</p>
 <p>We will demonstrate how to achieve that with a code written in Fortran. Fortran is a low level language. A low level language uses an explicit compiler, a program that converts the source code into code that the computer can execute.</p>
 <p>Consider the following Fortran code (facto.f90):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!
+<div class="highlight-default"><div class="highlight"><pre><span></span>!
 ! simple subroutine to compute factorial
 !
 subroutine facto(n, answer)
@@ -572,17 +581,17 @@ subroutine facto(n, answer)
 end subroutine
 </pre></div>
 </div>
-<p>This routine in fortran computes the factorial of a number <code class="docutils literal notranslate"><span class="pre">n</span></code> and return the result in the variable <code class="docutils literal notranslate"><span class="pre">`answer</span></code>.</p>
-<p>We can compile this file with the GNU fortran compiler called <code class="docutils literal notranslate"><span class="pre">gfortran</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; gfortran -c facto.f90
+<p>This routine in fortran computes the factorial of a number <code class="docutils literal"><span class="pre">n</span></code> and return the result in the variable <code class="docutils literal"><span class="pre">`answer</span></code>.</p>
+<p>We can compile this file with the GNU fortran compiler called <code class="docutils literal"><span class="pre">gfortran</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; gfortran -c facto.f90
 </pre></div>
 </div>
-<p>The result of the compilation is a file called <code class="docutils literal notranslate"><span class="pre">facto.o</span></code>. The next step is to create a shared library from this function:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; gfortran -shared -o facto.so facto.o
+<p>The result of the compilation is a file called <code class="docutils literal"><span class="pre">facto.o</span></code>. The next step is to create a shared library from this function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; gfortran -shared -o facto.so facto.o
 </pre></div>
 </div>
-<p>The resulting file is <code class="docutils literal notranslate"><span class="pre">facto.so</span></code> that can be imported from R and used (R Terminal):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; dyn.load(&quot;facto.so&quot;)
+<p>The resulting file is <code class="docutils literal"><span class="pre">facto.so</span></code> that can be imported from R and used (R Terminal):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt; dyn.load(&quot;facto.so&quot;)
 &gt; .Fortran(&quot;facto&quot;,n=as.integer(40),answer=as.numeric(1.0))
 $n
 [1] 40

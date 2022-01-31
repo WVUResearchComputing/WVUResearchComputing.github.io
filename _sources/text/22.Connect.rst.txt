@@ -19,7 +19,7 @@ Get an SSH Client
 
 An SSH Client is a piece of software that allows you to run a remote session on a computer, over a network using a secure connection based on the SSH protocol.
 
-An SSH client is usually installed on MacOS and most Unix/Linux distributions so if you are using one of those Operating Systems you do not need to install anything.
+An SSH client is usually come installed on MacOS and most Unix/Linux distributions so if you are using one of those Operating Systems you do not need to install anything.
 
 Windows users will have to acquire an SSH client.
 PuTTY is a free implementation of SSH for Windows platforms, it comes along with an xterm terminal emulator.

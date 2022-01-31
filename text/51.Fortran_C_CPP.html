@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -191,7 +200,7 @@
 <div class="section" id="accessing-c-c-and-fortran-compilers">
 <h2>Accessing C, C++ and Fortran Compilers<a class="headerlink" href="#accessing-c-c-and-fortran-compilers" title="Permalink to this headline">¶</a></h2>
 <p>In an HPC cluster is customary to include compilers for Fortran, C and C++ by default. On Linux machines the usual compilers are from the GNU Compiler Collection (GCC). However, the versions of those compilers is old for the purpose of many scientific packages and do not support recent CPU extensions and parallelization extensions such as OpenMP or OpenACC. For example, on Thorny Flat the default versions of the compilers are 4.8, one way of identifying the version of gcc compilers is running the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gfortran -v
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ gfortran -v
 Using built-in specs.
 COLLECT_GCC=gfortran
 COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper

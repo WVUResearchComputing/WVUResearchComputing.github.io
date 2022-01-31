@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -205,7 +214,7 @@ The File Exchange page for it is:</p>
 <div class="section" id="download-the-code">
 <h2>Download the code<a class="headerlink" href="#download-the-code" title="Permalink to this headline">¶</a></h2>
 <p>The original code can be downloaded with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yuvaltassa</span><span class="o">/</span><span class="n">mmx</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yuvaltassa</span><span class="o">/</span><span class="n">mmx</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>The original instructions for installing MMX does not work in general.
@@ -216,7 +225,7 @@ However, the instructions are general enough so other people can compile this co
 computers, regardless of having superusers priviledges or not.</p>
 <p>We start by getting access to Matlab 2021a, the latest version installed on Thorny.
 Thorny Flat runs RHEL 7.x and the version of GCC is old (4.8), we have GCC 9.3 as the stable compiler on this cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2021</span><span class="n">a</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2021</span><span class="n">a</span>
 </pre></div>
 </div>
 <p>Other Linux machines could have recent versions of GCC supported by Matlab see this webpage to check which
@@ -224,19 +233,19 @@ compilers are accepted.</p>
 <p><a class="reference external" href="https://www.mathworks.com/support/requirements/supported-compilers.html">https://www.mathworks.com/support/requirements/supported-compilers.html</a></p>
 <p>Recent versions of Matlab support GCC up to 9.x</p>
 <p>Download the code with the git command mentioned above:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yuvaltassa</span><span class="o">/</span><span class="n">mmx</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yuvaltassa</span><span class="o">/</span><span class="n">mmx</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>Go to the folder <code class="docutils literal notranslate"><span class="pre">mmx/src</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mmx</span><span class="o">/</span><span class="n">src</span><span class="o">/</span>
+<p>Go to the folder <code class="docutils literal"><span class="pre">mmx/src</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mmx</span><span class="o">/</span><span class="n">src</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Enter in Matlab:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matlab</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">matlab</span>
 </pre></div>
 </div>
 <p>Execute the command build_mmx() (This command will fail):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">build_mmx</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">build_mmx</span><span class="p">()</span>
 
 <span class="n">Compilation</span> <span class="n">of</span> <span class="s1">&#39;mmx_mkl_single&#39;</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">error</span><span class="p">:</span>
 <span class="n">ls</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">access</span> <span class="o">*</span><span class="n">small_mkl_ilp64</span><span class="o">.*</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
@@ -257,9 +266,9 @@ compilers are accepted.</p>
 </div>
 <div class="section" id="edit-the-building-script">
 <h2>Edit the building script<a class="headerlink" href="#edit-the-building-script" title="Permalink to this headline">¶</a></h2>
-<p>Edit the file <code class="docutils literal notranslate"><span class="pre">build_mmx.m</span></code>, adjust several lines of code to make it work.
+<p>Edit the file <code class="docutils literal"><span class="pre">build_mmx.m</span></code>, adjust several lines of code to make it work.
 The differences are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ diff -u build_mmx.m /shared/software/matlab/r2021a/extern/lib/glnxa64/build_mmx.m
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ diff -u build_mmx.m /shared/software/matlab/r2021a/extern/lib/glnxa64/build_mmx.m
 --- build_mmx.m 2022-01-10 10:22:56.969414000 -0500
 +++ /shared/software/matlab/r2021a/extern/lib/glnxa64/build_mmx.m       2022-01-09 10:19:34.160261000 -0500
 @@ -126,7 +126,7 @@
@@ -286,24 +295,24 @@ The differences are:</p>
 <div class="section" id="build-a-custom-mkl-library">
 <h2>Build a custom MKL library<a class="headerlink" href="#build-a-custom-mkl-library" title="Permalink to this headline">¶</a></h2>
 <p>Build the custom MKL library, first load module for Intel MKL:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">mkl</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">mkl</span>
 </pre></div>
 </div>
 <p>Choose a folder to build the MKL custom library, it could be the same mmx/src folder and we will use it here
 Concatenate the list of Linear Algebra routines BLAS and LAPACK from MKL:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat ${MKLROOT}/tools/builder/blas_example_list &gt; blas_lapack_list
+<div class="highlight-default"><div class="highlight"><pre><span></span>cat ${MKLROOT}/tools/builder/blas_example_list &gt; blas_lapack_list
 cat ${MKLROOT}/tools/builder/lapack_example_list &gt;&gt; blas_lapack_list
 </pre></div>
 </div>
 <p>Copy the makefile from the MKL builder folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cp ${MKLROOT}/tools/builder/makefile .
+<div class="highlight-default"><div class="highlight"><pre><span></span>cp ${MKLROOT}/tools/builder/makefile .
 </pre></div>
 </div>
 <p>And build the library from it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">libintel64</span> <span class="n">interface</span><span class="o">=</span><span class="n">ilp64</span> <span class="n">export</span><span class="o">=</span><span class="n">blas_lapack_list</span> <span class="n">name</span><span class="o">=</span><span class="n">libsingle_mkl_ilp64</span> <span class="n">threading</span><span class="o">=</span><span class="n">sequential</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">libintel64</span> <span class="n">interface</span><span class="o">=</span><span class="n">ilp64</span> <span class="n">export</span><span class="o">=</span><span class="n">blas_lapack_list</span> <span class="n">name</span><span class="o">=</span><span class="n">libsingle_mkl_ilp64</span> <span class="n">threading</span><span class="o">=</span><span class="n">sequential</span>
 </pre></div>
 </div>
-<p>Verify that you have reach this step correctly by checking for the file <code class="docutils literal notranslate"><span class="pre">libsingle_mkl_ilp64.so</span></code></p>
+<p>Verify that you have reach this step correctly by checking for the file <code class="docutils literal"><span class="pre">libsingle_mkl_ilp64.so</span></code></p>
 </div>
 <div class="section" id="compile-mmx">
 <h2>Compile MMX<a class="headerlink" href="#compile-mmx" title="Permalink to this headline">¶</a></h2>
@@ -311,7 +320,7 @@ cat ${MKLROOT}/tools/builder/lapack_example_list &gt;&gt; blas_lapack_list
 <p>The output is extensive but illustrative of the 3 compilations of MMX that are done. build_mmx will try to compile from the most efficient to the simplest version.
 The first time it succeeds compiles the “official” mmx MEX library</p>
 <p>This is the complete output in verbose mode:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ matlab
 MATLAB is selecting SOFTWARE OPENGL rendering.
 
                                                               &lt; M A T L A B (R) &gt;
@@ -666,15 +675,15 @@ Compilation of &#39;mmx_naive&#39; succeeded.
 &gt;&gt;
 </pre></div>
 </div>
-<p>This is working because <code class="docutils literal notranslate"><span class="pre">libsingle_mkl_ilp64.so</span></code> on the MATLAB’s glnxa64 folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls /shared/software/matlab/r2021a/extern/lib/glnxa64/libsingle_mkl_ilp64.so
+<p>This is working because <code class="docutils literal"><span class="pre">libsingle_mkl_ilp64.so</span></code> on the MATLAB’s glnxa64 folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ls /shared/software/matlab/r2021a/extern/lib/glnxa64/libsingle_mkl_ilp64.so
 /shared/software/matlab/r2021a/extern/lib/glnxa64/libsingle_mkl_ilp64.so
 </pre></div>
 </div>
-<p>To compile without requiring special privileges, extra editing to the <code class="docutils literal notranslate"><span class="pre">build_mmx</span></code> is needed. Basically redirecting the library paths to the location where lib single_mkl_ilp6.so is present.
-Edit <code class="docutils literal notranslate"><span class="pre">build_mmx.m</span></code> to search for a library in the current location (<code class="docutils literal notranslate"><span class="pre">-L.</span></code>).</p>
+<p>To compile without requiring special privileges, extra editing to the <code class="docutils literal"><span class="pre">build_mmx</span></code> is needed. Basically redirecting the library paths to the location where lib single_mkl_ilp6.so is present.
+Edit <code class="docutils literal"><span class="pre">build_mmx.m</span></code> to search for a library in the current location (<code class="docutils literal"><span class="pre">-L.</span></code>).</p>
 <p>At the end of the compilation these files are created:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mmx</span><span class="o">.</span><span class="n">mexa64</span>             <span class="o">&lt;--</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">equivalent</span> <span class="n">to</span> <span class="n">mmx_mkl_single</span><span class="o">.</span><span class="n">mexa64</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mmx</span><span class="o">.</span><span class="n">mexa64</span>             <span class="o">&lt;--</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">equivalent</span> <span class="n">to</span> <span class="n">mmx_mkl_single</span><span class="o">.</span><span class="n">mexa64</span>
 <span class="n">mmx_mkl_multi</span><span class="o">.</span><span class="n">mexa64</span>
 <span class="n">mmx_mkl_single</span><span class="o">.</span><span class="n">mexa64</span>
 <span class="n">mmx_naive</span><span class="o">.</span><span class="n">mexa64</span>
@@ -684,9 +693,9 @@ Edit <code class="docutils literal notranslate"><span class="pre">build_mmx.m</s
 <div class="section" id="teting-the-3-compilations-of-mmx">
 <h2>Teting the 3 compilations of MMX<a class="headerlink" href="#teting-the-3-compilations-of-mmx" title="Permalink to this headline">¶</a></h2>
 <p>Now lets test the library with some examples:</p>
-<p>For using MMX, there is no need to be inside <code class="docutils literal notranslate"><span class="pre">mmx/src</span></code> but we need to declare the folder as a path for searching MEX files:</p>
+<p>For using MMX, there is no need to be inside <code class="docutils literal"><span class="pre">mmx/src</span></code> but we need to declare the folder as a path for searching MEX files:</p>
 <p>This is one simple example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ matlab
 MATLAB is selecting SOFTWARE OPENGL rendering.
 
                                                               &lt; M A T L A B (R) &gt;
@@ -710,7 +719,7 @@ For product information, visit www.mathworks.com.
 <p>We will try a simple exercise with large matrices using the 3 versions of MMX that we compiled</p>
 <div class="section" id="mmx-naive">
 <h3>mmx_naive<a class="headerlink" href="#mmx-naive" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
 <span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">,</span><span class="mi">4</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="n">f_naive</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">mmx_naive</span><span class="p">(</span><span class="s1">&#39;mult&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
@@ -718,13 +727,13 @@ For product information, visit www.mathworks.com.
 </pre></div>
 </div>
 <p>Using an interactive job and running on a SKYLAKE machine with 40 cores this is the average result:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">22.5</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">22.5</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="mmx-mkl-multi">
 <h3>mmx_mkl_multi<a class="headerlink" href="#mmx-mkl-multi" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
 <span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">,</span><span class="mi">4</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="n">f_mkl_multi</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">mmx_mkl_multi</span><span class="p">(</span><span class="s1">&#39;mult&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
@@ -732,13 +741,13 @@ For product information, visit www.mathworks.com.
 </pre></div>
 </div>
 <p>Average result:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.95</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.95</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="mmx-mkl-single">
 <h3>mmx_mkl_single<a class="headerlink" href="#mmx-mkl-single" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
 <span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">,</span><span class="mi">4</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span> <span class="n">f_mkl_single</span> <span class="o">=</span> <span class="o">@</span><span class="p">()</span> <span class="n">mmx_mkl_single</span><span class="p">(</span><span class="s1">&#39;mult&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
@@ -746,12 +755,12 @@ For product information, visit www.mathworks.com.
 </pre></div>
 </div>
 <p>Average result:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.72</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.72</span>
 </pre></div>
 </div>
-<p>The best version of mmx is <code class="docutils literal notranslate"><span class="pre">mkl_single</span></code> which the C++ code for MMX compiled directly with MKL using the sequential libraries.
+<p>The best version of mmx is <code class="docutils literal"><span class="pre">mkl_single</span></code> which the C++ code for MMX compiled directly with MKL using the sequential libraries.
 For this case it performs better than the native MKL from Matlab or the naive version. See comments from build_mmx:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head -n 16 mmx/src/build_mmx.m
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ head -n 16 mmx/src/build_mmx.m
 function build_mmx(verbose)
 % BUILD_MMX - compiles mmx() for different platforms and provides help
 %            regarding compilation.

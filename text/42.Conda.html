@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -215,20 +224,20 @@ Miniconda is more suited for HPC environments where a minimal installation is al
 <div class="section" id="activating-conda-on-spruce-and-thorny-flat">
 <h2>Activating Conda on Spruce and Thorny Flat<a class="headerlink" href="#activating-conda-on-spruce-and-thorny-flat" title="Permalink to this headline">¶</a></h2>
 <p>On Spruce you can activate conda with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>On Thorny Flat the command to activate conda is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">conda_init</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">conda_init</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>After activation your are positioned on the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment.</p>
+<p>After activation your are positioned on the <code class="docutils literal"><span class="pre">base</span></code> environment.</p>
 </div>
 <div class="section" id="conda-environments">
 <h2>Conda Environments<a class="headerlink" href="#conda-environments" title="Permalink to this headline">¶</a></h2>
 <p>Conda allows you to create separate environments containing files, packages and their dependencies that will not interact with other environments.</p>
-<p>When you begin using conda, you already have a default environment named <code class="docutils literal notranslate"><span class="pre">base</span></code>.
-You cannot install packages on the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment.
+<p>When you begin using conda, you already have a default environment named <code class="docutils literal"><span class="pre">base</span></code>.
+You cannot install packages on the <code class="docutils literal"><span class="pre">base</span></code> environment.
 Yous should create new environments for installing packages.
 Try to keep separate environments for different packages or group of packages.
 That reduces the chances of incompatibility between them</p>
@@ -237,7 +246,7 @@ That reduces the chances of incompatibility between them</p>
 <h2>Knowing which environments are available<a class="headerlink" href="#knowing-which-environments-are-available" title="Permalink to this headline">¶</a></h2>
 <p>By the time of writing this tutorial Spruce offers three environments
 centrally installed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda info --envs
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; conda info --envs
 
 # conda environments:
 #
@@ -259,32 +268,32 @@ tpd0001                  /shared/software/miniconda3/envs/tpd0001
 <h2>Activating an existing environment<a class="headerlink" href="#activating-an-existing-environment" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that you want to use the environment called “tpd0001”, to
 achieve that execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">tpd0001</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">tpd0001</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="deactivating-the-current-environment">
 <h2>Deactivating the current environment<a class="headerlink" href="#deactivating-the-current-environment" title="Permalink to this headline">¶</a></h2>
 <p>The current environment can be deactivated with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
 </pre></div>
 </div>
-<p>If you are in the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment, the deactivation will not have any effect.
-You are always at least on the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment.</p>
+<p>If you are in the <code class="docutils literal"><span class="pre">base</span></code> environment, the deactivation will not have any effect.
+You are always at least on the <code class="docutils literal"><span class="pre">base</span></code> environment.</p>
 </div>
 <div class="section" id="create-a-new-environment">
 <h2>Create a new environment<a class="headerlink" href="#create-a-new-environment" title="Permalink to this headline">¶</a></h2>
 <p>We will name the environment snowflakes and install the package BioPython.
 At the Anaconda Prompt or in your terminal window, type the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">snowflakes</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">snowflakes</span>
 </pre></div>
 </div>
 <p>or if you want also to install a package you can execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">snowflakes</span> <span class="n">biopython</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">snowflakes</span> <span class="n">biopython</span>
 </pre></div>
 </div>
 <p>Conda collects metadata about the package and its dependencies and produces an installation plan:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Package Plan ##</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">## Package Plan ##</span>
 
 <span class="n">environment</span> <span class="n">location</span><span class="p">:</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">snowflakes</span>
 
@@ -330,13 +339,13 @@ At the Anaconda Prompt or in your terminal window, type the following:</p>
 </pre></div>
 </div>
 <p>Conda asks if you want to proceed with the plan:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Proceed ([y]/n)? y
+<div class="highlight-default"><div class="highlight"><pre><span></span>Proceed ([y]/n)? y
 Type &quot;y&quot; and press Enter to proceed.
 </pre></div>
 </div>
 <p>After that, conda, download and installs the packages creating a new environment for you.
 The final message shows how to activate and deactivate the environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="n">done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="n">done</span>
 <span class="n">Verifying</span> <span class="n">transaction</span><span class="p">:</span> <span class="n">done</span>
 <span class="n">Executing</span> <span class="n">transaction</span><span class="p">:</span> <span class="n">done</span>
 <span class="c1">#</span>
@@ -351,16 +360,16 @@ The final message shows how to activate and deactivate the environment:</p>
 </div>
 <p>Each environment is isolated from other conda environments and that allow you to keep several environments with different packages on them or different versions of the same packages.
 As the message shows you activate the environment with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">snowflakes</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">snowflakes</span>
 </pre></div>
 </div>
 <p>Notice that when you activate a new environment, the prompt changes adding a prefix in parenthesis to indicate on which conda environment are you using at that moment.
 To check the environments available execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span>
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">info</span> <span class="o">--</span><span class="n">envs</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">info</span> <span class="o">--</span><span class="n">envs</span>
 </pre></div>
 </div>
 </div>
@@ -368,15 +377,15 @@ To check the environments available execute:</p>
 <h2>Conda and Python<a class="headerlink" href="#conda-and-python" title="Permalink to this headline">¶</a></h2>
 <p>When you create a new environment, conda installs the same Python version used to install conda on Spruce and Thorny (3.7).
 If you want to use a different version of Python, for example Python 2.7, simply create a new environment and specify the version of Python that you want:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">python27</span> <span class="n">python</span><span class="o">=</span><span class="mf">2.7</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">python27</span> <span class="n">python</span><span class="o">=</span><span class="mf">2.7</span>
 </pre></div>
 </div>
 <p>You activate the environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">python27</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">python27</span>
 </pre></div>
 </div>
 <p>And verify the python version:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python --version
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python --version
 Python 2.7.16 :: Anaconda, Inc.
 </pre></div>
 </div>
@@ -385,15 +394,15 @@ Python 2.7.16 :: Anaconda, Inc.
 <div class="section" id="managing-packages-and-channels">
 <h2>Managing packages and channels<a class="headerlink" href="#managing-packages-and-channels" title="Permalink to this headline">¶</a></h2>
 <p>New packages can be installed to existing conda environments. First search for packages with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="n">mkl</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="n">mkl</span>
 </pre></div>
 </div>
 <p>Packages are stored in repositories called <strong>channels</strong>.
-By default, conda search on the <code class="docutils literal notranslate"><span class="pre">pkgs/main</span></code> channel only.
+By default, conda search on the <code class="docutils literal"><span class="pre">pkgs/main</span></code> channel only.
 However, there are many other packages on several other channels.</p>
 <p>The most prominent channels to search for packages are <strong>intel</strong>, <strong>conda-forge</strong> and <strong>bioconda</strong>
 To search for packages there execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">intel</span> <span class="n">mkl</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">intel</span> <span class="n">mkl</span>
 
 <span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nitime</span>
 
@@ -401,13 +410,13 @@ To search for packages there execute:</p>
 </pre></div>
 </div>
 <p>Packages can be installed on the current environment with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nitime</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nitime</span>
 </pre></div>
 </div>
 <p>In this case conda will pick the most recent version of the package compatible with the packages already present on the current environment.
 You can also be very selective on version and build that you want for the package.
 First get the list of versions and builds for the package that you want:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda search -c intel mkl
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda search -c intel mkl
 Loading channels: done
 # Name                       Version           Build  Channel
 mkl                         2017.0.3         intel_6  intel
@@ -434,7 +443,7 @@ mkl                           2019.5       intel_281  intel
 </pre></div>
 </div>
 <p>Now, install the package declaring the version and build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c intel mkl=2019.4=intel_243
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda install -c intel mkl=2019.4=intel_243
 Collecting package metadata (current_repodata.json): done
 Solving environment: done
 
@@ -482,7 +491,7 @@ Executing transaction: done
 YML file that describes the channels and packages that you want on your
 environment. The YML file will look like this, for a simple case when
 you want one env for bowtie2 (bowtie2.yml)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">spruce</span><span class="o">-</span><span class="n">bowtie2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">spruce</span><span class="o">-</span><span class="n">bowtie2</span>
 <span class="n">channels</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">bioconda</span>
   <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
@@ -493,7 +502,7 @@ you want one env for bowtie2 (bowtie2.yml)</p>
 </div>
 <p>Another example is this YML file for installing a curated set of basic
 genomics codes that requires just a few dependencies. (biocore.yml)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">biocode</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">biocode</span>
 <span class="n">channels</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">bioconda</span>
   <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
@@ -516,11 +525,11 @@ genomics codes that requires just a few dependencies. (biocore.yml)</p>
 </div>
 <p>To create an environment from those YML files you can select one
 location on your scratch folder</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/bowtie2 -f bowtie2.yml
+<div class="highlight-default"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/bowtie2 -f bowtie2.yml
 </pre></div>
 </div>
 <p>or for the biocore.yml</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/biocore -f biocore.yml
+<div class="highlight-default"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/biocore -f biocore.yml
 </pre></div>
 </div>
 <p>By default, new environments are created inside your $HOME folder on
@@ -531,7 +540,7 @@ $HOME/.conda</p>
 <p>Bowtie2 has a number of dependencies (19 dependencies for 1 package)
 Notice that only bowtie2 comes from bioconda channel. All other packages
 are part of conda-forge, a lower level channel.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate $SCRATCH/bowtie2
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda activate $SCRATCH/bowtie2
 $ conda list
 # packages in environment at /scratch/gufranco/bowtie2:
 #
@@ -564,7 +573,7 @@ zlib                      1.2.11               h470a237_3    conda-forge
 script, activate the environment that contains the software you need,
 execute the the scientific code and deactivate the environment. This is
 a simple example showing that for bowtie2</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -N MY_JOB
 #PBS -q standby
@@ -583,7 +592,7 @@ conda deactivate
 <div class="section" id="deleting-a-environment">
 <h2>Deleting a environment<a class="headerlink" href="#deleting-a-environment" title="Permalink to this headline">¶</a></h2>
 <p>To remove an environment you can just execute this command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>conda remove --all -p $SCRATCH/bowtie2
+<div class="highlight-default"><div class="highlight"><pre><span></span>conda remove --all -p $SCRATCH/bowtie2
 </pre></div>
 </div>
 </div>
@@ -600,7 +609,7 @@ documentation</a></p>
 <div class="section" id="downloading-miniconda">
 <h2>Downloading Miniconda<a class="headerlink" href="#downloading-miniconda" title="Permalink to this headline">¶</a></h2>
 <p>Miniconda can be downloaded from:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
 <span class="n">sh</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
@@ -608,7 +617,7 @@ documentation</a></p>
 <div class="section" id="no-installing-anything">
 <h2>No installing anything<a class="headerlink" href="#no-installing-anything" title="Permalink to this headline">¶</a></h2>
 <p>Just load the module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">genomics</span><span class="o">/</span><span class="n">qiime</span>
 </pre></div>
 </div>
