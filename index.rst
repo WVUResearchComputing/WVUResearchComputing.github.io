@@ -29,7 +29,7 @@ the most relevant ones:
 The official webpage in Research Office portal about the Research Computing Division
    `WVU Research Computing - Research Office <https://research.wvu.edu/researchers/computational-research/hpc>`_
 
-The legacy documentation was a Wiki website continue to be online for a while
+The legacy documentation was a Wiki website that will continue to be online for a while
    `WVU Research Computing - Legacy Wiki <https://wiki.hpc.wvu.edu/hpc_wiki/index.php/Main_Page>`_
 
 The HelpDesk ticket system
