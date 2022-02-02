@@ -33,31 +33,13 @@ Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Inte
 The table below shows the differences between the 4 architectures:
 
 .. csv-table:: Frozen Delights!
-   :header: "Treat", "Quantity", "Description"
+   :header: "Microarchitecture", "Launched", "Extensions"
    :widths: 15, 10, 30
 
-   "Albatross", 2.99, "On a stick!"
-   "Crunchy Frog", 1.49, "If we took the bones out, it wouldn't be
-   crunchy, now would it?"
-   "Gannet Ripple", 1.99, "On a stick!"
-
-+-----------------------+-------------------+--------------------------------------------------------+
-| **Microarchitecture** | **Launched**      | **Extensions**                                         |
-+-----------------------+-------------------+--------------------------------------------------------+
-| Sandy Bridge          | 2011              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
-|                       |                   | **AVX**, VT-x, VT-d, AES-NI, CLMUL, TXT                |
-+-----------------------+-------------------+--------------------------------------------------------+
-| Ivy Bridge            | 2012              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
-|                       |                   | **AVX, F16C**, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d  |
-+-----------------------+-------------------+--------------------------------------------------------+
-| Haswell               | 2013              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
-|                       |                   | **AVX, AVX2**, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND,|
-|                       |                   | TXT                                                    |
-+-----------------------+-------------------+--------------------------------------------------------+
-| Broadwell             | 2014              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
-|                       |                   | **AVX, AVX2**, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT,  | 
-|                       |                   | VT-x, VT-d                                             |
-+-----------------------+-------------------+--------------------------------------------------------+
+    Sandy Bridge, 2011, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, **AVX**, VT-x, VT-d, AES-NI, CLMUL, TXT"
+    Ivy Bridge,   2012, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, **AVX, F16C**, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d"
+    Haswell,      2013, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, **AVX, AVX2**, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND, TXT"
+    Broadwell,    2014, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, **AVX, AVX2**, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d"
 
 
 The Advanced Vector Extensions (AVX, also known as Sandy Bridge New Extensions) are extensions to the x86 instruction set architecture for microprocessors from Intel and Advanced Micro Devices (AMD) proposed by Intel in March 2008 and first supported by Intel with the Sandy Bridge processor shipping in Q1 2011. 
