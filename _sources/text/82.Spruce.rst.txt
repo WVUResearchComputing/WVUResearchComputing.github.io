@@ -32,7 +32,7 @@ Hardware
 Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
 The table below shows the differences between the 4 architectures:
 
-.. csv-table:: Frozen Delights!
+.. csv-table:: Microarchitectures present on *Spruce Knob*
    :header: "Microarchitecture", "Launched", "Extensions"
    :widths: 15, 10, 30
 
