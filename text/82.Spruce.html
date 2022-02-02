@@ -225,6 +225,50 @@
 </div>
 <div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
+<p>Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
+The table below shows the differences between the 4 architectures:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="57%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Microarchitecture</strong></td>
+<td><strong>Launched</strong></td>
+<td><strong>Extensions</strong></td>
+</tr>
+<tr class="row-even"><td>Sandy Bridge</td>
+<td>2011</td>
+<td>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,
+<strong>AVX</strong>, VT-x, VT-d, AES-NI, CLMUL, TXT</td>
+</tr>
+<tr class="row-odd"><td>Ivy Bridge</td>
+<td>2012</td>
+<td>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,
+<strong>AVX, F16C</strong>, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d</td>
+</tr>
+<tr class="row-even"><td>Haswell</td>
+<td>2013</td>
+<td>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,
+<strong>AVX, AVX2</strong>, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND,
+TXT</td>
+</tr>
+<tr class="row-odd"><td>Broadwell</td>
+<td>2014</td>
+<td>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,
+<strong>AVX, AVX2</strong>, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT,
+VT-x, VT-d</td>
+</tr>
+</tbody>
+</table>
+<p>The Advanced Vector Extensions (AVX, also known as Sandy Bridge New Extensions) are extensions to the x86 instruction set architecture for microprocessors from Intel and Advanced Micro Devices (AMD) proposed by Intel in March 2008 and first supported by Intel with the Sandy Bridge processor shipping in Q1 2011.
+AVX provides new features, new instructions and a new coding scheme.</p>
+<p>AVX2 (also known as Haswell New Instructions) expands most integer commands to 256 bits and introduces fused multiply–accumulate operations (FMA).
+They were first supported by Intel with the Haswell processor, which shipped in 2013.</p>
+<p>The AVX and AVX2 are important for Scientific Computing becayse AVX uses sixteen YMM registers to perform a Single Instruction on Multiple pieces of Data.
+Each YMM register can hold and do simultaneous operations (math) on eight 32-bit single-precision floating point numbers or four 64-bit double-precision floating point numbers.</p>
+<p>Notice that all nodes on Spruce support AVX extensions but not all nodes support AVX2.</p>
 <div class="section" id="phase-0-1-hardware">
 <h3>Phase 0/1 Hardware<a class="headerlink" href="#phase-0-1-hardware" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -236,7 +280,7 @@
 <tbody valign="top">
 <tr class="row-odd"><td>Node Type</td>
 <td><strong>Description</strong></td>
-<td>Number of Compute Nodes</td>
+<td><strong>Compute Nodes</strong></td>
 </tr>
 <tr class="row-even"><td>Sandy Bridge</td>
 <td><ul class="first last simple">
@@ -297,7 +341,7 @@
 <tbody valign="top">
 <tr class="row-odd"><td>Node Type</td>
 <td><strong>Description</strong></td>
-<td>Number of Compute Nodes</td>
+<td><strong>Compute Nodes</strong></td>
 </tr>
 <tr class="row-even"><td>Haswell</td>
 <td><ul class="first last simple">
@@ -340,7 +384,7 @@
 <tbody valign="top">
 <tr class="row-odd"><td>Node Type</td>
 <td><strong>Description</strong></td>
-<td>Number of Compute Nodes</td>
+<td><strong>Compute Nodes</strong></td>
 </tr>
 <tr class="row-even"><td>Haswell</td>
 <td><ul class="first last simple">
@@ -383,7 +427,7 @@
 <tbody valign="top">
 <tr class="row-odd"><td>Node Type</td>
 <td><strong>Description</strong></td>
-<td>Number of Compute Nodes</td>
+<td><strong>Compute Nodes</strong></td>
 </tr>
 <tr class="row-even"><td>Broadwell</td>
 <td><ul class="first last simple">
