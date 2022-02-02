@@ -35,6 +35,7 @@ The table below shows the differences between the 4 architectures:
 .. csv-table:: Microarchitectures present on *Spruce Knob*
    :header: "Microarchitecture", "Launched", "Extensions"
    :widths: 15, 10, 30
+   :width:  90%
 
     Sandy Bridge, 2011, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, **AVX**, VT-x, VT-d, AES-NI, CLMUL, TXT"
     Ivy Bridge,   2012, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, **AVX, F16C**, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d"
