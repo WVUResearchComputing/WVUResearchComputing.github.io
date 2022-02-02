@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -215,20 +206,20 @@ In scientific computing, Perl is particularly used in Bioinformatics</p>
 <p>The CPAN module also supports named and versioned bundles of modules. Bundles simplify handling of sets of related modules. See Bundles below.</p>
 <p>The package contains a session manager and a cache manager. The session manager keeps track of what has been fetched, built, and installed in the current session. The cache manager keeps track of the disk space occupied by the make processes and deletes excess space using a simple FIFO mechanism.</p>
 <p>All methods provided are accessible in a programmer style and in an interactive shell style.</p>
-<p>Users can install their own modules from the head node and they will be installed on the <code class="docutils literal"><span class="pre">$HOME</span></code> folder for usage later on any compute node.</p>
+<p>Users can install their own modules from the head node and they will be installed on the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder for usage later on any compute node.</p>
 </div>
 <div class="section" id="preparing-the-cpan-shell">
 <h2>Preparing the CPAN Shell<a class="headerlink" href="#preparing-the-cpan-shell" title="Permalink to this headline">¶</a></h2>
 <p>Enter interactive mode by running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">perl</span> <span class="o">-</span><span class="n">MCPAN</span> <span class="o">-</span><span class="n">e</span> <span class="n">shell</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">perl</span> <span class="o">-</span><span class="n">MCPAN</span> <span class="o">-</span><span class="n">e</span> <span class="n">shell</span>
 </pre></div>
 </div>
 <p>or directly by:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cpan</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cpan</span>
 </pre></div>
 </div>
 <p>If this is the first time you are configuring the shell, you will be greeted with a message like:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>CPAN.pm requires configuration, but most of it can be done automatically.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CPAN.pm requires configuration, but most of it can be done automatically.
 If you answer &#39;no&#39; below, you will enter an interactive dialog for each
 configuration option instead.
 
@@ -237,7 +228,7 @@ Would you like to configure as much as possible automatically? [yes]
 </div>
 <p>You can continue with the automatic configuration, suitable for most users.
 Next you will see this warning and message:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Warning: You do not have write permission for Perl library directories.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Warning: You do not have write permission for Perl library directories.
 
 To install modules, you need to configure a local Perl library directory or
 escalate your privileges.  CPAN can help you by bootstrapping the local::lib
@@ -249,9 +240,9 @@ What approach do you want?  (Choose &#39;local::lib&#39;, &#39;sudo&#39; or &#39
 </pre></div>
 </div>
 <p>Normal users are not allowed to add, delete or change files on system folders.
-The warning is telling you that. On a cluster, as normal user the best choice is to use <code class="docutils literal"><span class="pre">[local::lib]</span></code> as it will write all the files on folders in your <code class="docutils literal"><span class="pre">$HOME</span></code>. The folders are <code class="docutils literal"><span class="pre">$HOME/.cpan</span></code> and <code class="docutils literal"><span class="pre">$HOME/perl5</span></code>.</p>
+The warning is telling you that. On a cluster, as normal user the best choice is to use <code class="docutils literal notranslate"><span class="pre">[local::lib]</span></code> as it will write all the files on folders in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>. The folders are <code class="docutils literal notranslate"><span class="pre">$HOME/.cpan</span></code> and <code class="docutils literal notranslate"><span class="pre">$HOME/perl5</span></code>.</p>
 <p>The next message is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Autoconfigured everything but &#39;urllist&#39;.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Autoconfigured everything but &#39;urllist&#39;.
 
 Now you need to choose your CPAN mirror sites.  You can let me
 pick mirrors for you, you can select them from a list or you
@@ -263,7 +254,7 @@ sites for you? (This means connecting to the Internet) [yes]
 </div>
 <p>You can select yes to this question and you will be directed to one of the mirrors for CPAN. At WVU we have one mirror that can be used instead.
 If you want to use it, answer no to the question and add the mirror as shown below:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Would you like me to automatically choose some CPAN mirror
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Would you like me to automatically choose some CPAN mirror
 sites for you? (This means connecting to the Internet) [yes] no
 
 Would you like to pick from the CPAN mirror list? [yes] no
@@ -279,7 +270,7 @@ New urllist
 </pre></div>
 </div>
 <p>The next message is about add some lines to your .bashrc:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>local::lib is installed. You must now add the following environment variables
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>local::lib is installed. You must now add the following environment variables
 to your shell configuration files (or registry, if you are on Windows) and
 then restart your command line shell and CPAN before installing modules:
 
@@ -294,7 +285,7 @@ Would you like me to append that to /users/username/.bashrc now? [yes]
 </div>
 <p>Answering yes, will add those lines to your .bashrc, something that you can later edit directly.</p>
 <p>Finally, you get into the shell:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ommit</span><span class="p">:</span> <span class="n">wrote</span> <span class="s1">&#39;/users/gufranco/.cpan/CPAN/MyConfig.pm&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ommit</span><span class="p">:</span> <span class="n">wrote</span> <span class="s1">&#39;/users/gufranco/.cpan/CPAN/MyConfig.pm&#39;</span>
 
 <span class="n">You</span> <span class="n">can</span> <span class="n">re</span><span class="o">-</span><span class="n">run</span> <span class="n">configuration</span> <span class="nb">any</span> <span class="n">time</span> <span class="k">with</span> <span class="s1">&#39;o conf init&#39;</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">CPAN</span> <span class="n">shell</span>
 <span class="n">Terminal</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">AddHistory</span><span class="o">.</span>
@@ -309,13 +300,13 @@ Would you like me to append that to /users/username/.bashrc now? [yes]
 <div class="section" id="installing-perl-modules">
 <h2>Installing Perl modules<a class="headerlink" href="#installing-perl-modules" title="Permalink to this headline">¶</a></h2>
 <p>The Comprehensive Perl Archive Network (CPAN) currently has more than 180000 Perl modules and you can install those for your own usage without requesting global installation on the cluster.</p>
-<p>For example, lets assume that you want to install <code class="docutils literal"><span class="pre">Math::EllipticCurve::Prime</span></code> a package for elliptic curves over a prime field.
+<p>For example, lets assume that you want to install <code class="docutils literal notranslate"><span class="pre">Math::EllipticCurve::Prime</span></code> a package for elliptic curves over a prime field.
 Log into the CPAN shell and execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">capn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">install</span> <span class="n">Math</span><span class="p">::</span><span class="n">EllipticCurve</span><span class="p">::</span><span class="n">Prime</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">capn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">install</span> <span class="n">Math</span><span class="p">::</span><span class="n">EllipticCurve</span><span class="p">::</span><span class="n">Prime</span>
 </pre></div>
 </div>
 <p>After installation you will see a message and your prompt is returned:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Appending</span> <span class="n">installation</span> <span class="n">info</span> <span class="n">to</span> <span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">perl5</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">perl5</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">multi</span><span class="o">/</span><span class="n">perllocal</span><span class="o">.</span><span class="n">pod</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Appending</span> <span class="n">installation</span> <span class="n">info</span> <span class="n">to</span> <span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">perl5</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">perl5</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">multi</span><span class="o">/</span><span class="n">perllocal</span><span class="o">.</span><span class="n">pod</span>
 <span class="n">BRIANC</span><span class="o">/</span><span class="n">Math</span><span class="o">-</span><span class="n">EllipticCurve</span><span class="o">-</span><span class="n">Prime</span><span class="o">-</span><span class="mf">0.003</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">make</span> <span class="n">install</span>  <span class="o">--</span> <span class="n">OK</span>
 

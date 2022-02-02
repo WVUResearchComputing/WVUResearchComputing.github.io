@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -119,13 +110,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#phase-0-1-hardware">Phase 0/1 Hardware</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#phase-2-hardware">Phase 2 Hardware</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#phase-3a-hardware">Phase 3a Hardware</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#phase-3b-hardware">Phase 3b Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#phase-3-hardware">Phase 3 Hardware</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#phase-4-hardware">Phase 4 Hardware</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#queues">Queues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#environment-modules">Environment modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#research-team-queues">Research Team Queues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#standby-queue">Standby Queue</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#community-node-queues">Community Node Queues</a></li>
@@ -238,48 +227,232 @@
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="phase-0-1-hardware">
 <h3>Phase 0/1 Hardware<a class="headerlink" href="#phase-0-1-hardware" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="57%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Node Type</td>
+<td>Description</td>
+<td>Number of Compute Nodes</td>
+</tr>
+<tr class="row-even"><td>Sandy Bridge</td>
+<td><ul class="first last simple">
+<li>4 X 8 Intel(R) Xeon(R) CPU E5-4620 0 &#64; 2.20GHz</li>
+<li>64GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>14</td>
+</tr>
+<tr class="row-odd"><td>Ivy Bridge</td>
+<td><ul class="first last simple">
+<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
+<li>32GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>Ivy Bridge</td>
+<td><ul class="first last simple">
+<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
+<li>64GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>95</td>
+</tr>
+<tr class="row-odd"><td>Ivy Bridge</td>
+<td><ul class="first last simple">
+<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
+<li>256GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>Ivy Bridge</td>
+<td><ul class="first last simple">
+<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
+<li>512GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="phase-2-hardware">
 <h3>Phase 2 Hardware<a class="headerlink" href="#phase-2-hardware" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="57%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Node Type</td>
+<td>Description</td>
+<td>Number of Compute Nodes</td>
+</tr>
+<tr class="row-even"><td>Haswell</td>
+<td><ul class="first last simple">
+<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
+<li>64GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>14</td>
+</tr>
+<tr class="row-odd"><td>Haswell</td>
+<td><ul class="first last simple">
+<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
+<li>128GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>Haswell</td>
+<td><ul class="first last simple">
+<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
+<li>512GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="phase-3a-hardware">
-<h3>Phase 3a Hardware<a class="headerlink" href="#phase-3a-hardware" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="phase-3b-hardware">
-<h3>Phase 3b Hardware<a class="headerlink" href="#phase-3b-hardware" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="phase-3-hardware">
+<h3>Phase 3 Hardware<a class="headerlink" href="#phase-3-hardware" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="57%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Node Type</td>
+<td>Description</td>
+<td>Number of Compute Nodes</td>
+</tr>
+<tr class="row-even"><td>Haswell</td>
+<td><ul class="first last simple">
+<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
+<li>64GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>Haswell</td>
+<td><ul class="first last simple">
+<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
+<li>128GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>10</td>
+</tr>
+<tr class="row-even"><td>Haswell</td>
+<td><ul class="first last simple">
+<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
+<li>512GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="phase-4-hardware">
 <h3>Phase 4 Hardware<a class="headerlink" href="#phase-4-hardware" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="57%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Node Type</td>
+<td>Description</td>
+<td>Number of Compute Nodes</td>
+</tr>
+<tr class="row-even"><td>Broadwell</td>
+<td><ul class="first last simple">
+<li>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</li>
+<li>64GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>3</td>
+</tr>
+<tr class="row-odd"><td>Broadwell</td>
+<td><ul class="first last simple">
+<li>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</li>
+<li>128GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>7</td>
+</tr>
+<tr class="row-even"><td>Broadwell</td>
+<td><ul class="first last simple">
+<li>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</li>
+<li>512GB memory</li>
+<li>1TB HDD</li>
+</ul>
+</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="queues">
 <h2>Queues<a class="headerlink" href="#queues" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="environment-modules">
-<h2>Environment modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h2>
-<p>The current state and limits of queues can be found using the qstat
-command.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qstat -q
-
-server: srih0001.hpc.wvu.edu
-
-Queue            Memory CPU Time Walltime Node  Run Que Lm  State
----------------- ------ -------- -------- ----  --- --- --  -----
-comm_256g_mem      --      --    168:00:0   --    4   5 --   E R
-comm_gpu           --      --    168:00:0   --    3   1 --   E R
-comm_large_mem     --      --    168:00:0   --    5 268 --   E R
-comm_mmem_day      --      --    24:00:00   --    9  38 --   E R
-comm_mmem_week     --      --    168:00:0   --   71 264 --   E R
-comm_smp           --      --    168:00:0   --    6   0 --   E R
-debug              --      --    00:15:00   --    0   0 --   E R
-standby            --      --    04:00:00   --  271 538 --   E R
-training           --      --       --      --    0   0 --   D S
-                                               ----- -----
-                                                 495  2148
-</pre></div>
-</div>
-<p>There are three main queue types - research team queues, the standby
-queue, and community node queues.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><em>Queue</em></td>
+<td><em>Walltime</em></td>
+</tr>
+<tr class="row-even"><td>debug</td>
+<td>15:00</td>
+</tr>
+<tr class="row-odd"><td>standby</td>
+<td>4:00:00</td>
+</tr>
+<tr class="row-even"><td>comm_mmem_week</td>
+<td>168:00:00</td>
+</tr>
+<tr class="row-odd"><td>comm_256g_mem</td>
+<td>168:00:00</td>
+</tr>
+<tr class="row-even"><td>comm_mmem_day</td>
+<td>24:00:00</td>
+</tr>
+<tr class="row-odd"><td>comm_gpu</td>
+<td>168:00:00</td>
+</tr>
+<tr class="row-even"><td>comm_smp</td>
+<td>168:00:00</td>
+</tr>
+<tr class="row-odd"><td>comm_large_mem</td>
+<td>168:00:00</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="research-team-queues">
 <h2>Research Team Queues<a class="headerlink" href="#research-team-queues" title="Permalink to this headline">¶</a></h2>

@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -255,7 +246,7 @@ on the CPUs on Thorny.</p>
 numerically unstable.</p>
 <p>Atlas is also an implementation of BLAS that is part of the system and several
 other packages depend of it. Atlas can be found here:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">atlas</span><span class="o">/</span><span class="n">libsatlas</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">atlas</span><span class="o">/</span><span class="n">libsatlas</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mi">3</span>
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">atlas</span><span class="o">/</span><span class="n">libsatlas</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mf">3.10</span>
 </pre></div>
 </div>
@@ -276,14 +267,14 @@ The instructions were created for LAPACK 3.8</p>
 <a class="reference external" href="http://www.netlib.org/lapack/">http://www.netlib.org/lapack/</a>
 The sources for LAPACK also contain the reference BLAS so all that we need
 is to download is the package for lapack:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">netlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">lapack</span><span class="o">/</span><span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">netlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">lapack</span><span class="o">/</span><span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Uncompress and untar the file with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>That will generate a folder called <code class="docutils literal"><span class="pre">lapack-3.8.0</span></code> with all the sources inside.</p>
+<p>That will generate a folder called <code class="docutils literal notranslate"><span class="pre">lapack-3.8.0</span></code> with all the sources inside.</p>
 </div>
 <div class="section" id="patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512">
 <h3>Patching the sources to support shared libraries and optimization for AVX512<a class="headerlink" href="#patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512" title="Permalink to this headline">¶</a></h3>
@@ -292,7 +283,7 @@ There is also an option to use cmake, and we will cover that later on.</p>
 <p>Using make, several files need to be changed.
 The patch file can be downloaded from here <a class="reference external" href="Media:lapack.patch">lapack.patch</a>
 The content of the file is this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>diff -ruN lapack-3.8.0/BLAS/SRC/Makefile lapack-3.8.0_new/BLAS/SRC/Makefile
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff -ruN lapack-3.8.0/BLAS/SRC/Makefile lapack-3.8.0_new/BLAS/SRC/Makefile
 --- lapack-3.8.0/BLAS/SRC/Makefile    2017-11-12 23:15:54.000000000 -0500
 +++ lapack-3.8.0_new/BLAS/SRC/Makefile        2019-11-12 13:23:07.985953000 -0500
 @@ -55,7 +55,10 @@
@@ -429,21 +420,21 @@ diff -ruN lapack-3.8.0/SRC/Makefile lapack-3.8.0_new/SRC/Makefile
       $(ARCH) $(ARCHFLAGS) $@ $^
 </pre></div>
 </div>
-<p>You can download the patch to the folder <code class="docutils literal"><span class="pre">lapack-3.8.0</span></code> and execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">patch</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">lapack</span><span class="o">.</span><span class="n">patch</span>
+<p>You can download the patch to the folder <code class="docutils literal notranslate"><span class="pre">lapack-3.8.0</span></code> and execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">patch</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">lapack</span><span class="o">.</span><span class="n">patch</span>
 </pre></div>
 </div>
 <p>Another way is to edit the files one by one.</p>
-<p>For the file <code class="docutils literal"><span class="pre">lapack-3.8./BLAS/SRC/Makefile</span></code> you need to add a new target
+<p>For the file <code class="docutils literal notranslate"><span class="pre">lapack-3.8./BLAS/SRC/Makefile</span></code> you need to add a new target
 “libblas.so” and adding the target to “all”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>all: $(BLASLIB) libblas.so
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>all: $(BLASLIB) libblas.so
 
 libblas.so: $(ALLOBJ)
 gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
 </pre></div>
 </div>
-<p>The file <code class="docutils literal"><span class="pre">lapack-3.8./Makefile</span></code> should have now:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>install: all
+<p>The file <code class="docutils literal notranslate"><span class="pre">lapack-3.8./Makefile</span></code> should have now:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>install: all
     cp BLAS/SRC/libblas.so $(PREFIX)/lib
     cp SRC/liblapack.so $(PREFIX)/lib
     cp *.a $(PREFIX)/lib
@@ -460,38 +451,38 @@ were specifically compiled to use OpenBLAS for linear algebra routines.</p>
 <p>The instructions below show how you can do the same for clean virtual
 environments where you want to install numpy and scipy.</p>
 <p>Assume that you want to use PyPy3 from module:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ module purge
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module purge
 $ module load lang/python/pypy3.6-7.1.1-portable
 </pre></div>
 </div>
 <p>The first thing to do is to also load GCC 8.2 and OpenBLAS 0.3.7:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ module load load lang/gcc/8.2.0 libs/openblas/0.3.7_gcc82
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load load lang/gcc/8.2.0 libs/openblas/0.3.7_gcc82
 </pre></div>
 </div>
-<p>We start creating the virtual environment with <code class="docutils literal"><span class="pre">virtualenv</span></code>. Notice that PyPy
-comes with its own version of <code class="docutils literal"><span class="pre">virtualenv</span></code> called <code class="docutils literal"><span class="pre">virtualenv-pypy</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ virtualenv-pypy pypy3.6
+<p>We start creating the virtual environment with <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>. Notice that PyPy
+comes with its own version of <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> called <code class="docutils literal notranslate"><span class="pre">virtualenv-pypy</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virtualenv-pypy pypy3.6
 </pre></div>
 </div>
 <p>Activate the environment, create a build folder inside and change to that
 folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ source pypy3.6/bin/activate
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source pypy3.6/bin/activate
 $ mkdir pypy3.6/build
 $ cd pypy3.6/build
 </pre></div>
 </div>
-<p>Now we want to install numpy and scipy, do not try to use <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">...</span></code>,
+<p>Now we want to install numpy and scipy, do not try to use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">...</span></code>,
 it will bring generic versions using the reference BLAS and Lapack.</p>
 <p>Download and extract the packages manually:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget https://github.com/numpy/numpy/releases/download/v1.17.3/numpy-1.17.3.tar.gz
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://github.com/numpy/numpy/releases/download/v1.17.3/numpy-1.17.3.tar.gz
 $ wget https://github.com/scipy/scipy/releases/download/v1.3.1/scipy-1.3.1.tar.gz
 $ tar -zxvf numpy-1.17.3.tar.gz
 $ tar -zxvf scipy-1.3.1.tar.gz
 </pre></div>
 </div>
-<p>First configure numpy. Go to the folder and create a file <code class="docutils literal"><span class="pre">site.cfg</span></code> with this
+<p>First configure numpy. Go to the folder and create a file <code class="docutils literal notranslate"><span class="pre">site.cfg</span></code> with this
 content:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ALL</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ALL</span><span class="p">]</span>
 <span class="n">library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">lib</span>
 <span class="n">include_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">include</span>
 
@@ -503,12 +494,12 @@ content:</p>
 </pre></div>
 </div>
 <p>You can build and install numpy with pip, just execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip3 install .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install .
 </pre></div>
 </div>
 <p>It takes a while and you get numpy installed and the installation tracked by pip.
 The configuration and installation Scipy is very similar:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd ../scipy-1.3.1/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ../scipy-1.3.1/
 $ cp ../numpy-1.17.3/site.cfg .
 $ pip3 install .
 </pre></div>
@@ -516,7 +507,7 @@ $ pip3 install .
 <p>With numpy and scipy installed we can install any other packages that you
 plan for the virtual environment. As an example, we will install ipython
 and pytest:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip3 install pytest ipython
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install pytest ipython
 
 (pypy3.6) 12:31:11-gufranco@trcis001:~/scratch/pypy3.6$ ipython
 Python 3.6.1 (784b254d669919c872a505b807db8462b6140973, Apr 16 2019, 18:18:28)
@@ -536,7 +527,7 @@ NumPy relaxed strides checking option: True
 </div>
 <p>The configuration flags for numpy and scipy can be obtained from the command
 below:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>(pypy3.6) 13:21:20-gufranco@trcis001:~/scratch/pypy3.6$ ipython
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pypy3.6) 13:21:20-gufranco@trcis001:~/scratch/pypy3.6$ ipython
 Python 3.6.1 (784b254d669919c872a505b807db8462b6140973, Apr 16 2019, 18:18:28)
 Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
 IPython 7.9.0 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
@@ -584,7 +575,7 @@ that optimized versions provide multithreading, multithreading allows several
 cores that share the same memory space to work on the arrays concurrently.</p>
 <p>OpenBLAS was compiled multithreaded and the number of threads can be controled
 with several environment variables:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OPENBLAS_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OPENBLAS_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
 <span class="n">export</span> <span class="n">GOTO_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
 <span class="n">export</span> <span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
 </pre></div>
