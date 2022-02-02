@@ -29,11 +29,43 @@ Shared Interconnect
 Hardware
 --------
 
+Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
+The table below shows the differences between the 4 architectures:
+
++-----------------------+-------------------+--------------------------------------------------------+
+| **Microarchitecture** | **Launched**      | **Extensions**                                         |
++-----------------------+-------------------+--------------------------------------------------------+
+| Sandy Bridge          | 2011              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
+|                       |                   | **AVX**, VT-x, VT-d, AES-NI, CLMUL, TXT                |
++-----------------------+-------------------+--------------------------------------------------------+
+| Ivy Bridge            | 2012              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
+|                       |                   | **AVX, F16C**, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d  |
++-----------------------+-------------------+--------------------------------------------------------+
+| Haswell               | 2013              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
+|                       |                   | **AVX, AVX2**, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND,|
+|                       |                   | TXT                                                    |
++-----------------------+-------------------+--------------------------------------------------------+
+| Broadwell             | 2014              | MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,     |
+|                       |                   | **AVX, AVX2**, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT,  | 
+|                       |                   | VT-x, VT-d                                             |
++-----------------------+-------------------+--------------------------------------------------------+
+
+The Advanced Vector Extensions (AVX, also known as Sandy Bridge New Extensions) are extensions to the x86 instruction set architecture for microprocessors from Intel and Advanced Micro Devices (AMD) proposed by Intel in March 2008 and first supported by Intel with the Sandy Bridge processor shipping in Q1 2011. 
+AVX provides new features, new instructions and a new coding scheme.
+
+AVX2 (also known as Haswell New Instructions) expands most integer commands to 256 bits and introduces fused multiply–accumulate operations (FMA). 
+They were first supported by Intel with the Haswell processor, which shipped in 2013. 
+
+The AVX and AVX2 are important for Scientific Computing becayse AVX uses sixteen YMM registers to perform a Single Instruction on Multiple pieces of Data.
+Each YMM register can hold and do simultaneous operations (math) on eight 32-bit single-precision floating point numbers or four 64-bit double-precision floating point numbers.
+
+Notice that all nodes on Spruce support AVX extensions but not all nodes support AVX2.
+
 Phase 0/1 Hardware
 ~~~~~~~~~~~~~~~~~~
 
 +---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | Number of Compute Nodes   |
+| Node Type     | **Description**                                        | **Compute Nodes**         |
 |               |                                                        |                           |
 +---------------+--------------------------------------------------------+---------------------------+
 | Sandy Bridge  | - 4 X 8 Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz       |            14             |
@@ -62,7 +94,7 @@ Phase 2 Hardware
 ~~~~~~~~~~~~~~~~
 
 +---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | Number of Compute Nodes   |
+| Node Type     | **Description**                                        | **Compute Nodes**         |
 |               |                                                        |                           |
 +---------------+--------------------------------------------------------+---------------------------+
 | Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |            14             |
@@ -82,7 +114,7 @@ Phase 3 Hardware
 ~~~~~~~~~~~~~~~~
 
 +---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | Number of Compute Nodes   |
+| Node Type     | **Description**                                        | **Compute Nodes**         |
 |               |                                                        |                           |
 +---------------+--------------------------------------------------------+---------------------------+
 | Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |             1             |
@@ -102,7 +134,7 @@ Phase 4 Hardware
 ~~~~~~~~~~~~~~~~
 
 +---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | Number of Compute Nodes   |
+| Node Type     | **Description**                                        | **Compute Nodes**         |
 |               |                                                        |                           |
 +---------------+--------------------------------------------------------+---------------------------+
 | Broadwell     | - 2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz     |             3             |
