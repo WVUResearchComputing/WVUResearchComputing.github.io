@@ -34,17 +34,17 @@ The table below shows the differences between the 4 architectures:
 
 .. csv-table:: Microarchitectures present on *Spruce Knob*
    :header: "Microarchitecture", "Launched", "Extensions"
-   :widths: auto
-   :width:  500px
+   :widths: 10, 10, 80
+   :width:  90%
 
-    Sandy Bridge, 2011, "| MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Sandy Bridge, 2011, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX**, VT-x, VT-d, AES-NI, CLMUL, TXT"
-    Ivy Bridge,   2012, "| MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Ivy Bridge,   2012, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX, F16C**, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d"
-    Haswell,      2013, "| MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Haswell,      2013, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX, AVX2**, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND, 
     TXT"
-    Broadwell,    2014, "| MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Broadwell,    2014, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX, AVX2**, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT, VT-x, 
     VT-d"
 
