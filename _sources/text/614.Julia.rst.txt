@@ -1,0 +1,35 @@
+Building Julia
+--------------
+
+Download the sources::
+
+	$> wget https://github.com/JuliaLang/julia/releases/download/v1.7.2/julia-1.7.2.tar.gz
+
+uncompress the sources::
+
+	$> tar -zxvf julia-1.7.2.tar.gz 
+	$> cd julia-1.7.2
+
+edit ``Make.inc``
+
+
+
+compile Julia with::
+
+	$> make
+
+install::
+
+	$> make install prefix=/shared/software/lang/julia/1.7.2
+
+check the build::
+
+	$> make test
+
+the results were::
+
+	Test Summary: |     Pass  Broken     Total
+	  Overall     | 38309168  352642  38661810
+	SUCCESS    
+
+

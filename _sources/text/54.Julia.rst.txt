@@ -22,12 +22,12 @@ Spruce Knob
 The latest version of Julia on Spruce Knob is 1.7.2
 Load the software module with the command::
 
-    module load lang/julia/1.7.2
+    $> module load lang/julia/1.7.2
 
 There is also an equivalent version where dependencies are not preloaded. 
 Load the module as::
 
-    module load lang/gcc/10.3.0 lang/julia/1.7.2_prereq
+    $> module load lang/gcc/10.3.0 lang/julia/1.7.2_prereq
 
 Thorny Flat
 ~~~~~~~~~~~
@@ -35,8 +35,8 @@ Thorny Flat
 On Thorny Flat we have 2 versions of Julia 1.6.5 which is a Long Term Support (LTS) version and 1.7.1.
 Load any of those versions with the command::
 
-    module load lang/gcc/11.2.0 lang/julia/1.6.5_gcc112 
-    module load lang/gcc/11.2.0 lang/julia/1.7.1_gcc112 
+    $> module load lang/gcc/11.2.0 lang/julia/1.6.5_gcc112 
+    $> module load lang/gcc/11.2.0 lang/julia/1.7.1_gcc112 
 
 
 Using Julia
@@ -101,7 +101,7 @@ You can execute these lines one by one on the Julia interactive shell.
 To run a julia script create a file such as `example.jl`  and copy there the lines above.
 Execute the command::
 
-	julia example.jl
+	$> julia example.jl
 
 You should get::
 
@@ -109,7 +109,4 @@ You should get::
 
 	Solution 1 to quadratic 2x^2 - 2x - 12 is 3.0
 	Solution 2 to quadratic 2x^2 - 2x - 12 is -2.0
-
-
-
 

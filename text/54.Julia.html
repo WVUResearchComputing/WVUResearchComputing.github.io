@@ -201,12 +201,12 @@ To use Julia, load the following modules depending on the cluster you are workin
 <h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>The latest version of Julia on Spruce Knob is 1.7.2
 Load the software module with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/julia/1.7.2
 </pre></div>
 </div>
 <p>There is also an equivalent version where dependencies are not preloaded.
 Load the module as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">10.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">2</span><span class="n">_prereq</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 lang/julia/1.7.2_prereq
 </pre></div>
 </div>
 </div>
@@ -214,8 +214,8 @@ Load the module as:</p>
 <h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>On Thorny Flat we have 2 versions of Julia 1.6.5 which is a Long Term Support (LTS) version and 1.7.1.
 Load any of those versions with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc112</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc112</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/11.2.0 lang/julia/1.6.5_gcc112
+$&gt; module load lang/gcc/11.2.0 lang/julia/1.7.1_gcc112
 </pre></div>
 </div>
 </div>
@@ -279,7 +279,7 @@ julia&gt;
 <p>You can execute these lines one by one on the Julia interactive shell.
 To run a julia script create a file such as <cite>example.jl</cite>  and copy there the lines above.
 Execute the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span> <span class="n">example</span><span class="o">.</span><span class="n">jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; julia example.jl
 </pre></div>
 </div>
 <p>You should get:</p>

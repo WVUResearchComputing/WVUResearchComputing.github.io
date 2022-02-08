@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building Julia &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Domain Specific Details" href="70.DomainSpecific.html" />
+    <link rel="prev" title="Matlab N-D multithreaded matrix operations (MMX)" href="613.Matlab_MMX.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="601.SphinxDocs.html">Editing these documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="602.UserInstallation.html">Installing Packages in User Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="603.LinearAlgebra.html">Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="604.Boost.html">Boost 1.78</a></li>
+<li class="toctree-l2"><a class="reference internal" href="605.MPI.html">Message Passing Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="613.Matlab_MMX.html">Matlab N-D multithreaded matrix operations (MMX)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building Julia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="600.SoftAdmin.html">Software Administration</a> &raquo;</li>
+        
+      <li>Building Julia</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/614.Julia.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-julia">
+<h1>Building Julia<a class="headerlink" href="#building-julia" title="Permalink to this headline">¶</a></h1>
+<p>Download the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/JuliaLang/julia/releases/download/v1.7.2/julia-1.7.2.tar.gz
+</pre></div>
+</div>
+<p>uncompress the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf julia-1.7.2.tar.gz
+$&gt; cd julia-1.7.2
+</pre></div>
+</div>
+<p>edit <code class="docutils literal notranslate"><span class="pre">Make.inc</span></code></p>
+<p>compile Julia with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+</pre></div>
+</div>
+<p>install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make install prefix=/shared/software/lang/julia/1.7.2
+</pre></div>
+</div>
+<p>check the build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make test
+</pre></div>
+</div>
+<p>the results were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">Summary</span><span class="p">:</span> <span class="o">|</span>     <span class="n">Pass</span>  <span class="n">Broken</span>     <span class="n">Total</span>
+  <span class="n">Overall</span>     <span class="o">|</span> <span class="mi">38309168</span>  <span class="mi">352642</span>  <span class="mi">38661810</span>
+<span class="n">SUCCESS</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="70.DomainSpecific.html" class="btn btn-neutral float-right" title="Domain Specific Details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="613.Matlab_MMX.html" class="btn btn-neutral float-left" title="Matlab N-D multithreaded matrix operations (MMX)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
