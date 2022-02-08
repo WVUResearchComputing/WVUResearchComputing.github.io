@@ -100,7 +100,12 @@
 <li class="toctree-l2"><a class="reference internal" href="52.Python.html">Python Language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="53.R.html">R Language</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Julia Language</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#loading-environment-modules">Loading Environment Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-environment-modules">Loading Environment Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spruce-knob">Spruce Knob</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thorny-flat">Thorny Flat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-julia">Using Julia</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="55.Matlab.html">MATLAB</a></li>
@@ -183,8 +188,107 @@
             
   <div class="section" id="julia-language">
 <span id="pl-julia"></span><h1>Julia Language<a class="headerlink" href="#julia-language" title="Permalink to this headline">¶</a></h1>
+<p>The Julia programming language is a flexible dynamic language, appropriate for scientific and numerical computing.
+Julia combines features of imperative, functional, and object-oriented programming.
+Julia provides ease and expressiveness for high-level numerical computing, similar to other popular languages such as R, MATLAB, and Python, but also supports general programming.
+Julia is built upon the lineage of mathematical programming languages, but also borrows much from popular dynamic languages, including Lisp, Perl, Python, Lua, and Ruby.
+Using the correct syntax, the performance of Julia programs can be comparable to traditional statically-typed languages like C or Fortran.</p>
 <div class="section" id="loading-environment-modules">
 <h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
+<p>Julia is installed and accessible via software modules in terminal/shell sessions.
+To use Julia, load the following modules depending on the cluster you are working on.</p>
+<div class="section" id="spruce-knob">
+<h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
+<p>The latest version of Julia on Spruce Knob is 1.7.2
+Load the software module with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>There is also an equivalent version where dependencies are not preloaded.
+Load the module as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">10.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">2</span><span class="n">_prereq</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="thorny-flat">
+<h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>On Thorny Flat we have 2 versions of Julia 1.6.5 which is a Long Term Support (LTS) version and 1.7.1.
+Load any of those versions with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">5</span><span class="n">_gcc112</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc112</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-julia">
+<h2>Using Julia<a class="headerlink" href="#using-julia" title="Permalink to this headline">¶</a></h2>
+<p>Once the module is loaded, execute the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; julia
+</pre></div>
+</div>
+<p>It will open the Julia Intereactive Shell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| \|_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.
+  | | | | | | \|/ _` |  |
+  | | \|_| | | | (_| |  |  Version 1.7.2 (2022-02-06)
+ _/ \|\__&#39;_|_|_|\__&#39;_|  |
+\|__/                   |
+
+julia&gt;
+</pre></div>
+</div>
+<p>From the interactive shell, start executing Julia commands. Learn about Julia from the <a class="reference external" href="https://docs.julialang.org/en/v1/">Official Documentation</a></p>
+<p>Consider a small example on how Julia code looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to Compute the volume of a sphere</span>
+<span class="n">function</span> <span class="n">volume_sphere</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="c1"># julia allows Unicode names (in UTF-8 encoding)</span>
+<span class="c1"># so either &quot;pi&quot; or the symbol π can be used</span>
+<span class="k">return</span> <span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="o">^</span><span class="mi">3</span>
+<span class="n">end</span>
+
+<span class="c1"># functions can also be defined as one-liners</span>
+<span class="n">quadratic_oneline</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sqr_term</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqr_term</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="n">a</span>
+
+<span class="c1"># calculates x for 0 = a*x^2+b*x+c, arguments types can be defined in function definitions</span>
+<span class="n">function</span> <span class="n">quadratic_solver</span><span class="p">(</span><span class="n">a</span><span class="p">::</span><span class="n">Float64</span><span class="p">,</span> <span class="n">b</span><span class="p">::</span><span class="n">Float64</span><span class="p">,</span> <span class="n">c</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span>
+<span class="c1"># unlike other languages 2a is equivalent to 2*a</span>
+<span class="c1"># a^2 is used instead of a**2 or pow(a,2)</span>
+<span class="n">sqr_term</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">quadratic_oneline</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sqr_term</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">quadratic_oneline</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="n">sqr_term</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="c1"># multiple values can be returned from a function using tuples</span>
+<span class="c1"># if the return keyword is omitted, the last term is returned</span>
+<span class="n">r1</span><span class="p">,</span> <span class="n">r2</span>
+<span class="n">end</span>
+
+<span class="n">vol</span> <span class="o">=</span> <span class="n">volume_sphere</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># @printf allows number formatting but does not automatically append the \n to statements, see below</span>
+<span class="n">using</span> <span class="n">Printf</span>
+<span class="nd">@printf</span> <span class="s2">&quot;Volume of sphere with radius 3 = </span><span class="si">%0.3f</span><span class="se">\n\n</span><span class="s2">&quot;</span> <span class="n">vol</span>
+<span class="c1">#&gt; volume = 113.097</span>
+
+<span class="n">quad1</span><span class="p">,</span> <span class="n">quad2</span> <span class="o">=</span> <span class="n">quadratic_solver</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.0</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s2">&quot;Solution 1 to quadratic 2x^2 - 2x - 12 is &quot;</span><span class="p">,</span> <span class="n">quad1</span><span class="p">)</span>
+<span class="c1">#&gt; result 1: 3.0</span>
+<span class="n">println</span><span class="p">(</span><span class="s2">&quot;Solution 2 to quadratic 2x^2 - 2x - 12 is &quot;</span><span class="p">,</span> <span class="n">quad2</span><span class="p">)</span>
+<span class="c1">#&gt; result 2: -2.0</span>
+</pre></div>
+</div>
+<p>You can execute these lines one by one on the Julia interactive shell.
+To run a julia script create a file such as <cite>example.jl</cite>  and copy there the lines above.
+Execute the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span> <span class="n">example</span><span class="o">.</span><span class="n">jl</span>
+</pre></div>
+</div>
+<p>You should get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Volume</span> <span class="n">of</span> <span class="n">sphere</span> <span class="k">with</span> <span class="n">radius</span> <span class="mi">3</span> <span class="o">=</span> <span class="mf">113.097</span>
+
+<span class="n">Solution</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">quadratic</span> <span class="mi">2</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">x</span> <span class="o">-</span> <span class="mi">12</span> <span class="ow">is</span> <span class="mf">3.0</span>
+<span class="n">Solution</span> <span class="mi">2</span> <span class="n">to</span> <span class="n">quadratic</span> <span class="mi">2</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">x</span> <span class="o">-</span> <span class="mi">12</span> <span class="ow">is</span> <span class="o">-</span><span class="mf">2.0</span>
+</pre></div>
+</div>
 </div>
 </div>
 
