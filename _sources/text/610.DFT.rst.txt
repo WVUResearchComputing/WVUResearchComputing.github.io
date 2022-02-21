@@ -371,6 +371,54 @@ The configue file was::
 
 The code must be compiled from a compute node with GPUs as the CUDA toolkit is only present there.
 
+Abinit 9.6.2 on Spruce with GCC 10.3 and OpenMPI 3.1.6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Modules loaded::
+    
+    $> module load lang/gcc/10.3.0 lang/python/cpython_3.10.2_gcc103 \
+    libs/openblas/0.3.19_gcc103 atomistic/wannier90/3.1.0_gcc103 \
+    parallel/openmpi/3.1.6_gcc103 libs/fftw/3.3.10_gcc103
+
+
+Test Suite::
+
+    Suite            failed  passed  succeeded  skipped  disabled  run_etime  tot_etime
+    atompaw               0       0          0        2         0       0.00       0.00
+    bigdft                0       0          0       19         0       0.00       0.01
+    bigdft_paral          0       0          0        4         0       0.00       0.00
+    built-in              0       0          6        1         0      26.13      26.15
+    etsf_io               0       0          8        0         0     112.21     112.56
+    fast                  0       1         10        0         0     182.93     183.29
+    gpu                   0       0          0        7         0       0.00       0.00
+    libxc                 0      13         22        0         0    1462.06    1464.53
+    mpiio                 1       1         11        4         0    3356.26    3372.92
+    paral                 3       8         37       84         0    5626.88    5632.48
+    psml                  0       2         12        0         0     234.75     235.43
+    seq                   0       0          0       18         0       0.00       0.02
+    tutomultibinit        0       2          4        0         0     612.53     613.89
+    tutoparal             0       1          0       27         0      42.99      43.59
+    tutoplugs             0       4          0        0         0     275.10     275.27
+    tutorespfn            2      16         11        2         0    4887.03    4890.27
+    tutorial              2      14         43        0         0    2780.47    2783.86
+    unitary               0       0         18       20         0     182.90     183.27
+    v1                    0       1         73        0         0     700.69     703.41
+    v2                    1      16         62        0         0     742.17     745.30
+    v3                    2      14         62        0         0    1144.97    1150.12
+    v4                    0      14         47        0         0    1147.91    1152.00
+    v5                    3      15         55        0         0    2396.42    2403.60
+    v6                    0      11         50        0         0    1743.95    1748.69
+    v67mbpt               0      10         15        0         0    1025.92    1029.32
+    v7                    1      26         38        0         0    3385.66    3395.43
+    v8                    0      21         46        2         0    2436.99    2442.48
+    v9                    0      27         30        4         0    1734.56    1738.00
+    vdwxc                 0       0          1        0         0      40.25      40.29
+    wannier90             2       6          0        0         0     234.82     235.19
+
+    Completed in 9245.87 [s]. Average time for test=40.53 [s], stdev=106.36 [s]
+    Summary: failed=17, succeeded=661, passed=223, skipped=194, disabled=0
+
+
 
 
 Octopus
@@ -468,7 +516,11 @@ The building folder is::
 
 Execute this configure line::
 
-  CC=mpiicc CXX=mpiicpc FC=mpiifort ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 --with-lapack="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" --with-blas="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" --with-blacs="${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a" --with-scalapack="${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a
+  $> ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
+  --with-lapack="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
+  --with-blas="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
+  --with-blacs="${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a" \
+  --with-scalapack="${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a  CC=mpiicc CXX=mpiicpc FC=mpiifort
 
 Build the software and install::
 
@@ -587,7 +639,8 @@ Uncompress the sources::
 
 Configure the sources to use HDF5, libXC and FFTW 3::
 
-	$> ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel --prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS="-L${MD_FFTW}/lib -lfftw3"
+    $> ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
+    --prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS="-L${MD_FFTW}/lib -lfftw3"
 
 Build the binaries::
 	
@@ -661,12 +714,13 @@ CASTEP can only be compiled with Intel 2018 due to a bug on Intel 2019 MPI imple
 
 Modules used::
 
-  module purge
-  module load lang/python/intelpython_2.7.16 lang/intel/2018
+  $> module purge
+  $> module load lang/python/intelpython_2.7.16 lang/intel/2018
 
 Compilation line::
 
-  make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+  $> make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 \
+  INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
   FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8
 
 A run of a test suite o both clusters passes all tests.
@@ -1006,11 +1060,11 @@ Execute make, do not try to use multiple compilations threads as this fails.
 
 Installation is manual and consists of copying the 3 binaries to the folder that will be added to the $PATH::
 
-  rsync -av bin/ /shared/software/atomistic/vasp/6.2.1_intel19/bin/
+  $> rsync -av bin/ /shared/software/atomistic/vasp/6.2.1_intel19/bin/
 
 Testsuite can be run by going into testsuite and running::
 
-  cd testsuite
-  ./runtest
+  $> cd testsuite
+  $> ./runtest
 
   

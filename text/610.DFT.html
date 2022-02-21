@@ -112,6 +112,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#abinit-9-4-2-on-spruce-using-intel-2019">ABINIT 9.4.2 on Spruce using Intel 2019</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1">Parallel version with GCC 9.3 and MPICH 3.4.1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1">CUDA Version with GCC 9.3, MPICH 3.4.1 and CUDA 11.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#abinit-9-6-2-on-spruce-with-gcc-10-3-and-openmpi-3-1-6">Abinit 9.6.2 on Spruce with GCC 10.3 and OpenMPI 3.1.6</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a><ul>
@@ -137,6 +138,7 @@
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="613.Matlab_MMX.html">Matlab N-D multithreaded matrix operations (MMX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="614.Julia.html">Building Julia</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
@@ -576,6 +578,52 @@ with_xmlf90=&quot;${MD_XMLF90}&quot;
 </div>
 <p>The code must be compiled from a compute node with GPUs as the CUDA toolkit is only present there.</p>
 </div>
+<div class="section" id="abinit-9-6-2-on-spruce-with-gcc-10-3-and-openmpi-3-1-6">
+<h3>Abinit 9.6.2 on Spruce with GCC 10.3 and OpenMPI 3.1.6<a class="headerlink" href="#abinit-9-6-2-on-spruce-with-gcc-10-3-and-openmpi-3-1-6" title="Permalink to this headline">¶</a></h3>
+<p>Modules loaded:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 lang/python/cpython_3.10.2_gcc103 \
+libs/openblas/0.3.19_gcc103 atomistic/wannier90/3.1.0_gcc103 \
+parallel/openmpi/3.1.6_gcc103 libs/fftw/3.3.10_gcc103
+</pre></div>
+</div>
+<p>Test Suite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
+<span class="n">atompaw</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">bigdft</span>                <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">19</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.01</span>
+<span class="n">bigdft_paral</span>          <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">built</span><span class="o">-</span><span class="ow">in</span>              <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">6</span>        <span class="mi">1</span>         <span class="mi">0</span>      <span class="mf">26.13</span>      <span class="mf">26.15</span>
+<span class="n">etsf_io</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">8</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">112.21</span>     <span class="mf">112.56</span>
+<span class="n">fast</span>                  <span class="mi">0</span>       <span class="mi">1</span>         <span class="mi">10</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">182.93</span>     <span class="mf">183.29</span>
+<span class="n">gpu</span>                   <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">7</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
+<span class="n">libxc</span>                 <span class="mi">0</span>      <span class="mi">13</span>         <span class="mi">22</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1462.06</span>    <span class="mf">1464.53</span>
+<span class="n">mpiio</span>                 <span class="mi">1</span>       <span class="mi">1</span>         <span class="mi">11</span>        <span class="mi">4</span>         <span class="mi">0</span>    <span class="mf">3356.26</span>    <span class="mf">3372.92</span>
+<span class="n">paral</span>                 <span class="mi">3</span>       <span class="mi">8</span>         <span class="mi">37</span>       <span class="mi">84</span>         <span class="mi">0</span>    <span class="mf">5626.88</span>    <span class="mf">5632.48</span>
+<span class="n">psml</span>                  <span class="mi">0</span>       <span class="mi">2</span>         <span class="mi">12</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">234.75</span>     <span class="mf">235.43</span>
+<span class="n">seq</span>                   <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">18</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.02</span>
+<span class="n">tutomultibinit</span>        <span class="mi">0</span>       <span class="mi">2</span>          <span class="mi">4</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">612.53</span>     <span class="mf">613.89</span>
+<span class="n">tutoparal</span>             <span class="mi">0</span>       <span class="mi">1</span>          <span class="mi">0</span>       <span class="mi">27</span>         <span class="mi">0</span>      <span class="mf">42.99</span>      <span class="mf">43.59</span>
+<span class="n">tutoplugs</span>             <span class="mi">0</span>       <span class="mi">4</span>          <span class="mi">0</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">275.10</span>     <span class="mf">275.27</span>
+<span class="n">tutorespfn</span>            <span class="mi">2</span>      <span class="mi">16</span>         <span class="mi">11</span>        <span class="mi">2</span>         <span class="mi">0</span>    <span class="mf">4887.03</span>    <span class="mf">4890.27</span>
+<span class="n">tutorial</span>              <span class="mi">2</span>      <span class="mi">14</span>         <span class="mi">43</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">2780.47</span>    <span class="mf">2783.86</span>
+<span class="n">unitary</span>               <span class="mi">0</span>       <span class="mi">0</span>         <span class="mi">18</span>       <span class="mi">20</span>         <span class="mi">0</span>     <span class="mf">182.90</span>     <span class="mf">183.27</span>
+<span class="n">v1</span>                    <span class="mi">0</span>       <span class="mi">1</span>         <span class="mi">73</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">700.69</span>     <span class="mf">703.41</span>
+<span class="n">v2</span>                    <span class="mi">1</span>      <span class="mi">16</span>         <span class="mi">62</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">742.17</span>     <span class="mf">745.30</span>
+<span class="n">v3</span>                    <span class="mi">2</span>      <span class="mi">14</span>         <span class="mi">62</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1144.97</span>    <span class="mf">1150.12</span>
+<span class="n">v4</span>                    <span class="mi">0</span>      <span class="mi">14</span>         <span class="mi">47</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1147.91</span>    <span class="mf">1152.00</span>
+<span class="n">v5</span>                    <span class="mi">3</span>      <span class="mi">15</span>         <span class="mi">55</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">2396.42</span>    <span class="mf">2403.60</span>
+<span class="n">v6</span>                    <span class="mi">0</span>      <span class="mi">11</span>         <span class="mi">50</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1743.95</span>    <span class="mf">1748.69</span>
+<span class="n">v67mbpt</span>               <span class="mi">0</span>      <span class="mi">10</span>         <span class="mi">15</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">1025.92</span>    <span class="mf">1029.32</span>
+<span class="n">v7</span>                    <span class="mi">1</span>      <span class="mi">26</span>         <span class="mi">38</span>        <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">3385.66</span>    <span class="mf">3395.43</span>
+<span class="n">v8</span>                    <span class="mi">0</span>      <span class="mi">21</span>         <span class="mi">46</span>        <span class="mi">2</span>         <span class="mi">0</span>    <span class="mf">2436.99</span>    <span class="mf">2442.48</span>
+<span class="n">v9</span>                    <span class="mi">0</span>      <span class="mi">27</span>         <span class="mi">30</span>        <span class="mi">4</span>         <span class="mi">0</span>    <span class="mf">1734.56</span>    <span class="mf">1738.00</span>
+<span class="n">vdwxc</span>                 <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">1</span>        <span class="mi">0</span>         <span class="mi">0</span>      <span class="mf">40.25</span>      <span class="mf">40.29</span>
+<span class="n">wannier90</span>             <span class="mi">2</span>       <span class="mi">6</span>          <span class="mi">0</span>        <span class="mi">0</span>         <span class="mi">0</span>     <span class="mf">234.82</span>     <span class="mf">235.19</span>
+
+<span class="n">Completed</span> <span class="ow">in</span> <span class="mf">9245.87</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span> <span class="n">Average</span> <span class="n">time</span> <span class="k">for</span> <span class="n">test</span><span class="o">=</span><span class="mf">40.53</span> <span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="n">stdev</span><span class="o">=</span><span class="mf">106.36</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span>
+<span class="n">Summary</span><span class="p">:</span> <span class="n">failed</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">succeeded</span><span class="o">=</span><span class="mi">661</span><span class="p">,</span> <span class="n">passed</span><span class="o">=</span><span class="mi">223</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="mi">194</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="octopus">
 <h2>Octopus<a class="headerlink" href="#octopus" title="Permalink to this headline">¶</a></h2>
@@ -668,7 +716,11 @@ Currently Loaded Modulefiles:
 </pre></div>
 </div>
 <p>Execute this configure line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CC</span><span class="o">=</span><span class="n">mpiicc</span> <span class="n">CXX</span><span class="o">=</span><span class="n">mpiicpc</span> <span class="n">FC</span><span class="o">=</span><span class="n">mpiifort</span> <span class="o">../</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">11.0</span><span class="n">_intel19</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">lapack</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MKLROOT}</span><span class="s2">/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot;</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">blas</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MKLROOT}</span><span class="s2">/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot;</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">blacs</span><span class="o">=</span><span class="s2">&quot;$</span><span class="si">{MKLROOT}</span><span class="s2">/lib/intel64/libmkl_blacs_intelmpi_lp64.a&quot;</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">scalapack</span><span class="o">=</span><span class="s2">&quot;$</span><span class="si">{MKLROOT}</span><span class="s2">/lib/intel64/libmkl_scalapack_lp64.a</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
+--with-lapack=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
+--with-blas=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
+--with-blacs=&quot;${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a&quot; \
+--with-scalapack=&quot;${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a  CC=mpiicc CXX=mpiicpc FC=mpiifort
 </pre></div>
 </div>
 <p>Build the software and install:</p>
@@ -783,7 +835,8 @@ $&gt; cd qe-6.8
 </pre></div>
 </div>
 <p>Configure the sources to use HDF5, libXC and FFTW 3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel --prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
+--prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
 </pre></div>
 </div>
 <p>Build the binaries:</p>
@@ -852,12 +905,13 @@ state_analysis.o: state_analysis.F
 <p>CASTEP is a leading code for calculating the properties of materials from first principles. Using density functional theory, it can simulate a wide range of properties of materials proprieties including energetics, structure at the atomic level, vibrational properties, electronic response properties etc. In particular it has a wide range of spectroscopic features that link directly to experiment, such as infra-red and Raman spectroscopies, NMR, and core level spectra.</p>
 <p>CASTEP can only be compiled with Intel 2018 due to a bug on Intel 2019 MPI implementation. The code was compiled on both clusters with Intel 2018.</p>
 <p>Modules used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_2</span><span class="o">.</span><span class="mf">7.16</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
+$&gt; module load lang/python/intelpython_2.7.16 lang/intel/2018
 </pre></div>
 </div>
 <p>Compilation line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 \
+INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8
 </pre></div>
 </div>
@@ -1181,12 +1235,12 @@ BINDIR     = ../../bin
 <blockquote>
 <div>make</div></blockquote>
 <p>Installation is manual and consists of copying the 3 binaries to the folder that will be added to the $PATH:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rsync</span> <span class="o">-</span><span class="n">av</span> <span class="nb">bin</span><span class="o">/</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">vasp</span><span class="o">/</span><span class="mf">6.2</span><span class="o">.</span><span class="mi">1</span><span class="n">_intel19</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rsync -av bin/ /shared/software/atomistic/vasp/6.2.1_intel19/bin/
 </pre></div>
 </div>
 <p>Testsuite can be run by going into testsuite and running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">testsuite</span>
-<span class="o">./</span><span class="n">runtest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd testsuite
+$&gt; ./runtest
 </pre></div>
 </div>
 </div>
