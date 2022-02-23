@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -186,29 +195,29 @@
   <div class="section" id="building-julia">
 <h1>Building Julia<a class="headerlink" href="#building-julia" title="Permalink to this headline">¶</a></h1>
 <p>Download the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/JuliaLang/julia/releases/download/v1.7.2/julia-1.7.2.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/JuliaLang/julia/releases/download/v1.7.2/julia-1.7.2.tar.gz
 </pre></div>
 </div>
 <p>uncompress the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf julia-1.7.2.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; tar -zxvf julia-1.7.2.tar.gz
 $&gt; cd julia-1.7.2
 </pre></div>
 </div>
-<p>edit <code class="docutils literal notranslate"><span class="pre">Make.inc</span></code></p>
+<p>edit <code class="docutils literal"><span class="pre">Make.inc</span></code></p>
 <p>compile Julia with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make
 </pre></div>
 </div>
 <p>install:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make install prefix=/shared/software/lang/julia/1.7.2
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make install prefix=/shared/software/lang/julia/1.7.2
 </pre></div>
 </div>
 <p>check the build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make test
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make test
 </pre></div>
 </div>
 <p>the results were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">Summary</span><span class="p">:</span> <span class="o">|</span>     <span class="n">Pass</span>  <span class="n">Broken</span>     <span class="n">Total</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">Summary</span><span class="p">:</span> <span class="o">|</span>     <span class="n">Pass</span>  <span class="n">Broken</span>     <span class="n">Total</span>
   <span class="n">Overall</span>     <span class="o">|</span> <span class="mi">38309168</span>  <span class="mi">352642</span>  <span class="mi">38661810</span>
 <span class="n">SUCCESS</span>
 </pre></div>

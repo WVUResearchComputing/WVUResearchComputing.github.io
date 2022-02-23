@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -227,56 +236,6 @@
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
 <p>Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
 The table below shows the differences between the 4 architectures:</p>
-<table border="1" class="colwidths-given docutils" id="id1" style="width: 90%">
-<caption><span class="caption-text">Microarchitectures present on <em>Spruce Knob</em></span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="10%" />
-<col width="10%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Microarchitecture</th>
-<th class="head">Launched</th>
-<th class="head">Extensions</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Sandy Bridge</td>
-<td>2011</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX</strong>, VT-x, VT-d, AES-NI, CLMUL, TXT</dd>
-</dl>
-</td>
-</tr>
-<tr class="row-odd"><td>Ivy Bridge</td>
-<td>2012</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX, F16C</strong>, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d</dd>
-</dl>
-</td>
-</tr>
-<tr class="row-even"><td>Haswell</td>
-<td>2013</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX, AVX2</strong>, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND,
-TXT</dd>
-</dl>
-</td>
-</tr>
-<tr class="row-odd"><td>Broadwell</td>
-<td>2014</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX, AVX2</strong>, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT, VT-x,
-VT-d</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
 <p>The Advanced Vector Extensions (AVX, also known as Sandy Bridge New Extensions) are extensions to the x86 instruction set architecture for microprocessors from Intel and Advanced Micro Devices (AMD) proposed by Intel in March 2008 and first supported by Intel with the Sandy Bridge processor shipping in Q1 2011.
 AVX provides new features, new instructions and a new coding scheme.</p>
 <p>AVX2 (also known as Haswell New Instructions) expands most integer commands to 256 bits and introduces fused multiply–accumulate operations (FMA).

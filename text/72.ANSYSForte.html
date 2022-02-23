@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -226,7 +235,7 @@ and number</li>
 of the first examples from the tutorial documentation.</p>
 <div class="section" id="connect-to-mountaineer">
 <h3>Connect to Mountaineer<a class="headerlink" href="#connect-to-mountaineer" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="n">username</span><span class="nd">@mountaineer</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="n">username</span><span class="nd">@mountaineer</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>The `-X` is necessary to get access to the graphical interface needed
@@ -234,7 +243,7 @@ to prepare the simulation.</p>
 </div>
 <div class="section" id="load-the-module">
 <h3>Load the Module<a class="headerlink" href="#load-the-module" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">ansys</span><span class="o">/</span><span class="n">forte</span><span class="o">/</span><span class="mf">17.2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">ansys</span><span class="o">/</span><span class="n">forte</span><span class="o">/</span><span class="mf">17.2</span>
 </pre></div>
 </div>
 <div class="figure">
@@ -248,19 +257,19 @@ to prepare the simulation.</p>
 perform. Lets create for example a directory called ‘forte’ and inside
 create a subdirectory for our first simulation. The first simulation
 will be ‘SectorMesh’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir $HOME/forte
+<div class="highlight-default"><div class="highlight"><pre><span></span>mkdir $HOME/forte
 mkdir $HOME/forte/SectorMesh
 </pre></div>
 </div>
 <p>The Official Tutorials for Forte are in
 ‘/software/ansys_central/Forte_Tutorials’, we will copy
 Sandia_Engine_LTC_EarlyInj.ftsim to the directory we just create.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cp /software/ansys_central/Forte_Tutorials/Quick-start_SectorMesh/Sandia_Engine_LTC_EarlyInj.ftsim $HOME/forte/SectorMesh
+<div class="highlight-default"><div class="highlight"><pre><span></span>cp /software/ansys_central/Forte_Tutorials/Quick-start_SectorMesh/Sandia_Engine_LTC_EarlyInj.ftsim $HOME/forte/SectorMesh
 </pre></div>
 </div>
 <p>We will use this input for this tutorial, now, we can launch the GUI
 using the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forte</span><span class="o">.</span><span class="n">sh</span> <span class="o">&amp;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">forte</span><span class="o">.</span><span class="n">sh</span> <span class="o">&amp;</span>
 </pre></div>
 </div>
 <p>The ‘&amp;’ will free your terminal so you can enter more commands there.
@@ -277,7 +286,7 @@ window. Click on Menu ‘File - Open…’ and search for the input file
 ‘Sandia_Engine_LTC_EarlyInj.ftsim’, in your directory
 ‘forte/SectorMesh’. The main window will display the mesh, you get on
 the log panel messages such</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Loading</span> <span class="n">fuel</span> <span class="n">library</span><span class="o">...</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Loading</span> <span class="n">fuel</span> <span class="n">library</span><span class="o">...</span>
 <span class="n">Fuel</span> <span class="n">library</span> <span class="n">successfully</span> <span class="n">loaded</span> <span class="kn">from</span>
    <span class="o">/</span><span class="n">array</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">ansys_central</span><span class="o">/</span><span class="n">v172</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">ansys_inc</span><span class="o">/</span><span class="n">v172</span><span class="o">/</span><span class="n">reaction</span><span class="o">/</span><span class="n">forte</span><span class="o">.</span><span class="n">linuxx8664</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">fuel_library</span><span class="o">.</span><span class="n">cks</span>
 <span class="n">Initializing</span>
@@ -305,7 +314,7 @@ the simulation runs. A new directory is created called
 ‘Sandia_Engine_LTC_EarlyInj.analysis’. Inside that directory there
 are one file called ‘Sandia_Engine_LTC_EarlyInj.ftsim’ and a
 directory called ‘Nominal’ The contents of Nominal are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chem</span><span class="o">.</span><span class="n">inp</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chem</span><span class="o">.</span><span class="n">inp</span>
 <span class="n">chem</span><span class="o">.</span><span class="n">out</span>
 <span class="n">fuel_lib_chem</span><span class="o">.</span><span class="n">inp</span>
 <span class="n">fuel_lib_chem</span><span class="o">.</span><span class="n">out</span>
@@ -324,7 +333,7 @@ directory called ‘Nominal’ The contents of Nominal are:</p>
 </div>
 <p>Now, we need to prepare the submission script for Mountaineer Go to
 ‘Nominal’ directory and create the script file</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME/forte/SectorMesh/Sandia_Engine_LTC_EarlyInj.analysis/Nominal
+<div class="highlight-default"><div class="highlight"><pre><span></span>cd $HOME/forte/SectorMesh/Sandia_Engine_LTC_EarlyInj.analysis/Nominal
 cat &lt;&lt;EOF &gt;runjob.pbs
 #!/bin/sh
 
@@ -341,7 +350,7 @@ sh run_mpi.sh
 EOF
 </pre></div>
 </div>
-<p>You should remove one <code class="docutils literal notranslate"><span class="pre">#</span></code> from <code class="docutils literal notranslate"><span class="pre">##PBS</span> <span class="pre">-M</span> <span class="pre">username&#64;mail.wvu.edu</span></code> and
+<p>You should remove one <code class="docutils literal"><span class="pre">#</span></code> from <code class="docutils literal"><span class="pre">##PBS</span> <span class="pre">-M</span> <span class="pre">username&#64;mail.wvu.edu</span></code> and
 change the email address in order to receive notifications when job
 finish. We are requesting 1 hour (walltime=01:00:00), using one node
 (nodes=1) and creating 8 MPI processes (ppn=8). Those values should be
@@ -350,23 +359,23 @@ must change also the queue where you are submiting the jobs (#PBS -q
 hour), consider for example queues ‘day’ and ‘week’ if your jobs need
 more time to complete.</p>
 <p>Submit the job with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
 <p>The job is submitted to the queue, it will start running when enough
 resources are free to start executing your job. You can always monitor
 the status of your submission with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qstat</span> <span class="o">-</span><span class="n">u</span> <span class="n">username</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qstat</span> <span class="o">-</span><span class="n">u</span> <span class="n">username</span>
 </pre></div>
 </div>
 <p>Once your job simulation start execution, you can monitor the progress
 by looking at the MONITOR file, one way of doing that is using tail
 command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">MONITOR</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">MONITOR</span>
 </pre></div>
 </div>
 <p>You should see something like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">7852</span>    <span class="mf">116.38</span>  <span class="mf">3.908E-02</span>  <span class="mf">5.000E-06</span>  <span class="n">Maximum</span> <span class="n">reached</span>       <span class="mf">953.80</span>   <span class="mf">330.53</span>    <span class="mf">0.4565</span>  <span class="mf">9.79E+00</span>      <span class="mi">15729</span>       <span class="mi">190</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="mi">7852</span>    <span class="mf">116.38</span>  <span class="mf">3.908E-02</span>  <span class="mf">5.000E-06</span>  <span class="n">Maximum</span> <span class="n">reached</span>       <span class="mf">953.80</span>   <span class="mf">330.53</span>    <span class="mf">0.4565</span>  <span class="mf">9.79E+00</span>      <span class="mi">15729</span>       <span class="mi">190</span>
   <span class="mi">7853</span>    <span class="mf">116.42</span>  <span class="mf">3.909E-02</span>  <span class="mf">5.000E-06</span>  <span class="n">Maximum</span> <span class="n">reached</span>       <span class="mf">953.70</span>   <span class="mf">330.51</span>    <span class="mf">0.4563</span>  <span class="mf">9.79E+00</span>      <span class="mi">15729</span>       <span class="mi">191</span>
   <span class="mi">7854</span>    <span class="mf">116.45</span>  <span class="mf">3.909E-02</span>  <span class="mf">5.000E-06</span>  <span class="n">Maximum</span> <span class="n">reached</span>       <span class="mf">953.60</span>   <span class="mf">330.49</span>    <span class="mf">0.4556</span>  <span class="mf">9.78E+00</span>      <span class="mi">15729</span>       <span class="mi">194</span>
   <span class="mi">7855</span>    <span class="mf">116.49</span>  <span class="mf">3.910E-02</span>  <span class="mf">5.000E-06</span>  <span class="n">Maximum</span> <span class="n">reached</span>       <span class="mf">953.50</span>   <span class="mf">330.48</span>    <span class="mf">0.4557</span>  <span class="mf">9.78E+00</span>      <span class="mi">15729</span>       <span class="mi">191</span>
@@ -396,7 +405,7 @@ command.</p>
 </div>
 <p>The screen will update when the execution advances. When simulation
 finishes you should get a summary of execution like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">============================================================</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">============================================================</span>
 <span class="n">Engine</span> <span class="n">Summary</span> <span class="n">Data</span><span class="p">:</span>
 <span class="o">------------------------------------------------------------</span>
                 <span class="n">Cylinder</span> <span class="n">Index</span>                 <span class="mi">1</span>
@@ -455,13 +464,13 @@ finishes you should get a summary of execution like</p>
 </pre></div>
 </div>
 <p>Many files are now on you Nominal directory.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chem_0</span>      <span class="n">chemsolver</span><span class="o">.</span><span class="n">csv</span>        <span class="n">fuel_library_diag_0</span>  <span class="n">gas</span><span class="o">.</span><span class="n">asc</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chem_0</span>      <span class="n">chemsolver</span><span class="o">.</span><span class="n">csv</span>        <span class="n">fuel_library_diag_0</span>  <span class="n">gas</span><span class="o">.</span><span class="n">asc</span>
 <span class="n">chem_0</span><span class="o">.</span><span class="n">out</span>  <span class="n">COMPLETE</span>              <span class="n">fuel_library_diag_1</span>  <span class="n">massfraction</span><span class="o">.</span><span class="n">csv</span>
 <span class="n">chem_1</span>      <span class="n">dynamic</span><span class="o">.</span><span class="n">csv</span>           <span class="n">fuel_library_diag_2</span>  <span class="n">memory_diagnostics</span><span class="o">.</span><span class="n">csv</span>
 <span class="n">chem_1</span><span class="o">.</span><span class="n">out</span>  <span class="n">flow_diagnostics</span><span class="o">.</span><span class="n">csv</span>  <span class="n">fuel_library_diag_3</span>  <span class="n">molefraction</span><span class="o">.</span><span class="n">csv</span>
 <span class="n">chem_2</span>      <span class="n">FORTE</span><span class="o">.</span><span class="n">e107840</span>         <span class="n">fuel_library_diag_4</span>  <span class="n">MONITOR</span>
 <span class="n">chem_2</span><span class="o">.</span><span class="n">out</span>  <span class="n">FORTE</span><span class="o">.</span><span class="n">log</span>             <span class="n">fuel_library_diag_5</span>  <span class="n">nc14h30_fueltable</span><span class="o">.</span><span class="n">csv</span>
-<span class="n">chem_3</span>      <span class="n">FORTE</span><span class="o">.</span><span class="n">o107840</span>         <span class="n">fuel_library_diag_6</span>  <span class="n">Nominal_CA_p_125</span><span class="o">.</span><span class="mf">00_8092.</span><span class="n">ftrst</span>
+<span class="n">chem_3</span>      <span class="n">FORTE</span><span class="o">.</span><span class="n">o107840</span>         <span class="n">fuel_library_diag_6</span>  <span class="n">Nominal_CA_p_125</span><span class="o">.</span><span class="mi">00</span><span class="n">_8092</span><span class="o">.</span><span class="n">ftrst</span>
 <span class="n">chem_3</span><span class="o">.</span><span class="n">out</span>  <span class="n">fuelchem_0</span>            <span class="n">fuel_library_diag_7</span>  <span class="n">Nominal</span><span class="o">.</span><span class="n">ftavg</span>
 <span class="n">chem_4</span>      <span class="n">fuelchem_0</span><span class="o">.</span><span class="n">out</span>        <span class="n">fuel_lib_xml</span><span class="o">.</span><span class="n">out</span>     <span class="n">Nominal</span><span class="o">.</span><span class="n">ftind</span>
 <span class="n">chem_4</span><span class="o">.</span><span class="n">out</span>  <span class="n">fuelchem_1</span>            <span class="n">fueltable</span><span class="o">.</span><span class="n">out</span>        <span class="n">Nominal</span><span class="o">.</span><span class="n">ftres</span>

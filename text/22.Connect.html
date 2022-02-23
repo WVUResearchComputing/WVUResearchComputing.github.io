@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -213,16 +222,16 @@ PuTTY is a free implementation of SSH for Windows platforms, it comes along with
 <div class="section" id="general-ssh-connection-instructions">
 <h3>General SSH Connection Instructions<a class="headerlink" href="#general-ssh-connection-instructions" title="Permalink to this headline">¶</a></h3>
 <p>On MacOS and Unix/Linux, open a terminal shell and type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh -X &lt;username&gt;@&lt;hostname&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh -X &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
-<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> is your <em>WVU Login account</em> username and <code class="docutils literal notranslate"><span class="pre">&lt;hostname&gt;</span></code> is the name of the cluster you wish to connect to.
+<p>Where <code class="docutils literal"><span class="pre">&lt;username&gt;</span></code> is your <em>WVU Login account</em> username and <code class="docutils literal"><span class="pre">&lt;hostname&gt;</span></code> is the name of the cluster you wish to connect to.
 The -X option is used to forward X windows applications running on the server to be forwarded to your local machine.
-Remember that the <code class="docutils literal notranslate"><span class="pre">$&gt;</span></code> symbols above are there to indicate a command on the terminal, you should not enter those initial characters.</p>
+Remember that the <code class="docutils literal"><span class="pre">$&gt;</span></code> symbols above are there to indicate a command on the terminal, you should not enter those initial characters.</p>
 <p>We currently have two clusters <em>Thorny Flat and *Spruce Knob</em> the hostnames are:</p>
 <table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">WVU’s High-Performance Computer (HPC) Clusters</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -252,7 +261,7 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 <div class="section" id="spruce-knob-connectivity-instructions">
 <h3>Spruce Knob Connectivity Instructions<a class="headerlink" href="#spruce-knob-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
 <p>To connect to Spruce Knob use the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
 </pre></div>
 </div>
 <p><strong>Note:</strong> Two-factor authentication is required to connect to Spruce Knob when not on WVU’s Main Campus Network.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/Default?CategoryID=3626">here</a></p>
@@ -260,18 +269,18 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 <div class="section" id="thorny-flat-connectivity-instructions">
 <h3>Thorny Flat Connectivity Instructions<a class="headerlink" href="#thorny-flat-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
 <p>To connect to Thorny Flat, you will first have to connect to WVU’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
 </pre></div>
 </div>
 <p>More information on WVU’s Gateway Service can be found <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=27427">here</a>.  When your account is created to for Thorny Flat, you will automatically be approved for access to WVU’s SSH Gateway Service.</p>
 <p><strong>Note:</strong> Two-factor authentication is required to connect to WVU’s Gateway Service.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/Default?CategoryID=3626">here</a>.</p>
 <p>then:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh tf.hpc.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh tf.hpc.wvu.edu
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or ssh client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
+<p class="last"><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or ssh client <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
 </div>
 </div>
 </div>
@@ -280,7 +289,7 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 <p>When your SSH access is granted, you will be prompted with a login message
 with helpful commands and updates about the cluster.</p>
 <p>At this point, you will get a terminal prompt such as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;@srih0001:~$
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;username&gt;@srih0001:~$
 </pre></div>
 </div>
 <p>All the commands executed from now on are happening on a remote machine, the Spruce Knob <em>head node</em>, this is the place were most of your direct interaction with the cluster happens.</p>
@@ -288,19 +297,19 @@ with helpful commands and updates about the cluster.</p>
 <div class="section" id="logging-out">
 <h2>Logging Out<a class="headerlink" href="#logging-out" title="Permalink to this headline">¶</a></h2>
 <p>Logging out of a cluster can be done with the exit command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; exit
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; exit
 </pre></div>
 </div>
 <p>The exit command will attempt to terminate any process running on the head.
 In some cases, you will get an error that jobs are either currently running or currently stopped.  You can view stopped jobs using the jobs command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; jobs -l
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; jobs -l
 [1]+ 3325 Stopped            vim script56.py
 </pre></div>
 </div>
 <p>The output of jobs -l will give you the job PID number (in this case 3325) and
 the command (vim script56.py).  To kill jobs preventing successful log out,
 use the kill command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
 </pre></div>
 </div>
 <p>Once all jobs are terminated, the exit command will close the connection to the host.

@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -229,32 +238,32 @@ provide hierarchical data storage for numerical data. Finally, a Python implemen
 </ul>
 </div></blockquote>
 <p>We compile PLUMED with the following modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> \
 <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span> \
 <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
 <p>Download PLUMED from:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">plumed2</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mf">7.1</span><span class="o">/</span><span class="n">plumed</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mf">1.</span><span class="n">tgz</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">plumed2</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mf">7.1</span><span class="o">/</span><span class="n">plumed</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mf">1.</span><span class="n">tgz</span>
 </pre></div>
 </div>
 <p>Uncompress and configure the build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar -zxvf plumed-2.7.1.tgz
+<div class="highlight-default"><div class="highlight"><pre><span></span>tar -zxvf plumed-2.7.1.tgz
 cd plumed-2.7.1
 ./configure --prefix=/shared/software/atomistic/plumed/2.7.1_gcc93_mpic341 PYTHON_BIN=python3 --enable-external-blas --enable-external-lapack LDFLAGS=-L${MD_OPENBLAS}/lib LIBS=-lopenblas
 </pre></div>
 </div>
 <p>After configuring the build. Execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">12</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">12</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>PLUMED includes a test suite and it is always a good practice to test the compilation. Call make to run the test suite:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">check</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">check</span>
 </pre></div>
 </div>
 <p>The final lines of the tests show no failures:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
+<div class="highlight-default"><div class="highlight"><pre><span></span>...
 + check file ves/rt-td-vonmises/report.txt for more information
 + test ves/rt-VesDeltaF/ NOT APPLICABLE
 + check file ves/rt-VesDeltaF/report.txt for more information
@@ -272,11 +281,11 @@ make[1]: Leaving directory &#39;/gpfs20/shared/src/plumed-2.7.1/regtest&#39;
 </div>
 <p>After installation, PLUMED offers a very convenient prepared module file.
 The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">modulefile</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">tier2</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">modulefile</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">tier2</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93_mpic341</span>
 </pre></div>
 </div>
 <p>The only change needed for this modulefile is adding one line loading the other modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#%Module1.0##############################################</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#%Module1.0##############################################</span>
 
 <span class="c1"># Manually add here dependencies and conflicts</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span>
@@ -296,10 +305,10 @@ We will be building Amber with each option and one final compilation enabling Op
 Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license.
 AmberTools is a free package that collect open-source code to be used in conjunction with Amber.
 The version used to produce these notes is Amber 20, the latest version available by mid-2021.</p>
-<p>We start with two files, <code class="docutils literal notranslate"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools20.tar.bz2</span></code>.
+<p>We start with two files, <code class="docutils literal"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal"><span class="pre">AmberTools20.tar.bz2</span></code>.
 The first step is to uncompress both of them.
-The two compressed tars will uncompress on the same target folder <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">Amber20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+The two compressed tars will uncompress on the same target folder <code class="docutils literal"><span class="pre">amber20_src</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">Amber20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
 <span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">AmberTools20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
 <span class="n">cd</span> <span class="n">amber20_src</span>
 </pre></div>
@@ -310,18 +319,18 @@ We move the building process to a GPU node to compile a CUDA version disabling O
 The reason for doing this is that keeping just one parallelization active will facilitate the usage for casual users, instead of dealing with complex combinations of threads, MPI processes, and GPU cards.</p>
 <div class="section" id="gcc-9-3-serial">
 <h3>GCC 9.3 (Serial)<a class="headerlink" href="#gcc-9-3-serial" title="Permalink to this headline">¶</a></h3>
-<p>Decompressing <code class="docutils literal notranslate"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools20.tar.bz2</span></code> will create a folder <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code>.
-There is one file <code class="docutils literal notranslate"><span class="pre">amber20_src/build/run_cmake.sample</span></code> that we will use as a template changing it for each build from now on.
+<p>Decompressing <code class="docutils literal"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal"><span class="pre">AmberTools20.tar.bz2</span></code> will create a folder <code class="docutils literal"><span class="pre">amber20_src</span></code>.
+There is one file <code class="docutils literal"><span class="pre">amber20_src/build/run_cmake.sample</span></code> that we will use as a template changing it for each build from now on.
 It is always convenient to build the code on a folder separated from the sources.
 Create a folder for each build, for the serial case, we suggest:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">amber20_src</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">amber20_src</span>
 <span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
 </pre></div>
 </div>
 <p>The reason for the name is that in this folder we will compile all builds, including the MPI version using MPICH 3.4.1
-Inside this folder copy the file <code class="docutils literal notranslate"><span class="pre">amber20_src/build/run_cmake.sample</span></code>
+Inside this folder copy the file <code class="docutils literal"><span class="pre">amber20_src/build/run_cmake.sample</span></code>
 The orginal content of this file is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #  This file gives some sample cmake invocations.  You may wish to
 #  edit some options that are chosen here.
@@ -386,13 +395,13 @@ echo &quot;&quot;
 </div>
 <p>We will only make modifications to this file in two locations.
 We add an extra variable for defining the PREFIX:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc93_serial
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the Serial compilation
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -407,12 +416,12 @@ cmake $AMBER_PREFIX/amber20_src \
 Amber uses CMAKE as a software builder.
 The version included with RedHat 7.x (2.18) is too old for most scientific codes.
 We will load modules for cmake 3.21.1 and GCC 9.3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
 <p>There is a bug in the script for Miniconda, that will prevent cmake of building a complete environment.
-On the line 153 of <code class="docutils literal notranslate"><span class="pre">amber20_src/cmake/UseMiniconda.cmake</span></code> add a line to install pip via conda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>execute_process(COMMAND ${CONDA} update conda -y)
+On the line 153 of <code class="docutils literal"><span class="pre">amber20_src/cmake/UseMiniconda.cmake</span></code> add a line to install pip via conda:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>execute_process(COMMAND ${CONDA} update conda -y)
 execute_process(COMMAND ${CONDA} install pip -y)
 execute_process(COMMAND ${MINICONDA_PYTHON} -m pip install pip --upgrade)
 </pre></div>
@@ -420,32 +429,32 @@ execute_process(COMMAND ${MINICONDA_PYTHON} -m pip install pip --upgrade)
 <p>If you do skip this step, conda will remove pip after the update and several other python packages that are installed with pip will fail.
 This is the only change in the sources.
 No other changes will be done directly to sources, if something fails, we simply disable the corresponding package.
-Run the <code class="docutils literal notranslate"><span class="pre">run_cmake</span></code> inside the corresponding build folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
+Run the <code class="docutils literal"><span class="pre">run_cmake</span></code> inside the corresponding build folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
 <span class="o">./</span><span class="n">run_cmake</span>
 </pre></div>
 </div>
 <p>When running the script, Miniconda will be downloaded and installed, this is the portion of the execution that requires internet access and cannot be executed from a GPU node.
 We will preserve this folder for all other builds, in particular those for CUDA that are executed inside GPU nodes with no internet accesss.</p>
 <p>After CMAKE have prepared the folder for compilation, execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span>
 </pre></div>
 </div>
 <p>The code will compile in a few minutes. To install the build execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="gcc-9-3-openmp">
 <h3>GCC 9.3 (OpenMP)<a class="headerlink" href="#gcc-9-3-openmp" title="Permalink to this headline">¶</a></h3>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc93_openmp
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -456,26 +465,26 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>The running of <code class="docutils literal notranslate"><span class="pre">make</span></code> followed by <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> is not necessary, the later will run make and build the binaries before installing them.</p>
+<p>The running of <code class="docutils literal"><span class="pre">make</span></code> followed by <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> is not necessary, the later will run make and build the binaries before installing them.</p>
 </div>
 <div class="section" id="gcc-9-3-mpich-3-4-1">
 <h3>GCC 9.3 (MPICH 3.4.1)<a class="headerlink" href="#gcc-9-3-mpich-3-4-1" title="Permalink to this headline">¶</a></h3>
 <p>We will add a new module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -486,7 +495,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -494,21 +503,21 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="gcc-9-3-cuda">
 <h3>GCC 9.3 (CUDA)<a class="headerlink" href="#gcc-9-3-cuda" title="Permalink to this headline">¶</a></h3>
 <p>This build is done on a GPU node, request an interactive execution:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">8</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">3</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu_inter</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">8</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">3</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu_inter</span>
 </pre></div>
 </div>
 <p>Load all the modules used in the previous builds adding the module for CUDA:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.3</span>
 </pre></div>
 </div>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc93_cuda113
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -519,7 +528,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -527,21 +536,21 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="gcc-9-3-openmp-mpi-cuda">
 <h3>GCC 9.3 (OpenMP + MPI + CUDA)<a class="headerlink" href="#gcc-9-3-openmp-mpi-cuda" title="Permalink to this headline">¶</a></h3>
 <p>This build is done on a GPU node, reuse the previous interactive session or request a new one:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">8</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">3</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu_inter</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">8</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">3</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu_inter</span>
 </pre></div>
 </div>
 <p>Load all the modules used in the previous builds adding the module for CUDA:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.3</span>
 </pre></div>
 </div>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc93_mpic341_cuda113
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -552,12 +561,12 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Once AMBER is compiled and the modulefile created, use a GPU node to run the testsuite. There are two versions of it running AMBER the CUDA tests are either serial or parallel. Here are the results:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==&gt;</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_cuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_cuda</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26_11</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mf">03.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">==&gt;</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_cuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_cuda</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26</span><span class="n">_11</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mf">03.</span><span class="n">log</span> <span class="o">&lt;==</span>
 <span class="n">diffing</span> <span class="n">md_SC_NVT_MBAR_SC_2</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">DPFP</span> <span class="k">with</span> <span class="n">md_SC_NVT_MBAR_SC_2</span><span class="o">.</span><span class="n">o</span>
 <span class="n">PASSED</span>
 <span class="o">==============================================================</span>
@@ -569,7 +578,7 @@ cmake $AMBER_PREFIX/amber20_src \
 <span class="mi">7</span> <span class="n">file</span> <span class="n">comparisons</span> <span class="n">failed</span> <span class="p">(</span><span class="mi">1</span> <span class="n">of</span> <span class="n">which</span> <span class="n">can</span> <span class="n">be</span> <span class="n">ignored</span><span class="p">)</span>
 <span class="mi">0</span> <span class="n">tests</span> <span class="n">experienced</span> <span class="n">errors</span>
 
-<span class="o">==&gt;</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_cuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_cuda_parallel</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26_11</span><span class="o">-</span><span class="mi">42</span><span class="o">-</span><span class="mf">11.</span><span class="n">log</span> <span class="o">&lt;==</span>
+<span class="o">==&gt;</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">amber</span><span class="o">/</span><span class="mi">20</span><span class="n">_gcc93_mpic341_cuda</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">test_amber_cuda_parallel</span><span class="o">/</span><span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">26</span><span class="n">_11</span><span class="o">-</span><span class="mi">42</span><span class="o">-</span><span class="mf">11.</span><span class="n">log</span> <span class="o">&lt;==</span>
 <span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">exceptions</span> <span class="n">are</span> <span class="n">signalling</span><span class="p">:</span> <span class="n">IEEE_DENORMAL</span>
 <span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">exceptions</span> <span class="n">are</span> <span class="n">signalling</span><span class="p">:</span> <span class="n">IEEE_DENORMAL</span>
 <span class="n">Note</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">exceptions</span> <span class="n">are</span> <span class="n">signalling</span><span class="p">:</span> <span class="n">IEEE_DENORMAL</span>
@@ -586,13 +595,13 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="gcc-11-1-serial">
 <h3>GCC 11.1 (Serial)<a class="headerlink" href="#gcc-11-1-serial" title="Permalink to this headline">¶</a></h3>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc111_serial
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -605,7 +614,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -613,13 +622,13 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="gcc-11-1-openmp">
 <h3>GCC 11.1 (OpenMP)<a class="headerlink" href="#gcc-11-1-openmp" title="Permalink to this headline">¶</a></h3>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc111_openmp
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -632,7 +641,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -640,17 +649,17 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="gcc-11-1-openmpi-4-1-1">
 <h3>GCC 11.1 (OpenMPI 4.1.1)<a class="headerlink" href="#gcc-11-1-openmpi-4-1-1" title="Permalink to this headline">¶</a></h3>
 <p>Loading the modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc111</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc111</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc111</span> <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc111</span>
 </pre></div>
 </div>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_gcc111_ompi411
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -663,7 +672,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -671,17 +680,17 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="intel-compilers-2021-serial">
 <h3>Intel Compilers 2021 (Serial)<a class="headerlink" href="#intel-compilers-2021-serial" title="Permalink to this headline">¶</a></h3>
 <p>Loading the modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_intel21_serial
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -693,7 +702,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -701,17 +710,17 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="intel-compilers-2021-openmp">
 <h3>Intel Compilers 2021 (OpenMP)<a class="headerlink" href="#intel-compilers-2021-openmp" title="Permalink to this headline">¶</a></h3>
 <p>Loading the modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_intel21_openmp
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -723,7 +732,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -731,17 +740,17 @@ cmake $AMBER_PREFIX/amber20_src \
 <div class="section" id="intel-compilers-2021-intel-mpi-2021">
 <h3>Intel Compilers 2021 (Intel MPI 2021)<a class="headerlink" href="#intel-compilers-2021-intel-mpi-2021" title="Permalink to this headline">¶</a></h3>
 <p>Loading the modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21</span><span class="o">.</span><span class="mi">1</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p>The variable defining the PREFIX will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
+<div class="highlight-default"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
 PREFIX=/shared/software/atomistic/amber/20_intel21_impi21
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
+<div class="highlight-default"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
 cmake $AMBER_PREFIX/amber20_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -753,7 +762,7 @@ cmake $AMBER_PREFIX/amber20_src \
 </pre></div>
 </div>
 <p>After this execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_cmake</span>
 <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -764,15 +773,15 @@ cmake $AMBER_PREFIX/amber20_src \
 </div>
 <div class="section" id="running-tests">
 <h3>Running Tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h3>
-<p>To run the testsuite, the modulefile needs to be created and loaded. The module must set the variable <code class="docutils literal notranslate"><span class="pre">$AMBERHOME</span></code> needed to run the tests.
-Go to the folder <code class="docutils literal notranslate"><span class="pre">amber20_src/test</span></code> that contains the tests.
-For the parallel tests, set the variable <code class="docutils literal notranslate"><span class="pre">$DO_PARALLEL</span></code> to the right command for running MPI executions, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DO_PARALLEL</span><span class="o">=</span><span class="s2">&quot;mpirun -np 4&quot;</span>
+<p>To run the testsuite, the modulefile needs to be created and loaded. The module must set the variable <code class="docutils literal"><span class="pre">$AMBERHOME</span></code> needed to run the tests.
+Go to the folder <code class="docutils literal"><span class="pre">amber20_src/test</span></code> that contains the tests.
+For the parallel tests, set the variable <code class="docutils literal"><span class="pre">$DO_PARALLEL</span></code> to the right command for running MPI executions, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DO_PARALLEL</span><span class="o">=</span><span class="s2">&quot;mpirun -np 4&quot;</span>
 </pre></div>
 </div>
 <p>These are the results of several tests:</p>
 <p>GCC 9.3 Serial:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./test_amber_serial.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ./test_amber_serial.sh
 ...
 ...
 Finished serial test suite for Amber 20 at Sat Aug 21 17:52:10 EDT 2021.
@@ -784,7 +793,7 @@ No test diffs to save!
 </pre></div>
 </div>
 <p>GCC 9.3 OpenMP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./test_amber_serial.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ./test_amber_serial.sh
 ...
 ...
 Finished serial test suite for Amber 20 at Sat Aug 21 18:04:09 EDT 2021.
@@ -797,7 +806,7 @@ No test diffs to save!
 </pre></div>
 </div>
 <p>GCC 9.3 CUDA:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./test_amber_cuda_serial.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ./test_amber_cuda_serial.sh
 ...
 ...
 Finished CUDA test suite for Amber 20 at Sat Aug 21 18:15:52 EDT 2021.
@@ -810,7 +819,7 @@ Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_cuda113/logs/
 </pre></div>
 </div>
 <p>GCC 9.3 MPICH 3.4.1:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export DO_PARALLEL=&quot;mpirun -np 8&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; export DO_PARALLEL=&quot;mpirun -np 8&quot;
 $&gt; ./test_amber_parallel.sh
 ...
 ...
@@ -826,7 +835,7 @@ Test diffs file saved as /shared/software/atomistic/amber/20_gcc93_mpic341/logs/
 </pre></div>
 </div>
 <p>GCC 9.3 OpenMP + MPI + CUDA:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cat $PBS_NODEFILE | uniq &gt; NODEFILE
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cat $PBS_NODEFILE | uniq &gt; NODEFILE
 $&gt; export DO_PARALLEL=&quot;mpirun -np 2 -f /shared/src/AMBER/amber20/amber20_src/test/NODEFILE&quot;
 $&gt; ./test_amber_cuda_parallel.sh
 ...
@@ -847,11 +856,11 @@ Several versions were compiled using GCC 9.3 and 11.1</p>
 <div class="section" id="gromacs-2021-2-on-thorny-flat">
 <h3>Gromacs 2021.2 on Thorny Flat<a class="headerlink" href="#gromacs-2021-2-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>The download page is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manual</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manual</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span>
 </pre></div>
 </div>
-<p>It is a good practice to compile from a separate folder instead of compiling directly alongside with the sources, create a folder <code class="docutils literal notranslate"><span class="pre">build_gcc93_mpic341</span></code> inside the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<p>It is a good practice to compile from a separate folder instead of compiling directly alongside with the sources, create a folder <code class="docutils literal"><span class="pre">build_gcc93_mpic341</span></code> inside the sources:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">gromacs</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">cd</span> <span class="n">gromacs</span><span class="o">-</span><span class="mf">2021.2</span><span class="o">/</span>
 <span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
@@ -860,14 +869,14 @@ Several versions were compiled using GCC 9.3 and 11.1</p>
 </div>
 <p>Cmake is only used during configuration and it is not needed at runtime
 The modules can be loaded with this command line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> \
 <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
   <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
   <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
   <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
@@ -875,7 +884,7 @@ The modules can be loaded with this command line:</p>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="o">...</span>
 <span class="mi">70</span><span class="o">/</span><span class="mi">73</span> <span class="n">Test</span> <span class="c1">#70: regressiontests/complex ...............   Passed  135.38 sec</span>
       <span class="n">Start</span> <span class="mi">71</span><span class="p">:</span> <span class="n">regressiontests</span><span class="o">/</span><span class="n">freeenergy</span>
@@ -902,11 +911,11 @@ The modules can be loaded with this command line:</p>
 </div>
 <p>The second configuration enables the double precision for gromacs:</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>   <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span>   <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2021.2</span><span class="n">_double_gcc93_mpic341</span> <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> <span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>   <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span>   <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">gromacs</span><span class="o">/</span><span class="mf">2021.2</span><span class="n">_double_gcc93_mpic341</span> <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> <span class="o">-</span><span class="n">DGMX_DOUBLE</span><span class="o">=</span><span class="n">on</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">98</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">46</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>              <span class="o">=</span> <span class="mf">117.18</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">40</span> <span class="n">tests</span><span class="p">)</span>
@@ -922,12 +931,12 @@ The modules can be loaded with this command line:</p>
 <div class="section" id="gromacs-5-1-5-on-thorny-flat">
 <h3>Gromacs 5.1.5 on Thorny Flat<a class="headerlink" href="#gromacs-5-1-5-on-thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> <span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.73</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span><span class="o">.</span><span class="mi">3</span> <span class="n">libs</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.73</span>
 </pre></div>
 </div>
 <p>Cmake is only used during configuration and it is not needed at runtime
 The configuration line for cmake is executed on a folder created to contain the compiled code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_intel18</span>
 <span class="n">cd</span> <span class="n">build_intel18</span>
 <span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span> \
 <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpiicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpiicpc</span> \
@@ -939,7 +948,7 @@ The configuration line for cmake is executed on a folder created to contain the 
 </div>
 <p>A similar compilation was done using Intel 2019 compilers.
 One test fails from the test suite:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">96</span><span class="o">%</span> <span class="n">tests</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">tests</span> <span class="n">failed</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">26</span>
 
 <span class="n">Label</span> <span class="n">Time</span> <span class="n">Summary</span><span class="p">:</span>
 <span class="n">GTest</span>                 <span class="o">=</span>   <span class="mf">2.29</span> <span class="n">sec</span><span class="o">*</span><span class="n">proc</span> <span class="p">(</span><span class="mi">17</span> <span class="n">tests</span><span class="p">)</span>
@@ -956,12 +965,12 @@ One test fails from the test suite:</p>
 <div class="section" id="gromacs-2021-3-on-spruce-knob">
 <h3>Gromacs 2021.3 on Spruce Knob<a class="headerlink" href="#gromacs-2021-3-on-spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>The modules used were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module purge
 $&gt; module load  lang/gcc/9.3.0 parallel/mpich/3.3.2_gcc93 dev/cmake/3.15.2 lang/python/cpython_3.9.7_gcc93 libs/openblas/0.3.10_gcc93
 </pre></div>
 </div>
 <p>Download and uncompress the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://ftp.gromacs.org/gromacs/gromacs-2021.3.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; wget https://ftp.gromacs.org/gromacs/gromacs-2021.3.tar.gz
 $&gt; tar -zxvf gromacs-2021.3.tar.gz
 $&gt; cd gromacs-2021.3
 $&gt; mkdir build_gcc93
@@ -971,7 +980,7 @@ $&gt; cd build_gcc93
 <p>Cmake is only used during configuration and it is not needed at runtime</p>
 <p>The first configuration is the standard one (Single Precision)</p>
 <p>The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>  \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>  \
  <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
  <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
  <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
@@ -979,12 +988,12 @@ $&gt; cd build_gcc93
 </pre></div>
 </div>
 <p>After configuration compile and install the code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make
 $&gt; make install
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make check
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make check
 
 67/73 Test #67: GmxapiMpiTests ........................   Passed    2.46 sec
           Start 68: GmxapiInternalInterfaceTests
@@ -1022,7 +1031,7 @@ make[1]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_gcc93&#39;
 </div>
 <p>The second configuration enables double precision floating point numbers.
 The cmake configuration line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>  \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">DGMX_BUILD_OWN_FFTW</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DREGRESSIONTEST_DOWNLOAD</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGMX_MPI</span><span class="o">=</span><span class="n">on</span>  \
 <span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">mpicc</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">mpicxx</span> \
 <span class="o">-</span><span class="n">DGMX_LAPACK_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
 <span class="o">-</span><span class="n">DGMX_BLAS_USER</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas&quot;</span> \
@@ -1030,7 +1039,7 @@ The cmake configuration line was:</p>
 </pre></div>
 </div>
 <p>The results of the tests were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make check
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make check
 
 Start 65: MdrunSimulatorComparison
 65/73 Test #65: MdrunSimulatorComparison ..............   Passed    5.42 sec
@@ -1076,7 +1085,7 @@ make[1]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_double_gcc
 <div class="section" id="lammps">
 <h2>LAMMPS<a class="headerlink" href="#lammps" title="Permalink to this headline">¶</a></h2>
 <p>LAMMPS is a packages for atomistic and particle simulations. The latests stable version by the time (May 2021) is from October 29, 2020. LAMMPS was compiled using these modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.1</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">11.1</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">parallel</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span><span class="n">_gcc111</span>
 <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc111</span>
 <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span><span class="n">_gcc111</span>
@@ -1084,20 +1093,20 @@ make[1]: Leaving directory &#39;/gpfs/shared/src/gromacs-2021.3/build_double_gcc
 </div>
 <p>LAMMPS was compiled using GCC 11.1, OpenMPI 3.4.1, FFTW 3.3.9, and HDF5 1.12</p>
 <p>The first step is to download the code from:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lammps</span><span class="o">.</span><span class="n">sandia</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">tars</span><span class="o">/</span><span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lammps</span><span class="o">.</span><span class="n">sandia</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">tars</span><span class="o">/</span><span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Uncompress the code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Change to the src folder inside the uncompressed folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">/</span><span class="n">src</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">lammps</span><span class="o">-</span><span class="mi">29</span><span class="n">Oct20</span><span class="o">/</span><span class="n">src</span>
 </pre></div>
 </div>
 <p>You need a customized Makefile for compiling LAMMPS with the right compilers and libraries. The file is called Makefile.gcc111_ompi316 and must be located at
-<code class="docutils literal notranslate"><span class="pre">src/MAKE</span></code>, the content of the file follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># mpi = MPI with its default compiler
+<code class="docutils literal"><span class="pre">src/MAKE</span></code>, the content of the file follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># mpi = MPI with its default compiler
 
 SHELL = /bin/sh
 
@@ -1220,14 +1229,14 @@ sinclude .depend
 </div>
 <p>The file should be located inside “src/MAKE” or “src/MAKE/MACHINES”.
 Now inside the “src” folder, there is a Makefile that allow you to select which packages will be compiled along side LAMMPS. A good selection comes from adding all followed by removing those depend on libraries and after adding a few:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="nb">all</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="nb">all</span>
 <span class="n">make</span> <span class="n">no</span><span class="o">-</span><span class="n">lib</span>
 <span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">reaxc</span>
 <span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">molfile</span>
 </pre></div>
 </div>
 <p>A few external subpackages must be configured first. We want to add HDF5 and COLVARS with the following lines compiling the corresponding subpackages and enabling them for LAMMPS:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">lib</span><span class="o">/</span><span class="n">h5md</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">lib</span><span class="o">/</span><span class="n">h5md</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">f</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">h5cc</span>
 <span class="n">cd</span> <span class="o">../../</span><span class="n">src</span><span class="o">/</span>
 <span class="n">make</span> <span class="n">yes</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">h5md</span>
@@ -1236,18 +1245,18 @@ Now inside the “src” folder, there is a Makefile that allow you to select wh
 </pre></div>
 </div>
 <p>And LAMMPS itself after that:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">gcc111_ompi316</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">gcc111_ompi316</span>
 </pre></div>
 </div>
-<p>After compiled the binary is called <code class="docutils literal notranslate"><span class="pre">lmp_gcc82_ompi31</span></code></p>
+<p>After compiled the binary is called <code class="docutils literal"><span class="pre">lmp_gcc82_ompi31</span></code></p>
 <p>For testing the build, you can use one of the benchmarks inside the <cite>bench</cite>
 folder. The benchmark runs on one of the compute nodes using 40 cores. The simulation involves more than 10 million atoms.
 The command line is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">40</span> <span class="n">lmp_mpi</span> <span class="o">-</span><span class="n">var</span> <span class="n">x</span> <span class="mi">4</span> <span class="o">-</span><span class="n">var</span> <span class="n">y</span> <span class="mi">8</span> <span class="o">-</span><span class="n">var</span> <span class="n">z</span> <span class="mi">10</span> <span class="o">-</span><span class="ow">in</span> <span class="ow">in</span><span class="o">.</span><span class="n">rhodo</span><span class="o">.</span><span class="n">scaled</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">40</span> <span class="n">lmp_mpi</span> <span class="o">-</span><span class="n">var</span> <span class="n">x</span> <span class="mi">4</span> <span class="o">-</span><span class="n">var</span> <span class="n">y</span> <span class="mi">8</span> <span class="o">-</span><span class="n">var</span> <span class="n">z</span> <span class="mi">10</span> <span class="o">-</span><span class="ow">in</span> <span class="ow">in</span><span class="o">.</span><span class="n">rhodo</span><span class="o">.</span><span class="n">scaled</span>
 </pre></div>
 </div>
 <p>This is the final output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Loop</span> <span class="n">time</span> <span class="n">of</span> <span class="mf">303.71</span> <span class="n">on</span> <span class="mi">40</span> <span class="n">procs</span> <span class="k">for</span> <span class="mi">100</span> <span class="n">steps</span> <span class="k">with</span> <span class="mi">10240000</span> <span class="n">atoms</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Loop</span> <span class="n">time</span> <span class="n">of</span> <span class="mf">303.71</span> <span class="n">on</span> <span class="mi">40</span> <span class="n">procs</span> <span class="k">for</span> <span class="mi">100</span> <span class="n">steps</span> <span class="k">with</span> <span class="mi">10240000</span> <span class="n">atoms</span>
 
 <span class="n">Performance</span><span class="p">:</span> <span class="mf">0.057</span> <span class="n">ns</span><span class="o">/</span><span class="n">day</span><span class="p">,</span> <span class="mf">421.820</span> <span class="n">hours</span><span class="o">/</span><span class="n">ns</span><span class="p">,</span> <span class="mf">0.329</span> <span class="n">timesteps</span><span class="o">/</span><span class="n">s</span>
 <span class="mf">99.1</span><span class="o">%</span> <span class="n">CPU</span> <span class="n">use</span> <span class="k">with</span> <span class="mi">40</span> <span class="n">MPI</span> <span class="n">tasks</span> <span class="n">x</span> <span class="n">no</span> <span class="n">OpenMP</span> <span class="n">threads</span>

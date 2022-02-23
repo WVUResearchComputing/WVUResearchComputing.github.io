@@ -16,7 +16,7 @@ The standard *de facto* editor in UNIX is **vi** and a hacker favorite. The Sing
 The second most commonly used editor is **emacs**, sometimes not installed by default on many systems it is usually provided on most Linux distributions.
 
 The third editor is **GNU nano** a very user-friendly editor.
-For this tutorial we will focus on **nano**, for editing short text files, for simple editions, **nano** serves its purpose.
+For this tutorial we will focus on **nano**, for short text files and simple edits, **nano** serves its purpose.
 
 Opening GNU nano
 ----------------
@@ -33,9 +33,9 @@ Using GNU nano
 --------------
 
 The bottom two lines show the commands to use.
-The symbol ``^`` means press the **CONTROL KEY** (left or right) and keep it pressed until you press the command key. The character of the command is not case sensitive so pressing ``^X`` is equivalent to ``^x``.
+The symbol ``^`` means press the **CONTROL KEY** (left or right) and keep it pressed until you press the command key. For example, to exit the editor we see ``^X``, which tells us that we must hold the control key and then press ``X``. The character in the command is not case sensitive so pressing ``^X`` is equivalent to ``^x``.
 
-Executing commands with nano will sometimes change the list of subcommands, some of them are indicated like ``M-C``, in that case ``M`` means the ``META`` character that in modern keyboards is indicated like ``Alt``.
+Executing commands with nano will sometimes where st of subcommands; some of them will be written with an ``M``  (eg. ``M-C``), in that case ``M`` indicates the ``META`` character, which corresponds to ``Alt`` on modern keyboards.
 
 The command ``^G`` display a complete list of keystrokes available from the main window. To exit from the help page, execute ``^X``
 

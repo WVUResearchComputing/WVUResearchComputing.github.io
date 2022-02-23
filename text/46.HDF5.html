@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -183,7 +192,7 @@ During the 90s, NASA investigated 15 different file formats for use in the Earth
 <p>In terms of programming languages, HDF5 is officially supported in the three major languages for scientific computing: Fortran, C and C++. The same is true for high level languages such as Python, R and Julia. Python supports HDF5 via  <cite>h5py</cite> and via PyTables. The popular package for data analysis, pandas, can import from and export to HDF5 via <cite>PyTables</cite>. There are two packages for R that offers support, the <cite>rhdf5</cite> and <cite>hdf5r</cite> packages. In Julia, the package HDF5 is available.</p>
 <p>The plan of this simple tutorial is to create a HDF5 file from a Numpy array, using Python and <cite>h5py</cite> and read the file and extract a particular row using a small code in C.</p>
 <p>The first part is very simple, with <cite>h5py</cite>, the code below will create a numpy array 100x7 of random numbers. The array will be stored in a HDF5 file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -193,7 +202,7 @@ During the 90s, NASA investigated 15 different file formats for use in the Earth
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>After executing this code in a Python interpreter or writing a script from it, you end up with a file called <code class="docutils literal notranslate"><span class="pre">testfile.h5</span></code> this is a file in HDF5 file format that contains an array of numbers with 100 rows and 7 columns. Now we will demonstrate how to write a C code that is able to read the file.</p>
+<p>After executing this code in a Python interpreter or writing a script from it, you end up with a file called <code class="docutils literal"><span class="pre">testfile.h5</span></code> this is a file in HDF5 file format that contains an array of numbers with 100 rows and 7 columns. Now we will demonstrate how to write a C code that is able to read the file.</p>
 </div>
 
 
