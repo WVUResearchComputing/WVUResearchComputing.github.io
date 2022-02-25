@@ -17,8 +17,7 @@ You can request a *WVU login account* for someone from outside the WVU community
 
 Any employee may submit a request on behalf of a colleague elsewhere and there is no charge to request or use this service.
 
-If you need a WVU Login account, please make a request with `Service Desk
-<https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=7156>`_.
+If you need a WVU Login account, please make a request with `Service Desk <https://helpdesk.hpc.wvu.edu>`_.
 
 Click on **LOGIN Account Ticket** and follow instructions.
 

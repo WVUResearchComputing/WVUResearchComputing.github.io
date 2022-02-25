@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -200,8 +191,8 @@ to use it up to the limit of physical drive. On a share resource like a
 cluster, limits need to be impose to avoid one user taking too much space or
 creating too many files, that could prevent other users to store their data or
 could reduce the overall performance of the drive with too many files.</p>
-<p>There are two important locations from the user perspective, <code class="docutils literal"><span class="pre">$HOME</span></code> and
-<code class="docutils literal"><span class="pre">$SCRATCH</span></code> those locations are sit on a high performance storage device and
+<p>There are two important locations from the user perspective, <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> and
+<code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> those locations are sit on a high performance storage device and
 uses GPFS as their file system. Those locations are also shared between all
 compute nodes, so no matter on which machine you run, files on those locations
 are always available. In this quick start, we will describe briefly the purpose
@@ -214,28 +205,28 @@ The default disk quota for each user is 10 GB.
 As such, we recommend that home directories use should be
 primarily to store scripts, binary executables and all they software machinery to do your research, in cases where data is too large, the $HOME folder should not be used for storing data as it could fill quickly.
 For research data, users should use Scratch space on our clusters.</p>
-<p>The good thing about <code class="docutils literal"><span class="pre">$HOME</span></code> folder, despite its limited size is that all the
+<p>The good thing about <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder, despite its limited size is that all the
 data is backed up on a daily basis via snapshots and tape. Users
 can retrieve up to 4 weeks of older files from
-<code class="docutils literal"><span class="pre">/users/.snapshots/{date}/$USER</span></code> if needed.
+<code class="docutils literal notranslate"><span class="pre">/users/.snapshots/{date}/$USER</span></code> if needed.
 If files are not available in the snapshot, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and the HPC team will attempt to retrieve the data from tape.</p>
 <p>Note: Users may check their storage quota via the following command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">quota</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quota</span>
 </pre></div>
 </div>
 <p>This command is actually an alias for the GPFS command to manage quotas on the filesystem, the actual command is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lpp</span><span class="o">/</span><span class="n">mmfs</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mmlsquota</span> <span class="o">--</span><span class="n">block</span><span class="o">-</span><span class="n">size</span> <span class="n">M</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lpp</span><span class="o">/</span><span class="n">mmfs</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mmlsquota</span> <span class="o">--</span><span class="n">block</span><span class="o">-</span><span class="n">size</span> <span class="n">M</span>
 </pre></div>
 </div>
-<p>The block size can be changed to <code class="docutils literal"><span class="pre">K</span></code> for Kilo Bytes, <code class="docutils literal"><span class="pre">M</span></code> for Mega Bytes, <code class="docutils literal"><span class="pre">G</span></code> for Giga Bytes and <code class="docutils literal"><span class="pre">T</span></code> for Tera Bytes.</p>
+<p>The block size can be changed to <code class="docutils literal notranslate"><span class="pre">K</span></code> for Kilo Bytes, <code class="docutils literal notranslate"><span class="pre">M</span></code> for Mega Bytes, <code class="docutils literal notranslate"><span class="pre">G</span></code> for Giga Bytes and <code class="docutils literal notranslate"><span class="pre">T</span></code> for Tera Bytes.</p>
 <p>It is important to pay attention not only to the storage size but also to the limit on the number of files that can be stored. Too many files have an impact of file system performance so its number needs to be limited. It you create too many reaching the limit you cannot create more files on that file system even if your quota size still shows allowance.</p>
 </div>
 <div class="section" id="scratch-directory">
 <h2>Scratch Directory<a class="headerlink" href="#scratch-directory" title="Permalink to this headline">¶</a></h2>
-<p>Scratch directories are located in <code class="docutils literal"><span class="pre">/scratch</span></code> directory and can be easily
-moved to use the <code class="docutils literal"><span class="pre">$SCRATCH</span></code> environment variable set-up by default for
+<p>Scratch directories are located in <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> directory and can be easily
+moved to use the <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> environment variable set-up by default for
 each user. You can go to your scratch folder with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd $SCRATCH
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $SCRATCH
 </pre></div>
 </div>
 <p>Scratch directories on our clusters are treated as <strong>TRUE</strong> scratch space:
@@ -243,11 +234,11 @@ There is no user-defined quota for space. All users scratch directories share th
 To avoid loosing data, all users should use their scratch space as truly temporary storage.
 However, we will notify users well in advance for schedule file deletions to give users ample time to remove data to prevent data loss.</p>
 <p>It is a good idea to create a symbolic link from your $HOME folder to go directly to your $SCRATCH folder, this command will do that:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>ln -s $SCRATCH $HOME/scratch
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ln -s $SCRATCH $HOME/scratch
 </pre></div>
 </div>
 <p>Next time, you can just use the symbolic link:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">scratch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">scratch</span>
 </pre></div>
 </div>
 <p><strong>Note: Scratch data is NOT backed up.</strong></p>
@@ -263,18 +254,18 @@ the cluster.</p>
 storage, go to <a class="reference external" href="https://helpdesk.hpc.wvu.edu">https://helpdesk.hpc.wvu.edu</a> , select “Open a New Ticket”,
 and select “Research Data Depot Storage Purchase” from Help Topic. For more
 information, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>.</p>
-<p>In the past researchers were allowed to purchase space under <code class="docutils literal"><span class="pre">/group</span></code> folder. For groups who have purchased this storage, it can be accessed here:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">group</span><span class="o">/</span><span class="p">{</span><span class="n">group_name</span><span class="p">}</span>
+<p>In the past researchers were allowed to purchase space under <code class="docutils literal notranslate"><span class="pre">/group</span></code> folder. For groups who have purchased this storage, it can be accessed here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">group</span><span class="o">/</span><span class="p">{</span><span class="n">group_name</span><span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Note: Persistent group storage is NOT backed up.</strong></p>
 <p><strong>Note: Persistent Group storage has been replaced by the new</strong>
-<a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328">Research Data Depot
+<a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/302481476?src=955751505">Research Data Depot
 Service</a></p>
 </div>
 <div class="section" id="archival-storage">
 <h2>Archival Storage<a class="headerlink" href="#archival-storage" title="Permalink to this headline">¶</a></h2>
-<p>Please see the <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328">Research Data Depot
+<p>Please see the <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/302481476?src=955751505">Research Data Depot
 Service</a>
 for archival storage options.</p>
 <p>For additional information please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>.</p>

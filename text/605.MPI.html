@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -205,7 +196,7 @@ every program using MPI, all the programs using MPI need to be told
 which hosts and cpus to run. Generally, most programs use the mpirun
 executable that comes pre-packaged with MPI libraries to accomplish this
 task. The general syntax for running parallel programs with mpirun is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="o">&lt;</span><span class="n">processor</span> <span class="n">number</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">machinefile</span> <span class="o">&lt;</span><span class="n">procs</span> <span class="n">file</span><span class="o">&gt;</span> <span class="n">command</span> <span class="p">[</span><span class="o">..</span><span class="n">args</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="o">&lt;</span><span class="n">processor</span> <span class="n">number</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">machinefile</span> <span class="o">&lt;</span><span class="n">procs</span> <span class="n">file</span><span class="o">&gt;</span> <span class="n">command</span> <span class="p">[</span><span class="o">..</span><span class="n">args</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>With -np option specifying the number of processors the job requires,
@@ -220,7 +211,7 @@ Moab/Torque provides a machinefile for each job that is executed through
 the scheduler, and it’s location is stored in the $PBS_NODEFILE
 variable. Therefore, on our clusters, the general syntax of running a
 program parallel with MPI is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>module load &lt;mpi/modulefile&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module load &lt;mpi/modulefile&gt;
 
 mpirun -np &lt;processor number&gt; -machinefile $PBS_NODEFILE command [..args]
 </pre></div>

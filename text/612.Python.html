@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -210,9 +201,9 @@ compared to those provided by RedHat 6.x and 7.x (4.4 and 4.7 respectively).</p>
 </div>
 <div class="section" id="download">
 <h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
-<p>Download  the sources on the canonical location for sources <code class="docutils literal"><span class="pre">/shared/src</span></code>.
+<p>Download  the sources on the canonical location for sources <code class="docutils literal notranslate"><span class="pre">/shared/src</span></code>.
 Uncompress and move into the folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz
 $&gt; tar -zxvf Python-3.9.7.tgz
 $&gt; cd Python-3.9.7
 </pre></div>
@@ -220,9 +211,9 @@ $&gt; cd Python-3.9.7
 </div>
 <div class="section" id="configure">
 <h2>Configure<a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h2>
-<p>Edit the file <code class="docutils literal"><span class="pre">setup.py</span></code> from the base source dir.
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> from the base source dir.
 Add a line pointing to the include folder of the corresponding GCC version:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detect_sqlite</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detect_sqlite</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># The sqlite interface</span>
     <span class="n">sqlite_setup_debug</span> <span class="o">=</span> <span class="kc">False</span>   <span class="c1"># verbose debug prints from this script?</span>
 
@@ -241,7 +232,7 @@ Add a line pointing to the include folder of the corresponding GCC version:</p>
 </div>
 <p>Configure Python 3.9.x enabling optimizations, shared libraries, and setting the
 prefix for installation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ../configure --enable-shared --enable-optimizations \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure --enable-shared --enable-optimizations \
 --prefix=/shared/software/lang/python/3.9.7_gcc93 \
 --with-tcltk-libs=&quot;-L/shared/software/lang/gcc/9.3.0/lib -ltcl8.6 -ltk8.6&quot; \
 --with-tcltk-includes=&quot;-L/shared/software/lang/gcc/9.3.0/include&quot;
@@ -249,16 +240,16 @@ prefix for installation:</p>
 </pre></div>
 </div>
 <p>Compile and install:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
 $&gt; make install
 </pre></div>
 </div>
 <p>The test suite:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make test
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make test
 </pre></div>
 </div>
 <p>The results:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Ran</span> <span class="mi">3</span> <span class="n">tests</span> <span class="ow">in</span> <span class="mf">0.010</span><span class="n">s</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ran</span> <span class="mi">3</span> <span class="n">tests</span> <span class="ow">in</span> <span class="mf">0.010</span><span class="n">s</span>
 
 <span class="n">FAILED</span> <span class="p">(</span><span class="n">failures</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">test</span> <span class="n">test_pathlib</span> <span class="n">failed</span>
@@ -303,12 +294,12 @@ $&gt; make install
 <div class="section" id="numpy-and-scipy">
 <h2>Numpy and Scipy<a class="headerlink" href="#numpy-and-scipy" title="Permalink to this headline">¶</a></h2>
 <p>Download the latest versions of Numpy and Scipy:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">21.2</span><span class="o">/</span><span class="n">numpy</span><span class="o">-</span><span class="mf">1.21</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">21.2</span><span class="o">/</span><span class="n">numpy</span><span class="o">-</span><span class="mf">1.21</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">scipy</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">7.1</span><span class="o">/</span><span class="n">scipy</span><span class="o">-</span><span class="mf">1.7</span><span class="o">.</span><span class="mf">1.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>On each folder, create a file <code class="docutils literal"><span class="pre">site.cfg</span></code> with the following lines:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">openblas</span><span class="p">]</span>
+<p>On each folder, create a file <code class="docutils literal notranslate"><span class="pre">site.cfg</span></code> with the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">openblas</span><span class="p">]</span>
 <span class="n">libraries</span> <span class="o">=</span> <span class="n">openblas</span>
 <span class="n">library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">lib</span>
 <span class="n">include_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span><span class="o">/</span><span class="n">include</span>
@@ -316,23 +307,23 @@ $&gt; make install
 </pre></div>
 </div>
 <p>Load the module:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">13</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
 <p>Install dependencies:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pybind11</span> <span class="n">Cython</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pybind11</span> <span class="n">Cython</span>
 </pre></div>
 </div>
 <p>Install numpy with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="nb">compile</span> <span class="o">-</span><span class="n">v</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="nb">compile</span> <span class="o">-</span><span class="n">v</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>Similarly inside Scipy folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="nb">compile</span> <span class="o">-</span><span class="n">v</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="nb">compile</span> <span class="o">-</span><span class="n">v</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>Install a set:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">pyyaml</span> <span class="n">networkx</span> <span class="n">seaborn</span> <span class="n">matplotlib</span> <span class="n">ipython</span> <span class="n">jupyter</span> <span class="n">jupyterlab</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">pyyaml</span> <span class="n">networkx</span> <span class="n">seaborn</span> <span class="n">matplotlib</span> <span class="n">ipython</span> <span class="n">jupyter</span> <span class="n">jupyterlab</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
 </pre></div>
 </div>
 </div>

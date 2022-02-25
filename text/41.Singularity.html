@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -206,22 +197,22 @@
 <p>There are two main components in Singulairty containers. The runtime executable and the singularity image.</p>
 <p>The <em>Container Runtime</em> or <em>Singularity runtime</em> is designed to leverage the above mentioned container formats. The runtime program is called singularity and is capable not only of running singularity images but also to create them.</p>
 <p>To activate singularity on your current terminal, on both, Spruce and Thorny execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>That will modify the <cite>$PATH</cite> variable allowing you to execute the main command for singularity:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">singularity</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="singularity-images">
 <h2>Singularity Images<a class="headerlink" href="#singularity-images" title="Permalink to this headline">¶</a></h2>
 <p>The second component are <em>Singularity images</em>. On Spruce and Thorny we have a number of centrally managed images:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">containers</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">containers</span>
 </pre></div>
 </div>
 <p>or using the variable:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$SNG_PATH
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$SNG_PATH
 </pre></div>
 </div>
 <p>The list of Singularity images on Spruce and Thorny is the same, the table below shows the current images available.</p>
@@ -423,7 +414,7 @@ for <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.h
 In those cases you ensure that you connect to the cluster with X11 forwarding,
 before asking for an interactive job. From Linux or MacOS you can connect via
 SSH with X11 forwarding using:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>If you are using MacOS you need a X Window System on your Mac. You can install
@@ -433,29 +424,29 @@ MobaXterm <a class="reference external" href="https://mobaxterm.mobatek.net/">ht
 <p>Once you have login into the cluster, create an interactive job with the
 following command line, in this case we are using <cite>standby</cite> as queue but
 any other queue is valid.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">X</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">standby</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">X</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">standby</span>
 </pre></div>
 </div>
 <p>Once you get inside a compute node, load the module:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>After loading the module the command singularity is available for usage,
 and you can get a shell inside the image with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>singularity shell ${SNG_PATH}/&lt;Image Name&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity shell ${SNG_PATH}/&lt;Image Name&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="non-interactive-execution-with-submission-scripts">
 <h2>Non-interactive execution with Submission scripts<a class="headerlink" href="#non-interactive-execution-with-submission-scripts" title="Permalink to this headline">¶</a></h2>
 <p>In this case you do not need to export X11, just login into Spruce or Thorny:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>Once you have login into the cluster, create a submission script,
-(name the file <code class="docutils literal"><span class="pre">runjob.pbs</span></code> for example), in this case we are using standby as
+(name the file <code class="docutils literal notranslate"><span class="pre">runjob.pbs</span></code> for example), in this case we are using standby as
 queue but any other queue is valid.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N JOB
 #PBS -l nodes=1:ppn=1
@@ -469,32 +460,32 @@ singularity exec ${SNG_PATH}/&lt;Image Name&gt; &lt;command_or_script_to_run&gt;
 </pre></div>
 </div>
 <p>Submit your job with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="gpu-support-and-singularity">
 <h2>GPU Support and Singularity<a class="headerlink" href="#gpu-support-and-singularity" title="Permalink to this headline">¶</a></h2>
-<p>To get access to GPUs from inside the container use the argument <code class="docutils literal"><span class="pre">--nv</span></code> either for the <code class="docutils literal"><span class="pre">shell</span></code> or <code class="docutils literal"><span class="pre">exec</span></code> subcommands.
+<p>To get access to GPUs from inside the container use the argument <code class="docutils literal notranslate"><span class="pre">--nv</span></code> either for the <code class="docutils literal notranslate"><span class="pre">shell</span></code> or <code class="docutils literal notranslate"><span class="pre">exec</span></code> subcommands.
 Lets demonstrate this with an interactive example using Tensorflow on spruce</p>
 <p>Assuming that you are now log into Spruce execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -I -q comm_gpu
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -q comm_gpu
 </pre></div>
 </div>
 <p>After a few seconds you get into a compute node:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>salg0001:~$&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>salg0001:~$&gt;
 </pre></div>
 </div>
 <p>Next step is to activate Singularity:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load singularity/2.5.2
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load singularity/2.5.2
 </pre></div>
 </div>
-<p>Lets use for example <code class="docutils literal"><span class="pre">Keras-2.1.4_TensorFlow-1.5.0.simg</span></code> one of the images centrally managed and located at <code class="docutils literal"><span class="pre">$SNG_PATH</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; singularity shell --nv $SNG_PATH/Keras-2.1.4_TensorFlow-1.5.0.simg
+<p>Lets use for example <code class="docutils literal notranslate"><span class="pre">Keras-2.1.4_TensorFlow-1.5.0.simg</span></code> one of the images centrally managed and located at <code class="docutils literal notranslate"><span class="pre">$SNG_PATH</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; singularity shell --nv $SNG_PATH/Keras-2.1.4_TensorFlow-1.5.0.simg
 </pre></div>
 </div>
 <p>Lets check that from inside the image the GPUs are visible:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; nvidia-smi
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nvidia-smi
 Wed Sep 25 18:06:29 2019
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 396.26                 Driver Version: 396.26                    |
@@ -521,7 +512,7 @@ Wed Sep 25 18:06:29 2019
 </pre></div>
 </div>
 <p>Now we can use IPython and Tensorflow:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ipython3
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ipython3
 Python 3.5.3 (default, Jan 19 2017, 14:11:04)
 Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
 IPython 6.2.1 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
@@ -558,7 +549,7 @@ Out[3]: True
 </div>
 <p>Those two checks ensure that TensorFlow was indeed compiled with GPU support and the TensorFlow is able to see the 3 GPUs installed on the machine.</p>
 <p>Now we can run a very simple calculation using the GPUs:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;/gpu:0&#39;</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;/gpu:0&#39;</span><span class="p">):</span>
    <span class="o">...</span><span class="p">:</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
    <span class="o">...</span><span class="p">:</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
    <span class="o">...</span><span class="p">:</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -573,9 +564,9 @@ Out[3]: True
  <span class="p">[</span> <span class="mf">49.</span>  <span class="mf">64.</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>Notice that the calculation was performed on <code class="docutils literal"><span class="pre">/gpu:0</span></code>, as the machine has 3 GPUs you can also compute on <code class="docutils literal"><span class="pre">/gpu:1</span></code> and <code class="docutils literal"><span class="pre">/gpu:2</span></code>
+<p>Notice that the calculation was performed on <code class="docutils literal notranslate"><span class="pre">/gpu:0</span></code>, as the machine has 3 GPUs you can also compute on <code class="docutils literal notranslate"><span class="pre">/gpu:1</span></code> and <code class="docutils literal notranslate"><span class="pre">/gpu:2</span></code>
 Another way of checking the available devices is with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
  <span class="o">...</span><span class="p">:</span>   <span class="n">devices</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">list_devices</span><span class="p">()</span>
  <span class="o">...</span><span class="p">:</span>
 <span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">51.067844</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>

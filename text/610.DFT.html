@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -142,6 +133,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#id1">VASP 6.2.1 on Spruce using Intel 2019</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#elk">ELK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#elk-8-3-22-on-spruce">ELK 8.3.22 on Spruce</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
@@ -226,12 +221,12 @@
 <h2>ABINIT<a class="headerlink" href="#abinit" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="abinit-9-6-2-on-thorny-using-intel-2021-4">
 <h3>ABINIT 9.6.2 on Thorny using Intel 2021.4<a class="headerlink" href="#abinit-9-6-2-on-thorny-using-intel-2021-4" title="Permalink to this headline">¶</a></h3>
-<p>This is the canonical configuration DFT codes for Thorny module <code class="docutils literal"><span class="pre">dft_intel21</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel21</span>
+<p>This is the canonical configuration DFT codes for Thorny module <code class="docutils literal notranslate"><span class="pre">dft_intel21</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel21</span>
 </pre></div>
 </div>
 <p>The ac9 file for this build:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/shared/software/atomistic/abinit/9.6.2_intel21_impi21&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/shared/software/atomistic/abinit/9.6.2_intel21_impi21&quot;</span>
 
 <span class="n">with_debug_flavor</span><span class="o">=</span><span class="s2">&quot;verbose&quot;</span>
 <span class="n">with_optim_flavor</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span>
@@ -256,12 +251,12 @@
 </pre></div>
 </div>
 <p>Run make and make install:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
 $&gt; make install
 </pre></div>
 </div>
 <p>The results of the testsuite:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
 <span class="n">atompaw</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.02</span>
 <span class="n">bigdft</span>                <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">19</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.05</span>
 <span class="n">bigdft_paral</span>          <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
@@ -300,12 +295,12 @@ $&gt; make install
 </div>
 <div class="section" id="abinit-9-4-2-on-spruce-using-intel-2019">
 <h3>ABINIT 9.4.2 on Spruce using Intel 2019<a class="headerlink" href="#abinit-9-4-2-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
-<p>This is the canonical configuration for Spruce module <code class="docutils literal"><span class="pre">dft_intel19</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
+<p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
 </div>
 <p>The list of modules loaded are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
 Currently Loaded Modulefiles:
   1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
   2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
@@ -315,12 +310,12 @@ Currently Loaded Modulefiles:
 </pre></div>
 </div>
 <p>The building folder is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.4</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel19</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.4</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_intel19</span>
 </pre></div>
 </div>
 <p>Create a ac9 file for autoconfigure. The file must have the same name as the
-headnode with extension <code class="docutils literal"><span class="pre">.ac9</span></code> (For Spruce it will be <code class="docutils literal"><span class="pre">srih0001.ac9</span></code>):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat srih0001.ac9
+headnode with extension <code class="docutils literal notranslate"><span class="pre">.ac9</span></code> (For Spruce it will be <code class="docutils literal notranslate"><span class="pre">srih0001.ac9</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat srih0001.ac9
 prefix=&quot;/shared/software/atomistic/abinit/9.4.2_intel19_impi19&quot;
 
 with_debug_flavor=&quot;verbose&quot;
@@ -345,16 +340,16 @@ enable_mpi_io=&quot;no&quot;
 </div>
 <p>The last 6 lines are commented as they will be used after compiling the fallbacks.
 Run a first configure with this ac9:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span>
 </pre></div>
 </div>
 <p>This first configure will prepare the folders for building the fallbacks:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cd fallbacks
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd fallbacks
 $&gt; CC=mpiicc CXX=mpiicpc FC=mpiifort ./build-abinit-fallbacks.sh
 </pre></div>
 </div>
 <p>After compiling the fallbacks, move one folder up and remove the comments to the last six lines of the ac9 file enabling the fallbacks for the next configure:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cd ..
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd ..
 $&gt; tail -n 8 srih0001.ac9
 
 with_libxc=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/intel/19.0/libxc/4.3.4
@@ -366,21 +361,21 @@ with_libpsml=/gpfs/shared/src/abinit-9.4.2/buiild_intel19/fallbacks/install_fb/i
 </pre></div>
 </div>
 <p>Now proceed to configure again:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; CC=mpiicc CXX=mpiicpc FC=mpiifort ../configure
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; CC=mpiicc CXX=mpiicpc FC=mpiifort ../configure
 </pre></div>
 </div>
 <p>Execute make with a appropiated number of compilation threads:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make -j16
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make -j16
 $&gt; make install
 </pre></div>
 </div>
 <p>To run the testsuite go to the tests folder and execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cd tests
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd tests
 $&gt; python3 ../../tests/runtests.py -j4 -n4
 </pre></div>
 </div>
 <p>On Spruce the results of the testsuite are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
 <span class="n">atompaw</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
 <span class="n">bigdft</span>                <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">19</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.03</span>
 <span class="n">bigdft_paral</span>          <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.01</span>
@@ -423,7 +418,7 @@ $&gt; python3 ../../tests/runtests.py -j4 -n4
 <div class="section" id="parallel-version-with-gcc-9-3-and-mpich-3-4-1">
 <h3>Parallel version with GCC 9.3 and MPICH 3.4.1<a class="headerlink" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1" title="Permalink to this headline">¶</a></h3>
 <p>Abinit 9.4.1 was compiled with the following modules:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.4</span><span class="n">_gcc93</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4</span><span class="o">.</span><span class="mi">1</span><span class="n">_gcc93</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">10</span><span class="n">_gcc93</span>
@@ -437,8 +432,8 @@ $&gt; python3 ../../tests/runtests.py -j4 -n4
 <span class="n">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">9</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
-<p>ABINIT uses a configure file, a template can be found at <code class="docutils literal"><span class="pre">doc/build/config-template.ac9</span></code>. The lines to be changed from the template are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>prefix=&quot;/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341&quot;
+<p>ABINIT uses a configure file, a template can be found at <code class="docutils literal notranslate"><span class="pre">doc/build/config-template.ac9</span></code>. The lines to be changed from the template are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>prefix=&quot;/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341&quot;
 with_mpi=&quot;${MD_MPICH}&quot;
 LINALG_LIBS=&quot;-L${MD_OPENBLAS}/lib -lopenblas -lpthread &quot;
 with_fft_flavor=&quot;fftw3&quot;
@@ -456,20 +451,20 @@ with_xmlf90=&quot;${MD_XMLF90}&quot;
 </pre></div>
 </div>
 <p>These lines will use environment variables declared on the corresponding modules loaded above. The configure ac9 is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">build_gcc93_mpic341</span><span class="o">.</span><span class="n">ac9</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">build_gcc93_mpic341</span><span class="o">.</span><span class="n">ac9</span>
 </pre></div>
 </div>
-<p>To configure ABINIT is customary to create a build folder, ABINIT was build inside the folder <code class="docutils literal"><span class="pre">build_gcc93_mpic341</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
+<p>To configure ABINIT is customary to create a build folder, ABINIT was build inside the folder <code class="docutils literal notranslate"><span class="pre">build_gcc93_mpic341</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
 <span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
 </pre></div>
 </div>
 <p>Execute the configure with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">file</span><span class="o">=../</span><span class="n">build_gcc93_mpic341</span><span class="o">.</span><span class="n">ac9</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">file</span><span class="o">=../</span><span class="n">build_gcc93_mpic341</span><span class="o">.</span><span class="n">ac9</span>
 </pre></div>
 </div>
 <p>The resulting summary of the configurations for building ABINIT are these:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Core</span> <span class="n">build</span> <span class="n">parameters</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Core</span> <span class="n">build</span> <span class="n">parameters</span>
 <span class="o">---------------------</span>
 
   <span class="o">*</span> <span class="n">C</span> <span class="n">compiler</span>        <span class="p">:</span> <span class="n">gnu</span> <span class="n">version</span> <span class="mf">9.3</span>
@@ -512,11 +507,11 @@ with_xmlf90=&quot;${MD_XMLF90}&quot;
 </pre></div>
 </div>
 <p>ABINIT can now be build with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j12</span>
 </pre></div>
 </div>
 <p>Running the testsuite produces these results:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
 <span class="n">atompaw</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
 <span class="n">bigdft</span>                <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">19</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.01</span>
 <span class="n">bigdft_paral</span>          <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
@@ -556,11 +551,11 @@ with_xmlf90=&quot;${MD_XMLF90}&quot;
 <div class="section" id="cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1">
 <h3>CUDA Version with GCC 9.3, MPICH 3.4.1 and CUDA 11.1<a class="headerlink" href="#cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1" title="Permalink to this headline">¶</a></h3>
 <p>Similar to the parallel version above with the addition of this module:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.1</span>
 </pre></div>
 </div>
 <p>The configue file was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>prefix=&quot;/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341_gpu&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>prefix=&quot;/shared/software/atomistic/abinit/9.4.1_gcc93_mpic341_gpu&quot;
 with_mpi=&quot;${MD_MPICH}&quot;
 with_gpu=&quot;/usr/local/cuda&quot;
 with_gpu_flavor=&quot;cuda-double&quot;
@@ -589,14 +584,16 @@ with_xmlf90=&quot;${MD_XMLF90}&quot;
 </div>
 <div class="section" id="abinit-9-6-2-on-spruce-with-gcc-10-3-and-openmpi-3-1-6">
 <h3>Abinit 9.6.2 on Spruce with GCC 10.3 and OpenMPI 3.1.6<a class="headerlink" href="#abinit-9-6-2-on-spruce-with-gcc-10-3-and-openmpi-3-1-6" title="Permalink to this headline">¶</a></h3>
-<p>Modules loaded:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 lang/python/cpython_3.10.2_gcc103 \
-libs/openblas/0.3.19_gcc103 atomistic/wannier90/3.1.0_gcc103 \
-parallel/openmpi/3.1.6_gcc103 libs/fftw/3.3.10_gcc103
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>Modules loaded::</dt>
+<dd><dl class="first last docutils">
+<dt>$</dt>
+<dd>$&gt; module load lang/gcc/10.3.0 lang/python/cpython_3.10.2_gcc103 libs/openblas/0.3.19_gcc103 atomistic/wannier90/3.1.0_gcc103 parallel/openmpi/3.1.6_gcc103 libs/fftw/3.3.10_gcc103</dd>
+</dl>
+</dd>
+</dl>
 <p>Test Suite:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suite</span>            <span class="n">failed</span>  <span class="n">passed</span>  <span class="n">succeeded</span>  <span class="n">skipped</span>  <span class="n">disabled</span>  <span class="n">run_etime</span>  <span class="n">tot_etime</span>
 <span class="n">atompaw</span>               <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">2</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
 <span class="n">bigdft</span>                <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">19</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.01</span>
 <span class="n">bigdft_paral</span>          <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">0</span>        <span class="mi">4</span>         <span class="mi">0</span>       <span class="mf">0.00</span>       <span class="mf">0.00</span>
@@ -639,12 +636,12 @@ parallel/openmpi/3.1.6_gcc103 libs/fftw/3.3.10_gcc103
 <div class="section" id="octopus-11-3-on-thorny-flat-using-intel-2021-4">
 <h3>Octopus 11.3 on Thorny Flat using Intel 2021.4<a class="headerlink" href="#octopus-11-3-on-thorny-flat-using-intel-2021-4" title="Permalink to this headline">¶</a></h3>
 <p>Use the metamodule for DFT codes:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module purge
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
 $&gt; module load dft_intel21
 </pre></div>
 </div>
 <p>Resulting in these modules being loaded:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
  <span class="mi">1</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span>                            <span class="mi">15</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">arpack</span><span class="o">-</span><span class="n">ng</span><span class="o">/</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span><span class="n">_intel21_impi21</span>
  <span class="mi">2</span><span class="p">)</span> <span class="n">tbb</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">16</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel21</span>
  <span class="mi">3</span><span class="p">)</span> <span class="n">compiler</span><span class="o">-</span><span class="n">rt</span><span class="o">/</span><span class="n">latest</span>                        <span class="mi">17</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">10</span><span class="n">_intel21</span>
@@ -662,33 +659,34 @@ $&gt; module load dft_intel21
 </pre></div>
 </div>
 <p>The building folder is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.3</span><span class="o">/</span><span class="n">build_intel21</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.3</span><span class="o">/</span><span class="n">build_intel21</span>
 </pre></div>
 </div>
 <p>Run the configure script:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>MKL=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      MKL=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl&quot;
 
-../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
---with-blas=&quot;${MKL}&quot; \
---with-lapack=&quot;${MKL}&quot; \
---enable-mpi \
---with-libxc-prefix=$MD_LIBXC \
---with-boost=/shared/software/libs/boost/1.78_gcc93 \
---with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
-CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS=&quot;-g -traceback -heap-arrays 1 -O2 -fp-model=precise&quot;
+      ../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+      --with-blas=&quot;${MKL}&quot; \
+      --with-lapack=&quot;${MKL}&quot; \
+      --enable-mpi \
+      --with-libxc-prefix=$MD_LIBXC \
+      --with-boost=/shared/software/libs/boost/1.78_gcc93 \
+      --with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
+      CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS=&quot;-g -traceback -heap-arrays 1 -O2 -fp-model=precise&quot;
+$
 </pre></div>
 </div>
 <p>Compile the code using 12 compilation threads:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make -j 12
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make -j 12
 </pre></div>
 </div>
 <p>Run the testsuite:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ulimit -s unlimited
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ulimit -s unlimited
 $&gt; make check
 </pre></div>
 </div>
 <p>The results of the testsuite were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
         <span class="n">Passed</span><span class="p">:</span>  <span class="mi">223</span> <span class="o">/</span> <span class="mi">228</span>
         <span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">228</span>
         <span class="n">Failed</span><span class="p">:</span>  <span class="mi">4</span> <span class="o">/</span> <span class="mi">228</span>
@@ -706,12 +704,12 @@ $&gt; make check
 </div>
 <div class="section" id="octopus-11-0-on-spruce-using-intel-2019">
 <h3>Octopus 11.0 on Spruce using Intel 2019<a class="headerlink" href="#octopus-11-0-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
-<p>This is the canonical configuration for Spruce module <code class="docutils literal"><span class="pre">dft_intel19</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
+<p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
 </div>
 <p>The list of modules loaded are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
 Currently Loaded Modulefiles:
   1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
   2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
@@ -721,11 +719,11 @@ Currently Loaded Modulefiles:
 </pre></div>
 </div>
 <p>The building folder is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.0</span><span class="o">/</span><span class="n">build_intel19</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.0</span><span class="o">/</span><span class="n">build_intel19</span>
 </pre></div>
 </div>
 <p>Execute this configure line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
 --with-lapack=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
 --with-blas=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
 --with-blacs=&quot;${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a&quot; \
@@ -733,16 +731,16 @@ Currently Loaded Modulefiles:
 </pre></div>
 </div>
 <p>Build the software and install:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
 $&gt; make install
 </pre></div>
 </div>
 <p>Running the tests with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make check
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make check
 </pre></div>
 </div>
 <p>The results were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
     <span class="n">Passed</span><span class="p">:</span>  <span class="mi">217</span> <span class="o">/</span> <span class="mi">223</span>
     <span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">223</span>
     <span class="n">Failed</span><span class="p">:</span>  <span class="mi">5</span> <span class="o">/</span> <span class="mi">223</span>
@@ -772,7 +770,7 @@ $&gt; make install
 <h3>Octopus 10.4 with GCC 9.3<a class="headerlink" href="#octopus-10-4-with-gcc-9-3" title="Permalink to this headline">¶</a></h3>
 <p>Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3</p>
 <p>The modules loaded for compilation were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span>  \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span>  \
 <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">0</span><span class="n">_gcc93</span> \
 <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.7</span><span class="o">.</span><span class="mi">4</span><span class="n">_gcc93</span> \
 <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">3</span><span class="n">_gcc93</span> \
@@ -782,26 +780,26 @@ $&gt; make install
 </pre></div>
 </div>
 <p>The sources can be downloaded from the developers and uncompressed with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">octopus</span><span class="o">-</span><span class="n">code</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">10.4</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">octopus</span><span class="o">-</span><span class="n">code</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">10.4</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>It is customary to compile codes on a separate folder from the sources.
-The foler <code class="docutils literal"><span class="pre">build_gcc93</span></code> is created inside the sources for that purpose:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span>
+The foler <code class="docutils literal notranslate"><span class="pre">build_gcc93</span></code> is created inside the sources for that purpose:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span>
 <span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
 <span class="n">cd</span> <span class="n">build_gcc93_mpich341</span>
 </pre></div>
 </div>
 <p>The configure line was:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
 --with-libxc-prefix=${MD_LIBXC} --with-blas=&quot; -L${MD_OPENBLAS} -lopenblas&quot; \
 --with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
 --with-mpi=${MD_MPICH} --enable-mpi
 </pre></div>
 </div>
 <p>On Thorny Flat the results from the testsuite were:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">************************</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">************************</span>
 <span class="n">Passed</span><span class="p">:</span>  <span class="mi">184</span> <span class="o">/</span> <span class="mi">200</span>
 <span class="n">Skipped</span><span class="p">:</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">200</span>
 
@@ -817,15 +815,15 @@ The foler <code class="docutils literal"><span class="pre">build_gcc93</span></c
 <div class="section" id="quantum-espresso-6-8-on-spruce-using-intel-2019">
 <h3>Quantum Espresso 6.8 on Spruce using Intel 2019<a class="headerlink" href="#quantum-espresso-6-8-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
 <p>Download the sources:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">QEF</span><span class="o">/</span><span class="n">q</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">-</span><span class="n">ReleasePack</span><span class="o">.</span><span class="n">tgz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">QEF</span><span class="o">/</span><span class="n">q</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">-</span><span class="n">ReleasePack</span><span class="o">.</span><span class="n">tgz</span>
 </pre></div>
 </div>
-<p>This is the canonical configuration for Spruce module <code class="docutils literal"><span class="pre">dft_intel19</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
+<p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
 </div>
 <p>The list of modules loaded are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
 Currently Loaded Modulefiles:
   1) lang/gcc/9.3.0                       10) libs/gridxc/0.9.6_intel19
   2) lang/intel/2019                      11) atomistic/abinit/9.4.2_intel19
@@ -839,17 +837,17 @@ Currently Loaded Modulefiles:
 </pre></div>
 </div>
 <p>Uncompress the sources:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; tar -zxvf qe-6.8-ReleasePack.tgz
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf qe-6.8-ReleasePack.tgz
 $&gt; cd qe-6.8
 </pre></div>
 </div>
 <p>Configure the sources to use HDF5, libXC and FFTW 3:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
 --prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
 </pre></div>
 </div>
 <p>Build the binaries:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
 $&gt; make install
 $&gt; make check
 </pre></div>
@@ -863,7 +861,7 @@ The version compiled was 4.0.2. The code was compiled with Intel Compilers 2018
 and 2019</p>
 <p>To compile the code a arch.make needs to be created. The contents of the file
 are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SIESTA_ARCH=intel-mpi
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SIESTA_ARCH=intel-mpi
 
 FC=mpiifort
 FFLAGS=-g -xHost -O3 -prec-div -prec-sqrt -fp-model precise -qopt-prefetch -fPIC -m64
@@ -914,19 +912,19 @@ state_analysis.o: state_analysis.F
 <p>CASTEP is a leading code for calculating the properties of materials from first principles. Using density functional theory, it can simulate a wide range of properties of materials proprieties including energetics, structure at the atomic level, vibrational properties, electronic response properties etc. In particular it has a wide range of spectroscopic features that link directly to experiment, such as infra-red and Raman spectroscopies, NMR, and core level spectra.</p>
 <p>CASTEP can only be compiled with Intel 2018 due to a bug on Intel 2019 MPI implementation. The code was compiled on both clusters with Intel 2018.</p>
 <p>Modules used:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module purge
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
 $&gt; module load lang/python/intelpython_2.7.16 lang/intel/2018
 </pre></div>
 </div>
 <p>Compilation line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 \
 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8
 </pre></div>
 </div>
 <p>A run of a test suite o both clusters passes all tests.</p>
 <p>On Spruce:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
 
 Makefile:595: GNU make version 3.82 or later is recommended: proceeding with Make 3.81
@@ -944,7 +942,7 @@ make[1]: Leaving directory `/gpfs/shared/src/CASTEP-19.11/Test&#39;
 </pre></div>
 </div>
 <p>On Thorny:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make ARCH=linux_x86_64_ifort18 COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 INSTALL_DIR=/shared/software/atomistic/castep/19.11-mpi_intel18 \
 FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
  make -C &quot;Test&quot; ARCH=linux_x86_64_ifort18--mpi check-simple
  make[1]: Entering directory `/gpfs20/shared/src/CASTEP-19.11/Test&#39;
@@ -966,9 +964,9 @@ FFTLIBDIR=${MKLROOT} MATHLIBDIR=${MKLROOT} -j 8 check
 <p>VASP 6.2.1 was compiled with Intel 2021.4 on Thorny Flat.
 There are two builds of VASP, one compiled with a MKL running the rutines sequential mode (no multithreading) and another build with OpenMP enabled and MKL running in multithreaded mode.</p>
 <p>VASP is a proprietary code that require a license to legally run the code.
-The downloaded file is called <code class="docutils literal"><span class="pre">vasp.6.2.1.tar.gz</span></code> that uncompress into a folder <code class="docutils literal"><span class="pre">vasp.6.2.1</span></code>.</p>
+The downloaded file is called <code class="docutils literal notranslate"><span class="pre">vasp.6.2.1.tar.gz</span></code> that uncompress into a folder <code class="docutils literal notranslate"><span class="pre">vasp.6.2.1</span></code>.</p>
 <p>Before compiling VASP, you need to edit the file <cite>makefile.include</cite> for the sequential version:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Precompiler options
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
 CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
                          -DMPI -DMPI_BLOCK=8000 \
                          -DCACHE_SIZE=4000 \
@@ -1025,13 +1023,13 @@ BINDIR     = ../../bin
 </pre></div>
 </div>
 <p>Running tests:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make test
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make test
 </pre></div>
 </div>
 </div>
 <div class="section" id="vasp-6-2-1-on-spruce-using-intel-2019">
 <h3>VASP 6.2.1 on Spruce using Intel 2019<a class="headerlink" href="#vasp-6-2-1-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Precompiler options
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
 CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
            -DMPI -DMPI_BLOCK=8000 \
            -Duse_collective \
@@ -1089,7 +1087,7 @@ BINDIR     = ../../bin
 </pre></div>
 </div>
 <p>The version that runs MKL with multithreading and enables OpenMP is like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Precompiler options
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
 CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
            -DMPI -DMPI_BLOCK=8000 \
            -Duse_collective \
@@ -1148,12 +1146,12 @@ BINDIR     = ../../bin
 </pre></div>
 </div>
 <p>The only module needed to compile VASP is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2019</span>
 </pre></div>
 </div>
 <p>VASP includes a testsuite and running it produces this final results:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">==================================================================</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==================================================================</span>
 <span class="n">SUMMARY</span><span class="p">:</span>
 <span class="o">==================================================================</span>
 <span class="n">The</span> <span class="n">following</span> <span class="n">tests</span> <span class="n">failed</span><span class="p">,</span> <span class="n">please</span> <span class="n">check</span> <span class="n">the</span> <span class="n">output</span> <span class="n">file</span> <span class="n">manually</span><span class="p">:</span>
@@ -1165,12 +1163,12 @@ BINDIR     = ../../bin
 </div>
 <div class="section" id="id1">
 <h3>VASP 6.2.1 on Spruce using Intel 2019<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>This is the canonical configuration for Spruce module <code class="docutils literal"><span class="pre">dft_intel19</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
+<p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
 </div>
 <p>The list of modules loaded are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
 Currently Loaded Modulefiles:
   1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
   2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
@@ -1180,11 +1178,11 @@ Currently Loaded Modulefiles:
 </pre></div>
 </div>
 <p>In case of having a previous build, erase the folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span><span class="o">/*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span><span class="o">/*</span>
 </pre></div>
 </div>
-<p>Create a file <code class="docutils literal"><span class="pre">makefile.include</span></code> with the contents as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># Precompiler options
+<p>Create a file <code class="docutils literal notranslate"><span class="pre">makefile.include</span></code> with the contents as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Precompiler options
 CPP_OPTIONS= -DHOST=\&quot;LinuxIFC\&quot;\
              -DMPI -DMPI_BLOCK=8000 \
              -DCACHE_SIZE=4000 \
@@ -1244,12 +1242,107 @@ BINDIR     = ../../bin
 <blockquote>
 <div>make</div></blockquote>
 <p>Installation is manual and consists of copying the 3 binaries to the folder that will be added to the $PATH:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; rsync -av bin/ /shared/software/atomistic/vasp/6.2.1_intel19/bin/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rsync -av bin/ /shared/software/atomistic/vasp/6.2.1_intel19/bin/
 </pre></div>
 </div>
 <p>Testsuite can be run by going into testsuite and running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cd testsuite
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd testsuite
 $&gt; ./runtest
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="elk">
+<h2>ELK<a class="headerlink" href="#elk" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="elk-8-3-22-on-spruce">
+<h3>ELK 8.3.22 on Spruce<a class="headerlink" href="#elk-8-3-22-on-spruce" title="Permalink to this headline">¶</a></h3>
+<p>Modules used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 lang/python/cpython_3.10.2_gcc103 \
+atomistic/wannier90/3.1.0_gcc103 libs/fftw/3.3.10_gcc103 parallel/openmpi/4.0.7_gcc103  \
+libs/libxc/5.2.2_gcc103
+</pre></div>
+</div>
+<p>The file <code class="docutils literal notranslate"><span class="pre">make.inc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAKE = make
+F90 = gfortran
+F90_OPTS = -O3 -ffast-math -funroll-loops -fopenmp -fallow-argument-mismatch
+F77 = gfortran
+F77_OPTS = -O3 -ffast-math -funroll-loops -fopenmp -fallow-argument-mismatch
+AR = ar
+LIB_SYS =
+# LAPACK and BLAS libraries
+LIB_LPK = ${MD_OPENBLAS}/lib/libopenblas.a
+LIB_FFT = fftlib.a
+SRC_OMP =
+
+#-------------------------------------------------------------------------------
+SRC_MPI = mpi_stub.f90
+# To enable MPI parallelism the MPI version of the Fortran compiler must be
+# used. This is usually mpif90 or mpiifort. Uncomment the following lines and
+# run &#39;make clean&#39; followed by &#39;make&#39;.
+F90 = mpif90
+F77 = mpif90
+SRC_MPI =
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+SRC_MKL = mkl_stub.f90
+# To enable MKL parallelism, link with the MKL library then uncomment the
+# following line and run &#39;make clean&#39; followed by &#39;make&#39;.
+#SRC_MKL =
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+SRC_OBLAS = oblas_stub.f90
+# To enable OpenBLAS parallelism, link with the OpenBLAS library then uncomment
+# the following line and run &#39;make clean&#39; followed by &#39;make&#39;.
+SRC_OBLAS = ${MD_OPENBLAS}/lib/libopenblas.a
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+SRC_BLIS = blis_stub.f90
+# To enable BLIS parallelism, link with the BLIS library then uncomment the
+# following line and run &#39;make clean&#39; followed by &#39;make&#39;.
+#SRC_BLIS =
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+SRC_libxc = libxcifc_stub.f90
+# To enable Libxc first download and compile version 5.x of the library. Next
+# copy the files libxcf90.a and libxc.a to the elk/src directory. Then uncomment
+# the following lines and run &#39;make clean&#39; followed by &#39;make&#39;.
+LIB_libxc = ${MD_LIBXC}/lib/libxcf90.a ${MD_LIBXC}/lib/libxc.a
+SRC_libxc = libxcf90.f90 libxcifc.f90
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+SRC_FFT = zfftifc.f90
+# To use a different FFT library, copy the relevant library or include files to
+# the elk/src directory (eg. mkl_dfti.f90), uncomment the appropriate lines
+# below and run &#39;make clean&#39; followed by &#39;make&#39;.
+SRC_FFT = zfftifc_fftw.f90
+#LIB_FFT = libfftw3.a
+LIB_FFT = ${MD_FFTW}/lib/libfftw3.a
+#SRC_FFT = mkl_dfti.f90 zfftifc_mkl.f90
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+SRC_W90S = w90_stub.f90
+# To enable the Wannier90 library copy libwannier.a to the elk/src directory.
+# Then uncomment the following lines and run &#39;make clean&#39; followed by &#39;make&#39;.
+SRC_W90S =
+LIB_W90 = ${MD_WANNIER90}/lib/libwannier.a
+#-------------------------------------------------------------------------------
+</pre></div>
+</div>
+<p>Execute <code class="docutils literal notranslate"><span class="pre">make</span></code> to compile the codes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+</pre></div>
+</div>
+<p>Installation folder is manually created and the binaries are copied there:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir -p /shared/software/atomistic/elk/8.3.22_gcc103/bin
+$&gt; rsync -av src/eos/eos src/spacegroup/spacegroup src/protex src/elk src/rmspaces src/vimelk /shared/software/atomistic/elk/8.3.22_gcc103/bin
+$&gt; rsync -av species /shared/software/atomistic/elk/8.3.22_gcc103
 </pre></div>
 </div>
 </div>
