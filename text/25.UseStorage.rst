@@ -91,13 +91,13 @@ In the past researchers were allowed to purchase space under ``/group`` folder. 
 
 **Note: Persistent Group storage has been replaced by the new**
 `Research Data Depot
-Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__
+Service <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/302481476?src=955751505>`__
 
 Archival Storage
 ----------------
 
 Please see the `Research Data Depot
-Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__
+Service <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/302481476?src=955751505>`__
 for archival storage options.
 
 For additional information please contact helpdesk@hpc.wvu.edu.

@@ -18,7 +18,7 @@ Transfer Data
 
 
 Use Globus Online web browser to transfer data files between your PC/workstation and the WVU HPC systems.
-There are two dedicated servers, data transfer nodes (DTNs), that are connected to `WVU's Science DMZ (REX) <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=9806>`__ that allow data to be transferred with low latency and high bandwidth across WVU campus as well as to other locations around the globe.
+There are two dedicated servers, data transfer nodes (DTNs), that are connected to `WVU's Science DMZ (REX) <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782>`__ that allow data to be transferred with low latency and high bandwidth across WVU campus as well as to other locations around the globe.
 This space is available for all researchers at WVU who need to temporarily store and transfer data.
 
 .. In addition to faster transfer speeds, Globus Online also includes restartable file transfers in case a connection fails and includes data checksumming to ensure data is correctly transferred.  

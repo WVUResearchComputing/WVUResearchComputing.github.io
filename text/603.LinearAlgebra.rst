@@ -429,3 +429,43 @@ https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor
 The only case where I can think someone would like to use the reference BLAS
 and LAPCACK is if you want to check a numerical issue with the optimized
 versions but in production, those versions should never being used.
+
+
+ScaLapack 2.2.0 on Spruce with GCC 10.3.0
+-----------------------------------------
+
+Modules::
+
+    $> module load lang/gcc/10.3.0 parallel/openmpi/3.1.6_gcc103 libs/openblas/0.3.19_gcc103 dev/cmake/3.23.0
+    
+Download the software::
+
+    $> wget https://github.com/Reference-ScaLAPACK/scalapack/archive/refs/tags/v2.2.0.tar.gz -O scalapack-2.2.0.tar.gz
+    $> tar -zxvf scalapack-2.2.0.tar.gz 
+    $> cd scalapack-2.2.0
+
+Use cmake::
+
+    $> cmake -DCMAKE_Fortran_COMPILER=mpif90 -DCMAKE_C_COMPILER=mpicc \
+    -DCMAKE_Fortran_FLAGS=-fallow-argument-mismatch \
+    -DCMAKE_INSTALL_PREFIX=/shared/software/libs/scalapack/2.2.0_gcc103_ompi316 \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
+
+Run make::
+    
+    $> make
+
+ELPA 2021.11 on Spruce with GCC 10.3
+------------------------------------
+
+Modules::
+
+     $> module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 libs/scalapack/2.2.0_gcc103_ompi407 \
+       dev/cmake/3.23.0 parallel/openmpi/4.0.7_gcc103
+
+Configure ::
+
+    $> ../configure --prefix=/shared/software/libs/elpa/2021.11_gcc103_ompi407 \
+    LDFLAGS="-L${MD_OPENBLAS}/lib -L${MD_SCALAPACK}/lib" \
+    --disable-sse --disable-avx --disable-avx2 --disable-avx512 CFLAGS=-fPIC
+

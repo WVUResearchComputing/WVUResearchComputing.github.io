@@ -52,7 +52,7 @@ The WVU Research Data Depot is a centrally managed, reliable, secure and fast da
 
 ITS designed the Data Depot to be easy to use. Researchers have access to drag and drop files through an interface they are accustomed to for users of Windows, OSX or Linux file managers. Command line tools, such as sftp, and Linux based command, such as mount, can also be used to access the files on lab PCs/servers.
 
-More information on: `Research Data Depot <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`_
+More information on: `Research Data Depot <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/302481476?src=955751505>`_
 
 Seminars and workshops
 ----------------------

@@ -5,7 +5,7 @@ Transferring Files
 
 Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:
 
-* DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN's are connected to `WVU's Science DMZ network <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=9806>`__ which is a dedicated network to science/research data across campus.
+* DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN's are connected to `WVU's Science DMZ network <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782>`__ which is a dedicated network to science/research data across campus.
 * Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.
 
 WVU's recommended method for transferring data is `Globus Online <https://www.globus.org/>`__.  The other supported method is sftp.
@@ -36,7 +36,7 @@ Globus Online is the preferred method for transferring files to, from, and betwe
 
 WVU's Globus Subscription adds the following features:
 
-* Ability to archive/transfer data with unlimited storage to user's `Google Drive MIX Account <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=10319>`__.
+* Ability to archive/transfer data with unlimited storage to user's `Google Drive MIX Account <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868>`__.
 * Sharing of data with others inside and outside the university.
 * Sharing of data from personal workstations via `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`__.
 
