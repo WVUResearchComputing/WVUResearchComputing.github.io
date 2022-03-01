@@ -3,6 +3,26 @@
 Policies
 ========
 
+Acknowledging Your Use of the WVU High Performance Computing Environment
+------------------------------------------------------------------------
+
+Maintaining a first class HPC environment is expensive, both in human and material terms. Research Office requests that you acknowledge your use of the campus clusters in papers or other publications of research which benefited from the use of these campus resources. Such acknowledgements assist us in convincing people in our administration and funding agencies of the value of these resources to our community, and help us to obtain new funding for their continued maintenance and expansion.
+
+To acknowledge your use of the clusters, we request that you use the following wording:
+
+For Spruce Knob:
+
+    The authors acknowledge the computational resources provided by the WVU Research Computing Spruce Knob HPC cluster, which is funded in part by NSF EPS-1003907.
+
+For Thorny Flat:
+
+    The authors acknoledge then computational resources provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.
+
+We would also appreciate your informing us of publications in which you acknowledge one of the clusters. 
+In retribution we will do efforts to give visibility to your work and the computational efforts that make them possible.
+Contact us at `helpdesk@hpc.wvu.edu <mailto:helpdesk@hpc.wvu.edu>`_ and shared with us the PDF or DOI of your publication.
+
+
 Running Jobs on Login Node
 --------------------------
 

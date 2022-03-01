@@ -35,6 +35,15 @@ The legacy documentation was a Wiki website that will continue to be online for 
 The HelpDesk ticket system
    `WVU Research Computing - HPC HelpDesk <https://helpdesk.hpc.wvu.edu>`_
 
+If your research was possible thanks to the use of our clusters please acknowledge the support using these comments:
+For Spruce Knob:
+
+    "Computational resources were provided by the WVU Research Computing Spruce Knob HPC cluster, which is funded in part by NSF EPS-1003907."
+
+For Thorny Flat:
+
+    "Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534."
+
 For requesting help, create a new ticket at the Research Computing HPC Help
 Desk web page. You are welcome to e-mail any member of the WVU-RC team directly,
 but since we are not always at our desk, the ticket system will guarantee that
