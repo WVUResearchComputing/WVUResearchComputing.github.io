@@ -4,6 +4,76 @@ Density Functional Theory
 ABINIT
 ------
 
+ABINIT 9.6.2 on Spruce Knob using GCC 10.3
+------------------------------------------
+
+There are 4 builds of GCC 10.3 using various implementations of MPI
+
+Using OpenMPI 3.1.6
+~~~~~~~~~~~~~~~~~~~
+
+The modules used::
+
+    $> module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 atomistic/wannier90/3.1.0_gcc103 \
+    libs/fftw/3.3.10_gcc103 parallel/openmpi/3.1.6_gcc103
+
+Create the folder for building inside the sources::
+
+    /gpfs/shared/src/abinit-9.6.2/build_gcc103_ompi316
+
+The AC9 file is written below, the last lines are only added after the fallbacks were compiled.
+Commment those 6 final lines before executing ``../configure``::
+
+    prefix="/shared/software/atomistic/abinit/9.6.2_gcc103_ompi316" 
+
+    with_debug_flavor="verbose"
+    with_optim_flavor="standard"
+
+    FCFLAGS_EXTRA="-fallow-argument-mismatch"
+    #FCFLAGS_EXTRA="-heap-arrays 1 -xAVX"
+    #FC_LIBS="-lstdc++ -ldl"
+    #CPP="icc -E"
+
+    LINALG_LIBS="-L${MD_OPENBLAS}/lib -lopenblas -lpthread"
+    WANNIER90_LIBS="-L${MD_WANNIER90}/lib -lwannier"
+    with_libxml2="/shared/software/lang/gcc/10.3.0"
+    enable_openmp="no"
+
+    with_fft_flavor="fftw3"
+    FFTW3_FCFLAGS="-I${MD_FFTW}/include"
+    FFTW3_LIBS="-L${MD_FFTW}/lib -lfftw3 -lfftw3f"
+
+    CC=mpicc
+    CXX=mpicxx
+    FC=mpif90
+
+    with_libxc=/gpfs/shared/src/abinit-9.6.2/build_gcc103_ompi316/fallbacks/install_fb/gnu/10.3/libxc/4.3.4
+    with_hdf5=/gpfs/shared/src/abinit-9.6.2/build_gcc103_ompi316/fallbacks/install_fb/gnu/10.3/hdf5/1.10.6
+    with_netcdf=/gpfs/shared/src/abinit-9.6.2/build_gcc103_ompi316/fallbacks/install_fb/gnu/10.3/netcdf4/4.6.3
+    with_netcdf_fortran=/gpfs/shared/src/abinit-9.6.2/build_gcc103_ompi316/fallbacks/install_fb/gnu/10.3/netcdf4_fortran/4.5.2
+    with_xmlf90=/gpfs/shared/src/abinit-9.6.2/build_gcc103_ompi316/fallbacks/install_fb/gnu/10.3/xmlf90/1.5.3.1
+    with_libpsml=/gpfs/shared/src/abinit-9.6.2/build_gcc103_ompi316/fallbacks/install_fb/gnu/10.3/libpsml/1.1.7
+
+Execute::
+
+    $> ../configure
+
+After the configure is executed a folder ``fallbacks``, move to that folder and execute::
+
+    $> cd fallbacks
+    $> FCFLAGS=-fallow-argument-mismatch ./build-abinit-fallbacks.sh 
+
+After building the fallbacks the lines can be integrated to the file ``srih0001.ac9``.
+
+
+
+
+
+
+
+
+
+
 ABINIT 9.6.2 on Thorny using Intel 2021.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

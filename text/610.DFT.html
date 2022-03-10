@@ -107,7 +107,9 @@
 <li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Density Functional Theory</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#abinit">ABINIT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#abinit">ABINIT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abinit-9-6-2-on-spruce-knob-using-gcc-10-3">ABINIT 9.6.2 on Spruce Knob using GCC 10.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-openmpi-3-1-6">Using OpenMPI 3.1.6</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#abinit-9-6-2-on-thorny-using-intel-2021-4">ABINIT 9.6.2 on Thorny using Intel 2021.4</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#abinit-9-4-2-on-spruce-using-intel-2019">ABINIT 9.4.2 on Spruce using Intel 2019</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1">Parallel version with GCC 9.3 and MPICH 3.4.1</a></li>
@@ -219,6 +221,65 @@
 <h1>Density Functional Theory<a class="headerlink" href="#density-functional-theory" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="abinit">
 <h2>ABINIT<a class="headerlink" href="#abinit" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="abinit-9-6-2-on-spruce-knob-using-gcc-10-3">
+<h2>ABINIT 9.6.2 on Spruce Knob using GCC 10.3<a class="headerlink" href="#abinit-9-6-2-on-spruce-knob-using-gcc-10-3" title="Permalink to this headline">¶</a></h2>
+<p>There are 4 builds of GCC 10.3 using various implementations of MPI</p>
+<div class="section" id="using-openmpi-3-1-6">
+<h3>Using OpenMPI 3.1.6<a class="headerlink" href="#using-openmpi-3-1-6" title="Permalink to this headline">¶</a></h3>
+<p>The modules used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 atomistic/wannier90/3.1.0_gcc103 \
+libs/fftw/3.3.10_gcc103 parallel/openmpi/3.1.6_gcc103
+</pre></div>
+</div>
+<p>Create the folder for building inside the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_gcc103_ompi316</span>
+</pre></div>
+</div>
+<p>The AC9 file is written below, the last lines are only added after the fallbacks were compiled.
+Commment those 6 final lines before executing <code class="docutils literal notranslate"><span class="pre">../configure</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/shared/software/atomistic/abinit/9.6.2_gcc103_ompi316&quot;</span>
+
+<span class="n">with_debug_flavor</span><span class="o">=</span><span class="s2">&quot;verbose&quot;</span>
+<span class="n">with_optim_flavor</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span>
+
+<span class="n">FCFLAGS_EXTRA</span><span class="o">=</span><span class="s2">&quot;-fallow-argument-mismatch&quot;</span>
+<span class="c1">#FCFLAGS_EXTRA=&quot;-heap-arrays 1 -xAVX&quot;</span>
+<span class="c1">#FC_LIBS=&quot;-lstdc++ -ldl&quot;</span>
+<span class="c1">#CPP=&quot;icc -E&quot;</span>
+
+<span class="n">LINALG_LIBS</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_OPENBLAS}</span><span class="s2">/lib -lopenblas -lpthread&quot;</span>
+<span class="n">WANNIER90_LIBS</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_WANNIER90}</span><span class="s2">/lib -lwannier&quot;</span>
+<span class="n">with_libxml2</span><span class="o">=</span><span class="s2">&quot;/shared/software/lang/gcc/10.3.0&quot;</span>
+<span class="n">enable_openmp</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+
+<span class="n">with_fft_flavor</span><span class="o">=</span><span class="s2">&quot;fftw3&quot;</span>
+<span class="n">FFTW3_FCFLAGS</span><span class="o">=</span><span class="s2">&quot;-I$</span><span class="si">{MD_FFTW}</span><span class="s2">/include&quot;</span>
+<span class="n">FFTW3_LIBS</span><span class="o">=</span><span class="s2">&quot;-L$</span><span class="si">{MD_FFTW}</span><span class="s2">/lib -lfftw3 -lfftw3f&quot;</span>
+
+<span class="n">CC</span><span class="o">=</span><span class="n">mpicc</span>
+<span class="n">CXX</span><span class="o">=</span><span class="n">mpicxx</span>
+<span class="n">FC</span><span class="o">=</span><span class="n">mpif90</span>
+
+<span class="n">with_libxc</span><span class="o">=/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_gcc103_ompi316</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">gnu</span><span class="o">/</span><span class="mf">10.3</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3</span><span class="o">.</span><span class="mi">4</span>
+<span class="n">with_hdf5</span><span class="o">=/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_gcc103_ompi316</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">gnu</span><span class="o">/</span><span class="mf">10.3</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">6</span>
+<span class="n">with_netcdf</span><span class="o">=/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_gcc103_ompi316</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">gnu</span><span class="o">/</span><span class="mf">10.3</span><span class="o">/</span><span class="n">netcdf4</span><span class="o">/</span><span class="mf">4.6</span><span class="o">.</span><span class="mi">3</span>
+<span class="n">with_netcdf_fortran</span><span class="o">=/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_gcc103_ompi316</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">gnu</span><span class="o">/</span><span class="mf">10.3</span><span class="o">/</span><span class="n">netcdf4_fortran</span><span class="o">/</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">with_xmlf90</span><span class="o">=/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_gcc103_ompi316</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">gnu</span><span class="o">/</span><span class="mf">10.3</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5</span><span class="o">.</span><span class="mf">3.1</span>
+<span class="n">with_libpsml</span><span class="o">=/</span><span class="n">gpfs</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">abinit</span><span class="o">-</span><span class="mf">9.6</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">build_gcc103_ompi316</span><span class="o">/</span><span class="n">fallbacks</span><span class="o">/</span><span class="n">install_fb</span><span class="o">/</span><span class="n">gnu</span><span class="o">/</span><span class="mf">10.3</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>Execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure
+</pre></div>
+</div>
+<p>After the configure is executed a folder <code class="docutils literal notranslate"><span class="pre">fallbacks</span></code>, move to that folder and execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd fallbacks
+$&gt; FCFLAGS=-fallow-argument-mismatch ./build-abinit-fallbacks.sh
+</pre></div>
+</div>
+<p>After building the fallbacks the lines can be integrated to the file <code class="docutils literal notranslate"><span class="pre">srih0001.ac9</span></code>.</p>
+</div>
 <div class="section" id="abinit-9-6-2-on-thorny-using-intel-2021-4">
 <h3>ABINIT 9.6.2 on Thorny using Intel 2021.4<a class="headerlink" href="#abinit-9-6-2-on-thorny-using-intel-2021-4" title="Permalink to this headline">¶</a></h3>
 <p>This is the canonical configuration DFT codes for Thorny module <code class="docutils literal notranslate"><span class="pre">dft_intel21</span></code>:</p>
