@@ -5,4 +5,195 @@ Environment Modules
 
 The Environment Modules system is a tool to help users manage their Unix or Linux shell environment, by allowing groups of related environment-variable settings to be made or removed dynamically.
 
-Modules has been around since the early 1990s and is used mostly at HPC clusters.
+The Environment Modules are stratified in several tiers and under several groups. 
+Here we will show some of those key groups in particular for Thorny Flat.
+
+Programming Languages
+---------------------
+
+::
+
+
+	-------------------------------------------- /shared/modulefiles/tier0 ---------------------------------------------
+	lang/gcc/11.2.0                      lang/nvidia/nvhpc-byo-compiler/21.3  lang/python/intelpython_2.7.14
+	lang/gcc/8.2.0                       lang/nvidia/nvhpc-nompi/20.7         lang/python/intelpython_2.7.16
+	lang/gcc/9.3.0                       lang/nvidia/nvhpc-nompi/21.11        lang/python/intelpython3_2019.5
+	lang/go/1.15.6                       lang/nvidia/nvhpc-nompi/21.3         lang/python/intelpython3_2020.2
+	lang/intel/2018                      lang/pgi/19.10                       lang/python/intelpython_3.6.3
+	lang/intel/2018_u4                   lang/pgi/19.4                        lang/python/intelpython_3.6.9
+	lang/intel/2019                      lang/python/cpython_3.10.1_gcc112    lang/python/intelpython_3.9.7
+	lang/intel/2019_u5                   lang/python/cpython_3.7.4_gcc82      lang/python/pypy2.7-v7.3.2-linux64
+	lang/java/jdk-17.0.1                 lang/python/cpython_3.8.10_gcc82     lang/python/pypy3.6-v7.1.1-thorny
+	lang/julia/1.6.5_gcc112              lang/python/cpython_3.8.10_gcc93     lang/python/pypy3.6-v7.3.2-linux64
+	lang/julia/1.7.1_gcc112              lang/python/cpython_3.8.12_gcc112    lang/python/pypy3.7-v7.3.2-linux64
+	lang/nvidia/nvhpc/20.7               lang/python/cpython_3.9.5_gcc82      lang/r/3.6.3_gcc112
+	lang/nvidia/nvhpc/21.11              lang/python/cpython_3.9.5_gcc93      lang/r/4.0.5_gcc112
+	lang/nvidia/nvhpc/21.3               lang/python/cpython_3.9.7_gcc93      lang/r/4.1.2_gcc112
+	lang/nvidia/nvhpc-byo-compiler/20.7  lang/python/cpython_3.9.9_gcc112     lang/r/4.1.3_gcc112
+	lang/nvidia/nvhpc-byo-compiler/21.11 lang/python/intelpython2_2019.5
+
+
+Libraries
+---------
+
+::
+
+	------------------------------------------------ /shared/modulefiles/tier0 -------------------------------------------------
+	libs/armadillo/9.9_gcc93                 libs/hdf5/1.12.0_gcc82                   libs/netcdf/fortran-4.5.3_gcc82
+	libs/arpack-ng/3.8.0_intel21             libs/hdf5/1.12.0_gcc82_ompi4.0.5         libs/netcdf/fortran-4.5.3_gcc82_ompi405
+	libs/arpack-ng/3.8.0_intel21_impi21      libs/hdf5/1.12.0_gcc93                   libs/netcdf/fortran-4.5.3_gcc93
+	libs/atompaw/4.1.0.5_gcc48               libs/hdf5/1.12.0_gcc93_mpic341           libs/netcdf/fortran-4.5.3_gcc93_mpic341
+	libs/atompaw/4.1.0.5_intel18             libs/hdf5/1.12.0_gcc93_mvap235           libs/netcdf/fortran-4.5.3_gcc93_mvap235
+	libs/boost/1.41_gcc112                   libs/hdf5/1.12.0_gcc93_ompi31            libs/netcdf/fortran-4.5.3_intel19
+	libs/boost/1.78_gcc112_mpic343           libs/hdf5/1.12.0_gcc93_ompi4.0.5         libs/netcdf/fortran-4.5.3_intel21
+	libs/boost/1.78_gcc112_mvap236           libs/hdf5/1.12.0_intel19                 libs/netcdf/fortran-4.5.3_intel21_impi21
+	libs/boost/1.78_gcc112_ompi412           libs/hdf5/1.12.0_v12_gcc93               libs/netlib/3.8.0_gcc82
+	libs/boost/1.78_gcc48                    libs/hdf5/1.12.1_gcc112                  libs/netlib/3.8.0_intel18
+	libs/boost/1.78_gcc93                    libs/hdf5/1.12.1_gcc112_mpic343          libs/openblas/0.3.13_gcc48
+	libs/cfitsio/4.0.0_gcc112                libs/hdf5/1.12.1_gcc112_mvap236          libs/openblas/0.3.13_gcc82
+	libs/eigen/3.3.7                         libs/hdf5/1.12.1_gcc112_ompi412          libs/openblas/0.3.13_gcc93
+	libs/fftw/3.3.10_gcc112                  libs/hdf5/1.12.1_intel21                 libs/openblas/0.3.13_intel18
+	libs/fftw/3.3.10_gcc112_mpic343          libs/hdf5/1.12.1_intel21_impi21          libs/openblas/0.3.13_intel19
+	libs/fftw/3.3.10_gcc112_mvap236          libs/libpsml/1.1.10_intel21              libs/openblas/0.3.17_intel21
+	libs/fftw/3.3.10_gcc112_ompi412          libs/libpsml/1.1.7_gcc82                 libs/openblas/0.3.19_gcc112
+	libs/fftw/3.3.10_intel21                 libs/libpsml/1.1.7_gcc93                 libs/pgplot/5.2.2_gcc112
+	libs/fftw/3.3.10_intel21_impi21          libs/libpsml/1.1.8_gcc112                libs/refblas/3.10_gcc112
+	libs/fftw/3.3.8_intel18                  libs/libxc/3.0.1_gcc48                   libs/refblas/3.10_gcc48
+	libs/fftw/3.3.8_intel18_thd              libs/libxc/3.0.1_gcc82                   libs/refblas/3.8_gcc82
+	libs/fftw/3.3.9_gcc48                    libs/libxc/3.0.1_intel18                 libs/scalapack/2.1.0_gcc112_mpic343
+	libs/fftw/3.3.9_gcc82                    libs/libxc/4.3.4_gcc82                   libs/scalapack/2.1.0_gcc112_mvap236
+	libs/fftw/3.3.9_gcc93                    libs/libxc/4.3.4_gcc93                   libs/scalapack/2.1.0_gcc112_ompi412
+	libs/fftw/3.3.9_gcc93_mpic341            libs/libxc/4.3.4_intel18                 libs/scalapack/2.1.0_gcc82_mvap235
+	libs/fftw/3.3.9_gcc93_mvap235            libs/libxc/4.3.4_intel19                 libs/scalapack/2.1.0_gcc93_mpic341
+	libs/fftw/3.3.9_intel18                  libs/libxc/5.1.7_gcc112                  libs/scalapack/2.1.0_gcc93_mvap235
+	libs/fftw/3.3.9_intel19                  libs/libxc/5.1.7_intel21                 libs/sparsehash/2.0.3
+	libs/fftw/3.3.9_intel21                  libs/magma/2.5.1_gcc48                   libs/suitesparse/5.4.0_gcc82
+	libs/fftw/3.3.9_intel21_impi21           libs/netcdf/4.7.4_gcc48                  libs/superlu/5.2.1_gcc93
+	libs/gmp/6.2.0                           libs/netcdf/4.7.4_gcc82                  libs/swig/4.0.1_gcc82
+	libs/gridxc/0.9.6_intel21                libs/netcdf/4.7.4_gcc93                  libs/wannier90/3.1.0_gcc112
+	libs/hdf5/1.10.5_gcc48_ompi31            libs/netcdf/4.7.4_gcc93_mpic341          libs/wcslib/7.7_gcc112
+	libs/hdf5/1.10.5_gcc82_ompi31            libs/netcdf/4.7.4_gcc93_mvap235          libs/xmlf90/1.5.4_gcc112
+	libs/hdf5/1.10.5_intel18                 libs/netcdf/4.7.4_intel19                libs/xmlf90/1.5.4_gcc48
+	libs/hdf5/1.10.5_intel18_impi18          libs/netcdf/4.8.0_gcc82_ompi405          libs/xmlf90/1.5.4_gcc82
+	libs/hdf5/1.10.5_intel19                 libs/netcdf/4.8.1_gcc112                 libs/xmlf90/1.5.4_gcc93
+	libs/hdf5/1.10.5_intel19_impi19          libs/netcdf/4.8.1_intel21                libs/xmlf90/1.5.5_intel21
+	libs/hdf5/1.10.7_gcc48                   libs/netcdf/4.8.1_intel21_impi21         libs/yaml/0.2.2_gcc82
+	libs/hdf5/1.10.7_gcc82                   libs/netcdf/fortran-4.5.3_gcc112         libs/zeromq/4.3.1_gcc82
+	libs/hdf5/1.10.7_gcc93                   libs/netcdf/fortran-4.5.3_gcc48
+
+
+Parallel Libraries
+------------------
+
+::
+
+	----------------------------------------- /shared/modulefiles/tier0 ------------------------------------------
+	parallel/cuda/10.0                parallel/hwloc/2.5.0_gcc93        parallel/openmpi/3.1.6_gcc48
+	parallel/cuda/10.1                parallel/hwloc/2.6.0_gcc112       parallel/openmpi/3.1.6_gcc82
+	parallel/cuda/10.2                parallel/impi/2017                parallel/openmpi/3.1.6_gcc93
+	parallel/cuda/11.0                parallel/mpich/3.4.1_gcc93        parallel/openmpi/3.1.6_intel21
+	parallel/cuda/11.1                parallel/mpich/3.4.1_intel19      parallel/openmpi/4.0.5_gcc82
+	parallel/cuda/11.2                parallel/mpich/3.4.3_gcc112       parallel/openmpi/4.0.5_gcc93
+	parallel/cuda/11.3                parallel/mvapich2/2.3.5_gcc82     parallel/openmpi/4.0.7_intel21
+	parallel/cuda/11.4                parallel/mvapich2/2.3.5_gcc93     parallel/openmpi/4.1.1_gcc48
+	parallel/cuda/11.5                parallel/mvapich2/2.3.6_gcc112    parallel/openmpi/4.1.1_gcc82
+	parallel/cuda/11.6                parallel/openmpi/2.1.2_gcc48      parallel/openmpi/4.1.1_gcc93
+	parallel/hwloc/1.10.1_gcc48       parallel/openmpi/2.1.6_gcc48      parallel/openmpi/4.1.2_gcc112
+	parallel/hwloc/1.10.1_gcc82       parallel/openmpi/2.1.6_gcc82      parallel/openmpi/4.1.2_intel21
+	parallel/hwloc/1.10.1_intel18     parallel/openmpi/2.1.6_intel18    parallel/ucx/1.10.1_gcc48
+	parallel/hwloc/1.11.13_gcc82      parallel/openmpi/3.1.4_gcc48      parallel/ucx/1.10.1_gcc93
+	parallel/hwloc/2.0.3_gcc82        parallel/openmpi/3.1.4_gcc82      parallel/ucx/1.11.2_gcc112
+	parallel/hwloc/2.0.3_intel18      parallel/openmpi/3.1.4_gcc93      parallel/ucx/1.9.0_gcc82
+	parallel/hwloc/2.2.0_gcc82        parallel/openmpi/3.1.4_intel18    parallel/ucx/1.9.0_gcc93
+	parallel/hwloc/2.2.0_gcc93        parallel/openmpi/3.1.4_intel18_tm
+	parallel/hwloc/2.5.0_gcc48        parallel/openmpi/3.1.6_gcc112
+
+
+Atomistic Packages
+------------------
+
+::
+
+	----------------------------------------- /shared/modulefiles/tier2 ------------------------------------------
+	atomistic/abinit/8.10.2_intel18               atomistic/namd/2.13_CPU
+	atomistic/abinit/8.10.3_gcc82                 atomistic/namd/2.13_CUDA
+	atomistic/abinit/8.10.3_gcc82_mpiio           atomistic/namd/NAMD_2.14-mpi
+	atomistic/abinit/8.10.3_intel18               atomistic/namd/NAMD_2.14-mpi-smp
+	atomistic/abinit/9.4.2_intel19_mpic341        atomistic/namd/NAMD_2.14-ofi
+	atomistic/abinit/9.4.2_intel21                atomistic/namd/NAMD_2.14-ofi-smp
+	atomistic/abinit/9.4.2_intel21_impi21         atomistic/namd/NAMD_Git-2021-12-14-mpi
+	atomistic/abinit/9.6.2_gcc93_ompi41           atomistic/namd/NAMD_Git-2021-12-14-mpi-smp
+	atomistic/abinit/9.6.2_intel21_impi21         atomistic/namd/NAMD_Git-2021-12-14-ofi
+	atomistic/amber/18_cuda                       atomistic/namd/NAMD_Git-2021-12-14-ofi-smp
+	atomistic/amber/18_mpi                        atomistic/octopus/10.4_gcc93_mpic341
+	atomistic/amber/18_openmp                     atomistic/octopus/11.0_intel21
+	atomistic/amber/20_gcc93_cuda113              atomistic/octopus/11.3_intel21_impi21
+	atomistic/amber/20_gcc93_mpic341              atomistic/octopus/11.3_intel21_impi21_prereq
+	atomistic/amber/20_gcc93_mpic341_cuda113      atomistic/orca/5.0.1_shared
+	atomistic/amber/20_gcc93_openmp               atomistic/orca/5.0.2_shared
+	atomistic/amber/20_gcc93_serial               atomistic/orca/5.0.2_static
+	atomistic/amber/20_intel21_impi21             atomistic/orca/5.0.3_shared
+	atomistic/amber/20_intel21_openmp             atomistic/orca/5.0.3_static
+	atomistic/amber/20_intel21_serial             atomistic/plumed/2.5.3_gcc82
+	atomistic/castep/19.11-mpi_intel18            atomistic/plumed/2.7.1_gcc93_mpic341
+	atomistic/elk/5.2.14_intel18                  atomistic/siesta/4.0.2_intel18
+	atomistic/elk/7.2.42_intel21                  atomistic/siesta/4.0.2_intel19
+	atomistic/elk/8.3.15_intel21_impi21           atomistic/siesta/4.1.5_intel21
+	atomistic/espresso/6.4_intel18_seq            atomistic/siesta/4.1.5_intel21_impi21
+	atomistic/espresso/6.4_intel18_thd            atomistic/siesta/4.1.5_psml_intel21
+	atomistic/espresso/6.8_intel21                atomistic/vasp/5.4.4_intel18_seq
+	atomistic/espresso/6.8_intel21_impi21         atomistic/vasp/5.4.4_intel18_thd
+	atomistic/gaussian/g16                        atomistic/vasp/5.4.4_intel19_seq
+	atomistic/gaussian/g16_rev1                   atomistic/vasp/5.4.4_intel19_thd
+	atomistic/gromacs/2016.6_gcc48_cuda10         atomistic/vasp/6.2.1_intel19
+	atomistic/gromacs/2021.3_double_intel21       atomistic/vasp/6.2.1_intel21
+	atomistic/gromacs/2021.3_intel21              atomistic/vasp/6.2.1_intel21_impi21
+	atomistic/gromacs/2021.4_gcc93_ompi411        atomistic/vasp/6.2.1_intel21_impi21_prereq
+	atomistic/gromacs/2021.4_gcc93_ompi411_cuda11 atomistic/wannier90/1.2_gcc93
+	atomistic/gromacs/5.1.5_cuda10                atomistic/wannier90/2.1.0_gcc82
+	atomistic/gromacs/5.1.5_double_intel18        atomistic/wannier90/2.1.0_gcc93
+	atomistic/gromacs/5.1.5_intel18               atomistic/wannier90/3.1.0_gcc82
+	atomistic/gromacs/5.1.5_intel19               atomistic/wannier90/3.1.0_gcc93
+	atomistic/lammps/2020.10.29_gcc93_mpic341     atomistic/wannier90/3.1.0_intel19
+	atomistic/mesmer/6.0_gcc93                    atomistic/wannier90/3.1.0_intel21
+	atomistic/mesmer/6.0_intel19
+
+Modules for Intel Compilers, Math and Parallel Libraries
+--------------------------------------------------------
+
+::
+
+	------------------------------ /shared/modulefiles/intel -------------------------------
+	advisor/2021.2.0             dnnl/latest                  intel_ipp_ia32/latest
+	advisor/2021.4.0             dnnl-cpu-gomp/2021.2.0       intel_ipp_intel64/2021.2.0
+	advisor/latest               dnnl-cpu-gomp/2021.4.0       intel_ipp_intel64/2021.4.0
+	ccl/2021.2.0                 dnnl-cpu-gomp/latest         intel_ipp_intel64/latest
+	ccl/2021.4.0                 dnnl-cpu-iomp/2021.2.0       itac/2021.4.0
+	ccl/latest                   dnnl-cpu-iomp/2021.4.0       itac/latest
+	clck/2021.4.0                dnnl-cpu-iomp/latest         mkl/2021.2.0
+	clck/latest                  dnnl-cpu-tbb/2021.2.0        mkl/2021.4.0
+	compiler/2021.2.0            dnnl-cpu-tbb/2021.4.0        mkl/latest
+	compiler/2021.4.0            dnnl-cpu-tbb/latest          mkl32/2021.2.0
+	compiler/latest              dpct/2021.2.0                mkl32/2021.4.0
+	compiler32/2021.2.0          dpct/2021.4.0                mkl32/latest
+	compiler32/2021.4.0          dpct/latest                  mpi/2021.2.0
+	compiler32/latest            dpl/2021.2.0                 mpi/2021.4.0
+	compiler-rt/2021.2.0         dpl/2021.5.0                 mpi/latest
+	compiler-rt/2021.4.0         dpl/latest                   oclfpga/2021.2.0
+	compiler-rt/latest           icc/2021.4.0                 oclfpga/2021.4.0
+	compiler-rt32/2021.2.0       icc/latest                   oclfpga/latest
+	compiler-rt32/2021.4.0       icc32/2021.4.0               tbb/2021.2.0
+	compiler-rt32/latest         icc32/latest                 tbb/2021.4.0
+	dal/2021.2.0                 init_opencl/2021.2.0         tbb/latest
+	dal/2021.4.0                 init_opencl/2021.4.0         tbb32/2021.2.0
+	dal/latest                   init_opencl/latest           tbb32/2021.4.0
+	debugger/10.1.1              inspector/2021.4.0           tbb32/latest
+	debugger/10.2.4              inspector/latest             vpl/2021.2.2
+	debugger/latest              intel_ippcp_ia32/2021.4.0    vpl/2021.6.0
+	dev-utilities/2021.2.0       intel_ippcp_ia32/latest      vpl/latest
+	dev-utilities/2021.4.0       intel_ippcp_intel64/2021.4.0 vtune/2021.2.0
+	dev-utilities/latest         intel_ippcp_intel64/latest   vtune/2021.7.1
+	dnnl/2021.2.0                intel_ipp_ia32/2021.2.0      vtune/latest
+	dnnl/2021.4.0                intel_ipp_ia32/2021.4.0
+
+
