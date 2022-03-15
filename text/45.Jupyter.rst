@@ -12,7 +12,7 @@ A Jupyter Notebook can be converted to a number of open standard output formats 
 Open On-Demand
 --------------
 
-Enter on the webpage `https://ondemand-tf.hpc.wvu.edu <https://ondemand-tf.hpc.wvu.edu>`_ 
+Enter on the webpage:  `https://ondemand-tf.hpc.wvu.edu <https://ondemand-tf.hpc.wvu.edu>`_ 
 
 In the menu "Interactive Apps" select "Jupyter Notebook".
 There are several versions of Python that can be selected.
@@ -23,7 +23,7 @@ Install the Julia kernel
 
 Load the module for julia::
 
-    $> module load lang/julia
+    $> module load lang/gcc/11.2.0 lang/julia
 
 Enter in julia::
 
@@ -41,7 +41,18 @@ Enter in julia::
 
 Execute the following commands to install the package IJulia, the Jupyter kernel for the julia language::
 
-	using Pkg
-	Pkg.add("IJulia")
+	julia> using Pkg
+	julia> Pkg.add("IJulia")
+
+After installing the IJulia package, the next time you enter in Open-On Demand and create a new intereactive job.
+Select the checkbox under "Additional Jupyter kernels (Julia, R)" to ensure that the modules for julia are loaded.
+
+
+Alternative languages on Jupyter Notebooks
+------------------------------------------
+
+Python is the natural language on Jupyter Notebooks. There are alternative languages that can be used. 
+Two languages are R and Julia.
+Select "Additional Jupyter kernels (Julia, R)" in the formulary to create a new interactive job.
 
 
