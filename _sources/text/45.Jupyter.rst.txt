@@ -3,6 +3,45 @@
 Jupyter Notebooks
 =================
 
-A Jupyter Notebook (formerly IPython Notebooks) is a web-based interactive computational environment for creating Jupyter notebook documents. The "notebook" term can colloquially make reference to many different entities, mainly the Jupyter web application, Jupyter Python web server, or Jupyter document format depending on context. A Jupyter Notebook document is a JSON document, following a versioned schema, and containing an ordered list of input/output cells which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the ".ipynb" extension.
+A Jupyter Notebook (formerly IPython Notebooks) is a web-based interactive computational environment for creating Jupyter notebook documents. 
+The "notebook" term can colloquially make reference to many different entities, mainly the Jupyter web application, Jupyter Python web server, or Jupyter document format depending on context. 
+A Jupyter Notebook document is a JSON document, following a versioned schema, and containing an ordered list of input/output cells which can contain code, text (using Markdown), mathematics, plots and rich media, usually ending with the ".ipynb" extension.
 
 A Jupyter Notebook can be converted to a number of open standard output formats (HTML, presentation slides, LaTeX, PDF, ReStructuredText, Markdown, Python) through "Download As" in the web interface, via the nbconvert library or "jupyter nbconvert" command line interface in a shell.
+
+Open On-Demand
+--------------
+
+Enter on the webpage `https://ondemand-tf.hpc.wvu.edu <https://ondemand-tf.hpc.wvu.edu>`_ 
+
+In the menu "Interactive Apps" select "Jupyter Notebook".
+There are several versions of Python that can be selected.
+On the same form you can select to use the traditiona "Jupyter Notebooks" or the new "JupyterLab" interface.
+
+Install the Julia kernel
+------------------------
+
+Load the module for julia::
+
+    $> module load lang/julia
+
+Enter in julia::
+
+	$> julia
+				   _
+	   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+	  (_)     | (_) (_)    |
+	   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+	  | | | | | | |/ _` |  |
+	  | | |_| | | | (_| |  |  Version 1.7.1 (2021-12-22)
+	 _/ |\__'_|_|_|\__'_|  |  
+	|__/                   |
+
+	julia> 
+
+Execute the following commands to install the package IJulia, the Jupyter kernel for the julia language::
+
+	using Pkg
+	Pkg.add("IJulia")
+
+
