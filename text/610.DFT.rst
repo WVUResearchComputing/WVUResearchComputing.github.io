@@ -536,7 +536,8 @@ Run the configure script::
 	--with-boost=/shared/software/libs/boost/1.78_gcc93 \
 	--with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
 	CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS="-g -traceback -heap-arrays 1 -O2 -fp-model=precise"
-  $
+
+
 Compile the code using 12 compilation threads::
 
     $> make -j 12
