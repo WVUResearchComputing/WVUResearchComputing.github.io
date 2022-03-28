@@ -3,7 +3,7 @@
 Introduction
 ############
 
-The contents of this documentation are mostly focused on our High-Performance Computing (HPC) Clusters at West Virginia University Research Computing (WVU-RC). However, WVU-RC offers a variety of technologies and services beyond HPC, the :ref:`chap-introduction` chapter summarizes those services and the policies regarding its usage.
+The contents of this documentation are mostly focused on our High-Performance Computing (HPC) Clusters at West Virginia University Research Computing (WVU-RC). However, WVU-RC offers a variety of technologies and services beyond HPC, the :ref:`chap-introduction` chapter summarizes those services and the policies regarding its usage. Purchasing nodes is also possible and described.
 
 First-time users should go to :ref:`chap-quick-start`. This chapter is presented as a tutorial where the basic elements of using a computer cluster are presented and guide the user step by step from getting an account to submit a job and take the results back to his/her own desktop computer.
 
