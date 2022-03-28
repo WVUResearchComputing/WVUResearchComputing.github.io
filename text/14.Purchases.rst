@@ -20,10 +20,10 @@ NOTE: Please contact us for a quote on your configuration to ensure accurate pri
 
 Non-GPU Compute Nodes - 
 
- * Small Memory - 92GB - 
- * Medium Memory - 192GB - 
- * Large Memory - 384GB - 
- * Extra Large Memory - 768GB - 
+ * Small Memory - 92GB - $7500 approx 
+ * Medium Memory - 192GB - $8500 approx
+ * Large Memory - 384GB - $9500 approx
+ * Extra Large Memory - 768GB - $10500 approx
 
 Dolly Sods Phase 0
 ------------------
@@ -31,10 +31,10 @@ Dolly Sods Phase 0
 GPU Capable Compute Nodes (Up to 8 GPUs per Node) will go into our upomming GPU cluster Dolly Sods to be provisioned at the end of 2022.
 Specifications are changing, the compute node could be similar in memory configurations to those in Thorny Flat. 
 
- * Small Memory - 92GB - 
- * Medium Memory - 192GB - 
- * Large Memory - 384GB - 
- * Extra Large Memory - 768GB - 
+ * Small Memory - 92GB - $7500 approx
+ * Medium Memory - 192GB - $8500 approx
+ * Large Memory - 384GB - $9500 approx
+ * Extra Large Memory - 768GB - $10500 approx
 
 GPU Cards - The configurations above do not include GPU cards. Listed below is the cost per GPU card.  Consumer cards are no longer an option for use in datacenter systems, and server grade GPUs from the Nvidia Ampere Series listed below are available in limited configurations due to supply chain.  Contact us if you’re interested in pricing out a GPU node.
 
