@@ -724,17 +724,16 @@ $&gt; module load dft_intel21
 </pre></div>
 </div>
 <p>Run the configure script:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      MKL=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MKL=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl&quot;
 
-      ../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
-      --with-blas=&quot;${MKL}&quot; \
-      --with-lapack=&quot;${MKL}&quot; \
-      --enable-mpi \
-      --with-libxc-prefix=$MD_LIBXC \
-      --with-boost=/shared/software/libs/boost/1.78_gcc93 \
-      --with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
-      CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS=&quot;-g -traceback -heap-arrays 1 -O2 -fp-model=precise&quot;
-$
+../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+--with-blas=&quot;${MKL}&quot; \
+--with-lapack=&quot;${MKL}&quot; \
+--enable-mpi \
+--with-libxc-prefix=$MD_LIBXC \
+--with-boost=/shared/software/libs/boost/1.78_gcc93 \
+--with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
+CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS=&quot;-g -traceback -heap-arrays 1 -O2 -fp-model=precise&quot;
 </pre></div>
 </div>
 <p>Compile the code using 12 compilation threads:</p>
