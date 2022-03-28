@@ -1,0 +1,71 @@
+.. _int-purchases:
+
+
+Purchasing Compute Nodes
+========================
+
+The West Virginia University HPC systems allow users to purchase dedicated compute node capacity for their groups. 
+At present the following options are available for purchase. 
+For questions or to purchase nodes please contact `helpdesk@hpc.wvu.edu <mailto:helpdesk@hpc.wvu.edu>`_ . 
+For information on data storage options please visit :ref:`Storage <qs-storage>`:
+
+Thorny Flat Phase 3
+-------------------
+
+Phase 3 Thorny Flat nodes could be installed at the end of 2022.  The available configurations are as follows:
+
+  **NOTE: Due to challenges in manufacturing and availability, GPU and compute configurations have been experiencing very long lead times, price fluctuation, and unexpectedly discontinued or unavailable products.  Please continue to contact us with requests for resources and we will work with our vendor to provide approximate times and configuration availability.  Due to constraints imposed by NVIDIA and integrators, consumer GPUs, are not available for purchase and installation on DataCenters.**
+
+NOTE: Please contact us for a quote on your configuration to ensure accurate pricing.
+
+Non-GPU Compute Nodes - 
+
+ * Small Memory - 92GB - 
+ * Medium Memory - 192GB - 
+ * Large Memory - 384GB - 
+ * Extra Large Memory - 768GB - 
+
+Dolly Sods Phase 0
+------------------
+
+GPU Capable Compute Nodes (Up to 8 GPUs per Node) will go into our upomming GPU cluster Dolly Sods to be provisioned at the end of 2022.
+Specifications are changing, the compute node could be similar in memory configurations to those in Thorny Flat. 
+
+ * Small Memory - 92GB - 
+ * Medium Memory - 192GB - 
+ * Large Memory - 384GB - 
+ * Extra Large Memory - 768GB - 
+
+GPU Cards - The configurations above do not include GPU cards. Listed below is the cost per GPU card.  Consumer cards are no longer an option for use in datacenter systems, and server grade GPUs from the Nvidia Ampere Series listed below are available in limited configurations due to supply chain.  Contact us if you’re interested in pricing out a GPU node.
+
+ * Nvidia A10 24GB - $2,800 approx
+ * Nvidia A30 24GB - $3,200 approx
+ * Nvidia A40 48GB - $3,700 approx
+ * Nvidia A100 40GB - $7,300 now discontinued by Nvidia, no longer available.
+ * Nvidia A100 80GB - $9,700 approx 
+
+How long will my compute node be available? 
+-------------------------------------------
+
+All HPC compute nodes are purchased with a five year warranty. Compute nodes will be allowed to run for up to 7 years within the following parameters:
+
+ * The final two years of the compute node life are outside warranty and are on a best effort basis.
+
+ * If software/OS can no longer support compute equipment prior to the end of its 7 year life the HPC team may, in consultation with the HPC Policy Committee, determine that the life of compute equipment is shorter than 7 years. Should this occur the HPC team will strive to provide at least six months of notice to the HPC community before equipment is decommissioned.
+
+ * In the event that compute nodes fail outside of warranty they will not be repaired. The HPC team will attempt to keep investor queues at the purchased capacity, to the extent possible, based on the following process and guidelines.
+
+    * Investor compute nodes that fail out of warranty will be replaced with compute nodes from the UI queue within the same generation of hardware.
+
+    * When possible compute nodes will be replaced with same or higher specification hardware. This will not be possible in all cases. In cases where this is not possible the investor will be contacted by the HPC team with available options.
+
+    * Transfer of compute nodes from the UI queue to investor queues will occur in the order in which failures occur.
+
+    * UI queue compute node availability is finite and is unlikely to be able to sustain all investor queues at full capacity for a 7 year life. As such investors should not assume that their queue will remain at full capacity for the duration of the two year life outside of warranty.
+                                         
+
+Renting Compute Nodes
+---------------------
+
+HPC node rentals are not available at them moment 
+
