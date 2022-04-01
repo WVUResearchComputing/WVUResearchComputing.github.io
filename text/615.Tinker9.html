@@ -194,7 +194,7 @@
   <div class="section" id="tinker9">
 <h1>Tinker9<a class="headerlink" href="#tinker9" title="Permalink to this headline">¶</a></h1>
 <p>Tinker9 is a complete rewrite and extension of the canonical Tinker software, currently Tinker8. Tinker9 is implemented as C++ code with OpenACC directives and CUDA kernels providing excellent performance on GPUs. At present, Tinker9 builds against the object library from Tinker8, and provides GPU versions of the Tinker ANALYZE, BAR, DYNAMIC, MINIMIZE and TESTGRAD programs. Existing Tinker file formats and force field parameter files are fully compatible with Tinker9, and nearly all Tinker8 keywords function identically in Tinker9. Over time we plan to port much or all of the remaining portions of Fortran Tinker8 to the C++ Tinker9 code base.</p>
-<p>These instructions compile tinker9 on Thorny Flat with GPU support for the particular GPU cards present on this cluster.</p>
+<p>These instructions describe how tinker9 was compiled on Thorny Flat with GPU support for the particular GPU cards present on this cluster.</p>
 <div class="section" id="clone-the-repository">
 <h2>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h2>
 <p>Tinker9 sources are on Github and uses submodules. This command will download the latest version and the submodules:</p>
@@ -228,7 +228,10 @@ These are the modules loaded for compiling tinker9:</p>
 <h2>Configuring tinker9<a class="headerlink" href="#configuring-tinker9" title="Permalink to this headline">¶</a></h2>
 <p>Configuring a code with cmake will prepare the sources, and create the Makefiles for building the binaries using the compilers and libraries declared with the arguments presented to cmake.
 The cmake line used was this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cmake -DCMAKE_Fortran_COMPILER=gfortran -DCUDA_DIR=${CUDA_HOME} -DCMAKE_CUDA_COMPILER=`which nvcc` -DCOMPUTE_CAPABILITY=61,75,80 -Wno-dev ..
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cmake -DCUDA_DIR=${CUDA_HOME} -DCOMPUTE_CAPABILITY=61,75,80 \
+-DCMAKE_Fortran_COMPILER=gfortran -DCMAKE_BUILD_TYPE=release \
+-DCMAKE_INSTALL_PREFIX=/shared/software/atomistic/tinker9 \
+-DCMAKE_CUDA_COMPILER=`which nvcc` -Wno-dev ..
 </pre></div>
 </div>
 <p>The CUDA compute capabilities can be found on  <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">CUDA Website</a>
