@@ -267,7 +267,7 @@ The compute capbabilities for these cards are:</p>
 <div class="section" id="running-the-tests">
 <h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
 <p>To run the tests lauch and interactive job on a queue allowing GPUs:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -l nodes=1:ppn=8:gpus=2 -q be_gpu -I
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -l nodes=1:ppn=16:gpus=2 -q be_gpu
 </pre></div>
 </div>
 <p>Go to the build folder and check the GPU present on the node:</p>
