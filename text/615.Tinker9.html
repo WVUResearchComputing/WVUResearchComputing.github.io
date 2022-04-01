@@ -198,7 +198,7 @@
 <div class="section" id="clone-the-repository">
 <h2>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h2>
 <p>Tinker9 sources are on Github and uses submodules. This command will download the latest version and the submodules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt;  git clone --recurse-submodules https://github.com/TinkerTools/tinker9.git
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; git clone --recurse-submodules https://github.com/TinkerTools/tinker9.git
 </pre></div>
 </div>
 </div>
@@ -270,9 +270,9 @@ The compute capbabilities for these cards are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -l nodes=1:ppn=8:gpus=2 -q be_gpu -I
 </pre></div>
 </div>
-<p>Go to the build folder and load the modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; $ cd /shared/src/tinker9/build
-$ nvidia-smi
+<p>Go to the build folder and check the GPU present on the node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd /shared/src/tinker9/build
+$&gt; nvidia-smi
 Fri Apr  1 12:35:39 2022
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
@@ -363,8 +363,6 @@ Filters: info
 ===============================================================================
 test cases: 1 | 1 passed
 assertions: - none -
-
-Filters: [ff],[util]
 
 Filters: [ff],[util]
 
