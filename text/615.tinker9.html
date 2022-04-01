@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tinker9 &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tinker9</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/615.tinker9.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tinker9">
+<h1>Tinker9<a class="headerlink" href="#tinker9" title="Permalink to this headline">¶</a></h1>
+<p>Tinker9 is a complete rewrite and extension of the canonical Tinker software, currently Tinker8. Tinker9 is implemented as C++ code with OpenACC directives and CUDA kernels providing excellent performance on GPUs. At present, Tinker9 builds against the object library from Tinker8, and provides GPU versions of the Tinker ANALYZE, BAR, DYNAMIC, MINIMIZE and TESTGRAD programs. Existing Tinker file formats and force field parameter files are fully compatible with Tinker9, and nearly all Tinker8 keywords function identically in Tinker9. Over time we plan to port much or all of the remaining portions of Fortran Tinker8 to the C++ Tinker9 code base.</p>
+<p>These instructions compile tinker9 on Thorny Flat with GPU support for the particular GPU cards present on this cluster.</p>
+<div class="section" id="clone-the-repository">
+<h2>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>Tinker9 sources are on Github and uses submodules. This command will download the latest version and the submodules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt;  git clone --recurse-submodules https://github.com/TinkerTools/tinker9.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-build-folder">
+<h2>Create a build folder<a class="headerlink" href="#create-a-build-folder" title="Permalink to this headline">¶</a></h2>
+<p>It is a best practice to use a separate build folder to compile the code. The sources remain untouched and it is easy to just remove the content of the folder and recompile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd tinker9
+$&gt; mkdir build
+$&gt; cd build
+</pre></div>
+</div>
+</div>
+<div class="section" id="modules-for-compilation">
+<h2>Modules for compilation<a class="headerlink" href="#modules-for-compilation" title="Permalink to this headline">¶</a></h2>
+<p>Tinker9 uses cmake for building the software.
+The version of cmake on RHEL 7.x is usually too old so it is a good idea to load a more recent version.
+RHEL 7.x comes with cmake version 2.8.12.2 and the CMakeLists request the minimal version being 3.12.</p>
+<p>Tinker9 is implemented as C++ and takes advantage of GPUs via OpenACC directives and CUDA programming.
+The natural compiler for a code that uses OpenACC is NVIDIA HPC suite as OpenACC is better implemented.
+For the CUDA side the latest version of the CUDA Toolkit at the time of writing this (April 2022) is CUDA 11.5.
+These are the modules loaded for compiling tinker9:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load dev/cmake/3.21.1 dev/git/2.29.1 lang/nvidia/nvhpc/21.11 parallel/cuda/11.5
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-tinker9">
+<h2>Configuring tinker9<a class="headerlink" href="#configuring-tinker9" title="Permalink to this headline">¶</a></h2>
+<p>Configuring a code with cmake will prepare the sources, and create the Makefiles for building the binaries using the compilers and libraries declared with the arguments presented to cmake.
+The cmake line used was this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cmake -DCMAKE_Fortran_COMPILER=gfortran -DCUDA_DIR=${CUDA_HOME} -DCMAKE_CUDA_COMPILER=`which nvcc` -DCOMPUTE_CAPABILITY=61,75,80 -Wno-dev ..
+</pre></div>
+</div>
+<p>The CUDA compute capabilities can be found on  <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">CUDA Website</a>
+For the particular case of Thorny Flat, we have 3 kinds of GPUs: P6000 RTX6000 and A100.
+The compute capbabilities for these cards are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">GPU Model</th>
+<th class="head">Compute Capability</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Quadro P6000</td>
+<td>61</td>
+</tr>
+<tr class="row-odd"><td>Quadro RTX 6000</td>
+<td>75</td>
+</tr>
+<tr class="row-even"><td>NVIDIA A100</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<p>After configuring the code execute make with a reasonable number of compilation threads. On the head node of Thorny Flat we have 24 cores, using 12 compilation threads is reasonable and the code will compile relatively fast:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make -j12
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-the-tests">
+<h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
+<p>To run the tests lauch and interactive job on a queue allowing GPUs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -l nodes=1:ppn=8:gpus=2 -q be_gpu -I
+</pre></div>
+</div>
+<p>Go to the build folder and load the modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; $ cd /shared/src/tinker9/build
+$ nvidia-smi
+Fri Apr  1 12:35:39 2022
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     Off  | 00000000:C1:00.0 Off |                    0 |
+| N/A   25C    P8    14W / 250W |      0MiB / 22698MiB |      0%   E. Process |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  Quadro RTX 6000     Off  | 00000000:C2:00.0 Off |                    0 |
+| N/A   25C    P8    15W / 250W |      0MiB / 22698MiB |      0%   E. Process |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+<p>Load the modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load dev/cmake/3.21.1 dev/git/2.29.1 lang/nvidia/nvhpc/21.11 parallel/cuda/11.5
+</pre></div>
+</div>
+<p>Execute the test suite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make test
+[ 69%] Built target tinkerObjF
+[ 69%] Built target tinkerObjCpp
+[ 69%] Built target tinkerFToCpp
+[ 83%] Built target tinker9_cpp
+[ 88%] Built target __t9_all_tests_o
+[ 89%] Built target tinker9_f
+[ 89%] Built target tinker9_version
+[ 97%] Built target tinker9_acc
+[100%] Built target tinker9_cu
+[100%] Built target all.tests
+Filters: info
+ Primary GPU package :  CUDA
+
+ GPU Device :  Setting Device ID to 0 from GPU utilization
+
+
+ Program Information
+
+        Version:                             1.0.0 GIT 1e34a417
+        Synchronized with Tinker commit:     5aa9948d
+        C++ compiler:                        nvc++ 21.11.0
+        Size of real (bytes):                4
+        Size of mixed (bytes):               8
+        Using deterministic force:           true
+        Debug mode:                          off
+        Platform:                            CUDA and OpenACC
+        Primary GPU package:                 CUDA
+        Latest CUDA supported by driver:     11.5
+        CUDA runtime version:                11.5
+        Thrust version:                      1.13.1 patch 0
+        CUDA compiler:                       nvcc 11.5.119
+        OpenACC compiler:                    nvc++ 21.11.0
+        GPU detected:                        2
+        GPU 0:
+           PCI:                              0000:C1:00.0
+           Name:                             Quadro RTX 6000
+           Maximum compute capability:       7.5
+           Single double perf. ratio:        32
+           Compute mode:                     exclusive process
+           Error-correcting code (ECC):      on
+           Clock rate (kHz):                 1620000
+           Number of Multiprocessors:        72
+           Number of CUDA cores:             9216
+           Used/Total GPU memory:            0.79 % / 22.17 GB
+        GPU 1:
+           PCI:                              0000:C2:00.0
+           Name:                             Quadro RTX 6000
+           Maximum compute capability:       7.5
+           Single double perf. ratio:        32
+           Compute mode:                     exclusive process
+           Error-correcting code (ECC):      on
+           Clock rate (kHz):                 1620000
+           Number of Multiprocessors:        72
+           Number of CUDA cores:             9216
+           Used/Total GPU memory:            0.79 % / 22.17 GB
+===============================================================================
+test cases: 1 | 1 passed
+assertions: - none -
+
+Filters: [ff],[util]
+
+
+Filters: [ff],[util]
+
+         ######################################################################
+   ##########################################################################
+  ###                                                                      ###
+ ###            Tinker9  --  Software Tools for Molecular Design            ###
+ ##                                                                          ##
+ ##                      Version 1.0.0-rc  January 2021                      ##
+ ##                                                                          ##
+ ##                 Copyright (c)  Zhi Wang &amp; the Ponder Lab                 ##
+ ###                           All Rights Reserved                          ###
+  ###                                                                      ###
+   ##########################################################################
+         ######################################################################
+
+ Compiled at:  12:18:38  Apr  1 2022
+ Commit Date:  Fri Apr 1 04:23:24 2022 -0500
+ Commit:       1e34a417
+
+ Primary GPU package :  CUDA
+
+ GPU Device :  Setting Device ID to 0 from GPU utilization
+
+...
+...
+...
+
+===============================================================================
+All tests passed (65640 assertions in 58 test cases)
+
+[100%] Built target test
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
