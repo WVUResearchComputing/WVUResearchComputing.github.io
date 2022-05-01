@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Perl Language &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parallel Programming: OpenMP" href="507.OpenMP.html" />
+    <link rel="prev" title="MATLAB" href="505.Matlab.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="500.ProgrammingLanguages.html">Programming Languages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="501.Fortran_C_CPP.html">Fortran, C and C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="502.Python.html">Python Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="503.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="504.Julia.html">Julia Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="505.Matlab.html">MATLAB</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Perl Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-cpan-module">Using the CPAN module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-the-cpan-shell">Preparing the CPAN Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-perl-modules">Installing Perl modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="507.OpenMP.html">Parallel Programming: OpenMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="508.MPI.html">Parallel Programming: MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="509.OpenACC.html">Parallel Programming: OpenACC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="510.CUDA.html">Parallel Programming: CUDA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="500.ProgrammingLanguages.html">Programming Languages</a> &raquo;</li>
+        
+      <li>Perl Language</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/506.Perl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="perl-language">
+<span id="pl-perl"></span><h1>Perl Language<a class="headerlink" href="#perl-language" title="Permalink to this headline">¶</a></h1>
+<p>Perl stands in for “Practical Extraction and Reporting Language” even though there is no authorized acronym for Perl.
+Perl was created by Larry Wall in 1987 when he was employed on a bug reporting system and “AWK”- a programming language he was using for the purpose was not helping him much. He is still the chief architect and developer of Perl. If we want to define Perl in one sentence: Perl is a high-level, interpreted, dynamic programming language.</p>
+<p>Perl is a programming language specially designed for text editing.
+It is now widely used for a variety of purposes including Linux system administration, network programming, web development, etc.
+In scientific computing, Perl is particularly used in Bioinformatics</p>
+<p>Advances in biology have generated an ocean of data that needs careful computational analysis to extract useful information. Bioinformatics uses computation and mathematics to interpret biological data, such as DNA sequence, protein sequence, or three-dimensional structures, and depends on the ability to integrate data of various types. The Perl language is well suited to this purpose.</p>
+<p>An important practical skill in bioinformatics is the ability to quickly develop scripts (short programs) for scanning or transforming large amounts of data. Perl is an excellent language for scripting, because of its compact syntax, broad array of functions, and data orientation. The following are a few of the attributes of Perl that make it an attractive choice.</p>
+<ul class="simple">
+<li>Perl provides powerful ways to match and <strong>manipulate strings through the use of regular expressions</strong>. Changing file formats from one to another is a matter of contorting strings as required.</li>
+<li><strong>Modularity</strong> that makes it easy to write programs as libraries (called modules).</li>
+<li>Perl system calls and pipes can be used to incorporate <strong>external programs</strong>.</li>
+<li>Dynamic loaders of Perl that help <strong>extend Perl with programs written in C</strong> as well as create compiled libraries that can be interpreted by the Perl interpreter.</li>
+<li><strong>Perl is a good prototyping language</strong> and is easy to code. New algorithms can be easily tested in Perl before using a rigorous language.</li>
+</ul>
+<div class="section" id="using-the-cpan-module">
+<h2>Using the CPAN module<a class="headerlink" href="#using-the-cpan-module" title="Permalink to this headline">¶</a></h2>
+<p>The CPAN module automates or at least simplifies the make and install of perl modules and extensions. It includes some primitive searching capabilities and knows how to use LWP, <a class="reference external" href="HTTP::Tiny">HTTP::Tiny</a>, Net::FTP and certain external download clients to fetch distributions from the net.</p>
+<p>These are fetched from one or more mirrored CPAN (Comprehensive Perl Archive Network) sites and unpacked in a dedicated directory.</p>
+<p>The CPAN module also supports named and versioned bundles of modules. Bundles simplify handling of sets of related modules. See Bundles below.</p>
+<p>The package contains a session manager and a cache manager. The session manager keeps track of what has been fetched, built, and installed in the current session. The cache manager keeps track of the disk space occupied by the make processes and deletes excess space using a simple FIFO mechanism.</p>
+<p>All methods provided are accessible in a programmer style and in an interactive shell style.</p>
+<p>Users can install their own modules from the head node and they will be installed on the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder for usage later on any compute node.</p>
+</div>
+<div class="section" id="preparing-the-cpan-shell">
+<h2>Preparing the CPAN Shell<a class="headerlink" href="#preparing-the-cpan-shell" title="Permalink to this headline">¶</a></h2>
+<p>Enter interactive mode by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">perl</span> <span class="o">-</span><span class="n">MCPAN</span> <span class="o">-</span><span class="n">e</span> <span class="n">shell</span>
+</pre></div>
+</div>
+<p>or directly by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cpan</span>
+</pre></div>
+</div>
+<p>If this is the first time you are configuring the shell, you will be greeted with a message like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CPAN.pm requires configuration, but most of it can be done automatically.
+If you answer &#39;no&#39; below, you will enter an interactive dialog for each
+configuration option instead.
+
+Would you like to configure as much as possible automatically? [yes]
+</pre></div>
+</div>
+<p>You can continue with the automatic configuration, suitable for most users.
+Next you will see this warning and message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Warning: You do not have write permission for Perl library directories.
+
+To install modules, you need to configure a local Perl library directory or
+escalate your privileges.  CPAN can help you by bootstrapping the local::lib
+module or by configuring itself to use &#39;sudo&#39; (if available).  You may also
+resolve this problem manually if you need to customize your setup.
+
+What approach do you want?  (Choose &#39;local::lib&#39;, &#39;sudo&#39; or &#39;manual&#39;)
+ [local::lib]
+</pre></div>
+</div>
+<p>Normal users are not allowed to add, delete or change files on system folders.
+The warning is telling you that. On a cluster, as normal user the best choice is to use <code class="docutils literal notranslate"><span class="pre">[local::lib]</span></code> as it will write all the files on folders in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>. The folders are <code class="docutils literal notranslate"><span class="pre">$HOME/.cpan</span></code> and <code class="docutils literal notranslate"><span class="pre">$HOME/perl5</span></code>.</p>
+<p>The next message is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Autoconfigured everything but &#39;urllist&#39;.
+
+Now you need to choose your CPAN mirror sites.  You can let me
+pick mirrors for you, you can select them from a list or you
+can enter them by hand.
+
+Would you like me to automatically choose some CPAN mirror
+sites for you? (This means connecting to the Internet) [yes]
+</pre></div>
+</div>
+<p>You can select yes to this question and you will be directed to one of the mirrors for CPAN. At WVU we have one mirror that can be used instead.
+If you want to use it, answer no to the question and add the mirror as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Would you like me to automatically choose some CPAN mirror
+sites for you? (This means connecting to the Internet) [yes] no
+
+Would you like to pick from the CPAN mirror list? [yes] no
+Now you can enter your own CPAN URLs by hand. A local CPAN mirror can be
+listed using a &#39;file:&#39; URL like &#39;file:///path/to/cpan/&#39;
+
+CPAN.pm needs at least one URL where it can fetch CPAN files from.
+
+Please enter your CPAN site: [] http://fireball-public.phys.wvu.edu/mirror/CPAN/
+Enter another URL or ENTER to quit: []
+New urllist
+  http://fireball-public.phys.wvu.edu/mirror/CPAN/
+</pre></div>
+</div>
+<p>The next message is about add some lines to your .bashrc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>local::lib is installed. You must now add the following environment variables
+to your shell configuration files (or registry, if you are on Windows) and
+then restart your command line shell and CPAN before installing modules:
+
+PATH=&quot;/users/username/perl5/bin${PATH:+:${PATH}}&quot;; export PATH;
+PERL5LIB=&quot;/users/username/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}&quot;; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT=&quot;/users/username/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}&quot;; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT=&quot;--install_base \&quot;/users/username/perl5\&quot;&quot;; export PERL_MB_OPT;
+PERL_MM_OPT=&quot;INSTALL_BASE=/users/username/perl5&quot;; export PERL_MM_OPT;
+
+Would you like me to append that to /users/username/.bashrc now? [yes]
+</pre></div>
+</div>
+<p>Answering yes, will add those lines to your .bashrc, something that you can later edit directly.</p>
+<p>Finally, you get into the shell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ommit</span><span class="p">:</span> <span class="n">wrote</span> <span class="s1">&#39;/users/gufranco/.cpan/CPAN/MyConfig.pm&#39;</span>
+
+<span class="n">You</span> <span class="n">can</span> <span class="n">re</span><span class="o">-</span><span class="n">run</span> <span class="n">configuration</span> <span class="nb">any</span> <span class="n">time</span> <span class="k">with</span> <span class="s1">&#39;o conf init&#39;</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">CPAN</span> <span class="n">shell</span>
+<span class="n">Terminal</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">AddHistory</span><span class="o">.</span>
+
+<span class="n">cpan</span> <span class="n">shell</span> <span class="o">--</span> <span class="n">CPAN</span> <span class="n">exploration</span> <span class="ow">and</span> <span class="n">modules</span> <span class="n">installation</span> <span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="mi">9800</span><span class="p">)</span>
+<span class="n">Enter</span> <span class="s1">&#39;h&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span>
+
+<span class="n">cpan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-perl-modules">
+<h2>Installing Perl modules<a class="headerlink" href="#installing-perl-modules" title="Permalink to this headline">¶</a></h2>
+<p>The Comprehensive Perl Archive Network (CPAN) currently has more than 180000 Perl modules and you can install those for your own usage without requesting global installation on the cluster.</p>
+<p>For example, lets assume that you want to install <code class="docutils literal notranslate"><span class="pre">Math::EllipticCurve::Prime</span></code> a package for elliptic curves over a prime field.
+Log into the CPAN shell and execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">capn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">install</span> <span class="n">Math</span><span class="p">::</span><span class="n">EllipticCurve</span><span class="p">::</span><span class="n">Prime</span>
+</pre></div>
+</div>
+<p>After installation you will see a message and your prompt is returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Appending</span> <span class="n">installation</span> <span class="n">info</span> <span class="n">to</span> <span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">perl5</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">perl5</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">multi</span><span class="o">/</span><span class="n">perllocal</span><span class="o">.</span><span class="n">pod</span>
+<span class="n">BRIANC</span><span class="o">/</span><span class="n">Math</span><span class="o">-</span><span class="n">EllipticCurve</span><span class="o">-</span><span class="n">Prime</span><span class="o">-</span><span class="mf">0.003</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">make</span> <span class="n">install</span>  <span class="o">--</span> <span class="n">OK</span>
+
+<span class="n">cpan</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="507.OpenMP.html" class="btn btn-neutral float-right" title="Parallel Programming: OpenMP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="505.Matlab.html" class="btn btn-neutral float-left" title="MATLAB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

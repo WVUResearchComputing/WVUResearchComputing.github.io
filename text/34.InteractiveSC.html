@@ -108,8 +108,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#rstudio">RStudio</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#the-file-manager">The File manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#matlab">MATLAB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager">File Manager</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#job-manager">Job manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-composer">Job composer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#terminal">Terminal</a></li>
 </ul>
 </li>
@@ -118,7 +120,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="50.ProgrammingLanguages.html">Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="500.ProgrammingLanguages.html">Programming Languages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
@@ -223,18 +225,18 @@ For example if you want to use one GPU card for your execution use:</p>
 </div>
 <p>After you submit your request for interactive jobs, you will have to wait a few minutes before you are assigned a compute node. After getting access to the compute node, you can load modules and execute commands as you were on a machine. There are several text-based environments for interactive computing.</p>
 <p>One is R and you can access it with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/r/4.0.4_gcc102
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/r/4.2.0_gcc112
 $&gt; R
 
-R version 4.0.4 (2021-02-15) -- &quot;Lost Library Book&quot;
-Copyright (C) 2021 The R Foundation for Statistical Computing
+R version 4.2.0 (2022-04-22) -- &quot;Vigorous Calisthenics&quot;
+Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.
 
-  Natural language support but running in an English locale
+Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type &#39;contributors()&#39; for more information and
@@ -244,30 +246,72 @@ Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or
 &#39;help.start()&#39; for an HTML browser interface to help.
 Type &#39;q()&#39; to quit R.
 
-[Previously saved workspace restored]
+&gt; sessionInfo()
+R version 4.2.0 (2022-04-22)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Red Hat Enterprise Linux Server 7.9 (Maipo)
 
+Matrix products: default
+BLAS/LAPACK: /gpfs20/shared/software/libs/openblas/0.3.19_gcc112/lib/libopenblas_skylakexp-r0.3.19.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base
+
+loaded via a namespace (and not attached):
+[1] compiler_4.2.0
 &gt;
 </pre></div>
 </div>
 <p>Another text-based interactive environment is IPython, to use it execute for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/python/cpython_3.8.6_gcc93
-$&gt; ipython
-Python 3.8.6 (default, Oct  1 2020, 21:54:10)
-Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
-IPython 7.18.1 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/python/cpython_3.10.1_gcc112
+Loading gcc version 11.2.0 : lang/gcc/11.2.0
+Loading python version cpython_3.10.1_gcc112 : lang/python/cpython_3.10.1_gcc112
 
-In [1]:
+$&gt; ipython
+Python 3.10.1 (main, Dec 28 2021, 19:48:41) [GCC 11.2.0]
+Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
+IPython 7.30.1 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
+
+In [1]: import platform
+
+In [2]: platform.machine()
+Out[2]: &#39;x86_64&#39;
+
+In [3]: platform.version()
+Out[3]: &#39;#1 SMP Thu Mar 25 21:21:56 UTC 2021&#39;
+
+In [4]: platform.platform()
+Out[4]: &#39;Linux-3.10.0-1160.24.1.el7.x86_64-x86_64-with-glibc2.17&#39;
+
+In [5]: platform.uname()
+Out[5]: uname_result(system=&#39;Linux&#39;, node=&#39;trcis001.hpc.wvu.edu&#39;, release=&#39;3.10.0-1160.24.1.el7.x86_64&#39;, version=&#39;#1 SMP Thu Mar 25 21:21:56 UTC 2021&#39;, machine=&#39;x86_64&#39;)
+
+In [6]: platform.system()
+Out[6]: &#39;Linux&#39;
+
+In [7]: platform.processor()
+Out[7]: &#39;x86_64&#39;
 </pre></div>
 </div>
 <p>Matlab is another software that offers interactive environment. Usually MATLAB is accessed on a graphical interface but MATLAB can also work from a text-based interface:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/8.2.0 matlab/2020b
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/9.3.0 matlab/2021a
+Loading gcc version 9.3.0 : lang/gcc/9.3.0
+
 $&gt; matlab -nodesktop
 MATLAB is selecting SOFTWARE OPENGL rendering.
 
-                                   &lt; M A T L A B (R) &gt;
-                         Copyright 1984-2020 The MathWorks, Inc.
-                         R2020b (9.9.0.1467703) 64-bit (glnxa64)
-                                     August 26, 2020
+                                                                                                                                         &lt; M A T L A B (R) &gt;
+                                                                                                                   Copyright 1984-2021 The MathWorks, Inc.
+                                                                                                                   R2021a (9.10.0.1602886) 64-bit (glnxa64)
+                                                                                                                                          February 17, 2021
 
 
 To get started, type doc.
@@ -276,7 +320,6 @@ For product information, visit www.mathworks.com.
 &gt;&gt;
 </pre></div>
 </div>
-<p>These are just examples of several enviroments for interactive computing from the terminal. On the next section we will see how to perform interactive execution from a web interface using Open-On Demand. A web service available for Thorny Flat.</p>
 </div>
 <div class="section" id="interactive-computing-from-a-web-interface">
 <h2>Interactive Computing from a web interface<a class="headerlink" href="#interactive-computing-from-a-web-interface" title="Permalink to this headline">¶</a></h2>
@@ -302,42 +345,61 @@ For product information, visit www.mathworks.com.
 <h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h3>
 <p>For Jupyter click on <cite>Ìnteractive Apps &gt; Jupyter Notebook</cite>. A form is shown with all the options available to create the Jupyter session.</p>
 <p>A good starting point is to select <cite>CPython 3.7.4</cite> as the Python version, select <cite>standby</cite> as the queue and <cite>4 hours</cite> as the wall time. There are options for alternative Python versions, queues and walltimes. A short description of each options is shown on the form.</p>
-<img alt="../_images/OOD-jupyter1.png" src="../_images/OOD-jupyter1.png" />
+<a class="reference internal image-reference" href="../_images/OOD-jupyter1.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter1.png" style="width: 600px;" /></a>
 <p>The next fields on the form ask for the number of cores, GPU cards, extra modules and the singularity image in case you have selected that as your Python version.</p>
 <p>Notice that taking advantage of multiple cores depends on your code being able to use those cores. In the case of Python that usually means that your code is using <cite>multiprocessing</cite> module or you are using <cite>numpy</cite> with multi-threading capabilities. The usage of multiple cores is not something that happens automatically so if you are not sure asking for one core is enough. A similar situation happens with GPUs noticing that only the queue <cite>comm_gpu_inter</cite> give you access to GPUs for community nodes.</p>
-<img alt="../_images/OOD-jupyter2.png" src="../_images/OOD-jupyter2.png" />
+<a class="reference internal image-reference" href="../_images/OOD-jupyter2.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter2.png" style="width: 600px;" /></a>
 <p>Once you have customize the parameters for your Jupyter session, click on <cite>Launch</cite>. Open On demand will launch a new interactive session and when the interactive session is launched you will get a button to connect to the Jupyter notebook.</p>
-<img alt="../_images/OOD-jupyter3.png" src="../_images/OOD-jupyter3.png" />
+<a class="reference internal image-reference" href="../_images/OOD-jupyter3.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter3.png" style="width: 600px;" /></a>
 <p>The Jupyter session is launched on a compute node. The Jupyter interface shows as file manager where you can select a notebook to launch, upload one from your local computer or create a new Notebook, go to <cite>New &gt; Python 3</cite> to create a new Jupyter notebook with Python 3 as kernel.</p>
-<img alt="../_images/OOD-jupyter4.png" src="../_images/OOD-jupyter4.png" />
+<a class="reference internal image-reference" href="../_images/OOD-jupyter4.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter4.png" style="width: 600px;" /></a>
 <p>The new notebook give you entries for typing Python instructions that are executed when you type <cite>SHIFT-ENTER</cite></p>
-<img alt="../_images/OOD-jupyter5.png" src="../_images/OOD-jupyter5.png" />
+<a class="reference internal image-reference" href="../_images/OOD-jupyter5.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter5.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter6.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter6.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter7.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter7.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="rstudio">
 <h3>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h3>
 <p>Another popular interactive environment is RStudio, select <cite>Interactive Apps &gt; RStudio</cite>. The options in the form are very few. Select a queue such as <cite>standby</cite>, 4 hours of wall time and 1 core.</p>
-<img alt="../_images/OOD-rstudio1.png" src="../_images/OOD-rstudio1.png" />
+<a class="reference internal image-reference" href="../_images/OOD-rstudio1.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio1.png" style="width: 600px;" /></a>
 <p>When you click on Launch, Open on Demand will create a new interactive session on Thorny Flat and when the job starts execution, a button appears to open the session on a new tab.</p>
-<img alt="../_images/OOD-rstudio2.png" src="../_images/OOD-rstudio2.png" />
+<a class="reference internal image-reference" href="../_images/OOD-rstudio2.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio2.png" style="width: 600px;" /></a>
 <p>The interface for RStudio shows the commands on the left and variables and plots on the right.</p>
-<img alt="../_images/OOD-rstudio3.png" src="../_images/OOD-rstudio3.png" />
+<a class="reference internal image-reference" href="../_images/OOD-rstudio3.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio3.png" style="width: 600px;" /></a>
 </div>
 </div>
-<div class="section" id="the-file-manager">
-<h2>The File manager<a class="headerlink" href="#the-file-manager" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="matlab">
+<h2>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h2>
+<p>MATLAB is a numeric computing environment and programming language developed by MathWorks.
+MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages.
+MATLAB can run using Open On-Demand via an app that executes a virtual desktop on a browser tab.</p>
+<a class="reference internal image-reference" href="../_images/OOD-matlab1.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-matlab2.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab2.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-matlab3.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab3.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="file-manager">
+<h2>File Manager<a class="headerlink" href="#file-manager" title="Permalink to this headline">¶</a></h2>
 <p>The Open On demand dashboard also offers a simple but useful File Manager that give you options to view, edit, download and rename files. It is a simple way to see plots and download individual files to your local computer.</p>
 <p>To access the File Manager on the Dashboard, go to <cite>Files &gt; Home Directory</cite>.
 The File Manager is shown as</p>
-<img alt="../_images/OOD-files.png" src="../_images/OOD-files.png" />
+<a class="reference internal image-reference" href="../_images/OOD-files.png"><img alt="OOD File Manager" src="../_images/OOD-files.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="job-manager">
 <h2>Job manager<a class="headerlink" href="#job-manager" title="Permalink to this headline">¶</a></h2>
 <p>Another useful tool integrated with the Dashboard is the Job Manager, you can see the jobs currently submitted on the cluster. Go to <cite>Jobs &gt; Active Jobs</cite> to access the Job Manager</p>
-<img alt="../_images/OOD-jobs.png" src="../_images/OOD-jobs.png" />
+<a class="reference internal image-reference" href="../_images/OOD-jobs.png"><img alt="OOD Job Manager" src="../_images/OOD-jobs.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="job-composer">
+<h2>Job composer<a class="headerlink" href="#job-composer" title="Permalink to this headline">¶</a></h2>
+<p>Another useful tool integrated with the Dashboard is the Job Composer, you can create jobs and submit them to the cluster via a web interface. Go to <cite>Jobs &gt; Jobs Composer</cite> to access the tool.</p>
+<a class="reference internal image-reference" href="../_images/OOD-JobComposer.png"><img alt="OOD Job Composer" src="../_images/OOD-JobComposer.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="terminal">
 <h2>Terminal<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h2>
-<p>Finally a Terminal session can be opened from the dashboard, the terminal runs on the head node exactly as a normal connection to the cluster via SSH.</p>
+<p>Finally a Terminal session can be opened from the dashboard, the terminal runs on the head node exactly as a normal connection to the cluster via SSH.
+It has, however a short limit of time to be alive if no command is typed on it.
+The terminal is intended for quick commands only.</p>
+<a class="reference internal image-reference" href="../_images/OOD-Terminal.png"><img alt="OOD Terminal" src="../_images/OOD-Terminal.png" style="width: 600px;" /></a>
 </div>
 </div>
 

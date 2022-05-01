@@ -1,0 +1,112 @@
+.. _pl-julia:
+
+Julia Language
+================================
+
+The Julia programming language is a flexible dynamic language, appropriate for scientific and numerical computing.
+Julia combines features of imperative, functional, and object-oriented programming. 
+Julia provides ease and expressiveness for high-level numerical computing, similar to other popular languages such as R, MATLAB, and Python, but also supports general programming. 
+Julia is built upon the lineage of mathematical programming languages, but also borrows much from popular dynamic languages, including Lisp, Perl, Python, Lua, and Ruby. 
+Using the correct syntax, the performance of Julia programs can be comparable to traditional statically-typed languages like C or Fortran.
+
+
+Loading Environment Modules
+---------------------------
+
+Julia is installed and accessible via software modules in terminal/shell sessions.
+To use Julia, load the following modules depending on the cluster you are working on.
+
+Spruce Knob
+~~~~~~~~~~~
+
+The latest version of Julia on Spruce Knob is 1.7.2
+Load the software module with the command::
+
+    $> module load lang/julia/1.7.2
+
+There is also an equivalent version where dependencies are not preloaded. 
+Load the module as::
+
+    $> module load lang/gcc/10.3.0 lang/julia/1.7.2_prereq
+
+Thorny Flat
+~~~~~~~~~~~
+
+On Thorny Flat we have 2 versions of Julia 1.6.5 which is a Long Term Support (LTS) version and 1.7.1.
+Load any of those versions with the command::
+
+    $> module load lang/gcc/11.2.0 lang/julia/1.6.5_gcc112 
+    $> module load lang/gcc/11.2.0 lang/julia/1.7.1_gcc112 
+
+
+Using Julia
+-----------
+
+Once the module is loaded, execute the command::
+
+    $> julia
+
+It will open the Julia Intereactive Shell::
+
+                   _
+	   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+	  (_)     | (_) (_)    |
+	   _ _   _| \|_  __ _   |  Type "?" for help, "]?" for Pkg help.
+	  | | | | | | \|/ _` |  |
+	  | | \|_| | | | (_| |  |  Version 1.7.2 (2022-02-06)
+	 _/ \|\__'_|_|_|\__'_|  |  
+	\|__/                   |
+
+	julia> 
+	 
+From the interactive shell, start executing Julia commands. Learn about Julia from the `Official Documentation <https://docs.julialang.org/en/v1/>`_
+
+Consider a small example on how Julia code looks like::
+
+	# Function to Compute the volume of a sphere
+	function volume_sphere(r)
+	# julia allows Unicode names (in UTF-8 encoding)
+	# so either "pi" or the symbol π can be used
+	return 4/3*pi*r^3
+	end
+
+	# functions can also be defined as one-liners
+	quadratic_oneline(a, sqr_term, b) = (-b + sqr_term) / 2a
+
+	# calculates x for 0 = a*x^2+b*x+c, arguments types can be defined in function definitions
+	function quadratic_solver(a::Float64, b::Float64, c::Float64)
+	# unlike other languages 2a is equivalent to 2*a
+	# a^2 is used instead of a**2 or pow(a,2)
+	sqr_term = sqrt(b^2-4a*c)
+	r1 = quadratic_oneline(a, sqr_term, b)
+	r2 = quadratic_oneline(a, -sqr_term, b)
+	# multiple values can be returned from a function using tuples
+	# if the return keyword is omitted, the last term is returned
+	r1, r2
+	end
+
+	vol = volume_sphere(3)
+	# @printf allows number formatting but does not automatically append the \n to statements, see below
+	using Printf
+	@printf "Volume of sphere with radius 3 = %0.3f\n\n" vol 
+	#> volume = 113.097
+
+	quad1, quad2 = quadratic_solver(2.0, -2.0, -12.0)
+	println("Solution 1 to quadratic 2x^2 - 2x - 12 is ", quad1)
+	#> result 1: 3.0
+	println("Solution 2 to quadratic 2x^2 - 2x - 12 is ", quad2)
+	#> result 2: -2.0
+
+You can execute these lines one by one on the Julia interactive shell.
+To run a julia script create a file such as `example.jl`  and copy there the lines above.
+Execute the command::
+
+	$> julia example.jl
+
+You should get::
+
+	Volume of sphere with radius 3 = 113.097
+
+	Solution 1 to quadratic 2x^2 - 2x - 12 is 3.0
+	Solution 2 to quadratic 2x^2 - 2x - 12 is -2.0
+

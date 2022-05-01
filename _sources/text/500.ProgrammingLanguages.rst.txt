@@ -1,0 +1,54 @@
+.. _chap-developers:
+
+Programming Languages
+#####################
+
+Scientific Computing is done in a variety of programming languages. From open languages to proprietary ones. From low level languages, closer to the machine to high level languages that are closer to human language. A variety of language serve an equal diverse research areas and levels of expertise.
+
+From all those languages we have chosen a limited set of languages and describe for them which are the ways under which those languages can be accessed on our clusters. The purpose of this chapter is not to teach any of the languages that will be presented, learning a programming language is not possible on a single chapter even less to explain the details of a number of different languages some of them very different from each other.
+
+Programming languages can be classified for how close they are to the machine when expressing operations. With low level languages you have to declare the type of each variable and operations such as conditionals, loops and functions (routines or methods) are the building blocks for those languages. The three low level languages more used in scientific computing are Fortran, C and C++
+:ref:`pl-fortran_c_cpp`.
+First section in this chapter we will devote to these three languages. The different compilers available for them and how to compile basic source code written in those languages.
+
+The next section is dedicated to Python :ref:`pl-python`.
+Python is a high level language that is often used in scientific computing due to its expressiveness and the large set of scientific libraries that have been written for it. We will show the various Python implementations available on our clusters and the use of IPython and Jupyter as effective tools for interactive scientific computing.
+
+The second high level language is R :ref:`pl-r`. R is a commonly used language for scientific computing involving statistical operations. Many packages are available for it thanks to the Comprehensive R Archive Network (CRAN), a repository of thousands of R packages. We also cover RStudio, a user friendly interface for interactive computing in R as well as Jupyter that also offers a kernel for interacting with the language.
+
+The next section is dedicated to Julia :ref:`pl-julia`.
+Julia is a modern language with a syntax that is clean and modern but with the ability to type variables and offering some modern features that make this language comparable to low level languages in terms of performance. We will demonstrate some of the nice features of the language and the use of Jupyter with a Julia kernel for interactive scientific computing.
+
+After our 2 triads of languages. Fortran, C and C++ for the low level and Python, R and Julia for the high level. We will include a couple of sections describing two other languages used in scientific computing.
+
+The section dedicated to MATLAB :ref:`pl-matlab`. MATLAB is a commercial product offering a high level language with an impressive variety of subpackages for most areas in science and engineering. WVU has a license for this package on our clusters.
+
+The next section is about Perl :ref:`pl-perl`. Perl is a popular programming language still in use specially in bioinformatics due to its particular ability to deal with patterns. There is a large collection of packages for Perl.
+The Comprehensive Perl Archive Network (CPAN) is a repository of software modules and accompanying documentation of codes written in the Perl programming language. We will shows how to install perl packages from CPAN as user.
+
+Parallel Programming is at the core of High Performance Computing. On an HPC cluster, compute nodes have tens of cores, large amounts of RAM and sometimes include accelerators such as GPUs. Those nodes are interconnected using expensive networking. The main reason for all this is to take advantage of parallelism at various level to speed up scientific calculations that are too complex for a normal desktop machine. There are several strategies for parallel computing and the final 3 sections explore those models.
+
+The first of those three chapters is dedicated to OpenMP :ref:`pl-openmp`.
+Computers today are multicore, in striking difference with desktop computers in the 20th century that only have a single core on a single CPU chip. Being multicore means that the CPU offers several computing cores, complete processing units as capable of running processes as a single CPU. The cores on the machine are able to see all the memory (RAM) of the computer. Muticore machines allow for a special kind of parallelism called "shared memory multiprocessing" and OpenMP is a prominent example of this kind of parallelism.
+
+The next section is about Message Passing Interface (MPI) :ref:`pl-mpi`.
+A more general parallelism is achieved when several machines each one of them with their own memory work in concert on a given problem. That model of parallelism is called "Distributed Parallel Computing".
+The machines at some point need to communicate information to the other partners and that is done by passing messages between the different compute nodes. MPI is the dominant interface for this kind of parallel programming. Several implementations of MPI exist and we will describe how to compile and run calculations that uses MPI.
+
+The last two sections are dedicated to GPU computing :ref:`pl-openacc` and :ref:`pl-cuda`
+Modern HPC cluster now rely more and mode on accelerators. Accelerators are electronic devices specially dedicated for certain kinds of tasks for which they excel compared to a normal CPU.
+General Purpose Graphics Processing Units (GPGPUs) is the usage of GPUs for numerical calculation, also called accelerators, GPU-based high performance computers are starting to play a significant role in HPC.
+
+.. toctree::
+    :maxdepth: 2
+
+    501.Fortran_C_CPP
+    502.Python
+    503.R
+    504.Julia
+    505.Matlab
+    506.Perl
+    507.OpenMP
+    508.MPI
+    509.OpenACC
+    510.CUDA

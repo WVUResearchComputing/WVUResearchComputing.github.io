@@ -1,0 +1,14 @@
+.. _pl-cuda:
+
+Parallel Programming: CUDA
+==========================
+
+The fastest supercomputers today include alongside with the normal CPUs, extra electronic devices specialized to perform certain computational tasks much faster than CPUs, those devices are called Accelerators and the most prominent of those today are Graphical Processing Units (GPUs).
+
+Accelerators typically have their own memory and programming those devices requires being aware of memory management and data movement. The memory on Accelerators is usually smaller than the RAM available on compute nodes and the transfer of data from RAM to the internal memory of the accelerator is usually one order of magnitude slower than between RAM and the CPU.
+
+As GPUs are the most common accelerator today and those are the devices on our clusters we will concentrate the rest of this section to them.
+We will present two solutions for programming GPUs. OpenACC is a directive based standard for parallel computing with GPUs from several vendors, Intel's Xeon Phi (Discontinued	in 2020), Field-programmable gate arrays (FPGAs), and exotic devices such as Digital Signal Processors (DSPs). We will present how to use OpenACC using the NVIDIA HPC SDK.
+
+For the specific case of NVIDIA GPUs is the solution for parallel computing . CUDA is a platform and application programming interface (API) model created by Nvidia for their GPUs, the API have evolved over the years and several libraries have been created to take advantage of those GPUS. On our clusters we have NVIDIA GPUs and we will present how to compile and run basic programs written in CUDA.
+

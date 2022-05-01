@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Language &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="R Language" href="503.R.html" />
+    <link rel="prev" title="Fortran, C and C++" href="501.Fortran_C_CPP.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="500.ProgrammingLanguages.html">Programming Languages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="501.Fortran_C_CPP.html">Fortran, C and C++</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-the-python-interpreter">Accessing the Python interpreter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spruce-knob">Spruce Knob</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thorny-flat">Thorny Flat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#packages-installed-with-cpython-modules">Packages installed with CPython modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-with-pip">Installing python packages with pip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-python-packages-with-a-custom-prefix">Installing python packages with a custom prefix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-python-virtualenv">Using Python virtualenv</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-virtual-environments-with-python2">Using Virtual Environments with python2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-virtual-environments-with-python3">Using Virtual Environments with python3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activating-virtual-environments-using-the-c-shell">Activating virtual environments using the C shell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-site-wide-system-packages">Using site-wide system packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="503.R.html">R Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="504.Julia.html">Julia Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="505.Matlab.html">MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="506.Perl.html">Perl Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="507.OpenMP.html">Parallel Programming: OpenMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="508.MPI.html">Parallel Programming: MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="509.OpenACC.html">Parallel Programming: OpenACC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="510.CUDA.html">Parallel Programming: CUDA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="500.ProgrammingLanguages.html">Programming Languages</a> &raquo;</li>
+        
+      <li>Python Language</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/502.Python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-language">
+<span id="pl-python"></span><h1>Python Language<a class="headerlink" href="#python-language" title="Permalink to this headline">¶</a></h1>
+<p>Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python’s design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.</p>
+<p>Due to Python’s extensive third-party libraries such as NumPy, SciPy and many others, make Python a programming language for scientific computing. Python servers as an important tool for several areas in science and engineering and packages for plotting offer publication-ready plotting capabilities.</p>
+<p>Among external libraries <em>NumPy</em> provides the foundation for numerical operation, in particular operations related to vectors and matrices. <em>SciPy</em> extends NumPy to include special functions, numerical integration and other scientific general purpose operations. Matplotlib is the basic library for plotting in 2D and some functions for 3D plots.</p>
+<p>Several specialized packages have been written such as Biopython and Astropy providing domain-specific functionality in Astronomy and Biology. Python is commonly used in artificial intelligence projects with the help of libraries like TensorFlow, Keras and Scikit-learn. As a scripting language with modular architecture, simple syntax and rich text processing tools, Python is often used for natural language processing.</p>
+<p>Both clusters, Spruce and Thorny offer a variety of Python implementations and versions, including the reference Python implementation written in C and called CPython, the MKL optimized Intel Python Distribution and PyPy, a fast, compliant alternative implementation of the Python thanks to its Just-in-Time compiler.</p>
+<div class="section" id="accessing-the-python-interpreter">
+<h2>Accessing the Python interpreter<a class="headerlink" href="#accessing-the-python-interpreter" title="Permalink to this headline">¶</a></h2>
+<p>The Python interpreter is the basic command that allows you to interact with Python interactively and is the same command used for scripting.
+There are two versions of Python. Python 2.x is now deprecated but still used in some cases. Python 3.x is the current version and has been around 2008 more than a decade now. You should always prefer Python 3.x over Python 2.x for scientific applications. From January 1, 2020, the 2.x branch of the Python programming language is no longer supported by the Python Software Foundation.
+Many packages have been abandoning compatibility with Python 2.x and as such there is no much reason to continue using it for scientific applications.</p>
+<p>There are four ways of accessing the different Python installations on our clusters: Using a Python version installed by default from the OS repositories, using an <em>environment module</em>, creating a <em>conda</em> environment or using a <em>singularity container</em> that provides Python inside. We will explore those options in the contexts of our two clusters, Spruce Knob and Thorny Flat.</p>
+<div class="section" id="spruce-knob">
+<h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
+<p>The Operating System on Spruce comes with Python 2.6.6 preinstalled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python --version
+Python 2.6.6
+</pre></div>
+</div>
+<p>No scientific packages are installed along with this version of Python making it unsuitable for most scientific purposes.</p>
+<p>On Spruce there is a variety of environment modules for Python.
+These modules include a good variety of scientific computing packages preinstalled for the corresponding version of Python.
+The modules available on Spruce are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_2</span><span class="o">.</span><span class="mf">7.15</span><span class="n">_gcc82</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">6.9</span><span class="n">_gcc82</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">7.4</span><span class="n">_gcc82</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_2</span><span class="o">.</span><span class="mf">7.16</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_3</span><span class="o">.</span><span class="mf">6.3</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_3</span><span class="o">.</span><span class="mf">6.9</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">pypy2</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="mf">7.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">portable</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">pypy3</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mf">7.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">portable</span>
+</pre></div>
+</div>
+<p>The modules with suffix <code class="docutils literal notranslate"><span class="pre">_gcc82</span></code> where compiled with GCC 8.2.0 so the
+module <code class="docutils literal notranslate"><span class="pre">lang/gcc/8.2.0</span></code> must be preloaded to activate the corresponding
+Python module. For example to load <code class="docutils literal notranslate"><span class="pre">lang/python/cpython_3.7.4_gcc82</span></code> you
+should execute the following command to activate Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">7.4</span><span class="n">_gcc82</span>
+</pre></div>
+</div>
+<p>There are basically three implementations of Python to choose.
+The versions with prefix <code class="docutils literal notranslate"><span class="pre">cpython_</span></code> are compilations of the reference implementation written in C and Python from <a class="reference external" href="https://www.python.org/downloads">https://www.python.org/downloads</a> also called <cite>CPython</cite>.</p>
+<p>The modules with prefix <code class="docutils literal notranslate"><span class="pre">intelpython_</span></code> are the Intel Distribution for Python.
+They Intel-optimized versions of the reference CPython using MKL and some other optimized libraries for use in Intel processors.
+In particular Intel Python includes MKL optimized versions of Numpy, Scipy and Scikit-Learn.</p>
+<p>The modules with prefix <code class="docutils literal notranslate"><span class="pre">pypy</span></code> offers an alternative implementation of the Python programming language.
+PyPy often runs faster than CPython, because PyPy is a just-in-time compiler, while CPython is uses a more traditional approach. Most Python code runs well on PyPy, except for code that depends on CPython extensions, which either does not work or incurs some overhead when run in PyPy.</p>
+</div>
+<div class="section" id="thorny-flat">
+<h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
+<p>The Operating System on Thorny Flat comes with Python 2.7.5 preinstalled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python --version
+  Python 2.7.5
+</pre></div>
+</div>
+<p>No scientific packages are installed along with this version of Python making it unsuitable for most scientific purposes.</p>
+<p>On Thorny there are a several environment modules for Python.
+These modules include a good variety of scientific computing packages preinstalled for the corresponding version of Python.
+The modules available on Thorny Flat are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">10.1</span><span class="n">_gcc112</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">7.4</span><span class="n">_gcc82</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">8.10</span><span class="n">_gcc82</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">8.10</span><span class="n">_gcc93</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">8.12</span><span class="n">_gcc112</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc82</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.5</span><span class="n">_gcc93</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.7</span><span class="n">_gcc93</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">9.9</span><span class="n">_gcc112</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython2_2019</span><span class="o">.</span><span class="mi">5</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_2</span><span class="o">.</span><span class="mf">7.14</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_2</span><span class="o">.</span><span class="mf">7.16</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython3_2019</span><span class="o">.</span><span class="mi">5</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython3_2020</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_3</span><span class="o">.</span><span class="mf">6.3</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">intelpython_3</span><span class="o">.</span><span class="mf">6.9</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">pypy2</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">v7</span><span class="o">.</span><span class="mf">3.2</span><span class="o">-</span><span class="n">linux64</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">pypy3</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">v7</span><span class="o">.</span><span class="mf">1.1</span><span class="o">-</span><span class="n">thorny</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">pypy3</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">v7</span><span class="o">.</span><span class="mf">3.2</span><span class="o">-</span><span class="n">linux64</span>
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">pypy3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">v7</span><span class="o">.</span><span class="mf">3.2</span><span class="o">-</span><span class="n">linux64</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="packages-installed-with-cpython-modules">
+<h2>Packages installed with CPython modules<a class="headerlink" href="#packages-installed-with-cpython-modules" title="Permalink to this headline">¶</a></h2>
+<p>In the particular case of CPython modules a number of scientific packages were included.
+The following table shows the list and version of the packages included on the CPython modules.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Package</th>
+<th class="head">Version</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>appdirs</td>
+<td>1.4.4</td>
+</tr>
+<tr class="row-odd"><td>argon2-cffi</td>
+<td>20.1.0</td>
+</tr>
+<tr class="row-even"><td>asv</td>
+<td>0.4.2</td>
+</tr>
+<tr class="row-odd"><td>async-generator</td>
+<td>1.10</td>
+</tr>
+<tr class="row-even"><td>atomicwrites</td>
+<td>1.4.0</td>
+</tr>
+<tr class="row-odd"><td>attrs</td>
+<td>20.3.0</td>
+</tr>
+<tr class="row-even"><td>backcall</td>
+<td>0.2.0</td>
+</tr>
+<tr class="row-odd"><td>bleach</td>
+<td>3.3.0</td>
+</tr>
+<tr class="row-even"><td>cached-property</td>
+<td>1.5.2</td>
+</tr>
+<tr class="row-odd"><td>cffi</td>
+<td>1.14.5</td>
+</tr>
+<tr class="row-even"><td>cloudpickle</td>
+<td>1.6.0</td>
+</tr>
+<tr class="row-odd"><td>cycler</td>
+<td>0.10.0</td>
+</tr>
+<tr class="row-even"><td>Cython</td>
+<td>0.29.22</td>
+</tr>
+<tr class="row-odd"><td>dask</td>
+<td>2021.3.0</td>
+</tr>
+<tr class="row-even"><td>decorator</td>
+<td>4.4.2</td>
+</tr>
+<tr class="row-odd"><td>defusedxml</td>
+<td>0.7.1</td>
+</tr>
+<tr class="row-even"><td>distlib</td>
+<td>0.3.1</td>
+</tr>
+<tr class="row-odd"><td>entrypoints</td>
+<td>0.3</td>
+</tr>
+<tr class="row-even"><td>filelock</td>
+<td>3.0.12</td>
+</tr>
+<tr class="row-odd"><td>h5py</td>
+<td>3.1.0</td>
+</tr>
+<tr class="row-even"><td>imageio</td>
+<td>2.9.0</td>
+</tr>
+<tr class="row-odd"><td>importlib-metadata</td>
+<td>3.7.3</td>
+</tr>
+<tr class="row-even"><td>importlib-resources</td>
+<td>5.1.2</td>
+</tr>
+<tr class="row-odd"><td>iniconfig</td>
+<td>1.1.1</td>
+</tr>
+<tr class="row-even"><td>ipykernel</td>
+<td>5.5.0</td>
+</tr>
+<tr class="row-odd"><td>ipyparallel</td>
+<td>6.3.0</td>
+</tr>
+<tr class="row-even"><td>ipython</td>
+<td>7.16.1</td>
+</tr>
+<tr class="row-odd"><td>ipython-genutils</td>
+<td>0.2.0</td>
+</tr>
+<tr class="row-even"><td>ipywidgets</td>
+<td>7.6.3</td>
+</tr>
+<tr class="row-odd"><td>jedi</td>
+<td>0.18.0</td>
+</tr>
+<tr class="row-even"><td>Jinja2</td>
+<td>2.11.3</td>
+</tr>
+<tr class="row-odd"><td>joblib</td>
+<td>1.0.1</td>
+</tr>
+<tr class="row-even"><td>joblib</td>
+<td>1.0.1</td>
+</tr>
+<tr class="row-odd"><td>jsonschema</td>
+<td>3.2.0</td>
+</tr>
+<tr class="row-even"><td>jupyter</td>
+<td>1.0.0</td>
+</tr>
+<tr class="row-odd"><td>jupyter-client</td>
+<td>6.1.12</td>
+</tr>
+<tr class="row-even"><td>jupyter-console</td>
+<td>6.4.0</td>
+</tr>
+<tr class="row-odd"><td>jupyter-core</td>
+<td>4.7.1</td>
+</tr>
+<tr class="row-even"><td>jupyterlab-pygments</td>
+<td>0.1.2</td>
+</tr>
+<tr class="row-odd"><td>jupyterlab-widgets</td>
+<td>1.0.0</td>
+</tr>
+<tr class="row-even"><td>kiwisolver</td>
+<td>1.3.1</td>
+</tr>
+<tr class="row-odd"><td>MarkupSafe</td>
+<td>1.1.1</td>
+</tr>
+<tr class="row-even"><td>matplotlib</td>
+<td>3.3.4</td>
+</tr>
+<tr class="row-odd"><td>mistune</td>
+<td>0.8.4</td>
+</tr>
+<tr class="row-even"><td>more-itertools</td>
+<td>8.7.0</td>
+</tr>
+<tr class="row-odd"><td>mpmath</td>
+<td>1.2.1</td>
+</tr>
+<tr class="row-even"><td>nbclient</td>
+<td>0.5.3</td>
+</tr>
+<tr class="row-odd"><td>nbconvert</td>
+<td>6.0.7</td>
+</tr>
+<tr class="row-even"><td>nbformat</td>
+<td>5.1.2</td>
+</tr>
+<tr class="row-odd"><td>nest-asyncio</td>
+<td>1.5.1</td>
+</tr>
+<tr class="row-even"><td>networkx</td>
+<td>2.5</td>
+</tr>
+<tr class="row-odd"><td>notebook</td>
+<td>6.3.0</td>
+</tr>
+<tr class="row-even"><td>numpy</td>
+<td>1.19.5</td>
+</tr>
+<tr class="row-odd"><td>packaging</td>
+<td>20.9</td>
+</tr>
+<tr class="row-even"><td>pandas</td>
+<td>1.1.5</td>
+</tr>
+<tr class="row-odd"><td>pandocfilters</td>
+<td>1.4.3</td>
+</tr>
+<tr class="row-even"><td>parso</td>
+<td>0.8.1</td>
+</tr>
+<tr class="row-odd"><td>pexpect</td>
+<td>4.8.0</td>
+</tr>
+<tr class="row-even"><td>pickleshare</td>
+<td>0.7.5</td>
+</tr>
+<tr class="row-odd"><td>Pillow</td>
+<td>8.1.2</td>
+</tr>
+<tr class="row-even"><td>pip</td>
+<td>21.0.1</td>
+</tr>
+<tr class="row-odd"><td>pluggy</td>
+<td>0.13.1</td>
+</tr>
+<tr class="row-even"><td>prometheus-client</td>
+<td>0.9.0</td>
+</tr>
+<tr class="row-odd"><td>prompt-toolkit</td>
+<td>3.0.18</td>
+</tr>
+<tr class="row-even"><td>ptyprocess</td>
+<td>0.7.0</td>
+</tr>
+<tr class="row-odd"><td>ptyprocess</td>
+<td>0.7.0</td>
+</tr>
+<tr class="row-even"><td>py</td>
+<td>1.10.0</td>
+</tr>
+<tr class="row-odd"><td>pycparser</td>
+<td>2.20</td>
+</tr>
+<tr class="row-even"><td>Pygments</td>
+<td>2.8.1</td>
+</tr>
+<tr class="row-odd"><td>pymongo</td>
+<td>3.11.3</td>
+</tr>
+<tr class="row-even"><td>pyparsing</td>
+<td>2.4.7</td>
+</tr>
+<tr class="row-odd"><td>pyrsistent</td>
+<td>0.17.3</td>
+</tr>
+<tr class="row-even"><td>pytest</td>
+<td>6.2.2</td>
+</tr>
+<tr class="row-odd"><td>python-dateutil</td>
+<td>2.8.1</td>
+</tr>
+<tr class="row-even"><td>pytz</td>
+<td>2021.1</td>
+</tr>
+<tr class="row-odd"><td>PyWavelets</td>
+<td>1.1.1</td>
+</tr>
+<tr class="row-even"><td>PyYAML</td>
+<td>5.4.1</td>
+</tr>
+<tr class="row-odd"><td>pyzmq</td>
+<td>22.0.3</td>
+</tr>
+<tr class="row-even"><td>qtconsole</td>
+<td>5.0.3</td>
+</tr>
+<tr class="row-odd"><td>QtPy</td>
+<td>1.9.0</td>
+</tr>
+<tr class="row-even"><td>scikit-image</td>
+<td>0.17.2</td>
+</tr>
+<tr class="row-odd"><td>scikit-learn</td>
+<td>0.24.1</td>
+</tr>
+<tr class="row-even"><td>scipy</td>
+<td>1.5.4</td>
+</tr>
+<tr class="row-odd"><td>seaborn</td>
+<td>0.11.1</td>
+</tr>
+<tr class="row-even"><td>Send2Trash</td>
+<td>1.5.0</td>
+</tr>
+<tr class="row-odd"><td>setuptools</td>
+<td>54.2.0</td>
+</tr>
+<tr class="row-even"><td>six</td>
+<td>1.15.0</td>
+</tr>
+<tr class="row-odd"><td>sympy</td>
+<td>1.7.1</td>
+</tr>
+<tr class="row-even"><td>terminado</td>
+<td>0.9.3</td>
+</tr>
+<tr class="row-odd"><td>testpath</td>
+<td>0.4.4</td>
+</tr>
+<tr class="row-even"><td>threadpoolctl</td>
+<td>2.1.0</td>
+</tr>
+<tr class="row-odd"><td>tifffile</td>
+<td>2020.9.3</td>
+</tr>
+<tr class="row-even"><td>toml</td>
+<td>0.10.2</td>
+</tr>
+<tr class="row-odd"><td>toolz</td>
+<td>0.11.1</td>
+</tr>
+<tr class="row-even"><td>tornado</td>
+<td>6.1</td>
+</tr>
+<tr class="row-odd"><td>traitlets</td>
+<td>4.3.3</td>
+</tr>
+<tr class="row-even"><td>typing-extensions</td>
+<td>3.7.4.3</td>
+</tr>
+<tr class="row-odd"><td>virtualenv</td>
+<td>20.4.3</td>
+</tr>
+<tr class="row-even"><td>wcwidth</td>
+<td>0.2.5</td>
+</tr>
+<tr class="row-odd"><td>webencodings</td>
+<td>0.5.1</td>
+</tr>
+<tr class="row-even"><td>widgetsnbextension</td>
+<td>3.5.1</td>
+</tr>
+<tr class="row-odd"><td>xlrd</td>
+<td>2.0.1</td>
+</tr>
+<tr class="row-even"><td>zipp</td>
+<td>3.4.1</td>
+</tr>
+</tbody>
+</table>
+<p>The modules for Pypy and Intel Python include their own list of preinstalled packages.</p>
+<p>Another alternative to get Python is creating a conda environment.
+Load conda with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This will activate the command conda and you can create conda environments for the version of Python of your choice. This is particularly useful if you want a very specific version of Python, as new as 3.9.2 or as old as 2.7.13. You can search for all the versions available with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="n">python</span>
+</pre></div>
+</div>
+<p>Or including specific channels with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">intel</span> <span class="n">python</span>
+<span class="n">conda</span> <span class="n">search</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">python</span>
+</pre></div>
+</div>
+<p>Both <cite>intel</cite> and <cite>conda-forge</cite> are popular channels for general purpose scientific packages.</p>
+<p>For example to create a conda environment called <cite>python392</cite> installing insider Python version 3.9.2 execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; conda create -n python392 python==3.9.2
+
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /users/gufranco/.conda/envs/python392
+
+  added / updated specs:
+    - python==3.9.2
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2021.1.19  |       h06a4308_1         118 KB
+    certifi-2020.12.5          |   py39h06a4308_0         140 KB
+    openssl-1.1.1j             |       h27cfd23_0         2.5 MB
+    pip-21.0.1                 |   py39h06a4308_0         1.8 MB
+    python-3.9.2               |       hdb3f193_0        18.2 MB
+    setuptools-52.0.0          |   py39h06a4308_0         724 KB
+    sqlite-3.35.2              |       hdfb4753_0         983 KB
+    tzdata-2020f               |       h52ac0ba_0         113 KB
+    ------------------------------------------------------------
+                                           Total:        24.5 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2021.1.19-h06a4308_1
+  certifi            pkgs/main/linux-64::certifi-2020.12.5-py39h06a4308_0
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.33.1-h53a641e_7
+
+  libffi             pkgs/main/linux-64::libffi-3.3-he6710b0_2
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-9.1.0-hdf63c60_0
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-9.1.0-hdf63c60_0
+  ncurses            pkgs/main/linux-64::ncurses-6.2-he6710b0_1
+  openssl            pkgs/main/linux-64::openssl-1.1.1j-h27cfd23_0
+  pip                pkgs/main/linux-64::pip-21.0.1-py39h06a4308_0
+  python             pkgs/main/linux-64::python-3.9.2-hdb3f193_0
+  readline           pkgs/main/linux-64::readline-8.1-h27cfd23_0
+  setuptools         pkgs/main/linux-64::setuptools-52.0.0-py39h06a4308_0
+  sqlite             pkgs/main/linux-64::sqlite-3.35.2-hdfb4753_0
+  tk                 pkgs/main/linux-64::tk-8.6.10-hbc83047_0
+  tzdata             pkgs/main/noarch::tzdata-2020f-h52ac0ba_0
+  wheel              pkgs/main/noarch::wheel-0.36.2-pyhd3eb1b0_0
+  xz                 pkgs/main/linux-64::xz-5.2.5-h7b6447c_0
+  zlib               pkgs/main/linux-64::zlib-1.2.11-h7b6447c_3
+
+Proceed ([y]/n)? y
+
+Downloading and Extracting Packages
+python-3.9.2         | 18.2 MB   | ###################################################### | 100%
+tzdata-2020f         | 113 KB    | ###################################################### | 100%
+setuptools-52.0.0    | 724 KB    | ###################################################### | 100%
+pip-21.0.1           | 1.8 MB    | ###################################################### | 100%
+openssl-1.1.1j       | 2.5 MB    | ###################################################### | 100%
+sqlite-3.35.2        | 983 KB    | ###################################################### | 100%
+certifi-2020.12.5    | 140 KB    | ###################################################### | 100%
+ca-certificates-2021 | 118 KB    | ###################################################### | 100%
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate python392
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+</pre></div>
+</div>
+<p>Finally, all that you have to do is activate the environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">python392</span>
+</pre></div>
+</div>
+<p>And deactivate the environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-python-packages-with-pip">
+<h2>Installing python packages with pip<a class="headerlink" href="#installing-python-packages-with-pip" title="Permalink to this headline">¶</a></h2>
+<p>The package <cite>pip</cite> is a popular way of installing python packages.
+You cannot install packages on system-wide locations, but you still can install them on your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder for personal use.</p>
+<p>To install Python modules locally (within your user <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory) is by adding <code class="docutils literal notranslate"><span class="pre">--user</span></code> as argument for the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>. It is important to notice that in cases where you have Python 2.x and Python 3.x you need to pay attention to which <code class="docutils literal notranslate"><span class="pre">pip</span></code> command to use.
+The command <code class="docutils literal notranslate"><span class="pre">pip</span></code> usually refers to Python 2.x and there is an equivalent command <code class="docutils literal notranslate"><span class="pre">pip3</span></code> for Python 3.x. As we are using Python 3.x, <code class="docutils literal notranslate"><span class="pre">pip3</span></code> is the command that we will be using.</p>
+<p>There are two ways of using the command <code class="docutils literal notranslate"><span class="pre">pip3</span></code>. One is calling the command directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Another is using <cite>pip</cite> indirectly as a module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag directs python to install the package in a user location
+rather than a system-wide location where you are not allow to alter files.</p>
+<p>The user location for python packages is <code class="docutils literal notranslate"><span class="pre">$HOME/.local/lib/pythonX.Y/site-packages</span></code>,
+This is generally the preferred method of locally installing new python packages. There is no disadvantage on using a user installation other that the package is only available to you.</p>
+</div>
+<div class="section" id="installing-python-packages-with-a-custom-prefix">
+<h2>Installing python packages with a custom prefix<a class="headerlink" href="#installing-python-packages-with-a-custom-prefix" title="Permalink to this headline">¶</a></h2>
+<p>Another way to install Python modules locally is by using the <code class="docutils literal notranslate"><span class="pre">--target</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">target</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>representing the directory location you want the package installed into.
+These flags essentially do the same thing by directing Python to install
+the module in the specified directory. These directories will not be
+searched by default with Python. Therefore, in order to use these
+modules in your Python scripts you will have to modify the <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code>
+environment variable to include the specified directory. Or alternatively, modify sys.path from within your python script (for this
+method, consult <a class="reference external" href="https://docs.python.org">python documentation</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-python-virtualenv">
+<h2>Using Python virtualenv<a class="headerlink" href="#using-python-virtualenv" title="Permalink to this headline">¶</a></h2>
+<p>The installing with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--target</span> <span class="pre">&lt;dir&gt;</span></code>
+those locations are all searched secondary to the system-wide site packages.</p>
+<p>This is could be an issue if you are trying to install locally a different version of a module already installed system-wide. A way to get around this is by using Python Virtual Environments.</p>
+<p>Python virtual environments are used to build completely isolated python
+workflows. Primarily they are used to solve the need for multiple
+versions within python modules. Often, you might have the need to use
+pkgA which needs pkgC version 1.24, but you also need pkgB which needs
+pkgC version 2.1. If you use setuptools to install the packages (i.e.
+pip or easy_install), you will create a dependency issue since both
+versions of pkbC will be installed to the same location.</p>
+<p>To resolve this, you can create python virtual environments that all
+isolation of package dependencies, so you can successfully have
+different versions of packages installed and tied to separate python
+interpreters. Setting up python virtual environments is easy, and using
+them is no different than using python it’s self.</p>
+<div class="section" id="using-virtual-environments-with-python2">
+<h3>Using Virtual Environments with python2<a class="headerlink" href="#using-virtual-environments-with-python2" title="Permalink to this headline">¶</a></h3>
+<p>First, load which version of python2 you would like to use as your base
+python interpreter. For instance, if you want python 2.7.10, then load
+the 2.7.10 python modefule. If you want to use the default system python
+(v. 2.6), then you do not need to load a python modulefile. However, you
+do need to load the virtualenv modulefile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">15</span><span class="n">_gcc82</span>
+</pre></div>
+</div>
+<p>Then create a virtualenv directory with the ‘virtualenv’ command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">workflow1</span>
+</pre></div>
+</div>
+<p>You should now have a directory called ‘workflow1’. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy_install just as you would regularly.</p>
+</div>
+<div class="section" id="using-virtual-environments-with-python3">
+<h3>Using Virtual Environments with python3<a class="headerlink" href="#using-virtual-environments-with-python3" title="Permalink to this headline">¶</a></h3>
+<p>First, load the python3 modulefile. The python3 modulefile comes with
+it’s own virtual environment utility, so you do not need to load the
+virtualenv modulefile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="o">.</span><span class="mf">7.4</span><span class="n">_gcc82</span>
+</pre></div>
+</div>
+<p>Then create a virtualenv directry with the ‘pyvenv’ command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="n">workflow1</span>
+</pre></div>
+</div>
+<p>You should now have a directory called ‘workflow1’. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy_install just as you would regularly.</p>
+</div>
+<div class="section" id="activating-virtual-environments-using-the-c-shell">
+<h3>Activating virtual environments using the C shell<a class="headerlink" href="#activating-virtual-environments-using-the-c-shell" title="Permalink to this headline">¶</a></h3>
+<p>If you are using the shells csh or tcsh, you will not be able to source
+the ‘activate’ file. Instead, you need to source the activate.csh file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span><span class="o">.</span><span class="n">csh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-site-wide-system-packages">
+<h3>Using site-wide system packages<a class="headerlink" href="#using-site-wide-system-packages" title="Permalink to this headline">¶</a></h3>
+<p>The centrally installed python interpreters (python loaded with
+modulefiles), have some common scientific packages installed
+with them by default. To have your virtualenv keep using
+these packages you do not need to install them in your virtualenv,
+using the –system-site-packages option.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="o">--</span><span class="n">systems</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="503.R.html" class="btn btn-neutral float-right" title="R Language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="501.Fortran_C_CPP.html" class="btn btn-neutral float-left" title="Fortran, C and C++" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
