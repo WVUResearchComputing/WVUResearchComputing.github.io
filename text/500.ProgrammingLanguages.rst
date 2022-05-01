@@ -35,19 +35,20 @@ The next section is about Message Passing Interface (MPI) :ref:`pl-mpi`.
 A more general parallelism is achieved when several machines each one of them with their own memory work in concert on a given problem. That model of parallelism is called "Distributed Parallel Computing".
 The machines at some point need to communicate information to the other partners and that is done by passing messages between the different compute nodes. MPI is the dominant interface for this kind of parallel programming. Several implementations of MPI exist and we will describe how to compile and run calculations that uses MPI.
 
-The last section is dedicated to GPU computing :ref:`pl-gpu`.
+The last two sections are dedicated to GPU computing :ref:`pl-openacc` and :ref:`pl-cuda`
 Modern HPC cluster now rely more and mode on accelerators. Accelerators are electronic devices specially dedicated for certain kinds of tasks for which they excel compared to a normal CPU.
 General Purpose Graphics Processing Units (GPGPUs) is the usage of GPUs for numerical calculation, also called accelerators, GPU-based high performance computers are starting to play a significant role in HPC.
 
 .. toctree::
     :maxdepth: 2
 
-    51.Fortran_C_CPP
-    52.Python
-    53.R
-    54.Julia
-    55.Matlab
-    56.Perl
-    57.OpenMP
-    58.MPI
-    59.GPU
+    501.Fortran_C_CPP
+    502.Python
+    503.R
+    504.Julia
+    505.Matlab
+    506.Perl
+    507.OpenMP
+    508.MPI
+    509.OpenACC
+    510.CUDA

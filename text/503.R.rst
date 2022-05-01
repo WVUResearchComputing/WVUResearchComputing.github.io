@@ -44,11 +44,12 @@ On this Linux distribution, R is included with version 3.0.2.
 This version is too old for most scientific applications today. 
 You should not have much reason to use that version.
 
-In terms of environment modules Spruce Knob offers two versions 3.6.3 and 4.0.4.
+In terms of environment modules Spruce Knob offers three versions: 3.6.3, 4.0.5 and 4.1.2.
 You can load any of those modules with the ``module`` command::
 
-    $> module load lang/R/3.6.3_gcc101
-    $> module load lang/R/4.0.4_gcc101
+    $> module load lang/R/3.6.3_gcc103
+    $> module load lang/R/4.0.5_gcc103
+    $> module load lang/R/4.1.2_gcc103
 
 After that, the command ``R`` and ``Rscript`` became available on the shell.
 The third way of accessing the R interpreter is via a Singularity `container`.
@@ -77,21 +78,25 @@ On Thorny Flat the R interpreter is not preinstalled from RHEL packages and the 
     lang/r/3.6.3_gcc112 
     lang/r/4.0.5_gcc112 
     lang/r/4.1.2_gcc112
+    lang/r/4.2.0_gcc112
 
-To load the module, use the command ``module load`` including ``lang/gcc/11.2`` before the module to be added as dependency::
+To load the module, use the command ``module load`` including ``lang/gcc/11.2`` before the module to be added as dependency.
+Execute any of the lines below::
 
     $> module load lang/gcc/11.2.0 lang/r/3.6.3_gcc112
     $> module load lang/gcc/11.2.0 lang/r/4.0.5_gcc112
     $> module load lang/gcc/11.2.0 lang/r/4.1.2_gcc112
+    $> module load lang/gcc/11.2.0 lang/r/4.2.0_gcc112
 
 After that, the command ``R`` and ``Rscript`` became available on the shell.
-Another option for accessing the R interpreter is via a singularity `container`.
 
+Another option for accessing the R interpreter is via a singularity `container`.
 Several images include the R interpreter, in particular, the two images below offer an alternative to equivalent versions from environment modules::
 
     R-3.6.3.sif
     R-4.0.5.sif
-
+    R-4.1.3.sif
+    R-4.2.0.sif
 
 To get a shell prompt inside any of those images load the singularity module first::
 
@@ -102,11 +107,12 @@ After that, a shell inside the image can be obtained with::
     $> singularity shell $SNG_PATH3/R-3.6.3.sif
     $> singularity shell $SNG_PATH3/R-4.0.5.sif
     $> singularity shell $SNG_PATH3/R-4.1.2.sif
+    $> singularity shell $SNG_PATH3/R-4.2.0.sif
 
 After getting a shell inside the `container` the commands ``R`` and ``Rscript`` became available.
 A shortcut to access the R interpreter in one single step is with the `run` option, for example::
 
-    $> singularity run $SNG_PATH3/R-4.1.2.sif
+    $> singularity run $SNG_PATH3/R-4.2.0.sif
 
 Another way of getting R is using a conda environments. 
 You can create your own conda environment and install the version of R that better fits your needs.
@@ -319,13 +325,32 @@ Once you enter your credentials, you land on the Open On-Demand Dashboard
   :width: 600
   :alt: OOD dashboard
 
-Go to `Interactive Apps` and select `RStudio Server 1.2`. A form will be there for filling all the details needed to create a RStudio job.
+.. image:: /_static/R_OOD_dashboard2.png
+  :width: 600
+  :alt: OOD dashboard
+
+
+Go to `Interactive Apps`. There are two versions of RStudio, the older 1.2.5042 and the newer 2022.02.2. They offer different versions of R. Preferentially, select `RStudio Server 2022.02.2`. A form will be there for filling all the details needed to create a RStudio job.
 
 .. image:: /_static/R_OOD_form_rstudio.png
   :width: 600
   :alt: OOD Form RStudio
 
-The form ask for the Singularity image that you want to use for launching the server. Several images are presently available built from different versions of Ubuntu as the base filesystem. A good default value could be RStudio 1.2 with R 4.0.4 with Ubuntu focal as base filesystem. The next question is about the queue to run the job. You can get 4 hours using the `standby` queue and that is a good choice in most cases. The next field is the number of hours to run the job. Using `standby`, the max walltime is 4 hours, so we use that. Finally the number of cores (called nodes in the form). This is the number of cores to ask, the max number of cores on machines of Thorny is 40 but without special routines, R will be running serially, which means that no matter how many cores you ask only one core will be used. We are setting 1 core in this case. Finally, press `Launch` to submit the job request.
+.. image:: /_static/R_OOD_form_rstudio2.png
+  :width: 600
+  :alt: OOD Form RStudio
+
+The form ask for the Singularity image that you want to use for launching the server. 
+Several images are presently available built from different versions of Ubuntu as the base filesystem. 
+A good default value could be RStudio 2022.02.2 with R 4.2.0 with Ubuntu focal as base filesystem. 
+The next question is about the queue to run the job. 
+You can get 4 hours using the `standby` queue and that is a good choice in most cases. 
+The next field is the number of hours to run the job. 
+Using `standby`, the max walltime is 4 hours, so we use that. 
+Finally the number of cores or processes per node. 
+This is the number of cores reserved on a single compute node, the max number of cores on machines of Thorny is 40 but without special routines (for example Rparallel or sparklyr), R will be running serially, which means that no matter how many cores you ask only one core will be used. 
+We are setting 4 cores in this case. 
+Finally, press `Launch` to submit the job request.
 
 The next screen will show the job being created for you. After a few seconds, you will see a button `Connect to RStudio Server`. Press the button.
 
@@ -347,6 +372,16 @@ An alternative GUI for R is Jupyter. Jupyter presents a Notebook interface, wher
 Go to `Interactive Apps` and select `Jupyter Official Images`. A form will be there for filling all the details needed to create a RStudio job.
 
 .. image:: /_static/R_OOD_form_jupyter.png
+  :width: 600
+  :alt: OOD Form Jupyter
+
+
+.. image:: /_static/R_OOD_form_jupyter2.png
+  :width: 600
+  :alt: OOD Form Jupyter
+
+
+.. image:: /_static/R_OOD_form_jupyter3.png
   :width: 600
   :alt: OOD Form Jupyter
 

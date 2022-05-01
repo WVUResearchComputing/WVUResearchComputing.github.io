@@ -1,7 +1,7 @@
-.. _pl-gpu:
+.. _pl-openacc:
 
-Parallel Programming: Accelerators
-===================================
+Parallel Programming: OpenACC
+=============================
 
 The fastest supercomputers today include alongside with the normal CPUs, extra electronic devices specialized to perform certain computational tasks much faster than CPUs, those devices are called Accelerators and the most prominent of those today are Graphical Processing Units (GPUs).
 
