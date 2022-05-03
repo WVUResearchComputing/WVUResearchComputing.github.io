@@ -1,4 +1,4 @@
-.. _pl-cuda:
+.. _sp-cuda:
 
 Parallel Programming: CUDA
 ==========================

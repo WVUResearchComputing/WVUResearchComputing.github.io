@@ -1,4 +1,4 @@
-.. _pl-matlab:
+.. _sp-matlab:
 
 MATLAB
 ======

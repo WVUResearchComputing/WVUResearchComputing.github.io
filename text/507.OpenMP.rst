@@ -1,4 +1,4 @@
-.. _pl-openmp:
+.. _sp-openmp:
 
 Parallel Programming: OpenMP
 ============================

@@ -1,4 +1,4 @@
-.. _pl-python:
+.. _sp-python:
 
 Python Language
 ===============
