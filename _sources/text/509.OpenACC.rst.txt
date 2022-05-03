@@ -1,4 +1,4 @@
-.. _pl-openacc:
+.. _sp-openacc:
 
 Parallel Programming: OpenACC
 =============================

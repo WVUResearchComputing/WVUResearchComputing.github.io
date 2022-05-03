@@ -1,4 +1,4 @@
-.. _pl-julia:
+.. _sp-julia:
 
 Julia Language
 ================================
