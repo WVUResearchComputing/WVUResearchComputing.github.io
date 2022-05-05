@@ -318,6 +318,115 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 </div>
 <div class="section" id="compiling-codes">
 <h2>Compiling codes<a class="headerlink" href="#compiling-codes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
+<span class="c1">#include &lt;stdlib.h&gt;</span>
+
+<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">);</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="nb">int</span> <span class="o">*</span><span class="n">array</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span> <span class="p">)</span> <span class="o">/*</span> <span class="n">argc</span> <span class="n">should</span> <span class="n">be</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">correct</span> <span class="n">execution</span> <span class="o">*/</span>
+        <span class="p">{</span>
+          <span class="o">/*</span> <span class="n">We</span> <span class="nb">print</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">assuming</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">program</span> <span class="n">name</span> <span class="o">*/</span>
+          <span class="n">printf</span><span class="p">(</span> <span class="s2">&quot;usage: </span><span class="si">%s</span><span class="s2"> max_number</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+        <span class="p">}</span>
+  <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="n">n</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+          <span class="n">array</span> <span class="o">=</span><span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">));</span>
+          <span class="n">sieve</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+        <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">i:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">j:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Before a[</span><span class="si">%d</span><span class="s2">*</span><span class="si">%d</span><span class="s2">]: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">]);</span>
+        <span class="n">a</span><span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">After a[</span><span class="si">%d</span><span class="s2">*</span><span class="si">%d</span><span class="s2">]: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">]);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Primes numbers from 1 to </span><span class="si">%d</span><span class="s2"> are : &quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">, &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module str2int_mod
+contains
+
+  elemental subroutine str2int(str,int,stat)
+        implicit none
+        ! Arguments
+        character(len=*),intent(in) :: str
+        integer,intent(out)         :: int
+        integer,intent(out)         :: stat
+
+        read(str,*,iostat=stat)  int
+  end subroutine str2int
+
+end module
+
+program sieve
+
+  use str2int_mod
+  implicit none
+
+  integer :: i, stat, i_max=0
+  logical, dimension(:), allocatable :: is_prime
+  character(len=32) :: arg
+
+  i = 0
+  do
+        call get_command_argument(i, arg)
+        if (len_trim(arg) == 0) exit
+
+        i = i+1
+        if ( i == 2 ) then
+           call str2int(trim(arg), i_max, stat)
+           write(*,*) &quot;Sieve for prime numbers up to&quot;, i_max
+        end if
+
+  end do
+
+  if (i_max .lt. 1) then
+         write (*,*) &quot;Enter the maximum number to search for primes&quot;
+         call exit(1)
+  end if
+
+  allocate(is_prime(i_max))
+
+  is_prime = .true.
+  is_prime (1) = .false.
+  do i = 2, int (sqrt (real (i_max)))
+        if (is_prime (i)) is_prime (i * i : i_max : i) = .false.
+  end do
+  do i = 1, i_max
+        if (is_prime (i)) write (*, &#39;(i0, 1x)&#39;, advance = &#39;no&#39;) i
+  end do
+  write (*, *)
+
+end program sieve
+</pre></div>
+</div>
 </div>
 </div>
 
