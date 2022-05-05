@@ -198,21 +198,15 @@ Fortran 77 was for many years the standard de facto for scientific computing and
 <p>Fortran, C and C++ shared a number of attributes. These languages need a compiler that translates the source code into machine code. Parallelization interfaces such as MPI are written with explicit support for those three languages and compiler suites such as GCC, Intel and NVIDIA HPC include those languages by default.</p>
 <div class="section" id="accessing-c-c-and-fortran-compilers">
 <h2>Accessing C, C++ and Fortran Compilers<a class="headerlink" href="#accessing-c-c-and-fortran-compilers" title="Permalink to this headline">¶</a></h2>
-<p>In an HPC cluster is customary to include compilers for Fortran, C and C++ by default. On Linux machines the usual compilers are from the GNU Compiler Collection (GCC). However, the versions of those compilers is old for the purpose of many scientific packages and do not support recent CPU extensions and parallelization extensions such as OpenMP or OpenACC. For example, on Thorny Flat the default versions of the compilers are 4.8, one way of identifying the version of gcc compilers is running the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; gfortran -v
-Using built-in specs.
-COLLECT_GCC=gfortran
-COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
-Target: x86_64-redhat-linux
-Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --disable-libgcj --with-isl=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/isl-install --with-cloog=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/cloog-install --enable-gnu-indirect-function --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux
-Thread model: posix
-gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
-</pre></div>
-</div>
-<p>It is usually better to use environment modules to access newer versions of GCC or compilers from other vendors such as Intel or NVIDIA.
-Each compilerfor the three languages and for each vendor has its own name.</p>
+<p>In an HPC cluster is customary to include compilers for Fortran, C and C++ by default.
+On Linux machines the usual compilers are from the GNU Compiler Collection (GCC).
+Apart from GCC, there are other vendors of compilers for these three languages.
+Each vendor brings its own advantages and particular options to optimize the resulting binaries, support for CPU extensions, support for language extensions and support for various standards of the languages that are standarized and reviewed over time.
+The Intel Compiler Suite and the NVIDIA HPC SDK are two examples of alternative compilers that are available in many HPC clusters.
+Each compiler for the three languages has its own name.
+The table below shows the names of the compilers for each of the three languages from each vendor.</p>
 <table border="1" class="colwidths-given docutils" id="id1">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Name of compiler commands from different vendors</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="40%" />
 <col width="20%" />
@@ -241,6 +235,86 @@ Each compilerfor the three languages and for each vendor has its own name.</p>
 <td>g++</td>
 <td>icpc</td>
 <td>nvc++</td>
+</tr>
+</tbody>
+</table>
+<p>The compiler installed by default with the Operating System is usually too old.
+That is due to the tendency of having more stable software packages on production systems and that is the case on HPC clusters too.
+The versions of those installed compilers are old for the purpose of many scientific packages and do not support recent CPU extensions and language extensions such as OpenMP or OpenACC.
+On Thorny Flat the default version of the compilers is 4.8, one way of identifying the version of gcc compilers is running the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; gfortran -v
+Using built-in specs.
+COLLECT_GCC=gfortran
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --disable-libgcj --with-isl=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/isl-install --with-cloog=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/cloog-install --enable-gnu-indirect-function --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
+</pre></div>
+</div>
+<p>It is usually better to use environment modules to access newer versions of GCC or compilers from other vendors such as Intel or NVIDIA.
+The table below shows the modules that can be used on Thorny Flat to load the modules for compilers from different vendors and from several versions</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Vendor</th>
+<th class="head">Modules</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GCC</td>
+<td><div class="first last line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/8.2.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/9.3.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/11.2.0</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Intel</td>
+<td><div class="first last line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2018</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2019</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.2.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.2.0</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>NVIDIA</td>
+<td><div class="first last line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/20.7</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/21.3</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/21.11</span></code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils" id="id2">
+<caption><span class="caption-text">Modules for compilers from different vendors</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">Vendor</th>
+<th class="head">Modules</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">GCC</th>
+<td>lang/gcc/8.2.0
+lang/gcc/9.3.0
+lang/gcc/11.2.0</td>
+</tr>
+<tr class="row-odd"><th class="stub">Intel</th>
+<td>compiler/2021.2.0
+compiler/2021.4.0</td>
+</tr>
+<tr class="row-even"><th class="stub">NVIDIA HPC</th>
+<td>lang/nvidia</td>
 </tr>
 </tbody>
 </table>
