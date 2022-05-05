@@ -98,6 +98,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="500.ScientificProgramming.html">Scientific Programming</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Fortran, C and C++</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-c-c-and-fortran-compilers">Accessing C, C++ and Fortran Compilers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-codes">Compiling codes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="502.Python.html">Python Language</a></li>
@@ -256,12 +257,14 @@ gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
 The table below shows the modules that can be used on Thorny Flat to load the modules for compilers from different vendors and from several versions</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col width="11%" />
+<col width="34%" />
+<col width="55%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Vendor</th>
 <th class="head">Modules</th>
+<th class="head">Advantages</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -270,6 +273,14 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/8.2.0</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/9.3.0</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/11.2.0</span></code></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Standard <em>de-facto</em> on Linux/UNIX</div>
+<div class="line">Most codes compile correctly with GCC</div>
+<div class="line">Relative good support for OpenMP and AVX</div>
+<div class="line">extensions</div>
 </div>
 </td>
 </tr>
@@ -278,7 +289,13 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2018</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2019</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.2.0</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.2.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.4.0</span></code></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Compilers that optimize particularly well</div>
+<div class="line">on Intel Hardware.</div>
+<div class="line">Good support for OpenMP but not OpenACC</div>
 </div>
 </td>
 </tr>
@@ -289,35 +306,18 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/21.11</span></code></div>
 </div>
 </td>
+<td><div class="first last line-block">
+<div class="line">Good support for OpenACC in addition to</div>
+<div class="line">OpenMP.</div>
+<div class="line">Informative parallelization information</div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id2">
-<caption><span class="caption-text">Modules for compilers from different vendors</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="67%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head stub">Vendor</th>
-<th class="head">Modules</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><th class="stub">GCC</th>
-<td>lang/gcc/8.2.0
-lang/gcc/9.3.0
-lang/gcc/11.2.0</td>
-</tr>
-<tr class="row-odd"><th class="stub">Intel</th>
-<td>compiler/2021.2.0
-compiler/2021.4.0</td>
-</tr>
-<tr class="row-even"><th class="stub">NVIDIA HPC</th>
-<td>lang/nvidia</td>
-</tr>
-</tbody>
-</table>
+</div>
+<div class="section" id="compiling-codes">
+<h2>Compiling codes<a class="headerlink" href="#compiling-codes" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

@@ -71,41 +71,27 @@ On Thorny Flat the default version of the compilers is 4.8, one way of identifyi
 It is usually better to use environment modules to access newer versions of GCC or compilers from other vendors such as Intel or NVIDIA.
 The table below shows the modules that can be used on Thorny Flat to load the modules for compilers from different vendors and from several versions
 
-+----------+-------------------------------+
-| Vendor   | Modules                       | 
-+==========+===============================+
-| GCC      | | ``lang/gcc/8.2.0``          |
-|          | | ``lang/gcc/9.3.0``          |
-|          | | ``lang/gcc/11.2.0``         |
-+----------+-------------------------------+
-| Intel    | | ``lang/intel/2018``         |
-|          | | ``lang/intel/2019``         |
-|          | | ``compiler/2021.2.0``       |
-|          | | ``compiler/2021.2.0``       |
-+----------+-------------------------------+
-| NVIDIA   | | ``lang/nvidia/nvhpc/20.7``  |
-|          | | ``lang/nvidia/nvhpc/21.3``  |
-|          | | ``lang/nvidia/nvhpc/21.11`` |
-+----------+-------------------------------+
++----------+-------------------------------+--------------------------------------------------+
+| Vendor   | Modules                       | Advantages                                       |
++==========+===============================+==================================================+
+| GCC      | | ``lang/gcc/8.2.0``          | | Standard *de-facto* on Linux/UNIX              |
+|          | | ``lang/gcc/9.3.0``          | | Most codes compile correctly with GCC          |
+|          | | ``lang/gcc/11.2.0``         | | Relative good support for OpenMP and AVX       |
+|          | |                             | | extensions                                     |
++----------+-------------------------------+--------------------------------------------------+
+| Intel    | | ``lang/intel/2018``         | | Compilers that optimize particularly well      |
+|          | | ``lang/intel/2019``         | | on Intel Hardware.                             |
+|          | | ``compiler/2021.2.0``       | | Good support for OpenMP but not OpenACC        |
+|          | | ``compiler/2021.4.0``       |                                                  |
++----------+-------------------------------+--------------------------------------------------+
+| NVIDIA   | | ``lang/nvidia/nvhpc/20.7``  | | Good support for OpenACC in addition to        |
+|          | | ``lang/nvidia/nvhpc/21.3``  | | OpenMP.                                        |
+|          | | ``lang/nvidia/nvhpc/21.11`` | | Informative parallelization information        |
++----------+-------------------------------+--------------------------------------------------+
 
 
+Compiling codes
+---------------
 
-
-.. list-table:: Modules for compilers from different vendors
-   :widths: 50 25
-   :header-rows: 1
-   :stub-columns: 1
-
-   * - Vendor
-     - Modules
-   * - GCC 
-     - lang/gcc/8.2.0  
-       lang/gcc/9.3.0
-       lang/gcc/11.2.0
-   * - Intel
-     - compiler/2021.2.0
-       compiler/2021.4.0
-   * - NVIDIA HPC
-     - lang/nvidia
 
 
