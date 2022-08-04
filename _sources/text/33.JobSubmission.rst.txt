@@ -76,7 +76,7 @@ Submitting a Batch job to the Queue
 To submit a batch job to the queue use the qsub command to submit a job
 submission shell script. Useable job submission shell scripts are
 available for easy modification at `Sample Job
-Scripts <33.job_samples.html>`__.
+Scripts <https://docs.hpc.wvu.edu/text/33.job_samples.html>`__.
 
 ::
 
