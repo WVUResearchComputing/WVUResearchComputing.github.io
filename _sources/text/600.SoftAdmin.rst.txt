@@ -21,3 +21,4 @@ Software Administration
   613.Matlab_MMX.rst
   614.Julia.rst
   615.Tinker9.rst
+  616.Cuda.rst

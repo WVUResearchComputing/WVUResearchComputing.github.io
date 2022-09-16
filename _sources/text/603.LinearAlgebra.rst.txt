@@ -469,3 +469,15 @@ Configure ::
     LDFLAGS="-L${MD_OPENBLAS}/lib -L${MD_SCALAPACK}/lib" \
     --disable-sse --disable-avx --disable-avx2 --disable-avx512 CFLAGS=-fPIC
 
+ELPA 2021.11 on Thorny with Intel 2022
+--------------------------------------
+
+Modules::
+
+    $> module load lang/gcc/9.3.0 parallel/cuda/11.7 compiler mpi mkl
+
+
+Configure::
+
+    $> export SCALAPACK="-L/gpfs20/shared/software/intel/oneapi/mkl/2022.1.0/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_intelmpi_lp64 -liomp5 -lpthread -lm -ldl"
+    $> ../configure --enable-avx512 --enable-nvidia-gpu CC=mpiicc CXX=mpiicpc FC=mpiifort SCALAPACK_LDFLAGS="$SCALAPACK" --with-NVIDIA-GPU-compute-capability=sm_61 --prefix=/shared/software/libs/elpa/2021.11.002_intel22_impi22

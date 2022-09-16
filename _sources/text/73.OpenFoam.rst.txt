@@ -1,34 +1,131 @@
-Engineering: Running OpenFOAM simple tutorial
-=============================================
+Engineering: OpenFOAM 10
+========================
 
-Load modules
-~~~~~~~~~~~~
 
-OpenFOAM was compiled with gcc 5.3.0 and openMPI 1.6.5. These
-modulefiles will need to be loaded to run OpenFOAM.
+On Thorny Flat OpenFOAM 10 is available via Singularity containers.
+There are two images on these locations::
 
-::
+    /shared/containers/openfoam10-graphical-apps.sif
+    /shared/containers/openfoam10-paraview56.sif
+   
 
-    $> module load compilers/gcc/5.3.0 mpi/openmpi/1.6.5 libraries/openfoam/3.0+
+Run OpenFOAM with an interactive job
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Run OpenFOAM
-~~~~~~~~~~~~
+We start by creating an interactive job, for the simple examples such as the tutorials, requesting 4 cores is more than enough::
 
-Below is a sample tutorial given by OpenFOAM to show how to run OpenFOAM
-on our systems. The commands below will initiate an interactive job on
-the debug queue, and execute the openFoam tutorial.
+    $> qsub -I -l nodes=1:ppn=4
 
-::
+After a few minutes you get a message indicating that a compute node and corresponding cores have been assigned, you get connected to the compute node::
 
-    $> debug
+    qsub: waiting for job 1660023.trcis002.hpc.wvu.edu to start
+    qsub: job 1660023.trcis002.hpc.wvu.edu ready
 
-    $> module load compilers/gcc/5.3.0 libraries/openfoam/3.0+
-    $> mkdir -p $FOAM_RUN
-    $> run
-    $> cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/pitzDaily ./
-    $> mv pitzDaily/* .
-    $> blockMesh
-    $> simpleFoam
+    18:28:50-username@tcgcx300:~$
+
+Lets work on the `$SCRATCH` folder and create a subfolder there::
+
+    $> cd $SCRATCH
+    $> mkdir openfoam_tutorial
+    $> cd openfoam_tutorial
+
+Load the module for singularity and get a shell inside the container::
+
+    $> module load singularity
+    $> singularity shell /shared/containers/openfoam10-paraview56.sif
+
+Lets copy one of the examples in the tutorials::
+
+    Singularity> cp -r /opt/openfoam10/tutorials/incompressible/icoFoam/cavity .      
+    Singularity> cd cavity/
+    Singularity> ls
+    Allclean  Allrun  cavity  cavityClipped  cavityGrade
+
+The tutorials include some scripts with easier access to the utilities in OpenFOAM::
+
+    Singularity> . $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+The mesh is prepared with the command::
+
+    Singularity> runApplication blockMesh
+    Running blockMesh on /scratch/gufranco/openfoam_tutorial/cavity/cavity
+
+And running the particular application from OpenFOAM::
+
+    Singularity> runApplication icoFoam    
+    Running icoFoam on /scratch/gufranco/openfoam_tutorial/cavity/cavity 
+
+This is a very simple example that takes less than a second to run.
+The result of the mesh preparation and simulation is a set of files in the current folder and log files::
+
+    Singularity> ls
+    0  0.1  0.2  0.3  0.4  0.5  constant  log.blockMesh  log.icoFoam  system
+
+For example the ouput of the log for icoFoam is posted there (first and last lines)::
+
+             =========                 |
+             \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+              \\    /   O peration     | Website:  https://openfoam.org
+               \\  /    A nd           | Version:  10
+                \\/     M anipulation  |
+                \*---------------------------------------------------------------------------*/
+                Build  : 10-0347120b3b9d
+                Exec   : icoFoam
+                Date   : Sep 15 2022
+                Time   : 21:19:29
+                Host   : "tcgcx300.hpc.wvu.edu"
+                PID    : 185550
+                I/O    : uncollated
+                Case   : /scratch/gufranco/openfoam_tutorial/cavity/cavity
+                nProcs : 1
+                fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+                allowSystemOperations : Allowing user-supplied system call operations
+
+                // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+                Create time
+
+                Create mesh for time = 0
+
+                Reading physicalProperties
+
+                Reading field p
+
+                Reading field U
+
+                Reading/calculating face flux field phi
+
+
+                Starting time loop
+
+                Time = 0.005s
+
+                Courant Number mean: 0 max: 0
+                smoothSolver:  Solving for Ux, Initial residual = 1, Final residual = 8.90511e-06, No Iterations 19
+                smoothSolver:  Solving for Uy, Initial residual = 0, Final residual = 0, No Iterations 0
+                DICPCG:  Solving for p, Initial residual = 1, Final residual = 0.0492854, No Iterations 12
+                time step continuity errors : sum local = 0.000466513, global = -1.79995e-19, cumulative = -1.79995e-19
+                DICPCG:  Solving for p, Initial residual = 0.590864, Final residual = 2.65225e-07, No Iterations 35
+                time step continuity errors : sum local = 2.74685e-09, global = -2.6445e-19, cumulative = -4.44444e-19
+                ExecutionTime = 0.005032 s  ClockTime = 0 s
+
+                ...
+                ...
+                ...
+
+
+                Time = 0.5s
+
+                Courant Number mean: 0.222158 max: 0.852134
+                smoothSolver:  Solving for Ux, Initial residual = 2.3091e-07, Final residual = 2.3091e-07, No Iterations 0
+                smoothSolver:  Solving for Uy, Initial residual = 5.0684e-07, Final residual = 5.0684e-07, No Iterations 0
+                DICPCG:  Solving for p, Initial residual = 8.63844e-07, Final residual = 8.63844e-07, No Iterations 0
+                time step continuity errors : sum local = 8.8828e-09, global = 5.49744e-19, cumulative = 3.84189e-19
+                DICPCG:  Solving for p, Initial residual = 9.59103e-07, Final residual = 9.59103e-07, No Iterations 0
+                time step continuity errors : sum local = 9.66354e-09, global = -1.28048e-19, cumulative = 2.56141e-19
+                ExecutionTime = 0.064562 s  ClockTime = 1 s
+
+                End
+
 
 Using ParaView with OpenFoam
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

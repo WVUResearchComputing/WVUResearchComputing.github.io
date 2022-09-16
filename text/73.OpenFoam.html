@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Engineering: Running OpenFOAM simple tutorial &mdash; WVU-RC 1.0 documentation</title>
+  <title>Engineering: OpenFOAM 10 &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -100,9 +100,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="71.Ansys.html">Engineering: ANSYS Products</a></li>
 <li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Engineering: Running OpenFOAM simple tutorial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#load-modules">Load modules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-openfoam">Run OpenFOAM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Engineering: OpenFOAM 10</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-openfoam-with-an-interactive-job">Run OpenFOAM with an interactive job</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-paraview-with-openfoam">Using ParaView with OpenFoam</a></li>
 </ul>
 </li>
@@ -162,7 +161,7 @@
         
           <li><a href="70.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
         
-      <li>Engineering: Running OpenFOAM simple tutorial</li>
+      <li>Engineering: OpenFOAM 10</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,30 +180,128 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="engineering-running-openfoam-simple-tutorial">
-<h1>Engineering: Running OpenFOAM simple tutorial<a class="headerlink" href="#engineering-running-openfoam-simple-tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="load-modules">
-<h2>Load modules<a class="headerlink" href="#load-modules" title="Permalink to this headline">¶</a></h2>
-<p>OpenFOAM was compiled with gcc 5.3.0 and openMPI 1.6.5. These
-modulefiles will need to be loaded to run OpenFOAM.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load compilers/gcc/5.3.0 mpi/openmpi/1.6.5 libraries/openfoam/3.0+
+  <div class="section" id="engineering-openfoam-10">
+<h1>Engineering: OpenFOAM 10<a class="headerlink" href="#engineering-openfoam-10" title="Permalink to this headline">¶</a></h1>
+<p>On Thorny Flat OpenFOAM 10 is available via Singularity containers.
+There are two images on these locations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">containers</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">-</span><span class="n">graphical</span><span class="o">-</span><span class="n">apps</span><span class="o">.</span><span class="n">sif</span>
+<span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">containers</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">-</span><span class="n">paraview56</span><span class="o">.</span><span class="n">sif</span>
 </pre></div>
 </div>
+<div class="section" id="run-openfoam-with-an-interactive-job">
+<h2>Run OpenFOAM with an interactive job<a class="headerlink" href="#run-openfoam-with-an-interactive-job" title="Permalink to this headline">¶</a></h2>
+<p>We start by creating an interactive job, for the simple examples such as the tutorials, requesting 4 cores is more than enough:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -l nodes=1:ppn=4
+</pre></div>
 </div>
-<div class="section" id="run-openfoam">
-<h2>Run OpenFOAM<a class="headerlink" href="#run-openfoam" title="Permalink to this headline">¶</a></h2>
-<p>Below is a sample tutorial given by OpenFOAM to show how to run OpenFOAM
-on our systems. The commands below will initiate an interactive job on
-the debug queue, and execute the openFoam tutorial.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; debug
+<p>After a few minutes you get a message indicating that a compute node and corresponding cores have been assigned, you get connected to the compute node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>qsub: waiting for job 1660023.trcis002.hpc.wvu.edu to start
+qsub: job 1660023.trcis002.hpc.wvu.edu ready
 
-$&gt; module load compilers/gcc/5.3.0 libraries/openfoam/3.0+
-$&gt; mkdir -p $FOAM_RUN
-$&gt; run
-$&gt; cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/pitzDaily ./
-$&gt; mv pitzDaily/* .
-$&gt; blockMesh
-$&gt; simpleFoam
+18:28:50-username@tcgcx300:~$
+</pre></div>
+</div>
+<p>Lets work on the <cite>$SCRATCH</cite> folder and create a subfolder there:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd $SCRATCH
+$&gt; mkdir openfoam_tutorial
+$&gt; cd openfoam_tutorial
+</pre></div>
+</div>
+<p>Load the module for singularity and get a shell inside the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load singularity
+$&gt; singularity shell /shared/containers/openfoam10-paraview56.sif
+</pre></div>
+</div>
+<p>Lets copy one of the examples in the tutorials:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">/</span><span class="n">tutorials</span><span class="o">/</span><span class="n">incompressible</span><span class="o">/</span><span class="n">icoFoam</span><span class="o">/</span><span class="n">cavity</span> <span class="o">.</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">cavity</span><span class="o">/</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">ls</span>
+<span class="n">Allclean</span>  <span class="n">Allrun</span>  <span class="n">cavity</span>  <span class="n">cavityClipped</span>  <span class="n">cavityGrade</span>
+</pre></div>
+</div>
+<p>The tutorials include some scripts with easier access to the utilities in OpenFOAM:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Singularity&gt; . $WM_PROJECT_DIR/bin/tools/RunFunctions
+</pre></div>
+</div>
+<p>The mesh is prepared with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">runApplication</span> <span class="n">blockMesh</span>
+<span class="n">Running</span> <span class="n">blockMesh</span> <span class="n">on</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gufranco</span><span class="o">/</span><span class="n">openfoam_tutorial</span><span class="o">/</span><span class="n">cavity</span><span class="o">/</span><span class="n">cavity</span>
+</pre></div>
+</div>
+<p>And running the particular application from OpenFOAM:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">runApplication</span> <span class="n">icoFoam</span>
+<span class="n">Running</span> <span class="n">icoFoam</span> <span class="n">on</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gufranco</span><span class="o">/</span><span class="n">openfoam_tutorial</span><span class="o">/</span><span class="n">cavity</span><span class="o">/</span><span class="n">cavity</span>
+</pre></div>
+</div>
+<p>This is a very simple example that takes less than a second to run.
+The result of the mesh preparation and simulation is a set of files in the current folder and log files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">ls</span>
+<span class="mi">0</span>  <span class="mf">0.1</span>  <span class="mf">0.2</span>  <span class="mf">0.3</span>  <span class="mf">0.4</span>  <span class="mf">0.5</span>  <span class="n">constant</span>  <span class="n">log</span><span class="o">.</span><span class="n">blockMesh</span>  <span class="n">log</span><span class="o">.</span><span class="n">icoFoam</span>  <span class="n">system</span>
+</pre></div>
+</div>
+<p>For example the ouput of the log for icoFoam is posted there (first and last lines):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=========</span>                 <span class="o">|</span>
+\\      <span class="o">/</span>  <span class="n">F</span> <span class="n">ield</span>         <span class="o">|</span> <span class="n">OpenFOAM</span><span class="p">:</span> <span class="n">The</span> <span class="n">Open</span> <span class="n">Source</span> <span class="n">CFD</span> <span class="n">Toolbox</span>
+ \\    <span class="o">/</span>   <span class="n">O</span> <span class="n">peration</span>     <span class="o">|</span> <span class="n">Website</span><span class="p">:</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openfoam</span><span class="o">.</span><span class="n">org</span>
+  \\  <span class="o">/</span>    <span class="n">A</span> <span class="n">nd</span>           <span class="o">|</span> <span class="n">Version</span><span class="p">:</span>  <span class="mi">10</span>
+   \\<span class="o">/</span>     <span class="n">M</span> <span class="n">anipulation</span>  <span class="o">|</span>
+   \<span class="o">*---------------------------------------------------------------------------*/</span>
+   <span class="n">Build</span>  <span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">0347120</span><span class="n">b3b9d</span>
+   <span class="n">Exec</span>   <span class="p">:</span> <span class="n">icoFoam</span>
+   <span class="n">Date</span>   <span class="p">:</span> <span class="n">Sep</span> <span class="mi">15</span> <span class="mi">2022</span>
+   <span class="n">Time</span>   <span class="p">:</span> <span class="mi">21</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">29</span>
+   <span class="n">Host</span>   <span class="p">:</span> <span class="s2">&quot;tcgcx300.hpc.wvu.edu&quot;</span>
+   <span class="n">PID</span>    <span class="p">:</span> <span class="mi">185550</span>
+   <span class="n">I</span><span class="o">/</span><span class="n">O</span>    <span class="p">:</span> <span class="n">uncollated</span>
+   <span class="n">Case</span>   <span class="p">:</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gufranco</span><span class="o">/</span><span class="n">openfoam_tutorial</span><span class="o">/</span><span class="n">cavity</span><span class="o">/</span><span class="n">cavity</span>
+   <span class="n">nProcs</span> <span class="p">:</span> <span class="mi">1</span>
+   <span class="n">fileModificationChecking</span> <span class="p">:</span> <span class="n">Monitoring</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">modified</span> <span class="n">files</span> <span class="n">using</span> <span class="n">timeStampMaster</span> <span class="p">(</span><span class="n">fileModificationSkew</span> <span class="mi">10</span><span class="p">)</span>
+   <span class="n">allowSystemOperations</span> <span class="p">:</span> <span class="n">Allowing</span> <span class="n">user</span><span class="o">-</span><span class="n">supplied</span> <span class="n">system</span> <span class="n">call</span> <span class="n">operations</span>
+
+   <span class="o">//</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">//</span>
+   <span class="n">Create</span> <span class="n">time</span>
+
+   <span class="n">Create</span> <span class="n">mesh</span> <span class="k">for</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
+
+   <span class="n">Reading</span> <span class="n">physicalProperties</span>
+
+   <span class="n">Reading</span> <span class="n">field</span> <span class="n">p</span>
+
+   <span class="n">Reading</span> <span class="n">field</span> <span class="n">U</span>
+
+   <span class="n">Reading</span><span class="o">/</span><span class="n">calculating</span> <span class="n">face</span> <span class="n">flux</span> <span class="n">field</span> <span class="n">phi</span>
+
+
+   <span class="n">Starting</span> <span class="n">time</span> <span class="n">loop</span>
+
+   <span class="n">Time</span> <span class="o">=</span> <span class="mf">0.005</span><span class="n">s</span>
+
+   <span class="n">Courant</span> <span class="n">Number</span> <span class="n">mean</span><span class="p">:</span> <span class="mi">0</span> <span class="nb">max</span><span class="p">:</span> <span class="mi">0</span>
+   <span class="n">smoothSolver</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">Ux</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">8.90511e-06</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">19</span>
+   <span class="n">smoothSolver</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">Uy</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">0</span>
+   <span class="n">DICPCG</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">0.0492854</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">12</span>
+   <span class="n">time</span> <span class="n">step</span> <span class="n">continuity</span> <span class="n">errors</span> <span class="p">:</span> <span class="nb">sum</span> <span class="n">local</span> <span class="o">=</span> <span class="mf">0.000466513</span><span class="p">,</span> <span class="k">global</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.79995e-19</span><span class="p">,</span> <span class="n">cumulative</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.79995e-19</span>
+   <span class="n">DICPCG</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">0.590864</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">2.65225e-07</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">35</span>
+   <span class="n">time</span> <span class="n">step</span> <span class="n">continuity</span> <span class="n">errors</span> <span class="p">:</span> <span class="nb">sum</span> <span class="n">local</span> <span class="o">=</span> <span class="mf">2.74685e-09</span><span class="p">,</span> <span class="k">global</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.6445e-19</span><span class="p">,</span> <span class="n">cumulative</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.44444e-19</span>
+   <span class="n">ExecutionTime</span> <span class="o">=</span> <span class="mf">0.005032</span> <span class="n">s</span>  <span class="n">ClockTime</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">s</span>
+
+   <span class="o">...</span>
+   <span class="o">...</span>
+   <span class="o">...</span>
+
+
+   <span class="n">Time</span> <span class="o">=</span> <span class="mf">0.5</span><span class="n">s</span>
+
+   <span class="n">Courant</span> <span class="n">Number</span> <span class="n">mean</span><span class="p">:</span> <span class="mf">0.222158</span> <span class="nb">max</span><span class="p">:</span> <span class="mf">0.852134</span>
+   <span class="n">smoothSolver</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">Ux</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">2.3091e-07</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">2.3091e-07</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">0</span>
+   <span class="n">smoothSolver</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">Uy</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">5.0684e-07</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">5.0684e-07</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">0</span>
+   <span class="n">DICPCG</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">8.63844e-07</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">8.63844e-07</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">0</span>
+   <span class="n">time</span> <span class="n">step</span> <span class="n">continuity</span> <span class="n">errors</span> <span class="p">:</span> <span class="nb">sum</span> <span class="n">local</span> <span class="o">=</span> <span class="mf">8.8828e-09</span><span class="p">,</span> <span class="k">global</span> <span class="o">=</span> <span class="mf">5.49744e-19</span><span class="p">,</span> <span class="n">cumulative</span> <span class="o">=</span> <span class="mf">3.84189e-19</span>
+   <span class="n">DICPCG</span><span class="p">:</span>  <span class="n">Solving</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">Initial</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">9.59103e-07</span><span class="p">,</span> <span class="n">Final</span> <span class="n">residual</span> <span class="o">=</span> <span class="mf">9.59103e-07</span><span class="p">,</span> <span class="n">No</span> <span class="n">Iterations</span> <span class="mi">0</span>
+   <span class="n">time</span> <span class="n">step</span> <span class="n">continuity</span> <span class="n">errors</span> <span class="p">:</span> <span class="nb">sum</span> <span class="n">local</span> <span class="o">=</span> <span class="mf">9.66354e-09</span><span class="p">,</span> <span class="k">global</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.28048e-19</span><span class="p">,</span> <span class="n">cumulative</span> <span class="o">=</span> <span class="mf">2.56141e-19</span>
+   <span class="n">ExecutionTime</span> <span class="o">=</span> <span class="mf">0.064562</span> <span class="n">s</span>  <span class="n">ClockTime</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">s</span>
+
+   <span class="n">End</span>
 </pre></div>
 </div>
 </div>

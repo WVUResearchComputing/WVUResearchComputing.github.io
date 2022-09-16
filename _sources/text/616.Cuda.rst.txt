@@ -1,0 +1,11 @@
+Cuda
+----
+
+Installing new CUDA drivers on GPU compute nodes
+::
+
+	$> systemctl stop nvidia-dcgm
+	$> rmmod nvidia_modeset nvidia_drm nvidia_uvm nvidia
+	$> sh /shared/src/cuda_11.7.0_515.43.04_linux.run --silent --driver
+	$> sh /shared/src/cuda_11.7.0_515.43.04_linux.run --silent --toolkit
+
