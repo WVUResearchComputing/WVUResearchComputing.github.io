@@ -134,8 +134,13 @@ Visualization of openFoam output can be executed from the head node. To
 use paraFoam, make sure you have logged in with `X11 forwarding
 enabled <Using X Windows applications>`__.
 
-::
+Connect to Thorny using X11 Forwarding::
 
-    $> module load compilers/gcc/5.3.0 libraries/openfoam/3.0+ visualization/paraview
-    $> run
-    $> paraFoam
+    $> ssh -X <username>@ssh.wvu.edu
+    $> ssh -X tf.hpc.wvu.edu
+    $> module load singularity
+    $> singularity shell /shared/containers/openfoam10-paraview56.sif
+    Singularity> paraFoam -builtin
+
+.. figure:: /_static/ParaFoam.png
+   :alt: ParaFoam

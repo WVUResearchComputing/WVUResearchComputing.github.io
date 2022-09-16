@@ -310,10 +310,16 @@ The result of the mesh preparation and simulation is a set of files in the curre
 <p>Visualization of openFoam output can be executed from the head node. To
 use paraFoam, make sure you have logged in with <a class="reference external" href="UsingXWindowsapplications">X11 forwarding
 enabled</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load compilers/gcc/5.3.0 libraries/openfoam/3.0+ visualization/paraview
-$&gt; run
-$&gt; paraFoam
+<p>Connect to Thorny using X11 Forwarding:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh -X &lt;username&gt;@ssh.wvu.edu
+$&gt; ssh -X tf.hpc.wvu.edu
+$&gt; module load singularity
+$&gt; singularity shell /shared/containers/openfoam10-paraview56.sif
+Singularity&gt; paraFoam -builtin
 </pre></div>
+</div>
+<div class="figure">
+<img alt="ParaFoam" src="../_images/ParaFoam.png" />
 </div>
 </div>
 </div>
