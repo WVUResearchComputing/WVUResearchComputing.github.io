@@ -77,26 +77,18 @@ On Thorny there are a several environment modules for Python.
 These modules include a good variety of scientific computing packages preinstalled for the corresponding version of Python.
 The modules available on Thorny Flat are::
 
-    lang/python/cpython_3.10.1_gcc112
-    lang/python/cpython_3.7.4_gcc82
-    lang/python/cpython_3.8.10_gcc82
-    lang/python/cpython_3.8.10_gcc93
-    lang/python/cpython_3.8.12_gcc112
-    lang/python/cpython_3.9.5_gcc82
-    lang/python/cpython_3.9.5_gcc93
-    lang/python/cpython_3.9.7_gcc93
-    lang/python/cpython_3.9.9_gcc112
+    lang/python/cpython_3.10.5_gcc112
+    lang/python/cpython_3.10.5_gcc93
+    lang/python/cpython_3.8.13_gcc112
+    lang/python/cpython_3.8.13_gcc93
+    lang/python/cpython_3.9.13_gcc112
+    lang/python/cpython_3.9.13_gcc93
     lang/python/intelpython2_2019.5
-    lang/python/intelpython_2.7.14
     lang/python/intelpython_2.7.16
-    lang/python/intelpython3_2019.5
-    lang/python/intelpython3_2020.2
-    lang/python/intelpython_3.6.3
-    lang/python/intelpython_3.6.9
-    lang/python/pypy2.7-v7.3.2-linux64
-    lang/python/pypy3.6-v7.1.1-thorny
-    lang/python/pypy3.6-v7.3.2-linux64
-    lang/python/pypy3.7-v7.3.2-linux64
+    lang/python/intelpython_3.9
+    lang/python/pypy2.7-v7.3.9-linux64
+    lang/python/pypy3.9-v7.3.9-linux64
+
 
 Packages installed with CPython modules
 ---------------------------------------
@@ -561,3 +553,4 @@ or
 ::
 
     pyvenv --systems-site-packages
+
