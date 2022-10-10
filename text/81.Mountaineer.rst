@@ -1,13 +1,32 @@
 Mountaineer Cluster
 ===================
 
+Mountaineer was the first centrally managed HPC cluster at WVU.
+Mountaineer was replaced by the HPC cluster Spruce Knob on Fall of 2018.
+
+Mountaineer was built with 32 compute nodes. 
+Each compute nodes was a dual socket computer (2 CPUs per node).
+Each CPU on Thorny had 6 cores.
+The total amount of cores is the product 32 (nodes) x 2 (CPUs per node) x 6 (cores per CPU) equal to 384 cores.
+
+The total amount of memory per node is 48GB, considering that each node has 12 cores, the "Fair share" of memory for Mountaineer is 4GB per core. 
+It is important to know this number because you can take optimize the use of the cluster for adjusting your job requirements in such a way that your jobs use 4GB per core. For example, if you have a job that uses 16GB on two cores, maybe you could ask for 4 cores if by doing that your memory usage will not go to 32GB, that is sometimes the case. By a smart selection of the number of cores and memory, you could maximize your job and the overall performance of the cluster will be better. All of that assuming that your code takes advantage of parallelization.
+
 Hardware
 --------
 
+Mountaineer is a 384 core cluster with 1.5 TB of RAM.
 
-Queues
-------
+  * hostname: mountaineer.hpc.wvu.edu
+  * Resource manager and system scheduler
+      * Torque v. 4.2.7
+      * Moab Cluster Manager v. 7.2.7
 
-
-Environment modules
--------------------
+  * Compute Resources
+      * 32 compute nodes
+      * Each node has:
+          Dual six-core Intel Xeon X5650 2.67 GHz chips. See Intel Ark information for X5650
+      * Memory: 48 GB of RAM
+      * Network Specifics
+          * 10 Gb fiber connections between compute nodes
+          * 1 Gb Ethernet connection from nodes to network attached storage
