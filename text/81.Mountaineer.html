@@ -101,8 +101,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mountaineer Cluster</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#queues">Queues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#environment-modules">Environment modules</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="82.Spruce.html">Spruce Knob</a></li>
@@ -180,14 +178,54 @@
             
   <div class="section" id="mountaineer-cluster">
 <h1>Mountaineer Cluster<a class="headerlink" href="#mountaineer-cluster" title="Permalink to this headline">¶</a></h1>
+<p>Mountaineer was the first centrally managed HPC cluster at WVU.
+Mountaineer was replaced by the HPC cluster Spruce Knob on Fall of 2018.</p>
+<p>Mountaineer was built with 32 compute nodes.
+Each compute nodes was a dual socket computer (2 CPUs per node).
+Each CPU on Thorny had 6 cores.
+The total amount of cores is the product 32 (nodes) x 2 (CPUs per node) x 6 (cores per CPU) equal to 384 cores.</p>
+<p>The total amount of memory per node is 48GB, considering that each node has 12 cores, the “Fair share” of memory for Mountaineer is 4GB per core.
+It is important to know this number because you can take optimize the use of the cluster for adjusting your job requirements in such a way that your jobs use 4GB per core. For example, if you have a job that uses 16GB on two cores, maybe you could ask for 4 cores if by doing that your memory usage will not go to 32GB, that is sometimes the case. By a smart selection of the number of cores and memory, you could maximize your job and the overall performance of the cluster will be better. All of that assuming that your code takes advantage of parallelization.</p>
 <div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="queues">
-<h2>Queues<a class="headerlink" href="#queues" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="environment-modules">
-<h2>Environment modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h2>
+<p>Mountaineer is a 384 core cluster with 1.5 TB of RAM.</p>
+<blockquote>
+<div><ul class="simple">
+<li>hostname: mountaineer.hpc.wvu.edu</li>
+<li><dl class="first docutils">
+<dt>Resource manager and system scheduler</dt>
+<dd><ul class="first last">
+<li>Torque v. 4.2.7</li>
+<li>Moab Cluster Manager v. 7.2.7</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Compute Resources</dt>
+<dd><ul class="first last">
+<li>32 compute nodes</li>
+<li><dl class="first docutils">
+<dt>Each node has:</dt>
+<dd>Dual six-core Intel Xeon X5650 2.67 GHz chips. See Intel Ark information for X5650</dd>
+</dl>
+</li>
+<li>Memory: 48 GB of RAM</li>
+<li><dl class="first docutils">
+<dt>Network Specifics</dt>
+<dd><ul class="first last">
+<li>10 Gb fiber connections between compute nodes</li>
+<li>1 Gb Ethernet connection from nodes to network attached storage</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
