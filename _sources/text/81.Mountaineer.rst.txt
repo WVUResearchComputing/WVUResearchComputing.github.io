@@ -17,16 +17,21 @@ Hardware
 
 Mountaineer is a 384 core cluster with 1.5 TB of RAM.
 
-  * hostname: mountaineer.hpc.wvu.edu
+  * Hostname
+      * mountaineer.hpc.wvu.edu
+
   * Resource manager and system scheduler
       * Torque v. 4.2.7
       * Moab Cluster Manager v. 7.2.7
 
   * Compute Resources
-      * 32 compute nodes
-      * Each node has:
-          Dual six-core Intel Xeon X5650 2.67 GHz chips. See Intel Ark information for X5650
-      * Memory: 48 GB of RAM
+      * Nodes, CPUs and cores
+          * 32 compute nodes
+          * Dual socket mainboards
+          * Dual six-core Intel Xeon X5650 2.67 GHz chips. See Intel Ark information for X5650
+      * Memory
+          * 48 GB of RAM per node
       * Network Specifics
           * 10 Gb fiber connections between compute nodes
           * 1 Gb Ethernet connection from nodes to network attached storage
+
