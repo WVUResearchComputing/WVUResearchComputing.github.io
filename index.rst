@@ -50,7 +50,7 @@ but since we are not always at our desk, the ticket system will guarantee that
 your support question will be seen by someone currently available.
 
 Main Responsible for Documentation and Scientific Outreach
-  `Guillermo Avendano-Franco <mailto://gufranco@mail.wvu.edu>`_
+  `Guillermo Avendano-Franco <mailto:gufranco@mail.wvu.edu>`_
 
 .. toctree::
    :maxdepth: 2
