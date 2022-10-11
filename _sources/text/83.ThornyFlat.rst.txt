@@ -70,41 +70,43 @@ Hardware
 Phase 0/1 Hardware
 ~~~~~~~~~~~~~~~~~~
 
-+---------------+-------------------------------------------+-----------+-------+-------+
-| Node Type     | Description                               | Community | Condo | Total |
-|               |                                           | Count     | Count |       |
-+---------------+-------------------------------------------+-----------+-------+-------+
-| Small Memory  | - 2 x 6138 Intel Procs (40 Cores Total)   | 64        | 13    | 77    |
-|               | - 96GB memory                             |           |       |       |
-|               | - 240GB SSD                               |           |       |       |
-|               | - 100 Gb Omnipath                         |           |       |       |
-|               | - 5 yr warranty                           |           |       |       |
-+---------------+-------------------------------------------+-----------+-------+-------+
-| Medium Memory | - 2 x 6138 Intel Procs (40 Cores Total)   | 0         | 16    | 16    |
-|               | - 192GB memory                            |           |       |       |
-|               | - 240GB SSD                               |           |       |       |
-|               | - 100 Gb Omnipath                         |           |       |       |
-|               | - 5 yr warranty                           |           |       |       |
-+---------------+-------------------------------------------+-----------+-------+-------+
-| Large Memory  | - 2 x 6138 Intel Procs (40 Cores Total)   | 0         | 4     | 4     |
-|               | - 384GB memory                            |           |       |       |
-|               | - 240GB SSD                               |           |       |       |
-|               | - 100 Gb Omnipath                         |           |       |       |
-|               | - 5 yr warranty                           |           |       |       |
-+---------------+-------------------------------------------+-----------+-------+-------+
-| XL Memory     | - 2 x 6138 Intel Procs (40 Cores Total)   | 3         | 1     | 4     |
-|               | - 768GB memory                            |           |       |       |
-|               | - 240GB SSD                               |           |       |       |
-|               | - 100 Gb Omnipath                         |           |       |       |
-|               | - 5 yr warranty                           |           |       |       |
-+---------------+-------------------------------------------+-----------+-------+-------+
-| GPU           | - 2 x 6126 Intel Procs (24 Cores Total)   | 6         | 1     | 7     |
-|               | - 3 x NVIDIA Quadro P6000 24GB PCIe GPUs, |           |       |       |
-|               | - 96GB memory                             |           |       |       |
-|               | - 240GB SSD                               |           |       |       |
-|               | - 100 Gb Omnipath                         |           |       |       |
-|               | - 5 yr warranty                           |           |       |       |
-+---------------+-------------------------------------------+-----------+-------+-------+
+  * ` <https://ark.intel.com/content/www/us/en/ark/products/120476/intel-xeon-gold-6138-processor-27-5m-cache-2-00-ghz.html>`_
+
++---------------+---------------------------------------------------------+-----------+-------+-------+
+| Node Type     | Description                                             | Community | Condo | Total |
+|               |                                                         | Count     | Count |       |
++---------------+---------------------------------------------------------+-----------+-------+-------+
+| Small Memory  | - 2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)   | 64        | 13    | 77    |
+|               | - 96GB memory                                           |           |       |       |
+|               | - 240GB SSD                                             |           |       |       |
+|               | - 100 Gb Omnipath                                       |           |       |       |
+|               | - 5 yr warranty                                         |           |       |       |
++---------------+---------------------------------------------------------+-----------+-------+-------+
+| Medium Memory | - 2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)   | 0         | 16    | 16    |
+|               | - 192GB memory                                          |           |       |       |
+|               | - 240GB SSD                                             |           |       |       |
+|               | - 100 Gb Omnipath                                       |           |       |       |
+|               | - 5 yr warranty                                         |           |       |       |
++---------------+---------------------------------------------------------+-----------+-------+-------+
+| Large Memory  | - 2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)   | 0         | 4     | 4     |
+|               | - 384GB memory                                          |           |       |       |
+|               | - 240GB SSD                                             |           |       |       |
+|               | - 100 Gb Omnipath                                       |           |       |       |
+|               | - 5 yr warranty                                         |           |       |       |
++---------------+---------------------------------------------------------+-----------+-------+-------+
+| XL Memory     | - 2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)   | 3         | 1     | 4     |
+|               | - 768GB memory                                          |           |       |       |
+|               | - 240GB SSD                                             |           |       |       |
+|               | - 100 Gb Omnipath                                       |           |       |       |
+|               | - 5 yr warranty                                         |           |       |       |
++---------------+---------------------------------------------------------+-----------+-------+-------+
+| GPU           | - 2 x Intel® Xeon® Gold 6126 Processor (12 cores/cpu)   | 6         | 1     | 7     |
+|               | - 3 x NVIDIA Quadro P6000 24GB PCIe GPUs,               |           |       |       |
+|               | - 96GB memory                                           |           |       |       |
+|               | - 240GB SSD                                             |           |       |       |
+|               | - 100 Gb Omnipath                                       |           |       |       |
+|               | - 5 yr warranty                                         |           |       |       |
++---------------+---------------------------------------------------------+-----------+-------+-------+
 
 Queues
 ------
