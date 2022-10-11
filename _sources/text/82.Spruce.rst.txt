@@ -63,6 +63,9 @@ Notice that all nodes on Spruce support AVX extensions but not all nodes support
 Phase 0/1 Hardware
 ~~~~~~~~~~~~~~~~~~
 
+  * `Intel(R) Xeon(R) CPU E5-4620 <https://ark.intel.com/content/www/us/en/ark/products/64607/intel-xeon-processor-e54620-16m-cache-2-20-ghz-7-20-gts-intel-qpi.html>`_
+  * `Intel(R) Xeon(R) CPU E5-2650 v2 <https://ark.intel.com/content/www/us/en/ark/products/75269/intel-xeon-processor-e52650-v2-20m-cache-2-60-ghz.html>`_
+
 +---------------+--------------------------------------------------------+---------------------------+
 | Node Type     | **Description**                                        | **Compute Nodes**         |
 |               |                                                        |                           |
@@ -92,6 +95,8 @@ Phase 0/1 Hardware
 Phase 2 Hardware
 ~~~~~~~~~~~~~~~~
 
+  * `Intel(R) Xeon(R) CPU E5-2650 v3 <https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html>`_
+
 +---------------+--------------------------------------------------------+---------------------------+
 | Node Type     | **Description**                                        | **Compute Nodes**         |
 |               |                                                        |                           |
@@ -112,6 +117,8 @@ Phase 2 Hardware
 Phase 3 Hardware
 ~~~~~~~~~~~~~~~~
 
+  * `Intel(R) Xeon(R) CPU E5-2650 v3 <https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html>`_
+
 +---------------+--------------------------------------------------------+---------------------------+
 | Node Type     | **Description**                                        | **Compute Nodes**         |
 |               |                                                        |                           |
@@ -131,6 +138,8 @@ Phase 3 Hardware
 
 Phase 4 Hardware
 ~~~~~~~~~~~~~~~~
+
+  * `Intel(R) Xeon(R) CPU E5-2650 v4 <https://ark.intel.com/content/www/us/en/ark/products/91767/intel-xeon-processor-e52650-v4-30m-cache-2-20-ghz.html>`_
 
 +---------------+--------------------------------------------------------+---------------------------+
 | Node Type     | **Description**                                        | **Compute Nodes**         |
