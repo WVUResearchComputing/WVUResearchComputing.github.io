@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Perl Language &mdash; WVU-RC 1.0 documentation</title>
+  <title>Perl Language &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Parallel Programming: OpenMP" href="507.OpenMP.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -184,7 +187,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="perl-language">
+  <section id="perl-language">
 <span id="sp-perl"></span><h1>Perl Language<a class="headerlink" href="#perl-language" title="Permalink to this headline">¶</a></h1>
 <p>Perl stands in for “Practical Extraction and Reporting Language” even though there is no authorized acronym for Perl.
 Perl was created by Larry Wall in 1987 when he was employed on a bug reporting system and “AWK”- a programming language he was using for the purpose was not helping him much. He is still the chief architect and developer of Perl. If we want to define Perl in one sentence: Perl is a high-level, interpreted, dynamic programming language.</p>
@@ -194,13 +197,13 @@ In scientific computing, Perl is particularly used in Bioinformatics</p>
 <p>Advances in biology have generated an ocean of data that needs careful computational analysis to extract useful information. Bioinformatics uses computation and mathematics to interpret biological data, such as DNA sequence, protein sequence, or three-dimensional structures, and depends on the ability to integrate data of various types. The Perl language is well suited to this purpose.</p>
 <p>An important practical skill in bioinformatics is the ability to quickly develop scripts (short programs) for scanning or transforming large amounts of data. Perl is an excellent language for scripting, because of its compact syntax, broad array of functions, and data orientation. The following are a few of the attributes of Perl that make it an attractive choice.</p>
 <ul class="simple">
-<li>Perl provides powerful ways to match and <strong>manipulate strings through the use of regular expressions</strong>. Changing file formats from one to another is a matter of contorting strings as required.</li>
-<li><strong>Modularity</strong> that makes it easy to write programs as libraries (called modules).</li>
-<li>Perl system calls and pipes can be used to incorporate <strong>external programs</strong>.</li>
-<li>Dynamic loaders of Perl that help <strong>extend Perl with programs written in C</strong> as well as create compiled libraries that can be interpreted by the Perl interpreter.</li>
-<li><strong>Perl is a good prototyping language</strong> and is easy to code. New algorithms can be easily tested in Perl before using a rigorous language.</li>
+<li><p>Perl provides powerful ways to match and <strong>manipulate strings through the use of regular expressions</strong>. Changing file formats from one to another is a matter of contorting strings as required.</p></li>
+<li><p><strong>Modularity</strong> that makes it easy to write programs as libraries (called modules).</p></li>
+<li><p>Perl system calls and pipes can be used to incorporate <strong>external programs</strong>.</p></li>
+<li><p>Dynamic loaders of Perl that help <strong>extend Perl with programs written in C</strong> as well as create compiled libraries that can be interpreted by the Perl interpreter.</p></li>
+<li><p><strong>Perl is a good prototyping language</strong> and is easy to code. New algorithms can be easily tested in Perl before using a rigorous language.</p></li>
 </ul>
-<div class="section" id="using-the-cpan-module">
+<section id="using-the-cpan-module">
 <h2>Using the CPAN module<a class="headerlink" href="#using-the-cpan-module" title="Permalink to this headline">¶</a></h2>
 <p>The CPAN module automates or at least simplifies the make and install of perl modules and extensions. It includes some primitive searching capabilities and knows how to use LWP, <a class="reference external" href="HTTP::Tiny">HTTP::Tiny</a>, Net::FTP and certain external download clients to fetch distributions from the net.</p>
 <p>These are fetched from one or more mirrored CPAN (Comprehensive Perl Archive Network) sites and unpacked in a dedicated directory.</p>
@@ -208,8 +211,8 @@ In scientific computing, Perl is particularly used in Bioinformatics</p>
 <p>The package contains a session manager and a cache manager. The session manager keeps track of what has been fetched, built, and installed in the current session. The cache manager keeps track of the disk space occupied by the make processes and deletes excess space using a simple FIFO mechanism.</p>
 <p>All methods provided are accessible in a programmer style and in an interactive shell style.</p>
 <p>Users can install their own modules from the head node and they will be installed on the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder for usage later on any compute node.</p>
-</div>
-<div class="section" id="preparing-the-cpan-shell">
+</section>
+<section id="preparing-the-cpan-shell">
 <h2>Preparing the CPAN Shell<a class="headerlink" href="#preparing-the-cpan-shell" title="Permalink to this headline">¶</a></h2>
 <p>Enter interactive mode by running:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">perl</span> <span class="o">-</span><span class="n">MCPAN</span> <span class="o">-</span><span class="n">e</span> <span class="n">shell</span>
@@ -291,14 +294,14 @@ Would you like me to append that to /users/username/.bashrc now? [yes]
 <span class="n">You</span> <span class="n">can</span> <span class="n">re</span><span class="o">-</span><span class="n">run</span> <span class="n">configuration</span> <span class="nb">any</span> <span class="n">time</span> <span class="k">with</span> <span class="s1">&#39;o conf init&#39;</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">CPAN</span> <span class="n">shell</span>
 <span class="n">Terminal</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">AddHistory</span><span class="o">.</span>
 
-<span class="n">cpan</span> <span class="n">shell</span> <span class="o">--</span> <span class="n">CPAN</span> <span class="n">exploration</span> <span class="ow">and</span> <span class="n">modules</span> <span class="n">installation</span> <span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="mi">9800</span><span class="p">)</span>
+<span class="n">cpan</span> <span class="n">shell</span> <span class="o">--</span> <span class="n">CPAN</span> <span class="n">exploration</span> <span class="ow">and</span> <span class="n">modules</span> <span class="n">installation</span> <span class="p">(</span><span class="n">v1</span><span class="mf">.9800</span><span class="p">)</span>
 <span class="n">Enter</span> <span class="s1">&#39;h&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span>
 
 <span class="n">cpan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="installing-perl-modules">
+</section>
+<section id="installing-perl-modules">
 <h2>Installing Perl modules<a class="headerlink" href="#installing-perl-modules" title="Permalink to this headline">¶</a></h2>
 <p>The Comprehensive Perl Archive Network (CPAN) currently has more than 180000 Perl modules and you can install those for your own usage without requesting global installation on the cluster.</p>
 <p>For example, lets assume that you want to install <code class="docutils literal notranslate"><span class="pre">Math::EllipticCurve::Prime</span></code> a package for elliptic curves over a prime field.
@@ -314,8 +317,8 @@ Log into the CPAN shell and execute:</p>
 <span class="n">cpan</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -337,7 +340,7 @@ Log into the CPAN shell and execute:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

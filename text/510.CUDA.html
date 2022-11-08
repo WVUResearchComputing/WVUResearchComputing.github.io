@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Parallel Programming: CUDA &mdash; WVU-RC 1.0 documentation</title>
+  <title>Parallel Programming: CUDA &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Software Administration" href="600.SoftAdmin.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -179,14 +182,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="parallel-programming-cuda">
+  <section id="parallel-programming-cuda">
 <span id="sp-cuda"></span><h1>Parallel Programming: CUDA<a class="headerlink" href="#parallel-programming-cuda" title="Permalink to this headline">¶</a></h1>
 <p>The fastest supercomputers today include alongside with the normal CPUs, extra electronic devices specialized to perform certain computational tasks much faster than CPUs, those devices are called Accelerators and the most prominent of those today are Graphical Processing Units (GPUs).</p>
 <p>Accelerators typically have their own memory and programming those devices requires being aware of memory management and data movement. The memory on Accelerators is usually smaller than the RAM available on compute nodes and the transfer of data from RAM to the internal memory of the accelerator is usually one order of magnitude slower than between RAM and the CPU.</p>
 <p>As GPUs are the most common accelerator today and those are the devices on our clusters we will concentrate the rest of this section to them.
 We will present two solutions for programming GPUs. OpenACC is a directive based standard for parallel computing with GPUs from several vendors, Intel’s Xeon Phi (Discontinued in 2020), Field-programmable gate arrays (FPGAs), and exotic devices such as Digital Signal Processors (DSPs). We will present how to use OpenACC using the NVIDIA HPC SDK.</p>
 <p>For the specific case of NVIDIA GPUs is the solution for parallel computing . CUDA is a platform and application programming interface (API) model created by Nvidia for their GPUs, the API have evolved over the years and several libraries have been created to take advantage of those GPUS. On our clusters we have NVIDIA GPUs and we will present how to compile and run basic programs written in CUDA.</p>
-</div>
+</section>
 
 
            </div>
@@ -208,7 +211,7 @@ We will present two solutions for programming GPUs. OpenACC is a directive based
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

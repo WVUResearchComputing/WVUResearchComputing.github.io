@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CHARM++ and NAMD &mdash; WVU-RC 1.0 documentation</title>
+  <title>CHARM++ and NAMD &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Density Functional Theory" href="610.DFT.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -193,7 +196,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="charm-and-namd">
+  <section id="charm-and-namd">
 <h1>CHARM++ and NAMD<a class="headerlink" href="#charm-and-namd" title="Permalink to this headline">¶</a></h1>
 <p>NAMD is a computer software for classical molecular dynamics simulation, written using the Charm++ parallel programming model. It is noted for its parallel efficiency and is often used to simulate large systems (millions of atoms). It has been developed by the collaboration of the Theoretical and Computational Biophysics Group (TCB) and the Parallel Programming Laboratory (PPL) at the University of Illinois at Urbana–Champaign.</p>
 <p>The purpose of this document is to show how Charm++ and NAMD were compiled on Thorny Flat, a cluster build from Skylake CPUs. The current stable sources 2.13 fail compilation using OFI network library. For that reason we will be using the Nightly archived sources available on the official NAMD site.</p>
@@ -213,13 +216,13 @@ tar -xvf charm-6.10.2.tar
 </div>
 <p>We will compile Charm and NAMD using the Intel Compilers 2021, the latest version at the moment of writing this document:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2.0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2.0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2.0</span>
 </pre></div>
 </div>
-<div class="section" id="compiling-charm">
+<section id="compiling-charm">
 <h2>Compiling Charm++<a class="headerlink" href="#compiling-charm" title="Permalink to this headline">¶</a></h2>
 <p>We start compiling charm++, go into the <code class="docutils literal notranslate"><span class="pre">charm-6.10.2</span></code> folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10.2</span>
 </pre></div>
 </div>
 <p>We will compile 4 versions. The MPI version and the OFI version for both single threaded and shared memory versions:</p>
@@ -258,24 +261,24 @@ We should now return to the NAMD sources to continue the compilation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="compiling-namd2">
+</section>
+<section id="compiling-namd2">
 <h2>Compiling NAMD2<a class="headerlink" href="#compiling-namd2" title="Permalink to this headline">¶</a></h2>
 <p>Now we proceed to compile NAMD.
 Download and install TCL and FFTW libraries asuming that you are now on the root folder for NAMD sources:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">fftw</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="n">xzf</span> <span class="n">fftw</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">mv</span> <span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">fftw</span>
-<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">threaded</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">tar</span> <span class="n">xzf</span> <span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">tar</span> <span class="n">xzf</span> <span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">threaded</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">mv</span> <span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">tcl</span>
-<span class="n">mv</span> <span class="n">tcl8</span><span class="o">.</span><span class="mf">5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">threaded</span> <span class="n">tcl</span><span class="o">-</span><span class="n">threaded</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">tcl8</span><span class="mf">.5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ks</span><span class="o">.</span><span class="n">uiuc</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">Research</span><span class="o">/</span><span class="n">namd</span><span class="o">/</span><span class="n">libraries</span><span class="o">/</span><span class="n">tcl8</span><span class="mf">.5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">threaded</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="n">xzf</span> <span class="n">tcl8</span><span class="mf">.5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="n">xzf</span> <span class="n">tcl8</span><span class="mf">.5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">threaded</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">mv</span> <span class="n">tcl8</span><span class="mf">.5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span> <span class="n">tcl</span>
+<span class="n">mv</span> <span class="n">tcl8</span><span class="mf">.5.9</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">threaded</span> <span class="n">tcl</span><span class="o">-</span><span class="n">threaded</span>
 </pre></div>
 </div>
 <p>The next step is to edit the file <code class="docutils literal notranslate"><span class="pre">Make.charm</span></code> to edit the variable <code class="docutils literal notranslate"><span class="pre">CHARMBASE</span></code>. Another option is to create a symbolic link called <code class="docutils literal notranslate"><span class="pre">charm</span></code> pointing to the location of the charm sources, like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10</span><span class="o">.</span><span class="mi">2</span> <span class="n">charm</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">charm</span><span class="o">-</span><span class="mf">6.10.2</span> <span class="n">charm</span>
 </pre></div>
 </div>
 <p>The configuration of NAMD is done via a text file located at the <code class="docutils literal notranslate"><span class="pre">arch</span></code> folder. Create the following files with the commands:</p>
@@ -428,14 +431,14 @@ COPTS = -O2 $(FLOATOPTS)
 </pre></div>
 </div>
 <p>For the particular case of Thorny, executing NAMD will return (MPI version):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad00080b0000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26685</span><span class="n">PSM2</span> <span class="n">can</span><span class="s1">&#39;t open hfi unit: -1 (err=23)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad00080b0000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26685</span><span class="n">PSM2</span> <span class="n">can</span><span class="s1">&#39;t open hfi unit: -1 (err=23)</span>
 <span class="n">Abort</span><span class="p">(</span><span class="mi">1615759</span><span class="p">)</span> <span class="n">on</span> <span class="n">node</span> <span class="mi">0</span> <span class="p">(</span><span class="n">rank</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">comm</span> <span class="mi">0</span><span class="p">):</span> <span class="n">Fatal</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">PMPI_Init_thread</span><span class="p">:</span> <span class="n">Other</span> <span class="n">MPI</span> <span class="n">error</span><span class="p">,</span> <span class="n">error</span> <span class="n">stack</span><span class="p">:</span>
 <span class="n">MPIR_Init_thread</span><span class="p">(</span><span class="mi">703</span><span class="p">)</span><span class="o">........</span><span class="p">:</span>
 <span class="n">MPID_Init</span><span class="p">(</span><span class="mi">923</span><span class="p">)</span><span class="o">...............</span><span class="p">:</span>
@@ -454,14 +457,14 @@ COPTS = -O2 $(FLOATOPTS)
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">maximum</span> <span class="n">rma</span> <span class="n">size</span><span class="p">:</span> <span class="mi">4294967295</span>
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">mr</span> <span class="n">mode</span><span class="p">:</span> <span class="mh">0x1</span>
 <span class="n">Charm</span><span class="o">++&gt;</span><span class="n">ofi</span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">memory</span> <span class="n">pool</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad00080b0000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
-<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="mi">26858</span><span class="n">PSM2</span> <span class="n">can</span><span class="s1">&#39;t open hfi unit: -1 (err=23)</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">mmap</span> <span class="n">of</span> <span class="n">status</span> <span class="n">page</span> <span class="p">(</span><span class="n">dabbad00080b0000</span><span class="p">)</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Operation</span> <span class="ow">not</span> <span class="n">permitted</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">hfp_gen1_context_open</span><span class="p">:</span> <span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">failed</span><span class="p">,</span> <span class="n">trying</span> <span class="n">again</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">hfi_userinit</span><span class="p">:</span> <span class="n">assign_context</span> <span class="n">command</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="n">trcis001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span><span class="mf">.26858</span><span class="n">PSM2</span> <span class="n">can</span><span class="s1">&#39;t open hfi unit: -1 (err=23)</span>
 <span class="o">-------</span> <span class="n">Partition</span> <span class="mi">0</span> <span class="n">Processor</span> <span class="mi">0</span> <span class="n">Exiting</span><span class="p">:</span> <span class="n">Called</span> <span class="n">CmiAbort</span> <span class="o">------</span>
 <span class="n">Reason</span><span class="p">:</span> <span class="n">OFI</span><span class="p">::</span><span class="n">LrtsInit</span><span class="p">::</span><span class="n">fi_endpoint</span> <span class="n">error</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">Stack</span> <span class="n">Traceback</span><span class="p">:</span>
@@ -471,7 +474,7 @@ COPTS = -O2 $(FLOATOPTS)
   <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="n">namd2</span> <span class="mh">0x112664a</span> <span class="n">ConverseInit</span>
   <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="n">namd2</span> <span class="mh">0x68e302</span> <span class="n">BackEnd</span><span class="p">::</span><span class="n">init</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span><span class="p">)</span>
   <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="n">namd2</span> <span class="mh">0x68332c</span> <span class="n">main</span>
-  <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="n">libc</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mi">6</span> <span class="mh">0x7fbe439b53d5</span> <span class="n">__libc_start_main</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="n">libc</span><span class="o">.</span><span class="n">so</span><span class="mf">.6</span> <span class="mh">0x7fbe439b53d5</span> <span class="n">__libc_start_main</span>
   <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="n">namd2</span> <span class="mh">0x5d9ab9</span>
 </pre></div>
 </div>
@@ -496,8 +499,8 @@ COPTS = -O2 $(FLOATOPTS)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">execstack</span> <span class="o">-</span><span class="n">c</span> <span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-*/</span><span class="n">namd2</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="quick-test-namd2-for-alanin">
+</section>
+<section id="quick-test-namd2-for-alanin">
 <h2>Quick test NAMD2 for Alanin<a class="headerlink" href="#quick-test-namd2-for-alanin" title="Permalink to this headline">¶</a></h2>
 <p>Now we can start testing the 4 binaries of <code class="docutils literal notranslate"><span class="pre">namd2</span></code>.
 NAMD offers a very small case for testing on <code class="docutils literal notranslate"><span class="pre">src/alanin</span></code>.
@@ -632,8 +635,8 @@ WallClock: 0.064102  CPUTime: 0.028695  Memory: 458.476562 MB
 </div>
 <p>The OFI binaries use less memory than the MPI versions.
 The SMP versions use less memory than the non-SMP versions but the difference is lower compared with the OFI vs MPI binaries.</p>
-</div>
-<div class="section" id="script-summarizing-compilation-of-namd">
+</section>
+<section id="script-summarizing-compilation-of-namd">
 <h2>Script summarizing compilation of NAMD<a class="headerlink" href="#script-summarizing-compilation-of-namd" title="Permalink to this headline">¶</a></h2>
 <p>The next script execute all steps above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
@@ -793,8 +796,8 @@ make release
 cd ..
 </pre></div>
 </div>
-</div>
-<div class="section" id="benchmarking-namd2">
+</section>
+<section id="benchmarking-namd2">
 <h2>Benchmarking NAMD2<a class="headerlink" href="#benchmarking-namd2" title="Permalink to this headline">¶</a></h2>
 <p>NAMD has a case often used for Benchmarking. Still small but we can start extracting some performance figures.
 ApoA1 benchmark (92,224 atoms, periodic; 2fs timestep with rigid bonds, 12A cutoff with PME every 2 steps):</p>
@@ -857,7 +860,7 @@ ApoA1 benchmark (92,224 atoms, periodic; 2fs timestep with rigid bonds, 12A cuto
 </div>
 <p>Once you log into the compute node, load clean your modules and load the Intel Compilers 2021:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">compiler</span><span class="o">/</span><span class="mf">2021.2.0</span> <span class="n">mpi</span><span class="o">/</span><span class="mf">2021.2.0</span> <span class="n">mkl</span><span class="o">/</span><span class="mf">2021.2.0</span>
 </pre></div>
 </div>
 <p>The following script can be used to execute 4 versions of NAMD under the same conditions multiple times to gather a more precise timing.
@@ -893,9 +896,9 @@ done
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run_apoa1</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<div class="figure">
+<figure class="align-default">
 <img alt="apoa1_bench.png" src="../_images/apoa1_bench.png" />
-</div>
+</figure>
 <p>From the figure above we can see that the MPI versions consume more memory as we use more cores and the memory usage is larger compared with the OFI versions.
 For computing the strong scaling we use the timing for 2 cores as reference.
 The equation for strong scaling is t1/(tn*N) where t1 is the runtime for 1 core, tn is the time when N cores are used.
@@ -913,32 +916,32 @@ Our next set of tests will explore the best performance that we can get using al
 computational threads and the complementary number of processes.</p>
 <p>The results show that the MPI and OFI versions are similar in CPU time but differ in wall time. That could be explained by the OFI being more efficient network I/O improving the overall time the computer needs to perform the task.
 From the point of view of memory usage the OFI version shows considerably better memory usage.</p>
-<div class="figure">
+<figure class="align-default">
 <img alt="stmv_walltime.png" src="../_images/stmv_wallclock_smp.png" />
-</div>
-<div class="figure">
+</figure>
+<figure class="align-default">
 <img alt="stmv_cputime.png" src="../_images/stmv_cputime_smp.png" />
-</div>
-<div class="figure">
+</figure>
+<figure class="align-default">
 <img alt="stmv_memory.png" src="../_images/stmv_memory_smp.png" />
-</div>
+</figure>
 <p>For the case of single thread NAMD builds the benchmarks show that the OFI and MPI flavors behave similar in terms of performance with an small advantage for OFI due to a better communication between nodes compared to the MPI build.
 The big advantage comes from the memory usage, the OFI build uses less than half memory compared to MPI build.</p>
-<div class="figure">
+<figure class="align-default">
 <img alt="stmv_walltime.png" src="../_images/stmv_wallclock_ncores.png" />
-</div>
-<div class="figure">
+</figure>
+<figure class="align-default">
 <img alt="stmv_cputime.png" src="../_images/stmv_cputime_ncores.png" />
-</div>
-<div class="figure">
+</figure>
+<figure class="align-default">
 <img alt="stmv_memory.png" src="../_images/stmv_memory_ncores.png" />
-</div>
-</div>
-<div class="section" id="conclusions">
+</figure>
+</section>
+<section id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
 <p>We have explore the performance of NAMD using two flavors of network communication both for single thread and SMP build. The benchmarks using STMV (1 million atoms) shows an small advantage for OFI in most cases. However, it it differentiate notably on its memory usage, something that could be critical for systems with large number of atoms.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -960,7 +963,7 @@ The big advantage comes from the memory usage, the OFI build uses less than half
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

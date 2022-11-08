@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Engineering: ANSYS/Forte &mdash; WVU-RC 1.0 documentation</title>
+  <title>Engineering: ANSYS/Forte &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Engineering: OpenFOAM 10" href="73.OpenFoam.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -187,9 +190,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="engineering-ansys-forte">
+  <section id="engineering-ansys-forte">
 <h1>Engineering: ANSYS/Forte<a class="headerlink" href="#engineering-ansys-forte" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
+<section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>ANSYS Forte is the only CFD simulation package for internal combustion
 engines that incorporates proven ANSYS Chemkin-Pro solver technology –
@@ -202,47 +205,47 @@ slow to handle the chemistry details required for accurate predictions
 of ignition and emissions, Forte enables the use of multicomponent fuel
 models to combine with comprehensive spray dynamics – without
 sacrificing simulation time-to-solution.</p>
-</div>
-<div class="section" id="features">
+</section>
+<section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Automatic mesh generation that eliminates weeks of effort typically
-spent on manual mesh preparation</li>
-<li>Embedded Chemkin-Pro solver technology that provides the
-computational speed required for predictive engine simulations</li>
-<li>True multicomponent fuel-vaporization models that enable a
+<li><p>Automatic mesh generation that eliminates weeks of effort typically
+spent on manual mesh preparation</p></li>
+<li><p>Embedded Chemkin-Pro solver technology that provides the
+computational speed required for predictive engine simulations</p></li>
+<li><p>True multicomponent fuel-vaporization models that enable a
 self-consistent representation of the physical spray and the kinetics
-for accurate prediction of fuel effects</li>
-<li>Advanced spray models that dramatically reduce grid and time-step
-dependency when compared to existing approaches</li>
-<li>The ability to track soot particle nucleation, growth, agglomeration
+for accurate prediction of fuel effects</p></li>
+<li><p>Advanced spray models that dramatically reduce grid and time-step
+dependency when compared to existing approaches</p></li>
+<li><p>The ability to track soot particle nucleation, growth, agglomeration
 and oxidation without a compute-time penalty to predict particle size
-and number</li>
+and number</p></li>
 </ul>
-</div>
-<div class="section" id="tutorial">
+</section>
+<section id="tutorial">
 <h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial will describe the steps needed to complete the execution
 of the first examples from the tutorial documentation.</p>
-<div class="section" id="connect-to-mountaineer">
+<section id="connect-to-mountaineer">
 <h3>Connect to Mountaineer<a class="headerlink" href="#connect-to-mountaineer" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">X</span> <span class="n">username</span><span class="nd">@mountaineer</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>The `-X` is necessary to get access to the graphical interface needed
 to prepare the simulation.</p>
-</div>
-<div class="section" id="load-the-module">
+</section>
+<section id="load-the-module">
 <h3>Load the Module<a class="headerlink" href="#load-the-module" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">ansys</span><span class="o">/</span><span class="n">forte</span><span class="o">/</span><span class="mf">17.2</span>
 </pre></div>
 </div>
-<div class="figure">
+<figure class="align-default">
 <img alt="Forte initial GUI" src="../_images/mod_forte_1.png" />
-</div>
+</figure>
 <p>Forte initial GUI</p>
-</div>
-<div class="section" id="execute-the-ansys-forte-gui">
+</section>
+<section id="execute-the-ansys-forte-gui">
 <h3>Execute the ANSYS/Forte GUI<a class="headerlink" href="#execute-the-ansys-forte-gui" title="Permalink to this headline">¶</a></h3>
 <p>First, we need to create a directory for the simulation we want to
 perform. Lets create for example a directory called ‘forte’ and inside
@@ -267,9 +270,9 @@ using the command:</p>
 Otherwise you will need another terminal when we actually launch the
 simulation. Once you execute ‘forte.sh’ you should get a window with 3
 buttons: Simulate, Monitor and Visualize.</p>
-<div class="figure">
+<figure class="align-default">
 <img alt="Simulate Window" src="../_images/mod_forte_2.png" />
-</div>
+</figure>
 <p>Simulate Window</p>
 <p>Click on Simulate button and open the file
 `Sandia_Engine_LTC_EarlyInj.ftsim` You should get the ‘Simulate’
@@ -286,12 +289,12 @@ the log panel messages such</p>
 </div>
 <p>Now we are ready to create the scripts and run the simulation on
 Mountaineer</p>
-<div class="figure">
+<figure class="align-default">
 <img alt="Simulate Window" src="../_images/mod_forte_3.png" />
-</div>
+</figure>
 <p>Simulate Window</p>
-</div>
-<div class="section" id="prepare-simulation-files">
+</section>
+<section id="prepare-simulation-files">
 <h3>Prepare simulation files<a class="headerlink" href="#prepare-simulation-files" title="Permalink to this headline">¶</a></h3>
 <p>Click on “Run Simulation” in the tree panel. The options for runnig the
 simulation appear in a panel down the tree panel. There are several
@@ -461,7 +464,7 @@ finishes you should get a summary of execution like</p>
 <span class="n">chem_1</span><span class="o">.</span><span class="n">out</span>  <span class="n">flow_diagnostics</span><span class="o">.</span><span class="n">csv</span>  <span class="n">fuel_library_diag_3</span>  <span class="n">molefraction</span><span class="o">.</span><span class="n">csv</span>
 <span class="n">chem_2</span>      <span class="n">FORTE</span><span class="o">.</span><span class="n">e107840</span>         <span class="n">fuel_library_diag_4</span>  <span class="n">MONITOR</span>
 <span class="n">chem_2</span><span class="o">.</span><span class="n">out</span>  <span class="n">FORTE</span><span class="o">.</span><span class="n">log</span>             <span class="n">fuel_library_diag_5</span>  <span class="n">nc14h30_fueltable</span><span class="o">.</span><span class="n">csv</span>
-<span class="n">chem_3</span>      <span class="n">FORTE</span><span class="o">.</span><span class="n">o107840</span>         <span class="n">fuel_library_diag_6</span>  <span class="n">Nominal_CA_p_125</span><span class="o">.</span><span class="mf">00_8092.</span><span class="n">ftrst</span>
+<span class="n">chem_3</span>      <span class="n">FORTE</span><span class="o">.</span><span class="n">o107840</span>         <span class="n">fuel_library_diag_6</span>  <span class="n">Nominal_CA_p_125</span><span class="mf">.00_8092</span><span class="o">.</span><span class="n">ftrst</span>
 <span class="n">chem_3</span><span class="o">.</span><span class="n">out</span>  <span class="n">fuelchem_0</span>            <span class="n">fuel_library_diag_7</span>  <span class="n">Nominal</span><span class="o">.</span><span class="n">ftavg</span>
 <span class="n">chem_4</span>      <span class="n">fuelchem_0</span><span class="o">.</span><span class="n">out</span>        <span class="n">fuel_lib_xml</span><span class="o">.</span><span class="n">out</span>     <span class="n">Nominal</span><span class="o">.</span><span class="n">ftind</span>
 <span class="n">chem_4</span><span class="o">.</span><span class="n">out</span>  <span class="n">fuelchem_1</span>            <span class="n">fueltable</span><span class="o">.</span><span class="n">out</span>        <span class="n">Nominal</span><span class="o">.</span><span class="n">ftres</span>
@@ -493,9 +496,9 @@ angle. By clicking on the Visualize button you get a big window where
 you can see visualizations of the fluids inside the crank.</p>
 <p><img alt="Monitor Window" src="../_images/mod_forte_4.png" /> <img alt="Visualize Window" src="../_images/mod_forte_5.png" /></p>
 <p>asdsadsd</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -517,7 +520,7 @@ you can see visualizations of the fluids inside the crank.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

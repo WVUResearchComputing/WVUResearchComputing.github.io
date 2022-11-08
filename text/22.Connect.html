@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connect to the cluster &mdash; WVU-RC 1.0 documentation</title>
+  <title>Connect to the cluster &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Command Line Interface" href="23.CommandLine.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -190,7 +193,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="connect-to-the-cluster">
+  <section id="connect-to-the-cluster">
 <span id="qs-connect"></span><h1>Connect to the cluster<a class="headerlink" href="#connect-to-the-cluster" title="Permalink to this headline">¶</a></h1>
 <p>An HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop or even workstations are intended for a single user at a time. In general, Graphical User Interfaces (GUI) consume an important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.</p>
 <p>Due to security reasons, HPC clusters are intended to be accessed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as the internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.</p>
@@ -199,7 +202,7 @@ You should have obtained that <em>username</em> with your <em>WVU Login account<
 <p>WVU’s clusters are also open to users who are currently associated with another Higher Education Institution in the state of West Virginia.  These users will still need a WVU Login account for access.  If you are working with someone (i.e. a PI) at WVU and need access, please have that person complete the form located <a class="reference external" href="login.wvu.edu/sponsored">here</a>.  If you are not working with anyone at WVU, please send an email <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>
 For this request to work the requestor must be on the campus network or using WVU’s VPN.</p>
 <p>The next step is to use an SSH client to connect to one of our clusters.</p>
-<div class="section" id="get-an-ssh-client">
+<section id="get-an-ssh-client">
 <h2>Get an SSH Client<a class="headerlink" href="#get-an-ssh-client" title="Permalink to this headline">¶</a></h2>
 <p>An SSH Client is a piece of software that allows you to run a remote session on a computer, over a network using a secure connection based on the SSH protocol.</p>
 <p>An SSH client is usually come installed on MacOS and most Unix/Linux distributions so if you are using one of those Operating Systems you do not need to install anything.</p>
@@ -207,11 +210,11 @@ For this request to work the requestor must be on the campus network or using WV
 PuTTY is a free implementation of SSH for Windows platforms, it comes along with an xterm terminal emulator.</p>
 <p>Go to <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a> to know more about the product or download it directly from <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY Download</a>.</p>
 <p>PuTTY is not the only SSH client available for Windows. See for example <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_SSH_clients">Comparison of SSH clients</a> for several alternatives.</p>
-</div>
-<div class="section" id="connecting-to-wvu-s-clusters-via-ssh">
+</section>
+<section id="connecting-to-wvu-s-clusters-via-ssh">
 <h2>Connecting to WVU’s Clusters via SSH<a class="headerlink" href="#connecting-to-wvu-s-clusters-via-ssh" title="Permalink to this headline">¶</a></h2>
 <p>Currently, WVU has two clusters available for access.  Depending on which cluster you are using, the instructions for connecting slightly differ.</p>
-<div class="section" id="general-ssh-connection-instructions">
+<section id="general-ssh-connection-instructions">
 <h3>General SSH Connection Instructions<a class="headerlink" href="#general-ssh-connection-instructions" title="Permalink to this headline">¶</a></h3>
 <p>On MacOS and Unix/Linux, open a terminal shell and type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
@@ -225,40 +228,40 @@ PuTTY is a free implementation of SSH for Windows platforms, it comes along with
 The -X option is used to forward X windows applications running on the server to be forwarded to your local machine.
 Remember that the <code class="docutils literal notranslate"><span class="pre">$&gt;</span></code> symbols above are there to indicate a command on the terminal, you should not enter those initial characters.</p>
 <p>We currently have two clusters <em>Thorny Flat and *Spruce Knob</em> the hostnames are:</p>
-<table border="1" class="colwidths-given docutils" id="id1">
+<table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">WVU’s High-Performance Computer (HPC) Clusters</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="25%" />
-<col width="50%" />
-<col width="25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Cluster</th>
-<th class="head">Hostname</th>
-<th class="head">Status</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Cluster</p></th>
+<th class="head"><p>Hostname</p></th>
+<th class="head"><p>Status</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>Spruce Knob</strong></td>
-<td><em>spruce.hpc.wvu.edu</em></td>
-<td>Operational</td>
+<tbody>
+<tr class="row-even"><td><p><strong>Spruce Knob</strong></p></td>
+<td><p><em>spruce.hpc.wvu.edu</em></p></td>
+<td><p>Operational</p></td>
 </tr>
-<tr class="row-odd"><td><strong>Thorny Flat</strong></td>
-<td><em>tf.hpc.wvu.edu</em></td>
-<td>Operational</td>
+<tr class="row-odd"><td><p><strong>Thorny Flat</strong></p></td>
+<td><p><em>tf.hpc.wvu.edu</em></p></td>
+<td><p>Operational</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="spruce-knob-connectivity-instructions">
+</section>
+<section id="spruce-knob-connectivity-instructions">
 <h3>Spruce Knob Connectivity Instructions<a class="headerlink" href="#spruce-knob-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
 <p>To connect to Spruce Knob use the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
 </pre></div>
 </div>
 <p><strong>Note:</strong> Two-factor authentication is required to connect to Spruce Knob when not on WVU’s Main Campus Network.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167">here</a></p>
-</div>
-<div class="section" id="thorny-flat-connectivity-instructions">
+</section>
+<section id="thorny-flat-connectivity-instructions">
 <h3>Thorny Flat Connectivity Instructions<a class="headerlink" href="#thorny-flat-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
 <p>To connect to Thorny Flat, you will first have to connect to WVU’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
@@ -271,12 +274,12 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or ssh client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
+<p class="admonition-title">Note</p>
+<p><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or ssh client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
 </div>
-</div>
-</div>
-<div class="section" id="logging-in">
+</section>
+</section>
+<section id="logging-in">
 <h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
 <p>When your SSH access is granted, you will be prompted with a login message
 with helpful commands and updates about the cluster.</p>
@@ -285,8 +288,8 @@ with helpful commands and updates about the cluster.</p>
 </pre></div>
 </div>
 <p>All the commands executed from now on are happening on a remote machine, the Spruce Knob <em>head node</em>, this is the place were most of your direct interaction with the cluster happens.</p>
-</div>
-<div class="section" id="logging-out">
+</section>
+<section id="logging-out">
 <h2>Logging Out<a class="headerlink" href="#logging-out" title="Permalink to this headline">¶</a></h2>
 <p>Logging out of a cluster can be done with the exit command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; exit
@@ -306,15 +309,15 @@ use the kill command:</p>
 </div>
 <p>Once all jobs are terminated, the exit command will close the connection to the host.
 On section <a class="reference internal" href="28.SubmitJobs.html#qs-job-submission"><span class="std std-ref">Job Submission</span></a> we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.</p>
-</div>
-<div class="section" id="putty-example">
+</section>
+<section id="putty-example">
 <h2>Putty Example<a class="headerlink" href="#putty-example" title="Permalink to this headline">¶</a></h2>
 <p>If you are using Windows and PuTTy, click on PuTTy Icon and enter the hostname</p>
 <img alt="../_images/puttystartup.png" src="../_images/puttystartup.png" />
 <p>If you want to get X11 forwarding, ie remote windows popping on your local machine, enable X11 forwarding as shown below.</p>
 <img alt="../_images/putty_xforward.png" src="../_images/putty_xforward.png" />
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -336,7 +339,7 @@ On section <a class="reference internal" href="28.SubmitJobs.html#qs-job-submiss
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

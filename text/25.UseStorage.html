@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Understanding Cluster Storage &mdash; WVU-RC 1.0 documentation</title>
+  <title>Understanding Cluster Storage &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using Environment Modules" href="26.UseModules.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -184,7 +187,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="understanding-cluster-storage">
+  <section id="understanding-cluster-storage">
 <span id="qs-storage"></span><h1>Understanding Cluster Storage<a class="headerlink" href="#understanding-cluster-storage" title="Permalink to this headline">¶</a></h1>
 <p>On a desktop machine, you normally own the whole hard drive and you are free
 to use it up to the limit of physical drive. On a share resource like a
@@ -197,7 +200,7 @@ uses GPFS as their file system. Those locations are also shared between all
 compute nodes, so no matter on which machine you run, files on those locations
 are always available. In this quick start, we will describe briefly the purpose
 of each one of them.</p>
-<div class="section" id="home-directory">
+<section id="home-directory">
 <h2>Home Directory<a class="headerlink" href="#home-directory" title="Permalink to this headline">¶</a></h2>
 <p>Home directories on Spruce Knob and Thorny Flat are located in /users directory
 and they are the default login location for users.
@@ -220,8 +223,8 @@ If files are not available in the snapshot, please contact <a class="reference e
 </div>
 <p>The block size can be changed to <code class="docutils literal notranslate"><span class="pre">K</span></code> for Kilo Bytes, <code class="docutils literal notranslate"><span class="pre">M</span></code> for Mega Bytes, <code class="docutils literal notranslate"><span class="pre">G</span></code> for Giga Bytes and <code class="docutils literal notranslate"><span class="pre">T</span></code> for Tera Bytes.</p>
 <p>It is important to pay attention not only to the storage size but also to the limit on the number of files that can be stored. Too many files have an impact of file system performance so its number needs to be limited. It you create too many reaching the limit you cannot create more files on that file system even if your quota size still shows allowance.</p>
-</div>
-<div class="section" id="scratch-directory">
+</section>
+<section id="scratch-directory">
 <h2>Scratch Directory<a class="headerlink" href="#scratch-directory" title="Permalink to this headline">¶</a></h2>
 <p>Scratch directories are located in <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> directory and can be easily
 moved to use the <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> environment variable set-up by default for
@@ -242,8 +245,8 @@ However, we will notify users well in advance for schedule file deletions to giv
 </pre></div>
 </div>
 <p><strong>Note: Scratch data is NOT backed up.</strong></p>
-</div>
-<div class="section" id="persistent-group-storage">
+</section>
+<section id="persistent-group-storage">
 <h2>Persistent Group Storage<a class="headerlink" href="#persistent-group-storage" title="Permalink to this headline">¶</a></h2>
 <p>Research groups may purchase long term persistent storage from the RC
 HPC. This storage allows users to keep data on the cluster that will not
@@ -262,15 +265,15 @@ information, please contact <a class="reference external" href="mailto:helpdesk&
 <p><strong>Note: Persistent Group storage has been replaced by the new</strong>
 <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/302481476?src=955751505">Research Data Depot
 Service</a></p>
-</div>
-<div class="section" id="archival-storage">
+</section>
+<section id="archival-storage">
 <h2>Archival Storage<a class="headerlink" href="#archival-storage" title="Permalink to this headline">¶</a></h2>
 <p>Please see the <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/302481476?src=955751505">Research Data Depot
 Service</a>
 for archival storage options.</p>
 <p>For additional information please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -292,7 +295,7 @@ for archival storage options.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

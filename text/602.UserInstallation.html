@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installing Packages in User Locations &mdash; WVU-RC 1.0 documentation</title>
+  <title>Installing Packages in User Locations &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linear Algebra" href="603.LinearAlgebra.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -115,7 +118,7 @@
 <li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="609.CHARM%2B%2B_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
@@ -195,9 +198,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installing-packages-in-user-locations">
+  <section id="installing-packages-in-user-locations">
 <h1>Installing Packages in User Locations<a class="headerlink" href="#installing-packages-in-user-locations" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview-gnu-build-system">
+<section id="overview-gnu-build-system">
 <h2>Overview: GNU Build System<a class="headerlink" href="#overview-gnu-build-system" title="Permalink to this headline">¶</a></h2>
 <p>To install packages on GNU/Linux systems, packages that are programmed
 in C/C++ or other compiled languages need to be compiled and installed.
@@ -212,7 +215,7 @@ can be done in three steps, but user specific options will need to be
 given to make sure the package is installed correctly. This page will
 provide instructions on how to build these packages without superuser
 privileges.</p>
-<div class="section" id="setting-up-the-directory-structure">
+<section id="setting-up-the-directory-structure">
 <h3>Setting up the Directory Structure<a class="headerlink" href="#setting-up-the-directory-structure" title="Permalink to this headline">¶</a></h3>
 <p>Before you can start the build/install process, you need to set up the
 directory structure. There are many different ideologies and principles
@@ -236,16 +239,16 @@ example, this directory structure can be made using:</p>
 </div>
 <p>You then move the tarball into the source directory, and extract the
 files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mf">7.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">source</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4.7</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">source</span>
 <span class="n">cd</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">source</span>
-<span class="n">tar</span> <span class="n">xzvf</span> <span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mf">7.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="n">xzvf</span> <span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4.7</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>This should create the directory example_pkg-1.4.7, and this extracted
 directory is called the ‘source tree’ since it contains only source
 files and nothing compiled or built.</p>
-</div>
-<div class="section" id="the-configure-stage">
+</section>
+<section id="the-configure-stage">
 <h3>The Configure Stage<a class="headerlink" href="#the-configure-stage" title="Permalink to this headline">¶</a></h3>
 <p>Once the directory structure is set up, we now have to configure the
 build tree, to compile and install the software package. This is done by
@@ -271,9 +274,9 @@ configure script from the build directory that we set up earlier. This
 is good practice, and allows easy cleaning (what is referred to as VPATH
 building).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">example_pkg</span><span class="o">/</span><span class="n">build</span>
-<span class="n">mkdir</span> <span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span>
-<span class="n">cd</span> <span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span>
-<span class="o">../../</span><span class="n">source</span><span class="o">/</span><span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">example_pkg</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">mkdir</span> <span class="mf">1.4.7</span>
+<span class="n">cd</span> <span class="mf">1.4.7</span>
+<span class="o">../../</span><span class="n">source</span><span class="o">/</span><span class="n">example_pkg</span><span class="o">-</span><span class="mf">1.4.7</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">users</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">example_pkg</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="mf">1.4.7</span>
 </pre></div>
 </div>
 <p>This command will tell configure to install the binaries, libraries,
@@ -285,8 +288,8 @@ error. If not, it’s almost certainly because of a missing dependency. If
 you do not understand the error (most will be missing package ‘XXYY’),
 and you need help to resolve it, please use our
 <a class="reference external" href="GettingHelp">helpdesk</a> ticket system to request help.</p>
-</div>
-<div class="section" id="the-make-build-stage">
+</section>
+<section id="the-make-build-stage">
 <h3>The Make/Build Stage<a class="headerlink" href="#the-make-build-stage" title="Permalink to this headline">¶</a></h3>
 <p>If the configure step finishes without error. The Make/Build step can be
 completed with the single command from within the build directory
@@ -294,8 +297,8 @@ completed with the single command from within the build directory
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-install-stage">
+</section>
+<section id="the-install-stage">
 <h3>The Install Stage<a class="headerlink" href="#the-install-stage" title="Permalink to this headline">¶</a></h3>
 <p>If the configure step finishes without error, it is almost certain that
 the make step will finish (unless the package maintainers incorrectly
@@ -307,19 +310,19 @@ directory:</p>
 </div>
 <p>This command will put all the binaries, libraries, documentation
 wherever you specified using the –prefix option.</p>
-</div>
-</div>
-<div class="section" id="additional-documentation">
+</section>
+</section>
+<section id="additional-documentation">
 <h2>Additional Documentation<a class="headerlink" href="#additional-documentation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://www.gnu.org/software/autoconf/manual/index.html">GNU Autoconf
-Manual</a></li>
-<li><a class="reference external" href="https://www.gnu.org/software/automake/manual/">GNU Automake
-Manual</a></li>
-<li><a class="reference external" href="https://www.gnu.org/software/make/manual/">GNU Make Manual</a></li>
+<li><p><a class="reference external" href="http://www.gnu.org/software/autoconf/manual/index.html">GNU Autoconf
+Manual</a></p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/automake/manual/">GNU Automake
+Manual</a></p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/make/manual/">GNU Make Manual</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -341,7 +344,7 @@ Manual</a></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

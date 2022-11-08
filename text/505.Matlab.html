@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MATLAB &mdash; WVU-RC 1.0 documentation</title>
+  <title>MATLAB &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Perl Language" href="506.Perl.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -187,10 +190,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="matlab">
+  <section id="matlab">
 <span id="sp-matlab"></span><h1>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h1>
 <p>MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.</p>
-<div class="section" id="loading-environment-modules">
+<section id="loading-environment-modules">
 <h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
 To access MATLAB on Spruce Knob use:</p>
@@ -201,12 +204,12 @@ To access MATLAB on Spruce Knob use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">b</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="running-matlab-scripts-on-a-hpc-cluster">
+</section>
+<section id="running-matlab-scripts-on-a-hpc-cluster">
 <h2>Running Matlab scripts on a HPC cluster<a class="headerlink" href="#running-matlab-scripts-on-a-hpc-cluster" title="Permalink to this headline">¶</a></h2>
 <p>This simple tutorial explains how to use Matlab without launching the
 graphical interface and using the submission script.</p>
-<div class="section" id="executing-matlab-scripts">
+<section id="executing-matlab-scripts">
 <h3>Executing Matlab scripts<a class="headerlink" href="#executing-matlab-scripts" title="Permalink to this headline">¶</a></h3>
 <p>Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.</p>
@@ -290,13 +293,15 @@ runjob.pbs``
 </div>
 <p>The figures where generated and save on the same folder you submit your
 job. The output of your execution is stored at MATLAB.o987788</p>
-<div class="figure" id="id1">
+<figure class="align-default" id="id1">
 <img alt="derivatives.png" src="../_images/derivatives.png" />
-<p class="caption"><span class="caption-text">derivatives.png</span></p>
-</div>
+<figcaption>
+<p><span class="caption-text">derivatives.png</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
                   <span class="n">Copyright</span> <span class="mi">1984</span><span class="o">-</span><span class="mi">2014</span> <span class="n">The</span> <span class="n">MathWorks</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
-                    <span class="n">R2014a</span> <span class="p">(</span><span class="mf">8.3</span><span class="o">.</span><span class="mf">0.532</span><span class="p">)</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="p">(</span><span class="n">glnxa64</span><span class="p">)</span>
+                    <span class="n">R2014a</span> <span class="p">(</span><span class="mf">8.3.0.532</span><span class="p">)</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="p">(</span><span class="n">glnxa64</span><span class="p">)</span>
                              <span class="n">February</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2014</span>
 
 
@@ -363,12 +368,13 @@ job. The output of your execution is stored at MATLAB.o987788</p>
  <span class="mf">0.57871842655441748319601085860196</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="using-the-matlab-compiler">
+</section>
+<section id="using-the-matlab-compiler">
 <h3>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h3>
 <p>The first step is to load matlab to get access to its executables:</p>
 <blockquote>
-<div>module&nbsp;load&nbsp;statistics/matlab/2014a</div></blockquote>
+<div><p>module load statistics/matlab/2014a</p>
+</div></blockquote>
 <p>Prepare the compilation environment with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mbuild -setup``
 MBUILD configured to use &#39;gcc&#39; for C language compilation.``
@@ -412,13 +418,15 @@ cd $PBS_O_WORKDIR
 </pre></div>
 </div>
 <p>You get the results on “MATLAB.o#######” with the corresponding JobID</p>
-<div class="figure" id="id2">
+<figure class="align-default" id="id2">
 <img alt="Mandelbrot fractal generated from Matlab" src="../_images/mandelbrotmatlab.png" />
-<p class="caption"><span class="caption-text">Mandelbrot fractal generated from Matlab</span></p>
-</div>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text">Mandelbrot fractal generated from Matlab</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -440,7 +448,7 @@ cd $PBS_O_WORKDIR
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

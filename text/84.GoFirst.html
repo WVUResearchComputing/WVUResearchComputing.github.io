@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Go First Data-Analytics Cluster &mdash; WVU-RC 1.0 documentation</title>
+  <title>Go First Data-Analytics Cluster &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="References" href="90.References.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -105,8 +108,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Go First Data-Analytics Cluster</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#log-in-node">Log in Node</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#name-node">Name&nbsp;Node</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#worker-nodes">3&nbsp;Worker&nbsp;Nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#name-node">Name Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#worker-nodes">3 Worker Nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-features">Additional Features</a></li>
 </ul>
 </li>
@@ -183,51 +186,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="go-first-data-analytics-cluster">
+  <section id="go-first-data-analytics-cluster">
 <h1>Go First Data-Analytics Cluster<a class="headerlink" href="#go-first-data-analytics-cluster" title="Permalink to this headline">¶</a></h1>
 <p>GoFirst Cluster is a dedicated WVU MS Business Data Analytics computing resource that allows students in the Business Data Analytics M.S. program to gain experience in a controlled, secure cloud-computing environment. GoFirst is built from four compute nodes running HDFS shared filesystem, to run Hadoop and Spark jobs using RStudio as a front-end interface.</p>
-<div class="section" id="hardware">
+<section id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="log-in-node">
+<section id="log-in-node">
 <h3>Log in Node<a class="headerlink" href="#log-in-node" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Dual CPU E5-2650 v4 &#64; 2.20GHz</li>
-<li>24&nbsp;Cores&nbsp;Total</li>
-<li>256GB&nbsp;Memory</li>
-<li>500 GB&nbsp;Raw&nbsp;Space</li>
+<li><p>Dual CPU E5-2650 v4 &#64; 2.20GHz</p></li>
+<li><p>24 Cores Total</p></li>
+<li><p>256GB Memory</p></li>
+<li><p>500 GB Raw Space</p></li>
 </ul>
-</div>
-<div class="section" id="name-node">
-<h3>Name&nbsp;Node<a class="headerlink" href="#name-node" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="name-node">
+<h3>Name Node<a class="headerlink" href="#name-node" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Dual&nbsp;Intel&nbsp;2620&nbsp;v3&nbsp;&#64;&nbsp;2.4&nbsp;GHz</li>
-<li>12&nbsp;Cores&nbsp;Total</li>
-<li>64&nbsp;GB&nbsp;Memory</li>
-<li>3.4&nbsp;TB&nbsp;Raw&nbsp;Space</li>
+<li><p>Dual Intel 2620 v3 &#64; 2.4 GHz</p></li>
+<li><p>12 Cores Total</p></li>
+<li><p>64 GB Memory</p></li>
+<li><p>3.4 TB Raw Space</p></li>
 </ul>
-</div>
-<div class="section" id="worker-nodes">
-<h3>3&nbsp;Worker&nbsp;Nodes<a class="headerlink" href="#worker-nodes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="worker-nodes">
+<h3>3 Worker Nodes<a class="headerlink" href="#worker-nodes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Dual&nbsp;Intel&nbsp;2650&nbsp;v3&nbsp;&#64;&nbsp;2.3&nbsp;GHz</li>
-<li>20&nbsp;Cores&nbsp;Each&nbsp;(60&nbsp;Total)</li>
-<li>128&nbsp;GB&nbsp;RAM&nbsp;Each&nbsp;(384&nbsp;GB&nbsp;Total)</li>
-<li>21&nbsp;TB&nbsp;Combined&nbsp;Worker&nbsp;Node&nbsp;Storage&nbsp;(7&nbsp;TB&nbsp;usable)</li>
+<li><p>Dual Intel 2650 v3 &#64; 2.3 GHz</p></li>
+<li><p>20 Cores Each (60 Total)</p></li>
+<li><p>128 GB RAM Each (384 GB Total)</p></li>
+<li><p>21 TB Combined Worker Node Storage (7 TB usable)</p></li>
 </ul>
-</div>
-<div class="section" id="additional-features">
+</section>
+<section id="additional-features">
 <h3>Additional Features<a class="headerlink" href="#additional-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>10&nbsp;Gbps&nbsp;Ethernet&nbsp;Interconnect</li>
-<li>Shares&nbsp;HPC&nbsp;resources&nbsp;(i.e.&nbsp;additional&nbsp;storage).</li>
+<li><p>10 Gbps Ethernet Interconnect</p></li>
+<li><p>Shares HPC resources (i.e. additional storage).</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="usage">
+</section>
+</section>
+<section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>Users connect to Citrix through MasterApps.wvu.edu. In Citrix the user should have IE and Firefox browsers they can launch. After launching one of them they can go to gbef4001.hpc.wvu.edu to access RStudio Server and work within RStudio. Jobs can be launched through Hadoop or Spark 2.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -249,7 +252,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

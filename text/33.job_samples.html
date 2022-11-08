@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Samples of Job Submission scripts &mdash; WVU-RC 1.0 documentation</title>
+  <title>Samples of Job Submission scripts &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Interactive Scientific Computing" href="34.InteractiveSC.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -181,14 +184,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="samples-of-job-submission-scripts">
+  <section id="samples-of-job-submission-scripts">
 <h1>Samples of Job Submission scripts<a class="headerlink" href="#samples-of-job-submission-scripts" title="Permalink to this headline">¶</a></h1>
 <p>Below are bash scripts that can be modified and submitted to the qsub
 command for job submission. For details about the different parts of the
 scripts please visit the <a class="reference external" href="RunningJobs">Running Jobs</a> page. These
 scripts can be copied and pasted in the terminal using any number of
 text editors (i.e. vi, emacs, etc…)</p>
-<div class="section" id="script-for-running-a-non-array-batch-queue">
+<section id="script-for-running-a-non-array-batch-queue">
 <h2>Script for running a non-array batch queue<a class="headerlink" href="#script-for-running-a-non-array-batch-queue" title="Permalink to this headline">¶</a></h2>
 <p>The below script has PBS directives to set-up commonly used variables
 such as job name, resources needed, e-mail address upon job completion
@@ -229,8 +232,8 @@ and abnormal termination and specify a queue to run on</p>
 <span class="c1"># you want to use or use full path names</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="script-for-running-an-array-batch-queue">
+</section>
+<section id="script-for-running-an-array-batch-queue">
 <h2>Script for running an array batch queue<a class="headerlink" href="#script-for-running-an-array-batch-queue" title="Permalink to this headline">¶</a></h2>
 <p>Script is the same as above, but adds PBS -t to execute array request
 job submissions.</p>
@@ -280,8 +283,8 @@ job submissions.</p>
 <span class="c1"># Any parameter or filename that needs to use the current job number of the array number range use ${PBS_ARRAYID}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -303,7 +306,7 @@ job submissions.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

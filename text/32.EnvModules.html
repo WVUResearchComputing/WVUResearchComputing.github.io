@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Environment Modules &mdash; WVU-RC 1.0 documentation</title>
+  <title>Environment Modules &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Globus Online" href="33.GlobusOnline.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -184,9 +187,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="environment-modules">
+  <section id="environment-modules">
 <span id="bs-modules"></span><h1>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-are-modulefiles">
+<section id="what-are-modulefiles">
 <h2>What are Modulefiles<a class="headerlink" href="#what-are-modulefiles" title="Permalink to this headline">¶</a></h2>
 <p>Modulefiles are files written in the Tool Command Language (Tcl) and are
 used by the module command to implement different environments for
@@ -217,8 +220,8 @@ modulefiles contain useful information such as version numbers, URLs for
 webpages and manuals, and MAN page information. Further, modulefiles are
 a great way to see what software, libraries and compilers are available
 on our systems.</p>
-</div>
-<div class="section" id="listing-available-modefiles">
+</section>
+<section id="listing-available-modefiles">
 <h2>Listing available modefiles<a class="headerlink" href="#listing-available-modefiles" title="Permalink to this headline">¶</a></h2>
 <p>To list the currentely available modulefiles on the system use the
 module command with the available subcommand:</p>
@@ -265,8 +268,8 @@ mpi/intel/4.1.1.036 mpi/mpich2/1.2.1    mpi/mvapich2/1.9    mpi/openmpi/1.6.5
 compilers/gcc/4.8.2 compilers/gcc/4.9.0
 </pre></div>
 </div>
-</div>
-<div class="section" id="showing-what-a-modulefile-does">
+</section>
+<section id="showing-what-a-modulefile-does">
 <h2>Showing what a modulefile does<a class="headerlink" href="#showing-what-a-modulefile-does" title="Permalink to this headline">¶</a></h2>
 <p>Viewing the contents of a modulefile can be done using the module
 command with the show subcommand:</p>
@@ -310,8 +313,8 @@ first prepend-path modifies the PATH environment variable by adding
 /shared/software/intel/bin to make that directory available to the user.
 More information about Tcl commands found in modulefiles can be found in
 the modulefile manpage (man modulefile).</p>
-</div>
-<div class="section" id="loading-and-unloading-modulefiles">
+</section>
+<section id="loading-and-unloading-modulefiles">
 <h2>Loading and Unloading modulefiles<a class="headerlink" href="#loading-and-unloading-modulefiles" title="Permalink to this headline">¶</a></h2>
 <p>Loading and unloading modulefiles can be done using the module command
 the subcommands load and unload. In this example, the Intel C compiler
@@ -333,15 +336,15 @@ found. After loading the module, icc could be found (although I gave it
 no input so it gave me an error), and as expected after unloading the
 module icc could not be found anymore. For more information about module
 subcommands see the module manpage (man module)</p>
-</div>
-<div class="section" id="using-modulefiles-through-qsub">
+</section>
+<section id="using-modulefiles-through-qsub">
 <h2>Using modulefiles through qsub<a class="headerlink" href="#using-modulefiles-through-qsub" title="Permalink to this headline">¶</a></h2>
 <p>Modulefiles can be used through the scheduler just as on the command
 line. In your batch shell script (see <a class="reference external" href="RunningJobs">Running Jobs</a>
 for details) you can place the module load/unload or any other module
 subcommand directly before you executed commands.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -363,7 +366,7 @@ subcommand directly before you executed commands.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

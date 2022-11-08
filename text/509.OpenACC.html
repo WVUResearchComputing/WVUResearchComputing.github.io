@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Parallel Programming: OpenACC &mdash; WVU-RC 1.0 documentation</title>
+  <title>Parallel Programming: OpenACC &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Parallel Programming: CUDA" href="510.CUDA.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -187,25 +190,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="parallel-programming-openacc">
+  <section id="parallel-programming-openacc">
 <span id="sp-openacc"></span><h1>Parallel Programming: OpenACC<a class="headerlink" href="#parallel-programming-openacc" title="Permalink to this headline">¶</a></h1>
 <p>The fastest supercomputers today include alongside with the normal CPUs, extra electronic devices specialized to perform certain computational tasks much faster than CPUs, those devices are called Accelerators and the most prominent of those today are Graphical Processing Units (GPUs).</p>
 <p>Accelerators typically have their own memory and programming those devices requires being aware of memory management and data movement. The memory on Accelerators is usually smaller than the RAM available on compute nodes and the transfer of data from RAM to the internal memory of the accelerator is usually one order of magnitude slower than between RAM and the CPU.</p>
 <p>As GPUs are the most common accelerator today and those are the devices on our clusters we will concentrate the rest of this section to them.
 We will present two solutions for programming GPUs. OpenACC is a directive based standard for parallel computing with GPUs from several vendors, Intel’s Xeon Phi (Discontinued in 2020), Field-programmable gate arrays (FPGAs), and exotic devices such as Digital Signal Processors (DSPs). We will present how to use OpenACC using the NVIDIA HPC SDK.</p>
 <p>For the specific case of NVIDIA GPUs is the solution for parallel computing . CUDA is a platform and application programming interface (API) model created by Nvidia for their GPUs, the API have evolved over the years and several libraries have been created to take advantage of those GPUS. On our clusters we have NVIDIA GPUs and we will present how to compile and run basic programs written in CUDA.</p>
-<div class="section" id="openacc">
+<section id="openacc">
 <h2>OpenACC<a class="headerlink" href="#openacc" title="Permalink to this headline">¶</a></h2>
 <p>OpenACC is a directive based standard to allow developers to take advantage of various kinds of accelerators such as GPUs from NVIDIA. As being a directive base approach it is similar to OpenMP that we saw in a previous section. All that is needed is to add some directives tothe original source code in such a way that a OpenACC aware compiler can use those directives to parallelize certain portions of the code. The compiler will generate parallel multithreaded code similar to OpenMP but with the addition of data movement in and out the device as most accelerators will have their own memory and data must be transferred before the accelerator can process that data. For compilers that are not OpenACC capable, will simply ignore those directives and compile a serial code as usual.</p>
-<div class="section" id="compiler-with-openacc-support">
+<section id="compiler-with-openacc-support">
 <h3>Compiler with OpenACC support<a class="headerlink" href="#compiler-with-openacc-support" title="Permalink to this headline">¶</a></h3>
 <p>The best set of compilers for using OpenACC is the NVIDIA HPC SDK. There is support from GNU Compiler Collection (GCC) starting from GCC 8 that supports OpenACC 2.0 up to GCC 10 that supports OpenACC 2.6. For this section we will use the NVIDIA HPC SDK compilers. To load the compilers execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">nvhpc</span>
 </pre></div>
 </div>
 <p>Now that you have loaded the module, the three compilers that you can use for OpenACC are <cite>nvfortran</cite>, <cite>nvc</cite> and <cite>nvc++</cite> for Fortran, C and C++ respectively.</p>
-</div>
-<div class="section" id="submit-a-job-interactively">
+</section>
+<section id="submit-a-job-interactively">
 <h3>Submit a job interactively<a class="headerlink" href="#submit-a-job-interactively" title="Permalink to this headline">¶</a></h3>
 <p>You do not need to compile the code on a compute node with GPUs, but for the purpose of learning is good to work directly on an interactive node and test executions and recompile as needed.</p>
 <p>The command to request one GPU card for an interactive job is:</p>
@@ -274,8 +277,8 @@ sys     0m1.459s
 </pre></div>
 </div>
 <p>You will observe that it takes less than 2 seconds, a very significant improvement over the serial version.</p>
-</div>
-<div class="section" id="example-from-the-xsede-workshop-on-openacc">
+</section>
+<section id="example-from-the-xsede-workshop-on-openacc">
 <h3>Example from the XSEDE workshop on OpenACC<a class="headerlink" href="#example-from-the-xsede-workshop-on-openacc" title="Permalink to this headline">¶</a></h3>
 <p>Now, we will show how to compile and execute the same code proposed during the XSEDE workshop on OpenACC. To compile the serial code for the fortran example use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nvfortran laplace_serial.f90
@@ -326,9 +329,9 @@ initialize:
 </pre></div>
 </div>
 <p>There is a significant improvement in the execution of the Laplace solver on a compute node using one GPU card.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -350,7 +353,7 @@ initialize:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

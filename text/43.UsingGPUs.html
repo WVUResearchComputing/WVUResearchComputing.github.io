@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GPU Computing &mdash; WVU-RC 1.0 documentation</title>
+  <title>GPU Computing &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Environment Modules" href="44.Modules.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -184,119 +187,119 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="gpu-computing">
+  <section id="gpu-computing">
 <span id="ad-gpu"></span><h1>GPU Computing<a class="headerlink" href="#gpu-computing" title="Permalink to this headline">¶</a></h1>
 <p>A graphics processing unit (GPU) is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device. Their highly parallel structure makes them more efficient than general-purpose central processing units (CPUs) for algorithms that process large blocks of data in parallel.</p>
 <p>As GPUs become more powerful they start being use to perform numerical calculations in what is called a general purpose graphics processing unit (GPGPU). Due to their design GPUs are generally suited to high-throughput type computations that exhibit data-parallelism. One typical case is in Single Operations Multiple Data (SIMD) operations.</p>
 <p>Today GPU computing is an integral part of an HPC environment. Three of the 10 most powerful supercomputers in the world today (2019) take advantage of GPU acceleration.</p>
 <p>Both of our clusters, Spruce Knob and Thorny Flat have some nodes with GPUs for jobs that can take advantage of them.</p>
-<div class="section" id="hardware-configurations">
+<section id="hardware-configurations">
 <h2>Hardware configurations<a class="headerlink" href="#hardware-configurations" title="Permalink to this headline">¶</a></h2>
 <p>The GPUs on Spruce Knob are from the Kepler GPU microarchitecture (K20 GPU accelerator). On Thorny Flat the GPUs are all from the Pascal GPU microarchitecture (NVIDIA QUADRO P6000)</p>
-<div class="section" id="spruce-knob">
+<section id="spruce-knob">
 <h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>Spruce has 2 community nodes with GPUs. One has 1x NVIDIA K20m and the second one has 3x NVIDIA K20m.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="56%" />
-<col width="44%" />
+<col style="width: 56%" />
+<col style="width: 44%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>NVIDIA K20</strong></td>
-<td><strong>Specifications</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>NVIDIA K20</strong></p></td>
+<td><p><strong>Specifications</strong></p></td>
 </tr>
-<tr class="row-even"><td>Launch</td>
-<td>November 12, 2012</td>
+<tr class="row-even"><td><p>Launch</p></td>
+<td><p>November 12, 2012</p></td>
 </tr>
-<tr class="row-odd"><td>Chips</td>
-<td>1x GK110</td>
+<tr class="row-odd"><td><p>Chips</p></td>
+<td><p>1x GK110</p></td>
 </tr>
-<tr class="row-even"><td>NVIDIA CUDA Cores</td>
-<td>2496</td>
+<tr class="row-even"><td><p>NVIDIA CUDA Cores</p></td>
+<td><p>2496</p></td>
 </tr>
-<tr class="row-odd"><td>Base Clock</td>
-<td>706</td>
+<tr class="row-odd"><td><p>Base Clock</p></td>
+<td><p>706</p></td>
 </tr>
-<tr class="row-even"><td>Max Boost clock</td>
-<td>758</td>
+<tr class="row-even"><td><p>Max Boost clock</p></td>
+<td><p>758</p></td>
 </tr>
-<tr class="row-odd"><td>Bus type</td>
-<td>GDDR5</td>
+<tr class="row-odd"><td><p>Bus type</p></td>
+<td><p>GDDR5</p></td>
 </tr>
-<tr class="row-even"><td>Bus width</td>
-<td>320-bit</td>
+<tr class="row-even"><td><p>Bus width</p></td>
+<td><p>320-bit</p></td>
 </tr>
-<tr class="row-odd"><td>GPU Memory Size</td>
-<td>5 GB</td>
+<tr class="row-odd"><td><p>GPU Memory Size</p></td>
+<td><p>5 GB</p></td>
 </tr>
-<tr class="row-even"><td>Clock (MT/s)</td>
-<td>5200</td>
+<tr class="row-even"><td><p>Clock (MT/s)</p></td>
+<td><p>5200</p></td>
 </tr>
-<tr class="row-odd"><td>Memory Bandwidth</td>
-<td>208 (GB/s)</td>
+<tr class="row-odd"><td><p>Memory Bandwidth</p></td>
+<td><p>208 (GB/s)</p></td>
 </tr>
-<tr class="row-even"><td>Single Precision (MAD or FMA)</td>
-<td>3524</td>
+<tr class="row-even"><td><p>Single Precision (MAD or FMA)</p></td>
+<td><p>3524</p></td>
 </tr>
-<tr class="row-odd"><td>Double Precision (FMA)</td>
-<td>1175</td>
+<tr class="row-odd"><td><p>Double Precision (FMA)</p></td>
+<td><p>1175</p></td>
 </tr>
-<tr class="row-even"><td>Cuda compute ability</td>
-<td>3.5</td>
+<tr class="row-even"><td><p>Cuda compute ability</p></td>
+<td><p>3.5</p></td>
 </tr>
-<tr class="row-odd"><td>Thermal Design Power (TDP)</td>
-<td>225 W</td>
+<tr class="row-odd"><td><p>Thermal Design Power (TDP)</p></td>
+<td><p>225 W</p></td>
 </tr>
-<tr class="row-even"><td>Form Factor</td>
-<td>Full Height, Dual Slot</td>
+<tr class="row-even"><td><p>Form Factor</p></td>
+<td><p>Full Height, Dual Slot</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="thorny-flat">
+</section>
+<section id="thorny-flat">
 <h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>Thorny has 6 community nodes with 3x NVIDIA P6000 per node.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="56%" />
-<col width="44%" />
+<col style="width: 56%" />
+<col style="width: 44%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>NVIDIA QUADRO P6000</strong></td>
-<td><strong>Specifications</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>NVIDIA QUADRO P6000</strong></p></td>
+<td><p><strong>Specifications</strong></p></td>
 </tr>
-<tr class="row-even"><td>GPU Memory Size</td>
-<td>24 GB GDDR5X</td>
+<tr class="row-even"><td><p>GPU Memory Size</p></td>
+<td><p>24 GB GDDR5X</p></td>
 </tr>
-<tr class="row-odd"><td>Memory Interface</td>
-<td>384-bit</td>
+<tr class="row-odd"><td><p>Memory Interface</p></td>
+<td><p>384-bit</p></td>
 </tr>
-<tr class="row-even"><td>Memory Bandwidth</td>
-<td>432 GB/s</td>
+<tr class="row-even"><td><p>Memory Bandwidth</p></td>
+<td><p>432 GB/s</p></td>
 </tr>
-<tr class="row-odd"><td>NVIDIA CUDA Cores</td>
-<td>3840</td>
+<tr class="row-odd"><td><p>NVIDIA CUDA Cores</p></td>
+<td><p>3840</p></td>
 </tr>
-<tr class="row-even"><td>System Interface</td>
-<td>PCI Express 3.0 x16</td>
+<tr class="row-even"><td><p>System Interface</p></td>
+<td><p>PCI Express 3.0 x16</p></td>
 </tr>
-<tr class="row-odd"><td>Max Power Consumption</td>
-<td>250 W</td>
+<tr class="row-odd"><td><p>Max Power Consumption</p></td>
+<td><p>250 W</p></td>
 </tr>
-<tr class="row-even"><td>Thermal Solution</td>
-<td>Active</td>
+<tr class="row-even"><td><p>Thermal Solution</p></td>
+<td><p>Active</p></td>
 </tr>
-<tr class="row-odd"><td>Form Factor</td>
-<td>Dual Slot, Full Height</td>
+<tr class="row-odd"><td><p>Form Factor</p></td>
+<td><p>Dual Slot, Full Height</p></td>
 </tr>
-<tr class="row-even"><td>Compute APIs</td>
-<td>CUDA, OpenCL</td>
+<tr class="row-even"><td><p>Compute APIs</p></td>
+<td><p>CUDA, OpenCL</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="interactive-computing-with-gpus">
+</section>
+</section>
+<section id="interactive-computing-with-gpus">
 <h2>Interactive computing with GPUs<a class="headerlink" href="#interactive-computing-with-gpus" title="Permalink to this headline">¶</a></h2>
 <p>On Spruce we have one queue for GPU computing. In the case of interacive jobs execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">1</span>
@@ -307,8 +310,8 @@ In the case of interactive jobs, execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">comm_gpu_inter</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">gpus</span><span class="o">=</span><span class="mi">3</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="checking-the-presence-of-gpus">
+</section>
+<section id="checking-the-presence-of-gpus">
 <h2>Checking the presence of GPUs<a class="headerlink" href="#checking-the-presence-of-gpus" title="Permalink to this headline">¶</a></h2>
 <p>The command <cite>nvidia-smi</cite> can be used to monitor the presence and status of the GPUs on the current compute node. For example on Spruce the command will return something like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nvidia-smi
@@ -364,8 +367,8 @@ Tue Sep 24 15:56:16 2019
 +-----------------------------------------------------------------------------+
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -387,7 +390,7 @@ Tue Sep 24 15:56:16 2019
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

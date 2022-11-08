@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>XWindow &mdash; WVU-RC 1.0 documentation</title>
+  <title>XWindow &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="For Advanced Users" href="40.AdvancedUser.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -186,9 +189,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="xwindow">
+  <section id="xwindow">
 <span id="bs-xwindow"></span><h1>XWindow<a class="headerlink" href="#xwindow" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction-to-x">
+<section id="introduction-to-x">
 <h2>Introduction to X<a class="headerlink" href="#introduction-to-x" title="Permalink to this headline">¶</a></h2>
 <p>To view a graphical user interface (GUI) from one of HPC systems you
 will need to have a X Windows System (often shorten to just ‘X’)
@@ -202,10 +205,10 @@ on the login nodes of the HPC systems. However, these should be programs
 cannot be resource intensive. If you need to run programs such as MATLAB
 and you plan on doing computation through the MATLAB GUI, you will need
 to submit your job to the scheduler.</strong></p>
-</div>
-<div class="section" id="launching-x-gui-programs">
+</section>
+<section id="launching-x-gui-programs">
 <h2>Launching X (GUI Programs)<a class="headerlink" href="#launching-x-gui-programs" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="linux-os-x-instructions">
+<section id="linux-os-x-instructions">
 <h3>Linux/OS X Instructions<a class="headerlink" href="#linux-os-x-instructions" title="Permalink to this headline">¶</a></h3>
 <p>With Linux or OS X you can simply run the command below from your
 terminal window to enable X11 forward through SSH.</p>
@@ -217,8 +220,8 @@ terminal. If you have successfully tunneled your X traffic, you should
 see a small clock show up on your screen which you may now close. If you
 are not seeing a clock, please open a <a class="reference external" href="Getting_Help">HelpDesk Ticket</a>
 for further assistance.</p>
-</div>
-<div class="section" id="windows-instructions">
+</section>
+<section id="windows-instructions">
 <h3>Windows Instructions<a class="headerlink" href="#windows-instructions" title="Permalink to this headline">¶</a></h3>
 <p>Windows does not have a built in X11 Server so one will need to be
 installed. Below are instructions for
@@ -226,41 +229,35 @@ installed. Below are instructions for
 with Putty but you maybe also which to look into
 <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>.</p>
 <ol class="arabic">
-<li><p class="first">Download Xming from here
-<a class="reference external" href="https://sourceforge.net/projects/xming/files/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe/download">https://sourceforge.net/projects/xming/files/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe/download</a>.</p>
-</li>
-<li><p class="first">Install and follow the on-screen instructions. If you do not already
+<li><p>Download Xming from here
+<a class="reference external" href="https://sourceforge.net/projects/xming/files/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe/download">https://sourceforge.net/projects/xming/files/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe/download</a>.</p></li>
+<li><p>Install and follow the on-screen instructions. If you do not already
 have Putty installed you will want to select “Full Installation” when
-you get to the “Select Components” screen.</p>
-</li>
-<li><p class="first">At the end of the installation you can keep “Launch Xming” selected
-or launch Xming from your start menu.</p>
-</li>
-<li><p class="first">When Xming is running, you will have a icon in your Windows systray
-that looks like an “X”.</p>
-</li>
-<li><p class="first">Follow the <a class="reference external" href="PuttyIns">Putty Instructions</a> to setup connectivity
+you get to the “Select Components” screen.</p></li>
+<li><p>At the end of the installation you can keep “Launch Xming” selected
+or launch Xming from your start menu.</p></li>
+<li><p>When Xming is running, you will have a icon in your Windows systray
+that looks like an “X”.</p></li>
+<li><p>Follow the <a class="reference external" href="PuttyIns">Putty Instructions</a> to setup connectivity
 but before you click “Open” be sure to set “Enable X11 forwarding”
 under the Category Option section. This will be under Connection,
 SSH, and X11. Example:</p>
 <blockquote>
-<div><div class="figure">
+<div><figure class="align-default">
 <img alt="../_images/putty_xforward.png" src="../_images/putty_xforward.png" />
-</div>
+</figure>
 </div></blockquote>
 </li>
-<li><p class="first">You should now be connected to an HPC system with X Forward enabled.</p>
-</li>
-<li><p class="first">To verify your X setup, you can run the command “xclock” from the
+<li><p>You should now be connected to an HPC system with X Forward enabled.</p></li>
+<li><p>To verify your X setup, you can run the command “xclock” from the
 terminal. If you have successfully tunneled your X traffic, you
 should see a small clock show up on your screen which you may now
 close. If you are not seeing a clock, please open a HelpDesk Ticket
-for further assistance.</p>
-</li>
+for further assistance.</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="running-x-gui-programs-on-computing-nodes">
+</section>
+</section>
+<section id="running-x-gui-programs-on-computing-nodes">
 <h2>Running X (GUI Programs) on Computing Nodes<a class="headerlink" href="#running-x-gui-programs-on-computing-nodes" title="Permalink to this headline">¶</a></h2>
 <p>GUI intensive programs must be ran on a compute node. To accomplish
 this, one will need to follow the applicable above steps to first
@@ -272,8 +269,8 @@ the appropriate pbs flags that meets the task’s needs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -q standby -X -I
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -295,7 +292,7 @@ the appropriate pbs flags that meets the task’s needs.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

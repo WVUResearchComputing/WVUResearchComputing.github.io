@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Editing Files &mdash; WVU-RC 1.0 documentation</title>
+  <title>Editing Files &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Understanding Cluster Storage" href="25.UseStorage.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -185,7 +188,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="editing-files">
+  <section id="editing-files">
 <span id="qs-edit-files"></span><h1>Editing Files<a class="headerlink" href="#editing-files" title="Permalink to this headline">¶</a></h1>
 <p>After learning a few commands the next thing to learn is to edit text files.
 As we will see later, editing small text files is a common procedure on an HPC cluster; for example, the submission scripts are relatively small text files, and most of the times, you have to make small adjustments to those scripts.
@@ -197,7 +200,7 @@ The most widely used are vi, emacs, and nano.</p>
 <p>The second most commonly used editor is <strong>emacs</strong>, sometimes not installed by default on many systems it is usually provided on most Linux distributions.</p>
 <p>The third editor is <strong>GNU nano</strong> a very user-friendly editor.
 For this tutorial we will focus on <strong>nano</strong>, for short text files and simple edits, <strong>nano</strong> serves its purpose.</p>
-<div class="section" id="opening-gnu-nano">
+<section id="opening-gnu-nano">
 <h2>Opening GNU nano<a class="headerlink" href="#opening-gnu-nano" title="Permalink to this headline">¶</a></h2>
 <p>On a terminal execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nano &lt;name_of_file&gt;
@@ -205,8 +208,8 @@ For this tutorial we will focus on <strong>nano</strong>, for short text files a
 </div>
 <p>You will get a text application that looks like this:</p>
 <img alt="../_images/nano-editor.png" src="../_images/nano-editor.png" />
-</div>
-<div class="section" id="using-gnu-nano">
+</section>
+<section id="using-gnu-nano">
 <h2>Using GNU nano<a class="headerlink" href="#using-gnu-nano" title="Permalink to this headline">¶</a></h2>
 <p>The bottom two lines show the commands to use.
 The symbol <code class="docutils literal notranslate"><span class="pre">^</span></code> means press the <strong>CONTROL KEY</strong> (left or right) and keep it pressed until you press the command key. For example, to exit the editor we see <code class="docutils literal notranslate"><span class="pre">^X</span></code>, which tells us that we must hold the control key and then press <code class="docutils literal notranslate"><span class="pre">X</span></code>. The character in the command is not case sensitive so pressing <code class="docutils literal notranslate"><span class="pre">^X</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">^x</span></code>.</p>
@@ -215,20 +218,20 @@ The symbol <code class="docutils literal notranslate"><span class="pre">^</span>
 <p><strong>GNU nano</strong> offers a fairly complete set of basic utilities to edit files.</p>
 <p>Search for text with <code class="docutils literal notranslate"><span class="pre">^W</span></code> and the text to find.
 The command <code class="docutils literal notranslate"><span class="pre">^_</span></code> allows you to go to a specific line number.</p>
-</div>
-<div class="section" id="copy-cut-and-paste">
+</section>
+<section id="copy-cut-and-paste">
 <h2>Copy, Cut and Paste<a class="headerlink" href="#copy-cut-and-paste" title="Permalink to this headline">¶</a></h2>
 <p>The command <code class="docutils literal notranslate"><span class="pre">^K</span></code> and <code class="docutils literal notranslate"><span class="pre">^U</span></code> only serve to cut and paste the line where the cursor is located. When you cut the text, its contents are stored in what is called the <em>cut buffer</em>. The command <code class="docutils literal notranslate"><span class="pre">^U</span></code> just takes the contents of the <em>cut buffer</em> and write its contents to the location of the cursor. As the contents of the <em>cut buffer</em> are not erased you can use <code class="docutils literal notranslate"><span class="pre">^U</span></code> to repeat the same contents as many times as you want.</p>
 <p>For more advanced copy and paste, you need to learn how to select blocks of text before cutting them to the <em>cut buffer</em>
 First, move the cursor to the start of the text you want to select, press the <code class="docutils literal notranslate"><span class="pre">M-A</span></code> key combination (<em>Alt-A</em> in modern keyboards) to mark the start, then move the cursor to the end of the section you want to select.
 Once you have marked the beginning and end of the text, the <code class="docutils literal notranslate"><span class="pre">^^</span></code> (Esc-6) and <code class="docutils literal notranslate"><span class="pre">^K</span></code> key combinations can be used to copy or cut it, respectively.
 In a command like <code class="docutils literal notranslate"><span class="pre">^^</span></code>, the meaning of that is press the <em>Control Key</em> followed by the <em>carret symbol</em> <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p>
-</div>
-<div class="section" id="quitting-nano">
+</section>
+<section id="quitting-nano">
 <h2>Quitting Nano<a class="headerlink" href="#quitting-nano" title="Permalink to this headline">¶</a></h2>
 <p>To quit nano, use the <code class="docutils literal notranslate"><span class="pre">^X</span></code> key combination. If the file you are working on has been modified since the last time you saved it, you will be asked to save the file first. Type <em>y</em> to save the file, or <em>n</em> to exit nano without saving the file.</p>
-</div>
-<div class="section" id="exercise">
+</section>
+<section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>As an exercise, take the opportunity to write the source code of a simple parallel program, open nano and write the code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;mpi.h&gt;</span>
@@ -262,8 +265,8 @@ In a command like <code class="docutils literal notranslate"><span class="pre">^
 </div>
 <p>The code is in C, a well known programming language for a variety of purposes, including scientific computing. In C, tabulations are not mandatory but helps the legibility of the code, pay special attention to semicolons at the end of each instruction. All lines starting with double slash <code class="docutils literal notranslate"><span class="pre">//</span></code> are comments, so you can ignore those lines if you want.</p>
 <p>In the next chapter, we will show how to compile the code and execute it on the cluster using the queue manager.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -285,7 +288,7 @@ In a command like <code class="docutils literal notranslate"><span class="pre">^
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

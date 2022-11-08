@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NAMD &mdash; WVU-RC 1.0 documentation</title>
+  <title>NAMD &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Clusters Specifications" href="80.ClusterSpecific.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -182,7 +185,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="namd">
+  <section id="namd">
 <h1>NAMD<a class="headerlink" href="#namd" title="Permalink to this headline">¶</a></h1>
 <p>Nanoscale Molecular Dynamics (NAMD, formerly Not Another Molecular Dynamics
 Program) is computer software for molecular dynamics simulation, written using
@@ -204,7 +207,7 @@ chemical point of view.</p>
 for NAMD</p>
 <p><a class="reference external" href="https://www.ks.uiuc.edu/Research/namd/utilities/apoa1.tar.gz">https://www.ks.uiuc.edu/Research/namd/utilities/apoa1.tar.gz</a></p>
 <p><a class="reference external" href="https://www.ks.uiuc.edu/Research/namd/utilities/stmv.tar.gz">https://www.ks.uiuc.edu/Research/namd/utilities/stmv.tar.gz</a></p>
-<div class="section" id="downloading-the-input-files">
+<section id="downloading-the-input-files">
 <h2>Downloading the input files<a class="headerlink" href="#downloading-the-input-files" title="Permalink to this headline">¶</a></h2>
 <p>Select a good location for downloading the inputs and executing the simulations.
 For example use $SCRATCH/NAMD:</p>
@@ -223,8 +226,8 @@ current folder:</p>
 <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">stmv</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="preparing-the-submission-script">
+</section>
+<section id="preparing-the-submission-script">
 <h2>Preparing the submission script<a class="headerlink" href="#preparing-the-submission-script" title="Permalink to this headline">¶</a></h2>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">apoa1</span></code> for demonstrate how to create a submission script.
 ApoA1 has 92K atoms and should run efficiently on a single node.</p>
@@ -276,8 +279,8 @@ and inputs are located and from we will submit the job.</p>
 The command tells NAMD to use 2 cores and make those two cores sit on the same
 socket optimizing the usage of Cache Level 3 in some cases. The input file for
 NAMD is apoa1.namd and that completes the submission script.</p>
-</div>
-<div class="section" id="submitting-the-job">
+</section>
+<section id="submitting-the-job">
 <h2>Submitting the job<a class="headerlink" href="#submitting-the-job" title="Permalink to this headline">¶</a></h2>
 <p>Submit the job with the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
@@ -331,8 +334,8 @@ simplicity we will just show the last lines:</p>
 </div>
 <p>This information is useful for adjusting your request for resources for additional
 and similar jobs. In particular this job too around 4 minutes and 540 MB of memory.</p>
-</div>
-<div class="section" id="running-namd-on-gpus">
+</section>
+<section id="running-namd-on-gpus">
 <h2>Running NAMD on GPUs<a class="headerlink" href="#running-namd-on-gpus" title="Permalink to this headline">¶</a></h2>
 <p>Now we will demonstrate the changes to be done when running with GPUs
 Go one folder up where the tar.gz and apoa1 folder is located:</p>
@@ -433,8 +436,8 @@ WallClock: 9.114665  CPUTime: 8.700677  Memory: 701.644531 MB
 </pre></div>
 </div>
 <p>Notice the reduction in execution time by using the GPUs</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -456,7 +459,7 @@ WallClock: 9.114665  CPUTime: 8.700677  Memory: 701.644531 MB
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

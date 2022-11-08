@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Message Passing Interface &mdash; WVU-RC 1.0 documentation</title>
+  <title>Message Passing Interface &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="HDF5 and NetCDF" href="606.HDF5_NetCDF.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -110,7 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="609.CHARM%2B%2B_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
@@ -190,7 +193,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="message-passing-interface">
+  <section id="message-passing-interface">
 <h1>Message Passing Interface<a class="headerlink" href="#message-passing-interface" title="Permalink to this headline">¶</a></h1>
 <p>Many parallel programs take advantage of Message Passing Interface (MPI)
 to communicate across compute nodes and efficiently scale up
@@ -226,47 +229,47 @@ own mpirun substitute and/or work better with certain MPI libraries than
 others. Also, each MPI libraries have differences with their mpirun
 commands, and therefore you should take a look at the MPI’s own
 documentation (links below).</p>
-<div class="section" id="mpi-standards">
+<section id="mpi-standards">
 <h2>MPI Standards<a class="headerlink" href="#mpi-standards" title="Permalink to this headline">¶</a></h2>
 <p>Message Passing Interface standards are available free for download at
 <a class="reference external" href="https://www.mpi-forum.org/docs/">MPI Forum</a>.</p>
-</div>
-<div class="section" id="useful-books">
+</section>
+<section id="useful-books">
 <h2>Useful Books<a class="headerlink" href="#useful-books" title="Permalink to this headline">¶</a></h2>
 <p>Parallel Programming with MPI. Peter Pecheco. ISBN-13:978-1558603394</p>
 <p>Parallel Programming in C with MPI and OpenMP. Michael Quinn.
 ISBN-13:978-0072822564</p>
 <p>MPI: The Complete Reference. Snir et al. ISBN-13:978-0262692168</p>
-</div>
-<div class="section" id="libraries">
+</section>
+<section id="libraries">
 <h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
 <p>Current information about location and version of library can be found
 in their respective <a class="reference external" href="Using_Modulefiles">modulefiles</a>.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="16%" />
-<col width="84%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Library</strong></td>
-<td><strong>Documentation</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Library</strong></p></td>
+<td><p><strong>Documentation</strong></p></td>
 </tr>
-<tr class="row-even"><td>Intel</td>
-<td><a class="reference external" href="https://software.intel.com/en-us/mpi-library/documentation/get-started">https://software.intel.com/en-us/mpi-library/documentation/get-started</a></td>
+<tr class="row-even"><td><p>Intel</p></td>
+<td><p><a class="reference external" href="https://software.intel.com/en-us/mpi-library/documentation/get-started">https://software.intel.com/en-us/mpi-library/documentation/get-started</a></p></td>
 </tr>
-<tr class="row-odd"><td>Mpich2</td>
-<td><a class="reference external" href="http://www.mpich.org/documentation/guides/">http://www.mpich.org/documentation/guides/</a></td>
+<tr class="row-odd"><td><p>Mpich2</p></td>
+<td><p><a class="reference external" href="http://www.mpich.org/documentation/guides/">http://www.mpich.org/documentation/guides/</a></p></td>
 </tr>
-<tr class="row-even"><td>Mvapich2</td>
-<td><a class="reference external" href="http://mvapich.cse.ohio-state.edu/support/">http://mvapich.cse.ohio-state.edu/support/</a></td>
+<tr class="row-even"><td><p>Mvapich2</p></td>
+<td><p><a class="reference external" href="http://mvapich.cse.ohio-state.edu/support/">http://mvapich.cse.ohio-state.edu/support/</a></p></td>
 </tr>
-<tr class="row-odd"><td>OpenMPI</td>
-<td><a class="reference external" href="http://www.open-mpi.org/doc/">http://www.open-mpi.org/doc/</a></td>
+<tr class="row-odd"><td><p>OpenMPI</p></td>
+<td><p><a class="reference external" href="http://www.open-mpi.org/doc/">http://www.open-mpi.org/doc/</a></p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -288,7 +291,7 @@ in their respective <a class="reference external" href="Using_Modulefiles">modul
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

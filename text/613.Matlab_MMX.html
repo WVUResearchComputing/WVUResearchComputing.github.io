@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Matlab N-D multithreaded matrix operations (MMX) &mdash; WVU-RC 1.0 documentation</title>
+  <title>Matlab N-D multithreaded matrix operations (MMX) &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Building Julia" href="614.Julia.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -105,7 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="609.CHARM%2B%2B_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
@@ -198,14 +201,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="matlab-n-d-multithreaded-matrix-operations-mmx">
+  <section id="matlab-n-d-multithreaded-matrix-operations-mmx">
 <h1>Matlab N-D multithreaded matrix operations (MMX)<a class="headerlink" href="#matlab-n-d-multithreaded-matrix-operations-mmx" title="Permalink to this headline">¶</a></h1>
 <p>MMX is a Matlab plugin for N-D multithreaded matrix operations.
 The File Exchange page for it is:</p>
 <p><a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx?ue">https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx?ue</a></p>
 <p>The source code is hosted on Github:</p>
 <p><a class="reference external" href="https://github.com/yuvaltassa/mmx">https://github.com/yuvaltassa/mmx</a></p>
-<div class="section" id="download-the-code">
+<section id="download-the-code">
 <h2>Download the code<a class="headerlink" href="#download-the-code" title="Permalink to this headline">¶</a></h2>
 <p>The original code can be downloaded with the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yuvaltassa</span><span class="o">/</span><span class="n">mmx</span><span class="o">.</span><span class="n">git</span>
@@ -219,7 +222,7 @@ However, the instructions are general enough so other people can compile this co
 computers, regardless of having superusers priviledges or not.</p>
 <p>We start by getting access to Matlab 2021a, the latest version installed on Thorny.
 Thorny Flat runs RHEL 7.x and the version of GCC is old (4.8), we have GCC 9.3 as the stable compiler on this cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2021</span><span class="n">a</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2021</span><span class="n">a</span>
 </pre></div>
 </div>
 <p>Other Linux machines could have recent versions of GCC supported by Matlab see this webpage to check which
@@ -257,8 +260,8 @@ compilers are accepted.</p>
 <span class="o">&gt;&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="edit-the-building-script">
+</section>
+<section id="edit-the-building-script">
 <h2>Edit the building script<a class="headerlink" href="#edit-the-building-script" title="Permalink to this headline">¶</a></h2>
 <p>Edit the file <code class="docutils literal notranslate"><span class="pre">build_mmx.m</span></code>, adjust several lines of code to make it work.
 The differences are:</p>
@@ -285,8 +288,8 @@ The differences are:</p>
                   end
 </pre></div>
 </div>
-</div>
-<div class="section" id="build-a-custom-mkl-library">
+</section>
+<section id="build-a-custom-mkl-library">
 <h2>Build a custom MKL library<a class="headerlink" href="#build-a-custom-mkl-library" title="Permalink to this headline">¶</a></h2>
 <p>Build the custom MKL library, first load module for Intel MKL:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">mkl</span>
@@ -307,8 +310,8 @@ cat ${MKLROOT}/tools/builder/lapack_example_list &gt;&gt; blas_lapack_list
 </pre></div>
 </div>
 <p>Verify that you have reach this step correctly by checking for the file <code class="docutils literal notranslate"><span class="pre">libsingle_mkl_ilp64.so</span></code></p>
-</div>
-<div class="section" id="compile-mmx">
+</section>
+<section id="compile-mmx">
 <h2>Compile MMX<a class="headerlink" href="#compile-mmx" title="Permalink to this headline">¶</a></h2>
 <p>Now we can compile mmx as a Matlab MEX file</p>
 <p>The output is extensive but illustrative of the 3 compilations of MMX that are done. build_mmx will try to compile from the most efficient to the simplest version.
@@ -683,8 +686,8 @@ Edit <code class="docutils literal notranslate"><span class="pre">build_mmx.m</s
 <span class="n">mmx_naive</span><span class="o">.</span><span class="n">mexa64</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="teting-the-3-compilations-of-mmx">
+</section>
+<section id="teting-the-3-compilations-of-mmx">
 <h2>Teting the 3 compilations of MMX<a class="headerlink" href="#teting-the-3-compilations-of-mmx" title="Permalink to this headline">¶</a></h2>
 <p>Now lets test the library with some examples:</p>
 <p>For using MMX, there is no need to be inside <code class="docutils literal notranslate"><span class="pre">mmx/src</span></code> but we need to declare the folder as a path for searching MEX files:</p>
@@ -711,7 +714,7 @@ For product information, visit www.mathworks.com.
 <p>The output will show the resulting C array. As we are using mmx() this is the most efficient compilation using MKL.</p>
 <p>Now is time to try all the versions to check how they perform in extreme cases.</p>
 <p>We will try a simple exercise with large matrices using the 3 versions of MMX that we compiled</p>
-<div class="section" id="mmx-naive">
+<section id="mmx-naive">
 <h3>mmx_naive<a class="headerlink" href="#mmx-naive" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
 <span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
@@ -724,8 +727,8 @@ For product information, visit www.mathworks.com.
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">22.5</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="mmx-mkl-multi">
+</section>
+<section id="mmx-mkl-multi">
 <h3>mmx_mkl_multi<a class="headerlink" href="#mmx-mkl-multi" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
 <span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
@@ -738,8 +741,8 @@ For product information, visit www.mathworks.com.
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.95</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="mmx-mkl-single">
+</section>
+<section id="mmx-mkl-single">
 <h3>mmx_mkl_single<a class="headerlink" href="#mmx-mkl-single" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1600</span>
 <span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
@@ -773,15 +776,15 @@ function build_mmx(verbose)
 %
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="conclusions">
+</section>
+</section>
+<section id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
 <p>In this page we show how to compile MMX, a C++ Matlab plugin (MEX file) that uses Intel MKL.
 The code was compiled without access to superuser privileges on a normal user folder.</p>
 <p>MMX was compiled in 3 different flavors and a simple test example was used to demonstrate the performance of those 3 cases for large matrices.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -803,7 +806,7 @@ The code was compiled without access to superuser privileges on a normal user fo
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Spruce Knob &mdash; WVU-RC 1.0 documentation</title>
+  <title>Spruce Knob &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Thorny Flat Cluster" href="83.ThornyFlat.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -192,86 +195,86 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="spruce-knob">
+  <section id="spruce-knob">
 <h1>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h1>
 <p>Spruce Knob is a 3,376 core cluster spread over 176 nodes (155 active nodes with 3090 cores on February 2022) using a shared FDR Infiniband Network. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phase.  New hardware is no longer being added to this cluster.  Hardware that is still under warranty will be serviced.  Hardware that is out of warranty will be removed from the cluster upon failure.</p>
-<div class="section" id="overview">
+<section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="resource-manager-and-system-scheduler">
+<section id="resource-manager-and-system-scheduler">
 <h3>Resource manager and system scheduler<a class="headerlink" href="#resource-manager-and-system-scheduler" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Torque v. 6.1.x</li>
-<li>Moab Cluster Manager v. 9.1.x</li>
+<li><p>Torque v. 6.1.x</p></li>
+<li><p>Moab Cluster Manager v. 9.1.x</p></li>
 </ul>
-</div>
-<div class="section" id="total-compute-resources">
+</section>
+<section id="total-compute-resources">
 <h3>Total Compute Resources<a class="headerlink" href="#total-compute-resources" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>3,376 Cores</li>
-<li>176 Compute Nodes</li>
-<li>4 Management Nodes</li>
-<li>18 GPUs</li>
+<li><p>3,376 Cores</p></li>
+<li><p>176 Compute Nodes</p></li>
+<li><p>4 Management Nodes</p></li>
+<li><p>18 GPUs</p></li>
 </ul>
-</div>
-<div class="section" id="shared-interconnect">
+</section>
+<section id="shared-interconnect">
 <h3>Shared Interconnect<a class="headerlink" href="#shared-interconnect" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Mellanox SX6512 Infiniband Switch</li>
-<li>216 ports all non-blocking</li>
-<li>FDR (56 Gb/s) speed</li>
-<li>All Fibre Connections</li>
+<li><p>Mellanox SX6512 Infiniband Switch</p></li>
+<li><p>216 ports all non-blocking</p></li>
+<li><p>FDR (56 Gb/s) speed</p></li>
+<li><p>All Fibre Connections</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="hardware">
+</section>
+</section>
+<section id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
 <p>Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
 The table below shows the differences between the 4 architectures:</p>
-<table border="1" class="colwidths-given docutils" id="id2" style="width: 90%">
+<table class="colwidths-given docutils align-default" id="id2" style="width: 90%">
 <caption><span class="caption-text">Microarchitectures present on <em>Spruce Knob</em></span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="10%" />
-<col width="80%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 80%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Microarchitecture</th>
-<th class="head">Launched</th>
-<th class="head">Extensions</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Microarchitecture</p></th>
+<th class="head"><p>Launched</p></th>
+<th class="head"><p>Extensions</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Sandy Bridge</td>
-<td>2011</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX</strong>, VT-x, VT-d, AES-NI, CLMUL, TXT</dd>
+<tbody>
+<tr class="row-even"><td><p>Sandy Bridge</p></td>
+<td><p>2011</p></td>
+<td><dl class="simple">
+<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX</strong>, VT-x, VT-d, AES-NI, CLMUL, TXT</p>
+</dd>
 </dl>
 </td>
 </tr>
-<tr class="row-odd"><td>Ivy Bridge</td>
-<td>2012</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX, F16C</strong>, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d</dd>
+<tr class="row-odd"><td><p>Ivy Bridge</p></td>
+<td><p>2012</p></td>
+<td><dl class="simple">
+<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX, F16C</strong>, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d</p>
+</dd>
 </dl>
 </td>
 </tr>
-<tr class="row-even"><td>Haswell</td>
-<td>2013</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX, AVX2</strong>, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND,
-TXT</dd>
+<tr class="row-even"><td><p>Haswell</p></td>
+<td><p>2013</p></td>
+<td><dl class="simple">
+<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX, AVX2</strong>, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND,
+TXT</p>
+</dd>
 </dl>
 </td>
 </tr>
-<tr class="row-odd"><td>Broadwell</td>
-<td>2014</td>
-<td><dl class="first last docutils">
-<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt>
-<dd><strong>AVX, AVX2</strong>, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT, VT-x,
-VT-d</dd>
+<tr class="row-odd"><td><p>Broadwell</p></td>
+<td><p>2014</p></td>
+<td><dl class="simple">
+<dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX, AVX2</strong>, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT, VT-x,
+VT-d</p>
+</dd>
 </dl>
 </td>
 </tr>
@@ -284,257 +287,257 @@ They were first supported by Intel with the Haswell processor, which shipped in 
 <p>The AVX and AVX2 are important for Scientific Computing becayse AVX uses sixteen YMM registers to perform a Single Instruction on Multiple pieces of Data.
 Each YMM register can hold and do simultaneous operations (math) on eight 32-bit single-precision floating point numbers or four 64-bit double-precision floating point numbers.</p>
 <p>Notice that all nodes on Spruce support AVX extensions but not all nodes support AVX2.</p>
-<div class="section" id="phase-0-1-hardware">
+<section id="phase-0-1-hardware">
 <h3>Phase 0/1 Hardware<a class="headerlink" href="#phase-0-1-hardware" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/64607/intel-xeon-processor-e54620-16m-cache-2-20-ghz-7-20-gts-intel-qpi.html">Intel(R) Xeon(R) CPU E5-4620</a></li>
-<li><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/75269/intel-xeon-processor-e52650-v2-20m-cache-2-60-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v2</a></li>
+<li><p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/64607/intel-xeon-processor-e54620-16m-cache-2-20-ghz-7-20-gts-intel-qpi.html">Intel(R) Xeon(R) CPU E5-4620</a></p></li>
+<li><p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/75269/intel-xeon-processor-e52650-v2-20m-cache-2-60-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v2</a></p></li>
 </ul>
 </div></blockquote>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="15%" />
-<col width="57%" />
-<col width="28%" />
+<col style="width: 15%" />
+<col style="width: 57%" />
+<col style="width: 28%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Node Type</td>
-<td><strong>Description</strong></td>
-<td><strong>Compute Nodes</strong></td>
+<tbody>
+<tr class="row-odd"><td><p>Node Type</p></td>
+<td><p><strong>Description</strong></p></td>
+<td><p><strong>Compute Nodes</strong></p></td>
 </tr>
-<tr class="row-even"><td>Sandy Bridge</td>
-<td><ul class="first last simple">
-<li>4 X 8 Intel(R) Xeon(R) CPU E5-4620 0 &#64; 2.20GHz</li>
-<li>64GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Sandy Bridge</p></td>
+<td><ul class="simple">
+<li><p>4 X 8 Intel(R) Xeon(R) CPU E5-4620 0 &#64; 2.20GHz</p></li>
+<li><p>64GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>14</td>
+<td><p>14</p></td>
 </tr>
-<tr class="row-odd"><td>Ivy Bridge</td>
-<td><ul class="first last simple">
-<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
-<li>32GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-odd"><td><p>Ivy Bridge</p></td>
+<td><ul class="simple">
+<li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
+<li><p>32GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>1</td>
+<td><p>1</p></td>
 </tr>
-<tr class="row-even"><td>Ivy Bridge</td>
-<td><ul class="first last simple">
-<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
-<li>64GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Ivy Bridge</p></td>
+<td><ul class="simple">
+<li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
+<li><p>64GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>95</td>
+<td><p>95</p></td>
 </tr>
-<tr class="row-odd"><td>Ivy Bridge</td>
-<td><ul class="first last simple">
-<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
-<li>256GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-odd"><td><p>Ivy Bridge</p></td>
+<td><ul class="simple">
+<li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
+<li><p>256GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>1</td>
+<td><p>1</p></td>
 </tr>
-<tr class="row-even"><td>Ivy Bridge</td>
-<td><ul class="first last simple">
-<li>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</li>
-<li>512GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Ivy Bridge</p></td>
+<td><ul class="simple">
+<li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
+<li><p>512GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>3</td>
+<td><p>3</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="phase-2-hardware">
+</section>
+<section id="phase-2-hardware">
 <h3>Phase 2 Hardware<a class="headerlink" href="#phase-2-hardware" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v3</a></li>
+<li><p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v3</a></p></li>
 </ul>
 </div></blockquote>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="15%" />
-<col width="57%" />
-<col width="28%" />
+<col style="width: 15%" />
+<col style="width: 57%" />
+<col style="width: 28%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Node Type</td>
-<td><strong>Description</strong></td>
-<td><strong>Compute Nodes</strong></td>
+<tbody>
+<tr class="row-odd"><td><p>Node Type</p></td>
+<td><p><strong>Description</strong></p></td>
+<td><p><strong>Compute Nodes</strong></p></td>
 </tr>
-<tr class="row-even"><td>Haswell</td>
-<td><ul class="first last simple">
-<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
-<li>64GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Haswell</p></td>
+<td><ul class="simple">
+<li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
+<li><p>64GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>14</td>
+<td><p>14</p></td>
 </tr>
-<tr class="row-odd"><td>Haswell</td>
-<td><ul class="first last simple">
-<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
-<li>128GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-odd"><td><p>Haswell</p></td>
+<td><ul class="simple">
+<li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
+<li><p>128GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>3</td>
+<td><p>3</p></td>
 </tr>
-<tr class="row-even"><td>Haswell</td>
-<td><ul class="first last simple">
-<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
-<li>512GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Haswell</p></td>
+<td><ul class="simple">
+<li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
+<li><p>512GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>1</td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="phase-3-hardware">
+</section>
+<section id="phase-3-hardware">
 <h3>Phase 3 Hardware<a class="headerlink" href="#phase-3-hardware" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v3</a></li>
+<li><p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v3</a></p></li>
 </ul>
 </div></blockquote>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="15%" />
-<col width="57%" />
-<col width="28%" />
+<col style="width: 15%" />
+<col style="width: 57%" />
+<col style="width: 28%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Node Type</td>
-<td><strong>Description</strong></td>
-<td><strong>Compute Nodes</strong></td>
+<tbody>
+<tr class="row-odd"><td><p>Node Type</p></td>
+<td><p><strong>Description</strong></p></td>
+<td><p><strong>Compute Nodes</strong></p></td>
 </tr>
-<tr class="row-even"><td>Haswell</td>
-<td><ul class="first last simple">
-<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
-<li>64GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Haswell</p></td>
+<td><ul class="simple">
+<li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
+<li><p>64GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>1</td>
+<td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td>Haswell</td>
-<td><ul class="first last simple">
-<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
-<li>128GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-odd"><td><p>Haswell</p></td>
+<td><ul class="simple">
+<li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
+<li><p>128GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>10</td>
+<td><p>10</p></td>
 </tr>
-<tr class="row-even"><td>Haswell</td>
-<td><ul class="first last simple">
-<li>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</li>
-<li>512GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Haswell</p></td>
+<td><ul class="simple">
+<li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
+<li><p>512GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>1</td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="phase-4-hardware">
+</section>
+<section id="phase-4-hardware">
 <h3>Phase 4 Hardware<a class="headerlink" href="#phase-4-hardware" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/91767/intel-xeon-processor-e52650-v4-30m-cache-2-20-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v4</a></li>
+<li><p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/91767/intel-xeon-processor-e52650-v4-30m-cache-2-20-ghz.html">Intel(R) Xeon(R) CPU E5-2650 v4</a></p></li>
 </ul>
 </div></blockquote>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="15%" />
-<col width="57%" />
-<col width="28%" />
+<col style="width: 15%" />
+<col style="width: 57%" />
+<col style="width: 28%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Node Type</td>
-<td><strong>Description</strong></td>
-<td><strong>Compute Nodes</strong></td>
+<tbody>
+<tr class="row-odd"><td><p>Node Type</p></td>
+<td><p><strong>Description</strong></p></td>
+<td><p><strong>Compute Nodes</strong></p></td>
 </tr>
-<tr class="row-even"><td>Broadwell</td>
-<td><ul class="first last simple">
-<li>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</li>
-<li>64GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Broadwell</p></td>
+<td><ul class="simple">
+<li><p>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</p></li>
+<li><p>64GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>3</td>
+<td><p>3</p></td>
 </tr>
-<tr class="row-odd"><td>Broadwell</td>
-<td><ul class="first last simple">
-<li>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</li>
-<li>128GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-odd"><td><p>Broadwell</p></td>
+<td><ul class="simple">
+<li><p>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</p></li>
+<li><p>128GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>7</td>
+<td><p>7</p></td>
 </tr>
-<tr class="row-even"><td>Broadwell</td>
-<td><ul class="first last simple">
-<li>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</li>
-<li>512GB memory</li>
-<li>1TB HDD</li>
+<tr class="row-even"><td><p>Broadwell</p></td>
+<td><ul class="simple">
+<li><p>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</p></li>
+<li><p>512GB memory</p></li>
+<li><p>1TB HDD</p></li>
 </ul>
 </td>
-<td>1</td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="queues">
+</section>
+</section>
+<section id="queues">
 <h2>Queues<a class="headerlink" href="#queues" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="53%" />
-<col width="47%" />
+<col style="width: 53%" />
+<col style="width: 47%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Queue</strong></td>
-<td><strong>Walltime</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Queue</strong></p></td>
+<td><p><strong>Walltime</strong></p></td>
 </tr>
-<tr class="row-even"><td>debug</td>
-<td>15:00</td>
+<tr class="row-even"><td><p>debug</p></td>
+<td><p>15:00</p></td>
 </tr>
-<tr class="row-odd"><td>standby</td>
-<td>4:00:00</td>
+<tr class="row-odd"><td><p>standby</p></td>
+<td><p>4:00:00</p></td>
 </tr>
-<tr class="row-even"><td>comm_mmem_week</td>
-<td>168:00:00</td>
+<tr class="row-even"><td><p>comm_mmem_week</p></td>
+<td><p>168:00:00</p></td>
 </tr>
-<tr class="row-odd"><td>comm_256g_mem</td>
-<td>168:00:00</td>
+<tr class="row-odd"><td><p>comm_256g_mem</p></td>
+<td><p>168:00:00</p></td>
 </tr>
-<tr class="row-even"><td>comm_mmem_day</td>
-<td>24:00:00</td>
+<tr class="row-even"><td><p>comm_mmem_day</p></td>
+<td><p>24:00:00</p></td>
 </tr>
-<tr class="row-odd"><td>comm_gpu</td>
-<td>168:00:00</td>
+<tr class="row-odd"><td><p>comm_gpu</p></td>
+<td><p>168:00:00</p></td>
 </tr>
-<tr class="row-even"><td>comm_smp</td>
-<td>168:00:00</td>
+<tr class="row-even"><td><p>comm_smp</p></td>
+<td><p>168:00:00</p></td>
 </tr>
-<tr class="row-odd"><td>comm_large_mem</td>
-<td>168:00:00</td>
+<tr class="row-odd"><td><p>comm_large_mem</p></td>
+<td><p>168:00:00</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="research-team-queues">
+</section>
+<section id="research-team-queues">
 <h2>Research Team Queues<a class="headerlink" href="#research-team-queues" title="Permalink to this headline">¶</a></h2>
 <p>Research teams that have bought their own compute nodes have private
 queues that link all their compute nodes together. Only users given
@@ -548,8 +551,8 @@ By default, these queues are regulated by first come, first serve
 queuing. However, individual research teams can ask for different
 settings for their respective queue, and should
 <a class="reference external" href="GettingHelp">contact</a> the RC HPC team with these requests.</p>
-</div>
-<div class="section" id="standby-queue">
+</section>
+<section id="standby-queue">
 <h2>Standby Queue<a class="headerlink" href="#standby-queue" title="Permalink to this headline">¶</a></h2>
 <p>The standy queue is for using resources from research teams queues that
 are not currently being used. Priority on the standby queue is set by
@@ -558,8 +561,8 @@ combination of the size of the job and how much system resources the
 user have used during the given week, with higher priority assigned to
 larger jobs and/or user jobs that have used fewer system resources in
 the week. Further, the standby queue has a 4 hour wall time.</p>
-</div>
-<div class="section" id="community-node-queues">
+</section>
+<section id="community-node-queues">
 <h2>Community Node Queues<a class="headerlink" href="#community-node-queues" title="Permalink to this headline">¶</a></h2>
 <p>Spruce Knob has several queues that start with the word ‘comm’. These
 queues are linked to the 51 compute nodes bought using NSF funding
@@ -578,8 +581,8 @@ hours); however, this queue class also limits the maximum number of
 nodes to 11, and a single user can not exceed 80 CPUs total within this
 queue. These restrictions are set to prevent a single user occupying a
 large number of the community resources for an excessively long time.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -601,7 +604,7 @@ large number of the community resources for an excessively long time.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

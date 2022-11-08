@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Fortran, C and C++ &mdash; WVU-RC 1.0 documentation</title>
+  <title>Fortran, C and C++ &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python Language" href="502.Python.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -183,7 +186,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fortran-c-and-c">
+  <section id="fortran-c-and-c">
 <span id="sp-fortran-c-cpp"></span><h1>Fortran, C and C++<a class="headerlink" href="#fortran-c-and-c" title="Permalink to this headline">¶</a></h1>
 <p>Scientific computing traces its roots to the very origin of computers.
 The first electro-mechanical computers originally were created to compute large numerical calculations much faster than humans can do.
@@ -197,7 +200,7 @@ Fortran 77 was for many years the standard de facto for scientific computing and
 <p>C is a general purpose language and used in most of the basic software written in Unix environments. The language itself is not targeted to write scientific programs so it less expressive for vectors and matrices compared to Fortran.</p>
 <p>C++ is the third language in the list. C++ is in many ways an extension of C with high element constructs such as classes. C++ is widely used in desktop applications, games and also scientific applications.</p>
 <p>Fortran, C and C++ shared a number of attributes. These languages need a compiler that translates the source code into machine code. Parallelization interfaces such as MPI are written with explicit support for those three languages and compiler suites such as GCC, Intel and NVIDIA HPC include those languages by default.</p>
-<div class="section" id="accessing-c-c-and-fortran-compilers">
+<section id="accessing-c-c-and-fortran-compilers">
 <h2>Accessing C, C++ and Fortran Compilers<a class="headerlink" href="#accessing-c-c-and-fortran-compilers" title="Permalink to this headline">¶</a></h2>
 <p>In an HPC cluster is customary to include compilers for Fortran, C and C++ by default.
 On Linux machines the usual compilers are from the GNU Compiler Collection (GCC).
@@ -206,36 +209,36 @@ Each vendor brings its own advantages and particular options to optimize the res
 The Intel Compiler Suite and the NVIDIA HPC SDK are two examples of alternative compilers that are available in many HPC clusters.
 Each compiler for the three languages has its own name.
 The table below shows the names of the compilers for each of the three languages from each vendor.</p>
-<table border="1" class="colwidths-given docutils" id="id1">
+<table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">Name of compiler commands from different vendors</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="40%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col style="width: 40%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head stub">Language</th>
-<th class="head">GNU Compiler Collection (GCC)</th>
-<th class="head">Intel Compiler Suite</th>
-<th class="head">NVIDIA HPC SDK</th>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Language</p></th>
+<th class="head"><p>GNU Compiler Collection (GCC)</p></th>
+<th class="head"><p>Intel Compiler Suite</p></th>
+<th class="head"><p>NVIDIA HPC SDK</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><th class="stub">Fortran</th>
-<td>gfortran</td>
-<td>ifort</td>
-<td>nvfortran</td>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Fortran</p></th>
+<td><p>gfortran</p></td>
+<td><p>ifort</p></td>
+<td><p>nvfortran</p></td>
 </tr>
-<tr class="row-odd"><th class="stub">C</th>
-<td>gcc</td>
-<td>icc</td>
-<td>nvc</td>
+<tr class="row-odd"><th class="stub"><p>C</p></th>
+<td><p>gcc</p></td>
+<td><p>icc</p></td>
+<td><p>nvc</p></td>
 </tr>
-<tr class="row-even"><th class="stub">C++</th>
-<td>g++</td>
-<td>icpc</td>
-<td>nvc++</td>
+<tr class="row-even"><th class="stub"><p>C++</p></th>
+<td><p>g++</p></td>
+<td><p>icpc</p></td>
+<td><p>nvc++</p></td>
 </tr>
 </tbody>
 </table>
@@ -255,28 +258,28 @@ gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
 </div>
 <p>It is usually better to use environment modules to access newer versions of GCC or compilers from other vendors such as Intel or NVIDIA.
 The table below shows the modules that can be used on Thorny Flat to load the modules for compilers from different vendors and from several versions</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="11%" />
-<col width="34%" />
-<col width="55%" />
+<col style="width: 11%" />
+<col style="width: 34%" />
+<col style="width: 55%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Vendor</th>
-<th class="head">Modules</th>
-<th class="head">Advantages</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Vendor</p></th>
+<th class="head"><p>Modules</p></th>
+<th class="head"><p>Advantages</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>GCC</td>
-<td><div class="first last line-block">
+<tbody>
+<tr class="row-even"><td><p>GCC</p></td>
+<td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/8.2.0</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/9.3.0</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/11.2.0</span></code></div>
 <div class="line"><br /></div>
 </div>
 </td>
-<td><div class="first last line-block">
+<td><div class="line-block">
 <div class="line">Standard <em>de-facto</em> on Linux/UNIX</div>
 <div class="line">Most codes compile correctly with GCC</div>
 <div class="line">Relative good support for OpenMP and AVX</div>
@@ -284,29 +287,29 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>Intel</td>
-<td><div class="first last line-block">
+<tr class="row-odd"><td><p>Intel</p></td>
+<td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2018</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2019</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.2.0</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.4.0</span></code></div>
 </div>
 </td>
-<td><div class="first last line-block">
+<td><div class="line-block">
 <div class="line">Compilers that optimize particularly well</div>
 <div class="line">on Intel Hardware.</div>
 <div class="line">Good support for OpenMP but not OpenACC</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>NVIDIA</td>
-<td><div class="first last line-block">
+<tr class="row-even"><td><p>NVIDIA</p></td>
+<td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/20.7</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/21.3</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/21.11</span></code></div>
 </div>
 </td>
-<td><div class="first last line-block">
+<td><div class="line-block">
 <div class="line">Good support for OpenACC in addition to</div>
 <div class="line">OpenMP.</div>
 <div class="line">Informative parallelization information</div>
@@ -315,8 +318,8 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="compiling-codes">
+</section>
+<section id="compiling-codes">
 <h2>Compiling codes<a class="headerlink" href="#compiling-codes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
 <span class="c1">#include &lt;stdlib.h&gt;</span>
@@ -429,8 +432,8 @@ program sieve
 end program sieve
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -452,7 +455,7 @@ end program sieve
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Editing these documents &mdash; WVU-RC 1.0 documentation</title>
+  <title>Editing these documents &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Installing Packages in User Locations" href="602.UserInstallation.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -118,7 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="609.CHARM%2B%2B_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
@@ -198,7 +201,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="editing-these-documents">
+  <section id="editing-these-documents">
 <h1>Editing these documents<a class="headerlink" href="#editing-these-documents" title="Permalink to this headline">¶</a></h1>
 <p>WVU Research Computing releases documentation in two formats:
 As HTML pages hosted at <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a>
@@ -215,7 +218,7 @@ how sphinx manages the creation of HTML pages and editing files in <cite>rst</ci
 There are two ways of accomplishing this, the manual process involves having a git client, a recent version of sphinx on your computer and fairly complete installation of LaTeX for the PDF document. The manual procedure should work fine but require the user to be responsible for installing many packages on his/her system eventually installing some of them by hand if the versions on the distro are too old. Currently, the documentation is known to work with Sphinx v1.6.7 released on Feb 4, 2018.</p>
 <p>We have simplified the process by using a singularity image that contains all the functionality needed on a single image. The singularity image is based on <cite>ubuntu-bionic</cite> and should be the method of choice in most cases.</p>
 <p>We will describe the usage of the singularity image and the convenience script, at the end of the page we describe briefly the manual process.</p>
-<div class="section" id="using-the-singularity-image">
+<section id="using-the-singularity-image">
 <h2>Using the Singularity image<a class="headerlink" href="#using-the-singularity-image" title="Permalink to this headline">¶</a></h2>
 <p>Both the sources and resulting output formats are stored on Github. The location of the repository is
 <a class="reference external" href="https://github.com/WVUResearchComputing/WVUResearchComputing.github.io">https://github.com/WVUResearchComputing/WVUResearchComputing.github.io</a>.</p>
@@ -223,12 +226,12 @@ There are two ways of accomplishing this, the manual process involves having a g
 <p>The actual documentation can be seen at the URL:
 <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a></p>
 <p>You need to have singularity installed on your machine. See <a class="reference external" href="https://singularity.lbl.gov/install-linux">Singularity docs</a> for instructions on how to install singularity on your computer.</p>
-<div class="section" id="getting-the-singularity-image">
+<section id="getting-the-singularity-image">
 <h3>Getting the singularity image<a class="headerlink" href="#getting-the-singularity-image" title="Permalink to this headline">¶</a></h3>
 <p>The singularity image has two purposes, first, it offers a complete <cite>ubuntu-bionic</cite> installation with recent versions of all the packages needed to download, build and upload the documentation. In addition to that, the image itself has a simple script that automatizes some of the routinely commands that need to be done to clone or pull both branches, build the documentation from sources and commit and push both branches back to Github. In some cases, a single call to the script is preventing the user to execution a number of git commands and makes.</p>
 <p>The singularity image is called <code class="docutils literal notranslate"><span class="pre">docs_hpc_wvu.simg</span></code> and it is stored in the Globus endpoint called <code class="docutils literal notranslate"><span class="pre">wvu#datadepot</span></code>, inside <code class="docutils literal notranslate"><span class="pre">rcadmin/docs_hpc_wvu</span></code>, there is nothing secret with this image but its access is currently restricted to HPC administrators.</p>
-</div>
-<div class="section" id="getting-a-shell-inside-the-container">
+</section>
+<section id="getting-a-shell-inside-the-container">
 <h3>Getting a shell inside the container<a class="headerlink" href="#getting-a-shell-inside-the-container" title="Permalink to this headline">¶</a></h3>
 <p>Get a shell inside the container with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">shell</span> <span class="n">docs_hpc_wvu</span><span class="o">.</span><span class="n">simg</span>
@@ -241,7 +244,7 @@ There are two ways of accomplishing this, the manual process involves having a g
 <p>All the normal commands executed inside this shell are contained in the image.
 As an exercise you can verify the versions of several packages that we will need to compile the documentation files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span> <span class="n">docs_hpc_wvu</span><span class="o">.</span><span class="n">simg</span><span class="p">:</span><span class="o">~&gt;</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">Sphinx</span> <span class="p">(</span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span><span class="p">)</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">Sphinx</span> <span class="p">(</span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span><span class="p">)</span> <span class="mf">1.6.7</span>
 
 <span class="n">Singularity</span> <span class="n">docs_hpc_wvu</span><span class="o">.</span><span class="n">simg</span><span class="p">:</span><span class="o">~&gt;</span> <span class="n">make</span> <span class="o">--</span><span class="n">version</span>
 <span class="n">GNU</span> <span class="n">Make</span> <span class="mf">4.1</span>
@@ -252,8 +255,8 @@ As an exercise you can verify the versions of several packages that we will need
 <span class="n">There</span> <span class="ow">is</span> <span class="n">NO</span> <span class="n">WARRANTY</span><span class="p">,</span> <span class="n">to</span> <span class="n">the</span> <span class="n">extent</span> <span class="n">permitted</span> <span class="n">by</span> <span class="n">law</span><span class="o">.</span>
 
 <span class="n">Singularity</span> <span class="n">docs_hpc_wvu</span><span class="o">.</span><span class="n">simg</span><span class="p">:</span><span class="o">~&gt;</span> <span class="n">pdflatex</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">pdfTeX</span> <span class="mf">3.14159265</span><span class="o">-</span><span class="mf">2.6</span><span class="o">-</span><span class="mf">1.40</span><span class="o">.</span><span class="mi">18</span> <span class="p">(</span><span class="n">TeX</span> <span class="n">Live</span> <span class="mi">2017</span><span class="o">/</span><span class="n">Debian</span><span class="p">)</span>
-<span class="n">kpathsea</span> <span class="n">version</span> <span class="mf">6.2</span><span class="o">.</span><span class="mi">3</span>
+<span class="n">pdfTeX</span> <span class="mf">3.14159265</span><span class="o">-</span><span class="mf">2.6</span><span class="o">-</span><span class="mf">1.40.18</span> <span class="p">(</span><span class="n">TeX</span> <span class="n">Live</span> <span class="mi">2017</span><span class="o">/</span><span class="n">Debian</span><span class="p">)</span>
+<span class="n">kpathsea</span> <span class="n">version</span> <span class="mf">6.2.3</span>
 <span class="n">Copyright</span> <span class="mi">2017</span> <span class="n">Han</span> <span class="n">The</span> <span class="n">Thanh</span> <span class="p">(</span><span class="n">pdfTeX</span><span class="p">)</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span>
 <span class="n">There</span> <span class="ow">is</span> <span class="n">NO</span> <span class="n">warranty</span><span class="o">.</span>  <span class="n">Redistribution</span> <span class="n">of</span> <span class="n">this</span> <span class="n">software</span> <span class="ow">is</span>
 <span class="n">covered</span> <span class="n">by</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">both</span> <span class="n">the</span> <span class="n">pdfTeX</span> <span class="n">copyright</span> <span class="ow">and</span>
@@ -261,13 +264,13 @@ As an exercise you can verify the versions of several packages that we will need
 <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">about</span> <span class="n">these</span> <span class="n">matters</span><span class="p">,</span> <span class="n">see</span> <span class="n">the</span> <span class="n">file</span>
 <span class="n">named</span> <span class="n">COPYING</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">pdfTeX</span> <span class="n">source</span><span class="o">.</span>
 <span class="n">Primary</span> <span class="n">author</span> <span class="n">of</span> <span class="n">pdfTeX</span><span class="p">:</span> <span class="n">Han</span> <span class="n">The</span> <span class="n">Thanh</span> <span class="p">(</span><span class="n">pdfTeX</span><span class="p">)</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span>
-<span class="n">Compiled</span> <span class="k">with</span> <span class="n">libpng</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">34</span><span class="p">;</span> <span class="n">using</span> <span class="n">libpng</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">34</span>
-<span class="n">Compiled</span> <span class="k">with</span> <span class="n">zlib</span> <span class="mf">1.2</span><span class="o">.</span><span class="mi">11</span><span class="p">;</span> <span class="n">using</span> <span class="n">zlib</span> <span class="mf">1.2</span><span class="o">.</span><span class="mi">11</span>
-<span class="n">Compiled</span> <span class="k">with</span> <span class="n">poppler</span> <span class="n">version</span> <span class="mf">0.62</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">Compiled</span> <span class="k">with</span> <span class="n">libpng</span> <span class="mf">1.6.34</span><span class="p">;</span> <span class="n">using</span> <span class="n">libpng</span> <span class="mf">1.6.34</span>
+<span class="n">Compiled</span> <span class="k">with</span> <span class="n">zlib</span> <span class="mf">1.2.11</span><span class="p">;</span> <span class="n">using</span> <span class="n">zlib</span> <span class="mf">1.2.11</span>
+<span class="n">Compiled</span> <span class="k">with</span> <span class="n">poppler</span> <span class="n">version</span> <span class="mf">0.62.0</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="downloading-the-sphinx-and-master-branches">
+</section>
+<section id="downloading-the-sphinx-and-master-branches">
 <h3>Downloading the ‘sphinx’ and ‘master’ branches<a class="headerlink" href="#downloading-the-sphinx-and-master-branches" title="Permalink to this headline">¶</a></h3>
 <p>Once you are inside the container shell. Execute this command to download the
 branches</p>
@@ -276,8 +279,8 @@ branches</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">DOCS</span></code> is the folder where both branches will be cloned. The name of the folder is arbitrary but use it consistently in all your executions as the script
 expects two folders to be there <code class="docutils literal notranslate"><span class="pre">master</span></code> and <code class="docutils literal notranslate"><span class="pre">sphinx</span></code></p>
-</div>
-<div class="section" id="editing-the-sources">
+</section>
+<section id="editing-the-sources">
 <h3>Editing the sources<a class="headerlink" href="#editing-the-sources" title="Permalink to this headline">¶</a></h3>
 <p>The singularity image offers atom as an editor. You can use whatever editor you want, inside or outside the image. If you want to use atom from inside the container execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">edit</span>
@@ -287,8 +290,8 @@ expects two folders to be there <code class="docutils literal notranslate"><span
 <p>To install it go to <cite>Edit &gt; Preferences</cite> a new tab opens called <cite>Settings</cite> there you will see a menu called <cite>Install</cite> and search for
 <cite>language-restructuratedtext</cite>, install the package and you will see the different elements of your rst files properly colored.</p>
 <p>Editing the documentation involves introducing changes to the rst files, adding or deleting rst files or reordering them. Notice that all rst files are located inside the <cite>text</cite> folder and the name contains a number that follows the structure of the final pages. The pages that are multiples of 10 are chapter covers that add introductions for the chapter and a table of contents. Any renaming of rst files involves reordering those chapter covers to reflect the modifications.</p>
-</div>
-<div class="section" id="build-the-output-formats">
+</section>
+<section id="build-the-output-formats">
 <h3>Build the output formats<a class="headerlink" href="#build-the-output-formats" title="Permalink to this headline">¶</a></h3>
 <p>We are currently supporting two main output formats, multiple HTML files that are the main format on <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a> and the PDF that is called
 <a class="reference external" href="https://docs.hpc.wvu.edu/docs_hpc_wvu.pdf">docs_hpc_wvu.pdf</a></p>
@@ -301,8 +304,8 @@ expects two folders to be there <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 <p>You do not need to compile always the PDF version, the HTML is considered the primary format and PDF outputs will be created at least once per semester.</p>
-</div>
-<div class="section" id="update-the-sphinx-branch">
+</section>
+<section id="update-the-sphinx-branch">
 <h3>Update the sphinx branch<a class="headerlink" href="#update-the-sphinx-branch" title="Permalink to this headline">¶</a></h3>
 <p>You can add, commit and push directly with git commands.
 However, the script offers a quick version that will do all those tasks in one single call:</p>
@@ -310,17 +313,17 @@ However, the script offers a quick version that will do all those tasks in one s
 </pre></div>
 </div>
 <p>The script will add your <cite>username</cite> and date and append those to the message used for commit.</p>
-</div>
-<div class="section" id="update-the-master-branch">
+</section>
+<section id="update-the-master-branch">
 <h3>Update the master branch<a class="headerlink" href="#update-the-master-branch" title="Permalink to this headline">¶</a></h3>
 <p>The master branch contains HTML files and PDF. The contents
 are the result of compiling the sources and should not receive direct human intervention. The script provides a single command that copies the HTML files from <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> to the master branch and the PDF as well. It will clean the index and commit all the files, finally will push the commit to remote. The command is as follows.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docs_hpc_wvu</span> <span class="o">-</span><span class="n">b</span> <span class="n">DOCS</span> <span class="n">update_master</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Changes to ... adding ...&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="editing-the-documentation-manually">
+</section>
+</section>
+<section id="editing-the-documentation-manually">
 <h2>Editing the documentation manually<a class="headerlink" href="#editing-the-documentation-manually" title="Permalink to this headline">¶</a></h2>
 <p>Editing the documentation without the assistance of the script could be necessary for large changes complex selection of the files to be staged, testing that sources are able to build successfully and a variety of other conditions. These instructions guide you on the manual execution of git and make commands without using the script.</p>
 <p>No matter if you are using the singularity image or you have the packages installed on your computer the first step is to clone both “sphinx” and “master” branches</p>
@@ -356,8 +359,8 @@ and the second command will create the PDF file <code class="docutils literal no
 </div>
 <p>At this point, all the remaining commands are git related. Adding the changes to the index with <cite>git add</cite>, commit the changes with <cite>git commit -m “Message”</cite> and pushing the current commit to the remote with <cite>git push</cite>.</p>
 <p>You have to do all steps above on both <code class="docutils literal notranslate"><span class="pre">master</span></code> and <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> branches. Remember that the master branch is not intended to be edited by hand but being the result of compiling the sources from <code class="docutils literal notranslate"><span class="pre">sphinx</span></code>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -379,7 +382,7 @@ and the second command will create the PDF file <code class="docutils literal no
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

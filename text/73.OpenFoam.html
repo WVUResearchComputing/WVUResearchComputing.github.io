@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Engineering: OpenFOAM 10 &mdash; WVU-RC 1.0 documentation</title>
+  <title>Engineering: OpenFOAM 10 &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bioinformatics: Using Bowtie2" href="75.bowtie2.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -180,7 +183,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="engineering-openfoam-10">
+  <section id="engineering-openfoam-10">
 <h1>Engineering: OpenFOAM 10<a class="headerlink" href="#engineering-openfoam-10" title="Permalink to this headline">¶</a></h1>
 <p>On Thorny Flat OpenFOAM 10 is available via Singularity containers.
 There are two images on these locations:</p>
@@ -188,7 +191,7 @@ There are two images on these locations:</p>
 <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">containers</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">-</span><span class="n">paraview56</span><span class="o">.</span><span class="n">sif</span>
 </pre></div>
 </div>
-<div class="section" id="run-openfoam-with-an-interactive-job">
+<section id="run-openfoam-with-an-interactive-job">
 <h2>Run OpenFOAM with an interactive job<a class="headerlink" href="#run-openfoam-with-an-interactive-job" title="Permalink to this headline">¶</a></h2>
 <p>We start by creating an interactive job, for the simple examples such as the tutorials, requesting 4 cores is more than enough:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -l nodes=1:ppn=4
@@ -304,8 +307,8 @@ The result of the mesh preparation and simulation is a set of files in the curre
    <span class="n">End</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="using-paraview-with-openfoam">
+</section>
+<section id="using-paraview-with-openfoam">
 <h2>Using ParaView with OpenFoam<a class="headerlink" href="#using-paraview-with-openfoam" title="Permalink to this headline">¶</a></h2>
 <p>Visualization of openFoam output can be executed from the head node. To
 use paraFoam, make sure you have logged in with <a class="reference external" href="UsingXWindowsapplications">X11 forwarding
@@ -318,11 +321,11 @@ $&gt; singularity shell /shared/containers/openfoam10-paraview56.sif
 Singularity&gt; paraFoam -builtin
 </pre></div>
 </div>
-<div class="figure">
+<figure class="align-default">
 <img alt="ParaFoam" src="../_images/ParaFoam.png" />
-</div>
-</div>
-</div>
+</figure>
+</section>
+</section>
 
 
            </div>
@@ -344,7 +347,7 @@ Singularity&gt; paraFoam -builtin
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

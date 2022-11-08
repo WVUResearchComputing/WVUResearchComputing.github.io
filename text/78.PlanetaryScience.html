@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Compiling Planetary Modeling Packages &mdash; WVU-RC 1.0 documentation</title>
+  <title>Compiling Planetary Modeling Packages &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="NAMD" href="79.NAMD.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -197,22 +200,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="compiling-planetary-modeling-packages">
+  <section id="compiling-planetary-modeling-packages">
 <h1>Compiling Planetary Modeling Packages<a class="headerlink" href="#compiling-planetary-modeling-packages" title="Permalink to this headline">¶</a></h1>
 <p>These instructions describe how to compile various packages for Earth modeling, climate, weather and related applications.</p>
-<div class="section" id="earth-system-modeling-framework-esmf">
+<section id="earth-system-modeling-framework-esmf">
 <h2>Earth System Modeling Framework (ESMF)<a class="headerlink" href="#earth-system-modeling-framework-esmf" title="Permalink to this headline">¶</a></h2>
 <p>The Earth System Modeling Framework (ESMF) is high-performance, flexible software infrastructure for building and coupling weather, climate, and related Earth science applications. The ESMF defines an architecture for composing complex, coupled modeling systems and includes data structures and utilities for developing individual models.</p>
 <p>We describe how the code was compiled for Thorny Flat using Intel Compiler Suite and MPI libraries.</p>
-<div class="section" id="download-the-code">
+<section id="download-the-code">
 <h3>Download the code<a class="headerlink" href="#download-the-code" title="Permalink to this headline">¶</a></h3>
 <p>The code can be clone with git from:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">sf</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">p</span><span class="o">/</span><span class="n">esmf</span><span class="o">/</span><span class="n">esmf</span>
 </pre></div>
 </div>
 <p>The code was cloned at this at <code class="docutils literal notranslate"><span class="pre">/shared/src/planetary/esmf</span></code></p>
-</div>
-<div class="section" id="setting-the-environment-variables">
+</section>
+<section id="setting-the-environment-variables">
 <h3>Setting the environment variables<a class="headerlink" href="#setting-the-environment-variables" title="Permalink to this headline">¶</a></h3>
 <p>The building system is driven by a set of environment variables that need to be exported before executing make. This compilation will be done exclusively using Intel compilers. First we need to load the module for Intel 2018:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span><span class="n">_u4</span>
@@ -225,8 +228,8 @@
 <span class="n">export</span> <span class="n">ESMF_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">planetary</span><span class="o">/</span><span class="n">esmf</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="compiling-the-code">
+</section>
+<section id="compiling-the-code">
 <h3>Compiling the code<a class="headerlink" href="#compiling-the-code" title="Permalink to this headline">¶</a></h3>
 <p>To compile the code just execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
@@ -234,7 +237,7 @@
 </div>
 <p>The compilation takes a while, notice that the first lines shows the values of several environnment variables, the 4 that we just set and a few others internal to the makefile:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--------------------------------------------------------------</span>
-<span class="n">ESMF_VERSION_STRING</span><span class="p">:</span>    <span class="mf">8.0</span><span class="o">.</span><span class="mi">0</span> <span class="n">beta</span> <span class="n">snapshot</span>
+<span class="n">ESMF_VERSION_STRING</span><span class="p">:</span>    <span class="mf">8.0.0</span> <span class="n">beta</span> <span class="n">snapshot</span>
 <span class="n">ESMF_8_0_0_beta_snapshot_30</span><span class="o">-</span><span class="mi">48</span><span class="o">-</span><span class="n">g8e8a213</span>
 <span class="o">--------------------------------------------------------------</span>
 <span class="c1"># On branch master</span>
@@ -254,7 +257,7 @@
 <span class="n">Fortran</span> <span class="n">Compiler</span> <span class="n">version</span><span class="p">:</span>
 <span class="n">mpiifort</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">MPI</span> <span class="n">Library</span> <span class="mi">2018</span> <span class="n">Update</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">Linux</span><span class="o">*</span>
 <span class="n">Copyright</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2003</span><span class="o">-</span><span class="mi">2018</span><span class="p">,</span> <span class="n">Intel</span> <span class="n">Corporation</span><span class="o">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
-<span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Fortran</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span> <span class="n">Compiler</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">running</span> <span class="n">on</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span><span class="p">,</span> <span class="n">Version</span> <span class="mf">18.0</span><span class="o">.</span><span class="mf">5.274</span> <span class="n">Build</span> <span class="mi">20180823</span>
+<span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Fortran</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span> <span class="n">Compiler</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">running</span> <span class="n">on</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span><span class="p">,</span> <span class="n">Version</span> <span class="mf">18.0.5.274</span> <span class="n">Build</span> <span class="mi">20180823</span>
 <span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">1985</span><span class="o">-</span><span class="mi">2018</span> <span class="n">Intel</span> <span class="n">Corporation</span><span class="o">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
 
 
@@ -262,13 +265,13 @@
 <span class="n">C</span><span class="o">++</span> <span class="n">Compiler</span> <span class="n">version</span><span class="p">:</span>
 <span class="n">mpiicpc</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">MPI</span> <span class="n">Library</span> <span class="mi">2018</span> <span class="n">Update</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">Linux</span><span class="o">*</span>
 <span class="n">Copyright</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2003</span><span class="o">-</span><span class="mi">2018</span><span class="p">,</span> <span class="n">Intel</span> <span class="n">Corporation</span><span class="o">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
-<span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">C</span><span class="o">++</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span> <span class="n">Compiler</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">running</span> <span class="n">on</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span><span class="p">,</span> <span class="n">Version</span> <span class="mf">18.0</span><span class="o">.</span><span class="mf">5.274</span> <span class="n">Build</span> <span class="mi">20180823</span>
+<span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">C</span><span class="o">++</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span> <span class="n">Compiler</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">running</span> <span class="n">on</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="mi">64</span><span class="p">,</span> <span class="n">Version</span> <span class="mf">18.0.5.274</span> <span class="n">Build</span> <span class="mi">20180823</span>
 <span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">1985</span><span class="o">-</span><span class="mi">2018</span> <span class="n">Intel</span> <span class="n">Corporation</span><span class="o">.</span>  <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
 
 
 <span class="o">--------------------------------------------------------------</span>
 <span class="n">Preprocessor</span> <span class="n">version</span><span class="p">:</span>
-<span class="n">gcc</span> <span class="p">(</span><span class="n">GCC</span><span class="p">)</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">5</span> <span class="mi">20150623</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mi">36</span><span class="p">)</span>
+<span class="n">gcc</span> <span class="p">(</span><span class="n">GCC</span><span class="p">)</span> <span class="mf">4.8.5</span> <span class="mi">20150623</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.8.5</span><span class="o">-</span><span class="mi">36</span><span class="p">)</span>
 <span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2015</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
 <span class="n">This</span> <span class="ow">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span> <span class="n">see</span> <span class="n">the</span> <span class="n">source</span> <span class="k">for</span> <span class="n">copying</span> <span class="n">conditions</span><span class="o">.</span>  <span class="n">There</span> <span class="ow">is</span> <span class="n">NO</span>
 <span class="n">warranty</span><span class="p">;</span> <span class="ow">not</span> <span class="n">even</span> <span class="k">for</span> <span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>
@@ -323,39 +326,39 @@ Found 3460 non-exhaustive multi-processor unit tests, 3460 passed and 0 failed.
 make[1]: Leaving directory `/gpfs20/shared/src/planetary/esmf&#39;
 </pre></div>
 </div>
-</div>
-<div class="section" id="installing-esmf">
+</section>
+<section id="installing-esmf">
 <h3>Installing ESMF<a class="headerlink" href="#installing-esmf" title="Permalink to this headline">¶</a></h3>
 <p>Finally, install the libraries and supporting binaries with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="thermosphere-ionosphere-electrodynamics-general-circulation-model-tie-gcm">
+</section>
+</section>
+<section id="thermosphere-ionosphere-electrodynamics-general-circulation-model-tie-gcm">
 <h2>Thermosphere Ionosphere Electrodynamics General Circulation Model (TIE-GCM)<a class="headerlink" href="#thermosphere-ionosphere-electrodynamics-general-circulation-model-tie-gcm" title="Permalink to this headline">¶</a></h2>
 <p>The NCAR Thermosphere-Ionosphere-Electrodynamics General Circulation Model (TIE-GCM) is a comprehensive, first-principles, three-dimensional, non-linear representation of the coupled thermosphere and ionosphere system that includes a self-consistent solution of the middle and low-latitude dynamo field. The model solves the three-dimensional momentum, energy and continuity equations for neutral and ion species at each time step, using a semi-implicit, fourth-order, centered finite difference scheme on each pressure surface in a staggered vertical grid. It can be run in either serial or parallel mode on a variety of platforms, including Linux workstations and supercomputers. The time step is typically 120 s.</p>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Download the code<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The code can be downloaded from <a class="reference external" href="https://www.hao.ucar.edu/modeling/tgcm/tie.php">HAO-UCAR webpage</a></p>
 <p>After registering 3 files need to be downloaded for TIE-GCM 2.0:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tiegcm2</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span>
-<span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span><span class="n">_res2</span><span class="o">.</span><span class="mi">5</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
-<span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span><span class="n">_res5</span><span class="o">.</span><span class="mi">0</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tiegcm2</span><span class="mf">.0</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">tiegcm2</span><span class="mf">.0</span><span class="n">_res2</span><span class="mf">.5</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">tiegcm2</span><span class="mf">.0</span><span class="n">_res5</span><span class="mf">.0</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
 </pre></div>
 </div>
 <p>The files can be uncompress with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">tiegcm2</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span>
-<span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span><span class="n">_res2</span><span class="o">.</span><span class="mi">5</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
-<span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span><span class="n">_res5</span><span class="o">.</span><span class="mi">0</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">tiegcm2</span><span class="mf">.0</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">tiegcm2</span><span class="mf">.0</span><span class="n">_res2</span><span class="mf">.5</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">tiegcm2</span><span class="mf">.0</span><span class="n">_res5</span><span class="mf">.0</span><span class="n">_data</span><span class="o">.</span><span class="n">tar</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="editing-the-make-configuration">
+</section>
+<section id="editing-the-make-configuration">
 <h3>Editing the make configuration<a class="headerlink" href="#editing-the-make-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Once you have downloaded and uncompress the files. You need to adapt/create a Make configuration file suitable for the cluster were the model will run.
 Go to <code class="docutils literal notranslate"><span class="pre">tiegcm2.0/scripts</span></code> and make a copy of <code class="docutils literal notranslate"><span class="pre">Make.intel_hao64</span></code> as we will use it as template for our cluster. This tutorial assumes that you are using Thorny Flat, so copy the file as <code class="docutils literal notranslate"><span class="pre">Make.intel_thorny</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">scripts</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">tiegcm2</span><span class="mf">.0</span><span class="o">/</span><span class="n">scripts</span>
 <span class="n">cp</span> <span class="n">Make</span><span class="o">.</span><span class="n">intel_hao64</span> <span class="n">Make</span><span class="o">.</span><span class="n">intel_thorny</span>
 </pre></div>
 </div>
@@ -411,8 +414,8 @@ You should also load the module for netcdf:</p>
 </div>
 <p>In the previous section we have compiled and installed ESMF. The location on Thorny Flat being <code class="docutils literal notranslate"><span class="pre">/shared/software/planetary/esmf</span></code> so the variable <code class="docutils literal notranslate"><span class="pre">LIB_ESMF</span></code> reflects the location for ESMF libraries.</p>
 <p>This Make configuration file should remain in <code class="docutils literal notranslate"><span class="pre">tiegcm2.0/scripts</span></code> and will be captured by the execution script.</p>
-</div>
-<div class="section" id="editing-the-execution-script">
+</section>
+<section id="editing-the-execution-script">
 <h3>Editing the execution script<a class="headerlink" href="#editing-the-execution-script" title="Permalink to this headline">¶</a></h3>
 <p>Now we have to edit the execution script <code class="docutils literal notranslate"><span class="pre">tiegcm-thorny.job</span></code>. It is a good idea to make a copy of it before editing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">tiegcm</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">job</span> <span class="n">tiegcm</span><span class="o">-</span><span class="n">thorny</span><span class="o">.</span><span class="n">job</span>
@@ -474,33 +477,33 @@ echo Compiler: $compiler
 </pre></div>
 </div>
 <p>Using 20 cores, it takes around 7 minutes on Thorny Flat to get the results:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Executing</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">l</span> <span class="o">-</span><span class="n">s</span> <span class="nb">all</span> <span class="k">with</span> <span class="n">executable</span> <span class="o">./</span><span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span> <span class="n">at</span> <span class="n">Tue</span> <span class="n">Apr</span> <span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">11</span> <span class="n">EDT</span> <span class="mi">2019</span>
-<span class="n">Linux</span> <span class="n">MPI</span> <span class="n">run</span> <span class="n">of</span> <span class="o">./</span><span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span> <span class="n">completed</span> <span class="n">at</span> <span class="n">Tue</span> <span class="n">Apr</span> <span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">45</span> <span class="n">EDT</span> <span class="mi">2019</span>
-<span class="n">Overwriting</span> <span class="n">file</span>  <span class="o">/</span><span class="n">gpfs20</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">planetary</span><span class="o">/</span><span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">tiegcm_res2</span><span class="o">.</span><span class="mf">5.</span><span class="n">out</span>  <span class="k">with</span> <span class="n">non</span><span class="o">-</span><span class="n">ASCII</span> <span class="n">characters</span> <span class="n">removed</span><span class="o">.</span>
-<span class="n">mklogs</span><span class="p">:</span> <span class="n">Extracting</span> <span class="n">log</span> <span class="n">files</span> <span class="kn">from</span>  <span class="o">/</span><span class="n">gpfs20</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">planetary</span><span class="o">/</span><span class="n">tiegcm2</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">tiegcm_res2</span><span class="o">.</span><span class="mf">5.</span><span class="n">out</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Executing</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">l</span> <span class="o">-</span><span class="n">s</span> <span class="nb">all</span> <span class="k">with</span> <span class="n">executable</span> <span class="o">./</span><span class="n">tiegcm2</span><span class="mf">.0</span> <span class="n">at</span> <span class="n">Tue</span> <span class="n">Apr</span> <span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">11</span> <span class="n">EDT</span> <span class="mi">2019</span>
+<span class="n">Linux</span> <span class="n">MPI</span> <span class="n">run</span> <span class="n">of</span> <span class="o">./</span><span class="n">tiegcm2</span><span class="mf">.0</span> <span class="n">completed</span> <span class="n">at</span> <span class="n">Tue</span> <span class="n">Apr</span> <span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">45</span> <span class="n">EDT</span> <span class="mi">2019</span>
+<span class="n">Overwriting</span> <span class="n">file</span>  <span class="o">/</span><span class="n">gpfs20</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">planetary</span><span class="o">/</span><span class="n">tiegcm2</span><span class="mf">.0</span><span class="o">/</span><span class="n">tiegcm_res2</span><span class="mf">.5</span><span class="o">.</span><span class="n">out</span>  <span class="k">with</span> <span class="n">non</span><span class="o">-</span><span class="n">ASCII</span> <span class="n">characters</span> <span class="n">removed</span><span class="o">.</span>
+<span class="n">mklogs</span><span class="p">:</span> <span class="n">Extracting</span> <span class="n">log</span> <span class="n">files</span> <span class="kn">from</span>  <span class="o">/</span><span class="n">gpfs20</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">planetary</span><span class="o">/</span><span class="n">tiegcm2</span><span class="mf">.0</span><span class="o">/</span><span class="n">tiegcm_res2</span><span class="mf">.5</span><span class="o">.</span><span class="n">out</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="the-global-ionosphere-thermosphere-model-gitm">
+</section>
+</section>
+<section id="the-global-ionosphere-thermosphere-model-gitm">
 <h2>The Global Ionosphere/Thermosphere Model (GITM)<a class="headerlink" href="#the-global-ionosphere-thermosphere-model-gitm" title="Permalink to this headline">¶</a></h2>
 <p>GITM is a 3-dimensional spherical code that models the Earth’s thermosphere and ionosphere system using a stretched grid in latitude and altitude. The number of grid points in each direction can be specified, so the resolution is extremely flexible. GITM explicitly solves for the neutral densities of O, O2, N(2D), N(2P), N(4S), N2, and NO; and ion species O+(4S), O+(2D), O+(2P), O2+, N+, N2+, and NO+. One major difference between GITM and other thermosphere codes is the use of an altitude grid instead of a pressure grid. The vertical grid spacing is less than 3 km in the lower thermosphere, and over 10 km in the upper thermosphere. GITM allows for non-hydrostatic solutions to develop (i.e., the full vertical momentum equation is solved), so more realistic dynamics in the auroral zone can be simulated.</p>
 <p>The procedure to compile the code is not properly documented, so instructions here are specific for our clusters, in particular Thorny Flat.</p>
-<div class="section" id="cloning-the-repository">
+<section id="cloning-the-repository">
 <h3>Cloning the repository<a class="headerlink" href="#cloning-the-repository" title="Permalink to this headline">¶</a></h3>
 <p>The package can be cloned from the Github page:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aaronjridley</span><span class="o">/</span><span class="n">GITM</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="configuring-the-build">
+</section>
+<section id="configuring-the-build">
 <h3>Configuring the build<a class="headerlink" href="#configuring-the-build" title="Permalink to this headline">¶</a></h3>
 <p>The build system is managed by a Perl script located on the root folder <code class="docutils literal notranslate"><span class="pre">Config.pl</span></code>. All documentation about building this code is provided by executing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Config</span><span class="o">.</span><span class="n">pl</span> <span class="o">-</span><span class="n">h</span>
 </pre></div>
 </div>
 <p>We will compile the code on Thonry Flat with support for MPI and HDF5, the modules to load are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span><span class="n">_u4</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.10</span><span class="o">.</span><span class="mi">5</span><span class="n">_intel18_impi18</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span><span class="n">_u4</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.10.5</span><span class="n">_intel18_impi18</span>
 </pre></div>
 </div>
 <p>To configure the build for Intel compilers and support  for Parallel HDF5 execute:</p>
@@ -519,8 +522,8 @@ Configuring GITM for Earth!!
 </pre></div>
 </div>
 <p>Any attempt to recompile with different settings usually requires removing all the sources and clone the repository back, several pieces of code remain even executing <code class="docutils literal notranslate"><span class="pre">./Config.pl</span> <span class="pre">-uninstall</span></code> or <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>. This is particularly true if you change compiler.</p>
-</div>
-<div class="section" id="building-the-code">
+</section>
+<section id="building-the-code">
 <h3>Building the code<a class="headerlink" href="#building-the-code" title="Permalink to this headline">¶</a></h3>
 <p>After configuration several make configuration files are copied to the root folder of GITM and the code is ready for compilation. Execute the configure script again to confirm yours settings:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./Config.pl
@@ -550,9 +553,9 @@ Planet=Earth
 </pre></div>
 </div>
 <p>The binary <code class="docutils literal notranslate"><span class="pre">GITM.exe</span></code> will be located at <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -574,7 +577,7 @@ Planet=Earth
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

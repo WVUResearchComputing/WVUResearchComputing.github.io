@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Interactive Scientific Computing &mdash; WVU-RC 1.0 documentation</title>
+  <title>Interactive Scientific Computing &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Managing Scratch Contents" href="35.Scratch.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -192,7 +195,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="interactive-scientific-computing">
+  <section id="interactive-scientific-computing">
 <span id="bs-interactive"></span><h1>Interactive Scientific Computing<a class="headerlink" href="#interactive-scientific-computing" title="Permalink to this headline">¶</a></h1>
 <p>The term Interactive Scientific Computing consists on using a computer in a similar way as you use a handheld calculator.
 On a handheld calculator, you type some input and you expect that input to be processed right away to produce results.
@@ -202,7 +205,7 @@ On a HPC supercomputer, you use the computer with a queue system on what we call
 Supercomputers are large computing devices usually build as clusters of individual computers. Supercomputers in many cases are used by tens or hundreds of users at the same time. For the typical use of Supercomputers, the computations are programmed in advance, the user submit jobs expecting that those jobs start being executed sometime in the future and produce the result that will be analyzed later on.</p>
 <p>Despite of the usual usage of a HPC supercomputing, you could have strong motivations for use a computer far more powerful than your own desktop or laptop. Your research have scaled to a point where your desktop computer or laptop is not longer capable of managing the task, you need specialized software packages and you do not want to spent time compiling or installing software and you would like to rely on software that is already present on the HPC cluster.</p>
 <p>There are several ways to a HPC cluster for Interactive Computing. You can execute interactive computing directly from the terminal or using a web interfact such as Open-On Demand and one interactive environments such as Jupyter of RStudio. We will describe both alternatives.</p>
-<div class="section" id="interactive-computing-from-the-terminal">
+<section id="interactive-computing-from-the-terminal">
 <h2>Interactive Computing from the Terminal<a class="headerlink" href="#interactive-computing-from-the-terminal" title="Permalink to this headline">¶</a></h2>
 <p>First, connect to the cluster using the instructions described on here:ref:<cite>qs-connect:</cite>. Once on the head node you can request an interactive session with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I
@@ -320,16 +323,16 @@ For product information, visit www.mathworks.com.
 &gt;&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="interactive-computing-from-a-web-interface">
+</section>
+<section id="interactive-computing-from-a-web-interface">
 <h2>Interactive Computing from a web interface<a class="headerlink" href="#interactive-computing-from-a-web-interface" title="Permalink to this headline">¶</a></h2>
 <p>For taking advantage of WVU’s High Performance Computing cluster for interactive scientific computing another alternative is from a web browser. On this lesson you will not have to learn Linux commands, you just need to execute one for the purpose of downloading all the materials for the tutorials but beyond that your interaction will take place on a friendly web interface. You do not have to manually submitting jobs or editing submission scripts, these are tasks very important for HPC but they will delegated for other lesson.</p>
 <p>We will be using a tool, a web-based client portal, that hides all that complexity and allow you to start using powerful computers for your research from a web interface, with minimal effort and fast learning curve.</p>
 <p>Several technologies are involved here and it is important to understand how those different pieces are interconnected.</p>
 <p>Open OnDemand is a web-based client, based on the Ohio Supercomputer Center’s proven “OSC On Demand” platform, that enables HPC centers to install and deploy advanced web and graphical interfaces for their users. HPC resources are accessible from a web browser without the user having to install any special software or plugin.</p>
 <p>The path for this tutorial is as follows. First we will demonstrate how to access the open on demand portal. Next we will create Jupyter and RStudio sessions and opening a terminal and a file manager.</p>
-</div>
-<div class="section" id="accessing-the-dashboard">
+</section>
+<section id="accessing-the-dashboard">
 <h2>Accessing the Dashboard<a class="headerlink" href="#accessing-the-dashboard" title="Permalink to this headline">¶</a></h2>
 <p>First, go to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">Thorny Flat On Demand Dashboard</a></p>
 <p>The first page you will see is asking for your credentials</p>
@@ -337,11 +340,11 @@ For product information, visit www.mathworks.com.
 <p>After entering your credentials and using your DUO authentication you will land on the Open On Demand Dashboard:</p>
 <img alt="../_images/OOD-Dashboard.png" src="../_images/OOD-Dashboard.png" />
 <p>From this dashboard you can launch interactive jobs, open terminals and access a file manager, we will see each of those operations in the next sections.</p>
-</div>
-<div class="section" id="interactive-applications">
+</section>
+<section id="interactive-applications">
 <h2>Interactive applications<a class="headerlink" href="#interactive-applications" title="Permalink to this headline">¶</a></h2>
 <p>From the dashboard go to <cite>Interactive Apps</cite>. There are several options there, we will show 2 apps that are currently ready for being used. Jupyter Notebooks and RStudio.</p>
-<div class="section" id="jupyter">
+<section id="jupyter">
 <h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h3>
 <p>For Jupyter click on <cite>Ìnteractive Apps &gt; Jupyter Notebook</cite>. A form is shown with all the options available to create the Jupyter session.</p>
 <p>A good starting point is to select <cite>CPython 3.7.4</cite> as the Python version, select <cite>standby</cite> as the queue and <cite>4 hours</cite> as the wall time. There are options for alternative Python versions, queues and walltimes. A short description of each options is shown on the form.</p>
@@ -357,8 +360,8 @@ For product information, visit www.mathworks.com.
 <a class="reference internal image-reference" href="../_images/OOD-jupyter5.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter5.png" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/OOD-jupyter6.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter6.png" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/OOD-jupyter7.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter7.png" style="width: 600px;" /></a>
-</div>
-<div class="section" id="rstudio">
+</section>
+<section id="rstudio">
 <h3>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h3>
 <p>Another popular interactive environment is RStudio, select <cite>Interactive Apps &gt; RStudio</cite>. The options in the form are very few. Select a queue such as <cite>standby</cite>, 4 hours of wall time and 1 core.</p>
 <a class="reference internal image-reference" href="../_images/OOD-rstudio1.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio1.png" style="width: 600px;" /></a>
@@ -366,9 +369,9 @@ For product information, visit www.mathworks.com.
 <a class="reference internal image-reference" href="../_images/OOD-rstudio2.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio2.png" style="width: 600px;" /></a>
 <p>The interface for RStudio shows the commands on the left and variables and plots on the right.</p>
 <a class="reference internal image-reference" href="../_images/OOD-rstudio3.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio3.png" style="width: 600px;" /></a>
-</div>
-</div>
-<div class="section" id="matlab">
+</section>
+</section>
+<section id="matlab">
 <h2>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h2>
 <p>MATLAB is a numeric computing environment and programming language developed by MathWorks.
 MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages.
@@ -376,32 +379,32 @@ MATLAB can run using Open On-Demand via an app that executes a virtual desktop o
 <a class="reference internal image-reference" href="../_images/OOD-matlab1.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab1.png" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/OOD-matlab2.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab2.png" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/OOD-matlab3.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab3.png" style="width: 600px;" /></a>
-</div>
-<div class="section" id="file-manager">
+</section>
+<section id="file-manager">
 <h2>File Manager<a class="headerlink" href="#file-manager" title="Permalink to this headline">¶</a></h2>
 <p>The Open On demand dashboard also offers a simple but useful File Manager that give you options to view, edit, download and rename files. It is a simple way to see plots and download individual files to your local computer.</p>
 <p>To access the File Manager on the Dashboard, go to <cite>Files &gt; Home Directory</cite>.
 The File Manager is shown as</p>
 <a class="reference internal image-reference" href="../_images/OOD-files.png"><img alt="OOD File Manager" src="../_images/OOD-files.png" style="width: 600px;" /></a>
-</div>
-<div class="section" id="job-manager">
+</section>
+<section id="job-manager">
 <h2>Job manager<a class="headerlink" href="#job-manager" title="Permalink to this headline">¶</a></h2>
 <p>Another useful tool integrated with the Dashboard is the Job Manager, you can see the jobs currently submitted on the cluster. Go to <cite>Jobs &gt; Active Jobs</cite> to access the Job Manager</p>
 <a class="reference internal image-reference" href="../_images/OOD-jobs.png"><img alt="OOD Job Manager" src="../_images/OOD-jobs.png" style="width: 600px;" /></a>
-</div>
-<div class="section" id="job-composer">
+</section>
+<section id="job-composer">
 <h2>Job composer<a class="headerlink" href="#job-composer" title="Permalink to this headline">¶</a></h2>
 <p>Another useful tool integrated with the Dashboard is the Job Composer, you can create jobs and submit them to the cluster via a web interface. Go to <cite>Jobs &gt; Jobs Composer</cite> to access the tool.</p>
 <a class="reference internal image-reference" href="../_images/OOD-JobComposer.png"><img alt="OOD Job Composer" src="../_images/OOD-JobComposer.png" style="width: 600px;" /></a>
-</div>
-<div class="section" id="terminal">
+</section>
+<section id="terminal">
 <h2>Terminal<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h2>
 <p>Finally a Terminal session can be opened from the dashboard, the terminal runs on the head node exactly as a normal connection to the cluster via SSH.
 It has, however a short limit of time to be alive if no command is typed on it.
 The terminal is intended for quick commands only.</p>
 <a class="reference internal image-reference" href="../_images/OOD-Terminal.png"><img alt="OOD Terminal" src="../_images/OOD-Terminal.png" style="width: 600px;" /></a>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -423,7 +426,7 @@ The terminal is intended for quick commands only.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

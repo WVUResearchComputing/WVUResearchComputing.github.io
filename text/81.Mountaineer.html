@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Mountaineer Cluster &mdash; WVU-RC 1.0 documentation</title>
+  <title>Mountaineer Cluster &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Spruce Knob" href="82.Spruce.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -176,7 +179,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mountaineer-cluster">
+  <section id="mountaineer-cluster">
 <h1>Mountaineer Cluster<a class="headerlink" href="#mountaineer-cluster" title="Permalink to this headline">¶</a></h1>
 <p>Mountaineer was the first centrally managed HPC cluster at WVU.
 Mountaineer was replaced by the HPC cluster Spruce Knob on Fall of 2018.</p>
@@ -186,54 +189,48 @@ Each CPU on Thorny had 6 cores.
 The total amount of cores is the product 32 (nodes) x 2 (CPUs per node) x 6 (cores per CPU) equal to 384 cores.</p>
 <p>The total amount of memory per node is 48GB, considering that each node has 12 cores, the “Fair share” of memory for Mountaineer is 4GB per core.
 It is important to know this number because you can take optimize the use of the cluster for adjusting your job requirements in such a way that your jobs use 4GB per core. For example, if you have a job that uses 16GB on two cores, maybe you could ask for 4 cores if by doing that your memory usage will not go to 32GB, that is sometimes the case. By a smart selection of the number of cores and memory, you could maximize your job and the overall performance of the cluster will be better. All of that assuming that your code takes advantage of parallelization.</p>
-<div class="section" id="hardware">
+<section id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
 <p>Mountaineer is a 384 core cluster with 1.5 TB of RAM.</p>
 <blockquote>
 <div><ul class="simple">
-<li><dl class="first docutils">
-<dt>Hostname</dt>
-<dd><ul class="first last">
-<li>mountaineer.hpc.wvu.edu</li>
+<li><dl class="simple">
+<dt>Hostname</dt><dd><ul>
+<li><p>mountaineer.hpc.wvu.edu</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Resource manager and system scheduler</dt>
-<dd><ul class="first last">
-<li>Torque v. 4.2.7</li>
-<li>Moab Cluster Manager v. 7.2.7</li>
+<li><dl class="simple">
+<dt>Resource manager and system scheduler</dt><dd><ul>
+<li><p>Torque v. 4.2.7</p></li>
+<li><p>Moab Cluster Manager v. 7.2.7</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Compute Resources</dt>
-<dd><ul class="first last">
-<li><dl class="first docutils">
-<dt>Nodes, CPUs and cores</dt>
-<dd><ul class="first last">
-<li>32 compute nodes</li>
-<li>Dual socket mainboards</li>
-<li>Dual six-core <a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/47922/intel-xeon-processor-x5650-12m-cache-2-66-ghz-6-40-gts-intel-qpi.html">Intel Xeon X5650 2.67 GHz</a> CPUs.</li>
+<li><dl class="simple">
+<dt>Compute Resources</dt><dd><ul>
+<li><dl class="simple">
+<dt>Nodes, CPUs and cores</dt><dd><ul>
+<li><p>32 compute nodes</p></li>
+<li><p>Dual socket mainboards</p></li>
+<li><p>Dual six-core <a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/47922/intel-xeon-processor-x5650-12m-cache-2-66-ghz-6-40-gts-intel-qpi.html">Intel Xeon X5650 2.67 GHz</a> CPUs.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Memory</dt>
-<dd><ul class="first last">
-<li>48 GB of RAM per node</li>
+<li><dl class="simple">
+<dt>Memory</dt><dd><ul>
+<li><p>48 GB of RAM per node</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Network Specifics</dt>
-<dd><ul class="first last">
-<li>10 Gb fiber connections between compute nodes</li>
-<li>1 Gb Ethernet connection from nodes to network attached storage</li>
+<li><dl class="simple">
+<dt>Network Specifics</dt><dd><ul>
+<li><p>10 Gb fiber connections between compute nodes</p></li>
+<li><p>1 Gb Ethernet connection from nodes to network attached storage</p></li>
 </ul>
 </dd>
 </dl>
@@ -244,8 +241,8 @@ It is important to know this number because you can take optimize the use of the
 </li>
 </ul>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -267,7 +264,7 @@ It is important to know this number because you can take optimize the use of the
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>

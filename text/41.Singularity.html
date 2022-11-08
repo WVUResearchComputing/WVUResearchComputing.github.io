@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Singularity Containers &mdash; WVU-RC 1.0 documentation</title>
+  <title>Singularity Containers &mdash; WVU-RC 2022.11 documentation</title>
   
 
   
@@ -23,10 +24,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Conda" href="42.Conda.html" />
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                1.0
+                2022.11
               </div>
             
           
@@ -182,7 +185,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="singularity-containers">
+  <section id="singularity-containers">
 <span id="ad-singularity"></span><h1>Singularity Containers<a class="headerlink" href="#singularity-containers" title="Permalink to this headline">¶</a></h1>
 <p>Singularity is an open source container solution developed specifically for HPC environments. With Singularity, HPC users can safely bring their own execution environments to the cluster. Unlike other container solutions, Singularity does not require root level permissions to run containers, which allows users to freely control what software stack they wish to use. Provisioning of a container image can be done locally on the user’s machine or on Singularity Hub. The resulting image can then be securely executed on any machine with Singularity installed. Reproduction of results means that a user can now share a single Singularity image file that will ensure a consistent execution environment wherever it is run.</p>
 <p>Singularity is a virtualization solution. There are several kinds of Virtualization solutions. From one side we have System Virtual Machines, they provide a substitute for a real machine. They provide functionality needed to execute entire operating systems. In some cases the virtualization even emulate different architectures and allow execution of software applications and operating systems written for another CPU or architecture. From the other side we have OS-level virtualization where the kernel allows the existence of multiple isolated user-space instances. Singularity belongs to the latest.</p>
@@ -192,20 +195,20 @@
 <em>untrusted users</em> running <em>untrusted containers</em>.</p>
 <p>For more information about Singularity and complete documentation see:
 <a class="reference external" href="https://singularity.lbl.gov/quickstart">https://singularity.lbl.gov/quickstart</a></p>
-<div class="section" id="activating-singularity">
+<section id="activating-singularity">
 <h2>Activating Singularity<a class="headerlink" href="#activating-singularity" title="Permalink to this headline">¶</a></h2>
 <p>There are two main components in Singulairty containers. The runtime executable and the singularity image.</p>
 <p>The <em>Container Runtime</em> or <em>Singularity runtime</em> is designed to leverage the above mentioned container formats. The runtime program is called singularity and is capable not only of running singularity images but also to create them.</p>
 <p>To activate singularity on your current terminal, on both, Spruce and Thorny execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5.2</span>
 </pre></div>
 </div>
 <p>That will modify the <cite>$PATH</cite> variable allowing you to execute the main command for singularity:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="singularity-images">
+</section>
+<section id="singularity-images">
 <h2>Singularity Images<a class="headerlink" href="#singularity-images" title="Permalink to this headline">¶</a></h2>
 <p>The second component are <em>Singularity images</em>. On Spruce and Thorny we have a number of centrally managed images:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">containers</span>
@@ -216,199 +219,199 @@
 </pre></div>
 </div>
 <p>The list of Singularity images on Spruce and Thorny is the same, the table below shows the current images available.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="25%" />
-<col width="39%" />
-<col width="14%" />
-<col width="16%" />
-<col width="3%" />
-<col width="3%" />
+<col style="width: 25%" />
+<col style="width: 39%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Image Name</th>
-<th class="head" colspan="2">Description</th>
-<th class="head">Based on</th>
-<th class="head">GUI</th>
-<th class="head">GPU</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Image Name</p></th>
+<th class="head" colspan="2"><p>Description</p></th>
+<th class="head"><p>Based on</p></th>
+<th class="head"><p>GUI</p></th>
+<th class="head"><p>GPU</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>centos-final.simg</td>
-<td colspan="2">Example of image using libgraph 1.0.2, run examples
-“circle”, “julia” and “sample”</td>
-<td>centos:latest</td>
-<td>Yes</td>
-<td>No</td>
+<tbody>
+<tr class="row-even"><td><p>centos-final.simg</p></td>
+<td colspan="2"><p>Example of image using libgraph 1.0.2, run examples
+“circle”, “julia” and “sample”</p></td>
+<td><p>centos:latest</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>dakota-6.10-release-public-rhel7.simg</td>
-<td colspan="2">Dakota 6.10: Sandia software for optimization and
-Uncertainty Quantification</td>
-<td>centos:latest</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-odd"><td><p>dakota-6.10-release-public-rhel7.simg</p></td>
+<td colspan="2"><p>Dakota 6.10: Sandia software for optimization and
+Uncertainty Quantification</p></td>
+<td><p>centos:latest</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>docs_hpc_wvu.simg</td>
-<td colspan="2">Contains Sphinx, pandoc and scripts to create documentation
-for <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a></td>
-<td>ubuntu:bionic</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-even"><td><p>docs_hpc_wvu.simg</p></td>
+<td colspan="2"><p>Contains Sphinx, pandoc and scripts to create documentation
+for <a class="reference external" href="https://docs.hpc.wvu.edu">https://docs.hpc.wvu.edu</a></p></td>
+<td><p>ubuntu:bionic</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>dolmades.simg</td>
-<td colspan="2">Windows Apps under Linux using Singularity (using wine)</td>
-<td>c1t4r/dolmades</td>
-<td>Yes?</td>
-<td>No</td>
+<tr class="row-odd"><td><p>dolmades.simg</p></td>
+<td colspan="2"><p>Windows Apps under Linux using Singularity (using wine)</p></td>
+<td><p>c1t4r/dolmades</p></td>
+<td><p>Yes?</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>Grass-7.4.0.simg</td>
-<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
-<td>ubuntu:trusty</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>Grass-7.4.0.simg</p></td>
+<td colspan="2"><p>GRASS (Geographic Resources Analysis Support System), open source GIS</p></td>
+<td><p>ubuntu:trusty</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>Grass-7.4.simg</td>
-<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
-<td>ubuntu:trusty</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-odd"><td><p>Grass-7.4.simg</p></td>
+<td colspan="2"><p>GRASS (Geographic Resources Analysis Support System), open source GIS</p></td>
+<td><p>ubuntu:trusty</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>Grass-7.6.1.simg</td>
-<td colspan="2">GRASS (Geographic Resources Analysis Support System), open source GIS</td>
-<td>ubuntu:bionic</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>Grass-7.6.1.simg</p></td>
+<td colspan="2"><p>GRASS (Geographic Resources Analysis Support System), open source GIS</p></td>
+<td><p>ubuntu:bionic</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>Jupyter-5.2.2_Python-3.6.8.simg</td>
-<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
-<td>ubuntu:bionic</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-odd"><td><p>Jupyter-5.2.2_Python-3.6.8.simg</p></td>
+<td colspan="2"><p>Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</p></td>
+<td><p>ubuntu:bionic</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>jupyter_conda.simg</td>
-<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
-<td>continuumio/miniconda3</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>jupyter_conda.simg</p></td>
+<td colspan="2"><p>Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</p></td>
+<td><p>continuumio/miniconda3</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>jupyter.simg</td>
-<td colspan="2">Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</td>
-<td>ubuntu:bionic</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-odd"><td><p>jupyter.simg</p></td>
+<td colspan="2"><p>Python 3.6.8 with a number of Scientific Packages and Jupyter Notebooks</p></td>
+<td><p>ubuntu:bionic</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>jupyter-xenial.simg</td>
-<td colspan="2">Python 3.5.2 with a number of Scientific Packages and Jupyter Notebooks</td>
-<td>ubuntu:xenial</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>jupyter-xenial.simg</p></td>
+<td colspan="2"><p>Python 3.5.2 with a number of Scientific Packages and Jupyter Notebooks</p></td>
+<td><p>ubuntu:xenial</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>Keras-2.1.4_TensorFlow-1.5.0.simg</td>
-<td colspan="2">Neural Networks and Deep Learning with Keras 2.1.4 and TensorFlow 1.5.0</td>
-<td>gw000/keras-full:2.1.4</td>
-<td>Yes</td>
-<td>Yes</td>
+<tr class="row-odd"><td><p>Keras-2.1.4_TensorFlow-1.5.0.simg</p></td>
+<td colspan="2"><p>Neural Networks and Deep Learning with Keras 2.1.4 and TensorFlow 1.5.0</p></td>
+<td><p>gw000/keras-full:2.1.4</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td>loos.simg</td>
-<td colspan="2">Lightweight Object-Oriented Structure library (LOOS)</td>
-<td>ubuntu:trusty</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-even"><td><p>loos.simg</p></td>
+<td colspan="2"><p>Lightweight Object-Oriented Structure library (LOOS)</p></td>
+<td><p>ubuntu:trusty</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>miniconda3_firefox.simg</td>
-<td colspan="2">Jupyter from miniconda with Firefox</td>
-<td>continuumio/miniconda3</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-odd"><td><p>miniconda3_firefox.simg</p></td>
+<td colspan="2"><p>Jupyter from miniconda with Firefox</p></td>
+<td><p>continuumio/miniconda3</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>miniconda3.simg</td>
-<td colspan="2">Jupyter from miniconda without firefox</td>
-<td>continuumio/miniconda3</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>miniconda3.simg</p></td>
+<td colspan="2"><p>Jupyter from miniconda without firefox</p></td>
+<td><p>continuumio/miniconda3</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>ParaView-5.6.0.simg</td>
-<td colspan="2">ParaView 5.6: open-source, multi-platform data analysis and visualization</td>
-<td>ubuntu:bionic</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-odd"><td><p>ParaView-5.6.0.simg</p></td>
+<td colspan="2"><p>ParaView 5.6: open-source, multi-platform data analysis and visualization</p></td>
+<td><p>ubuntu:bionic</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>RStudio-desktop-1.2.1335_R-3.4.4.simg</td>
-<td colspan="2">RStudio Desktop 1.2 with R 3.4.4</td>
-<td>jekriske/r-base</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>RStudio-desktop-1.2.1335_R-3.4.4.simg</p></td>
+<td colspan="2"><p>RStudio Desktop 1.2 with R 3.4.4</p></td>
+<td><p>jekriske/r-base</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>RStudio-server-1.2.1335_R-3.4.4.simg</td>
-<td colspan="2">RStudio Server  1.2 with R 3.4.4</td>
-<td>nickjer/singularity-r</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-odd"><td><p>RStudio-server-1.2.1335_R-3.4.4.simg</p></td>
+<td colspan="2"><p>RStudio Server  1.2 with R 3.4.4</p></td>
+<td><p>nickjer/singularity-r</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>singularity-rstudio.simg</td>
-<td colspan="2">RStudio Server  1.2</td>
-<td>nickjer/singularity-r</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>singularity-rstudio.simg</p></td>
+<td colspan="2"><p>RStudio Server  1.2</p></td>
+<td><p>nickjer/singularity-r</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>Stacks-2.1.simg</td>
-<td colspan="2">Stacks: Pipeline for building loci from short-read sequences like illumina</td>
-<td>ubuntu:trusty-20170817</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-odd"><td><p>Stacks-2.1.simg</p></td>
+<td colspan="2"><p>Stacks: Pipeline for building loci from short-read sequences like illumina</p></td>
+<td><p>ubuntu:trusty-20170817</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>Stacks-2.4.simg</td>
-<td colspan="2">Stacks: Pipeline for building loci from short-read sequences like illumina</td>
-<td>ubuntu:trusty</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-even"><td><p>Stacks-2.4.simg</p></td>
+<td colspan="2"><p>Stacks: Pipeline for building loci from short-read sequences like illumina</p></td>
+<td><p>ubuntu:trusty</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>Tensorflow-1.13.1-gpu-py3-jupyter.simg</td>
-<td>TensorFlow with support for GPUs</td>
-<td colspan="2">tensorflow/tensorflow:1.13.1-gpu-py3-jupyter</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-odd"><td><p>Tensorflow-1.13.1-gpu-py3-jupyter.simg</p></td>
+<td><p>TensorFlow with support for GPUs</p></td>
+<td colspan="2"><p>tensorflow/tensorflow:1.13.1-gpu-py3-jupyter</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>Tensorflow-1.13.1-py3-jupyter.simg</td>
-<td>TensorFlow without support for GPUs</td>
-<td colspan="2">tensorflow/tensorflow:1.13.1-py3-jupyter</td>
-<td>Yes</td>
-<td>No</td>
+<tr class="row-even"><td><p>Tensorflow-1.13.1-py3-jupyter.simg</p></td>
+<td><p>TensorFlow without support for GPUs</p></td>
+<td colspan="2"><p>tensorflow/tensorflow:1.13.1-py3-jupyter</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>TensorFlow_gpu_py3.simg</td>
-<td>TensorFlow with support for GPUs</td>
-<td colspan="2">tensorflow/tensorflow:latest-gpu-py3</td>
-<td>No</td>
-<td>Yes</td>
+<tr class="row-odd"><td><p>TensorFlow_gpu_py3.simg</p></td>
+<td><p>TensorFlow with support for GPUs</p></td>
+<td colspan="2"><p>tensorflow/tensorflow:latest-gpu-py3</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td>Visit-2.13.2.simg</td>
-<td colspan="2">Visit: Interactive, scalable, visualization, animation and analysis tool</td>
-<td>ubuntu:trusty</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-even"><td><p>Visit-2.13.2.simg</p></td>
+<td colspan="2"><p>Visit: Interactive, scalable, visualization, animation and analysis tool</p></td>
+<td><p>ubuntu:trusty</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>Visit-3.0.simg</td>
-<td colspan="2">Visit: Interactive, scalable, visualization, animation and analysis tool</td>
-<td>centos:latest</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-odd"><td><p>Visit-3.0.simg</p></td>
+<td colspan="2"><p>Visit: Interactive, scalable, visualization, animation and analysis tool</p></td>
+<td><p>centos:latest</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>wkhtmltox-0.12.simg</td>
-<td colspan="2">wkhtmltopdf  command line tools to render HTML into PDF and other image formats</td>
-<td>ubuntu:trusty</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-even"><td><p>wkhtmltox-0.12.simg</p></td>
+<td colspan="2"><p>wkhtmltopdf  command line tools to render HTML into PDF and other image formats</p></td>
+<td><p>ubuntu:trusty</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>wkhtmltox.simg</td>
-<td colspan="2">wkhtmltopdf  command line tools to render HTML into PDF and other image formats</td>
-<td>ubuntu:trusty</td>
-<td>No</td>
-<td>No</td>
+<tr class="row-odd"><td><p>wkhtmltox.simg</p></td>
+<td colspan="2"><p>wkhtmltopdf  command line tools to render HTML into PDF and other image formats</p></td>
+<td><p>ubuntu:trusty</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="interactive-job-with-x11-forwarding">
+</section>
+<section id="interactive-job-with-x11-forwarding">
 <h2>Interactive Job with X11 forwarding<a class="headerlink" href="#interactive-job-with-x11-forwarding" title="Permalink to this headline">¶</a></h2>
 <p>Several images above are intended for interactive computing.
 In those cases you ensure that you connect to the cluster with X11 forwarding,
@@ -428,7 +431,7 @@ any other queue is valid.:</p>
 </pre></div>
 </div>
 <p>Once you get inside a compute node, load the module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5.2</span>
 </pre></div>
 </div>
 <p>After loading the module the command singularity is available for usage,
@@ -436,8 +439,8 @@ and you can get a shell inside the image with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity shell ${SNG_PATH}/&lt;Image Name&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="non-interactive-execution-with-submission-scripts">
+</section>
+<section id="non-interactive-execution-with-submission-scripts">
 <h2>Non-interactive execution with Submission scripts<a class="headerlink" href="#non-interactive-execution-with-submission-scripts" title="Permalink to this headline">¶</a></h2>
 <p>In this case you do not need to export X11, just login into Spruce or Thorny:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
@@ -463,8 +466,8 @@ singularity exec ${SNG_PATH}/&lt;Image Name&gt; &lt;command_or_script_to_run&gt;
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="gpu-support-and-singularity">
+</section>
+<section id="gpu-support-and-singularity">
 <h2>GPU Support and Singularity<a class="headerlink" href="#gpu-support-and-singularity" title="Permalink to this headline">¶</a></h2>
 <p>To get access to GPUs from inside the container use the argument <code class="docutils literal notranslate"><span class="pre">--nv</span></code> either for the <code class="docutils literal notranslate"><span class="pre">shell</span></code> or <code class="docutils literal notranslate"><span class="pre">exec</span></code> subcommands.
 Lets demonstrate this with an interactive example using Tensorflow on spruce</p>
@@ -574,8 +577,8 @@ Another way of checking the available devices is with:</p>
 <span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">25</span> <span class="mi">18</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">51.067904</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">common_runtime</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">gpu_device</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">1195</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">TensorFlow</span> <span class="n">device</span> <span class="p">(</span><span class="o">/</span><span class="n">device</span><span class="p">:</span><span class="n">GPU</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Tesla</span> <span class="n">K20m</span><span class="p">,</span> <span class="n">pci</span> <span class="n">bus</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">00.0</span><span class="p">,</span> <span class="n">compute</span> <span class="n">capability</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -597,7 +600,7 @@ Another way of checking the available devices is with:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, West Virginia University
+        &copy; Copyright 2022, West Virginia University
 
     </p>
   </div>
