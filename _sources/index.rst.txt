@@ -57,8 +57,8 @@ Main Responsible for Documentation and Scientific Outreach
 
    text/10.Introduction
    text/20.QuickStart
-   text/30.BasicUser
-   text/40.AdvancedUser
+   text/30.BasicUsage
+   text/40.AdvancedUsage
    text/500.ScientificProgramming
    text/600.SoftAdmin
    text/70.DomainSpecific

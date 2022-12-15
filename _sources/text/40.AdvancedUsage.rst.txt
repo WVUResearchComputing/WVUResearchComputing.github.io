@@ -1,7 +1,7 @@
 .. _chap-advanced-user:
 
-For Advanced Users
-##################
+Advanced Usage
+##############
 
 The contents on this section are intended for users who demand more control on the system, the ability to install or execute codes not provided by central installation.
 
@@ -22,9 +22,12 @@ On section :ref:`ad-hdf5` one example of using HDF5 for storing numerical data i
 .. toctree::
     :maxdepth: 2
 
-    41.Singularity
-    42.Conda
-    43.UsingGPUs
-    44.Modules
-    45.Jupyter
-    46.HDF5
+    41.Singularity.rst
+    42.Conda.rst
+    43.UsingGPUs.rst
+    44.Modules.rst
+    45.Jupyter.rst
+    46.HDF5.rst
+    47.XWindow.rst
+    48.Compilers.rst
+
