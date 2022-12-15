@@ -1,4 +1,4 @@
-.. _bs-interactive:
+.. _qs-interactive:
 
 Interactive Scientific Computing
 ================================
