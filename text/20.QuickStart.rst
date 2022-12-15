@@ -16,9 +16,10 @@ At the end of this tutorial, you should have your account activated, connected t
    21.GettingAccess.rst
    22.Connect.rst
    23.CommandLine.rst
-   24.EditFiles.rst
-   25.UseStorage.rst
-   26.UseModules.rst
-   27.CompileCode.rst
-   28.SubmitJobs.rst
-   29.TransferFiles.rst
+   24.TextEditors.rst
+   25.DataStorage.rst
+   26.EnvModules.rst
+   27.WorkloadManager.rst
+   28.TransferFiles.rst
+   29.WebInterface.rst
+
