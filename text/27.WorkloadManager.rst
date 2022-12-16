@@ -1,7 +1,7 @@
-.. _qs-job-submission:
+.. _qs-workload-manager:
 
-Job Submission
-==============
+Workload Manager (SLURM)
+========================
 
 Shared resources like Computer clusters are intended to be used by several people at the same time. To coordinate usage of the resources, users should request to a system called "Resource Manager" to give them access to some resources for a predefined amount of time.
 

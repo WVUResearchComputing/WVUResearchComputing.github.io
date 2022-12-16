@@ -1,4 +1,4 @@
-.. _chap-advanced-user:
+.. _chap-advanced-usage:
 
 Advanced Usage
 ##############

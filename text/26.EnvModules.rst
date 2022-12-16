@@ -1,5 +1,7 @@
-Using Environment Modules
-=========================
+.. _qs-env-modules:
+
+Environment Modules
+===================
 
 A shared resource like a cluster, several individuals could have different requirements about the compilers, libraries and scientific codes needed for their research. Environment Modules helps users choose which compilers, libraries and software they want to use and on which versions.
 

@@ -66,7 +66,7 @@ Consider a small example on how Julia code looks like::
 	# Function to Compute the volume of a sphere
 	function volume_sphere(r)
 	# julia allows Unicode names (in UTF-8 encoding)
-	# so either "pi" or the symbol π can be used
+	# so either "pi" or the symbol \pi can be used
 	return 4/3*pi*r^3
 	end
 

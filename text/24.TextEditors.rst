@@ -1,7 +1,7 @@
-.. _qs-edit-files:
+.. _qs-text-editors:
 
-Editing Files
-=============
+Terminal-based Text Editors (nano)
+==================================
 
 After learning a few commands the next thing to learn is to edit text files.
 As we will see later, editing small text files is a common procedure on an HPC cluster; for example, the submission scripts are relatively small text files, and most of the times, you have to make small adjustments to those scripts.

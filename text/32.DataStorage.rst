@@ -1,7 +1,7 @@
-.. _bs-scratch:
+.. _bs-data-storage:
 
-Managing Scratch Contents
-=========================
+Data Storage
+============
 
 Scratch is designed to be a high-performance, low-latency, parallel file
 system and it is uniquely built for HPC systems. That means that data is

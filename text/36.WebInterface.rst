@@ -1,7 +1,7 @@
-.. _bs-interactive:
+.. _bs-web-interface:
 
-Interactive Scientific Computing
-================================
+Web Interface (Open On-Demand)
+==============================
 
 The term Interactive Scientific Computing consists on using a computer in a similar way as you use a handheld calculator.
 On a handheld calculator, you type some input and you expect that input to be processed right away to produce results.

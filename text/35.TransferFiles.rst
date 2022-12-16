@@ -1,7 +1,7 @@
-.. _bs-globus:
+.. _bs-file-transfer:
 
-Globus Online
-=============
+File Transfer (Globus and SFTP)
+===============================
 
 Overview
 --------

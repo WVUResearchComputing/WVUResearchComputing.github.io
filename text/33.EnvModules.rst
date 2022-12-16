@@ -1,4 +1,4 @@
-.. _bs-modules:
+.. _bs-env-modules:
 
 Environment Modules
 ===================
