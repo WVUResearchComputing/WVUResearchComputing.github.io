@@ -1,7 +1,7 @@
-.. _qs-storage:
+.. _qs-data-storage:
 
-Understanding Cluster Storage
-=============================
+Cluster Storage
+===============
 
 On a desktop machine, you normally own the whole hard drive and you are free
 to use it up to the limit of physical drive. On a share resource like a

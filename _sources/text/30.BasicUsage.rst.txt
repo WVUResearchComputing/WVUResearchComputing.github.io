@@ -1,11 +1,11 @@
-.. _chap-basic-user:
+.. _chap-basic-usage:
 
 Basic Usage
 ###########
 
 This chapter provides information useful by users from all levels, but specially tailored for beginners or those who will use the cluster only sporadically.
 
-We start on :ref:`bs-editors` a more in-deep exploration of the 3 main text editors in Unix/Linux: nano, emacs and vim. The next section
+We start on :ref:`bs-text-editors` a more in-deep exploration of the 3 main text editors in Unix/Linux: nano, emacs and vim. The next section
 
 .. toctree::
    :maxdepth: 2
@@ -13,7 +13,6 @@ We start on :ref:`bs-editors` a more in-deep exploration of the 3 main text edit
    31.TextEditors.rst
    32.DataStorage.rst
    33.EnvModules.rst
-   34.SubmissionExamples.rst
    34.WorkloadManager.rst
    35.TransferFiles.rst
    36.WebInterface.rst

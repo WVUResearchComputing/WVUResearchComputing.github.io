@@ -1,4 +1,4 @@
-.. _chap-soft_admin:
+.. _chap-soft-admin:
 
 Software Administration
 #######################

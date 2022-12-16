@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Job Submission &mdash; WVU-RC 2022.12.15 documentation</title>
+  <title>Workload Manager (SLURM) &mdash; WVU-RC 2022.12.16 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Transferring Files" href="28.TransferFiles.html" />
-    <link rel="prev" title="Using Environment Modules" href="26.EnvModules.html" /> 
+    <link rel="next" title="File Transfer (Globus)" href="28.FileTransfer.html" />
+    <link rel="prev" title="Environment Modules" href="26.EnvModules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,14 +97,14 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Editing Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Understanding Cluster Storage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Using Environment Modules</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="28.TransferFiles.html">Transferring Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Interactive Scientific Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster (SSH)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">UNIX/Linux Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Terminal-based Text Editors (nano)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Cluster Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="28.FileTransfer.html">File Transfer (Globus)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a></li>
@@ -162,7 +162,7 @@
         
           <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
         
-      <li>Job Submission</li>
+      <li>Workload Manager (SLURM)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,8 +181,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="job-submission">
-<span id="qs-job-submission"></span><h1>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this headline">¶</a></h1>
+  <section id="workload-manager-slurm">
+<span id="qs-workload-manager"></span><h1>Workload Manager (SLURM)<a class="headerlink" href="#workload-manager-slurm" title="Permalink to this headline">¶</a></h1>
 <p>Shared resources like Computer clusters are intended to be used by several people at the same time. To coordinate usage of the resources, users should request to a system called “Resource Manager” to give them access to some resources for a predefined amount of time.</p>
 <p>The set of resources that are requested and the set of commands that you plan to execute is called a job. There are two kinds of jobs: “interactive” and “non-interactive”</p>
 </section>
@@ -195,10 +195,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="28.TransferFiles.html" class="btn btn-neutral float-right" title="Transferring Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="28.FileTransfer.html" class="btn btn-neutral float-right" title="File Transfer (Globus)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="26.EnvModules.html" class="btn btn-neutral float-left" title="Using Environment Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="26.EnvModules.html" class="btn btn-neutral float-left" title="Environment Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

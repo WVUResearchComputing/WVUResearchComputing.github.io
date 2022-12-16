@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Command Line Interface &mdash; WVU-RC 2022.12.15 documentation</title>
+  <title>UNIX/Linux Command Line Interface &mdash; WVU-RC 2022.12.16 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Editing Files" href="24.TextEditors.html" />
-    <link rel="prev" title="Connect to the cluster" href="22.Connect.html" /> 
+    <link rel="next" title="Terminal-based Text Editors (nano)" href="24.TextEditors.html" />
+    <link rel="prev" title="Connect to the cluster (SSH)" href="22.Connect.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,8 +97,8 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Command Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster (SSH)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UNIX/Linux Command Line Interface</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#files-and-folders">Files and Folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-echo-and-cat-commands">The <em>echo</em> and <em>cat</em> commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#folder-commands">Folder commands</a></li>
@@ -107,12 +107,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#summary-of-basic-commands">Summary of Basic Commands</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Editing Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Understanding Cluster Storage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Using Environment Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="27.WorkloadManager.html">Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="28.TransferFiles.html">Transferring Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Interactive Scientific Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Terminal-based Text Editors (nano)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Cluster Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27.WorkloadManager.html">Workload Manager (SLURM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="28.FileTransfer.html">File Transfer (Globus)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a></li>
@@ -170,7 +170,7 @@
         
           <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
         
-      <li>Command Line Interface</li>
+      <li>UNIX/Linux Command Line Interface</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -189,8 +189,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="command-line-interface">
-<span id="qs-command-line"></span><h1>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
+  <section id="unix-linux-command-line-interface">
+<span id="qs-command-line"></span><h1>UNIX/Linux Command Line Interface<a class="headerlink" href="#unix-linux-command-line-interface" title="Permalink to this headline">¶</a></h1>
 <p>Most of the time, a user interacts with an HPC cluster using a Command Line Interface (CLI), also known as terminal. On a terminal, all your interaction is controlled by a program called <em>shell</em>. You can tell that you are in <em>shell</em> when you see what is called a <em>prompt</em> message, a set of characters that indicate that the <em>shell</em> is ready to receive instructions to operate.</p>
 <p>To issue a command to the shell you type a command, occasionally followed by a few arguments. When you finish typing the full command you type the <code class="docutils literal notranslate"><span class="pre">ENTER</span></code> key, the command is executed and if the command is programmed to produce screen output it will appear on your terminal as it executes. Once the command is terminated you get a new <em>prompt</em> indicating that the shell is ready for new commands.</p>
 <p>The CLI interface is a powerful way to interact with a remote computer for several reasons:</p>
@@ -552,10 +552,10 @@ $&gt; rmdir odd
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="24.TextEditors.html" class="btn btn-neutral float-right" title="Editing Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="24.TextEditors.html" class="btn btn-neutral float-right" title="Terminal-based Text Editors (nano)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="22.Connect.html" class="btn btn-neutral float-left" title="Connect to the cluster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="22.Connect.html" class="btn btn-neutral float-left" title="Connect to the cluster (SSH)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

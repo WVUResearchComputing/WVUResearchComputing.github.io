@@ -1,4 +1,4 @@
-.. _bs-xwindow:
+.. _ad-xwindow:
 
 
 XWindow

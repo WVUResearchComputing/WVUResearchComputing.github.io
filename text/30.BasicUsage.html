@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Usage &mdash; WVU-RC 2022.12.15 documentation</title>
+  <title>Basic Usage &mdash; WVU-RC 2022.12.16 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Terminal-based Text Editors" href="31.TextEditors.html" />
-    <link rel="prev" title="Interactive Scientific Computing" href="29.WebInterface.html" /> 
+    <link rel="next" title="Terminal-based Text Editors (nano, emacs and vim)" href="31.TextEditors.html" />
+    <link rel="prev" title="Web Interface (Open On-Demand)" href="29.WebInterface.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,13 +97,13 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Basic Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Managing Scratch Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors (nano, emacs and vim)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html">Environment Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="34.SubmissionExamples.html">Samples of Job Submission scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html">Using the Queuing system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html">Globus Online</a></li>
-<li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html">Interactive Scientific Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html">Workload Manager (SLURM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#samples-of-job-submission-scripts">Samples of Job Submission scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html">File Transfer (Globus and SFTP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUsage.html">Advanced Usage</a></li>
@@ -178,18 +178,18 @@
            <div itemprop="articleBody">
             
   <section id="basic-usage">
-<span id="chap-basic-user"></span><h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h1>
+<span id="chap-basic-usage"></span><h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h1>
 <p>This chapter provides information useful by users from all levels, but specially tailored for beginners or those who will use the cluster only sporadically.</p>
-<p>We start on <a class="reference internal" href="31.TextEditors.html#bs-editors"><span class="std std-ref">Terminal-based Text Editors</span></a> a more in-deep exploration of the 3 main text editors in Unix/Linux: nano, emacs and vim. The next section</p>
+<p>We start on <a class="reference internal" href="31.TextEditors.html#bs-text-editors"><span class="std std-ref">Terminal-based Text Editors (nano, emacs and vim)</span></a> a more in-deep exploration of the 3 main text editors in Unix/Linux: nano, emacs and vim. The next section</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors (nano, emacs and vim)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html#nano">Nano</a></li>
 <li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html#emacs">Emacs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html#vi-vim">Vi/Vim</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="32.DataStorage.html">Managing Scratch Contents</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="32.DataStorage.html">Data Storage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html#knowing-my-current-usage">Knowing my current usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html#searching-for-empty-files">Searching for empty files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html#searching-for-big-files">Searching for Big Files</a></li>
@@ -203,12 +203,7 @@
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html#using-modulefiles-through-qsub">Using modulefiles through qsub</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="34.SubmissionExamples.html">Samples of Job Submission scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="34.SubmissionExamples.html#script-for-running-a-non-array-batch-queue">Script for running a non-array batch queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="34.SubmissionExamples.html#script-for-running-an-array-batch-queue">Script for running an array batch queue</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="34.WorkloadManager.html">Using the Queuing system</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="34.WorkloadManager.html">Workload Manager (SLURM)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#batch-queues">Batch queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#useful-commands-for-job-submission-status">Useful Commands for Job Submission/Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a></li>
@@ -219,7 +214,12 @@
 <li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#adding-prologue-and-epilogue-scripts-to-a-job">Adding Prologue and Epilogue scripts to a Job</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="35.TransferFiles.html">Globus Online</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="34.WorkloadManager.html#samples-of-job-submission-scripts">Samples of Job Submission scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#script-for-running-a-non-array-batch-queue">Script for running a non-array batch queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#script-for-running-an-array-batch-queue">Script for running an array batch queue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="35.TransferFiles.html">File Transfer (Globus and SFTP)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html#transfer-data">Transfer Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html#share-data">Share Data</a></li>
@@ -227,7 +227,7 @@
 <li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html#publish-data">Publish Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="36.WebInterface.html">Interactive Scientific Computing</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="36.WebInterface.html">Web Interface (Open On-Demand)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html#interactive-computing-from-the-terminal">Interactive Computing from the Terminal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html#interactive-computing-from-a-web-interface">Interactive Computing from a web interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html#accessing-the-dashboard">Accessing the Dashboard</a></li>
@@ -251,10 +251,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="31.TextEditors.html" class="btn btn-neutral float-right" title="Terminal-based Text Editors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="31.TextEditors.html" class="btn btn-neutral float-right" title="Terminal-based Text Editors (nano, emacs and vim)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="29.WebInterface.html" class="btn btn-neutral float-left" title="Interactive Scientific Computing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="29.WebInterface.html" class="btn btn-neutral float-left" title="Web Interface (Open On-Demand)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

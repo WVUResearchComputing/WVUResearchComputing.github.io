@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using the Queuing system &mdash; WVU-RC 2022.12.15 documentation</title>
+  <title>Workload Manager (SLURM) &mdash; WVU-RC 2022.12.16 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Globus Online" href="35.TransferFiles.html" />
-    <link rel="prev" title="Samples of Job Submission scripts" href="34.SubmissionExamples.html" /> 
+    <link rel="next" title="File Transfer (Globus and SFTP)" href="35.TransferFiles.html" />
+    <link rel="prev" title="Environment Modules" href="33.EnvModules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,11 +97,10 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Managing Scratch Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors (nano, emacs and vim)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html">Environment Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="34.SubmissionExamples.html">Samples of Job Submission scripts</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the Queuing system</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#batch-queues">Batch queues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#useful-commands-for-job-submission-status">Useful Commands for Job Submission/Status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a><ul>
@@ -124,8 +123,13 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html">Globus Online</a></li>
-<li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html">Interactive Scientific Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#samples-of-job-submission-scripts">Samples of Job Submission scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#script-for-running-a-non-array-batch-queue">Script for running a non-array batch queue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#script-for-running-an-array-batch-queue">Script for running an array batch queue</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html">File Transfer (Globus and SFTP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUsage.html">Advanced Usage</a></li>
@@ -182,7 +186,7 @@
         
           <li><a href="30.BasicUsage.html">Basic Usage</a> &raquo;</li>
         
-      <li>Using the Queuing system</li>
+      <li>Workload Manager (SLURM)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -201,8 +205,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="using-the-queuing-system">
-<h1>Using the Queuing system<a class="headerlink" href="#using-the-queuing-system" title="Permalink to this headline">¶</a></h1>
+  <section id="workload-manager-slurm">
+<span id="bs-workload-manager"></span><h1>Workload Manager (SLURM)<a class="headerlink" href="#workload-manager-slurm" title="Permalink to this headline">¶</a></h1>
 <p>The login node (the shell you get upon logging into a cluster) should be
 used for text editing, file transfer, and job submissions. No Jobs
 should be run directly on the login node. Jobs that take up too much CPU
@@ -1077,6 +1081,107 @@ information that you can use later for debugging or profiling purposes.</p>
 </section>
 </section>
 </section>
+<section id="samples-of-job-submission-scripts">
+<h1>Samples of Job Submission scripts<a class="headerlink" href="#samples-of-job-submission-scripts" title="Permalink to this headline">¶</a></h1>
+<p>Below are bash scripts that can be modified and submitted to the qsub
+command for job submission. For details about the different parts of the
+scripts please visit the <a class="reference external" href="RunningJobs">Running Jobs</a> page. These
+scripts can be copied and pasted in the terminal using any number of
+text editors (i.e. vi, emacs, etc…)</p>
+<section id="script-for-running-a-non-array-batch-queue">
+<h2>Script for running a non-array batch queue<a class="headerlink" href="#script-for-running-a-non-array-batch-queue" title="Permalink to this headline">¶</a></h2>
+<p>The below script has PBS directives to set-up commonly used variables
+such as job name, resources needed, e-mail address upon job completion
+and abnormal termination and specify a queue to run on</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1">#This is an example script for executing generic jobs with</span>
+<span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
+
+
+<span class="c1">#These commands set up the Grid Environment for your job.  Words surrounding by a backet (&#39;&lt;&#39;,&#39;&gt;&#39;) should be changed</span>
+<span class="c1">#Any of the PBS directives can be commented out by placing another pound sign in front</span>
+<span class="c1">#example</span>
+<span class="c1">##PBS -N name</span>
+<span class="c1">#The above line will be skipped by qsub because of the two consecutive # signs</span>
+
+<span class="c1"># Specify job name</span>
+<span class="c1">#PBS -N &lt;name&gt;</span>
+
+<span class="c1"># Specify the resources need for the job</span>
+<span class="c1"># Walltime is specified as hh:mm:ss (hours:minutes:seconds)</span>
+<span class="c1">#PBS -l nodes=&lt;number_of_nodes&gt;:ppn=&lt;number_of_processors_per_node,walltime=&lt;time_needed_by_job&gt;</span>
+
+
+<span class="c1"># Specify when Moab should send e-mails &#39;ae&#39; below user will</span>
+<span class="c1"># receive e-mail for any errors with the job and/or upon completion</span>
+<span class="c1"># If you don&#39;t want e-mails just comment out these next two PBS lines</span>
+<span class="c1">#PBS -m ae</span>
+
+<span class="c1"># Specify the e-mail address to receive above mentioned e-mails</span>
+<span class="c1">#PBS -M &lt;email_address&gt;</span>
+
+<span class="c1"># Specify the queue to execute task in. Current options can be found by excuting the command qstat -q at the terminal</span>
+<span class="c1">#PBS -q &lt;queue_name&gt;</span>
+
+<span class="c1"># Enter your command below with arguments just as if you where going to execute on the command line</span>
+<span class="c1"># It is generally good practice to issue a &#39;cd&#39; command into the directory that contains the files</span>
+<span class="c1"># you want to use or use full path names</span>
+</pre></div>
+</div>
+</section>
+<section id="script-for-running-an-array-batch-queue">
+<h2>Script for running an array batch queue<a class="headerlink" href="#script-for-running-an-array-batch-queue" title="Permalink to this headline">¶</a></h2>
+<p>Script is the same as above, but adds PBS -t to execute array request
+job submissions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1">#This is an example script for executing genetic jobs with</span>
+<span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
+
+
+<span class="c1">#These commands set up the Grid Environment for your job.  Words surrounding by a backet (&#39;&lt;&#39;,&#39;&gt;&#39;) should be changed</span>
+<span class="c1">#Any of the PBS directives can be commented out by placing another pound sign in front</span>
+<span class="c1">#example</span>
+<span class="c1">##PBS -N name</span>
+<span class="c1">#The above line will be skipped by qsub because of the two consecutive # signs</span>
+
+<span class="c1"># Specify job name, use ${PBS_ARRAYID} to ensure names and output/error files have different names</span>
+<span class="c1">#PBS -N &lt;name_${PBS_ARRAYID}</span>
+
+<span class="c1"># Specify the range for the PBS_ARRAYID environment variable</span>
+<span class="c1"># &lt;num_range&gt; can be a continous range like 1-200 or 5-20</span>
+<span class="c1"># or &lt;num_range&gt; can be a comma seperated list of numbers like 5,15,20,55</span>
+<span class="c1"># You can also specify the maximum number of jobs queued at one time with the percent sign</span>
+<span class="c1"># so a &lt;num_range&gt; specified as 5-45%8 would launch forty jobs with a range from 5-45, but only queue 8 at a time until</span>
+<span class="c1"># all jobs are completed.</span>
+<span class="c1"># Further, you can mix and match continous range and list like 1-10,15,25-40%10</span>
+<span class="c1">#PBS -t &lt;num_range&gt;</span>
+
+<span class="c1"># Specify the resources need for the job</span>
+<span class="c1"># Walltime is specified as hh:mm:ss (hours:minutes:seconds)</span>
+<span class="c1">#PBS -l nodes=&lt;number_of_nodes&gt;:ppn=&lt;number_of_processors_per_node,walltime=&lt;time_needed_by_job&gt;</span>
+
+
+<span class="c1"># Specify when Moab should send e-mails &#39;ae&#39; below user will</span>
+<span class="c1"># receive e-mail for any errors with the job and/or upon completion</span>
+<span class="c1"># If you don&#39;t want e-mails just comment out these next two PBS lines</span>
+<span class="c1">#PBS -m ae</span>
+
+<span class="c1"># Specify the e-mail address to receive above mentioned e-mails</span>
+<span class="c1">#PBS -M &lt;email_address&gt;</span>
+
+<span class="c1"># Specify the queue to execute task in. Current options can be found by excuting the command qstat -q at the terminal</span>
+<span class="c1">#PBS -q &lt;queue_name&gt;</span>
+
+<span class="c1"># Enter your command below with arguments just as if you where going to execute on the command line</span>
+<span class="c1"># It is generally good practice to issue a &#39;cd&#39; command into the directory that contains the files</span>
+<span class="c1"># you want to use or use full path names</span>
+<span class="c1"># Any parameter or filename that needs to use the current job number of the array number range use ${PBS_ARRAYID}</span>
+</pre></div>
+</div>
+</section>
+</section>
 
 
            </div>
@@ -1086,10 +1191,10 @@ information that you can use later for debugging or profiling purposes.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="35.TransferFiles.html" class="btn btn-neutral float-right" title="Globus Online" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="35.TransferFiles.html" class="btn btn-neutral float-right" title="File Transfer (Globus and SFTP)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="34.SubmissionExamples.html" class="btn btn-neutral float-left" title="Samples of Job Submission scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="33.EnvModules.html" class="btn btn-neutral float-left" title="Environment Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

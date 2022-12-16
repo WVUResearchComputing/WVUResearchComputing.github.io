@@ -1,7 +1,7 @@
-.. _qs-transfer-files:
+.. _qs-file-transfer:
 
-Transferring Files
-==================
+File Transfer (Globus)
+======================
 
 Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:
 

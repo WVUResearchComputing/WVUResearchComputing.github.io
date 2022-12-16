@@ -1,7 +1,7 @@
-.. _qs-connect:
+.. _qs-connect-ssh:
 
-Connect to the cluster
-======================
+Connect to the cluster (SSH)
+============================
 
 An HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop or even workstations are intended for a single user at a time. In general, Graphical User Interfaces (GUI) consume an important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.
 
@@ -126,7 +126,7 @@ use the kill command::
    $> kill -s 9 3325
 
 Once all jobs are terminated, the exit command will close the connection to the host.
-On section :ref:`qs-job-submission` we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.
+On section :ref:`qs-workload-manager` we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.
 
 Putty Example
 -------------

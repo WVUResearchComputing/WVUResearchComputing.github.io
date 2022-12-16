@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Transferring Files &mdash; WVU-RC 2022.12.15 documentation</title>
+  <title>File Transfer (Globus) &mdash; WVU-RC 2022.12.16 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Interactive Scientific Computing" href="29.WebInterface.html" />
-    <link rel="prev" title="Job Submission" href="27.WorkloadManager.html" /> 
+    <link rel="next" title="Web Interface (Open On-Demand)" href="29.WebInterface.html" />
+    <link rel="prev" title="Workload Manager (SLURM)" href="27.WorkloadManager.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,19 +97,19 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Editing Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Understanding Cluster Storage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Using Environment Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="27.WorkloadManager.html">Job Submission</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Transferring Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster (SSH)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">UNIX/Linux Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Terminal-based Text Editors (nano)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Cluster Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27.WorkloadManager.html">Workload Manager (SLURM)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Transfer (Globus)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#data-transfer-nodes">Data Transfer Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-globus-online">Using Globus Online</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#alternative-transfer-methods">Alternative Transfer Methods</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Interactive Scientific Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a></li>
@@ -167,13 +167,13 @@
         
           <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
         
-      <li>Transferring Files</li>
+      <li>File Transfer (Globus)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/28.TransferFiles.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/28.FileTransfer.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -186,8 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="transferring-files">
-<span id="qs-transfer-files"></span><h1>Transferring Files<a class="headerlink" href="#transferring-files" title="Permalink to this headline">¶</a></h1>
+  <section id="file-transfer-globus">
+<span id="qs-file-transfer"></span><h1>File Transfer (Globus)<a class="headerlink" href="#file-transfer-globus" title="Permalink to this headline">¶</a></h1>
 <p>Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:</p>
 <ul class="simple">
 <li><p>DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN’s are connected to <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782">WVU’s Science DMZ network</a> which is a dedicated network to science/research data across campus.</p></li>
@@ -267,10 +267,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="29.WebInterface.html" class="btn btn-neutral float-right" title="Interactive Scientific Computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="29.WebInterface.html" class="btn btn-neutral float-right" title="Web Interface (Open On-Demand)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="27.WorkloadManager.html" class="btn btn-neutral float-left" title="Job Submission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="27.WorkloadManager.html" class="btn btn-neutral float-left" title="Workload Manager (SLURM)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

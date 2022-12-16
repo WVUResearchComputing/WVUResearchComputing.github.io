@@ -1,2 +1,4 @@
+.. _ad-compile-code:
+
 Compile Source Code
 ===================
