@@ -907,7 +907,7 @@ Both prologue and epilogue must be made executable, use "
 to change their permissions.
 
 Samples of Job Submission scripts
-=================================
+---------------------------------
 
 Below are bash scripts that can be modified and submitted to the qsub
 command for job submission. For details about the different parts of the

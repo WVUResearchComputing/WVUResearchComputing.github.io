@@ -1,7 +1,7 @@
 .. _bs-text-editors:
 
-Terminal-based Text Editors (nano, emacs and vim)
-=================================================
+Terminal-based Text Editors
+===========================
 
 There are several terminal-based editors available on our clusters. We will focus our attention on three of them: nano, emacs, and vim.
 Your choice of an editor depends mostly on how much functionality do you want from your editor, how many fingers do you want to use for a given command and the learning curve to master it.
