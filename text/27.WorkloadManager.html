@@ -102,7 +102,19 @@
 <li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Terminal-based Text Editors (nano)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Cluster Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Environment Modules</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concepts">Concepts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#compute-nodes">Compute Nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partitions">Partitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jobs">Jobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sockets-cpu-cores-and-hyperthreading">Sockets, CPU cores and Hyperthreading</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-roles-of-a-workload-manager">The roles of a workload manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gathering-cluster-information">Gathering cluster information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-submission">Job Submission</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="28.FileTransfer.html">File Transfer (Globus)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
@@ -183,8 +195,166 @@
             
   <section id="workload-manager-slurm">
 <span id="qs-workload-manager"></span><h1>Workload Manager (SLURM)<a class="headerlink" href="#workload-manager-slurm" title="Permalink to this headline">¶</a></h1>
-<p>Shared resources like Computer clusters are intended to be used by several people at the same time. To coordinate usage of the resources, users should request to a system called “Resource Manager” to give them access to some resources for a predefined amount of time.</p>
-<p>The set of resources that are requested and the set of commands that you plan to execute is called a job. There are two kinds of jobs: “interactive” and “non-interactive”</p>
+<p>The workload manager is the software tool that makes a computer cluster to appear and work like a single entity rather than like a simple agregate of computers on a network.
+WVU clusters now uses SLURM as workload manager and users must be familiar with a few commands to effectively use an HPC cluster.</p>
+<section id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h2>
+<p>Before introducing the basic commands on SLURM we need to understand some concepts used here</p>
+<section id="compute-nodes">
+<h3>Compute Nodes<a class="headerlink" href="#compute-nodes" title="Permalink to this headline">¶</a></h3>
+<p>A High-Performance Compute cluster (HPC cluster) is a made of a collection of computers, the term used for each computer is “node”.
+These nodes are linked together through a fast network such as Gigabit Ethernet or Infiniband.
+In the particular case of Thorny Flat we use the Omni-Path Architecture (OPA) as the fast network fabric.</p>
+<p>A cluster typically hosts multiple types of nodes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>management nodes:</strong> These computers run management services, databases, monitoring tools, reporting applications, provisioning tools and other related services used by system administrators. Normal users have no direct access to these nodes.</p></li>
+<li><p><strong>login nodes:</strong> These computers are the machines where users login into through SSH to submit jobs and check results. Users must never use login nodes for any intense computations</p></li>
+<li><p><strong>storage nodes:</strong> These computers host user files in possibly multiple filesystems. We use dedicated storage systems running distributed filesystems such as GPFS.</p></li>
+<li><p><strong>compute nodes:</strong> These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply refered as “nodes”</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="partitions">
+<h3>Partitions<a class="headerlink" href="#partitions" title="Permalink to this headline">¶</a></h3>
+<p>In SLURM, a partition is a set of compute nodes grouped logically based on either physical properties of the hardware or job scheduling policies.
+Compute nodes can belong to several partitions making the term partition a bit misleading.
+In other resource managers partitions are called “queues” which is a more apropiated term.
+In general compute nodes are grouped based on common features shared by the nodes such as the presence of GPUs or node memory (RAM). Another reason to create partitions is to manage jobs that run for a day from those that could run for upto a week.</p>
+</section>
+<section id="jobs">
+<h3>Jobs<a class="headerlink" href="#jobs" title="Permalink to this headline">¶</a></h3>
+<p>Jobs are the atomic structure of a workload manager like SLURM.
+A Job is made of one or more sequential steps, each step consisting in one or multiple parallel tasks that could be dispatched to multiple CPU cores on a single node or to several nodes on the cluster.</p>
+</section>
+<section id="sockets-cpu-cores-and-hyperthreading">
+<h3>Sockets, CPU cores and Hyperthreading<a class="headerlink" href="#sockets-cpu-cores-and-hyperthreading" title="Permalink to this headline">¶</a></h3>
+<p>On a desktop computer or laptop you will find a single processor also called Central Processing Unit (CPU).
+The CPU is the main chip resposible for most computational calculations taking place on the machine.
+Different from Desktop computers and laptops, on HPC compute nodes it is often the case to find two or four CPU chips.
+Each CPU is located into what is called a socket. A dual socket node is then a node with two CPU chips.
+Those CPUs are in general identical and the Operating System will distribute the workload among them.</p>
+<p>Modern CPUs are made of multiple cores. A CPU core is a completely functional processing unit and several CPU cores are printed on a single chip.
+We called this CPUs multicore and almost all CPUs today are multicore.</p>
+<p>Some CPUs are capable of “logically divided” each CPU core into two hardware threads, a technology called Hyperthreading.
+Hardware threads are designed to hide the latencies of the memory and feed the compute units fast enough to keep them busy all the time.
+Hyperthreading can be activated or deactivated depending on the cluster, on the workload.
+Depending on the code running on the node hyperthreading can benefit or harm the performance.</p>
+</section>
+</section>
+<section id="the-roles-of-a-workload-manager">
+<h2>The roles of a workload manager<a class="headerlink" href="#the-roles-of-a-workload-manager" title="Permalink to this headline">¶</a></h2>
+<p>A workload manager like SLURM serves two main roles: <strong>Resource Manager</strong>  and <strong>Job Scheduler</strong>.</p>
+<p><strong>Resource Manager</strong></p>
+<p>The role of resource manager is to collect information about all the computers in the cluster, their characteristics and current state.
+A human equivalent for a resource manager is a mix of an accountant and a manager.
+The resource manager role is mainly resposible for gluing a HPC cluster to appear to users a single entity rather than a pile of computers.
+A resource manager provide tools to execute tasks of a HPC cluster with several nodes, and nodes with several cores as simple to use as an individual computer.
+Consider for example executing the command to know the name of the computer were the command is executed, on a single machine you run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; hostname
+trcis001.hpc.wvu.edu
+</pre></div>
+</div>
+<p>If we want to execute the same command on 3 machines, we can use SLURM and execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; srun -N3 hostname
+srun: job 3410 queued and waiting for resources
+srun: job 3410 has been allocated resources
+tcocm102.hpc.wvu.edu
+tcocm101.hpc.wvu.edu
+tcocm100.hpc.wvu.edu
+</pre></div>
+</div>
+<p>The command have been executed on 3 machines, the cluster is used as single entity and we are not interested exactly on which machines the command run as far it executes on 3 different nodes. The whole purpose of using a HPC cluster is to have many computer to run and not being concern exactly on which machine or machines the actual execution takes place.</p>
+<p>When the amount of resources requested by all the jobs from all the users exceeds the amount of resources available we need a system to prioritize the execution of the different jobs.
+That is the role of a Job Scheduler</p>
+<p><strong>Job Scheduler</strong></p>
+<p>The algorithms behind the prioritization of jobs can become fairly sophisticated. The resources available on a cluster are permanently changing and jobs are submitted permanently.
+The job scheduler has several objective functions including the maximal utilization of the cluster but also fairness among the users, preventing one user of monopolizing the cluster.</p>
+<p>SLURM is a workload manager that takes both roles in its architecture. From the user point of view all that you need to know is a handful of SLURM commands.
+The SLURM commands that you will learn in this section will allow you to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Submit jobs to the cluster, both for interactive and non interactive jobs.</p></li>
+<li><p>Monitor the list of jobs running on the system</p></li>
+<li><p>Learn the status and extra information for a particular job</p></li>
+<li><p>Cancel jobs that have been submitted and they are either running or waiting in queue</p></li>
+<li><p>List the partitions on the cluster and their state</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="gathering-cluster-information">
+<h2>Gathering cluster information<a class="headerlink" href="#gathering-cluster-information" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>sinfo</cite> command on SLURM can be used to get an overview of the resources offered by the cluster.
+By default, <cite>sinfo</cite> lists the partitions that are available.</p>
+<p>On WVU clusters, partitions with the prefix “comm” are community resources.
+Any HPC user can submit jobs to those partitions and the partitions were created differenciating the amount of RAM (small, medium [med], large and extra large [xl]), the walltime policy for the partition (day or week) and two community partitions with GPU nodes, one for interactive jobs (comm_gpu_inter) and another for non-interactive jobs running for upto a week (comm_gpu_week).
+The default queue is marked with a star (*) and it is called <cite>standby</cite>. Most compute nodes belong to this partition and jobs can run on it for up to 4 hours.
+The <cite>standby</cite> partition should be used preferentially except if you are certain that 4 hours is not enough time to complete the job.</p>
+<p>The command <cite>sinfo</cite> will list all the partitions and the state of the nodes for each of them. A more sumarized version can be obtained with the argument <cite>-s</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; info -s
+PARTITION       AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
+standby*           up    4:00:00      82/82/3/167 taicm[001-009],tarcl100,tarcs[100,200-206,300-304],tbdcx001,tbmcs[001-011,100-103],tbpcm200,tbpcs001,tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],tcocs[001-064,100],tcocx[001-003],tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-115]
+comm_small_day     up 1-00:00:00        57/8/0/65 tcocs[001-064,100]
+comm_small_week    up 7-00:00:00        57/8/0/65 tcocs[001-064,100]
+comm_med_day       up 1-00:00:00          1/4/0/5 tcocm[100-104]
+comm_med_week      up 7-00:00:00          1/4/0/5 tcocm[100-104]
+comm_xl_week       up 7-00:00:00          2/1/0/3 tcocx[001-003]
+comm_gpu_inter     up    4:00:00         8/3/0/11 tbegq[200-202],tbmgq[001,100],tcogq[001-006]
+comm_gpu_week      up 7-00:00:00          6/0/0/6 tcogq[001-006]
+aei0001            up   infinite          0/8/1/9 taicm[001-009]
+alromero           up   infinite        10/4/0/14 tarcl100,tarcs[100,200-206,300-304]
+be_gpu             up   infinite          1/2/0/3 tbegq[200-202]
+bvpopp             up   infinite          0/1/0/1 tbpcs001
+cedumitrescu       up   infinite          0/0/1/1 tcdcx100
+cfb0001            up   infinite          0/1/0/1 tcbcx100
+cgriffin           up   infinite          1/0/0/1 tcgcx300
+chemdept           up   infinite          0/4/0/4 tbmcs[100-103]
+chemdept-gpu       up   infinite          1/0/0/1 tbmgq100
+cs00048            up   infinite          0/1/0/1 tcscm300
+jaspeir            up   infinite          0/2/0/2 tjscl100,tjscm001
+jbmertz            up   infinite        11/6/0/17 tbmcs[001-011,100-103],tbmgq[001,100]
+mamclaughlin       up   infinite          0/9/0/9 tmmcm[100-108]
+ngarapat           up   infinite          0/1/0/1 tngcm200
+pmm0026            up   infinite          0/6/0/6 tpmcm[001-006]
+sbs0016            up   infinite          0/2/0/2 tsscl[001-002]
+spdifazio          up   infinite          0/2/0/2 tsdcl[001-002]
+tdmusho            up   infinite          0/2/0/2 ttmcm[100-101]
+vyakkerman         up   infinite          1/0/0/1 tsacs001
+zbetienne          up   infinite        0/24/0/24 tzecl[100-107],tzecs[100-115]
+zbetienne_large    up   infinite          0/8/0/8 tzecl[100-107]
+zbetienne_small    up   infinite        0/16/0/16 tzecs[100-115]
+</pre></div>
+</div>
+<p>Now you know the partitions on the cluster and based on your knowledge of the job you can decide on which partition submit your job.
+Now we will learn about the kinds of jobs that can be submitted and how to submit jobs.</p>
+</section>
+<section id="job-submission">
+<h2>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this headline">¶</a></h2>
+<p>As HPC users, the main activity on the cluster is the submission of jobs.
+You submit jobs to the cluster, SLURM will decide on which machines (compute nodes) the jobs will run and will give you the tools to monitor the status of the jobs submitted.
+There are two kinds of jobs that you can submit to a HPC cluster: Interactive and non-interactive jobs.</p>
+<p>You launch an <strong>interative job</strong> when you expect to execute the work step by step, controlling the execution of tasks and receiving the output as soon it is produced.
+This is the closest to the way you operate on your own computer.
+You ask the computer to perform some action and you wait to the work to be completed before asking more actions to perform.
+Working interactively is how you learn the steps the computer must follow to produce the results. Later on we automatize these steps so they happen in sucession without our actual intervention.
+When we know all the steps needed to achive a result we can submit <strong>non-interactive jobs</strong>.
+<strong>Non-iteractive jobs</strong> execute a complete set of tasks without human intervention.
+You provide to SLURM a list of requirements, ie resources needed for the job such as number of machines, CPU cores, memory and time and based on these requierments the job schedular inside SLURM will decide when and where the job will be executed. You also provive a list of commands that will be executed in sucession and those commands will be executed on the machine selected by SLURM to execute your job.
+An HPC cluster can manage many jobs being sumitted and that is how you get the best outcome from that machine.</p>
+<p>In SLURM an interactive job can be lauch with the command <cite>salloc</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ salloc -N3
+salloc: Pending job allocation 3506
+salloc: job 3506 queued and waiting for resources
+salloc: job 3506 has been allocated resources
+salloc: Granted job allocation 3506
+Loading git version 2.29.1 : dev/git/2.29.1
+trcis001:~$
+</pre></div>
+</div>
+<p>The command <cite>salloc</cite> will allocate resources (e.g. nodes or CPU cores), possibly with a set of constraints (e.g. number of processor per node or amount of memory per node).
+<cite>salloc</cite> wil allocate the resources and spawn a shell in which the srun command is used to launch parallel tasks.
+Notice that <cite>salloc</cite> will return a shell on the same machine where the command <cite>salloc</cite> was executed.</p>
+</section>
 </section>
 
 
