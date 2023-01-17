@@ -5,15 +5,15 @@ MATLAB
 
 MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.
 
-Loading Environment Modules
----------------------------
+Loading Matlab using Environment Modules
+----------------------------------------
 
 MATLAB is accessible via environment Modules on Thorny Flat.
 To check which versions are available execute::
 
     trcis001:~$ module avail matlab
 
-    -------------- /shared/modulefiles/tier1 ----------------
+    -------------------- /shared/modulefiles/tier1 --------------------
     matlab/2021a matlab/2022b
 
 Load the desired version with::
