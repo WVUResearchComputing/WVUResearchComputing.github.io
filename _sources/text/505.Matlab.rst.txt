@@ -11,7 +11,7 @@ Loading Environment Modules
 On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
 To access MATLAB on Spruce Knob use::
 
-    trcis001:~$ module load matlab/2018a
+    srih0001:~$ module load matlab/2018a
 
 To access MATLAB on Thorny Flat use::
 
