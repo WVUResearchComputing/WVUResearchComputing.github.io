@@ -197,11 +197,11 @@
 <h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
 To access MATLAB on Spruce Knob use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load matlab/2018a
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab/2018a
 </pre></div>
 </div>
 <p>To access MATLAB on Thorny Flat use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load matlab
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
 </pre></div>
 </div>
 <p>This will select the latest version on the cluster (currenty matlab/2022b).
@@ -225,17 +225,25 @@ graphical interface and using the submission script.</p>
 <h3>Executing Matlab scripts<a class="headerlink" href="#executing-matlab-scripts" title="Permalink to this headline">¶</a></h3>
 <p>Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.</p>
-<p><a class="reference external" href="Media:derivatives.zip">derivatives.zip</a></p>
-<p>Download the file <code class="xref download docutils literal notranslate"><span class="pre">derivatives.zip</span></code>.</p>
-<p>You can create a directory for this, for example MATLAB and uncompress
-there the file <cite>derivatives.zip</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">derivatives</span><span class="o">.</span><span class="n">zip</span>
+<p>To download the code you can execute the following command directly on the cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/derivatives.zip
 </pre></div>
 </div>
-<p>It will uncompress a file called <cite>derivatives.m</cite>, that is the actual
-matlab code that we would like to execute on the cluster.</p>
-<p>The submission script is very simple, for this example we will use a
-single core on a single machine (Script for Thorny Flat):</p>
+<p>Or download the file <a class="reference download internal" download="" href="../_downloads/7b8eb28d6e8d2a3ba139d778731fc14a/derivatives.zip"><code class="xref download docutils literal notranslate"><span class="pre">derivatives.zip</span></code></a>.
+And upload the file to the cluster.</p>
+<p>You can create a directory for this, for example <cite>MATLAB_TUT1</cite> and uncompress
+there the file <cite>derivatives.zip</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mkdir MATLAB_TUT1
+trcis001:~$ cd MATLAB_TUT1
+trcis001:~$ wget https://docs.hpc.wvu.edu/_static/derivatives.zip
+trcis001:~$ unzip derivatives.zip
+</pre></div>
+</div>
+<p>It will uncompress a file called <cite>derivatives.m</cite>.
+The file contains the matlab code that we would like to execute on the cluster.</p>
+<p>Write a submission script for SLURM.
+For this example we will use a single core on a single machine (on Thorny Flat)::
+Use your prefered text editor and type the following lines:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=MATLAB
@@ -388,16 +396,16 @@ job. The output of your execution is stored at MATLAB.o987788</p>
 <section id="using-the-matlab-compiler">
 <h3>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h3>
 <p>The first step is to load matlab to get access to its executables:</p>
-<blockquote>
-<div><p>module load matlab</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
+</pre></div>
+</div>
 <p>Prepare the compilation environment with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mbuild -setup``
-MBUILD configured to use &#39;gcc&#39; for C language compilation.``
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mbuild -setup``
+   MBUILD configured to use &#39;gcc&#39; for C language compilation.``
 
-To choose a different language, execute one from the following:``
- mex -setup C++ -client MBUILD ``
- mex -setup FORTRAN -client MBUILD``
+   To choose a different language, execute one from the following:``
+    mex -setup C++ -client MBUILD ``
+    mex -setup FORTRAN -client MBUILD``
 </pre></div>
 </div>
 <p>You cannot compile matlab scripts that uses the symbolic toolbox</p>
@@ -406,15 +414,16 @@ To choose a different language, execute one from the following:``
 <p><a class="reference external" href="Media:mandelbrot.zip">mandelbrot.zip</a></p>
 <p>Download the file <a class="reference download internal" download="" href="../_downloads/7be180f4e3e0cacc52f7f3a5c4782f3c/mandelbrot.zip"><code class="xref download docutils literal notranslate"><span class="pre">mandelbrot.zip</span></code></a>.</p>
 <p>After uncompress the file “mandelbrot.m”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mcc</span> <span class="o">-</span><span class="n">m</span> <span class="n">mandelbrot</span><span class="o">.</span><span class="n">m</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mcc -m mandelbrot.m
 </pre></div>
 </div>
 <p>It takes a while, when finished you will get some extra files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mandelbrot</span>
-<span class="n">run_mandelbrot</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ ls -1
+mandelbrot
+run_mandelbrot.sh
 </pre></div>
 </div>
-<p>The submission script changes to (On Spruce):</p>
+<p>Write a submission script for SLURM (Spruce Flat):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=MATLAB
