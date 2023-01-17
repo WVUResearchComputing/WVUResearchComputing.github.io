@@ -11,11 +11,11 @@ Loading Environment Modules
 On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
 To access MATLAB on Spruce Knob use::
 
-    $> module load matlab/2018a
+    trcis001:~$ module load matlab/2018a
 
 To access MATLAB on Thorny Flat use::
 
-    $> module load matlab
+    trcis001:~$ module load matlab
 
 This will select the latest version on the cluster (currenty matlab/2022b).
 To check which versions are available execute::
@@ -42,20 +42,27 @@ Executing Matlab scripts
 Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.
 
-`derivatives.zip <Media:derivatives.zip>`__
+To download the code you can execute the following command directly on the cluster::
 
-Download the file :download:`derivatives.zip <../static_/derivatives.zip>`.
+    trcis001:~$ wget https://docs.hpc.wvu.edu/_static/derivatives.zip
 
-You can create a directory for this, for example MATLAB and uncompress
+Or download the file :download:`derivatives.zip <../_static/derivatives.zip>`.
+And upload the file to the cluster.
+
+You can create a directory for this, for example `MATLAB_TUT1` and uncompress
 there the file `derivatives.zip`::
 
-    unzip derivatives.zip
+    trcis001:~$ mkdir MATLAB_TUT1
+    trcis001:~$ cd MATLAB_TUT1
+    trcis001:~$ wget https://docs.hpc.wvu.edu/_static/derivatives.zip
+    trcis001:~$ unzip derivatives.zip
 
-It will uncompress a file called `derivatives.m`, that is the actual
-matlab code that we would like to execute on the cluster.
+It will uncompress a file called `derivatives.m`.
+The file contains the matlab code that we would like to execute on the cluster.
 
-The submission script is very simple, for this example we will use a
-single core on a single machine (Script for Thorny Flat)::
+Write a submission script for SLURM. 
+For this example we will use a single core on a single machine (on Thorny Flat)::
+Use your prefered text editor and type the following lines::
 
     #!/bin/bash
     
@@ -212,13 +219,13 @@ job. The output of your execution is stored at MATLAB.o987788
 Using the Matlab Compiler
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first step is to load matlab to get access to its executables:
+The first step is to load matlab to get access to its executables::
 
-    module load matlab
+    trcis001:~$ module load matlab
 
 Prepare the compilation environment with::
 
-       $ mbuild -setup``
+    trcis001:~$ mbuild -setup``
        MBUILD configured to use 'gcc' for C language compilation.``
 
        To choose a different language, execute one from the following:``
@@ -237,14 +244,15 @@ Download the file :download:`mandelbrot.zip <../_static/mandelbrot.zip>`.
 
 After uncompress the file "mandelbrot.m"::
 
-    mcc -m mandelbrot.m
+    trcis001:~$ mcc -m mandelbrot.m
 
 It takes a while, when finished you will get some extra files::
 
+    trcis001:~$ ls -1
     mandelbrot
     run_mandelbrot.sh
 
-The submission script changes to (On Spruce)::
+Write a submission script for SLURM (Spruce Flat)::
 
     #!/bin/bash
     
