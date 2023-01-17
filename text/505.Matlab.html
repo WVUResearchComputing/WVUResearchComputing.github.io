@@ -197,11 +197,23 @@
 <h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
 To access MATLAB on Spruce Knob use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">a</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load matlab/2018a
 </pre></div>
 </div>
 <p>To access MATLAB on Thorny Flat use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="mi">2018</span><span class="n">b</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load matlab
+</pre></div>
+</div>
+<p>This will select the latest version on the cluster (currenty matlab/2022b).
+To check which versions are available execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab
+
+-------------- /shared/modulefiles/tier1 ----------------
+matlab/2021a matlab/2022b
+</pre></div>
+</div>
+<p>Load the desired version with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab/2021a
 </pre></div>
 </div>
 </section>
@@ -214,37 +226,40 @@ graphical interface and using the submission script.</p>
 <p>Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.</p>
 <p><a class="reference external" href="Media:derivatives.zip">derivatives.zip</a></p>
+<p>Download the file <code class="xref download docutils literal notranslate"><span class="pre">derivatives.zip</span></code>.</p>
 <p>You can create a directory for this, for example MATLAB and uncompress
-there the file derivatives.zip:</p>
+there the file <cite>derivatives.zip</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">derivatives</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
-<p>It will uncompress a file called “derivatives.m”, that is the actual
+<p>It will uncompress a file called <cite>derivatives.m</cite>, that is the actual
 matlab code that we would like to execute on the cluster.</p>
 <p>The submission script is very simple, for this example we will use a
-single core (On Spruce):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
+single core on a single machine (Script for Thorny Flat):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
-#PBS -N MATLAB
-#PBS -l nodes=1:ppn=1
-#PBS -l walltime=1:00:00
-#PBS -m ae
-#PBS -q debug
+#SBATCH --job-name=MATLAB
+#SBATCH --output=matlab.out
+#SBATCH --partition=standby
+
+#SBATCH --time=10:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=5000
 
 module purge
-module load matlab/2018a
+module load matlab
 
-cd $PBS_O_WORKDIR
+cd $SLURM_SUBMIT_DIR
 matlab -nodisplay -r derivatives
 </pre></div>
 </div>
-<p>Store this lines into a file called runjob.pbs</p>
-<p>This submission script is telling the PBS system that we are creating a
-job called “MATLAB”, that will use one node (nodes=1) and one core per
-node (ppn=1), during one hour (walltime=1:00:00). I will be notified by
-email (-m ae) either for the job being aborted or ended. The queue were
-the job is submitted is called “debug” but you can also choose other
-queues such as “comm_mmem_week” or “comm_mmem_day”. that will offer
+<p>Store this lines into a file called <cite>runjob.slurm</cite></p>
+<p>This submission script is telling the SLURM workload manager that we are creating a
+job called “MATLAB”, that will use one node (<cite>–ntasks=1</cite>) and one core per
+node (<cite>–cpus-per-task=1</cite>), during 10 minutes (<cite>–time=10:00</cite>).
+The partition were the job is submitted is called <cite>standby</cite> but you can also choose other
+partitions such as <cite>comm_mmem_week</cite> or <cite>comm_mmem_day</cite>. that will offer
 extended periods of time.</p>
 <p>The lines module purge and module load statistics/matlab/2014a will
 prepare the environment for executing Matlab on the HPC cluster.</p>
@@ -253,21 +268,22 @@ without opening the graphical user interface (GUI). Notive that you
 should execute matlab -nodisplay -r derivatives without adding the “.m”.
 Matlab will always search for a file called “derivatives.m”</p>
 <p>You submit the job from the command line executing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$qsub runjob.pbs
-987788.srih0001.hpc.wvu.edu
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
+trcis001:~$ sbatch runjob.slurm
+987788
 </pre></div>
 </div>
 <p>You should get like above the JobID, an identifier that allow you to
 keep track of your execution. You can monitor the execution like this:
 When in queue, ie, waiting for execution:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue 987788
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - ------
 987788.srih0001            MATLAB           gufranco               0 Q debug
 </pre></div>
 </div>
 <p>When running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue 987788
 Job ID                    Name             User            Time Use S Queue
 
 ------------------------- ---------------- --------------- -------- - ------
@@ -275,7 +291,7 @@ Job ID                    Name             Use
 </pre></div>
 </div>
 <p>When finished:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue 987788
 
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - -----
@@ -373,7 +389,7 @@ job. The output of your execution is stored at MATLAB.o987788</p>
 <h3>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h3>
 <p>The first step is to load matlab to get access to its executables:</p>
 <blockquote>
-<div><p>module load statistics/matlab/2014a</p>
+<div><p>module load matlab</p>
 </div></blockquote>
 <p>Prepare the compilation environment with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mbuild -setup``
@@ -388,6 +404,7 @@ To choose a different language, execute one from the following:``
 <p><a class="reference external" href="https://www.mathworks.com/products/ineligible_programs.html">https://www.mathworks.com/products/ineligible_programs.html</a></p>
 <p>So we will use another script for this tutorial.</p>
 <p><a class="reference external" href="Media:mandelbrot.zip">mandelbrot.zip</a></p>
+<p>Download the file <a class="reference download internal" download="" href="../_downloads/7be180f4e3e0cacc52f7f3a5c4782f3c/mandelbrot.zip"><code class="xref download docutils literal notranslate"><span class="pre">mandelbrot.zip</span></code></a>.</p>
 <p>After uncompress the file “mandelbrot.m”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mcc</span> <span class="o">-</span><span class="n">m</span> <span class="n">mandelbrot</span><span class="o">.</span><span class="n">m</span>
 </pre></div>
@@ -398,23 +415,28 @@ To choose a different language, execute one from the following:``
 </pre></div>
 </div>
 <p>The submission script changes to (On Spruce):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
-#PBS -N MATLAB
-#PBS -l nodes=1:ppn=1
-#PBS -l walltime=1:00:00
-#PBS -m ae
-#PBS -q debug
+#SBATCH --job-name=MATLAB
+#SBATCH --output=matlab.out
+#SBATCH --partition=standby
 
-module purge
-module load matlab/2018a
+#SBATCH --time=10:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=5000
 
-cd $PBS_O_WORKDIR
+module purge
+module load matlab
+
+cd $SLURM_SUBMIT_DIR
 ./run_mandelbrot.sh /shared/software/MATLAB/R2014a
 </pre></div>
 </div>
 <p>After submit the job with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
+trcis001:~$ sbatch runjob.slurm
+987788
 </pre></div>
 </div>
 <p>You get the results on “MATLAB.o#######” with the corresponding JobID</p>
