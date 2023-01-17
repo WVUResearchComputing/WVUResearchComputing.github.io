@@ -11,11 +11,23 @@ Loading Environment Modules
 On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
 To access MATLAB on Spruce Knob use::
 
-  module load matlab/2018a
+    $> module load matlab/2018a
 
 To access MATLAB on Thorny Flat use::
 
-  module load matlab/2018b
+    $> module load matlab
+
+This will select the latest version on the cluster (currenty matlab/2022b).
+To check which versions are available execute::
+
+    trcis001:~$ module avail matlab
+
+    -------------- /shared/modulefiles/tier1 ----------------
+    matlab/2021a matlab/2022b
+
+Load the desired version with::
+
+    trcis001:~$ module avail matlab/2021a
 
 
 Running Matlab scripts on a HPC cluster
@@ -32,39 +44,43 @@ of a function to find extrema and inflection points of a given function.
 
 `derivatives.zip <Media:derivatives.zip>`__
 
+Download the file :download:`derivatives.zip <../static_/derivatives.zip>`.
+
 You can create a directory for this, for example MATLAB and uncompress
-there the file derivatives.zip::
+there the file `derivatives.zip`::
 
     unzip derivatives.zip
 
-It will uncompress a file called "derivatives.m", that is the actual
+It will uncompress a file called `derivatives.m`, that is the actual
 matlab code that we would like to execute on the cluster.
 
 The submission script is very simple, for this example we will use a
-single core (On Spruce)::
+single core on a single machine (Script for Thorny Flat)::
 
-    #!/bin/sh
-
-    #PBS -N MATLAB
-    #PBS -l nodes=1:ppn=1
-    #PBS -l walltime=1:00:00
-    #PBS -m ae
-    #PBS -q debug
+    #!/bin/bash
+    
+    #SBATCH --job-name=MATLAB
+    #SBATCH --output=matlab.out
+    #SBATCH --partition=standby
+    
+    #SBATCH --time=10:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=1
+    #SBATCH --mem-per-cpu=5000
 
     module purge
-    module load matlab/2018a
+    module load matlab
 
-    cd $PBS_O_WORKDIR
+    cd $SLURM_SUBMIT_DIR
     matlab -nodisplay -r derivatives
 
-Store this lines into a file called runjob.pbs
+Store this lines into a file called `runjob.slurm`
 
-This submission script is telling the PBS system that we are creating a
-job called "MATLAB", that will use one node (nodes=1) and one core per
-node (ppn=1), during one hour (walltime=1:00:00). I will be notified by
-email (-m ae) either for the job being aborted or ended. The queue were
-the job is submitted is called "debug" but you can also choose other
-queues such as "comm\_mmem\_week" or "comm\_mmem\_day". that will offer
+This submission script is telling the SLURM workload manager that we are creating a
+job called "MATLAB", that will use one node (`--ntasks=1`) and one core per
+node (`--cpus-per-task=1`), during 10 minutes (`--time=10:00`). 
+The partition were the job is submitted is called `standby` but you can also choose other
+partitions such as `comm\_mmem\_week` or `comm\_mmem\_day`. that will offer
 extended periods of time.
 
 The lines module purge and module load statistics/matlab/2014a will
@@ -77,21 +93,22 @@ Matlab will always search for a file called "derivatives.m"
 
 You submit the job from the command line executing::
 
-    $qsub runjob.pbs
-    987788.srih0001.hpc.wvu.edu
+    trcis001:~$ module load sched/slurm/22.05 
+    trcis001:~$ sbatch runjob.slurm
+    987788
 
 You should get like above the JobID, an identifier that allow you to
 keep track of your execution. You can monitor the execution like this:
 When in queue, ie, waiting for execution::
 
-    $ qstat 987788
+    trcis001:~$ squeue 987788
     Job ID                    Name             User            Time Use S Queue
     ------------------------- ---------------- --------------- -------- - ------
     987788.srih0001            MATLAB           gufranco               0 Q debug
 
 When running::
 
-    $ qstat 987788
+    trcis001:~$ squeue 987788
     Job ID                    Name             User            Time Use S Queue
 
     ------------------------- ---------------- --------------- -------- - ------
@@ -99,7 +116,7 @@ When running::
 
 When finished::
 
-    $ qstat 987788
+    trcis001:~$ squeue 987788
 
     Job ID                    Name             User            Time Use S Queue
     ------------------------- ---------------- --------------- -------- - -----
@@ -197,7 +214,7 @@ Using the Matlab Compiler
 
 The first step is to load matlab to get access to its executables:
 
-    module load statistics/matlab/2014a
+    module load matlab
 
 Prepare the compilation environment with::
 
@@ -216,6 +233,8 @@ So we will use another script for this tutorial.
 
 `mandelbrot.zip <Media:mandelbrot.zip>`__
 
+Download the file :download:`mandelbrot.zip <../_static/mandelbrot.zip>`.
+
 After uncompress the file "mandelbrot.m"::
 
     mcc -m mandelbrot.m
@@ -227,23 +246,28 @@ It takes a while, when finished you will get some extra files::
 
 The submission script changes to (On Spruce)::
 
-     #!/bin/sh
+    #!/bin/bash
+    
+    #SBATCH --job-name=MATLAB
+    #SBATCH --output=matlab.out
+    #SBATCH --partition=standby
+    
+    #SBATCH --time=10:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=1
+    #SBATCH --mem-per-cpu=5000
 
-     #PBS -N MATLAB
-     #PBS -l nodes=1:ppn=1
-     #PBS -l walltime=1:00:00
-     #PBS -m ae
-     #PBS -q debug
+    module purge
+    module load matlab
 
-     module purge
-     module load matlab/2018a
-
-     cd $PBS_O_WORKDIR
-     ./run_mandelbrot.sh /shared/software/MATLAB/R2014a
+    cd $SLURM_SUBMIT_DIR
+    ./run_mandelbrot.sh /shared/software/MATLAB/R2014a
 
 After submit the job with::
 
-    qsub runjob.pbs
+    trcis001:~$ module load sched/slurm/22.05 
+    trcis001:~$ sbatch runjob.slurm
+    987788
 
 You get the results on "MATLAB.o#######" with the corresponding JobID
 

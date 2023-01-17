@@ -157,9 +157,40 @@ Now we will learn about the kinds of jobs that can be submitted and how to submi
 Job Submission
 --------------
 
-As HPC users, the main activity on the cluster is the submission of jobs. 
-You submit jobs to the cluster, SLURM will decide on which machines (compute nodes) the jobs will run and will give you the tools to monitor the status of the jobs submitted.
-There are two kinds of jobs that you can submit to a HPC cluster: Interactive and non-interactive jobs.
+The main purpuse of using an HPC cluster is the execution of jobs.
+In particular jobs that due their characteristics are impractical to be executed on a normal desktop computer or laptop.
+Such is the case of jobs that could take several hours or use significant amount of resources like multiple CPU cores or memory.
+
+As we learn above an HPC has a variety of computers with particular purposes.
+Computationally intese calculation must only take place on compute nodes.
+Login nodes, the computers you first reach when connected to the cluster should be spared from any intense workload as these computers serve several other users and running on them will slow the machine and prevent others from executing effectively even the most simple commands.
+Short post processing tasks are acceptable on login nodes.
+As a rule of thumb, if a task takes more than one core or last for more than a few minutes it should run on a compute node instead of a login node.
+
+There are two kind of jobs that can be executed on an HPC cluster, interactive and non-interactive jobs.
+Interactive jobs are those where you receive resouces for you to use in real time, very similar to the way you use your own computer.
+Interactive jobs are a good solution when you want to learn the steps needed to achieve the results you need.
+Later on you can write those steps in the form of scripts and let the computer to execute them in your absence.
+
+Non-interactive jobs are the solution to jobs that take hours to execute or to run several jobs on the cluster.
+In non-interactive jobs you prepare an script, a recipe, indicating the computer, step by step, how to get the results that will allow you to take decisions later on or producing the final results for that level in your research.
+
+Regardless of running, interactive or non-interactive jobs, SLURM, as workload manager, will decide on which machines (compute nodes) the jobs will run and will give you the tools to monitor the status of the jobs submitted.
+It is time to learn the basics of submitting interactive and non-interactive jobs.
+
+A very simple way of launch an interactive job is using the command `srun`::
+
+   trcis001:~$ srun --pty bash 
+   srun: job 22432 queued and waiting for resources
+   srun: job 22432 has been allocated resources
+   tzecs115:~$ 
+
+Notice that `srun` is actually doing a double function. From one side is creating a new job (In the case above the job with ID=22432) followed by a terminal session on the machine assigned to the job.
+In the example above the job is requesting default values.
+The partition is set to `standby` which offers a walltime of 4 hours.
+No selecting any number of nodes or cores will automaticaly assigned a single core on a single machine.
+
+
 
 You launch an **interative job** when you expect to execute the work step by step, controlling the execution of tasks and receiving the output as soon it is produced.
 This is the closest to the way you operate on your own computer. 
