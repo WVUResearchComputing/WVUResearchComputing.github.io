@@ -105,11 +105,14 @@
 <li class="toctree-l2"><a class="reference internal" href="504.Julia.html">Julia Language</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MATLAB</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#loading-environment-modules">Loading Environment Modules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-matlab-scripts-on-a-hpc-cluster">Running Matlab scripts on a HPC cluster</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#executing-matlab-scripts">Executing Matlab scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-execution-using-open-on-demand">Interactive execution using Open On-Demand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-execution-on-the-terminal">Interactive execution on the terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-interactive-execution-via-job-submission">Non-interactive execution via job submission</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#execution-matlab-scripts-m-files">Execution Matlab scripts (.m files)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-the-matlab-compiler">Using the Matlab Compiler</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="506.Perl.html">Perl Language</a></li>
@@ -195,16 +198,7 @@
 <p>MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.</p>
 <section id="loading-environment-modules">
 <h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
-<p>On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
-To access MATLAB on Spruce Knob use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>srih0001:~$ module load matlab/2018a
-</pre></div>
-</div>
-<p>To access MATLAB on Thorny Flat use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
-</pre></div>
-</div>
-<p>This will select the latest version on the cluster (currenty matlab/2022b).
+<p>MATLAB is accessible via environment Modules on Thorny Flat.
 To check which versions are available execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab
 
@@ -216,13 +210,28 @@ matlab/2021a matlab/2022b
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab/2021a
 </pre></div>
 </div>
+<p>or simply load the latest version executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
+</pre></div>
+</div>
+<p>Notice that the commands above load matlab on the login node.
+You must never use the login node for any execution that last for more than a few seconds.
+Computationally demanding calculations must be executed via job submissions.
+Those jobs could be Interactive via Open On-Demand, inteeractive via terminal or non-interactive jobs for large unattended executions.
+In the following sections we will cover how to request jobs under these three modes.</p>
 </section>
-<section id="running-matlab-scripts-on-a-hpc-cluster">
-<h2>Running Matlab scripts on a HPC cluster<a class="headerlink" href="#running-matlab-scripts-on-a-hpc-cluster" title="Permalink to this headline">¶</a></h2>
+<section id="interactive-execution-using-open-on-demand">
+<h2>Interactive execution using Open On-Demand<a class="headerlink" href="#interactive-execution-using-open-on-demand" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="interactive-execution-on-the-terminal">
+<h2>Interactive execution on the terminal<a class="headerlink" href="#interactive-execution-on-the-terminal" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="non-interactive-execution-via-job-submission">
+<h2>Non-interactive execution via job submission<a class="headerlink" href="#non-interactive-execution-via-job-submission" title="Permalink to this headline">¶</a></h2>
 <p>This simple tutorial explains how to use Matlab without launching the
 graphical interface and using the submission script.</p>
-<section id="executing-matlab-scripts">
-<h3>Executing Matlab scripts<a class="headerlink" href="#executing-matlab-scripts" title="Permalink to this headline">¶</a></h3>
+<section id="execution-matlab-scripts-m-files">
+<h3>Execution Matlab scripts (.m files)<a class="headerlink" href="#execution-matlab-scripts-m-files" title="Permalink to this headline">¶</a></h3>
 <p>Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.</p>
 <p>To download the code you can execute the following command directly on the cluster:</p>
@@ -456,6 +465,9 @@ trcis001:~$ sbatch runjob.slurm
 </figcaption>
 </figure>
 </section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 

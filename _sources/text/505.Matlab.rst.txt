@@ -8,16 +8,7 @@ MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment a
 Loading Environment Modules
 ---------------------------
 
-On WVU clusters, Spruce Knob and Thorny Flat, MATLAB is accessible via environment Modules.
-To access MATLAB on Spruce Knob use::
-
-    srih0001:~$ module load matlab/2018a
-
-To access MATLAB on Thorny Flat use::
-
-    trcis001:~$ module load matlab
-
-This will select the latest version on the cluster (currenty matlab/2022b).
+MATLAB is accessible via environment Modules on Thorny Flat.
 To check which versions are available execute::
 
     trcis001:~$ module avail matlab
@@ -29,15 +20,32 @@ Load the desired version with::
 
     trcis001:~$ module avail matlab/2021a
 
+or simply load the latest version executing::
 
-Running Matlab scripts on a HPC cluster
----------------------------------------
+    trcis001:~$ module load matlab
+
+Notice that the commands above load matlab on the login node.
+You must never use the login node for any execution that last for more than a few seconds.
+Computationally demanding calculations must be executed via job submissions.
+Those jobs could be Interactive via Open On-Demand, inteeractive via terminal or non-interactive jobs for large unattended executions.
+In the following sections we will cover how to request jobs under these three modes.
+
+Interactive execution using Open On-Demand
+------------------------------------------
+
+
+Interactive execution on the terminal
+-------------------------------------
+
+
+Non-interactive execution via job submission
+--------------------------------------------
 
 This simple tutorial explains how to use Matlab without launching the
 graphical interface and using the submission script.
 
-Executing Matlab scripts
-~~~~~~~~~~~~~~~~~~~~~~~~
+Execution Matlab scripts (.m files)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.
@@ -283,3 +291,8 @@ You get the results on "MATLAB.o#######" with the corresponding JobID
    :alt: Mandelbrot fractal generated from Matlab
 
    Mandelbrot fractal generated from Matlab
+
+Summary
+-------
+
+
