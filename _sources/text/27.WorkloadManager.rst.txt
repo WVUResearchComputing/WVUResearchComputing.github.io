@@ -185,21 +185,50 @@ A very simple way of launch an interactive job is using the command `srun`::
    srun: job 22432 has been allocated resources
    tzecs115:~$ 
 
-Notice that `srun` is actually doing a double function. From one side is creating a new job (In the case above the job with ID=22432) followed by a terminal session on the machine assigned to the job.
-In the example above the job is requesting default values.
+Notice that `srun` is actually taking a double function. From one side is creating a new job (In the case above the job with ID=22432) followed by a remote terminal session on the machine assigned to the job.
+In the example above the job is requesting default values for all parameters.
 The partition is set to `standby` which offers a walltime of 4 hours.
 No selecting any number of nodes or cores will automaticaly assigned a single core on a single machine.
 
+In the case of needing more resources, maybe a different partition or number of cores add extra arguments to the command line::
 
+    trcis001:~$ srun -p standby -t 40:00 -c 4 --pty bash
 
-You launch an **interative job** when you expect to execute the work step by step, controlling the execution of tasks and receiving the output as soon it is produced.
-This is the closest to the way you operate on your own computer. 
-You ask the computer to perform some action and you wait to the work to be completed before asking more actions to perform.
-Working interactively is how you learn the steps the computer must follow to produce the results. Later on we automatize these steps so they happen in sucession without our actual intervention. 
-When we know all the steps needed to achive a result we can submit **non-interactive jobs**.
-**Non-iteractive jobs** execute a complete set of tasks without human intervention.
-You provide to SLURM a list of requirements, ie resources needed for the job such as number of machines, CPU cores, memory and time and based on these requierments the job schedular inside SLURM will decide when and where the job will be executed. You also provive a list of commands that will be executed in sucession and those commands will be executed on the machine selected by SLURM to execute your job.
-An HPC cluster can manage many jobs being sumitted and that is how you get the best outcome from that machine.
+In the example above we are explicitly selecting `standby` as partition, 40 minutes of walltime and 4 cores o a single compute nodes. The last argument in the srun command line must be the command to be executed. In this case, a bash session once logged into the assigned compute node.
+
+The following is an example of a request for interactive job asking for 1 GPU 8 CPU coress for 2 hours::
+
+    trcis001:~$ srun -p comm_gpu_inter -G 1 -t 2:00:00 -c 8 --pty bash
+
+You can verify the assigned GPU using the command `nvidia-smi`::
+
+	trcis001:~$ srun -p comm_gpu_inter -G 1 -t 2:00:00 -c 8 --pty bash
+	srun: job 22599 queued and waiting for resources
+	srun: job 22599 has been allocated resources
+	tbegq200:~$ nvidia-smi
+	Wed Jan 18 13:27:01 2023       
+	+-----------------------------------------------------------------------------+
+	| NVIDIA-SMI 515.43.04    Driver Version: 515.43.04    CUDA Version: 11.7     |
+	|-------------------------------+----------------------+----------------------+
+	| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+	| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+	|                               |                      |               MIG M. |
+	|===============================+======================+======================|
+	|   0  NVIDIA A100-PCI...  Off  | 00000000:3B:00.0 Off |                    0 |
+	| N/A   28C    P0    31W / 250W |      0MiB / 40960MiB |      0%      Default |
+	|                               |                      |             Disabled |
+	+-------------------------------+----------------------+----------------------+
+																				   
+	+-----------------------------------------------------------------------------+
+	| Processes:                                                                  |
+	|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+	|        ID   ID                                                   Usage      |
+	|=============================================================================|
+	|  No running processes found                                                 |
+	+-----------------------------------------------------------------------------+
+
+The command above shows a NVIDIA A100 as the GPU assigned to us during the lifetime of the job.
+
 
 In SLURM an interactive job can be lauch with the command `salloc`::
 
