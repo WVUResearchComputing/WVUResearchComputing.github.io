@@ -33,21 +33,29 @@ In the following sections we will cover how to request jobs under these three mo
 Interactive execution using Open On-Demand
 ------------------------------------------
 
-.. image:: /_static/Matlab-OOD-1.png
-  :width: 600
-    :alt: Using Matlab with Open On-Demand (figure 1)
+Access Open On-Demand by directing your browser to https://ondemand-tf.hpc.wvu.edu 
 
-.. image:: /_static/Matlab-OOD-2.png
+.. image:: /_static/Matlab-OOD-1.jpg
   :width: 600
-    :alt: Using Matlab with Open On-Demand (figure 2)
+  :alt: Using Matlab with Open On-Demand (figure 1)
 
-.. image:: /_static/Matlab-OOD-3.png
-  :width: 600
-    :alt: Using Matlab with Open On-Demand (figure 3)
+Click on Applications, select Thorny Desktop and fill the form.
 
-.. image:: /_static/Matlab-OOD-4.png
+.. image:: /_static/Matlab-OOD-2.jpg
   :width: 600
-    :alt: Using Matlab with Open On-Demand (figure 4)
+  :alt: Using Matlab with Open On-Demand (figure 2)
+
+Open a Terminal inside the Virtual Desktop, load the matlab module and execute the command `matlab` on the terminal.
+
+.. image:: /_static/Matlab-OOD-3.jpg
+  :width: 600
+  :alt: Using Matlab with Open On-Demand (figure 3)
+
+A new Matlab window will pop up and you can start executing matlab commands.
+
+.. image:: /_static/Matlab-OOD-4.jpg
+  :width: 600
+  :alt: Using Matlab with Open On-Demand (figure 4)
 
 
 Interactive execution on the terminal
