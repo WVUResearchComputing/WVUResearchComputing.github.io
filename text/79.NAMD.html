@@ -233,23 +233,22 @@ current folder:</p>
 ApoA1 has 92K atoms and should run efficiently on a single node.</p>
 <p>First, go to the recently created folder <code class="docutils literal notranslate"><span class="pre">apoa1</span></code> and start creating a file
 runjob.pbs with your text editor of choice:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">apoa1</span>
-<span class="n">vim</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd apoa1
+$&gt; vim runjob.slurm
 </pre></div>
 </div>
 <p>The content of the submission could be like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
-#PBS -N NAMD
-#PBS -l nodes=1:ppn=2
-#PBS -q standby
-#PBS -j oe
+#SBATCH --job-name=NAMD
+#SBATCH -N 1
+#SBATCH -n 2
+#SBATCH -p standby
 
 module purge
 module load atomistic/namd/2.13_multicore
 
-cd $PBS_O_WORKDIR
-
+cd $SLURM_SUBMIT_DIR
 namd2 +p2 +setcpuaffinity apoa1.namd
 </pre></div>
 </div>
@@ -258,8 +257,8 @@ written in bash, one of the several shell interpreters in Linux, for this
 simple example, there is nothing particular for bash and other interpreters
 are possible (csh, ksh, dash) or the system /bin/sh that in the case of
 Spruce is a symbolic link to bash itself.</p>
-<p>The next 4 lines start with #PBS. Those are comments for bash but are
-interpreted by qsub and they are important for requesting resources and
+<p>The next 4 lines start with #SBATCH. Those are comments for bash but are
+interpreted by <cite>sbatch</cite> and they are important for requesting resources and
 configuring several aspects of non-interactive jobs.</p>
 <p>First is the name of the job “NAMD”, totally arbitrary string to identify the job.
 Second is the line requesting resources. In this case we are requesting 2 cores
@@ -283,16 +282,16 @@ NAMD is apoa1.namd and that completes the submission script.</p>
 <section id="submitting-the-job">
 <h2>Submitting the job<a class="headerlink" href="#submitting-the-job" title="Permalink to this headline">¶</a></h2>
 <p>Submit the job with the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch runjob.slurm
 </pre></div>
 </div>
 <p>You should get a line indicating the JobID, I got this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4731853.</span><span class="n">srih0001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4731853</span>
 </pre></div>
 </div>
 <p>You can use the number to monitor the state of the job.</p>
 <p>For example executing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -u $USER
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ squeue -u $USER
 
 active jobs------------------------
 JOBID              USERNAME      STATE PROCS   REMAINING            STARTTIME

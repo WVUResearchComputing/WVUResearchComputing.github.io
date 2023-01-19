@@ -57,24 +57,23 @@ ApoA1 has 92K atoms and should run efficiently on a single node.
 First, go to the recently created folder ``apoa1`` and start creating a file
 runjob.pbs with your text editor of choice::
 
-  cd apoa1
-  vim runjob.pbs
+    $> cd apoa1
+    $> vim runjob.slurm
 
 The content of the submission could be like this::
 
-  #!/bin/bash
+    #!/bin/bash
 
-  #PBS -N NAMD
-  #PBS -l nodes=1:ppn=2
-  #PBS -q standby
-  #PBS -j oe
+    #SBATCH --job-name=NAMD
+    #SBATCH -N 1
+    #SBATCH -n 2
+    #SBATCH -p standby
 
-  module purge
-  module load atomistic/namd/2.13_multicore
+    module purge
+    module load atomistic/namd/2.13_multicore
 
-  cd $PBS_O_WORKDIR
-
-  namd2 +p2 +setcpuaffinity apoa1.namd
+    cd $SLURM_SUBMIT_DIR
+    namd2 +p2 +setcpuaffinity apoa1.namd
 
 The first line is called a shebang and indicates that the file below was
 written in bash, one of the several shell interpreters in Linux, for this
@@ -82,8 +81,8 @@ simple example, there is nothing particular for bash and other interpreters
 are possible (csh, ksh, dash) or the system /bin/sh that in the case of
 Spruce is a symbolic link to bash itself.
 
-The next 4 lines start with #PBS. Those are comments for bash but are
-interpreted by qsub and they are important for requesting resources and
+The next 4 lines start with #SBATCH. Those are comments for bash but are
+interpreted by `sbatch` and they are important for requesting resources and
 configuring several aspects of non-interactive jobs.
 
 First is the name of the job "NAMD", totally arbitrary string to identify the job.
@@ -113,17 +112,17 @@ Submitting the job
 
 Submit the job with the following command::
 
-  qsub runjob.pbs
+    $> sbatch runjob.slurm
 
 You should get a line indicating the JobID, I got this::
 
-  4731853.srih0001.hpc.wvu.edu
+    4731853
 
 You can use the number to monitor the state of the job.
 
 For example executing::
 
-  $ showq -u $USER
+  $ squeue -u $USER
 
   active jobs------------------------
   JOBID              USERNAME      STATE PROCS   REMAINING            STARTTIME
