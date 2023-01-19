@@ -20,13 +20,15 @@ Interactive Computing from the Terminal
 
 First, connect to the cluster using the instructions described on here:ref:`qs-connect:`. Once on the head node you can request an interactive session with::
 
-  $> qsub -I
+    trcis001:~$ module load sched/slurm/22.05
+    trcis001:~$ srun --pty bash
 
-This is the simplest command for requesting an interactive session. Under this command, the queue selected will be ``standby`` with a walltime of 4 hours. The job will allocate one node and one core on the node for the execution.
+This is the simplest command for requesting an interactive session. Under this command, the partition selected will be ``standby`` with a walltime of 4 hours. 
+The job will be allocated on one compute node and one core on that node for the execution.
 
 You can request more cores for your interactive job, for example::
 
-  $> qsub -I -l nodes=1:ppn=4
+    trcis001:~$ srun -n 4 --pty bash
 
 On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. A way of requesting an entire node could be::
 
@@ -37,7 +39,7 @@ Requesting more than 1 core does not necessarily means that your code  will actu
 You can also request GPUs for an interactive job, in that case you have to explicitly request a queue such as `comm_gpu_inter` that offers compute nodes with GPU cards and explicitly request the number of GPUs that you want to use.
 For example if you want to use one GPU card for your execution use::
 
-  $> qsub -I -q comm_gpu_inter -l nodes=1:ppn=8:gpus=1
+    trcis001:~$ srun --pty -p comm_gpu_inter -N 1 -n 8 -G 1 bash
 
 After you submit your request for interactive jobs, you will have to wait a few minutes before you are assigned a compute node. After getting access to the compute node, you can load modules and execute commands as you were on a machine. There are several text-based environments for interactive computing.
 

@@ -225,6 +225,38 @@ In the following sections we will cover how to request jobs under these three mo
 </section>
 <section id="interactive-execution-on-the-terminal">
 <h2>Interactive execution on the terminal<a class="headerlink" href="#interactive-execution-on-the-terminal" title="Permalink to this headline">¶</a></h2>
+<p>From the login node, request a interactive session with SLURM:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
+trcis001:~$ srun -n 4 --pty bash
+srun: job 24328 queued and waiting for resources
+srun: job 24328 has been allocated resources
+tarcl100:~$
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tarcl100:~$ module load matlab
+Loading gcc version 9.3.0 : lang/gcc/9.3.0
+Loading matlab version 2022b : matlab/2022b
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tarcl100:~$ matlab
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                                                                                                                                  &lt; M A T L A B (R) &gt;
+                                                                                                                Copyright 1984-2022 The MathWorks, Inc.
+                                                                                                   R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
+                                                                                                                                   November 17, 2022
+
+
+To get started, type doc.
+For product information, visit www.mathworks.com.
+
+&gt;&gt; 2 + 2
+
+ans =
+
+         4
+</pre></div>
+</div>
 </section>
 <section id="non-interactive-execution-via-job-submission">
 <h2>Non-interactive execution via job submission<a class="headerlink" href="#non-interactive-execution-via-job-submission" title="Permalink to this headline">¶</a></h2>

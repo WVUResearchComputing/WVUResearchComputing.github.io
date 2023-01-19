@@ -209,12 +209,14 @@ Supercomputers are large computing devices usually build as clusters of individu
 <section id="interactive-computing-from-the-terminal">
 <h2>Interactive Computing from the Terminal<a class="headerlink" href="#interactive-computing-from-the-terminal" title="Permalink to this headline">¶</a></h2>
 <p>First, connect to the cluster using the instructions described on here:ref:<cite>qs-connect:</cite>. Once on the head node you can request an interactive session with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
+trcis001:~$ srun --pty bash
 </pre></div>
 </div>
-<p>This is the simplest command for requesting an interactive session. Under this command, the queue selected will be <code class="docutils literal notranslate"><span class="pre">standby</span></code> with a walltime of 4 hours. The job will allocate one node and one core on the node for the execution.</p>
+<p>This is the simplest command for requesting an interactive session. Under this command, the partition selected will be <code class="docutils literal notranslate"><span class="pre">standby</span></code> with a walltime of 4 hours.
+The job will be allocated on one compute node and one core on that node for the execution.</p>
 <p>You can request more cores for your interactive job, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -l nodes=1:ppn=4
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ srun -n 4 --pty bash
 </pre></div>
 </div>
 <p>On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. A way of requesting an entire node could be:</p>
@@ -224,7 +226,7 @@ Supercomputers are large computing devices usually build as clusters of individu
 <p>Requesting more than 1 core does not necessarily means that your code  will actually using those extra cores. It all depends on your code being able to work in parallel directly or indirectly. Directly means that the code use some sort of paralelization such as multithreading such as pthreads or OpenMP, or multiprocessing such as MPI, or any other paralleization in languages such as R or Python that offer libraries for explicit parallelism. Indirectly paralleization means that underlying libraries such as FFTW or OpenBLAS could have been compiled with multithreading support meaning that codes that uses those libraries could take indirectly advantage of parallelism.</p>
 <p>You can also request GPUs for an interactive job, in that case you have to explicitly request a queue such as <cite>comm_gpu_inter</cite> that offers compute nodes with GPU cards and explicitly request the number of GPUs that you want to use.
 For example if you want to use one GPU card for your execution use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -q comm_gpu_inter -l nodes=1:ppn=8:gpus=1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ srun --pty -p comm_gpu_inter -N 1 -n 8 -G 1 bash
 </pre></div>
 </div>
 <p>After you submit your request for interactive jobs, you will have to wait a few minutes before you are assigned a compute node. After getting access to the compute node, you can load modules and execute commands as you were on a machine. There are several text-based environments for interactive computing.</p>

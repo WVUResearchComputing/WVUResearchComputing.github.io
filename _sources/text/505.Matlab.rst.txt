@@ -33,9 +33,60 @@ In the following sections we will cover how to request jobs under these three mo
 Interactive execution using Open On-Demand
 ------------------------------------------
 
+.. image:: /_static/Matlab-OOD-1.png
+  :width: 600
+    :alt: Using Matlab with Open On-Demand (figure 1)
+
+.. image:: /_static/Matlab-OOD-2.png
+  :width: 600
+    :alt: Using Matlab with Open On-Demand (figure 2)
+
+.. image:: /_static/Matlab-OOD-3.png
+  :width: 600
+    :alt: Using Matlab with Open On-Demand (figure 3)
+
+.. image:: /_static/Matlab-OOD-4.png
+  :width: 600
+    :alt: Using Matlab with Open On-Demand (figure 4)
+
 
 Interactive execution on the terminal
 -------------------------------------
+
+From the login node, request a interactive session with SLURM::
+
+    trcis001:~$ module load sched/slurm/22.05
+    trcis001:~$ srun -n 4 --pty bash
+    srun: job 24328 queued and waiting for resources
+    srun: job 24328 has been allocated resources
+    tarcl100:~$
+
+::
+
+    tarcl100:~$ module load matlab
+    Loading gcc version 9.3.0 : lang/gcc/9.3.0
+    Loading matlab version 2022b : matlab/2022b
+
+::
+
+	tarcl100:~$ matlab
+	MATLAB is selecting SOFTWARE OPENGL rendering.
+
+																	  < M A T L A B (R) >
+															Copyright 1984-2022 The MathWorks, Inc.
+													   R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
+																	   November 17, 2022
+
+	 
+	To get started, type doc.
+	For product information, visit www.mathworks.com.
+	 
+	>> 2 + 2
+
+	ans =
+
+		 4
+
 
 
 Non-interactive execution via job submission
