@@ -97,11 +97,10 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors (nano, emacs and vim)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="31.TextEditors.html">Terminal-based Text Editors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html">Workload Manager (SLURM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="34.WorkloadManager.html#samples-of-job-submission-scripts">Samples of Job Submission scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="35.TransferFiles.html">File Transfer (Globus and SFTP)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Web Interface (Open On-Demand)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-computing-from-the-terminal">Interactive Computing from the Terminal</a></li>
@@ -347,27 +346,27 @@ For product information, visit www.mathworks.com.
 <h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h3>
 <p>For Jupyter click on <cite>Ìnteractive Apps &gt; Jupyter Notebook</cite>. A form is shown with all the options available to create the Jupyter session.</p>
 <p>A good starting point is to select <cite>CPython 3.7.4</cite> as the Python version, select <cite>standby</cite> as the queue and <cite>4 hours</cite> as the wall time. There are options for alternative Python versions, queues and walltimes. A short description of each options is shown on the form.</p>
-<a class="reference internal image-reference" href="../_images/OOD-jupyter1.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter-1.jpg"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter-1.jpg" style="width: 600px;" /></a>
 <p>The next fields on the form ask for the number of cores, GPU cards, extra modules and the singularity image in case you have selected that as your Python version.</p>
 <p>Notice that taking advantage of multiple cores depends on your code being able to use those cores. In the case of Python that usually means that your code is using <cite>multiprocessing</cite> module or you are using <cite>numpy</cite> with multi-threading capabilities. The usage of multiple cores is not something that happens automatically so if you are not sure asking for one core is enough. A similar situation happens with GPUs noticing that only the queue <cite>comm_gpu_inter</cite> give you access to GPUs for community nodes.</p>
-<a class="reference internal image-reference" href="../_images/OOD-jupyter2.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter2.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter-2.jpg"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter-2.jpg" style="width: 600px;" /></a>
 <p>Once you have customize the parameters for your Jupyter session, click on <cite>Launch</cite>. Open On demand will launch a new interactive session and when the interactive session is launched you will get a button to connect to the Jupyter notebook.</p>
-<a class="reference internal image-reference" href="../_images/OOD-jupyter3.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter3.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter-3.jpg"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter-3.jpg" style="width: 600px;" /></a>
 <p>The Jupyter session is launched on a compute node. The Jupyter interface shows as file manager where you can select a notebook to launch, upload one from your local computer or create a new Notebook, go to <cite>New &gt; Python 3</cite> to create a new Jupyter notebook with Python 3 as kernel.</p>
-<a class="reference internal image-reference" href="../_images/OOD-jupyter4.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter4.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter-4.jpg"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter-4.jpg" style="width: 600px;" /></a>
 <p>The new notebook give you entries for typing Python instructions that are executed when you type <cite>SHIFT-ENTER</cite></p>
-<a class="reference internal image-reference" href="../_images/OOD-jupyter5.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter5.png" style="width: 600px;" /></a>
-<a class="reference internal image-reference" href="../_images/OOD-jupyter6.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter6.png" style="width: 600px;" /></a>
-<a class="reference internal image-reference" href="../_images/OOD-jupyter7.png"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter7.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter-5.jpg"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter-5.jpg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter-6.jpg"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter-6.jpg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-jupyter-7.jpg"><img alt="OOD Jupyter Notebook" src="../_images/OOD-jupyter-7.jpg" style="width: 600px;" /></a>
 </section>
 <section id="rstudio">
 <h3>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h3>
 <p>Another popular interactive environment is RStudio, select <cite>Interactive Apps &gt; RStudio</cite>. The options in the form are very few. Select a queue such as <cite>standby</cite>, 4 hours of wall time and 1 core.</p>
-<a class="reference internal image-reference" href="../_images/OOD-rstudio1.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-rstudio-1.jpg"><img alt="OOD RStudio" src="../_images/OOD-rstudio-1.jpg" style="width: 600px;" /></a>
 <p>When you click on Launch, Open on Demand will create a new interactive session on Thorny Flat and when the job starts execution, a button appears to open the session on a new tab.</p>
-<a class="reference internal image-reference" href="../_images/OOD-rstudio2.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio2.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-rstudio-2.jpg"><img alt="OOD RStudio" src="../_images/OOD-rstudio-2.jpg" style="width: 600px;" /></a>
 <p>The interface for RStudio shows the commands on the left and variables and plots on the right.</p>
-<a class="reference internal image-reference" href="../_images/OOD-rstudio3.png"><img alt="OOD RStudio" src="../_images/OOD-rstudio3.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-rstudio-3.jpg"><img alt="OOD RStudio" src="../_images/OOD-rstudio-3.jpg" style="width: 600px;" /></a>
 </section>
 </section>
 <section id="matlab">
@@ -375,9 +374,9 @@ For product information, visit www.mathworks.com.
 <p>MATLAB is a numeric computing environment and programming language developed by MathWorks.
 MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages.
 MATLAB can run using Open On-Demand via an app that executes a virtual desktop on a browser tab.</p>
-<a class="reference internal image-reference" href="../_images/OOD-matlab1.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab1.png" style="width: 600px;" /></a>
-<a class="reference internal image-reference" href="../_images/OOD-matlab2.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab2.png" style="width: 600px;" /></a>
-<a class="reference internal image-reference" href="../_images/OOD-matlab3.png"><img alt="OOD MATLAB" src="../_images/OOD-matlab3.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-matlab-1.jpg"><img alt="OOD MATLAB" src="../_images/OOD-matlab-1.jpg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-matlab-2.jpg"><img alt="OOD MATLAB" src="../_images/OOD-matlab-2.jpg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/OOD-matlab-3.jpg"><img alt="OOD MATLAB" src="../_images/OOD-matlab-3.jpg" style="width: 600px;" /></a>
 </section>
 <section id="file-manager">
 <h2>File Manager<a class="headerlink" href="#file-manager" title="Permalink to this headline">¶</a></h2>
