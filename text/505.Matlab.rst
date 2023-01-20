@@ -65,6 +65,10 @@ A new Matlab window will pop up and you can start executing matlab commands.
   :width: 600
   :alt: Using Matlab with Open On-Demand (figure 6)
 
+.. image:: /_static/Matlab-OOD-7.jpg
+  :width: 600
+  :alt: Using Matlab with Open On-Demand (figure 6)
+
 
 Interactive execution on the terminal
 -------------------------------------
