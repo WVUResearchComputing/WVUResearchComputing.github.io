@@ -45,17 +45,25 @@ Click on Applications, select Thorny Desktop and fill the form.
   :width: 600
   :alt: Using Matlab with Open On-Demand (figure 2)
 
-Open a Terminal inside the Virtual Desktop, load the matlab module and execute the command `matlab` on the terminal.
-
 .. image:: /_static/Matlab-OOD-3.jpg
   :width: 600
   :alt: Using Matlab with Open On-Demand (figure 3)
 
-A new Matlab window will pop up and you can start executing matlab commands.
-
 .. image:: /_static/Matlab-OOD-4.jpg
   :width: 600
   :alt: Using Matlab with Open On-Demand (figure 4)
+
+Open a Terminal inside the Virtual Desktop, load the matlab module and execute the command `matlab` on the terminal.
+
+.. image:: /_static/Matlab-OOD-5.jpg
+  :width: 600
+  :alt: Using Matlab with Open On-Demand (figure 5)
+
+A new Matlab window will pop up and you can start executing matlab commands.
+
+.. image:: /_static/Matlab-OOD-6.jpg
+  :width: 600
+  :alt: Using Matlab with Open On-Demand (figure 6)
 
 
 Interactive execution on the terminal
@@ -80,10 +88,10 @@ From the login node, request a interactive session with SLURM::
 	tarcl100:~$ matlab
 	MATLAB is selecting SOFTWARE OPENGL rendering.
 
-																	  < M A T L A B (R) >
-															Copyright 1984-2022 The MathWorks, Inc.
-													   R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
-																	   November 17, 2022
+											  < M A T L A B (R) >
+									Copyright 1984-2022 The MathWorks, Inc.
+							   R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
+											   November 17, 2022
 
 	 
 	To get started, type doc.
