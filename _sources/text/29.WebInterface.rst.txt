@@ -160,11 +160,11 @@ First, go to `Thorny Flat On Demand Dashboard <https://ondemand-tf.hpc.wvu.edu>`
 
 The first page you will see is asking for your credentials
 
-.. image:: /_static/OOD-CAS.png
+.. image:: /_static/OOD-CAS.jpg
 
 After entering your credentials and using your DUO authentication you will land on the Open On Demand Dashboard:
 
-.. image:: /_static/OOD-Dashboard.png
+.. image:: /_static/OOD-Dashboard.jpg
 
 From this dashboard you can launch interactive jobs, open terminals and access a file manager, we will see each of those operations in the next sections.
 
@@ -266,7 +266,7 @@ The Open On demand dashboard also offers a simple but useful File Manager that g
 To access the File Manager on the Dashboard, go to `Files > Home Directory`.
 The File Manager is shown as
 
-.. image:: /_static/OOD-files.png
+.. image:: /_static/OOD-files.jpg
   :width: 600
   :alt: OOD File Manager
 
@@ -275,7 +275,7 @@ Job manager
 
 Another useful tool integrated with the Dashboard is the Job Manager, you can see the jobs currently submitted on the cluster. Go to `Jobs > Active Jobs` to access the Job Manager
 
-.. image:: /_static/OOD-jobs.png
+.. image:: /_static/OOD-jobs.jpg
   :width: 600
   :alt: OOD Job Manager
 
@@ -284,7 +284,7 @@ Job composer
 
 Another useful tool integrated with the Dashboard is the Job Composer, you can create jobs and submit them to the cluster via a web interface. Go to `Jobs > Jobs Composer` to access the tool.
 
-.. image:: /_static/OOD-JobComposer.png
+.. image:: /_static/OOD-JobComposer.jpg
   :width: 600
   :alt: OOD Job Composer
 
@@ -295,7 +295,7 @@ Finally a Terminal session can be opened from the dashboard, the terminal runs o
 It has, however a short limit of time to be alive if no command is typed on it. 
 The terminal is intended for quick commands only.
 
-.. image:: /_static/OOD-Terminal.png
+.. image:: /_static/OOD-Terminal.jpg
   :width: 600
   :alt: OOD Terminal
 
