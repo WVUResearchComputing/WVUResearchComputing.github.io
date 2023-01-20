@@ -140,10 +140,10 @@ From the login node, request a interactive session with SLURM::
 	tarcl100:~$ matlab
 	MATLAB is selecting SOFTWARE OPENGL rendering.
 
-					  < M A T L A B (R) >
-			Copyright 1984-2022 The MathWorks, Inc.
-	   R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
-					   November 17, 2022
+                                      < M A T L A B (R) >
+                             Copyright 1984-2022 The MathWorks, Inc.
+                        R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
+                                       November 17, 2022
 
 	 
 	To get started, type doc.
