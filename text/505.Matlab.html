@@ -104,14 +104,11 @@
 <li class="toctree-l2"><a class="reference internal" href="503.R.html">R Language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="504.Julia.html">Julia Language</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MATLAB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#loading-matlab-using-environment-modules">Loading Matlab using Environment Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-execution-using-open-on-demand">Interactive execution using Open On-Demand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-execution-on-the-terminal">Interactive execution on the terminal</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#non-interactive-execution-via-job-submission">Non-interactive execution via job submission</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#execution-matlab-scripts-m-files">Execution Matlab scripts (.m files)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-the-matlab-compiler">Using the Matlab Compiler</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-matlab-using-environment-modules">Loading Matlab using Environment Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-interactive-execution-via-job-submission">Non-interactive execution via job submission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-matlab-compiler">Using the Matlab Compiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
@@ -195,7 +192,62 @@
             
   <section id="matlab">
 <span id="sp-matlab"></span><h1>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h1>
-<p>MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.</p>
+<p>MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks.
+MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.</p>
+<p>There are several ways of working with Matlab.
+As a desktop application you can work interactively using Matlab’s graphical user interface (GUI). There you can type commmands and see those executed in real time.
+You can also load scripts and produce plots.
+The GUI offers a variety of benefits, autocompletion, plot displaying and documentation.</p>
+<p>An alternative to the GUI is a terminal-based interactive interface.
+You can execute the same commands but you work on a terminal.
+Depending if the terminal can create windows or not, you coul be forced to export plots as images instead of visualizing those directly on your screen.</p>
+<p>Finally, ther is the option of executing Matlab scripts (.m files) calling Matlab as the interpreter of the code.
+This option is the closest to the original spirit of working on an HPC cluster.
+The work is prepared to be executed without human intervention once the job executes.</p>
+<p>In the following sections we will cover how to request jobs under these three modes.</p>
+<p>At the end we will present a small introduction to strategies to improve performance of Matlab jobs.
+One way is via Compiling the code, another is adding some parallelization to take advantage of multicore compute nodes.</p>
+<section id="interactive-execution-using-open-on-demand">
+<h2>Interactive execution using Open On-Demand<a class="headerlink" href="#interactive-execution-using-open-on-demand" title="Permalink to this headline">¶</a></h2>
+<p>An HPC cluster is conglomerate of computers inteded to be operated as a single machine.
+This is different from the way you work on a normal desktop computer, we you are completely in control of the applications launched, many of them with graphical interfaces.
+The HPC cluster offers a web interface called Open On-Demand where you can launch an interactive job that creates a virtual desktop, allowing you to work on the cluster as close as possible as working on a desktop machine.
+The virtual desktop will be running on a compute node with all the computational power associated with it.
+The only downside could be the responsiveness to commands depending on how fast is the network between your computer and the the HPC cluster.</p>
+<p>To Access Open On-Demand, direct your web browser to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">https://ondemand-tf.hpc.wvu.edu</a>
+Open On-Demand support modern web browsers such as Mozilla Firefox, Google Chrome, macOS Safari and Microsoft Edge.
+Once you connect to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">https://ondemand-tf.hpc.wvu.edu</a> you will be directed to WVU Single Sign-On (SSO).
+You will have to enter your username and password and authorize your access with DUO.
+Once you succeed in the authorization you will land on the Open On-Demand dashboard shown below.</p>
+<a class="reference internal image-reference" href="../_images/Matlab-OOD-1.jpg"><img alt="Using Matlab with Open On-Demand (figure 1)" src="../_images/Matlab-OOD-1.jpg" style="width: 600px;" /></a>
+<p>Click on “Interactive Apps” and select “Thorny Desktop”
+A formulary will ask you to selected the “partition,” “walltime” and number of “CPU cores” to use during your interactive session.
+The screenshots below show some good values for a normal execution of Matlab on the cluster.</p>
+<a class="reference internal image-reference" href="../_images/Matlab-OOD-2.jpg"><img alt="Using Matlab with Open On-Demand (figure 2)" src="../_images/Matlab-OOD-2.jpg" style="width: 600px;" /></a>
+<p>Here we are using “standby” as SLURM partition, 1 hour of walltime and 1 CPU core.
+There is not much advantage on requesting more than 2 CPU cores if your Matlab code is not using some sort of parallel programming.
+Go to the bottom and click “Launch”</p>
+<a class="reference internal image-reference" href="../_images/Matlab-OOD-3.jpg"><img alt="Using Matlab with Open On-Demand (figure 3)" src="../_images/Matlab-OOD-3.jpg" style="width: 600px;" /></a>
+<p>The browser tab will change to show you the current list of “Interactive Sessions” running in Open On-Demand.
+On the top of the list is your newely created “Thorny Desktop” session.
+It will be waiting from a few seconds to some munutes until a compute node is assigned to the job and the Virtual Desktop is created there.
+Once the virtual desktop is created a button “Launch Thorny Desktop” appears and clicking there will open a new browser tab with a view on a Linux desktop.
+The Linux desktop selected is very clean to prevent wasting resources.
+The screenshot below shows how the desktop looks like.
+Click on the Terminal button and load the module for Matlab</p>
+<a class="reference internal image-reference" href="_static/Matlab-OOD-4.jpg"><img alt="Using Matlab with Open On-Demand (figure 4)" src="_static/Matlab-OOD-4.jpg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/Matlab-OOD-5.jpg"><img alt="Using Matlab with Open On-Demand (figure 5)" src="../_images/Matlab-OOD-5.jpg" style="width: 600px;" /></a>
+<p>Once the module is loaded execute the command <cite>matlab</cite> on the terminal.
+With GUI of matlab will open after a few seconds.
+A screen will will show the version being loaded</p>
+<a class="reference internal image-reference" href="../_images/Matlab-OOD-6.jpg"><img alt="Using Matlab with Open On-Demand (figure 6)" src="../_images/Matlab-OOD-6.jpg" style="width: 600px;" /></a>
+<p>Now you can start executing matlab commands in the “Command Window”.
+You can also load .m files and create plots as shown below.</p>
+<a class="reference internal image-reference" href="../_images/Matlab-OOD-7.jpg"><img alt="Using Matlab with Open On-Demand (figure 6)" src="../_images/Matlab-OOD-7.jpg" style="width: 600px;" /></a>
+</section>
+<section id="interactive-execution-on-the-terminal">
+<h2>Interactive execution on the terminal<a class="headerlink" href="#interactive-execution-on-the-terminal" title="Permalink to this headline">¶</a></h2>
+</section>
 <section id="loading-matlab-using-environment-modules">
 <h2>Loading Matlab using Environment Modules<a class="headerlink" href="#loading-matlab-using-environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>MATLAB is accessible via environment Modules on Thorny Flat.
@@ -216,26 +268,7 @@ matlab/2021a matlab/2022b
 </div>
 <p>Notice that the commands above load matlab on the login node.
 You must never use the login node for any execution that last for more than a few seconds.
-Computationally demanding calculations must be executed via job submissions.
-Those jobs could be Interactive via Open On-Demand, inteeractive via terminal or non-interactive jobs for large unattended executions.
-In the following sections we will cover how to request jobs under these three modes.</p>
-</section>
-<section id="interactive-execution-using-open-on-demand">
-<h2>Interactive execution using Open On-Demand<a class="headerlink" href="#interactive-execution-using-open-on-demand" title="Permalink to this headline">¶</a></h2>
-<p>Access Open On-Demand by directing your browser to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">https://ondemand-tf.hpc.wvu.edu</a></p>
-<a class="reference internal image-reference" href="../_images/Matlab-OOD-1.jpg"><img alt="Using Matlab with Open On-Demand (figure 1)" src="../_images/Matlab-OOD-1.jpg" style="width: 600px;" /></a>
-<p>Click on Applications, select Thorny Desktop and fill the form.</p>
-<a class="reference internal image-reference" href="../_images/Matlab-OOD-2.jpg"><img alt="Using Matlab with Open On-Demand (figure 2)" src="../_images/Matlab-OOD-2.jpg" style="width: 600px;" /></a>
-<a class="reference internal image-reference" href="../_images/Matlab-OOD-3.jpg"><img alt="Using Matlab with Open On-Demand (figure 3)" src="../_images/Matlab-OOD-3.jpg" style="width: 600px;" /></a>
-<a class="reference internal image-reference" href="../_images/Matlab-OOD-4.jpg"><img alt="Using Matlab with Open On-Demand (figure 4)" src="../_images/Matlab-OOD-4.jpg" style="width: 600px;" /></a>
-<p>Open a Terminal inside the Virtual Desktop, load the matlab module and execute the command <cite>matlab</cite> on the terminal.</p>
-<a class="reference internal image-reference" href="../_images/Matlab-OOD-5.jpg"><img alt="Using Matlab with Open On-Demand (figure 5)" src="../_images/Matlab-OOD-5.jpg" style="width: 600px;" /></a>
-<p>A new Matlab window will pop up and you can start executing matlab commands.</p>
-<a class="reference internal image-reference" href="../_images/Matlab-OOD-6.jpg"><img alt="Using Matlab with Open On-Demand (figure 6)" src="../_images/Matlab-OOD-6.jpg" style="width: 600px;" /></a>
-<a class="reference internal image-reference" href="../_images/Matlab-OOD-7.jpg"><img alt="Using Matlab with Open On-Demand (figure 6)" src="../_images/Matlab-OOD-7.jpg" style="width: 600px;" /></a>
-</section>
-<section id="interactive-execution-on-the-terminal">
-<h2>Interactive execution on the terminal<a class="headerlink" href="#interactive-execution-on-the-terminal" title="Permalink to this headline">¶</a></h2>
+Computationally demanding calculations must be executed via job submissions.</p>
 <p>From the login node, request a interactive session with SLURM:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
 trcis001:~$ srun -n 4 --pty bash
@@ -252,10 +285,10 @@ Loading matlab version 2022b : matlab/2022b
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tarcl100:~$ matlab
 MATLAB is selecting SOFTWARE OPENGL rendering.
 
-                                                                                  &lt; M A T L A B (R) &gt;
-                                                                Copyright 1984-2022 The MathWorks, Inc.
-                                                   R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
-                                                                                   November 17, 2022
+                                  &lt; M A T L A B (R) &gt;
+                Copyright 1984-2022 The MathWorks, Inc.
+   R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
+                                   November 17, 2022
 
 
 To get started, type doc.
@@ -273,8 +306,6 @@ ans =
 <h2>Non-interactive execution via job submission<a class="headerlink" href="#non-interactive-execution-via-job-submission" title="Permalink to this headline">¶</a></h2>
 <p>This simple tutorial explains how to use Matlab without launching the
 graphical interface and using the submission script.</p>
-<section id="execution-matlab-scripts-m-files">
-<h3>Execution Matlab scripts (.m files)<a class="headerlink" href="#execution-matlab-scripts-m-files" title="Permalink to this headline">¶</a></h3>
 <p>Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.</p>
 <p>To download the code you can execute the following command directly on the cluster:</p>
@@ -446,7 +477,7 @@ job. The output of your execution is stored at MATLAB.o987788</p>
 </div>
 </section>
 <section id="using-the-matlab-compiler">
-<h3>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h3>
+<h2>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to load matlab to get access to its executables:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
 </pre></div>
@@ -507,7 +538,6 @@ trcis001:~$ sbatch runjob.slurm
 <p><span class="caption-text">Mandelbrot fractal generated from Matlab</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</section>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
