@@ -278,8 +278,6 @@ job. The output of your execution is stored on `SLURM-MATLAB.26206.out`
 .. figure:: /_static/derivatives.png
    :alt: derivatives.png
 
-   derivatives.png
-
 ::
 
                                 < M A T L A B (R) >
@@ -359,12 +357,12 @@ The first step is to load matlab to get access to its executables::
 
 Prepare the compilation environment with::
 
-    trcis001:~$ mbuild -setup``
-       MBUILD configured to use 'gcc' for C language compilation.``
+    trcis001:~$ mbuild -setup
+       MBUILD configured to use 'gcc' for C language compilation.
 
-       To choose a different language, execute one from the following:``
-        mex -setup C++ -client MBUILD ``
-        mex -setup FORTRAN -client MBUILD``
+       To choose a different language, execute one from the following:
+        mex -setup C++ -client MBUILD
+        mex -setup FORTRAN -client MBUILD
 
 You cannot compile matlab scripts that uses the symbolic toolbox
 
@@ -375,6 +373,9 @@ So we will use another script for this tutorial.
 `mandelbrot.zip <Media:mandelbrot.zip>`__
 
 Download the file :download:`mandelbrot.zip <../_static/mandelbrot.zip>`.
+Or use `wget` directly from the cluster::
+
+    trcis001:~$ wget https://docs.hpc.wvu.edu/_static/mandelbrot.zip
 
 After uncompress the file "mandelbrot.m"::
 
@@ -386,7 +387,7 @@ It takes a while, when finished you will get some extra files::
     mandelbrot
     run_mandelbrot.sh
 
-Write a submission script for SLURM (Spruce Flat)::
+Write a submission script for SLURM (Thorny Flat)::
 
     #!/bin/bash
     
@@ -403,15 +404,15 @@ Write a submission script for SLURM (Spruce Flat)::
     module load matlab
 
     cd $SLURM_SUBMIT_DIR
-    ./run_mandelbrot.sh /shared/software/MATLAB/R2022b
+    ./run_mandelbrot.sh $MD_MATLAB
 
 After submit the job with::
 
     trcis001:~$ module load sched/slurm/22.05 
     trcis001:~$ sbatch runjob.slurm
-    Submitted batch job 26213
+    Submitted batch job 26219
 
-You get the results on "MATLAB.o#######" with the corresponding JobID
+You get the results on "SLURM-MATLAB.26219.out" with the corresponding JobID
 
 .. figure:: /_static/mandelbrotmatlab.png
    :alt: Mandelbrot fractal generated from Matlab
