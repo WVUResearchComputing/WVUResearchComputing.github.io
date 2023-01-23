@@ -330,12 +330,12 @@ Use your prefered text editor and type the following lines:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=MATLAB
-#SBATCH --output=matlab.out
+#SBATCH --output=SLURM-%x.%j.out
 #SBATCH --partition=standby
 
 #SBATCH --time=10:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu=5000
 
 module purge
@@ -348,7 +348,7 @@ matlab -nodisplay -r derivatives
 <p>Store this lines into a file called <cite>runjob.slurm</cite></p>
 <p>This submission script is telling the SLURM workload manager that we are creating a
 job called “MATLAB”, that will use one node (<cite>–ntasks=1</cite>) and one core per
-node (<cite>–cpus-per-task=1</cite>), during 10 minutes (<cite>–time=10:00</cite>).
+node (<cite>–cpus-per-task=2</cite>), during 10 minutes (<cite>–time=10:00</cite>).
 The partition were the job is submitted is called <cite>standby</cite> but you can also choose other
 partitions such as <cite>comm_mmem_week</cite> or <cite>comm_mmem_day</cite>. that will offer
 extended periods of time.</p>
@@ -360,46 +360,53 @@ should execute matlab -nodisplay -r derivatives without adding the “.m”.
 Matlab will always search for a file called “derivatives.m”</p>
 <p>You submit the job from the command line executing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
-trcis001:~$ sbatch runjob.slurm
-987788
+trcis001:~$ sbatch runjob.slurm
+Submitted batch job 26212
 </pre></div>
 </div>
-<p>You should get like above the JobID, an identifier that allow you to
-keep track of your execution. You can monitor the execution like this:
-When in queue, ie, waiting for execution:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue 987788
-Job ID                    Name             User            Time Use S Queue
-------------------------- ---------------- --------------- -------- - ------
-987788.srih0001            MATLAB           gufranco               0 Q debug
+<p>When the job is submitted you get a number called Job ID.
+This number is an identifier that allow you to keep track of lifetime of the job.
+You can monitor the execution using the command squeue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -j 26212
+            JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+            26212   standby   MATLAB gufranco  R       0:10      1 tbmcs101
 </pre></div>
 </div>
-<p>When running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue 987788
-Job ID                    Name             User            Time Use S Queue
-
-------------------------- ---------------- --------------- -------- - ------
-987788.srih0001            MATLAB           gufranco               0 R debug
+<p>You notice the job is running when the state (ST) shows as <cite>R</cite> and you see under <cite>TIME</cite> for how long the job has been running.</p>
+<p>When finished, <cite>squeue</cite> will return an error as the job no longer exist in queue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -j 26212
+slurm_load_jobs error: Invalid job id specified
 </pre></div>
 </div>
-<p>When finished:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue 987788
-
-Job ID                    Name             User            Time Use S Queue
-------------------------- ---------------- --------------- -------- - -----
-987788.srih0001            MATLAB           gufranco        00:00:07 C debug
+<p>You can see the job with <cite>sacct</cite> a command for accounting, ie keeping track of the jobs running and complete.
+When the job is still runnning you get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sacct -j 26212
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+26212            MATLAB    standby its-rc-ad+          2    RUNNING      0:0
+26212.batch       batch            its-rc-ad+          2    RUNNING      0:0
 </pre></div>
 </div>
-<p>When the job concludes, you will get the files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>derivatives.fig
+<p>Once the job finishes, either by a normal termination or because it was canceled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sacct -j 26212
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+26212            MATLAB    standby its-rc-ad+          2  COMPLETED      0:0
+26212.batch       batch            its-rc-ad+          2  COMPLETED      0:0
+</pre></div>
+</div>
+<p>When the job concludes, you will get new files that were created by the job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ ls -1
+derivatives.fig
 derivatives.m
 derivatives.png
-MATLAB.e987788
-MATLAB.o987788
-runjob.pbs``
+derivatives.zip
+runjob.slurm
+SLURM-MATLAB.26206.out
 </pre></div>
 </div>
-<p>The figures where generated and save on the same folder you submit your
-job. The output of your execution is stored at MATLAB.o987788</p>
+<p>The figures where generated and saved on the same folder you submit your
+job. The output of your execution is stored on <cite>SLURM-MATLAB.26206.out</cite></p>
 <figure class="align-default" id="id1">
 <img alt="derivatives.png" src="../_images/derivatives.png" />
 <figcaption>
@@ -510,25 +517,25 @@ run_mandelbrot.sh
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=MATLAB
-#SBATCH --output=matlab.out
+#SBATCH --output=SLURM-%x.%j.out
 #SBATCH --partition=standby
 
 #SBATCH --time=10:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu=5000
 
 module purge
 module load matlab
 
 cd $SLURM_SUBMIT_DIR
-./run_mandelbrot.sh /shared/software/MATLAB/R2014a
+./run_mandelbrot.sh /shared/software/MATLAB/R2022b
 </pre></div>
 </div>
 <p>After submit the job with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
 trcis001:~$ sbatch runjob.slurm
-987788
+Submitted batch job 26213
 </pre></div>
 </div>
 <p>You get the results on “MATLAB.o#######” with the corresponding JobID</p>

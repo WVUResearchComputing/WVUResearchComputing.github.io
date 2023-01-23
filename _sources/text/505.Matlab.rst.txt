@@ -192,12 +192,12 @@ Use your prefered text editor and type the following lines::
     #!/bin/bash
     
     #SBATCH --job-name=MATLAB
-    #SBATCH --output=matlab.out
+    #SBATCH --output=SLURM-%x.%j.out
     #SBATCH --partition=standby
     
     #SBATCH --time=10:00
     #SBATCH --ntasks=1
-    #SBATCH --cpus-per-task=1
+    #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=5000
 
     module purge
@@ -210,7 +210,7 @@ Store this lines into a file called `runjob.slurm`
 
 This submission script is telling the SLURM workload manager that we are creating a
 job called "MATLAB", that will use one node (`--ntasks=1`) and one core per
-node (`--cpus-per-task=1`), during 10 minutes (`--time=10:00`). 
+node (`--cpus-per-task=2`), during 10 minutes (`--time=10:00`). 
 The partition were the job is submitted is called `standby` but you can also choose other
 partitions such as `comm\_mmem\_week` or `comm\_mmem\_day`. that will offer
 extended periods of time.
@@ -226,45 +226,54 @@ Matlab will always search for a file called "derivatives.m"
 You submit the job from the command line executing::
 
     trcis001:~$ module load sched/slurm/22.05 
-    trcis001:~$ sbatch runjob.slurm
-    987788
+    trcis001:~$ sbatch runjob.slurm 
+    Submitted batch job 26212
 
-You should get like above the JobID, an identifier that allow you to
-keep track of your execution. You can monitor the execution like this:
-When in queue, ie, waiting for execution::
+When the job is submitted you get a number called Job ID.
+This number is an identifier that allow you to keep track of lifetime of the job. 
+You can monitor the execution using the command squeue::
 
-    trcis001:~$ squeue 987788
-    Job ID                    Name             User            Time Use S Queue
-    ------------------------- ---------------- --------------- -------- - ------
-    987788.srih0001            MATLAB           gufranco               0 Q debug
+    trcis001:~$ squeue -j 26212
+                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                26212   standby   MATLAB gufranco  R       0:10      1 tbmcs101
 
-When running::
+You notice the job is running when the state (ST) shows as `R` and you see under `TIME` for how long the job has been running.
 
-    trcis001:~$ squeue 987788
-    Job ID                    Name             User            Time Use S Queue
+When finished, `squeue` will return an error as the job no longer exist in queue::
 
-    ------------------------- ---------------- --------------- -------- - ------
-    987788.srih0001            MATLAB           gufranco               0 R debug
+    trcis001:~$ squeue -j 26212
+    slurm_load_jobs error: Invalid job id specified
 
-When finished::
+You can see the job with `sacct` a command for accounting, ie keeping track of the jobs running and complete.
+When the job is still runnning you get::
 
-    trcis001:~$ squeue 987788
+    trcis001:~$ sacct -j 26212
+    JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+    ------------ ---------- ---------- ---------- ---------- ---------- -------- 
+    26212            MATLAB    standby its-rc-ad+          2    RUNNING      0:0 
+    26212.batch       batch            its-rc-ad+          2    RUNNING      0:0 
 
-    Job ID                    Name             User            Time Use S Queue
-    ------------------------- ---------------- --------------- -------- - -----
-    987788.srih0001            MATLAB           gufranco        00:00:07 C debug
 
-When the job concludes, you will get the files::
+Once the job finishes, either by a normal termination or because it was canceled::
 
+    trcis001:~$ sacct -j 26212
+    JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+    ------------ ---------- ---------- ---------- ---------- ---------- -------- 
+    26212            MATLAB    standby its-rc-ad+          2  COMPLETED      0:0 
+    26212.batch       batch            its-rc-ad+          2  COMPLETED      0:0 
+
+When the job concludes, you will get new files that were created by the job::
+
+    trcis001:~$ ls -1
     derivatives.fig
     derivatives.m
     derivatives.png
-    MATLAB.e987788
-    MATLAB.o987788
-    runjob.pbs``
+    derivatives.zip
+    runjob.slurm
+    SLURM-MATLAB.26206.out
 
-The figures where generated and save on the same folder you submit your
-job. The output of your execution is stored at MATLAB.o987788
+The figures where generated and saved on the same folder you submit your
+job. The output of your execution is stored on `SLURM-MATLAB.26206.out`
 
 .. figure:: /_static/derivatives.png
    :alt: derivatives.png
@@ -382,25 +391,25 @@ Write a submission script for SLURM (Spruce Flat)::
     #!/bin/bash
     
     #SBATCH --job-name=MATLAB
-    #SBATCH --output=matlab.out
+    #SBATCH --output=SLURM-%x.%j.out
     #SBATCH --partition=standby
     
     #SBATCH --time=10:00
     #SBATCH --ntasks=1
-    #SBATCH --cpus-per-task=1
+    #SBATCH --cpus-per-task=2
     #SBATCH --mem-per-cpu=5000
 
     module purge
     module load matlab
 
     cd $SLURM_SUBMIT_DIR
-    ./run_mandelbrot.sh /shared/software/MATLAB/R2014a
+    ./run_mandelbrot.sh /shared/software/MATLAB/R2022b
 
 After submit the job with::
 
     trcis001:~$ module load sched/slurm/22.05 
     trcis001:~$ sbatch runjob.slurm
-    987788
+    Submitted batch job 26213
 
 You get the results on "MATLAB.o#######" with the corresponding JobID
 
