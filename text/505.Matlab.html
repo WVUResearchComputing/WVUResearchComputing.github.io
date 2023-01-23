@@ -407,11 +407,8 @@ SLURM-MATLAB.26206.out
 </div>
 <p>The figures where generated and saved on the same folder you submit your
 job. The output of your execution is stored on <cite>SLURM-MATLAB.26206.out</cite></p>
-<figure class="align-default" id="id1">
+<figure class="align-default">
 <img alt="derivatives.png" src="../_images/derivatives.png" />
-<figcaption>
-<p><span class="caption-text">derivatives.png</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</figcaption>
 </figure>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
                   <span class="n">Copyright</span> <span class="mi">1984</span><span class="o">-</span><span class="mi">2014</span> <span class="n">The</span> <span class="n">MathWorks</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
@@ -490,19 +487,23 @@ job. The output of your execution is stored on <cite>SLURM-MATLAB.26206.out</cit
 </pre></div>
 </div>
 <p>Prepare the compilation environment with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mbuild -setup``
-   MBUILD configured to use &#39;gcc&#39; for C language compilation.``
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mbuild -setup
+   MBUILD configured to use &#39;gcc&#39; for C language compilation.
 
-   To choose a different language, execute one from the following:``
-    mex -setup C++ -client MBUILD ``
-    mex -setup FORTRAN -client MBUILD``
+   To choose a different language, execute one from the following:
+    mex -setup C++ -client MBUILD
+    mex -setup FORTRAN -client MBUILD
 </pre></div>
 </div>
 <p>You cannot compile matlab scripts that uses the symbolic toolbox</p>
 <p><a class="reference external" href="https://www.mathworks.com/products/ineligible_programs.html">https://www.mathworks.com/products/ineligible_programs.html</a></p>
 <p>So we will use another script for this tutorial.</p>
 <p><a class="reference external" href="Media:mandelbrot.zip">mandelbrot.zip</a></p>
-<p>Download the file <a class="reference download internal" download="" href="../_downloads/7be180f4e3e0cacc52f7f3a5c4782f3c/mandelbrot.zip"><code class="xref download docutils literal notranslate"><span class="pre">mandelbrot.zip</span></code></a>.</p>
+<p>Download the file <a class="reference download internal" download="" href="../_downloads/7be180f4e3e0cacc52f7f3a5c4782f3c/mandelbrot.zip"><code class="xref download docutils literal notranslate"><span class="pre">mandelbrot.zip</span></code></a>.
+Or use <cite>wget</cite> directly from the cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/mandelbrot.zip
+</pre></div>
+</div>
 <p>After uncompress the file “mandelbrot.m”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mcc -m mandelbrot.m
 </pre></div>
@@ -513,7 +514,7 @@ mandelbrot
 run_mandelbrot.sh
 </pre></div>
 </div>
-<p>Write a submission script for SLURM (Spruce Flat):</p>
+<p>Write a submission script for SLURM (Thorny Flat):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=MATLAB
@@ -529,20 +530,20 @@ module purge
 module load matlab
 
 cd $SLURM_SUBMIT_DIR
-./run_mandelbrot.sh /shared/software/MATLAB/R2022b
+./run_mandelbrot.sh $MD_MATLAB
 </pre></div>
 </div>
 <p>After submit the job with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
 trcis001:~$ sbatch runjob.slurm
-Submitted batch job 26213
+Submitted batch job 26219
 </pre></div>
 </div>
-<p>You get the results on “MATLAB.o#######” with the corresponding JobID</p>
-<figure class="align-default" id="id2">
+<p>You get the results on “SLURM-MATLAB.26219.out” with the corresponding JobID</p>
+<figure class="align-default" id="id1">
 <img alt="Mandelbrot fractal generated from Matlab" src="../_images/mandelbrotmatlab.png" />
 <figcaption>
-<p><span class="caption-text">Mandelbrot fractal generated from Matlab</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Mandelbrot fractal generated from Matlab</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
