@@ -21,37 +21,35 @@ Research Exchange (REX) and support and training in areas of High Performance
 Computing, Data Analysis and Parallel Programming.
 
 
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-| - **Infraestructure/** | - **Compute Nodes** | - **CPU Cores**  | - **Accelerators** | **Status**            | **Description**                                               |
-| - **HPC Cluster**      | - (total/active)    | - (total/active) | - (total/active)   |                       |                                                               |
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-| Mountaineer            |      32/0           |      384/0       |         0          | -Decommissioned       | - First centrally managed HPC Cluster for WVU                 |
-|                        |                     |                  |                    | - (2018)              | - CPUs from Intel Westmere microarchitecture (32 nm)          |
-|                        |                     |                  |                    |                       | - Decomissioned on 2018                                       |
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-| Spruce Knob            |     176/148         |    3376/3036     | - 14/5 NVIDIA GPUs | - End-of-Life         | - General-purpose HPC cluster first commissioned in 2017      | 
-|                        |                     |                  | - Tesla K20m       | - To be decommissioned| - Heterogeneous cluster with Intel processors                 |    
-|                        |                     |                  | - Tesla K20Xm      | - in 2023             | - Sandy Bridge, Ivy Bridge, Haswell and Broadwell             |
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-| Thorny Flat            |     178/178         |    6516/6516     | - 47 NVIDIA GPUs   |                       | - General-purpose HPC cluster                                 | 
-|                        |                     |                  | - P6000 (21)       | - In Production       | - Intel processors with Skylake and Cascade Lake              | 
-|                        |                     |                  | - RTX 6000 (24)    |                       | - Installed on Pittsburgh Supercomputer Center                |
-|                        |                     |                  | - A100 (2)         |                       |                                                               |
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-| GoFirst                |                     |                  |                    |                       | - Virtual Infraestructure running on AWS                      | 
-|                        |                     |                  |                    |                       | - Serves Business Data Analytics (BUDA) program               | 
-|                        |                     |                  |                    |                       | - Chambers College of Business and Economics                  | 
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-| Dolly Sods             |                     |                  |                    | - Purchased           | - GPU Accelerated HPC Cluster                                 | 
-|                        |                     |                  |                    | - To be provisioned   | - To be provisioned in Spring 2023                            | 
-|                        |                     |                  |                    | - Summer 2023         |                                                               | 
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-| - WVCTSI               |       8/8           |     320/320      | - 4 NVIDIA GPUs    |                       | - HPC Cluster for use with                                    | 
-| - Secure Cluster       |                     |                  | - Tesla V100S      | In Production         | - Protected Health Information (PHI)                          | 
-|                        |                     |                  |                    |                       | - HIPAA compliant                                             | 
-+------------------------+---------------------+------------------+--------------------+-----------------------+---------------------------------------------------------------+
-
-
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
+| - **Infraestructure/** | - **Compute Nodes** | - **CPU Cores**  | - **Accelerators** | **Description**                                               | **Status**            |
+| - **HPC Cluster**      | - (total/active)    | - (total/active) | - (total/active)   |                                                               |                       |
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
+| - Mountaineer          |      32/0           |      384/0       |       0/0          | - First centrally managed HPC Cluster for WVU                 | - Decommissioned      |
+| - (decommissioned)     |                     |                  |                    | - CPUs from Intel Westmere microarchitecture (32 nm)          | - (2018)              |
+|                        |                     |                  |                    | - Decomissioned on 2018                                       |                       |
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
+| - Spruce Knob          |     176/148         |    3376/3036     | - 14/5 NVIDIA GPUs | - General-purpose HPC cluster first commissioned in 2017      | - End-of-Life         | 
+| - (end-of-life         |                     |                  | - Tesla K20m       | - Heterogeneous cluster with Intel processors                 | - To be decommissioned|    
+| - 2023)                |                     |                  | - Tesla K20Xm      | - Sandy Bridge, Ivy Bridge, Haswell and Broadwell             | - in 2023             |
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
+| - Thorny Flat          |     178/178         |    6516/6516     | - 47 NVIDIA GPUs   | - General-purpose HPC cluster                                 |                       | 
+| - (in production)      |                     |                  | - P6000 (21)       | - Intel processors with Skylake and Cascade Lake              | - In Production       | 
+|                        |                     |                  | - RTX 6000 (24)    | - Installed at Pittsburgh Supercomputer Center                |                       |
+|                        |                     |                  | - A100 (2)         |                                                               |                       |
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
+| - GoFirst              |                     |                  |                    | - Virtual Infraestructure running on AWS                      |                       | 
+| - (in production)      |                     |                  |                    | - Serves Business Data Analytics (BUDA) program               |                       | 
+|                        |                     |                  |                    | - Chambers College of Business and Economics                  |                       | 
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
+| - Dolly Sods           |                     |                  |                    | - GPU Accelerated HPC Cluster                                 | - Purchased           | 
+| - (to be installed     |                     |                  |                    | - To be provisioned in Spring 2023                            | - To be provisioned   | 
+| -  spring 2023)        |                     |                  |                    |                                                               | - Summer 2023         | 
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
+| - WVCTSI               |       8/8           |     320/320      | - 4 NVIDIA GPUs    | - HPC Cluster for use with                                    |                       | 
+| - Secure Cluster       |                     |                  | - Tesla V100S      | - Protected Health Information (PHI)                          | In Production         | 
+| - (in production)      |                     |                  |                    | - HIPAA compliant                                             |                       | 
++------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+-----------------------+
 
 
 The contents of this website can be downloaded as a single PDF here:
