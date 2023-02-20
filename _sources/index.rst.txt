@@ -21,35 +21,35 @@ Research Exchange (REX) and support and training in areas of High Performance
 Computing, Data Analysis and Parallel Programming.
 
 
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
-| **Infraestructure/**  | **Description**                                               | **Compute Nodes**   | **CPU Cores**     | **Accelerators**      | **Status**            |
-| **HPC Cluster**       |                                                               | **total/active**    | **total/active**  |                       |                       |
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
-| Mountaineer           | - First centrally managed HPC Cluster for WVU                 |      32/0           |      384/0        |         0             | Decommissioned        |
-|                       | - All CPUs from Intel Westmere microarchitecture (32 nm)      |                     |                   |                       | (2018)                |
-|                       | - Decomissioned on 2018                                       |                     |                   |                       |                       |
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
-| Spruce Knob           | - General-purpose HPC cluster first commissioned in 2017      |     176/148         |    3376/3036      |       14/5            | End-of-Life           | 
-|                       | - Heterogeneous cluster with Intel processors                 |                     |                   |  NVIDIA Tesla K20m    | To be decommissioned  |    
-|                       | - Sandy Bridge, Ivy Bridge, Haswell and Broadwell             |                     |                   |  NVIDIIA Tesla K20Xm  | in 2023               |
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
-| Thorny Flat           | - General-purpose HPC cluster                                 |     178/178         |    6516/6516      |       47              |                       | 
-|                       | - Intel processors with Skylake and Cascade Lake              |                     |                   |  NVIDIA P6000 (21)    | In Production         | 
-|                       | - Installed on Pittsburgh Supercomputer Center                |                     |                   |  NVIDIA RTX 6000 (24) |                       |
-|                       |                                                               |                     |                   |  NVIDIA A100 (2)      |                       |
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
-| GoFirst               | - Virtual Infraestructure running on AWS                      |                     |                   |                       |                       | 
-|                       | - Serves Business Data Analytics (BUDA) program at the        |                     |                   |                       |                       | 
-|                       |   Chambers College of Business and Economics                  |                     |                   |                       |                       | 
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
-| Dolly Sods            | - GPU Accelerated HPC Cluster                                 |                     |                   |                       | Purchased             | 
-|                       | - To be provisioned in Spring 2023                            |                     |                   |                       | To be provisioned     | 
-|                       |                                                               |                     |                   |                       | Summer 2023           | 
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
-| WVCTSI                | - HPC Cluster for use with Protected Health Information (PHI) |       8/8           |     320/320       |       4               |                       | 
-| Secure Cluster        | - This is a HIPAA compliant machine                           |                     |                   | NVIDIA Tesla V100S    | In Production         | 
-|                       |                                                               |                     |                   | 2 nodes - 2 GPUs/node |                       | 
-+-----------------------+---------------------------------------------------------------+---------------------+-------------------+-----------------------+-----------------------+
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
+| - **Infraestructure/** | **Description**                                               | - **Compute Nodes**   | - **CPU Cores**     | **Accelerators**        | **Status**            |
+| - **HPC Cluster**      |                                                               | - **total/active**    | - **total/active**  |                         |                       |
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
+| Mountaineer            | - First centrally managed HPC Cluster for WVU                 |      32/0             |      384/0          |         0               | -Decommissioned       |
+|                        | - All CPUs from Intel Westmere microarchitecture (32 nm)      |                       |                     |                         | - (2018)              |
+|                        | - Decomissioned on 2018                                       |                       |                     |                         |                       |
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
+| Spruce Knob            | - General-purpose HPC cluster first commissioned in 2017      |     176/148           |    3376/3036        | -      14/5             | - End-of-Life         | 
+|                        | - Heterogeneous cluster with Intel processors                 |                       |                     | -  NVIDIA Tesla K20m    | - To be decommissioned|    
+|                        | - Sandy Bridge, Ivy Bridge, Haswell and Broadwell             |                       |                     | -  NVIDIIA Tesla K20Xm  | - in 2023             |
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
+| Thorny Flat            | - General-purpose HPC cluster                                 |     178/178           |    6516/6516        | -      47               |                       | 
+|                        | - Intel processors with Skylake and Cascade Lake              |                       |                     | -  NVIDIA P6000 (21)    | - In Production       | 
+|                        | - Installed on Pittsburgh Supercomputer Center                |                       |                     | -  NVIDIA RTX 6000 (24) |                       |
+|                        |                                                               |                       |                     | -  NVIDIA A100 (2)      |                       |
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
+| GoFirst                | - Virtual Infraestructure running on AWS                      |                       |                     |                         |                       | 
+|                        | - Serves Business Data Analytics (BUDA) program at the        |                       |                     |                         |                       | 
+|                        | -  Chambers College of Business and Economics                 |                       |                     |                         |                       | 
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
+| Dolly Sods             | - GPU Accelerated HPC Cluster                                 |                       |                     |                         | - Purchased           | 
+|                        | - To be provisioned in Spring 2023                            |                       |                     |                         | - To be provisioned   | 
+|                        |                                                               |                       |                     |                         | - Summer 2023         | 
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
+| WVCTSI                 | - HPC Cluster for use with Protected Health Information (PHI) |       8/8             |     320/320         | -      4                |                       | 
+| Secure Cluster         | - This is a HIPAA compliant machine                           |                       |                     | - NVIDIA Tesla V100S    | In Production         | 
+|                        |                                                               |                       |                     | - 2 nodes - 2 GPUs/node |                       | 
++------------------------+---------------------------------------------------------------+-----------------------+---------------------+-------------------------+-----------------------+
 
 
 
