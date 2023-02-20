@@ -13,7 +13,7 @@ Research Office dedicated to supporting, enabling and advancing computational re
 
 WVU Research Computing maintains a portafolio of infraestructures to support its mission.
 We maintain several High Performance Computing (HPC) **Clusters** from general purpose to specialized ones, both on premises as on the cloud.
-WVU Research Computing also provide a variety of other services including a large research storage facility called
+WVU Research Computing also providea variety of other services including a large research storage facility called
 **DataDepot**, and a Demilitarized Zone (DMZ) for high speed data transfers called **WVU Research Exchange (REX)**.
 
 In addition to maintaining these facilities, WVU Research Computing offers support, consulting and training 
@@ -22,7 +22,7 @@ in areas of High Performance Computing, Data Analysis, Machine Learning and Para
 The table below shows our portafolio of HPC resources (past and present):
 
 .. table:: HPC Portafolio at WVU Research Computing
-   :widths: auto
+   :widths: 10 10 10 10 60
 
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Infraestructure/** | | **Compute**    | | **CPU**        | | **Accelerators** | | **Description**                                             |
