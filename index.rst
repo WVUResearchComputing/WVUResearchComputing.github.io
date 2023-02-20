@@ -23,8 +23,8 @@ The table below shows our portafolio of HPC resources (past and present):
 
 +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
 | | **Infraestructure/** | | **Compute**    | | **CPU**        | | **Accelerators** | | **Description**                                             |
-| |                      | | **Nodes**      | | **Cores**      | | **GPUs**         | |
-| | **HPC Cluster**      | | (total/active) | | (total/active) | | (total/active)   | |                                                             |
+| | **HPC Clusters**     | | **Nodes**      | | **Cores**      | | **GPUs**         | |                                                             |
+| |                      | | (total/active) | | (total/active) | | (total/active)   | |                                                             |
 +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
 | | **Mountaineer**      |      32/0        |      384/0       |       0/0          | | First centrally managed HPC Cluster for WVU.                |
 | | (decommissioned)     |                  |                  |                    | | CPUs from Intel Westmere microarchitecture (32 nm).         |
