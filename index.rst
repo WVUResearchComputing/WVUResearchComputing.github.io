@@ -46,9 +46,10 @@ The table below shows our portafolio of HPC resources (past and present):
    | | (in production)      |                  |                  |                    | | Serves Business Data Analytics (BUDA) program.              |
    |                        |                  |                  |                    | | Chambers College of Business and Economics.                 |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **Dolly Sods**       |                  |                  |                    | | GPU Accelerated HPC Cluster.                                |
-   | | (to be installed     |                  |                  |                    | | To be provisioned in Spring 2023.                           |
-   | |  spring 2023)        |                  |                  |                    |                                                               |
+   | | **Dolly Sods**       |       37         |    1248          | | 155 NVIDIA GPUs  | | GPU Accelerated HPC Cluster.                                |
+   | | (to be installed     |                  |                  | | A30 (120)        | | To be provisioned in Spring 2023.                           |
+   | |  spring 2023)        |                  |                  | | A40 (19)         |                                                               |
+   | |                      |                  |                  | | A100 (16)        |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **WVCTSI Cluster**   |       8/8        |     320/320      | | 4 NVIDIA GPUs    | | HPC Cluster for use with                                    |
    | | Secure Cluster       |                  |                  | | Tesla V100S      | | Protected Health Information (PHI)                          |
