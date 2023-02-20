@@ -12,11 +12,11 @@ West Virginia University Research Computing (WVU-RC) is a team inside WVU's
 Research Office dedicated to supporting, enabling and advancing computational research at WVU.
 
 WVU Research Computing maintains a portafolio of infraestructures to support its mission.
-We maintain several HPC clusters from general purpose to specialized resources both on premises as on the cloud.
+We maintain several High Performance Computing (HPC) **Clusters** from general purpose to specialized ones, both on premises as on the cloud.
 WVU Research Computing also provide a variety of other services including a large research storage facility called
-**DataDepot**, and a DMZ (demilitarized zone) for high speed data transfers called **WVU Research Exchange (REX)**.
+**DataDepot**, and a Demilitarized Zone (DMZ) for high speed data transfers called **WVU Research Exchange (REX)**.
 
-In addition to maintaining these facilities WVU Research Computing offers support, consulting and training 
+In addition to maintaining these facilities, WVU Research Computing offers support, consulting and training 
 in areas of High Performance Computing, Data Analysis, Machine Learning and Parallel Programming.
 
 The table below shows our portafolio of HPC resources (past and present):
@@ -31,7 +31,7 @@ The table below shows our portafolio of HPC resources (past and present):
 +------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+
 | - Spruce Knob          |     176/148         |    3376/3036     | - 14/5 NVIDIA GPUs | - General-purpose HPC cluster first commissioned in 2017      |
 | - (end-of-life         |                     |                  | - Tesla K20m       | - Heterogeneous cluster with Intel processors                 |   
-| -  2023)               |                     |                  | - Tesla K20Xm      | - Sandy Bridge, Ivy Bridge, Haswell and Broadwell             |
+| -  decom. 2023)        |                     |                  | - Tesla K20Xm      | - Sandy Bridge, Ivy Bridge, Haswell and Broadwell             |
 +------------------------+---------------------+------------------+--------------------+---------------------------------------------------------------+
 | - Thorny Flat          |     178/178         |    6516/6516     | - 47 NVIDIA GPUs   | - General-purpose HPC cluster                                 |
 | - (in production)      |                     |                  | - P6000 (21)       | - Intel processors with Skylake and Cascade Lake              |
