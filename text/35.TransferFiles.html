@@ -116,6 +116,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#publish-data">Publish Data</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#file-transfer-globus">File Transfer (Globus)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-transfer-nodes">Data Transfer Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-globus-online">Using Globus Online</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-transfer-methods">Alternative Transfer Methods</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="36.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
 </li>
@@ -274,6 +280,78 @@ and their member collections and are searchable by other Globus users.</p>
 </dd>
 </dl>
 <p>For more information on how to publish your data sets using Globus Online, visit <a class="reference external" href="https://docs.globus.org/data-publication-user-guide/">Globus, Data Publication User Guide</a>.</p>
+</section>
+</section>
+<section id="file-transfer-globus">
+<h1>File Transfer (Globus)<a class="headerlink" href="#file-transfer-globus" title="Permalink to this headline">¶</a></h1>
+<p>Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:</p>
+<ul class="simple">
+<li><p>DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN’s are connected to <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782">WVU’s Science DMZ network</a> which is a dedicated network to science/research data across campus.</p></li>
+<li><p>Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.</p></li>
+</ul>
+<p>WVU’s recommended method for transferring data is <a class="reference external" href="https://www.globus.org/">Globus Online</a>.  The other supported method is sftp.</p>
+<section id="data-transfer-nodes">
+<h2>Data Transfer Nodes<a class="headerlink" href="#data-transfer-nodes" title="Permalink to this headline">¶</a></h2>
+<p>Research Computing offers dedicated servers for transferring files at each one of its supported systems/locations (i.e. Spruce Knob, Thorny Flat, and the Data Depot).  The following table describes the services available at each location as well as the associated Globus Endpoint Name or sftp Hostname.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 27%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Spruce Knob</p></th>
+<th class="head"><p>Thorny Flat</p></th>
+<th class="head"><p>Data Depot</p></th>
+<th class="head"><p>MIX Google Drive</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Globus Endpoint</p></td>
+<td><p>wvu#hpcdtn</p></td>
+<td><p>wvu#thornydtn</p></td>
+<td><p>wvu#datadepot</p></td>
+<td><p>wvu#GoogleDrive</p></td>
+</tr>
+<tr class="row-odd"><td><p>sftp Hostname</p></td>
+<td><p>data.hpc.wvu.edu</p></td>
+<td><p>tf-data.hpc.wvu.edu</p></td>
+<td><p>datadepot-sftp.hpc.wvu.edu</p></td>
+<td><p>NA</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="using-globus-online">
+<h2>Using Globus Online<a class="headerlink" href="#using-globus-online" title="Permalink to this headline">¶</a></h2>
+<p>Globus Online is the preferred method for transferring files to, from, and between Research Computing Resources.  WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditional transfer methods (i.e. scp, sftp, rsync):</p>
+<ul class="simple">
+<li><p>Auto performance tuning to ensure the data is transferred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.</p></li>
+<li><p>Safe transfers by ensuring data integrity using checksum methods.</p></li>
+<li><p>Transfers are automatically restarted after a failed or stopped connection.</p></li>
+<li><p>Ability to only transfer files that have yet to be transferred (similar to rsync).</p></li>
+<li><p>Transfers are done in the background so users do not need to remain logged into the system.</p></li>
+</ul>
+<p>WVU’s Globus Subscription adds the following features:</p>
+<ul class="simple">
+<li><p>Ability to archive/transfer data with unlimited storage to user’s <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868">Google Drive MIX Account</a>.</p></li>
+<li><p>Sharing of data with others inside and outside the university.</p></li>
+<li><p>Sharing of data from personal workstations via <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</p></li>
+</ul>
+<p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step by step guide on use Globus Online.</p>
+<p>For more details, including writen instructions, please visit this <a class="reference external" href="https://docs.hpc.wvu.edu/text/33.GlobusOnline.html">page</a></p>
+<p>Note: For a video on how to utilize Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
+</section>
+<section id="alternative-transfer-methods">
+<h2>Alternative Transfer Methods<a class="headerlink" href="#alternative-transfer-methods" title="Permalink to this headline">¶</a></h2>
+<p>To transfer files to Research Computing systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">here</a>.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://winscp.net/eng/index.php">https://winscp.net/eng/index.php</a></p></li>
+<li><p><a class="reference external" href="https://filezilla-project.org/">https://filezilla-project.org/</a></p></li>
+</ul>
 </section>
 </section>
 
