@@ -1,4 +1,4 @@
-.. _qs-file-transfer
+.. _qs-file-transfer:
 
 File Transfer (Globus)
 ======================
