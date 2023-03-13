@@ -1,4 +1,4 @@
-.. _bs-file-transfer
+.. _bs-file-transfer:
 
 File Transfer (Globus and SFTP)
 ===============================
