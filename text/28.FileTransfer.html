@@ -103,7 +103,10 @@
 <li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Cluster Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="27.WorkloadManager.html">Workload Manager (SLURM)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">File Transfer (Globus)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Transfer (Globus)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-globus-online">Using Globus Online</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Web Interface (Open On-Demand)</a></li>
 </ul>
 </li>
@@ -182,7 +185,31 @@
            <div itemprop="articleBody">
             
   <section id="file-transfer-globus">
-<span id="qs-file-transfer"></span><h1>File Transfer (Globus)<a class="headerlink" href="#file-transfer-globus" title="Permalink to this headline">¶</a></h1>
+<h1>File Transfer (Globus)<a class="headerlink" href="#file-transfer-globus" title="Permalink to this headline">¶</a></h1>
+<section id="using-globus-online">
+<h2>Using Globus Online<a class="headerlink" href="#using-globus-online" title="Permalink to this headline">¶</a></h2>
+<p>Copying files and folders in and out an HPC cluster is a routine task for HPC users. Users need to move input data to the cluster before this data can be processed. The results will be moved out of the cluster in form of files and folders containing text, figures, tables or some other data. The amount of data could be as small as a simple text file with a few lines or as big as large binary files and folders summing Giga Bytes of data.</p>
+<p>Globus Online is the preferred method for transferring files to, from, and between Research Computing Resources.  WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditional transfer methods (i.e. scp, sftp, rsync):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Auto performance tuning to ensure the data is transferred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.</p></li>
+<li><p>Safe transfers by ensuring data integrity using checksum methods.</p></li>
+<li><p>Transfers are automatically restarted after a failed or stopped connection.</p></li>
+<li><p>Ability to only transfer files that have yet to be transferred (similar to rsync).</p></li>
+<li><p>Transfers are done in the background so users do not need to remain logged into the system.</p></li>
+</ul>
+</div></blockquote>
+<p>WVU’s Globus Subscription adds the following features:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ability to archive/transfer data with unlimited storage to user’s <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868">Google Drive MIX Account</a>.</p></li>
+<li><p>Sharing of data with others inside and outside the university.</p></li>
+<li><p>Sharing of data from personal workstations via <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step by step guide on use Globus Online.</p>
+<p>For more details, including writen instructions, please visit this <a class="reference external" href="https://docs.hpc.wvu.edu/text/33.GlobusOnline.html">page</a></p>
+<p>Note: For a video on how to utilize Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro1.jpg"><img alt="Globus Introduction (figure 1)" src="../_images/Globus-intro1.jpg" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/Globus-intro2.jpg"><img alt="Globus Introduction (figure 2)" src="../_images/Globus-intro2.jpg" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/Globus-intro3.jpg"><img alt="Globus Introduction (figure 3)" src="../_images/Globus-intro3.jpg" style="width: 600px;" /></a>
@@ -192,6 +219,7 @@
 <a class="reference internal image-reference" href="../_images/Globus-intro7.jpg"><img alt="Globus Introduction (figure 7)" src="../_images/Globus-intro7.jpg" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/Globus-intro8.jpg"><img alt="Globus Introduction (figure 8)" src="../_images/Globus-intro8.jpg" style="width: 600px;" /></a>
 <a class="reference internal image-reference" href="../_images/Globus-intro9.jpg"><img alt="Globus Introduction (figure 9)" src="../_images/Globus-intro9.jpg" style="width: 600px;" /></a>
+</section>
 </section>
 
 
