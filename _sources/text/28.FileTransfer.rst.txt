@@ -4,3 +4,42 @@ File Transfer (Globus)
 ======================
 
 
+.. image:: /_static/Globus-intro1.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 1)
+
+.. image:: /_static/Globus-intro2.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 2)
+
+.. image:: /_static/Globus-intro3.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 3)
+
+.. image:: /_static/Globus-intro4.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 4)
+
+.. image:: /_static/Globus-intro5.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 5)
+
+.. image:: /_static/Globus-intro6.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 6)
+
+.. image:: /_static/Globus-intro7.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 7)
+
+.. image:: /_static/Globus-intro8.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 8)
+
+.. image:: /_static/Globus-intro9.jpg
+  :width: 600
+  :alt: Globus Introduction (figure 9)
+
+
+
+
