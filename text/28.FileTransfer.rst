@@ -15,13 +15,13 @@ Globus Online is the preferred method for transferring files to, from, and betwe
 There are several advantages for using Globus compared to other methods that will be covered on :ref:`File Transfer Section <bs-file-transfer>`:
 We can summarize the advantages as:
 
-* Globus works from a web browser, not need to learn commands for a terminal.
-* Transfers are done in the background so users do not need to keep the browser open. The tranfer happens behind curtains.
-* Auto performance tuning to ensure the data is transferred as quickly as possible. One can expect a speedup of at least 2x over traditional transfer methods.
-* Transfers can work in parallel, data could be encryted during transfer.
-* The integrity of the tranfer can be ensured via checksum methods (Hashes).
-* Transfers are automatically restarted after a failed or stopped connection.
-* Ability to only transfer files that have yet to be transferred (similar to rsync).
+* ° Globus works from a web browser, not need to learn commands for a terminal.
+* ° Transfers are done in the background so users do not need to keep the browser open. The tranfer happens behind curtains.
+* ° Auto performance tuning to ensure the data is transferred as quickly as possible. One can expect a speedup of at least 2x over traditional transfer methods.
+* ° Transfers can work in parallel, data could be encryted during transfer.
+* ° The integrity of the tranfer can be ensured via checksum methods (Hashes).
+* ° Transfers are automatically restarted after a failed or stopped connection.
+* ° Ability to only transfer files that have yet to be transferred (similar to rsync).
 
 In addition to all this advantages, WVU is also a `Globus Subscriber <https://www.globus.org/subscriptions>`__ which provides additional services over the basic/free subscription. WVU's Globus Subscription adds the following features:
 
