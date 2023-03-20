@@ -100,8 +100,8 @@
 <li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster (SSH)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">UNIX/Linux Command Line Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html">Terminal-based Text Editors (nano)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Cluster Storage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Data Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.Software.html">Software available on the cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="27.WorkloadManager.html">Workload Manager (SLURM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="28.FileTransfer.html">File Transfer (Globus)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Web Interface (Open On-Demand)</a></li>
@@ -187,7 +187,7 @@ Once the access is granted, we proceed to <a class="reference internal" href="22
 A Terminal and its command line interface can be the first barrier for a user only familiarized with Graphical User Interfaces (GUI), on <a class="reference internal" href="23.CommandLine.html#qs-command-line"><span class="std std-ref">UNIX/Linux Command Line Interface</span></a> we present the most basic commands that will help you to create and manipulate folders and files.
 The next step is to learn how to edit files, on <a class="reference internal" href="24.TextEditors.html#qs-text-editors"><span class="std std-ref">Terminal-based Text Editors (nano)</span></a> we show how to use <code class="docutils literal notranslate"><span class="pre">nano</span></code> a very simple but effective text editor.
 We will use it to create the first program in FORTRAN that we will use later to explain execution on a batch system.
-The next section, <a class="reference internal" href="25.DataStorage.html#qs-data-storage"><span class="std std-ref">Cluster Storage</span></a>, explains the several options to store data on the cluster, this is very important for first-time users as they have the tendency to rely only on the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder a storage space that is very limited in most scientific purposes.
+The next section, <a class="reference internal" href="25.DataStorage.html#qs-data-storage"><span class="std std-ref">Data Storage</span></a>, explains the several options to store data on the cluster, this is very important for first-time users as they have the tendency to rely only on the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder a storage space that is very limited in most scientific purposes.
 At this point, we are ready to submit our first job. The section <a class="reference internal" href="27.WorkloadManager.html#qs-workload-manager"><span class="std std-ref">Workload Manager (SLURM)</span></a> shows how to write a submission script and submit the job to the queue system.
 Finally, section <a class="reference internal" href="28.FileTransfer.html#qs-file-transfer"><span class="std std-ref">File Transfer (Globus)</span></a> explains how to move files in and out between the HPC cluster and your own computer.</p>
 <p>At the end of this tutorial, you should have your account activated, connected to spruce, able to create files and folders, submitting simple jobs to the queue system and taking the data back to your own machine.</p>
@@ -223,15 +223,18 @@ Finally, section <a class="reference internal" href="28.FileTransfer.html#qs-fil
 <li class="toctree-l2"><a class="reference internal" href="24.TextEditors.html#exercise">Exercise</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="25.DataStorage.html">Cluster Storage</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="25.DataStorage.html">Data Storage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html#home-directory">Home Directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html#scratch-directory">Scratch Directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html#persistent-group-storage">Persistent Group Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html#archival-storage">Archival Storage</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="26.EnvModules.html">Environment Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="26.EnvModules.html#knowing-the-available-modules">Knowing the available modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="26.Software.html">Software available on the cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="26.Software.html#software-installed-from-the-operating-system">Software installed from the Operating System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.Software.html#environment-modules">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.Software.html#conda-environments">Conda Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.Software.html#singularity-containers">Singularity Containers</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="27.WorkloadManager.html">Workload Manager (SLURM)</a><ul>

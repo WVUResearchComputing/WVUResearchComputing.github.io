@@ -1,0 +1,27 @@
+.. _qs-software:
+
+Software available on the cluster
+=================================
+
+On a shared resource like an HPC cluster, several individuals could have different requirements about the software they need to use for their research. 
+Users can need different scientific codes, programming languages, packages, libraries and compilers according to the particularities of their research.
+To accomodate all those needs, an HPC cluster offers a set of solutions that allow each user to select the software needed to achieve their goals.
+In this section we will present an overview of the different options users have to enable the software they need.
+
+Software installed from the Operating System
+--------------------------------------------
+
+
+
+
+Environment Modules
+-------------------
+
+
+Conda Environments
+------------------
+
+Singularity Containers
+----------------------
+
+
