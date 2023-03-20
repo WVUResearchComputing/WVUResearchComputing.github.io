@@ -127,7 +127,7 @@ Globus Connect Perfonal is available on macOS, Windows and Linux.
 The installation procedure varies for each Operating System.
 In the case of a Mac, package is a dmg, once the dmg is opened and the app is dragged to the *Applications* folder.
 
-.. image:: /sphinx/_static/Globus_Personal_Connect_macOS.png 
+.. image:: /_static/Globus_Personal_Connect_macOS.png 
  :width: 400
  :alt: Globus Connect Personal installation on macOS
 
