@@ -23,7 +23,7 @@ This operating system is intended for enterprise installations and as such scien
 
 Enterprise Operating Systems adopt a conservative policy in terms of the software included. Compilers for C, C++ and Fortran are usually outdated. Python is usually old and lacks most of the typical package needed for scientific computing.
 
-Summarizing, all that you will use from the OS on compute nodes will be the basic commands that we learn on :ref:`Quick start with the Command Line <qs-command-line>`: and :ref:`Basic Usage with the Command Line <bs-command-line>`: 
+Summarizing, all that you will use from the OS on compute nodes will be the basic commands that we learn on :ref:`Quick start with the Command Line <qs-command-line>`:  
 
 Compilers, Programming Languages and all scientific software will come from one of the three sofware channels that we will describe next.
 
