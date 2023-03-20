@@ -53,81 +53,85 @@ The first step is to connect `Globus Homepage <https://www.globus.org>`__ by cli
 Once the initial page of globus is displayed, clic on the top right corner over **Log in**
 
 .. image:: /_static/Globus-intro1.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 1)
+ :width: 600
+ :alt: Globus Introduction (figure 1)
+
 
 You will be redirected to a page indicating to log in to use the **Globus Web App**.
 On the field **Use your existing organizational login**. Go to the text field and start typing "West Virginia University" until you can see the name and select it.
 Clic on the **Continue** button.
 
 .. image:: /_static/Globus-intro2.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 2)
+ :width: 600
+ :alt: Globus Introduction (figure 2)
+
 
 After clicking on **Continue**, you are redirected to WVU Single Sign-On.
 There you need to provide your username and password and after you authenticate using your duo passcode or via a push on your DUO phone app. 
 
 .. image:: /_static/Globus-intro3.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 3)
+ :width: 600
+ :alt: Globus Introduction (figure 3)
+
 
 Once you are authenticated you end on the **Globus File Manager**. There are several options on your left and three ways of showing panels on the top right.
 
 .. image:: /_static/Globus-intro4.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 4)
+ :width: 600
+ :alt: Globus Introduction (figure 4)
+
 
 In the field called **Collection**, search for **wvu#thornydtn**. It shows as `Managed: GCSv4 Host`.
 This is the name of the endpoint connecting to the files in the HPC Cluster Thorny Flat.
 
 
 .. image:: /_static/Globus-intro5.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 5)
+ :width: 600
+ :alt: Globus Introduction (figure 5)
+
 
 Selecting **wvu#thornydtn** will show you two folders `scratch` and `users`. They correspont to the two location where you can store data on Thorny Flat. 
-From one side is `users` where there is your `$HOME` folder. 
+From one side is `users` where there is your ``$HOME`` folder. 
 On Thorny Flat you have a data quota of 10GB of data storage.
-The other folder is `scratch` pointing to your `$SCRATCH` folder where you can store upto 20TB of data.
+The other folder is `scratch` pointing to your ``$SCRATCH`` folder where you can store upto 20TB of data.
 
 The next step is to install **Globus Connect Personal**. The application to convert your own computer into a endpoint. Click on **Collections** on the left side bar
 
 .. image:: /_static/Globus-intro6.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 6)
+ :width: 600
+ :alt: Globus Introduction (figure 6)
+
 
 On the top right corner you will see a link to **Get Globus Connect Personal**.
 Click there to go to the Download page for the software.
 
 .. image:: /_static/Globus-intro7.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 7)
+ :width: 600
+ :alt: Globus Introduction (figure 7)
+
 
 Click on **Download Globus Connect Personal**.
 The page is programmed to detect your operating system. If the installer that you want is for a different operating system click on **Show me other supported operating systems**
 
 .. image:: /_static/Globus-intro8.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 8)
+ :width: 600
+ :alt: Globus Introduction (figure 8)
+
 
 Globus Connect Perfonal is available on macOS, Windows and Linux. 
 
 .. image:: /_static/Globus-intro9.jpg
-  :width: 600
-  :alt: Globus Introduction (figure 9)
+ :width: 600
+ :alt: Globus Introduction (figure 9)
+
 
 The installation procedure varies for each Operating System.
 In the case of a Mac, package is a dmg, once the dmg is opened and the app is dragged to the *Applications* folder.
 
+Other methods of data transfer
+------------------------------
 
-
-
-
-For other ways of tranfer files visit  :ref:`File Transfer Section <bs-file-transfer>`:
-
-**Review** https://www.globus.org/researchers/getting-started for a step by step guide on use Globus Online.
-
-
-Note: For a video on how to utilize Globus Online with Google Drive, please see https://www.youtube.com/watch?v=tDdVsNVK3ko&feature=youtu.be.
+Globus is not the only way for transferring files between your computer and the HPC cluster.
+Other methods include using a Data Transfer Node (DTN) or transferring files using Open On-Demand File Manager. Those methods have limitations and will be covered in the :ref:`File Transfer Section <bs-file-transfer>`: 
 
 
