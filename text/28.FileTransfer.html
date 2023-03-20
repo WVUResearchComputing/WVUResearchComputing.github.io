@@ -107,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#using-globus-online">Using Globus Online</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#understanding-globus">Understanding Globus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting-to-the-globus-web-app">Connecting to the Globus Web App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-methods-of-data-transfer">Other methods of data transfer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="29.WebInterface.html">Web Interface (Open On-Demand)</a></li>
@@ -242,9 +243,9 @@ There you need to provide your username and password and after you authenticate 
 This is the name of the endpoint connecting to the files in the HPC Cluster Thorny Flat.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro5.jpg"><img alt="Globus Introduction (figure 5)" src="../_images/Globus-intro5.jpg" style="width: 600px;" /></a>
 <p>Selecting <strong>wvu#thornydtn</strong> will show you two folders <cite>scratch</cite> and <cite>users</cite>. They correspont to the two location where you can store data on Thorny Flat.
-From one side is <cite>users</cite> where there is your <cite>$HOME</cite> folder.
+From one side is <cite>users</cite> where there is your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder.
 On Thorny Flat you have a data quota of 10GB of data storage.
-The other folder is <cite>scratch</cite> pointing to your <cite>$SCRATCH</cite> folder where you can store upto 20TB of data.</p>
+The other folder is <cite>scratch</cite> pointing to your <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> folder where you can store upto 20TB of data.</p>
 <p>The next step is to install <strong>Globus Connect Personal</strong>. The application to convert your own computer into a endpoint. Click on <strong>Collections</strong> on the left side bar</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro6.jpg"><img alt="Globus Introduction (figure 6)" src="../_images/Globus-intro6.jpg" style="width: 600px;" /></a>
 <p>On the top right corner you will see a link to <strong>Get Globus Connect Personal</strong>.
@@ -257,9 +258,11 @@ The page is programmed to detect your operating system. If the installer that yo
 <a class="reference internal image-reference" href="../_images/Globus-intro9.jpg"><img alt="Globus Introduction (figure 9)" src="../_images/Globus-intro9.jpg" style="width: 600px;" /></a>
 <p>The installation procedure varies for each Operating System.
 In the case of a Mac, package is a dmg, once the dmg is opened and the app is dragged to the <em>Applications</em> folder.</p>
-<p>For other ways of tranfer files visit  <a class="reference internal" href="35.TransferFiles.html#bs-file-transfer"><span class="std std-ref">File Transfer Section</span></a>:</p>
-<p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step by step guide on use Globus Online.</p>
-<p>Note: For a video on how to utilize Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
+</section>
+<section id="other-methods-of-data-transfer">
+<h2>Other methods of data transfer<a class="headerlink" href="#other-methods-of-data-transfer" title="Permalink to this headline">¶</a></h2>
+<p>Globus is not the only way for transferring files between your computer and the HPC cluster.
+Other methods include using a Data Transfer Node (DTN) or transferring files using Open On-Demand File Manager. Those methods have limitations and will be covered in the <a class="reference internal" href="35.TransferFiles.html#bs-file-transfer"><span class="std std-ref">File Transfer Section</span></a>:</p>
 </section>
 </section>
 
