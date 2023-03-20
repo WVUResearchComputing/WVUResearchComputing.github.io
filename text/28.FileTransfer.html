@@ -223,17 +223,42 @@ This is the software that will run behind curtains and execute the transfer task
 </section>
 <section id="connecting-to-the-globus-web-app">
 <h2>Connecting to the Globus Web App<a class="headerlink" href="#connecting-to-the-globus-web-app" title="Permalink to this headline">¶</a></h2>
+<p>To be able to move data in and out the HPC cluster to your own computer, there are two tasks to be completed.
+Link Globus to your personal WVU account so you can access the end points to our clusters and download and install “Globus Connect Personal” which is a small piece of software that will transfor your own computer into an endpoint where you can interchange data with the HPC cluster.</p>
+<p>The steps are very simple all from your web browser and after a few minutes you will have setup the end points and will be able to tranfer files.
+The first step is to connect <a class="reference external" href="https://www.globus.org">Globus Homepage</a> by clicking on the link or by directly typing <cite>www.globus.org</cite> on your web browser.</p>
+<p>Once the initial page of globus is displayed, clic on the top right corner over <strong>Log in</strong></p>
 <a class="reference internal image-reference" href="../_images/Globus-intro1.jpg"><img alt="Globus Introduction (figure 1)" src="../_images/Globus-intro1.jpg" style="width: 600px;" /></a>
+<p>You will be redirected to a page indicating to log in to use the <strong>Globus Web App</strong>.
+On the field <strong>Use your existing organizational login</strong>. Go to the text field and start typing “West Virginia University” until you can see the name and select it.
+Clic on the <strong>Continue</strong> button.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro2.jpg"><img alt="Globus Introduction (figure 2)" src="../_images/Globus-intro2.jpg" style="width: 600px;" /></a>
+<p>After clicking on <strong>Continue</strong>, you are redirected to WVU Single Sign-On.
+There you need to provide your username and password and after you authenticate using your duo passcode or via a push on your DUO phone app.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro3.jpg"><img alt="Globus Introduction (figure 3)" src="../_images/Globus-intro3.jpg" style="width: 600px;" /></a>
+<p>Once you are authenticated you end on the <strong>Globus File Manager</strong>. There are several options on your left and three ways of showing panels on the top right.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro4.jpg"><img alt="Globus Introduction (figure 4)" src="../_images/Globus-intro4.jpg" style="width: 600px;" /></a>
+<p>In the field called <strong>Collection</strong>, search for <strong>wvu#thornydtn</strong>. It shows as <cite>Managed: GCSv4 Host</cite>.
+This is the name of the endpoint connecting to the files in the HPC Cluster Thorny Flat.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro5.jpg"><img alt="Globus Introduction (figure 5)" src="../_images/Globus-intro5.jpg" style="width: 600px;" /></a>
+<p>Selecting <strong>wvu#thornydtn</strong> will show you two folders <cite>scratch</cite> and <cite>users</cite>. They correspont to the two location where you can store data on Thorny Flat.
+From one side is <cite>users</cite> where there is your <cite>$HOME</cite> folder.
+On Thorny Flat you have a data quota of 10GB of data storage.
+The other folder is <cite>scratch</cite> pointing to your <cite>$SCRATCH</cite> folder where you can store upto 20TB of data.</p>
+<p>The next step is to install <strong>Globus Connect Personal</strong>. The application to convert your own computer into a endpoint. Click on <strong>Collections</strong> on the left side bar</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro6.jpg"><img alt="Globus Introduction (figure 6)" src="../_images/Globus-intro6.jpg" style="width: 600px;" /></a>
+<p>On the top right corner you will see a link to <strong>Get Globus Connect Personal</strong>.
+Click there to go to the Download page for the software.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro7.jpg"><img alt="Globus Introduction (figure 7)" src="../_images/Globus-intro7.jpg" style="width: 600px;" /></a>
+<p>Click on <strong>Download Globus Connect Personal</strong>.
+The page is programmed to detect your operating system. If the installer that you want is for a different operating system click on <strong>Show me other supported operating systems</strong></p>
 <a class="reference internal image-reference" href="../_images/Globus-intro8.jpg"><img alt="Globus Introduction (figure 8)" src="../_images/Globus-intro8.jpg" style="width: 600px;" /></a>
+<p>Globus Connect Perfonal is available on macOS, Windows and Linux.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro9.jpg"><img alt="Globus Introduction (figure 9)" src="../_images/Globus-intro9.jpg" style="width: 600px;" /></a>
+<p>The installation procedure varies for each Operating System.
+In the case of a Mac, package is a dmg, once the dmg is opened and the app is dragged to the <em>Applications</em> folder.</p>
+<p>For other ways of tranfer files visit  <a class="reference internal" href="35.TransferFiles.html#bs-file-transfer"><span class="std std-ref">File Transfer Section</span></a>:</p>
 <p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step by step guide on use Globus Online.</p>
-<p>For more details, including writen instructions, please visit this <a class="reference external" href="https://docs.hpc.wvu.edu/text/33.GlobusOnline.html">page</a></p>
 <p>Note: For a video on how to utilize Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
 </section>
 </section>

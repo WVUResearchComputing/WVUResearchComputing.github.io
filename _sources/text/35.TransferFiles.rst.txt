@@ -13,6 +13,10 @@ For a quick start guide please visit: `Globus: How to Get Started <https://docs.
 If you need further assistance beyond this documentation, please contact
 helpdesk@hpc.wvu.edu.
 
+**Review** https://www.globus.org/researchers/getting-started for a step by step guide on use Globus Online.
+
+Note: For a video on how to utilize Globus Online with Google Drive, please see https://www.youtube.com/watch?v=tDdVsNVK3ko&feature=youtu.be.
+
 Transfer Data
 -------------
 
