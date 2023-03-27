@@ -101,6 +101,12 @@
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user-commands">User Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#job-specifications">Job Specifications</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#batch-queues">Batch queues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#useful-commands-for-job-submission-status">Useful Commands for Job Submission/Status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a><ul>
@@ -212,6 +218,221 @@ time or RAM will be cancelled by the WVU RC staff to ensure proper
 functioning of the cluster. Jobs should be run using the cluster’s
 queuing system, which uses the Moab Cluster Manager. Both batch jobs and
 interactive jobs should be submitted using the queuing system.</p>
+<section id="translating-pbs-scripts-to-slurm-scripts">
+<h2>Translating PBS Scripts to Slurm Scripts<a class="headerlink" href="#translating-pbs-scripts-to-slurm-scripts" title="Permalink to this headline">¶</a></h2>
+<p>All our previous clusters, Mountaineer, Spruce Knob and Thorny Flat used Torque as Resource Manager and Moab as Scheduler. In 2022 we transition to SLURM as workload manager.
+For most part the transition is transparent as we installed a set of wrappers that translate on the fly the usual commands from Torque and Moab into the equivalents for SLURM.
+The same happens with submission scripts where the lines with <code class="docutils literal notranslate"><span class="pre">#PBS</span></code> get translated into the corresponding <code class="docutils literal notranslate"><span class="pre">$SBATCH</span></code> versions.
+That being said is good for our users, specially new users to get used to SLURM commands and directives and stop using as much as possible the Torque commands that could become deprecated at some point in the future or the wrappers not being installed in future HPC clusters.</p>
+<p>The following are a set of tables that contains a list of common commands and terms used with the TORQUE/PBS resource manager and scheduler, and the corresponding commands and terms used under the SLURM workload manager.
+These tables can be used to assist you in translating existing PBS scripts into proper SLURM scripts that can be interpreted directly.
+The same tables can be used for reference when writing new submission scripts directly in SLURM format</p>
+<section id="user-commands">
+<h3>User Commands<a class="headerlink" href="#user-commands" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Title</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>User Commands</p></th>
+<th class="head"><p>PBS/Torque</p></th>
+<th class="head"><p>SLURM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Job submission</p></td>
+<td><p>qsub [script_file]</p></td>
+<td><p>sbatch [script_file]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job deletion</p></td>
+<td><p>qdel [job_id]</p></td>
+<td><p>scancel [job_id]</p></td>
+</tr>
+<tr class="row-even"><td><p>Job status (by job)</p></td>
+<td><p>qstat [job_id]</p></td>
+<td><p>squeue [job_id]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job status (by user)</p></td>
+<td><p>qstat -u [user_name]</p></td>
+<td><p>squeue -u [user_name]</p></td>
+</tr>
+<tr class="row-even"><td><p>Job hold</p></td>
+<td><p>qhold [job_id]</p></td>
+<td><p>scontrol hold [job_id]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job release</p></td>
+<td><p>qrls [job_id]</p></td>
+<td><p>scontrol release [job_id]</p></td>
+</tr>
+<tr class="row-even"><td><p>Queue list</p></td>
+<td><p>qstat -Q</p></td>
+<td><p>squeue</p></td>
+</tr>
+<tr class="row-odd"><td><p>Node list</p></td>
+<td><p>pbsnodes -l</p></td>
+<td><p>sinfo -N OR scontrol show nodes</p></td>
+</tr>
+<tr class="row-even"><td><p>Cluster status</p></td>
+<td><p>qstat -a</p></td>
+<td><p>sinfo</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Title</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Environment</p></th>
+<th class="head"><p>PBS/Torque</p></th>
+<th class="head"><p>SLURM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Job ID</p></td>
+<td><p>$PBS_JOBID</p></td>
+<td><p>$SLURM_JOBID</p></td>
+</tr>
+<tr class="row-odd"><td><p>Submit Directory</p></td>
+<td><p>$PBS_O_WORKDIR</p></td>
+<td><p>$SLURM_SUBMIT_DIR</p></td>
+</tr>
+<tr class="row-even"><td><p>Submit Host</p></td>
+<td><p>$PBS_O_HOST</p></td>
+<td><p>$SLURM_SUBMIT_HOST</p></td>
+</tr>
+<tr class="row-odd"><td><p>Node List</p></td>
+<td><p>$PBS_NODEFILE</p></td>
+<td><p>$SLURM_JOB_NODELIST</p></td>
+</tr>
+<tr class="row-even"><td><p>Q</p></td>
+<td><p>$PBS_ARRAYID</p></td>
+<td><p>$SLURM_ARRAY_TASK_ID</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="job-specifications">
+<h3>Job Specifications<a class="headerlink" href="#job-specifications" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">Title</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Job Specification</p></th>
+<th class="head"><p>PBS/Torque</p></th>
+<th class="head"><p>SLURM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Script directive</p></td>
+<td><p>#PBS</p></td>
+<td><p>#SBATCH</p></td>
+</tr>
+<tr class="row-odd"><td><p>Queue/Partition</p></td>
+<td><p>-q [name]</p></td>
+<td><p>-p [name]     *Best to let Slurm pick the optimal partition</p></td>
+</tr>
+<tr class="row-even"><td><p>Node Count</p></td>
+<td><p>-l nodes=[count]</p></td>
+<td><p>-N [min[-max]]     *Autocalculates this if just task # is given</p></td>
+</tr>
+<tr class="row-odd"><td><p>Total Task Count</p></td>
+<td><p>-l ppn=[count] OR -l mppwidth=[PE_count]</p></td>
+<td><p>-n OR –ntasks=ntasks</p></td>
+</tr>
+<tr class="row-even"><td><p>Wall Clock Limit</p></td>
+<td><p>-l walltime=[hh:mm:ss]</p></td>
+<td><p>-t [min] OR -t [days-hh:mm:ss]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Standard Output File</p></td>
+<td><p>-o [file_name]</p></td>
+<td><p>-o [file_name]</p></td>
+</tr>
+<tr class="row-even"><td><p>Standard Error File</p></td>
+<td><p>-e [file_name]</p></td>
+<td><p>-e [file_name]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Combine stdout/err</p></td>
+<td><p>-j oe (both to stdout) OR -j eo (both to stderr)</p></td>
+<td><p>(use -o without -e)</p></td>
+</tr>
+<tr class="row-even"><td><p>Copy Environment</p></td>
+<td><p>-V</p></td>
+<td><p>–export=[ALL | NONE | variables]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Event Notification</p></td>
+<td><p>-m abe</p></td>
+<td><p>–mail-type=[events]</p></td>
+</tr>
+<tr class="row-even"><td><p>Email Address</p></td>
+<td><p>-M [address]</p></td>
+<td><p>–mail-user=[address]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job Name</p></td>
+<td><p>-N [name]</p></td>
+<td><p>–job-name=[name]</p></td>
+</tr>
+<tr class="row-even"><td><p>Job Restart</p></td>
+<td><p>-r [y | n]</p></td>
+<td><p>–requeue OR –no-requeue</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resource Sharing</p></td>
+<td><p>-l naccesspolicy=singlejob</p></td>
+<td><p>–exclusive OR –shared</p></td>
+</tr>
+<tr class="row-even"><td><p>Memory Size</p></td>
+<td><p>-l mem=[MB]</p></td>
+<td><p>–mem=[mem][M | G | T] OR –mem-per-cpu=[mem][M | G | T]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Accounts to charge</p></td>
+<td><p>-A OR -W group_list=[account]</p></td>
+<td><p>–account=[account] OR -A</p></td>
+</tr>
+<tr class="row-even"><td><p>Tasks Per Node</p></td>
+<td><p>-l mppnppn [PEs_per_node]</p></td>
+<td><p>–ntasks-per-node=[count]</p></td>
+</tr>
+<tr class="row-odd"><td><p>CPUs Per Task</p></td>
+<td><p>N/A</p></td>
+<td><p>–cpus-per-task=[count]</p></td>
+</tr>
+<tr class="row-even"><td><p>Job Dependency</p></td>
+<td><p>-d [job_id]</p></td>
+<td><p>–depend=[state:job_id]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quality of Service</p></td>
+<td><p>-l qos=[name]</p></td>
+<td><p>–qos=[normal | high]</p></td>
+</tr>
+<tr class="row-even"><td><p>Job Arrays</p></td>
+<td><p>-t [array_spec]</p></td>
+<td><p>–array=[array_spec]</p></td>
+</tr>
+<tr class="row-odd"><td><p>Generic Resources</p></td>
+<td><p>-l other=[resource_spec]</p></td>
+<td><p>–gres=[resource_spec]</p></td>
+</tr>
+<tr class="row-even"><td><p>Job Enqueue Time</p></td>
+<td><p>-a “YYYY-MM-DD HH:MM:SS”</p></td>
+<td><p>–begin=YYYY-MM-DD[THH:MM[:SS]]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="batch-queues">
 <h2>Batch queues<a class="headerlink" href="#batch-queues" title="Permalink to this headline">¶</a></h2>
 <p>Both batch jobs and interactive jobs will be submitted to a batch queue,
