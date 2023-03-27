@@ -66,20 +66,20 @@ The same tables can be used for reference when writing new submission scripts di
      - PBS/Torque
      - SLURM
    * - Job ID
-     - $PBS_JOBID
-     - $SLURM_JOBID
+     - ``$PBS_JOBID``
+     - ``$SLURM_JOBID``
    * - Submit Directory
-     - $PBS_O_WORKDIR
-     - $SLURM_SUBMIT_DIR
+     - ``$PBS_O_WORKDIR``
+     - ``$SLURM_SUBMIT_DIR``
    * - Submit Host
-     - $PBS_O_HOST
-     - $SLURM_SUBMIT_HOST
+     - ``$PBS_O_HOST``
+     - ``$SLURM_SUBMIT_HOST``
    * - Node List
-     - $PBS_NODEFILE
-     - $SLURM_JOB_NODELIST
+     - ``$PBS_NODEFILE``
+     - ``$SLURM_JOB_NODELIST``
    * - Q
-     - $PBS_ARRAYID
-     - $SLURM_ARRAY_TASK_ID
+     - ``$PBS_ARRAYID``
+     - ``$SLURM_ARRAY_TASK_ID``
 
 .. list-table:: Job Directives or Specifications
    :widths: 50 25 25
@@ -112,10 +112,10 @@ The same tables can be used for reference when writing new submission scripts di
    * - Standard Error File
      - -e [file_name]
      - -e [file_name]
-   * - Combine stderr into stdout
+   * - Write stderr -> stdout
      - -j oe (both to stdout) 
      - (use -o without -e)
-   * - Combine stdout into stderr
+   * - Write stdout -> stderr
      - -j eo (both to stderr)
      - (use -o without -e)
    * - Copy Environment
