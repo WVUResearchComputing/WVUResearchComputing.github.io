@@ -67,7 +67,7 @@ The same tables can be used for reference when writing new submission scripts di
      - SLURM
    * - Job ID
      - $PBS_JOBID
-     - $SLURM_JOBID
+     - $SLURM_JOB_ID
    * - Submit Directory
      - $PBS_O_WORKDIR
      - $SLURM_SUBMIT_DIR
@@ -77,7 +77,16 @@ The same tables can be used for reference when writing new submission scripts di
    * - Node List
      - $PBS_NODEFILE
      - $SLURM_JOB_NODELIST
-   * - Q
+   * - Job Name
+     - $PBS_JOBNAME
+     - $SLURM_JOB_NAME
+   * - Number of nodes
+     - $PBS_NUM_NODES
+     - $SLURM_JOB_NUM_NODES
+   * - Number of cores per node
+     - $PBS_NUM_PPN
+     - $SLURM_CPUS_ON_NODE
+   * - Unique index used for Job Arrays
      - $PBS_ARRAYID
      - $SLURM_ARRAY_TASK_ID
 

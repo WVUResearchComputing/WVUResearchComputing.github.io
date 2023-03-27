@@ -290,7 +290,7 @@ The same tables can be used for reference when writing new submission scripts di
 <tbody>
 <tr class="row-even"><td><p>Job ID</p></td>
 <td><p>$PBS_JOBID</p></td>
-<td><p>$SLURM_JOBID</p></td>
+<td><p>$SLURM_JOB_ID</p></td>
 </tr>
 <tr class="row-odd"><td><p>Submit Directory</p></td>
 <td><p>$PBS_O_WORKDIR</p></td>
@@ -304,7 +304,19 @@ The same tables can be used for reference when writing new submission scripts di
 <td><p>$PBS_NODEFILE</p></td>
 <td><p>$SLURM_JOB_NODELIST</p></td>
 </tr>
-<tr class="row-even"><td><p>Q</p></td>
+<tr class="row-even"><td><p>Job Name</p></td>
+<td><p>$PBS_JOBNAME</p></td>
+<td><p>$SLURM_JOB_NAME</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of nodes</p></td>
+<td><p>$PBS_NUM_NODES</p></td>
+<td><p>$SLURM_JOB_NUM_NODES</p></td>
+</tr>
+<tr class="row-even"><td><p>Number of cores per node</p></td>
+<td><p>$PBS_NUM_PPN</p></td>
+<td><p>$SLURM_CPUS_ON_NODE</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unique index used for Job Arrays</p></td>
 <td><p>$PBS_ARRAYID</p></td>
 <td><p>$SLURM_ARRAY_TASK_ID</p></td>
 </tr>
