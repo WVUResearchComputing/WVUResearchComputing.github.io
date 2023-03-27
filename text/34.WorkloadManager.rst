@@ -11,8 +11,6 @@ functioning of the cluster. Jobs should be run using the cluster's
 queuing system, which uses the Moab Cluster Manager. Both batch jobs and
 interactive jobs should be submitted using the queuing system.
 
-
-
 Translating PBS Scripts to Slurm Scripts
 ----------------------------------------
 
@@ -24,11 +22,8 @@ That being said is good for our users, specially new users to get used to SLURM 
 The following are a set of tables that contains a list of common commands and terms used with the TORQUE/PBS resource manager and scheduler, and the corresponding commands and terms used under the SLURM workload manager. 
 These tables can be used to assist you in translating existing PBS scripts into proper SLURM scripts that can be interpreted directly.
 The same tables can be used for reference when writing new submission scripts directly in SLURM format
- 
-User Commands
-~~~~~~~~~~~~~
 
-.. list-table:: Title
+.. list-table:: User Commands
    :widths: 50 25 25 
    :header-rows: 1
 
@@ -63,10 +58,7 @@ User Commands
      - qstat -a
      - sinfo
 
-Environment Variables
-~~~~~~~~~~~~~~~~~~~~~
-
-.. list-table:: Title
+.. list-table:: Environment Variables
    :widths: 50 25 25 
    :header-rows: 1
 
@@ -89,10 +81,7 @@ Environment Variables
      - $PBS_ARRAYID
      - $SLURM_ARRAY_TASK_ID
 
-Job Specifications
-~~~~~~~~~~~~~~~~~~
-
-.. list-table:: Title
+.. list-table:: Job Directives or Specifications
    :widths: 50 25 25
    :header-rows: 1
 
@@ -104,12 +93,15 @@ Job Specifications
      - #SBATCH
    * - Queue/Partition
      - -q [name]
-     - -p [name]     \*Best to let Slurm pick the optimal partition
+     - -p [name]
    * - Node Count
      - -l nodes=[count]
-     - -N [min[-max]]     \*Autocalculates this if just task # is given
+     - -N [min[-max]]
    * - Total Task Count
-     - -l ppn=[count] OR -l mppwidth=[PE_count]
+     - -l ppn=[count]
+     - -n OR --ntasks=ntasks
+   * - Total Task Count
+     - -l mppwidth=[PE_count]
      - -n OR --ntasks=ntasks
    * - Wall Clock Limit
      - -l walltime=[hh:mm:ss]
@@ -120,8 +112,11 @@ Job Specifications
    * - Standard Error File
      - -e [file_name]
      - -e [file_name]
-   * - Combine stdout/err
-     - -j oe (both to stdout) OR -j eo (both to stderr)
+   * - Combine stderr into stdout
+     - -j oe (both to stdout) 
+     - (use -o without -e)
+   * - Combine stdout into stderr
+     - -j eo (both to stderr)
      - (use -o without -e)
    * - Copy Environment
      - -V
@@ -143,7 +138,10 @@ Job Specifications
      - --exclusive OR --shared
    * - Memory Size
      - -l mem=[MB]
-     - --mem=[mem][M | G | T] OR --mem-per-cpu=[mem][M | G | T]
+     - --mem=[mem][M | G | T]
+   * - Memory Size
+     - -l mem=[MB]
+     - --mem-per-cpu=[mem][M | G | T]      
    * - Accounts to charge
      - -A OR -W group_list=[account]
      - --account=[account] OR -A
@@ -168,8 +166,6 @@ Job Specifications
    * - Job Enqueue Time
      - -a “YYYY-MM-DD HH:MM:SS”
      - --begin=YYYY-MM-DD[THH:MM[:SS]]
-
-
 
 
 Batch queues
