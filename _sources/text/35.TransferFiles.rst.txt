@@ -10,7 +10,8 @@ Overview
 
 For a quick start guide please visit: `Globus: How to Get Started <https://docs.globus.org/how-to/get-started/>`__.
 
-If you need further assistance beyond this documentation, please contact `helpdesk@hpc.wvu.edu`__.
+
+If you need further assistance beyond this documentation, please contact `iour helpdesk <mailto://helpdesk@hpc.wvu.edu>`__.
 
 **Review** https://www.globus.org/researchers/getting-started for a step by step guide on use Globus Online.
 

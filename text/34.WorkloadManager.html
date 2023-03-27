@@ -101,12 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#user-commands">User Commands</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#job-specifications">Job Specifications</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#batch-queues">Batch queues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#useful-commands-for-job-submission-status">Useful Commands for Job Submission/Status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a><ul>
@@ -227,10 +222,8 @@ That being said is good for our users, specially new users to get used to SLURM 
 <p>The following are a set of tables that contains a list of common commands and terms used with the TORQUE/PBS resource manager and scheduler, and the corresponding commands and terms used under the SLURM workload manager.
 These tables can be used to assist you in translating existing PBS scripts into proper SLURM scripts that can be interpreted directly.
 The same tables can be used for reference when writing new submission scripts directly in SLURM format</p>
-<section id="user-commands">
-<h3>User Commands<a class="headerlink" href="#user-commands" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -281,11 +274,8 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-</section>
-<section id="environment-variables">
-<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" id="id2">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Environment Variables</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -320,11 +310,8 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-</section>
-<section id="job-specifications">
-<h3>Job Specifications<a class="headerlink" href="#job-specifications" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Job Directives or Specifications</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -343,30 +330,38 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 <tr class="row-odd"><td><p>Queue/Partition</p></td>
 <td><p>-q [name]</p></td>
-<td><p>-p [name]     *Best to let Slurm pick the optimal partition</p></td>
+<td><p>-p [name]</p></td>
 </tr>
 <tr class="row-even"><td><p>Node Count</p></td>
 <td><p>-l nodes=[count]</p></td>
-<td><p>-N [min[-max]]     *Autocalculates this if just task # is given</p></td>
+<td><p>-N [min[-max]]</p></td>
 </tr>
 <tr class="row-odd"><td><p>Total Task Count</p></td>
-<td><p>-l ppn=[count] OR -l mppwidth=[PE_count]</p></td>
+<td><p>-l ppn=[count]</p></td>
 <td><p>-n OR –ntasks=ntasks</p></td>
 </tr>
-<tr class="row-even"><td><p>Wall Clock Limit</p></td>
+<tr class="row-even"><td><p>Total Task Count</p></td>
+<td><p>-l mppwidth=[PE_count]</p></td>
+<td><p>-n OR –ntasks=ntasks</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wall Clock Limit</p></td>
 <td><p>-l walltime=[hh:mm:ss]</p></td>
 <td><p>-t [min] OR -t [days-hh:mm:ss]</p></td>
 </tr>
-<tr class="row-odd"><td><p>Standard Output File</p></td>
+<tr class="row-even"><td><p>Standard Output File</p></td>
 <td><p>-o [file_name]</p></td>
 <td><p>-o [file_name]</p></td>
 </tr>
-<tr class="row-even"><td><p>Standard Error File</p></td>
+<tr class="row-odd"><td><p>Standard Error File</p></td>
 <td><p>-e [file_name]</p></td>
 <td><p>-e [file_name]</p></td>
 </tr>
-<tr class="row-odd"><td><p>Combine stdout/err</p></td>
-<td><p>-j oe (both to stdout) OR -j eo (both to stderr)</p></td>
+<tr class="row-even"><td><p>Combine stderr into stdout</p></td>
+<td><p>-j oe (both to stdout)</p></td>
+<td><p>(use -o without -e)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Combine stdout into stderr</p></td>
+<td><p>-j eo (both to stderr)</p></td>
 <td><p>(use -o without -e)</p></td>
 </tr>
 <tr class="row-even"><td><p>Copy Environment</p></td>
@@ -395,43 +390,46 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 <tr class="row-even"><td><p>Memory Size</p></td>
 <td><p>-l mem=[MB]</p></td>
-<td><p>–mem=[mem][M | G | T] OR –mem-per-cpu=[mem][M | G | T]</p></td>
+<td><p>–mem=[mem][M | G | T]</p></td>
 </tr>
-<tr class="row-odd"><td><p>Accounts to charge</p></td>
+<tr class="row-odd"><td><p>Memory Size</p></td>
+<td><p>-l mem=[MB]</p></td>
+<td><p>–mem-per-cpu=[mem][M | G | T]</p></td>
+</tr>
+<tr class="row-even"><td><p>Accounts to charge</p></td>
 <td><p>-A OR -W group_list=[account]</p></td>
 <td><p>–account=[account] OR -A</p></td>
 </tr>
-<tr class="row-even"><td><p>Tasks Per Node</p></td>
+<tr class="row-odd"><td><p>Tasks Per Node</p></td>
 <td><p>-l mppnppn [PEs_per_node]</p></td>
 <td><p>–ntasks-per-node=[count]</p></td>
 </tr>
-<tr class="row-odd"><td><p>CPUs Per Task</p></td>
+<tr class="row-even"><td><p>CPUs Per Task</p></td>
 <td><p>N/A</p></td>
 <td><p>–cpus-per-task=[count]</p></td>
 </tr>
-<tr class="row-even"><td><p>Job Dependency</p></td>
+<tr class="row-odd"><td><p>Job Dependency</p></td>
 <td><p>-d [job_id]</p></td>
 <td><p>–depend=[state:job_id]</p></td>
 </tr>
-<tr class="row-odd"><td><p>Quality of Service</p></td>
+<tr class="row-even"><td><p>Quality of Service</p></td>
 <td><p>-l qos=[name]</p></td>
 <td><p>–qos=[normal | high]</p></td>
 </tr>
-<tr class="row-even"><td><p>Job Arrays</p></td>
+<tr class="row-odd"><td><p>Job Arrays</p></td>
 <td><p>-t [array_spec]</p></td>
 <td><p>–array=[array_spec]</p></td>
 </tr>
-<tr class="row-odd"><td><p>Generic Resources</p></td>
+<tr class="row-even"><td><p>Generic Resources</p></td>
 <td><p>-l other=[resource_spec]</p></td>
 <td><p>–gres=[resource_spec]</p></td>
 </tr>
-<tr class="row-even"><td><p>Job Enqueue Time</p></td>
+<tr class="row-odd"><td><p>Job Enqueue Time</p></td>
 <td><p>-a “YYYY-MM-DD HH:MM:SS”</p></td>
 <td><p>–begin=YYYY-MM-DD[THH:MM[:SS]]</p></td>
 </tr>
 </tbody>
 </table>
-</section>
 </section>
 <section id="batch-queues">
 <h2>Batch queues<a class="headerlink" href="#batch-queues" title="Permalink to this headline">¶</a></h2>
