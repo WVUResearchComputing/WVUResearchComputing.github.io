@@ -289,24 +289,24 @@ The same tables can be used for reference when writing new submission scripts di
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Job ID</p></td>
-<td><p>$PBS_JOBID</p></td>
-<td><p>$SLURM_JOBID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_JOBID</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOBID</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Submit Directory</p></td>
-<td><p>$PBS_O_WORKDIR</p></td>
-<td><p>$SLURM_SUBMIT_DIR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_O_WORKDIR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_SUBMIT_DIR</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Submit Host</p></td>
-<td><p>$PBS_O_HOST</p></td>
-<td><p>$SLURM_SUBMIT_HOST</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_O_HOST</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_SUBMIT_HOST</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Node List</p></td>
-<td><p>$PBS_NODEFILE</p></td>
-<td><p>$SLURM_JOB_NODELIST</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_NODEFILE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NODELIST</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Q</p></td>
-<td><p>$PBS_ARRAYID</p></td>
-<td><p>$SLURM_ARRAY_TASK_ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_ARRAYID</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -356,11 +356,11 @@ The same tables can be used for reference when writing new submission scripts di
 <td><p>-e [file_name]</p></td>
 <td><p>-e [file_name]</p></td>
 </tr>
-<tr class="row-even"><td><p>Combine stderr into stdout</p></td>
+<tr class="row-even"><td><p>Write stderr -&gt; stdout</p></td>
 <td><p>-j oe (both to stdout)</p></td>
 <td><p>(use -o without -e)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Combine stdout into stderr</p></td>
+<tr class="row-odd"><td><p>Write stdout -&gt; stderr</p></td>
 <td><p>-j eo (both to stderr)</p></td>
 <td><p>(use -o without -e)</p></td>
 </tr>
