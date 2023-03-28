@@ -101,8 +101,9 @@
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-partitions">Understanding Partitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submitting-batch-jobs">Submitting batch jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#batch-queues">Batch queues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#useful-commands-for-job-submission-status">Useful Commands for Job Submission/Status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#batch-shell-scripts">Batch Shell Scripts</a></li>
@@ -206,13 +207,143 @@
             
   <section id="workload-manager-slurm">
 <span id="bs-workload-manager"></span><h1>Workload Manager (SLURM)<a class="headerlink" href="#workload-manager-slurm" title="Permalink to this headline">¶</a></h1>
-<p>The login node (the shell you get upon logging into a cluster) should be
-used for text editing, file transfer, and job submissions. No Jobs
-should be run directly on the login node. Jobs that take up too much CPU
-time or RAM will be cancelled by the WVU RC staff to ensure proper
-functioning of the cluster. Jobs should be run using the cluster’s
-queuing system, which uses the Moab Cluster Manager. Both batch jobs and
-interactive jobs should be submitted using the queuing system.</p>
+<p>A workload manager is a piece of software that transforms a set of networked computers into a HPC cluster.
+The workload manager has several responsibilites: Resource Manager and Scheduler.
+In the case of SLURM both tasks are assumeb by the same piece of software.
+Is the workload manager what makes an HPC cluster to look like a supercomputer rather than a set of independent machines on a datacenter.</p>
+<p>Resource manager has several subtasks associated with it.
+From one side, it keeps track of the resources present in the cluster and the availability on a given point in time.
+Individual computers could be added or removed from the pool of resources. Their load is recorded periodically to determine the feasibility of executing more jobs.
+It also keeps records for accounting purposes or profiling.</p>
+<p>The scheduler side of a workload manager takes care of the jobs submitted to the cluster.
+Process the list of resources requested for each job and priorizes the execution according to some criteria or constrains imposed on the job or the current state of the cluster.</p>
+<p>In this section we will cover in more detail the commands, variables and directives used by SLURM to help users to submit, monitor and control the jobs on the cluster.
+The configuration and administration of SLURM is out of scope for this section.</p>
+<section id="understanding-partitions">
+<h2>Understanding Partitions<a class="headerlink" href="#understanding-partitions" title="Permalink to this headline">¶</a></h2>
+<p>The compute nodes on an HPC cluster are logically segmented into partitions.
+A partition is just a list of compute nodes where jobs submitted to it can execute.
+A compute node could belong to several partitions.
+A partition also include rules that must be followed before a job can be admitted and rules that declare how jobs will run on the cluster and conditions on when and how jobs can start execution.</p>
+<p>All jobs regardless of if they are batch jobs or interactive jobs they are always submitted to some partition.
+To know the list of partitions on the cluster execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sinfo -s
+PARTITION       AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
+standby*           up    4:00:00      88/77/2/167 taicm[001-009],tarcl100,tarcs[100,200-206,300-304],
+                                              tbdcx001,tbmcs[001-011,100-103],tbpcm200,tbpcs001,
+                                              tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],tcocs[001-064,100],
+                                              tcocx[001-003],tcscm300,tjscl100,tjscm001,tmmcm[100-108],
+                                              tngcm200,tpmcm[001-006],tsacs001,tsdcl[001-002],tsscl[001-002],
+                                              ttmcm[100-101],tzecl[100-107],tzecs[100-115]
+comm_small_day     up 1-00:00:00        64/0/1/65 tcocs[001-064,100]
+comm_small_week    up 7-00:00:00        64/0/1/65 tcocs[001-064,100]
+comm_med_day       up 1-00:00:00          4/1/0/5 tcocm[100-104]
+comm_med_week      up 7-00:00:00          4/1/0/5 tcocm[100-104]
+comm_xl_week       up 7-00:00:00          0/3/0/3 tcocx[001-003]
+comm_gpu_inter     up    4:00:00         5/6/0/11 tbegq[200-202],tbmgq[001,100],tcogq[001-006]
+comm_gpu_week      up 7-00:00:00          1/5/0/6 tcogq[001-006]
+aei0001            up   infinite          2/6/1/9 taicm[001-009]
+alromero           up   infinite        14/0/0/14 tarcl100,tarcs[100,200-206,300-304]
+be_gpu             up   infinite          2/1/0/3 tbegq[200-202]
+bvpopp             up   infinite          0/1/0/1 tbpcs001
+cedumitrescu       up   infinite          0/1/0/1 tcdcx100
+cfb0001            up   infinite          0/1/0/1 tcbcx100
+cgriffin           up   infinite          1/0/0/1 tcgcx300
+chemdept           up   infinite          0/4/0/4 tbmcs[100-103]
+chemdept-gpu       up   infinite          1/0/0/1 tbmgq100
+cs00048            up   infinite          0/1/0/1 tcscm300
+jaspeir            up   infinite          0/2/0/2 tjscl100,tjscm001
+jbmertz            up   infinite        3/14/0/17 tbmcs[001-011,100-103],tbmgq[001,100]
+mamclaughlin       up   infinite          0/9/0/9 tmmcm[100-108]
+ngarapat           up   infinite          0/1/0/1 tngcm200
+pmm0026            up   infinite          0/6/0/6 tpmcm[001-006]
+sbs0016            up   infinite          0/2/0/2 tsscl[001-002]
+spdifazio          up   infinite          0/2/0/2 tsdcl[001-002]
+tdmusho            up   infinite          0/2/0/2 ttmcm[100-101]
+vyakkerman         up   infinite          0/1/0/1 tsacs001
+zbetienne          up   infinite        1/23/0/24 tzecl[100-107],tzecs[100-115]
+zbetienne_large    up   infinite          0/8/0/8 tzecl[100-107]
+zbetienne_small    up   infinite        1/15/0/16 tzecs[100-115]
+</pre></div>
+</div>
+<p>The first column is the name of the partition. The star (*) after <code class="docutils literal notranslate"><span class="pre">default</span></code> indicates that this will be the selected partition if not specified during the submission of the job either via command line arguments or submission directives in the submission file. All the partitions starting with <code class="docutils literal notranslate"><span class="pre">comm_</span></code> are community partitions, meaning that anyone with an user account can submit on them. Faculty can purchase compute nodes that will receive its own partition with no limits on the amount of time the job can run on their own partition.
+Community queues use a name schema that makes easy to identify its specifications.
+The word <code class="docutils literal notranslate"><span class="pre">_small_</span></code> indicates that compute nodes associated to the partition offer 96GB of RAM.
+The word <code class="docutils literal notranslate"><span class="pre">_med_</span></code> indicates that compute nodes associated to the partition offer 192GB of RAM.
+The word <code class="docutils literal notranslate"><span class="pre">_xl_</span></code> indicates that compute nodes associated to the partition offer 768GB of RAM.
+The word <code class="docutils literal notranslate"><span class="pre">_gpu_</span></code> indicates that compute nodes associated to the partition include one or more GPU cards.
+The words <code class="docutils literal notranslate"><span class="pre">_day</span></code> and <code class="docutils literal notranslate"><span class="pre">_week</span></code> indicates that those partitions have walltimes of one day or 1 week respectively.
+The parition <code class="docutils literal notranslate"><span class="pre">comm_gpu_inter</span></code> is used for interactive jobs using GPU cards.</p>
+<p>The second column is the availability of the partition. At this point all partitions are enable and that is indicated with the word <code class="docutils literal notranslate"><span class="pre">up</span></code>.</p>
+<p>The third column is the amount of time a job submitted to that partition can run, this is also known as the <strong>walltime</strong>.
+Jobs submitted without any limit of time explicitly indicated will received the walltime of the partition.
+Jobs that declare a larger walltime than the maximum allowed by the partition will be rejected inmediately after submission.</p>
+<p>The fourth column provides a summary of the condition of nodes associated to the partition. The format is indicated as (A/I/O/T) and means (allocated/idle/other/total).
+Allocated are nodes executing one or more jobs. Idle are compute nodes currently inactive but enable to execute jobs.
+Other include nodes that are not allowed to execute jobs, due to maintnance or some other condition.
+The sum of all these 3 states is the total number of compute nodes associated with the partition.</p>
+<p>The fifth column is the nodelist. This is a compacted listing of all the machines associated with each partition.
+The compact form is particularly useful in large HPC clusters with hundreds of compute nodes.
+Notice for example that compute nodes <code class="docutils literal notranslate"><span class="pre">tcocs[001-064,100]</span></code> appear as nodes associated to <code class="docutils literal notranslate"><span class="pre">standby`,</span> <span class="pre">``comm_small_day</span></code> and <code class="docutils literal notranslate"><span class="pre">comm_small_week</span></code>.</p>
+</section>
+<section id="submitting-batch-jobs">
+<h2>Submitting batch jobs<a class="headerlink" href="#submitting-batch-jobs" title="Permalink to this headline">¶</a></h2>
+<p>A batch job is a job that has not expectations of running inmediately and will not be interactively operated when start running.
+This is the kind of jobs an HPC cluster is preferentially built for.
+You simply write on a text file the list of resources you need for the job and the list of steps to execute in the form of script and the job will be put in execution when resources became available.
+The text file is called a <strong>submission script</strong> and it has two roles.
+From one side, it has the script that will be put in execution on the compute node associated to the job.
+From the other side, it has a set of lines starting with <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>.
+Those lines start with <code class="docutils literal notranslate"><span class="pre">#</span></code> meaning that they are ignored by the shell when running the script.
+Those lines are important for SLURM as it will interpret those lines and compile a list of requirements and configurations associated to the job.
+The lines starting with  <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> will not interpret shell variables or environment variables.
+These lines will contain resource requests such as the number of compute nodes, number of CPU cores, memory requested, partition.
+They also could contain the name of the job, specification for sending emails when the job start, ends of fails, where the output of the script wil go and other configurations that will be used before, during and after the job enters in execution.</p>
+<p>Our first example will be very simple.
+Consider a submission script for a job called <strong>PI</strong>.
+The job will compute the value of pi using the the arbitrary precision calculator bc.
+The command to be executed will be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
+</pre></div>
+</div>
+<p>This is a simple execution that takes a fraction of a second on any modern computer.
+However, our purpose here is to use it to demonstrate how to submit a job that will be executed on a compute node.
+In practical cases the execution will require several hours or even days and need multiple CPU cores or multiple compute nodes.
+The submission script could be written like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#SBATCH --job-name=PI
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -p standby
+
+echo &quot;The first 65 digits of PI are:&quot;
+echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
+
+echo &quot;&quot;
+echo &quot;Job ID:              $SLURM_JOB_ID&quot;
+echo &quot;Job Name:            $SLURM_JOB_NAME&quot;
+echo &quot;Number of Nodes:     $SLURM_JOB_NUM_NODES&quot;
+echo &quot;Number of CPU cores: $SLURM_CPUS_ON_NODE&quot;
+</pre></div>
+</div>
+<p>Assuming that this text is written on a file called <code class="docutils literal notranslate"><span class="pre">runjob.pbs</span></code>. Submit the job using the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch runjob.pbs
+</pre></div>
+</div>
+<p>The job will most likely execute after a few seconds. A file with a name such as <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobid&gt;.out</span></code> is created.
+For example, if the job ID were 120049. The output produce by the submission script will contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cat slurm-120049.out
+The first 65 digits of PI are:
+3.14159265358979323846264338327950288419716939937510582097494459228
+
+Job ID:              120049
+Job Name:            PI
+Number of Nodes:     1
+Number of CPU cores: 1
+</pre></div>
+</div>
+</section>
 <section id="translating-pbs-scripts-to-slurm-scripts">
 <h2>Translating PBS Scripts to Slurm Scripts<a class="headerlink" href="#translating-pbs-scripts-to-slurm-scripts" title="Permalink to this headline">¶</a></h2>
 <p>All our previous clusters, Mountaineer, Spruce Knob and Thorny Flat used Torque as Resource Manager and Moab as Scheduler. In 2022 we transition to SLURM as workload manager.
@@ -442,48 +573,6 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-</section>
-<section id="batch-queues">
-<h2>Batch queues<a class="headerlink" href="#batch-queues" title="Permalink to this headline">¶</a></h2>
-<p>Both batch jobs and interactive jobs will be submitted to a batch queue,
-which specifies the length and resources available to your job. Current
-status of a cluster’s queues can be found using the <code class="docutils literal notranslate"><span class="pre">qstat</span></code> command.
-There are several options that you can use to get an idea about the
-queues available on the system, the output here is for Spruce cluster</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat -q
-
-server: srih0001.hpc.wvu.edu
-
-Queue            Memory CPU Time Walltime Node  Run Que Lm  State
----------------- ------ -------- -------- ----  --- --- --  -----
-comm_mmem_week     --      --    168:00:0   --   26   0 --   E R
-standby            --      --    04:00:00   --  182 122 --   E R
-comm_256g_mem      --      --    168:00:0   --    0   0 --   E R
-comm_mmem_day      --      --    24:00:00   --  566 592 --   E R
-debug              --      --    00:15:00   --    0   0 --   E R
-comm_gpu           --      --    168:00:0   --    0   0 --   E R
-batch              --      --    04:00:00   --    0   0 --   D S
-comm_smp           --      --    168:00:0   --    0  20 --   E R
-comm_large_mem     --      --    168:00:0   --    0   0 --   E R
-...
-                                               ----- -----
-                                                 877   914
-</pre></div>
-</div>
-<p>This command will give you an idea about the Walltime of the queues and
-the number of jobs and queue and running.</p>
-<p>Each queue has a designated Walltime, which specifies how long a
-particular job can run. We recommend that users submit job scripts first
-to the debug queue which has the highest priority (meaning your job will
-be placed running before all other jobs submitted to other queues). The
-debug queue only has a 5 minute Walltime, but is perfect for making sure
-your job script is valid and no errors will occur. Without first running
-a job in the debug queue, you run the risk of waiting a couple of hours
-before your job starts and then finding errors. Other queues including
-week, hour and long are more appropriate for longer running jobs and
-your job’s priority runs using your user’s priority which is explained
-in the <a class="reference external" href="Policies">Policies</a> page. If you cannot run your job within
-the specified runtime limits, please let us know.</p>
 </section>
 <section id="useful-commands-for-job-submission-status">
 <h2>Useful Commands for Job Submission/Status<a class="headerlink" href="#useful-commands-for-job-submission-status" title="Permalink to this headline">¶</a></h2>
