@@ -36,12 +36,15 @@ To know the list of partitions on the cluster execute:
 
 	$ sinfo -s
 	PARTITION       AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
-	standby*           up    4:00:00      88/77/2/167 taicm[001-009],tarcl100,tarcs[100,200-206,300-304],
-                                                      tbdcx001,tbmcs[001-011,100-103],tbpcm200,tbpcs001,
-                                                      tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],tcocs[001-064,100],
-                                                      tcocx[001-003],tcscm300,tjscl100,tjscm001,tmmcm[100-108],
-                                                      tngcm200,tpmcm[001-006],tsacs001,tsdcl[001-002],tsscl[001-002],
-                                                      ttmcm[100-101],tzecl[100-107],tzecs[100-115]
+	standby*           up    4:00:00      88/77/2/167 taicm[001-009],tarcl100,
+                                                      tarcs[100,200-206,300-304],tbdcx001,
+                                                      tbmcs[001-011,100-103],tbpcm200,tbpcs001,
+                                                      tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],
+                                                      tcocs[001-064,100],tcocx[001-003],tcscm300,
+                                                      tjscl100,tjscm001,tmmcm[100-108],tngcm200,
+                                                      tpmcm[001-006],tsacs001,tsdcl[001-002],
+                                                      tsscl[001-002],ttmcm[100-101],tzecl[100-107],
+                                                      tzecs[100-115]
 	comm_small_day     up 1-00:00:00        64/0/1/65 tcocs[001-064,100]
 	comm_small_week    up 7-00:00:00        64/0/1/65 tcocs[001-064,100]
 	comm_med_day       up 1-00:00:00          4/1/0/5 tcocm[100-104]
@@ -74,13 +77,28 @@ To know the list of partitions on the cluster execute:
 
 The first column is the name of the partition. The star (*) after ``default`` indicates that this will be the selected partition if not specified during the submission of the job either via command line arguments or submission directives in the submission file. All the partitions starting with ``comm_`` are community partitions, meaning that anyone with an user account can submit on them. Faculty can purchase compute nodes that will receive its own partition with no limits on the amount of time the job can run on their own partition.
 Community queues use a name schema that makes easy to identify its specifications. 
-The word ``_small_`` indicates that compute nodes associated to the partition offer 96GB of RAM.
-The word ``_med_`` indicates that compute nodes associated to the partition offer 192GB of RAM.
-The word ``_xl_`` indicates that compute nodes associated to the partition offer 768GB of RAM.
-The word ``_gpu_`` indicates that compute nodes associated to the partition include one or more GPU cards.
-The words ``_day`` and ``_week`` indicates that those partitions have walltimes of one day or 1 week respectively.
-The parition ``comm_gpu_inter`` is used for interactive jobs using GPU cards.
 
+.. list-table:: User Commands
+   :widths: 50 50 
+   :header-rows: 1
+
+   * - Word
+     - Meaning
+   * - ``_small``
+     - Compute nodes associated to the partition offer 96GB of RAM
+   * - ``_med``
+     - Compute nodes associated to the partition offer 192GB of RAM   
+   * - ``_xl``
+     - Compute nodes associated to the partition offer 768GB of RAM
+   * - ``_gpu``
+     - Compute nodes associated to the partition one or more GPU cards
+   * - ``_day``
+     - The partition has a walltime of maximum 1 day
+   * - ``_week``
+     - The partition has a walltime of maximum 1 week
+   * - ``comm_gpu_inter``
+     - Special partition offering compute nodes with GPU for interactive jobs, walltime is 4 hours
+   
 The second column is the availability of the partition. At this point all partitions are enable and that is indicated with the word ``up``.
 
 The third column is the amount of time a job submitted to that partition can run, this is also known as the **walltime**. 
@@ -154,6 +172,41 @@ For example, if the job ID were 120049. The output produce by the submission scr
 	Job Name:            PI
 	Number of Nodes:     1
 	Number of CPU cores: 1
+
+Let us now understand the lines present on this first submission script.
+The first line is called a `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`__ 
+This is used to indicate which interpreter will be used for the lines on the script.
+In this case we are saying that ``bash`` which is a commom shell interpreter must be used for the script.
+
+The next 4 lines all start with ``$SBATCH``::
+
+    #SBATCH --job-name=PI
+    #SBATCH -N 1
+    #SBATCH -n 1
+    #SBATCH -p standby
+
+The lines will each in order, set the name of the job, the number of compute nodes, the number of CPU cores on the node and the partition selected for the job.
+Except for the job name which is undefined by default, all other values here correspont to the default values.
+Those 3 lines for the number of nodes, cores and partition can be removed from the submission script and the script will take assume the default values.
+
+
+The next 2 lines are the actual execution that we want takes place on a compute node. 
+It could be a complex numerical simulation, solve a complex optimization problem, a genomic alignment.
+Any computationally demanding operation will be here.
+
+In the final 5 lines we are demonstrating the used of some Environment variables that are created when the job start running on the compute node.
+In this case we are revelaling the content of those variables and writing those along with the output of the script.
+The output is all that the script or the programs call by the script writes on the standard output.
+If the script were executed directly, the standard output is the terminal window. 
+In the case of a batch scrip, all the output is directed to a couple of files.
+The normal output also called standard output is written to a file that by default looks like ``slurm-<jobid>.out``
+The error output, text that is considered could be aside to the normal output is called standard error and it is sent to a separate file.
+In our case we do not have any error and no error file is generated.
+
+We will explore more complex submission scripts but first lets explore how to monitor the jobs submitted and how to cancel jobs.
+
+
+
 
 
 Translating PBS Scripts to Slurm Scripts
