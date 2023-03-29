@@ -290,10 +290,67 @@ To restrict the listing just to jobs submitted by the user with the command::
 
 Notice that we have here two jobs that are in queue. 
 The status of PD means that the jobs are **pending** of execution. 
+The ST column gives the state of the job.
+In the case above, both jobs are in **pending** state. 
+The following codes:
+
+.. list-table:: Job State Codes
+   :widths: 25 25 50
+   :header-rows: 1
+
+   * - R
+     - Running
+     - Job currently has an allocation
+   * - PD
+     - PenDing
+     - Job is awaiting resource allocation
+   * - TO
+     - TimedOut
+     - Job terminated upon reaching its time limit
+   * - PR
+     - PReempted
+     - Job terminated due to preemption
+   * - S
+     - Suspended
+     - Execution has been suspended and CPUs have been released for other jobs 
+   * - CD
+     - CompletedD
+     - Job has terminated all processes on all nodes with an exit code of zero
+   * - CA
+     - CAncelled
+     - Job was explicitly cancelled by the user or system administrator
+   * - F
+     - Failed
+     - Job terminated with non-zero exit code or other failure condition
+   * - NF
+     - Terminated due to Node Failure
+     - Job terminated due to failure of one or more allocated nodes
+
+There are a few other state conditions that appear less often.
+If you see one state that is not one above, check on the manual page for `squeue <https://slurm.schedmd.com/squeue.html>`__ under **JOB STATE CODES**.
+
 The columns are for most part self-explanatory.
-The final column shows briefly the reasons why the job is still not running. 
+The final column shows briefly the reasons why the job is still not running.
 One of the jobs states that could not run due to a lack of **Resources**, ie there are no 80 compute nodes available at this point.
 The other job is pending due to **Priority**, ie there are resources availables but they will be assigned to another job with higher priority.
+
+There are several messages over the Reasons column. 
+A common set of reasons messages with explanations follows.
+
+.. list-table:: Job Reason Codes
+   :widths: 10 90
+   :header-rows: 1
+
+   * - Resources
+     - Scheduler is unable to find sufficient idle resources to run your job
+   * - Priority
+     - There are jobs with higher priority ahead of this job in the queue
+   * - QOSMaxCpuPerUserLimit
+     - The CPU request exceeds the maximum each user is allowed to use
+   * - Licenses
+     - The job is waiting for a license.
+
+There are more reason codes that can be found in the `SLURM documentation for Resource Limits <https://slurm.schedmd.com/resource_limits.html#reasons>`__
 
 Canceling a job
 ---------------
@@ -307,6 +364,112 @@ The job can be canceled with the command ``scancel`` followed by the jobid of th
 	trcis001:~$ scancel 122837
 	trcis001:~$ squeue -u $USER
 				 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+
+As the canceling of a job is an irreversible action it is suggested to use an interactive version that allow you to double check not only the job ID but also the job name and partition in case of mistyping the jobID::
+
+	trcis001:~$ scancel -i 123807
+	Cancel job_id=123807 name=PI partition=standby [y/n]? y
+
+Estimation of the starting time for a job
+-----------------------------------------
+
+SLURM tries to schedule all jobs as quickly as possible, subject to a number of dynamic constrains. 
+These constrains could be cluster policies, available hardware, allocation priorities (contributers to the cluster get higher priority allocations), etc. 
+Typically jobs submitted into a **day** queue could start running within a day or so.
+Week queues could demand more time as jobs there last longer in execution.  
+All this can vary a a given point of time on the cluster.
+
+The command ``squeue``, has some arguments that can show you the scheduler's estimate of when a pending/idle job will start running. 
+It is just the scheduler's best estimate, given current conditions, that on a cluster are permanently changing. 
+The actual time a job starts might be earlier or later than that depending on factors such as the behavior of currently running jobs, the submission of new jobs, and hardware issues.
+
+To see this, you need to request that squeue show the %S field in the output format option.
+One particularly good set of arguments in this situations could be::
+
+	trcis001:~$ squeue -o "%.9i %.9P %.8j %.8u %.2t %.10M %.6D %S" -u $USER
+		JOBID PARTITION     NAME     USER ST       TIME  NODES START_TIME
+	   123809   standby       PI gufranco PD       0:00     40 2023-03-29T22:11:53
+	   123808   standby       PI gufranco PD       0:00     80 2023-03-30T15:10:06
+
+It makes sense that requesting 80 nodes will take more time than requesting 40.
+It could happens that some of the jobs running finish before the walltime and the job will enter earlier or could happen than newer jobs enter in partition with higher priority than standby and the job gets delayed.
+Use this estimation as a guidance more than a commitment.
+
+Detailed information about jobs
+-------------------------------
+
+The information provided by the command ``squeue`` sometimes is not enough and you would like to gather a more complete picture of the state of a particular job.
+The command ``scontrol`` provides a wealth of information about jobs but also partitions and nodes.
+Information about a job::
+
+	trcis001:~$ scontrol show job 123809 
+	JobId=123809 JobName=PI
+	   UserId=gufranco(318130) GroupId=its-rc-thorny(1079001) MCS_label=N/A
+	   Priority=10675 Nice=0 Account=its-rc-admin QOS=normal
+	   JobState=PENDING Reason=Resources Dependency=(null)
+	   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+	   RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A
+	   SubmitTime=2023-03-29T19:05:08 EligibleTime=2023-03-29T19:05:08
+	   AccrueTime=2023-03-29T19:05:08
+	   StartTime=2023-03-29T22:11:53 EndTime=2023-03-30T02:11:53 Deadline=N/A
+	   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2023-03-29T19:18:33 Scheduler=Backfill:*
+	   Partition=standby AllocNode:Sid=trcis001:28116
+	   ReqNodeList=(null) ExcNodeList=(null)
+	   NodeList= SchedNodeList=tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-105]
+	   NumNodes=40-40 NumCPUs=800 NumTasks=40 CPUs/Task=20 ReqB:S:C:T=0:0:*:*
+	   TRES=cpu=800,mem=7717080M,node=40,billing=800
+	   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+	   MinCPUsNode=20 MinMemoryNode=0 MinTmpDiskNode=0
+	   Features=(null) DelayBoot=00:00:00
+	   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+	   Command=/gpfs20/users/gufranco/runjob_40n.slurm
+	   WorkDir=/gpfs20/users/gufranco
+	   StdErr=/gpfs20/users/gufranco/slurm-123809.out
+	   StdIn=/dev/null
+	   StdOut=/gpfs20/users/gufranco/slurm-123809.out
+	   Power=
+
+Information about a parition uses a similar command::
+
+	trcis001:~$ scontrol show partition standby
+	PartitionName=standby
+	   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+	   AllocNodes=ALL Default=YES QoS=N/A
+	   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
+	   MaxNodes=UNLIMITED MaxTime=04:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
+	   NodeSets=compute
+	   Nodes=taicm[001-009],tarcl100,tarcs[100,200-206,300-304],tbdcx001,tbmcs[001-011,100-103],
+             tbpcm200,tbpcs001,tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],tcocs[001-064,100],
+             tcocx[001-003],tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],
+             tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-115]
+	   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+	   OverTimeLimit=NONE PreemptMode=CANCEL
+	   State=UP TotalCPUs=6140 TotalNodes=167 SelectTypeParameters=NONE
+	   JobDefaults=(null)
+	   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+	   TRES=cpu=6140,mem=27963188M,node=167,billing=6140
+
+We can also ask for information about a compute node::
+
+	trcis001:~$ scontrol show node tbdcx001
+	NodeName=tbdcx001 Arch=x86_64 CoresPerSocket=20 
+	   CPUAlloc=40 CPUEfctv=40 CPUTot=40 CPULoad=42.22
+	   AvailableFeatures=xl,compute,bio
+	   ActiveFeatures=xl,compute,bio
+	   Gres=(null)
+	   NodeAddr=tbdcx001 NodeHostName=tbdcx001 Version=22.05.6
+	   OS=Linux 3.10.0-1160.24.1.el7.x86_64 #1 SMP Thu Mar 25 21:21:56 UTC 2021 
+	   RealMemory=773491 AllocMem=0 FreeMem=646603 Sockets=2 Boards=1
+	   State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
+	   Partitions=standby 
+	   BootTime=2023-02-23T22:45:08 SlurmdStartTime=2023-02-24T08:35:36
+	   LastBusyTime=2023-03-29T15:58:11
+	   CfgTRES=cpu=40,mem=773491M,billing=40
+	   AllocTRES=cpu=40
+	   CapWatts=n/a
+	   CurrentWatts=0 AveWatts=0
+	   ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
+
 
 Translating PBS Scripts to Slurm Scripts
 ----------------------------------------
@@ -435,7 +598,7 @@ The same tables can be used for reference when writing new submission scripts di
      - --mail-user=[address]
    * - Job Name
      - -N [name]
-     - --job-name=[name]
+     - --job-name=[name] OR -J [name]
    * - Job Restart
      - -r [y | n]
      - --requeue OR --no-requeue
@@ -472,157 +635,6 @@ The same tables can be used for reference when writing new submission scripts di
    * - Job Enqueue Time
      - -a “YYYY-MM-DD HH:MM:SS”
      - --begin=YYYY-MM-DD[THH:MM[:SS]]
-
-
-Useful Commands for Job Submission/Status
------------------------------------------
-
-+-----------------------------------+-----------------------------------+
-| **qsub**                          | Used to submit both batch and     |
-|                                   | interactive jobs (explained       |
-|                                   | below)                            |
-+-----------------------------------+-----------------------------------+
-| **canceljob**                     | Terminates a job in the queue or  |
-|                                   | a running job                     |
-+-----------------------------------+-----------------------------------+
-| **checkjob**                      | Displays detailed job state       |
-|                                   | information                       |
-+-----------------------------------+-----------------------------------+
-
-Submitting a Batch job to the Queue
------------------------------------
-
-To submit a batch job to the queue use the qsub command to submit a job
-submission shell script. Useable job submission shell scripts are
-available for easy modification at `Sample Job
-Scripts <Sample_Job_Scripts>`__.
-
-::
-
-   $> qsub <environment_options> <shellscriptname>
-
-** are options qsub takes to specify job submission parameters including
-the specified queue to submit the job, how many CPUs/much RAM is needed,
-working directories etc (more on this below under Serial Jobs). ** is
-the name of a shell script (bash, tcsh, etc.) that contains the commands
-that will be executed at run time. Default standard output and standard
-error of the job will be placed in files named
-*jobname*.\ **o**\ *jobid* and *jobname*.\ **e**\ *jobid*, respectively.
-These files will be written to the directory in which the qsub command
-was executed in. Where jobname is specified using the -N environment
-option and jobid is given at run time by the system. A trivial example
-is
-
-::
-
-   $> qsub -N example -q debug ./batch_job.sh
-   42129.mountaineer
-
-In this example output files are named example.o42129 and example.e42129
-for standard output and standard error, respectively.
-
-Batch Shell Scripts
-~~~~~~~~~~~~~~~~~~~
-
-Serial batch jobs (jobs not requiring any MPI libraries) are submitted
-to the system using shell scripts. An example (very simple) shell script
-could be
-
-::
-
-   #!/bin/bash
-
-   time command_to_be_executed
-
-The above bash script, if submitted to the system using qsub would
-execute a single command. The unix time command before the
-command_to_be_executed is a very useful tool when using HPC scheduler
-systems. This command will report the real time it takes for a command
-to begin and complete execution. Times will be reported in the standard
-error file, and are useful for knowledge about how much walltime a
-command actually uses. The bash script shown above, when executed using
-the qsub command, the user would have to specify environment options at
-the command line. An easier way is to place environment options directly
-into you shell script using #PBS comments.
-
-::
-
-   #!/bin/bash
-
-   #PBS -N example
-   #PBS -q debug
-
-   time command_to_be_executed
-
-By adding the -N and -q options directly into your shell script you no
-longer have to specify these options on the command line when issuing
-the qsub command.
-
-**Note: Do not place a job in the background using the '&' symbol, you
-will confuse the scheduler and potentially loose your command output.**
-
-Qsub Environment Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Enivironment variables can be specified on the command line using the
-qsub command.
-
-::
-
-   $> qsub -N batch_job -q week -l procs=3 ./batch_job.sh
-
-The above example would submit a job named batch_job to the week queue
-with 3 CPUs used and would execute batch_job.sh located in the current
-directory. The output files would be batch_job.o\ *jobid* and
-batch_job.e\ *jobid*. Another way is to specify these options directly
-in the shell script using #PBS commands.
-
-::
-
-   #!/bin/bash
-
-   #PBS -N batch_job
-   #PBS -q week
-   #PBS -l nodes=1:ppn=3
-
-   time command_to_be_executed
-
-With the environment options contained in the shell script, you no
-longer have to specify them on the command line.
-
-::
-
-   $> qsub ./batch_job.sh
-
-The qsub command without options is identical to the previous command
-with options. Below is a list of commonly used qsub environment options,
-and these options are further explained in below sections.
-
-+-----------------------------------+-----------------------------------+
-| **-N**                            | Job Name                          |
-+-----------------------------------+-----------------------------------+
-| **-q**                            | Queue specification               |
-+-----------------------------------+-----------------------------------+
-| **-l**                            | Used to specify job resources     |
-|                                   | (number of CPUs, nodes, length of |
-|                                   | Walltime)                         |
-+-----------------------------------+-----------------------------------+
-| **-m**                            | E-mail options                    |
-+-----------------------------------+-----------------------------------+
-| **-M**                            | E-mail address(es) for e-mail     |
-|                                   | options                           |
-+-----------------------------------+-----------------------------------+
-| **-e**                            | Path for error stream             |
-+-----------------------------------+-----------------------------------+
-| **-o**                            | Path for output stream            |
-+-----------------------------------+-----------------------------------+
-| **-t**                            | request for array jobs            |
-+-----------------------------------+-----------------------------------+
-
-**Note: More information about the PBS system can be found using the man
-pbs command at the terminal. Further an extensive list of qsub options
-including environment variables can be found using the man qsub
-command.**
 
 Resource Specification
 ~~~~~~~~~~~~~~~~~~~~~~

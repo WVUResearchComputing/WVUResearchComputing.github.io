@@ -105,11 +105,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#submitting-batch-jobs">Submitting batch jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#monitoring-jobs">Monitoring jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#canceling-a-job">Canceling a job</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#useful-commands-for-job-submission-status">Useful Commands for Job Submission/Status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-the-queue">Submitting a Batch job to the Queue</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#batch-shell-scripts">Batch Shell Scripts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qsub-environment-variables">Qsub Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estimation-of-the-starting-time-for-a-job">Estimation of the starting time for a job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-information-about-jobs">Detailed information about jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#resource-specification">Resource Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#e-mail-options">E-mail options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output-file-specification">Output file specification</a></li>
@@ -490,10 +488,89 @@ To restrict the listing just to jobs submitted by the user with the command:</p>
 </div>
 <p>Notice that we have here two jobs that are in queue.
 The status of PD means that the jobs are <strong>pending</strong> of execution.
-The columns are for most part self-explanatory.
+The ST column gives the state of the job.
+In the case above, both jobs are in <strong>pending</strong> state.
+The following codes:</p>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Job State Codes</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>R</p></th>
+<th class="head"><p>Running</p></th>
+<th class="head"><p>Job currently has an allocation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PD</p></td>
+<td><p>PenDing</p></td>
+<td><p>Job is awaiting resource allocation</p></td>
+</tr>
+<tr class="row-odd"><td><p>TO</p></td>
+<td><p>TimedOut</p></td>
+<td><p>Job terminated upon reaching its time limit</p></td>
+</tr>
+<tr class="row-even"><td><p>PR</p></td>
+<td><p>PReempted</p></td>
+<td><p>Job terminated due to preemption</p></td>
+</tr>
+<tr class="row-odd"><td><p>S</p></td>
+<td><p>Suspended</p></td>
+<td><p>Execution has been suspended and CPUs have been released for other jobs</p></td>
+</tr>
+<tr class="row-even"><td><p>CD</p></td>
+<td><p>CompletedD</p></td>
+<td><p>Job has terminated all processes on all nodes with an exit code of zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>CA</p></td>
+<td><p>CAncelled</p></td>
+<td><p>Job was explicitly cancelled by the user or system administrator</p></td>
+</tr>
+<tr class="row-even"><td><p>F</p></td>
+<td><p>Failed</p></td>
+<td><p>Job terminated with non-zero exit code or other failure condition</p></td>
+</tr>
+<tr class="row-odd"><td><p>NF</p></td>
+<td><p>Terminated due to Node Failure</p></td>
+<td><p>Job terminated due to failure of one or more allocated nodes</p></td>
+</tr>
+</tbody>
+</table>
+<p>There are a few other state conditions that appear less often.
+If you see one state that is not one above, check on the manual page for <a class="reference external" href="https://slurm.schedmd.com/squeue.html">squeue</a> under <strong>JOB STATE CODES</strong>.</p>
+<p>The columns are for most part self-explanatory.
 The final column shows briefly the reasons why the job is still not running.
 One of the jobs states that could not run due to a lack of <strong>Resources</strong>, ie there are no 80 compute nodes available at this point.
 The other job is pending due to <strong>Priority</strong>, ie there are resources availables but they will be assigned to another job with higher priority.</p>
+<p>There are several messages over the Reasons column.
+A common set of reasons messages with explanations follows.</p>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">Job Reason Codes</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Resources</p></th>
+<th class="head"><p>Scheduler is unable to find sufficient idle resources to run your job</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Priority</p></td>
+<td><p>There are jobs with higher priority ahead of this job in the queue</p></td>
+</tr>
+<tr class="row-odd"><td><p>QOSMaxCpuPerUserLimit</p></td>
+<td><p>The CPU request exceeds the maximum each user is allowed to use</p></td>
+</tr>
+<tr class="row-even"><td><p>Licenses</p></td>
+<td><p>The job is waiting for a license.</p></td>
+</tr>
+</tbody>
+</table>
+<p>There are more reason codes that can be found in the <a class="reference external" href="https://slurm.schedmd.com/resource_limits.html#reasons">SLURM documentation for Resource Limits</a></p>
 </section>
 <section id="canceling-a-job">
 <h2>Canceling a job<a class="headerlink" href="#canceling-a-job" title="Permalink to this headline">¶</a></h2>
@@ -507,6 +584,108 @@ trcis001:~$ squeue -u $USER
                          JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 </pre></div>
 </div>
+<p>As the canceling of a job is an irreversible action it is suggested to use an interactive version that allow you to double check not only the job ID but also the job name and partition in case of mistyping the jobID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scancel -i 123807
+Cancel job_id=123807 name=PI partition=standby [y/n]? y
+</pre></div>
+</div>
+</section>
+<section id="estimation-of-the-starting-time-for-a-job">
+<h2>Estimation of the starting time for a job<a class="headerlink" href="#estimation-of-the-starting-time-for-a-job" title="Permalink to this headline">¶</a></h2>
+<p>SLURM tries to schedule all jobs as quickly as possible, subject to a number of dynamic constrains.
+These constrains could be cluster policies, available hardware, allocation priorities (contributers to the cluster get higher priority allocations), etc.
+Typically jobs submitted into a <strong>day</strong> queue could start running within a day or so.
+Week queues could demand more time as jobs there last longer in execution.
+All this can vary a a given point of time on the cluster.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">squeue</span></code>, has some arguments that can show you the scheduler’s estimate of when a pending/idle job will start running.
+It is just the scheduler’s best estimate, given current conditions, that on a cluster are permanently changing.
+The actual time a job starts might be earlier or later than that depending on factors such as the behavior of currently running jobs, the submission of new jobs, and hardware issues.</p>
+<p>To see this, you need to request that squeue show the %S field in the output format option.
+One particularly good set of arguments in this situations could be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -o &quot;%.9i %.9P %.8j %.8u %.2t %.10M %.6D %S&quot; -u $USER
+        JOBID PARTITION     NAME     USER ST       TIME  NODES START_TIME
+   123809   standby       PI gufranco PD       0:00     40 2023-03-29T22:11:53
+   123808   standby       PI gufranco PD       0:00     80 2023-03-30T15:10:06
+</pre></div>
+</div>
+<p>It makes sense that requesting 80 nodes will take more time than requesting 40.
+It could happens that some of the jobs running finish before the walltime and the job will enter earlier or could happen than newer jobs enter in partition with higher priority than standby and the job gets delayed.
+Use this estimation as a guidance more than a commitment.</p>
+</section>
+<section id="detailed-information-about-jobs">
+<h2>Detailed information about jobs<a class="headerlink" href="#detailed-information-about-jobs" title="Permalink to this headline">¶</a></h2>
+<p>The information provided by the command <code class="docutils literal notranslate"><span class="pre">squeue</span></code> sometimes is not enough and you would like to gather a more complete picture of the state of a particular job.
+The command <code class="docutils literal notranslate"><span class="pre">scontrol</span></code> provides a wealth of information about jobs but also partitions and nodes.
+Information about a job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show job 123809
+JobId=123809 JobName=PI
+   UserId=gufranco(318130) GroupId=its-rc-thorny(1079001) MCS_label=N/A
+   Priority=10675 Nice=0 Account=its-rc-admin QOS=normal
+   JobState=PENDING Reason=Resources Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A
+   SubmitTime=2023-03-29T19:05:08 EligibleTime=2023-03-29T19:05:08
+   AccrueTime=2023-03-29T19:05:08
+   StartTime=2023-03-29T22:11:53 EndTime=2023-03-30T02:11:53 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2023-03-29T19:18:33 Scheduler=Backfill:*
+   Partition=standby AllocNode:Sid=trcis001:28116
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList= SchedNodeList=tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-105]
+   NumNodes=40-40 NumCPUs=800 NumTasks=40 CPUs/Task=20 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=800,mem=7717080M,node=40,billing=800
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=20 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/gpfs20/users/gufranco/runjob_40n.slurm
+   WorkDir=/gpfs20/users/gufranco
+   StdErr=/gpfs20/users/gufranco/slurm-123809.out
+   StdIn=/dev/null
+   StdOut=/gpfs20/users/gufranco/slurm-123809.out
+   Power=
+</pre></div>
+</div>
+<p>Information about a parition uses a similar command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show partition standby
+PartitionName=standby
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+   AllocNodes=ALL Default=YES QoS=N/A
+   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=04:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
+   NodeSets=compute
+   Nodes=taicm[001-009],tarcl100,tarcs[100,200-206,300-304],tbdcx001,tbmcs[001-011,100-103],
+     tbpcm200,tbpcs001,tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],tcocs[001-064,100],
+     tcocx[001-003],tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],
+     tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-115]
+   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=CANCEL
+   State=UP TotalCPUs=6140 TotalNodes=167 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=6140,mem=27963188M,node=167,billing=6140
+</pre></div>
+</div>
+<p>We can also ask for information about a compute node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show node tbdcx001
+NodeName=tbdcx001 Arch=x86_64 CoresPerSocket=20
+   CPUAlloc=40 CPUEfctv=40 CPUTot=40 CPULoad=42.22
+   AvailableFeatures=xl,compute,bio
+   ActiveFeatures=xl,compute,bio
+   Gres=(null)
+   NodeAddr=tbdcx001 NodeHostName=tbdcx001 Version=22.05.6
+   OS=Linux 3.10.0-1160.24.1.el7.x86_64 #1 SMP Thu Mar 25 21:21:56 UTC 2021
+   RealMemory=773491 AllocMem=0 FreeMem=646603 Sockets=2 Boards=1
+   State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
+   Partitions=standby
+   BootTime=2023-02-23T22:45:08 SlurmdStartTime=2023-02-24T08:35:36
+   LastBusyTime=2023-03-29T15:58:11
+   CfgTRES=cpu=40,mem=773491M,billing=40
+   AllocTRES=cpu=40
+   CapWatts=n/a
+   CurrentWatts=0 AveWatts=0
+   ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
+</pre></div>
+</div>
 </section>
 <section id="translating-pbs-scripts-to-slurm-scripts">
 <h2>Translating PBS Scripts to Slurm Scripts<a class="headerlink" href="#translating-pbs-scripts-to-slurm-scripts" title="Permalink to this headline">¶</a></h2>
@@ -517,8 +696,8 @@ That being said is good for our users, specially new users to get used to SLURM 
 <p>The following are a set of tables that contains a list of common commands and terms used with the TORQUE/PBS resource manager and scheduler, and the corresponding commands and terms used under the SLURM workload manager.
 These tables can be used to assist you in translating existing PBS scripts into proper SLURM scripts that can be interpreted directly.
 The same tables can be used for reference when writing new submission scripts directly in SLURM format</p>
-<table class="colwidths-given docutils align-default" id="id2">
-<caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -569,8 +748,8 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-text">Environment Variables</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">Environment Variables</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -617,8 +796,8 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id4">
-<caption><span class="caption-text">Job Directives or Specifications</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">Job Directives or Specifications</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -685,7 +864,7 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 <tr class="row-odd"><td><p>Job Name</p></td>
 <td><p>-N [name]</p></td>
-<td><p>–job-name=[name]</p></td>
+<td><p>–job-name=[name] OR -J [name]</p></td>
 </tr>
 <tr class="row-even"><td><p>Job Restart</p></td>
 <td><p>-r [y | n]</p></td>
@@ -737,160 +916,6 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-</section>
-<section id="useful-commands-for-job-submission-status">
-<h2>Useful Commands for Job Submission/Status<a class="headerlink" href="#useful-commands-for-job-submission-status" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>qsub</strong></p></td>
-<td><p>Used to submit both batch and
-interactive jobs (explained
-below)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>canceljob</strong></p></td>
-<td><p>Terminates a job in the queue or
-a running job</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>checkjob</strong></p></td>
-<td><p>Displays detailed job state
-information</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="submitting-a-batch-job-to-the-queue">
-<h2>Submitting a Batch job to the Queue<a class="headerlink" href="#submitting-a-batch-job-to-the-queue" title="Permalink to this headline">¶</a></h2>
-<p>To submit a batch job to the queue use the qsub command to submit a job
-submission shell script. Useable job submission shell scripts are
-available for easy modification at <a class="reference external" href="Sample_Job_Scripts">Sample Job
-Scripts</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub &lt;environment_options&gt; &lt;shellscriptname&gt;
-</pre></div>
-</div>
-<p>** are options qsub takes to specify job submission parameters including
-the specified queue to submit the job, how many CPUs/much RAM is needed,
-working directories etc (more on this below under Serial Jobs). ** is
-the name of a shell script (bash, tcsh, etc.) that contains the commands
-that will be executed at run time. Default standard output and standard
-error of the job will be placed in files named
-<em>jobname</em>.<strong>o</strong><em>jobid</em> and <em>jobname</em>.<strong>e</strong><em>jobid</em>, respectively.
-These files will be written to the directory in which the qsub command
-was executed in. Where jobname is specified using the -N environment
-option and jobid is given at run time by the system. A trivial example
-is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -N example -q debug ./batch_job.sh
-42129.mountaineer
-</pre></div>
-</div>
-<p>In this example output files are named example.o42129 and example.e42129
-for standard output and standard error, respectively.</p>
-<section id="batch-shell-scripts">
-<h3>Batch Shell Scripts<a class="headerlink" href="#batch-shell-scripts" title="Permalink to this headline">¶</a></h3>
-<p>Serial batch jobs (jobs not requiring any MPI libraries) are submitted
-to the system using shell scripts. An example (very simple) shell script
-could be</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="n">time</span> <span class="n">command_to_be_executed</span>
-</pre></div>
-</div>
-<p>The above bash script, if submitted to the system using qsub would
-execute a single command. The unix time command before the
-command_to_be_executed is a very useful tool when using HPC scheduler
-systems. This command will report the real time it takes for a command
-to begin and complete execution. Times will be reported in the standard
-error file, and are useful for knowledge about how much walltime a
-command actually uses. The bash script shown above, when executed using
-the qsub command, the user would have to specify environment options at
-the command line. An easier way is to place environment options directly
-into you shell script using #PBS comments.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="c1">#PBS -N example</span>
-<span class="c1">#PBS -q debug</span>
-
-<span class="n">time</span> <span class="n">command_to_be_executed</span>
-</pre></div>
-</div>
-<p>By adding the -N and -q options directly into your shell script you no
-longer have to specify these options on the command line when issuing
-the qsub command.</p>
-<p><strong>Note: Do not place a job in the background using the ‘&amp;’ symbol, you
-will confuse the scheduler and potentially loose your command output.</strong></p>
-</section>
-<section id="qsub-environment-variables">
-<h3>Qsub Environment Variables<a class="headerlink" href="#qsub-environment-variables" title="Permalink to this headline">¶</a></h3>
-<p>Enivironment variables can be specified on the command line using the
-qsub command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -N batch_job -q week -l procs=3 ./batch_job.sh
-</pre></div>
-</div>
-<p>The above example would submit a job named batch_job to the week queue
-with 3 CPUs used and would execute batch_job.sh located in the current
-directory. The output files would be batch_job.o<em>jobid</em> and
-batch_job.e<em>jobid</em>. Another way is to specify these options directly
-in the shell script using #PBS commands.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="c1">#PBS -N batch_job</span>
-<span class="c1">#PBS -q week</span>
-<span class="c1">#PBS -l nodes=1:ppn=3</span>
-
-<span class="n">time</span> <span class="n">command_to_be_executed</span>
-</pre></div>
-</div>
-<p>With the environment options contained in the shell script, you no
-longer have to specify them on the command line.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub ./batch_job.sh
-</pre></div>
-</div>
-<p>The qsub command without options is identical to the previous command
-with options. Below is a list of commonly used qsub environment options,
-and these options are further explained in below sections.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>-N</strong></p></td>
-<td><p>Job Name</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>-q</strong></p></td>
-<td><p>Queue specification</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>-l</strong></p></td>
-<td><p>Used to specify job resources
-(number of CPUs, nodes, length of
-Walltime)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>-m</strong></p></td>
-<td><p>E-mail options</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>-M</strong></p></td>
-<td><p>E-mail address(es) for e-mail
-options</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>-e</strong></p></td>
-<td><p>Path for error stream</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>-o</strong></p></td>
-<td><p>Path for output stream</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>-t</strong></p></td>
-<td><p>request for array jobs</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Note: More information about the PBS system can be found using the man
-pbs command at the terminal. Further an extensive list of qsub options
-including environment variables can be found using the man qsub
-command.</strong></p>
-</section>
 <section id="resource-specification">
 <h3>Resource Specification<a class="headerlink" href="#resource-specification" title="Permalink to this headline">¶</a></h3>
 <p>The #PBS -l option is used to specify resources such as number of CPUs,
