@@ -347,94 +347,166 @@ In practical cases the execution will require several hours or even days and nee
 The submission script could be written like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
-#SBATCH --job-name=PI
+#SBATCH -J PI
 #SBATCH -N 1
-#SBATCH -n 1
 #SBATCH -c 1
+#SBATCH -n 1
 #SBATCH -p standby
+#SBATCH -t 4:00:00
 
 echo &quot;The first 65 digits of PI are:&quot;
 echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
 
 echo &quot;&quot;
-echo &quot;Job ID:                  $SLURM_JOB_ID&quot;
-echo &quot;Job Name:                $SLURM_JOB_NAME&quot;
-echo &quot;Number of Nodes:         $SLURM_JOB_NUM_NODES&quot;
-echo &quot;Number of Tasks:         $SLURM_NTASKS&quot;
-echo &quot;Number of CPUs per task: $SLURM_CPUS_ON_NODE&quot;
+echo &quot;Job ID:              $SLURM_JOB_ID&quot;
+echo &quot;Job Name:            $SLURM_JOB_NAME&quot;
+echo &quot;Number of Nodes:     $SLURM_JOB_NUM_NODES&quot;
+echo &quot;Number of CPU cores: $SLURM_CPUS_ON_NODE&quot;
+echo &quot;Number of Tasks:     $SLURM_NTASKS&quot;
+echo &quot;Partition:           $SLURM_JOB_PARTITION&quot;
 </pre></div>
 </div>
 <p>Assuming that this text is written on a file called <code class="docutils literal notranslate"><span class="pre">runjob.pbs</span></code>. Submit the job using the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch runjob.pbs
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sbatch runjob.pbs
 </pre></div>
 </div>
 <p>The job will most likely execute after a few seconds. A file with a name such as <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobid&gt;.out</span></code> is created.
-For example, if the job ID were 120049. The output produce by the submission script will contain:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    $&gt; cat slurm-120049.out
-    The first 65 digits of PI are:
-    3.14159265358979323846264338327950288419716939937510582097494459228
+For example, if the job ID were 122014. The output produce by the submission script will contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ cat slurm-122014.out
+The first 65 digits of PI are:
+3.14159265358979323846264338327950288419716939937510582097494459228
 
-    Job ID:                 120049
-    Job Name:               PI
-    Number of Nodes:        1
-Number of Tasks:        1
-    Number of CPU per task: 1
+Job ID:              122014
+Job Name:            PI
+Number of Nodes:     1
+Number of CPU cores: 1
+Number of Tasks:     1
+Partition:           standby
 </pre></div>
 </div>
 <p>Let us now understand the lines present on this first submission script.
 The first line is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a>
 This is used to indicate which interpreter will be used for the lines on the script.
 In this case we are saying that <code class="docutils literal notranslate"><span class="pre">bash</span></code> which is a commom shell interpreter must be used for the script.</p>
-<p>The next 5 lines all start with <code class="docutils literal notranslate"><span class="pre">$SBATCH</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --job-name=PI</span>
+<p>The next 6 lines all start with <code class="docutils literal notranslate"><span class="pre">$SBATCH</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -J PI</span>
 <span class="c1">#SBATCH -N 1</span>
-<span class="c1">#SBATCH -n 1</span>
 <span class="c1">#SBATCH -c 1</span>
+<span class="c1">#SBATCH -n 1</span>
 <span class="c1">#SBATCH -p standby</span>
+<span class="c1">#SBATCH -t 4:00:00</span>
 </pre></div>
 </div>
-<p>The lines will each in order, set the name of the job, the number of compute nodes, the number of tasks, the number of CPUs per task and the partition selected for the job.
+<p>The lines will each in order, set the name of the job (-J), the number of compute nodes (-N), the number of CPU cores per task (-c), the number of tasks (-n), the partition selected for the job (-p) and the limit of time for the job (-t).
 Except for the job name which is undefined by default, all other values here correspont to the default values.
-Those 4 lines for the number of nodes, tasks, CPU cores and partition can be removed from the submission script and the script will take assume the default values.</p>
+The job name is optional and the other 5 lines can be removed from the submission script and the script will take assume the default values.
+For this simple case all that result being one: One node, one task, one cpu per task and one cpu per node.
+The concepts nodes, tasks and cpus per task or node will be covered below.</p>
 <p>The next 2 lines are the actual execution that we want takes place on a compute node.
 It could be a complex numerical simulation, solve a complex optimization problem, a genomic alignment.
 Any computationally demanding operation will be here.</p>
-<p>In the final 5 lines we are demonstrating the used of some Environment variables that are created when the job start running on the compute node.
+<p>In the final 6 lines we are demonstrating the used of some Environment variables that are created when the job start running on the compute node.
 In this case we are revelaling the content of those variables and writing those along with the output of the script.
-The output is all that the script or the programs call by the script writes on the standard output.
+These variables can be use in the script to change the execution lines according to their values.
+More SLURM environment variables will be described below.</p>
+<p>The output is all that the script or the programs call by the script writes produces to be seen on the screen.
 If the script were executed directly, the standard output is the terminal window.
-In the case of a batch scrip, all the output is directed to a couple of files.
+In the case of a batch script, all the output is directed to a couple of files.
 The normal output also called standard output is written to a file that by default looks like <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobid&gt;.out</span></code>
 The error output, text that is considered could be aside to the normal output is called standard error and it is sent to a separate file.
 In our case we do not have any error and no error file is generated.</p>
-<p>We will explore more complex submission scripts but first lets explore how to monitor the jobs submitted and how to cancel jobs.</p>
-</section>
-<section id="monitoring-jobs">
-<h2>Monitoring jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h2>
-<p>Lets consider a variation of the submission script were by mistake we will be asking for several compute nodes:</p>
+<p>All the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> directives are optional and there are default values for many of them or no value at all if not declared.
+Consider for example the same submission script removing all the lines starting with <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
-
-#SBATCH --job-name=PI
-#SBATCH -N 10
-#SBATCH -n 10
-#SBATCH -c 4
-#SBATCH -p standby
 
 echo &quot;The first 65 digits of PI are:&quot;
 echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
 
 echo &quot;&quot;
-echo &quot;Job ID:                  $SLURM_JOB_ID&quot;
-echo &quot;Job Name:                $SLURM_JOB_NAME&quot;
-echo &quot;Number of Nodes:         $SLURM_JOB_NUM_NODES&quot;
-echo &quot;Number of Tasks:         $SLURM_NTASKS&quot;
-echo &quot;Number of CPUs per node: $SLURM_CPUS_ON_NODE&quot;
+echo &quot;Job ID:              $SLURM_JOB_ID&quot;
+echo &quot;Job Name:            $SLURM_JOB_NAME&quot;
+echo &quot;Number of Nodes:     $SLURM_JOB_NUM_NODES&quot;
+echo &quot;Number of CPU cores: $SLURM_CPUS_ON_NODE&quot;
+echo &quot;Number of Tasks:     $SLURM_NTASKS&quot;
+echo &quot;Partition:           $SLURM_JOB_PARTITION&quot;
 </pre></div>
 </div>
-<p>The job</p>
+<p>Producing a similar result in the output file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ cat slurm-122439.out
+The first 65 digits of PI are:
+3.14159265358979323846264338327950288419716939937510582097494459228
+
+Job ID:              122439
+Job Name:            runjob2.slurm
+Number of Nodes:     1
+Number of CPU cores: 1
+Number of Tasks:
+Partition:           standby
+</pre></div>
+</div>
+<p>Notice that if the job has no name, the name of the submission script becomes its name.
+One single node will be use and one single CPU core assigned to the job.
+No declaring a number of tasks will create a job with no value for that.</p>
+<p>We will explore more complex submission scripts and the meaning of the multiple options associated but first lets explore how to monitor the jobs submitted and how to cancel jobs.</p>
+</section>
+<section id="monitoring-jobs">
+<h2>Monitoring jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Lets consider a variation of the submission script were we will be asking for several many compute nodes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#SBATCH -J PI
+#SBATCH -N 80
+#SBATCH -c 40
+#SBATCH -n 80
+#SBATCH -p standby
+#SBATCH -t 4:00:00
+
+echo &quot;The first 65 digits of PI are:&quot;
+echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
+
+echo &quot;&quot;
+echo &quot;Job ID:              $SLURM_JOB_ID&quot;
+echo &quot;Job Name:            $SLURM_JOB_NAME&quot;
+echo &quot;Number of Nodes:     $SLURM_JOB_NUM_NODES&quot;
+echo &quot;Number of CPU cores: $SLURM_CPUS_ON_NODE&quot;
+echo &quot;Number of Tasks:     $SLURM_NTASKS&quot;
+echo &quot;Partition:           $SLURM_JOB_PARTITION&quot;
+</pre></div>
+</div>
+<p>Asumming this submission script was written on a file called <code class="docutils literal notranslate"><span class="pre">runjob_80n.slurm</span></code>, submit the job with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sbatch runjob_40n.slurm
+Submitted batch job 122837
+</pre></div>
+</div>
+<p>This time no output in the form of the file <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobis&gt;.out</span></code>
+Check the status of the jobs using the command <code class="docutils literal notranslate"><span class="pre">squeue</span></code>.
+The command alone will return a listing of all the jobs running or in queue in the cluster.
+To restrict the listing just to jobs submitted by the user with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -u $USER
+                         JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                        122837   standby       PI gufranco PD       0:00     80 (Resources)
+                        122895   standby       PI gufranco PD       0:00     40 (Priority)
+</pre></div>
+</div>
+<p>Notice that we have here two jobs that are in queue.
+The status of PD means that the jobs are <strong>pending</strong> of execution.
+The columns are for most part self-explanatory.
+The final column shows briefly the reasons why the job is still not running.
+One of the jobs states that could not run due to a lack of <strong>Resources</strong>, ie there are no 80 compute nodes available at this point.
+The other job is pending due to <strong>Priority</strong>, ie there are resources availables but they will be assigned to another job with higher priority.</p>
 </section>
 <section id="canceling-a-job">
 <h2>Canceling a job<a class="headerlink" href="#canceling-a-job" title="Permalink to this headline">¶</a></h2>
+<p>Lets assume we want to delete the job 122837 that we submitted above.
+The job can be canceled with the command <code class="docutils literal notranslate"><span class="pre">scancel</span></code> followed by the jobid of the job you want to cancel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -u $USER
+                         JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                        122837   standby       PI gufranco PD       0:00     80 (Resources)
+trcis001:~$ scancel 122837
+trcis001:~$ squeue -u $USER
+                         JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+</pre></div>
+</div>
 </section>
 <section id="translating-pbs-scripts-to-slurm-scripts">
 <h2>Translating PBS Scripts to Slurm Scripts<a class="headerlink" href="#translating-pbs-scripts-to-slurm-scripts" title="Permalink to this headline">¶</a></h2>
