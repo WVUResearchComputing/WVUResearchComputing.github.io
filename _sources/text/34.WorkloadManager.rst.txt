@@ -317,7 +317,7 @@ The following codes:
      - Suspended
      - Execution has been suspended and CPUs have been released for other jobs 
    * - CD
-     - CompletedD
+     - CompleteD
      - Job has terminated all processes on all nodes with an exit code of zero
    * - CA
      - CAncelled
@@ -344,6 +344,8 @@ A common set of reasons messages with explanations follows.
    :widths: 10 90
    :header-rows: 1
 
+   * - Reason
+     - Description
    * - Resources
      - Scheduler is unable to find sufficient idle resources to run your job
    * - Priority

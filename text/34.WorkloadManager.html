@@ -527,7 +527,7 @@ The following codes:</p>
 <td><p>Execution has been suspended and CPUs have been released for other jobs</p></td>
 </tr>
 <tr class="row-odd"><td><p>CD</p></td>
-<td><p>CompletedD</p></td>
+<td><p>CompleteD</p></td>
 <td><p>Job has terminated all processes on all nodes with an exit code of zero</p></td>
 </tr>
 <tr class="row-even"><td><p>CA</p></td>
@@ -559,18 +559,21 @@ A common set of reasons messages with explanations follows.</p>
 <col style="width: 90%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Resources</p></th>
-<th class="head"><p>Scheduler is unable to find sufficient idle resources to run your job</p></th>
+<tr class="row-odd"><th class="head"><p>Reason</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Priority</p></td>
+<tr class="row-even"><td><p>Resources</p></td>
+<td><p>Scheduler is unable to find sufficient idle resources to run your job</p></td>
+</tr>
+<tr class="row-odd"><td><p>Priority</p></td>
 <td><p>There are jobs with higher priority ahead of this job in the queue</p></td>
 </tr>
-<tr class="row-odd"><td><p>QOSMaxCpuPerUserLimit</p></td>
+<tr class="row-even"><td><p>QOSMaxCpuPerUserLimit</p></td>
 <td><p>The CPU request exceeds the maximum each user is allowed to use</p></td>
 </tr>
-<tr class="row-even"><td><p>Licenses</p></td>
+<tr class="row-odd"><td><p>Licenses</p></td>
 <td><p>The job is waiting for a license.</p></td>
 </tr>
 </tbody>
