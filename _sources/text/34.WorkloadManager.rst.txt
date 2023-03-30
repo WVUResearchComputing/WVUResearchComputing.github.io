@@ -641,7 +641,7 @@ The same tables can be used for reference when writing new submission scripts di
 
 
 OLD DOCUMENTATION
-=================
+-----------------
 
 Resource Specification
 ~~~~~~~~~~~~~~~~~~~~~~
