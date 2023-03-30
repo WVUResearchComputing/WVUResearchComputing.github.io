@@ -540,6 +540,15 @@ That is a necessary condition for multithreading parallelism.
 
 Most jobs then fall into one of these categories: 
 
+#. Sequential/Serial: 
+
+#. Shared Memory Parallel:
+
+#. Distributed Parallelism:
+
+#. Hybrid SMP+Distributed Parallelism:
+
+#. Accelerator Based Parallelism:
 
 
 
