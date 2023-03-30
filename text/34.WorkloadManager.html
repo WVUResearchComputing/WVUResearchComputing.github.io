@@ -768,6 +768,13 @@ N MPI tasks can run on N compute nodes but not necessarly.
 On the other side if one of those MPI tasks uses multiple CPU cores, all those cores must be on the same machine.
 That is a necessary condition for multithreading parallelism.</p>
 <p>Most jobs then fall into one of these categories:</p>
+<ol class="arabic simple">
+<li><p>Sequential/Serial:</p></li>
+<li><p>Shared Memory Parallel:</p></li>
+<li><p>Distributed Parallelism:</p></li>
+<li><p>Hybrid SMP+Distributed Parallelism:</p></li>
+<li><p>Accelerator Based Parallelism:</p></li>
+</ol>
 </section>
 <section id="translating-pbs-scripts-to-slurm-scripts">
 <h2>Translating PBS Scripts to Slurm Scripts<a class="headerlink" href="#translating-pbs-scripts-to-slurm-scripts" title="Permalink to this headline">¶</a></h2>
