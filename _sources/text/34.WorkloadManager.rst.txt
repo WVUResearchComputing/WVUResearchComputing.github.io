@@ -475,6 +475,73 @@ We can also ask for information about a compute node::
 	   CurrentWatts=0 AveWatts=0
 	   ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
 
+Controling the limit of time for a job
+--------------------------------------
+
+If no time limit is declared on the submission script or the command line for ``sbatch``, a job receives the time limit associated to the partition where it was submitted.
+There are ways to declare a time limit and help the scheduler to decide if your job can start running ahead some others with larger time limits. 
+This is particularly important if your job uses one of the ``_week`` partitions and you only need 2 or 3 days.
+In those cases, the ``_day`` partitions are not a good fit and you can declare a 3 day time limit and the job could enter in execution faster than other jobs with an entire week of execution.
+
+ To specify your estimated runtime, use the --time=TIME or -t TIME parameter to sbatch. This value TIME can in any of the following formats:
+
+.. list-table:: User Commands
+   :widths: 50 25 25 
+   :header-rows: 1
+
+   * - Format
+     - Description
+     - Example
+   * - M
+     - M minutes
+     - -t 45 (45 minutes)
+   * - M:S
+     - M minutes, S seconds
+     - -t 2:30 (Two minutes and 30 seconds)
+   * - H:M:S
+     - H hours, M minutes, S seconds
+     - -t 1:30:00 (One hour and half)
+   * - D-H
+     - D days, H hours
+     - -t 3-12 (3 days and a half)
+   * - D-H:M
+     - D days, H hours, M minutes
+     - -t 1-12:30 (1 day, 12 hours and 30 minutes)
+   * - D-H:M:S
+     - D days, H hours, M minutes, S seconds
+     - -t 6-23:59:59 (One second less than a full week)
+
+Specifying number of Nodes, tasks and CPU Cores
+-----------------------------------------------
+
+Computationally intesive HPC applications generally use a combination of distributed parallel computing, multithreading or SMP parallelism and accelerators.
+
+The dominant interface for distributed parallel computing is MPI. 
+MPI uses intependent processes, also called ranks or tasks.
+Those processes could potentially run on separate computers and that is the solution programmers implement when the problems are so big than a single computer cannot complete the task alone on a reasonable amount of time.
+
+Multithreading or SMP parallelism uses the multiple CPU cores present in all modern-day computers. 
+Those cores can all see the entire RAM of the machine.
+SMP parallelism is implemented in codes that uses OpenMP, OpenACC.
+In high level languages like Python the use of ``multiprocessing`` module can take advantage of multiple CPU cores on the same machine.
+Some Linear Algebra libraries implement SMP parallelism, such as OpenBLAS and Intel MKL.
+
+
+Sometimes, the access to the certain portion of RAM is faster for one core than the other.
+We say that those systems have Non-Uniform Memory Access (NUMA).
+For example, a machine with a dual scoket could have a portion of RAM that is associated with each CPU.
+In some cases we can gain important speedups by trying to concentrate the memory than a CPU uses into the RAM associated with it.
+
+To better understand how all this can be controlled from SLURM imagine that we have a code that will use a number of CPU cores distributed across several machines.
+Consider that N represent the number of MPI tasks, and M represent the number of threads needed by the job. 
+N MPI tasks can run on N compute nodes but not necessarly.
+On the other side if one of those MPI tasks uses multiple CPU cores, all those cores must be on the same machine.
+That is a necessary condition for multithreading parallelism.
+
+Most jobs then fall into one of these categories: 
+
+
+
 
 Translating PBS Scripts to Slurm Scripts
 ----------------------------------------

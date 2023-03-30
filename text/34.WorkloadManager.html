@@ -107,6 +107,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#canceling-a-job">Canceling a job</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#estimation-of-the-starting-time-for-a-job">Estimation of the starting time for a job</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#detailed-information-about-jobs">Detailed information about jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controling-the-limit-of-time-for-a-job">Controling the limit of time for a job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-number-of-nodes-tasks-and-cpu-cores">Specifying number of Nodes, tasks and CPU Cores</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#old-documentation">OLD DOCUMENTATION</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#resource-specification">Resource Specification</a></li>
@@ -695,6 +697,78 @@ NodeName=tbdcx001 Arch=x86_64 CoresPerSocket=20
 </pre></div>
 </div>
 </section>
+<section id="controling-the-limit-of-time-for-a-job">
+<h2>Controling the limit of time for a job<a class="headerlink" href="#controling-the-limit-of-time-for-a-job" title="Permalink to this headline">¶</a></h2>
+<p>If no time limit is declared on the submission script or the command line for <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, a job receives the time limit associated to the partition where it was submitted.
+There are ways to declare a time limit and help the scheduler to decide if your job can start running ahead some others with larger time limits.
+This is particularly important if your job uses one of the <code class="docutils literal notranslate"><span class="pre">_week</span></code> partitions and you only need 2 or 3 days.
+In those cases, the <code class="docutils literal notranslate"><span class="pre">_day</span></code> partitions are not a good fit and you can declare a 3 day time limit and the job could enter in execution faster than other jobs with an entire week of execution.</p>
+<blockquote>
+<div><p>To specify your estimated runtime, use the –time=TIME or -t TIME parameter to sbatch. This value TIME can in any of the following formats:</p>
+</div></blockquote>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>M</p></td>
+<td><p>M minutes</p></td>
+<td><p>-t 45 (45 minutes)</p></td>
+</tr>
+<tr class="row-odd"><td><p>M:S</p></td>
+<td><p>M minutes, S seconds</p></td>
+<td><p>-t 2:30 (Two minutes and 30 seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p>H:M:S</p></td>
+<td><p>H hours, M minutes, S seconds</p></td>
+<td><p>-t 1:30:00 (One hour and half)</p></td>
+</tr>
+<tr class="row-odd"><td><p>D-H</p></td>
+<td><p>D days, H hours</p></td>
+<td><p>-t 3-12 (3 days and a half)</p></td>
+</tr>
+<tr class="row-even"><td><p>D-H:M</p></td>
+<td><p>D days, H hours, M minutes</p></td>
+<td><p>-t 1-12:30 (1 day, 12 hours and 30 minutes)</p></td>
+</tr>
+<tr class="row-odd"><td><p>D-H:M:S</p></td>
+<td><p>D days, H hours, M minutes, S seconds</p></td>
+<td><p>-t 6-23:59:59 (One second less than a full week)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="specifying-number-of-nodes-tasks-and-cpu-cores">
+<h2>Specifying number of Nodes, tasks and CPU Cores<a class="headerlink" href="#specifying-number-of-nodes-tasks-and-cpu-cores" title="Permalink to this headline">¶</a></h2>
+<p>Computationally intesive HPC applications generally use a combination of distributed parallel computing, multithreading or SMP parallelism and accelerators.</p>
+<p>The dominant interface for distributed parallel computing is MPI.
+MPI uses intependent processes, also called ranks or tasks.
+Those processes could potentially run on separate computers and that is the solution programmers implement when the problems are so big than a single computer cannot complete the task alone on a reasonable amount of time.</p>
+<p>Multithreading or SMP parallelism uses the multiple CPU cores present in all modern-day computers.
+Those cores can all see the entire RAM of the machine.
+SMP parallelism is implemented in codes that uses OpenMP, OpenACC.
+In high level languages like Python the use of <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> module can take advantage of multiple CPU cores on the same machine.
+Some Linear Algebra libraries implement SMP parallelism, such as OpenBLAS and Intel MKL.</p>
+<p>Sometimes, the access to the certain portion of RAM is faster for one core than the other.
+We say that those systems have Non-Uniform Memory Access (NUMA).
+For example, a machine with a dual scoket could have a portion of RAM that is associated with each CPU.
+In some cases we can gain important speedups by trying to concentrate the memory than a CPU uses into the RAM associated with it.</p>
+<p>To better understand how all this can be controlled from SLURM imagine that we have a code that will use a number of CPU cores distributed across several machines.
+Consider that N represent the number of MPI tasks, and M represent the number of threads needed by the job.
+N MPI tasks can run on N compute nodes but not necessarly.
+On the other side if one of those MPI tasks uses multiple CPU cores, all those cores must be on the same machine.
+That is a necessary condition for multithreading parallelism.</p>
+<p>Most jobs then fall into one of these categories:</p>
+</section>
 <section id="translating-pbs-scripts-to-slurm-scripts">
 <h2>Translating PBS Scripts to Slurm Scripts<a class="headerlink" href="#translating-pbs-scripts-to-slurm-scripts" title="Permalink to this headline">¶</a></h2>
 <p>All our previous clusters, Mountaineer, Spruce Knob and Thorny Flat used Torque as Resource Manager and Moab as Scheduler. In 2022 we transition to SLURM as workload manager.
@@ -704,8 +778,8 @@ That being said is good for our users, specially new users to get used to SLURM 
 <p>The following are a set of tables that contains a list of common commands and terms used with the TORQUE/PBS resource manager and scheduler, and the corresponding commands and terms used under the SLURM workload manager.
 These tables can be used to assist you in translating existing PBS scripts into proper SLURM scripts that can be interpreted directly.
 The same tables can be used for reference when writing new submission scripts directly in SLURM format</p>
-<table class="colwidths-given docutils align-default" id="id4">
-<caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -756,8 +830,8 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-text">Environment Variables</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">Environment Variables</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
@@ -804,8 +878,8 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-text">Job Directives or Specifications</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">Job Directives or Specifications</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 25%" />
