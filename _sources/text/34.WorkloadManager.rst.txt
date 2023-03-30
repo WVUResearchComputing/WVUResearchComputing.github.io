@@ -109,7 +109,7 @@ The sum of all these 3 states is the total number of compute nodes associated wi
 
 The fifth column is the nodelist. This is a compacted listing of all the machines associated with each partition. 
 The compact form is particularly useful in large HPC clusters with hundreds of compute nodes. 
-Notice for example that compute nodes ``tcocs[001-064,100]`` appear as nodes associated to ``standby`, ``comm_small_day`` and ``comm_small_week``. 
+Notice for example that compute nodes ``tcocs[001-064,100]`` appear as nodes associated to ``standby``, ``comm_small_day`` and ``comm_small_week``. 
 
 Submitting batch jobs
 ---------------------
@@ -297,7 +297,10 @@ The following codes:
 .. list-table:: Job State Codes
    :widths: 25 25 50
    :header-rows: 1
-
+  
+   * - Status
+     - Meaning
+     - Description
    * - R
      - Running
      - Job currently has an allocation
@@ -323,7 +326,7 @@ The following codes:
      - Failed
      - Job terminated with non-zero exit code or other failure condition
    * - NF
-     - Terminated due to Node Failure
+     - Node Failure
      - Job terminated due to failure of one or more allocated nodes
 
 There are a few other state conditions that appear less often.
@@ -635,6 +638,10 @@ The same tables can be used for reference when writing new submission scripts di
    * - Job Enqueue Time
      - -a “YYYY-MM-DD HH:MM:SS”
      - --begin=YYYY-MM-DD[THH:MM[:SS]]
+
+
+OLD DOCUMENTATION
+=================
 
 Resource Specification
 ~~~~~~~~~~~~~~~~~~~~~~

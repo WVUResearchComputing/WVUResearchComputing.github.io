@@ -107,13 +107,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#canceling-a-job">Canceling a job</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#estimation-of-the-starting-time-for-a-job">Estimation of the starting time for a job</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#detailed-information-about-jobs">Detailed information about jobs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#resource-specification">Resource Specification</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#e-mail-options">E-mail options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#output-file-specification">Output file specification</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#requesting-array-jobs">Requesting Array jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#translating-pbs-scripts-to-slurm-scripts">Translating PBS Scripts to Slurm Scripts</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#old-documentation">OLD DOCUMENTATION</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#interactive-jobs">Interactive Jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#graphical-interface-jobs">Graphical Interface Jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#checking-the-status-of-jobs">Checking the Status of Jobs</a></li>
@@ -316,7 +313,7 @@ Other include nodes that are not allowed to execute jobs, due to maintnance or s
 The sum of all these 3 states is the total number of compute nodes associated with the partition.</p>
 <p>The fifth column is the nodelist. This is a compacted listing of all the machines associated with each partition.
 The compact form is particularly useful in large HPC clusters with hundreds of compute nodes.
-Notice for example that compute nodes <code class="docutils literal notranslate"><span class="pre">tcocs[001-064,100]</span></code> appear as nodes associated to <code class="docutils literal notranslate"><span class="pre">standby`,</span> <span class="pre">``comm_small_day</span></code> and <code class="docutils literal notranslate"><span class="pre">comm_small_week</span></code>.</p>
+Notice for example that compute nodes <code class="docutils literal notranslate"><span class="pre">tcocs[001-064,100]</span></code> appear as nodes associated to <code class="docutils literal notranslate"><span class="pre">standby</span></code>, <code class="docutils literal notranslate"><span class="pre">comm_small_day</span></code> and <code class="docutils literal notranslate"><span class="pre">comm_small_week</span></code>.</p>
 </section>
 <section id="submitting-batch-jobs">
 <h2>Submitting batch jobs<a class="headerlink" href="#submitting-batch-jobs" title="Permalink to this headline">¶</a></h2>
@@ -499,42 +496,46 @@ The following codes:</p>
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>R</p></th>
-<th class="head"><p>Running</p></th>
-<th class="head"><p>Job currently has an allocation</p></th>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>PD</p></td>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>Running</p></td>
+<td><p>Job currently has an allocation</p></td>
+</tr>
+<tr class="row-odd"><td><p>PD</p></td>
 <td><p>PenDing</p></td>
 <td><p>Job is awaiting resource allocation</p></td>
 </tr>
-<tr class="row-odd"><td><p>TO</p></td>
+<tr class="row-even"><td><p>TO</p></td>
 <td><p>TimedOut</p></td>
 <td><p>Job terminated upon reaching its time limit</p></td>
 </tr>
-<tr class="row-even"><td><p>PR</p></td>
+<tr class="row-odd"><td><p>PR</p></td>
 <td><p>PReempted</p></td>
 <td><p>Job terminated due to preemption</p></td>
 </tr>
-<tr class="row-odd"><td><p>S</p></td>
+<tr class="row-even"><td><p>S</p></td>
 <td><p>Suspended</p></td>
 <td><p>Execution has been suspended and CPUs have been released for other jobs</p></td>
 </tr>
-<tr class="row-even"><td><p>CD</p></td>
+<tr class="row-odd"><td><p>CD</p></td>
 <td><p>CompletedD</p></td>
 <td><p>Job has terminated all processes on all nodes with an exit code of zero</p></td>
 </tr>
-<tr class="row-odd"><td><p>CA</p></td>
+<tr class="row-even"><td><p>CA</p></td>
 <td><p>CAncelled</p></td>
 <td><p>Job was explicitly cancelled by the user or system administrator</p></td>
 </tr>
-<tr class="row-even"><td><p>F</p></td>
+<tr class="row-odd"><td><p>F</p></td>
 <td><p>Failed</p></td>
 <td><p>Job terminated with non-zero exit code or other failure condition</p></td>
 </tr>
-<tr class="row-odd"><td><p>NF</p></td>
-<td><p>Terminated due to Node Failure</p></td>
+<tr class="row-even"><td><p>NF</p></td>
+<td><p>Node Failure</p></td>
 <td><p>Job terminated due to failure of one or more allocated nodes</p></td>
 </tr>
 </tbody>
@@ -916,8 +917,10 @@ The same tables can be used for reference when writing new submission scripts di
 </tr>
 </tbody>
 </table>
-<section id="resource-specification">
-<h3>Resource Specification<a class="headerlink" href="#resource-specification" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="old-documentation">
+<h1>OLD DOCUMENTATION<a class="headerlink" href="#old-documentation" title="Permalink to this headline">¶</a></h1>
 <p>The #PBS -l option is used to specify resources such as number of CPUs,
 nodes, and length of Walltime for the job specified. The three most
 common resources specified for the Mountaineer cluster are</p>
@@ -971,8 +974,6 @@ threads, you will most likely only specify a single processor for your
 job (procs=1). <strong>Note:</strong>Resources specifying per node request are
 given with the nodes directive and seperated with a :, on the same line
 in your script.</p>
-<section id="requesting-memory-specifications">
-<h4>Requesting Memory Specifications<a class="headerlink" href="#requesting-memory-specifications" title="Permalink to this headline">¶</a></h4>
 <p>Requesting memory specifications for jobs is done with the attributes
 vmem or pvmem through the PBS -l directive (resource specification). The
 man pages of pbs will specify two other memory related attributes: mem
@@ -1010,9 +1011,6 @@ resource directive line:</p>
 </div>
 <p>pvmem=6gb with 6 processors specifies 6*6 = 36Gb of total memory for the
 job.</p>
-</section>
-<section id="requesting-certain-node-types">
-<h4>Requesting Certain Node Types<a class="headerlink" href="#requesting-certain-node-types" title="Permalink to this headline">¶</a></h4>
 <p>There might be times where you want to be able to request a node with a
 particular feature or processor. The following will allow you to
 accomplish this task. Replace ‘feature_name” with one of the features in
@@ -1025,9 +1023,6 @@ following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=&#39;!feature_name&#39;</span>
 </pre></div>
 </div>
-</section>
-<section id="available-features">
-<h4>Available Features<a class="headerlink" href="#available-features" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 23%" />
@@ -1068,10 +1063,6 @@ following:</p>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="e-mail-options">
-<h3>E-mail options<a class="headerlink" href="#e-mail-options" title="Permalink to this headline">¶</a></h3>
 <p>The #PBS -m and #PBS -M options are used to specify when and to whom the
 scheduler will send e-mails. The -m option consists of either the single
 character “n”, or one or more of the characters “a”, “b”, and “e”.</p>
@@ -1107,8 +1098,6 @@ mail to. For example, the PBS directive</p>
 aborted, or when the job is completed. To specify more than one e-mail
 address with the -M option, each address should be separated with a
 comma without any spaces.</p>
-<section id="to-receive-no-e-mails-even-on-aborts">
-<h4>To Receive no e-mails even on aborts<a class="headerlink" href="#to-receive-no-e-mails-even-on-aborts" title="Permalink to this headline">¶</a></h4>
 <p>Even with the ‘n’ option of ‘-m’ directive, the system will still send
 an e-mail if the job is cancelled or aborts. To provide the ability for
 our users to circumvent this response, we have set-up an alias e-mail
@@ -1120,10 +1109,6 @@ the ‘n’ option:</p>
 <span class="c1">#PBS -m noemail@hpc.wvu.edu</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="output-file-specification">
-<h3>Output file specification<a class="headerlink" href="#output-file-specification" title="Permalink to this headline">¶</a></h3>
 <p>Default standard output and standard error of the job will be placed in
 files named <em>jobname</em>.<strong>o</strong><em>jobid</em> and <em>jobname</em>.<strong>e</strong><em>jobid</em>,
 respectfully. These files will be written to the directory in which the
@@ -1155,9 +1140,6 @@ and /scratch/username/examplejob.output for the standard error and
 standard output streams, respectively.</p>
 <p><strong>Note: Use full pathnames for your home directory and scratch
 directory</strong></p>
-</section>
-<section id="requesting-array-jobs">
-<h3>Requesting Array jobs<a class="headerlink" href="#requesting-array-jobs" title="Permalink to this headline">¶</a></h3>
 <p>By using the directive #PBS -t , you can request a job to be repeated by
 a single script a number of times. This is useful if you have data where
 you want a single parameter to range over a section of numbers. For
@@ -1199,8 +1181,6 @@ need to share a queue with another user</p>
 </div>
 <p>The above directive will only launch ten jobs to the queue at a time
 until all 200 job requests have been executed.</p>
-</section>
-</section>
 <section id="interactive-jobs">
 <h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline">¶</a></h2>
 <p>Interactive jobs allow a user to be given an interactive terminal on a
