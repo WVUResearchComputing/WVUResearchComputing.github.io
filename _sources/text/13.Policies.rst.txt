@@ -6,7 +6,7 @@ Policies
 Acknowledging Your Use of the WVU High Performance Computing Environment
 ------------------------------------------------------------------------
 
-Maintaining a first class HPC environment is expensive, both in human and material terms. Research Office requests that you acknowledge your use of the campus clusters in papers or other publications of research which benefited from the use of these campus resources. Such acknowledgements assist us in convincing people in our administration and funding agencies of the value of these resources to our community, and help us to obtain new funding for their continued maintenance and expansion.
+Maintaining a first-class HPC environment is expensive, both in human and material terms. Research Office requests that you acknowledge your use of the campus clusters in papers or other publications of research that benefited from the use of these campus resources. Such acknowledgments assist us in convincing people in our administration and funding agencies of the value of these resources to our community and help us to obtain new funding for their continued maintenance and expansion.
 
 To acknowledge your use of the clusters, we request that you use the following wording:
 
@@ -16,7 +16,7 @@ For Spruce Knob:
 
 For Thorny Flat:
 
-    The authors acknoledge then computational resources provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.
+    The authors acknowledge then computational resources provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.
 
 We would also appreciate your informing us of publications in which you acknowledge one of the clusters. 
 In retribution we will do efforts to give visibility to your work and the computational efforts that make them possible.
@@ -26,10 +26,10 @@ Contact us at `helpdesk@hpc.wvu.edu <mailto:helpdesk@hpc.wvu.edu>`_ and shared w
 Running Jobs on Login Node
 --------------------------
 
-Running jobs/tasks on the login node (i.e., what you are interacting with immediately after you log in) are not permitted. When the RC admin
+Running jobs/tasks on the login node (i.e., what you are interacting with immediately after you log in) is not permitted. When the RC admin
 team notices this occurring, the processes will be killed immediately to
 ensure system stability. If you are having trouble submitting jobs
-through the scheduler, please follow instructions on :ref:`int-getting-help` and we would be happy to help.
+through the scheduler, please follow the instructions on :ref:`int-getting-help` and we would be happy to help.
 
 Data storage
 ------------
@@ -44,9 +44,9 @@ Sharing User Directories
 
 Initially sharing user directories or scratch space is not permitted.
 This is for tracking user purposes. However, we recognize that research
-is collaborative in nature, and therefore we are attentive to request
+is collaborative in nature, and therefore we are attentive to requests
 for sharing resources across user spaces for temporary or fixed time
-limits to get jobs completed. Please follow instructions on :ref:`int-getting-help` and the WVU-RC team with these requests.
+limits to get jobs completed. Please follow the instructions on :ref:`int-getting-help` and the WVU-RC team with these requests.
 
 Users also have the option of using group storage for sharing of files.
 A Principal Investigator (PI) may request up to 10 GB of group storage for free. Additional storage may be purchased if desired. For more information, please visit `Persistent Group

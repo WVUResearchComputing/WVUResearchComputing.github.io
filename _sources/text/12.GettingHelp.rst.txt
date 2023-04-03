@@ -3,7 +3,7 @@
 Getting Help
 ============
 
-To request the opening of an account, software installation, general support on HPC, DataDepot and most of our services please open a ticket on
+To request the opening of an account, software installation, or general support on HPC, DataDepot, and most of our services please open a ticket on
 
 `WVU Research Computing - HPC HelpDesk <https://helpdesk.hpc.wvu.edu>`_
 

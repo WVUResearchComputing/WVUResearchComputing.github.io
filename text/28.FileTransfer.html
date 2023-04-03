@@ -191,22 +191,22 @@
 <span id="qs-file-transfer"></span><h1>File Transfer (Globus)<a class="headerlink" href="#file-transfer-globus" title="Permalink to this headline">¶</a></h1>
 <section id="using-globus-online">
 <h2>Using Globus Online<a class="headerlink" href="#using-globus-online" title="Permalink to this headline">¶</a></h2>
-<p>Copying files and folders in and out an HPC cluster is a routine task for HPC users. Users need to move input data to the cluster before this data can be processed. The results will be moved out of the cluster in form of files and folders containing text, figures, tables or some other data. The amount of data could be as small as a simple text file with a few lines or as big as a large binary file or several folders summing Giga Bytes of data.</p>
-<p>There are several ways of moving data in and out our HPC clusters.
-In this section we will focus on the simplest, most effective way of moving data from/to the clusters regardless of size or number of items to be transferred.</p>
+<p>Copying files and folders in and out of an HPC cluster is a routine task for HPC users. Users need to move input data to the cluster before this data can be processed. The results will be moved out of the cluster in form of files and folders containing text, figures, tables or some other data. The amount of data could be as small as a simple text file with a few lines or as big as a large binary file or several folders summing Giga Bytes of data.</p>
+<p>There are several ways of moving data in and out of our HPC clusters.
+In this section, we will focus on the simplest, most effective way of moving data from/to the clusters regardless of the size or number of items to be transferred.</p>
 <p>Globus Online is the preferred method for transferring files to, from, and between HPC clusters.
-There are several advantages for using Globus compared to other methods that will be covered on <a class="reference internal" href="35.TransferFiles.html#bs-file-transfer"><span class="std std-ref">File Transfer Section</span></a>:
+There are several advantages to using Globus compared to other methods that will be covered on <a class="reference internal" href="35.TransferFiles.html#bs-file-transfer"><span class="std std-ref">File Transfer Section</span></a>:
 We can summarize the advantages as:</p>
 <ul class="simple">
 <li><p>° Globus works from a web browser, not need to learn commands for a terminal.</p></li>
-<li><p>° Transfers are done in the background so users do not need to keep the browser open. The tranfer happens behind curtains.</p></li>
+<li><p>° Transfers are done in the background so users do not need to keep the browser open. The transfer happens behind the curtains.</p></li>
 <li><p>° Auto performance tuning to ensure the data is transferred as quickly as possible. One can expect a speedup of at least 2x over traditional transfer methods.</p></li>
-<li><p>° Transfers can work in parallel, data could be encryted during transfer.</p></li>
-<li><p>° The integrity of the tranfer can be ensured via checksum methods (Hashes).</p></li>
+<li><p>° Transfers can work in parallel, data could be encrypted during transfer.</p></li>
+<li><p>° The integrity of the transfer can be ensured via checksum methods (Hashes).</p></li>
 <li><p>° Transfers are automatically restarted after a failed or stopped connection.</p></li>
 <li><p>° Ability to only transfer files that have yet to be transferred (similar to rsync).</p></li>
 </ul>
-<p>In addition to all this advantages, WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription. WVU’s Globus Subscription adds the following features:</p>
+<p>In addition to all these advantages, WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription. WVU’s Globus Subscription adds the following features:</p>
 <ol class="arabic simple">
 <li><p>Ability to archive/transfer data with unlimited storage to user’s <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868">Google Drive MIX Account</a>.</p></li>
 <li><p>Sharing of data with others inside and outside the university.</p></li>
@@ -254,10 +254,10 @@ Click there to go to the Download page for the software.</p>
 <p>Click on <strong>Download Globus Connect Personal</strong>.
 The page is programmed to detect your operating system. If the installer that you want is for a different operating system click on <strong>Show me other supported operating systems</strong></p>
 <a class="reference internal image-reference" href="../_images/Globus-intro8.jpg"><img alt="Globus Introduction (figure 8)" src="../_images/Globus-intro8.jpg" style="width: 600px;" /></a>
-<p>Globus Connect Perfonal is available on macOS, Windows and Linux.</p>
+<p>Globus Connect Personal is available on macOS, Windows, and Linux.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro9.jpg"><img alt="Globus Introduction (figure 9)" src="../_images/Globus-intro9.jpg" style="width: 600px;" /></a>
 <p>The installation procedure varies for each Operating System.
-In the case of a Mac, package is a dmg, once the dmg is opened and the app is dragged to the <em>Applications</em> folder.</p>
+In the case of a Mac, the package is a dmg, once the dmg is opened and the app is dragged to the <em>Applications</em> folder.</p>
 <a class="reference internal image-reference" href="../_images/Globus_Personal_Connect_macOS.png"><img alt="Globus Connect Personal installation on macOS" src="../_images/Globus_Personal_Connect_macOS.png" style="width: 400px;" /></a>
 </section>
 <section id="other-methods-of-data-transfer">
