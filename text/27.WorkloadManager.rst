@@ -41,7 +41,7 @@ A Job is made of one or more sequential steps, each step consisting in one or mu
 
 
 Sockets, CPU cores, and Hyperthreading
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On a desktop computer or laptop, you will find a single processor also called Central Processing Unit (CPU).
 The CPU is the main chip responsible for most computational calculations taking place on the machine. 
