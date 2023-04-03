@@ -5,7 +5,7 @@ Purchasing Compute Nodes
 ========================
 
 The West Virginia University HPC systems allow users to purchase dedicated compute node capacity for their groups. 
-At present the following options are available for purchase. 
+At present, the following options are available for purchase. 
 For questions or to purchase nodes please contact `helpdesk@hpc.wvu.edu <mailto:helpdesk@hpc.wvu.edu>`_ . 
 
 Thorny Flat Phase 3
@@ -27,10 +27,10 @@ Non-GPU Compute Nodes -
 Dolly Sods Phase 0
 ------------------
 
-GPU Capable Compute Nodes (Up to 8 GPUs per Node) will go into our upomming GPU cluster Dolly Sods to be provisioned at the end of 2022.
+GPU Capable Compute Nodes (Up to 8 GPUs per Node) will go into our upcoming GPU cluster Dolly Sods to be provisioned at the end of 2022.
 Specifications are changing, the compute node could be similar in memory configurations to those in Thorny Flat. 
 
-Listed below is the cost per GPU card.  Consumer cards are no longer an option for use in datacenter systems, and server grade GPUs from the Nvidia Ampere Series listed below are available in limited configurations due to supply chain.  Contact us if you’re interested in pricing out a GPU node.
+Listed below is the cost per GPU card.  Consumer cards are no longer an option for use in data center systems, and server-grade GPUs from the Nvidia Ampere Series listed below are available in limited configurations due to the supply chain.  Contact us if you’re interested in pricing out a GPU node.
 
  * NVIDIA® A10 GPU Computing Accelerator - 24GB GDDR6 - PCIe 4.0 x16 - Passive Cooler $4000 approx
  * NVIDIA® A30 GPU Computing Accelerator - 24GB HBM2 - PCIe 4.0 x16 - Passive Cooler $5000 approx
@@ -40,21 +40,21 @@ Listed below is the cost per GPU card.  Consumer cards are no longer an option f
 How long will my compute node be available? 
 -------------------------------------------
 
-All HPC compute nodes are purchased with a five year warranty. Compute nodes will be allowed to run for up to 7 years within the following parameters:
+All HPC compute nodes are purchased with a five-year warranty. Compute nodes will be allowed to run for up to 7 years within the following parameters:
 
- * The final two years of the compute node life are outside warranty and are on a best effort basis.
+ * The final two years of the compute node life are outside warranty and are on a best-effort basis.
 
- * If software/OS can no longer support compute equipment prior to the end of its 7 year life the HPC team may, in consultation with the HPC Policy Committee, determine that the life of compute equipment is shorter than 7 years. Should this occur the HPC team will strive to provide at least six months of notice to the HPC community before equipment is decommissioned.
+ * If software/OS can no longer support compute equipment prior to the end of its 7-year life the HPC team may, in consultation with the HPC Policy Committee, determine that the life of compute equipment is shorter than 7 years. Should this occur the HPC team will strive to provide at least six months of notice to the HPC community before equipment is decommissioned.
 
- * In the event that compute nodes fail outside of warranty they will not be repaired. The HPC team will attempt to keep investor queues at the purchased capacity, to the extent possible, based on the following process and guidelines.
+ * In the event that computes nodes fail outside of warranty they will not be repaired. The HPC team will attempt to keep investor queues at the purchased capacity, to the extent possible, based on the following process and guidelines.
 
     * Investor compute nodes that fail out of warranty will be replaced with compute nodes from the UI queue within the same generation of hardware.
 
-    * When possible compute nodes will be replaced with same or higher specification hardware. This will not be possible in all cases. In cases where this is not possible the investor will be contacted by the HPC team with available options.
+    * When possible compute nodes will be replaced with the same or higher specification hardware. This will not be possible in all cases. In cases where this is not possible, the investor will be contacted by the HPC team with available options.
 
     * Transfer of compute nodes from the UI queue to investor queues will occur in the order in which failures occur.
 
-    * UI queue compute node availability is finite and is unlikely to be able to sustain all investor queues at full capacity for a 7 year life. As such investors should not assume that their queue will remain at full capacity for the duration of the two year life outside of warranty.
+    * UI queue computes node availability is finite and is unlikely to be able to sustain all investor queues at full capacity for a 7-year life. As such investors should not assume that their queue will remain at full capacity for the duration of the two-year life outside of warranty.
                                          
 
 Renting Compute Nodes

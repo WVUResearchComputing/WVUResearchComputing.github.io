@@ -3,8 +3,8 @@
 Workload Manager (SLURM)
 ========================
 
-The workload manager is the software tool that makes a computer cluster to appear and work like a single entity rather than like a simple agregate of computers on a network.
-WVU clusters now uses SLURM as workload manager and users must be familiar with a few commands to effectively use an HPC cluster.
+The workload manager is the software tool that makes a computer cluster appear and work like a single entity rather than like a simple aggregate of computers on a network.
+WVU clusters now use SLURM as a workload manager and users must be familiar with a few commands to effectively use an HPC cluster.
 
 Concepts
 --------
@@ -14,24 +14,24 @@ Before introducing the basic commands on SLURM we need to understand some concep
 Compute Nodes
 ~~~~~~~~~~~~~
 
-A High-Performance Compute cluster (HPC cluster) is a made of a collection of computers, the term used for each computer is "node".
+A High-Performance Compute cluster (HPC cluster) is made of a collection of computers, the term used for each computer is "node".
 These nodes are linked together through a fast network such as Gigabit Ethernet or Infiniband. 
-In the particular case of Thorny Flat we use the Omni-Path Architecture (OPA) as the fast network fabric.
+In the particular case of Thorny Flat, we use the Omni-Path Architecture (OPA) as the fast network fabric.
 
 A cluster typically hosts multiple types of nodes:
 
-    * **management nodes:** These computers run management services, databases, monitoring tools, reporting applications, provisioning tools and other related services used by system administrators. Normal users have no direct access to these nodes.
-    * **login nodes:** These computers are the machines where users login into through SSH to submit jobs and check results. Users must never use login nodes for any intense computations
+    * **management nodes:** These computers run management services, databases, monitoring tools, reporting applications, provisioning tools, and other related services used by system administrators. Normal users have no direct access to these nodes.
+    * **login nodes:** These computers are the machines where users login in through SSH to submit jobs and check results. Users must never use login nodes for any intense computations
     * **storage nodes:** These computers host user files in possibly multiple filesystems. We use dedicated storage systems running distributed filesystems such as GPFS.
-    * **compute nodes:** These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply refered as "nodes"
+    * **compute nodes:** These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply referred as "nodes"
 
 Partitions
 ~~~~~~~~~~
 
-In SLURM, a partition is a set of compute nodes grouped logically based on either physical properties of the hardware or job scheduling policies.
+In SLURM, a partition is a set of compute nodes grouped logically based on either the physical properties of the hardware or job scheduling policies.
 Compute nodes can belong to several partitions making the term partition a bit misleading. 
-In other resource managers partitions are called "queues" which is a more apropiated term. 
-In general compute nodes are grouped based on common features shared by the nodes such as the presence of GPUs or node memory (RAM). Another reason to create partitions is to manage jobs that run for a day from those that could run for upto a week.
+In other resource managers partitions are called "queues" which is a more appropriate term. 
+In general, compute nodes are grouped based on common features shared by the nodes such as the presence of GPUs or node memory (RAM). Another reason to create partitions is to manage jobs that run for a day from those that could run for up to a week.
 
 Jobs
 ~~~~
@@ -40,21 +40,21 @@ Jobs are the atomic structure of a workload manager like SLURM.
 A Job is made of one or more sequential steps, each step consisting in one or multiple parallel tasks that could be dispatched to multiple CPU cores on a single node or to several nodes on the cluster.
 
 
-Sockets, CPU cores and Hyperthreading
+Sockets, CPU cores, and Hyperthreading
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On a desktop computer or laptop you will find a single processor also called Central Processing Unit (CPU).
-The CPU is the main chip resposible for most computational calculations taking place on the machine. 
-Different from Desktop computers and laptops, on HPC compute nodes it is often the case to find two or four CPU chips. 
-Each CPU is located into what is called a socket. A dual socket node is then a node with two CPU chips. 
+On a desktop computer or laptop, you will find a single processor also called Central Processing Unit (CPU).
+The CPU is the main chip responsible for most computational calculations taking place on the machine. 
+Different from Desktop computers and laptops, on HPC, compute nodes it is often the case to find two or four CPU chips. 
+Each CPU is located in what is called a socket. A dual socket node is then a node with two CPU chips. 
 Those CPUs are in general identical and the Operating System will distribute the workload among them.
 
 Modern CPUs are made of multiple cores. A CPU core is a completely functional processing unit and several CPU cores are printed on a single chip.
-We called this CPUs multicore and almost all CPUs today are multicore.
+We called these CPUs multicore and almost all CPUs today are multicore.
 
-Some CPUs are capable of "logically divided" each CPU core into two hardware threads, a technology called Hyperthreading.
+Some CPUs are capable of "logically dividing" each CPU core into two hardware threads, a technology called Hyperthreading.
 Hardware threads are designed to hide the latencies of the memory and feed the compute units fast enough to keep them busy all the time. 
-Hyperthreading can be activated or deactivated depending on the cluster, on the workload. 
+Hyperthreading can be activated or deactivated depending on the cluster or its workload. 
 Depending on the code running on the node hyperthreading can benefit or harm the performance. 
 
 
@@ -109,7 +109,7 @@ The `sinfo` command on SLURM can be used to get an overview of the resources off
 By default, `sinfo` lists the partitions that are available.
 
 On WVU clusters, partitions with the prefix "comm" are community resources.
-Any HPC user can submit jobs to those partitions and the partitions were created differenciating the amount of RAM (small, medium [med], large and extra large [xl]), the walltime policy for the partition (day or week) and two community partitions with GPU nodes, one for interactive jobs (comm_gpu_inter) and another for non-interactive jobs running for upto a week (comm_gpu_week). 
+Any HPC user can submit jobs to those partitions and the partitions were created differentiating the amount of RAM (small, medium [med], large, and extra large [xl]), the wall time policy for the partition (day or week) and two community partitions with GPU nodes, one for interactive jobs (comm_gpu_inter) and another for non-interactive jobs running for up to a week (comm_gpu_week). 
 The default queue is marked with a star (*) and it is called `standby`. Most compute nodes belong to this partition and jobs can run on it for up to 4 hours.
 The `standby` partition should be used preferentially except if you are certain that 4 hours is not enough time to complete the job.
 
@@ -227,10 +227,10 @@ You can verify the assigned GPU using the command `nvidia-smi`::
 	|  No running processes found                                                 |
 	+-----------------------------------------------------------------------------+
 
-The command above shows a NVIDIA A100 as the GPU assigned to us during the lifetime of the job.
+The command above shows an NVIDIA A100 as the GPU assigned to us during the lifetime of the job.
 
 
-In SLURM an interactive job can be lauch with the command `salloc`::
+In SLURM an interactive job can be launched with the command `salloc`::
 
     trcis001:~$ salloc -N3 
     salloc: Pending job allocation 3506
@@ -240,7 +240,7 @@ In SLURM an interactive job can be lauch with the command `salloc`::
     Loading git version 2.29.1 : dev/git/2.29.1
     trcis001:~$ 
 
-The command `salloc` will allocate resources (e.g. nodes or CPU cores), possibly with a set of constraints (e.g. number of processor per node or amount of memory per node).
+The command `salloc` will allocate resources (e.g. nodes or CPU cores), possibly with a set of constraints (e.g. number of processors per node or amount of memory per node).
 `salloc` wil allocate the resources and spawn a shell in which the srun command is used to launch parallel tasks.
 Notice that `salloc` will return a shell on the same machine where the command `salloc` was executed.
 

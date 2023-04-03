@@ -5,13 +5,13 @@ Web Interface (Open On-Demand)
 
 The term Interactive Scientific Computing consists on using a computer in a similar way as you use a handheld calculator.
 On a handheld calculator, you type some input and you expect that input to be processed right away to produce results.
-The result does not need to return inmediately, but you expect that calculations are done take an amount of time that allow a human to wait before a new command is submitted.
+The result does not need to return immediately, but you expect that calculations that are done take an amount of time that allows a human to wait before a new command is submitted.
 
-Interactive Scientific Computing is different from the way we use to work in High Performance Computing (HPC).
-On a HPC supercomputer, you use the computer with a queue system on what we called non-interactive computing.
-Supercomputers are large computing devices usually build as clusters of individual computers. Supercomputers in many cases are used by tens or hundreds of users at the same time. For the typical use of Supercomputers, the computations are programmed in advance, the user submit jobs expecting that those jobs start being executed sometime in the future and produce the result that will be analyzed later on.
+Interactive Scientific Computing is different from the way we use to work in High-Performance Computing (HPC).
+On an HPC supercomputer, you use the computer with a queue system on what we called non-interactive computing.
+Supercomputers are large computing devices usually build as clusters of individual computers. Supercomputers in many cases are used by tens or hundreds of users at the same time. For the typical use of Supercomputers, the computations are programmed in advance, the user submits jobs expecting that those jobs start being executed sometime in the future and produce the result that will be analyzed later on.
 
-Despite of the usual usage of a HPC supercomputing, you could have strong motivations for use a computer far more powerful than your own desktop or laptop. Your research have scaled to a point where your desktop computer or laptop is not longer capable of managing the task, you need specialized software packages and you do not want to spent time compiling or installing software and you would like to rely on software that is already present on the HPC cluster.
+Despite the usual usage of HPC supercomputing, you could have strong motivations for using a computer far more powerful than your own desktop or laptop. Your research has scaled to a point where your desktop computer or laptop is no longer capable of managing the task, you need specialized software packages and you do not want to spend time compiling or installing software and you would like to rely on software that is already present on the HPC cluster.
 
 There are several ways to a HPC cluster for Interactive Computing. You can execute interactive computing directly from the terminal or using a web interfact such as Open-On Demand and one interactive environments such as Jupyter of RStudio. We will describe both alternatives.
 

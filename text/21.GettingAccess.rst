@@ -19,7 +19,7 @@ Any employee may submit a request on behalf of a colleague elsewhere and there i
 
 If you need a WVU Login account, please make a request with `Service Desk <https://helpdesk.hpc.wvu.edu>`_.
 
-Click on **LOGIN Account Ticket** and follow instructions.
+Click on **LOGIN Account Ticket** and follow the instructions.
 
 Research Computing Account
 --------------------------
@@ -39,7 +39,7 @@ For accounting purposes is very important that you fill a *Project Title* and a 
 
 HPC users must ensure data that is covered by Federal security or privacy laws (e.g., HIPAA, ITAR, FERPA, classified information, etc.) is not stored on any WVU HPC system. These systems currently do not meet the enhanced security requirements imposed or implied by those laws or regulations. By selecting the check mark you are acknowledging you will not store ANY protected data on WVU's HPC systems.
 
-Please acknowledge use of these supercomputing systems (Thorny Flat and/or Spruce Knob) at WVU, which are funded in part by the National Science Foundation EPSCoR Research Infrastructure Improvement Cooperative Agreement #1003907, National Science Foundation Major Research Instrumentation Program (MRI) Award #1726534, the state of West Virginia (WVEPSCoR via the Higher Education Policy Commission) and WVU, in your publications produced using these resources.
+Please acknowledge the use of these supercomputing systems (Thorny Flat and/or Spruce Knob) at WVU, which are funded in part by the National Science Foundation EPSCoR Research Infrastructure Improvement Cooperative Agreement #1003907, National Science Foundation Major Research Instrumentation Program (MRI) Award #1726534, the state of West Virginia (WVEPSCoR via the Higher Education Policy Commission) and WVU, in your publications produced using these resources.
 
 Once the ticket is submitted, the PI will be notified for acceptance and your *HPC account* will be created. You will be notified once the account is ready for usage.
 
