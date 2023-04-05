@@ -5,7 +5,7 @@ Connect to the cluster (SSH)
 
 An HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop, or even workstation is intended for a single user at a time. In general, Graphical User Interfaces (GUI) consume an important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.
 
-Due to security reasons, HPC clusters are intended to be accessed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as the internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.
+Due to security reasons, HPC clusters are intended to be accessed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as the Internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.
 
 In order to connect to any of our clusters, you need a *username*, and your name as a user of the cluster.
 You should have obtained that *username* with your *WVU Login account*
@@ -23,7 +23,7 @@ An SSH Client is a piece of software that allows you to run a remote session on 
 An SSH client is usually come installed on MacOS and most Unix/Linux distributions so if you are using one of those Operating Systems you do not need to install anything.
 
 Windows users will have to acquire an SSH client.
-PuTTY is a free implementation of SSH for Windows platforms, it comes along with an xterm terminal emulator.
+PuTTY is a free implementation of SSH for Windows platforms, it comes along with an `xterm` terminal emulator.
 
 Go to `PuTTy <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`__ to know more about the product or download it directly from `PuTTY Download <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`__.
 

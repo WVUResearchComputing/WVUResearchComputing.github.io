@@ -211,7 +211,7 @@ In the particular case of Thorny Flat, we use the Omni-Path Architecture (OPA) a
 <li><p><strong>management nodes:</strong> These computers run management services, databases, monitoring tools, reporting applications, provisioning tools, and other related services used by system administrators. Normal users have no direct access to these nodes.</p></li>
 <li><p><strong>login nodes:</strong> These computers are the machines where users login in through SSH to submit jobs and check results. Users must never use login nodes for any intense computations</p></li>
 <li><p><strong>storage nodes:</strong> These computers host user files in possibly multiple filesystems. We use dedicated storage systems running distributed filesystems such as GPFS.</p></li>
-<li><p><strong>compute nodes:</strong> These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply referred as “nodes”</p></li>
+<li><p><strong>compute nodes:</strong> These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply referred to as “nodes”</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -264,20 +264,20 @@ tcocm101.hpc.wvu.edu
 tcocm100.hpc.wvu.edu
 </pre></div>
 </div>
-<p>The command have been executed on 3 machines, the cluster is used as single entity and we are not interested exactly on which machines the command run as far it executes on 3 different nodes. The whole purpose of using a HPC cluster is to have many computer to run and not being concern exactly on which machine or machines the actual execution takes place.</p>
-<p>When the amount of resources requested by all the jobs from all the users exceeds the amount of resources available we need a system to prioritize the execution of the different jobs.
+<p>The command has been executed on 3 machines, the cluster is used as a single entity and we are not interested exactly in which machines the command run as far as it executes on 3 different nodes. The whole purpose of using an HPC cluster is to have many computers to run and not be concerned exactly about which machine or machines the actual execution takes place.</p>
+<p>When the amount of resources requested by all the jobs from all the users exceeds the number of resources available we need a system to prioritize the execution of the different jobs.
 That is the role of a Job Scheduler</p>
 <p><strong>Job Scheduler</strong></p>
 <p>The algorithms behind the prioritization of jobs can become fairly sophisticated. The resources available on a cluster are permanently changing and jobs are submitted permanently.
-The job scheduler has several objective functions including the maximal utilization of the cluster but also fairness among the users, preventing one user of monopolizing the cluster.</p>
-<p>SLURM is a workload manager that takes both roles in its architecture. From the user point of view all that you need to know is a handful of SLURM commands.
+The job scheduler has several objective functions including the maximal utilization of the cluster but also fairness among the users, preventing one user from monopolizing the cluster.</p>
+<p>SLURM is a workload manager that takes both roles in its architecture. From the user’s point of view, all that you need to know is a handful of SLURM commands.
 The SLURM commands that you will learn in this section will allow you to:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Submit jobs to the cluster, both for interactive and non interactive jobs.</p></li>
+<li><p>Submit jobs to the cluster, both interactive and non-interactive jobs.</p></li>
 <li><p>Monitor the list of jobs running on the system</p></li>
 <li><p>Learn the status and extra information for a particular job</p></li>
-<li><p>Cancel jobs that have been submitted and they are either running or waiting in queue</p></li>
+<li><p>Cancel jobs that have been submitted and they are either running or waiting in the queue</p></li>
 <li><p>List the partitions on the cluster and their state</p></li>
 </ul>
 </div></blockquote>
@@ -290,7 +290,7 @@ By default, <cite>sinfo</cite> lists the partitions that are available.</p>
 Any HPC user can submit jobs to those partitions and the partitions were created differentiating the amount of RAM (small, medium [med], large, and extra large [xl]), the wall time policy for the partition (day or week) and two community partitions with GPU nodes, one for interactive jobs (comm_gpu_inter) and another for non-interactive jobs running for up to a week (comm_gpu_week).
 The default queue is marked with a star (*) and it is called <cite>standby</cite>. Most compute nodes belong to this partition and jobs can run on it for up to 4 hours.
 The <cite>standby</cite> partition should be used preferentially except if you are certain that 4 hours is not enough time to complete the job.</p>
-<p>The command <cite>sinfo</cite> will list all the partitions and the state of the nodes for each of them. A more sumarized version can be obtained with the argument <cite>-s</cite></p>
+<p>The command <cite>sinfo</cite> will list all the partitions and the state of the nodes for each of them. A more summarized version can be obtained with the argument <cite>-s</cite></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; info -s
 PARTITION       AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
 standby*           up    4:00:00      82/82/3/167 taicm[001-009],tarcl100,tarcs[100,200-206,300-304],tbdcx001,tbmcs[001-011,100-103],tbpcm200,tbpcs001,tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],tcocs[001-064,100],tcocx[001-003],tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-115]
@@ -405,7 +405,7 @@ trcis001:~$
 </pre></div>
 </div>
 <p>The command <cite>salloc</cite> will allocate resources (e.g. nodes or CPU cores), possibly with a set of constraints (e.g. number of processors per node or amount of memory per node).
-<cite>salloc</cite> wil allocate the resources and spawn a shell in which the srun command is used to launch parallel tasks.
+<cite>salloc</cite> will allocate the resources and spawn a shell in which the <cite>srun</cite> command is used to launch parallel tasks.
 Notice that <cite>salloc</cite> will return a shell on the same machine where the command <cite>salloc</cite> was executed.</p>
 </section>
 </section>

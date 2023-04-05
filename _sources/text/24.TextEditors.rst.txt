@@ -4,7 +4,7 @@ Terminal-based Text Editors (nano)
 ==================================
 
 After learning a few commands the next thing to learn is to edit text files.
-As we will see later, editing small text files is a common procedure on an HPC cluster; for example, the submission scripts are relatively small text files, and most of the times, you have to make small adjustments to those scripts.
+As we will see later, editing small text files is a common procedure on an HPC cluster; for example, the submission scripts are relatively small text files, and most of the time, you have to make small adjustments to those scripts.
 Many scientific codes use text-based input files for running simulations.
 You need to know how to use at least one basic editor to help you with those tasks.
 
@@ -52,7 +52,7 @@ The command ``^K`` and ``^U`` only serve to cut and paste the line where the cur
 For more advanced copy and paste, you need to learn how to select blocks of text before cutting them to the *cut buffer*
 First, move the cursor to the start of the text you want to select, press the ``M-A`` key combination (*Alt-A* in modern keyboards) to mark the start, then move the cursor to the end of the section you want to select.
 Once you have marked the beginning and end of the text, the ``^^`` (Esc-6) and ``^K`` key combinations can be used to copy or cut it, respectively.
-In a command like ``^^``, the meaning of that is press the *Control Key* followed by the *carret symbol* ``^``.
+In a command like ``^^``, the meaning of that is to press the *Control Key* followed by the *carret symbol* ``^``.
 
 Quitting Nano
 -------------
@@ -92,6 +92,6 @@ As an exercise, take the opportunity to write the source code of a simple parall
       MPI_Finalize();
   }
 
-The code is in C, a well known programming language for a variety of purposes, including scientific computing. In C, tabulations are not mandatory but helps the legibility of the code, pay special attention to semicolons at the end of each instruction. All lines starting with double slash ``//`` are comments, so you can ignore those lines if you want.
+The code is in C, a well-known programming language for a variety of purposes, including scientific computing. In C, tabulations are not mandatory but help the legibility of the code, pay special attention to semicolons at the end of each instruction. All lines starting with a double slash ``//`` are comments, so you can ignore those lines if you want.
 
 In the next chapter, we will show how to compile the code and execute it on the cluster using the queue manager.

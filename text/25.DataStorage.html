@@ -190,14 +190,14 @@
   <section id="data-storage">
 <span id="qs-data-storage"></span><h1>Data Storage<a class="headerlink" href="#data-storage" title="Permalink to this headline">¶</a></h1>
 <p>On a desktop machine, you normally own the whole hard drive and you are free
-to use it up to the limit of physical drive. On a share resource like a
-cluster, limits need to be impose to avoid one user taking too much space or
-creating too many files, that could prevent other users to store their data or
+to use it up to the limit of the physical drive. On a shared resource like a
+cluster, limits need to be imposed to avoid one user taking too much space or
+creating too many files, which could prevent other users to store their data or
 could reduce the overall performance of the drive with too many files.</p>
-<p>There are two important locations from the user perspective, <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> and
-<code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> those locations are sit on a high performance storage device and
+<p>There are two important locations from the user’s perspective, <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> and
+<code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> those locations sit on a high-performance storage device and
 uses GPFS as their file system. Those locations are also shared between all
-compute nodes, so no matter on which machine you run, files on those locations
+compute nodes, so no matter which machine you run, files on those locations
 are always available. In this quick start, we will describe briefly the purpose
 of each one of them.</p>
 <section id="home-directory">
@@ -206,13 +206,13 @@ of each one of them.</p>
 and they are the default login location for users.
 The default disk quota for each user is 10 GB.
 As such, we recommend that home directories use should be
-primarily to store scripts, binary executables and all they software machinery to do your research, in cases where data is too large, the $HOME folder should not be used for storing data as it could fill quickly.
+primarily to store scripts, binary executables, and all the software machinery to do your research, in cases where data is too large, the $HOME folder should not be used for storing data as it could fill quickly.
 For research data, users should use Scratch space on our clusters.</p>
-<p>The good thing about <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder, despite its limited size is that all the
+<p>The good thing about <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder, despite its limited size, is that all the
 data is backed up on a daily basis via snapshots and tape. Users
 can retrieve up to 4 weeks of older files from
 <code class="docutils literal notranslate"><span class="pre">/users/.snapshots/{date}/$USER</span></code> if needed.
-If files are not available in the snapshot, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and the HPC team will attempt to retrieve the data from tape.</p>
+If files are not available in the snapshot, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and the HPC team will attempt to retrieve the data from the tape.</p>
 <p>Note: Users may check their storage quota via the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quota</span>
 </pre></div>
@@ -221,8 +221,8 @@ If files are not available in the snapshot, please contact <a class="reference e
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lpp</span><span class="o">/</span><span class="n">mmfs</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mmlsquota</span> <span class="o">--</span><span class="n">block</span><span class="o">-</span><span class="n">size</span> <span class="n">M</span>
 </pre></div>
 </div>
-<p>The block size can be changed to <code class="docutils literal notranslate"><span class="pre">K</span></code> for Kilo Bytes, <code class="docutils literal notranslate"><span class="pre">M</span></code> for Mega Bytes, <code class="docutils literal notranslate"><span class="pre">G</span></code> for Giga Bytes and <code class="docutils literal notranslate"><span class="pre">T</span></code> for Tera Bytes.</p>
-<p>It is important to pay attention not only to the storage size but also to the limit on the number of files that can be stored. Too many files have an impact of file system performance so its number needs to be limited. It you create too many reaching the limit you cannot create more files on that file system even if your quota size still shows allowance.</p>
+<p>The block size can be changed to <code class="docutils literal notranslate"><span class="pre">K</span></code> for Kilo Bytes, <code class="docutils literal notranslate"><span class="pre">M</span></code> for MegaBytes, <code class="docutils literal notranslate"><span class="pre">G</span></code> for Giga Bytes, and <code class="docutils literal notranslate"><span class="pre">T</span></code> for Tera Bytes.</p>
+<p>It is important to pay attention not only to the storage size but also to the limit on the number of files that can be stored. Too many files have an impact on file system performance so their number needs to be limited. If you create too many to reach the limit you cannot create more files on that file system even if your quota size still shows allowance.</p>
 </section>
 <section id="scratch-directory">
 <h2>Scratch Directory<a class="headerlink" href="#scratch-directory" title="Permalink to this headline">¶</a></h2>
@@ -233,9 +233,9 @@ each user. You can go to your scratch folder with:</p>
 </pre></div>
 </div>
 <p>Scratch directories on our clusters are treated as <strong>TRUE</strong> scratch space:
-There is no user-defined quota for space. All users scratch directories share the same file space, which is set at 130 TB. When the scratch directory becomes full, files can be automatically deleted by date.
-To avoid loosing data, all users should use their scratch space as truly temporary storage.
-However, we will notify users well in advance for schedule file deletions to give users ample time to remove data to prevent data loss.</p>
+There is no user-defined quota for space. All user’s scratch directories share the same file space, which is set at 130 TB. When the scratch directory becomes full, files can be automatically deleted by date.
+To avoid losing data, all users should use their scratch space as truly temporary storage.
+However, we will notify users well in advance for scheduled file deletions to give users ample time to remove data to prevent data loss.</p>
 <p>It is a good idea to create a symbolic link from your $HOME folder to go directly to your $SCRATCH folder, this command will do that:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ln -s $SCRATCH $HOME/scratch
 </pre></div>
@@ -248,7 +248,7 @@ However, we will notify users well in advance for schedule file deletions to giv
 </section>
 <section id="persistent-group-storage">
 <h2>Persistent Group Storage<a class="headerlink" href="#persistent-group-storage" title="Permalink to this headline">¶</a></h2>
-<p>Research groups may purchase long term persistent storage from the RC
+<p>Research groups may purchase long-term persistent storage from the RC
 HPC. This storage allows users to keep data on the cluster that will not
 be removed. In addition, this storage utilizes the same GPFS file system
 so files can be written directly to this storage from jobs executing on

@@ -189,29 +189,30 @@
             
   <section id="software-packages">
 <span id="qs-software"></span><h1>Software Packages<a class="headerlink" href="#software-packages" title="Permalink to this headline">¶</a></h1>
-<p>On a shared resource like an HPC cluster, several individuals could have different requirements about the software they need to use for their research.
-Users can need different scientific codes, programming languages, packages, libraries and compilers according to the particularities of their research.
-To accomodate all those needs, an HPC cluster offers a set of solutions that allow each user to select the software needed to achieve their goals.
-In this section we will present an overview of the different options users have to enable the software they need.</p>
+<p>As important as having performant hardware on an HPC cluster, it is important the software that runs on that hardware. The software packages are various, numerous, and sometimes complex in their configuration and installation.
+On a shared resource like an HPC cluster, several individuals could have different requirements about the software they need to use for their research.
+Users can need different scientific codes, programming languages, packages, libraries, and compilers according to the particularities of their research.
+To accommodate all those needs, an HPC cluster offers a set of solutions that allow each user to select the software needed to achieve their goals.
+In this section, we will present an overview of the different options users have to enable the software they need.</p>
 <section id="the-operating-system">
 <h2>The Operating System<a class="headerlink" href="#the-operating-system" title="Permalink to this headline">¶</a></h2>
-<p>The Operating System is the set of software packages that provide the basic functionallity of a computer.
-Among those packages is the Kernel, the central piece of software capable of communicate with the hardware to perform the low level tasks that a computer does during its operation.
+<p>The Operating System is the set of software packages that provide the basic functionality of a computer.
+Among those packages is the Kernel, the central piece of software capable of communicating with the hardware to perform the low-level tasks that a computer does during its operation.
 Your direct interaction with the operating system is via the command line interface.
-Most commands like <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code> are part of of the operating system. The packages that provides these and many other commands are installed when the computer is provisioned, ie, during the installation of the computer.
-An HPC cluster, being a collection of computers have one operating system installed on every single compute node.</p>
-<p>No scientific software is installed from the Operating system and there are several reasons for that.
-First, there is not much scientific software provided by the operating system. That is particularly true on a OS such as RedHat Enterprise Linux, the operating system installed on the compute nodes.
+Most commands like <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code> are part of of the operating system. The packages that provide these and many other commands are installed when the computer is provisioned, ie, during the installation of the computer.
+An HPC cluster, being a collection of computers has one operating system installed on every single compute node.</p>
+<p>No scientific software is installed in the Operating system and there are several reasons for that.
+First, there is not much scientific software provided by the operating system. That is particularly true on an OS such as RedHat Enterprise Linux, the operating system installed on the compute nodes.
 This operating system is intended for enterprise installations and as such scientific packages are rare if any.</p>
-<p>Enterprise Operating Systems adopt a conservative policy in terms of the software included. Compilers for C, C++ and Fortran are usually outdated. Python is usually old and lacks most of the typical package needed for scientific computing.</p>
-<p>Summarizing, all that you will use from the OS on compute nodes will be the basic commands that we learn on <a class="reference internal" href="23.CommandLine.html#qs-command-line"><span class="std std-ref">Quick start with the Command Line</span></a>:</p>
-<p>Compilers, Programming Languages and all scientific software will come from one of the three sofware channels that we will describe next.</p>
+<p>Enterprise Operating Systems adopt a conservative policy in terms of the software included. Compilers for C, C++, and Fortran are usually outdated. Python is usually old and lacks most of the typical packages needed for scientific computing.</p>
+<p>To summarize, all that you will use from the OS on compute nodes will be the basic commands that we learn on <a class="reference internal" href="23.CommandLine.html#qs-command-line"><span class="std std-ref">Quick start with the Command Line</span></a>:</p>
+<p>Compilers, Programming Languages, and all scientific software will come from one of the three software channels that we will describe next.</p>
 </section>
 <section id="environment-modules">
 <h2>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h2>
-<p>On an HPC cluster we need to install multiple scientific packages for different research purpuses.Sometime even multiple versions of the same package as users are confronted with codes that change its behavior over time, regressions occur, ie executons that used to work with a given version stop working or behave differently under a new version.</p>
-<p>To accommodate all these needs, Environment Modules is a solution that allow users to enable or dissable <cite>Modules</cite> and as result access certain software package and version.</p>
-<p>An Environment Module is just a way of carefully change a set of variables that define the location of</p>
+<p>On an HPC cluster, we need to install multiple scientific packages for different research purposes. Sometimes even multiple versions of the same package as users are confronted with codes that change their behavior over time, regressions occur, ie executions that used to work with a given version stop working or behave differently under a new version.</p>
+<p>To accommodate all these needs, Environment Modules is a solution that allows users to enable or disable <cite>Modules</cite> and as a result access certain software packages and versions.</p>
+<p>An Environment Module is just a way of carefully changing a set of variables that define the location of</p>
 </section>
 <section id="conda-environments">
 <h2>Conda Environments<a class="headerlink" href="#conda-environments" title="Permalink to this headline">¶</a></h2>
