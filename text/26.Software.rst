@@ -3,38 +3,39 @@
 Software Packages
 =================
 
+As important as having performant hardware on an HPC cluster, it is important the software that runs on that hardware. The software packages are various, numerous, and sometimes complex in their configuration and installation.
 On a shared resource like an HPC cluster, several individuals could have different requirements about the software they need to use for their research. 
-Users can need different scientific codes, programming languages, packages, libraries and compilers according to the particularities of their research.
-To accomodate all those needs, an HPC cluster offers a set of solutions that allow each user to select the software needed to achieve their goals.
-In this section we will present an overview of the different options users have to enable the software they need.
+Users can need different scientific codes, programming languages, packages, libraries, and compilers according to the particularities of their research.
+To accommodate all those needs, an HPC cluster offers a set of solutions that allow each user to select the software needed to achieve their goals.
+In this section, we will present an overview of the different options users have to enable the software they need.
 
 The Operating System
---------------------------------------------
+--------------------
 
-The Operating System is the set of software packages that provide the basic functionallity of a computer.
-Among those packages is the Kernel, the central piece of software capable of communicate with the hardware to perform the low level tasks that a computer does during its operation.
+The Operating System is the set of software packages that provide the basic functionality of a computer.
+Among those packages is the Kernel, the central piece of software capable of communicating with the hardware to perform the low-level tasks that a computer does during its operation.
 Your direct interaction with the operating system is via the command line interface. 
-Most commands like ``cp``, ``ls`` are part of of the operating system. The packages that provides these and many other commands are installed when the computer is provisioned, ie, during the installation of the computer. 
-An HPC cluster, being a collection of computers have one operating system installed on every single compute node.
+Most commands like ``cp``, ``ls`` are part of of the operating system. The packages that provide these and many other commands are installed when the computer is provisioned, ie, during the installation of the computer. 
+An HPC cluster, being a collection of computers has one operating system installed on every single compute node.
 
-No scientific software is installed from the Operating system and there are several reasons for that. 
-First, there is not much scientific software provided by the operating system. That is particularly true on a OS such as RedHat Enterprise Linux, the operating system installed on the compute nodes. 
+No scientific software is installed in the Operating system and there are several reasons for that. 
+First, there is not much scientific software provided by the operating system. That is particularly true on an OS such as RedHat Enterprise Linux, the operating system installed on the compute nodes. 
 This operating system is intended for enterprise installations and as such scientific packages are rare if any. 
 
-Enterprise Operating Systems adopt a conservative policy in terms of the software included. Compilers for C, C++ and Fortran are usually outdated. Python is usually old and lacks most of the typical package needed for scientific computing.
+Enterprise Operating Systems adopt a conservative policy in terms of the software included. Compilers for C, C++, and Fortran are usually outdated. Python is usually old and lacks most of the typical packages needed for scientific computing.
 
-Summarizing, all that you will use from the OS on compute nodes will be the basic commands that we learn on :ref:`Quick start with the Command Line <qs-command-line>`:  
+To summarize, all that you will use from the OS on compute nodes will be the basic commands that we learn on :ref:`Quick start with the Command Line <qs-command-line>`:  
 
-Compilers, Programming Languages and all scientific software will come from one of the three sofware channels that we will describe next.
+Compilers, Programming Languages, and all scientific software will come from one of the three software channels that we will describe next.
 
 Environment Modules
 -------------------
 
-On an HPC cluster we need to install multiple scientific packages for different research purpuses.Sometime even multiple versions of the same package as users are confronted with codes that change its behavior over time, regressions occur, ie executons that used to work with a given version stop working or behave differently under a new version.
+On an HPC cluster, we need to install multiple scientific packages for different research purposes. Sometimes even multiple versions of the same package as users are confronted with codes that change their behavior over time, regressions occur, ie executions that used to work with a given version stop working or behave differently under a new version.
 
-To accommodate all these needs, Environment Modules is a solution that allow users to enable or dissable `Modules` and as result access certain software package and version.
+To accommodate all these needs, Environment Modules is a solution that allows users to enable or disable `Modules` and as a result access certain software packages and versions.
 
-An Environment Module is just a way of carefully change a set of variables that define the location of 
+An Environment Module is just a way of carefully changing a set of variables that define the location of 
 
 Conda Environments
 ------------------

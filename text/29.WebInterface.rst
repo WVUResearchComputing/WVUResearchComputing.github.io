@@ -3,7 +3,7 @@
 Web Interface (Open On-Demand)
 ==============================
 
-The term Interactive Scientific Computing consists on using a computer in a similar way as you use a handheld calculator.
+The term Interactive Scientific Computing consists of using a computer in a similar way as you use a handheld calculator.
 On a handheld calculator, you type some input and you expect that input to be processed right away to produce results.
 The result does not need to return immediately, but you expect that calculations that are done take an amount of time that allows a human to wait before a new command is submitted.
 

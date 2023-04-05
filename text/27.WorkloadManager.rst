@@ -23,7 +23,7 @@ A cluster typically hosts multiple types of nodes:
     * **management nodes:** These computers run management services, databases, monitoring tools, reporting applications, provisioning tools, and other related services used by system administrators. Normal users have no direct access to these nodes.
     * **login nodes:** These computers are the machines where users login in through SSH to submit jobs and check results. Users must never use login nodes for any intense computations
     * **storage nodes:** These computers host user files in possibly multiple filesystems. We use dedicated storage systems running distributed filesystems such as GPFS.
-    * **compute nodes:** These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply referred as "nodes"
+    * **compute nodes:** These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply referred to as "nodes"
 
 Partitions
 ~~~~~~~~~~
@@ -83,23 +83,23 @@ If we want to execute the same command on 3 machines, we can use SLURM and execu
     tcocm101.hpc.wvu.edu
     tcocm100.hpc.wvu.edu
 
-The command have been executed on 3 machines, the cluster is used as single entity and we are not interested exactly on which machines the command run as far it executes on 3 different nodes. The whole purpose of using a HPC cluster is to have many computer to run and not being concern exactly on which machine or machines the actual execution takes place.
+The command has been executed on 3 machines, the cluster is used as a single entity and we are not interested exactly in which machines the command run as far as it executes on 3 different nodes. The whole purpose of using an HPC cluster is to have many computers to run and not be concerned exactly about which machine or machines the actual execution takes place.
 
-When the amount of resources requested by all the jobs from all the users exceeds the amount of resources available we need a system to prioritize the execution of the different jobs. 
+When the amount of resources requested by all the jobs from all the users exceeds the number of resources available we need a system to prioritize the execution of the different jobs. 
 That is the role of a Job Scheduler
 
 **Job Scheduler**
 
 The algorithms behind the prioritization of jobs can become fairly sophisticated. The resources available on a cluster are permanently changing and jobs are submitted permanently.
-The job scheduler has several objective functions including the maximal utilization of the cluster but also fairness among the users, preventing one user of monopolizing the cluster.
+The job scheduler has several objective functions including the maximal utilization of the cluster but also fairness among the users, preventing one user from monopolizing the cluster.
 
-SLURM is a workload manager that takes both roles in its architecture. From the user point of view all that you need to know is a handful of SLURM commands. 
+SLURM is a workload manager that takes both roles in its architecture. From the user's point of view, all that you need to know is a handful of SLURM commands. 
 The SLURM commands that you will learn in this section will allow you to:
 
-    * Submit jobs to the cluster, both for interactive and non interactive jobs.
+    * Submit jobs to the cluster, both interactive and non-interactive jobs.
     * Monitor the list of jobs running on the system
     * Learn the status and extra information for a particular job
-    * Cancel jobs that have been submitted and they are either running or waiting in queue
+    * Cancel jobs that have been submitted and they are either running or waiting in the queue
     * List the partitions on the cluster and their state
 
 Gathering cluster information
@@ -113,7 +113,7 @@ Any HPC user can submit jobs to those partitions and the partitions were created
 The default queue is marked with a star (*) and it is called `standby`. Most compute nodes belong to this partition and jobs can run on it for up to 4 hours.
 The `standby` partition should be used preferentially except if you are certain that 4 hours is not enough time to complete the job.
 
-The command `sinfo` will list all the partitions and the state of the nodes for each of them. A more sumarized version can be obtained with the argument `-s`
+The command `sinfo` will list all the partitions and the state of the nodes for each of them. A more summarized version can be obtained with the argument `-s`
 
 ::
 
@@ -241,7 +241,7 @@ In SLURM an interactive job can be launched with the command `salloc`::
     trcis001:~$ 
 
 The command `salloc` will allocate resources (e.g. nodes or CPU cores), possibly with a set of constraints (e.g. number of processors per node or amount of memory per node).
-`salloc` wil allocate the resources and spawn a shell in which the srun command is used to launch parallel tasks.
+`salloc` will allocate the resources and spawn a shell in which the `srun` command is used to launch parallel tasks.
 Notice that `salloc` will return a shell on the same machine where the command `salloc` was executed.
 
 
