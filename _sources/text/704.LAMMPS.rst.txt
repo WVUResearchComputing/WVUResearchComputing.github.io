@@ -1,0 +1,427 @@
+LAMMPS
+======
+
+Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) is a molecular 
+dynamics software code from Sandia National Laboratories.
+LAMMPS makes use of hybrid parallelization techniques being able to use multicore parallelism (OpenMP),
+Message Passing Interface (MPI) for distributed parallel communication and accelerators such as GPUs 
+The code is free and open-source software, distributed under the terms of the GNU General Public License.
+
+In Molecular dynamics the forces that act over particules have a limited range.
+For computing efficiency, LAMMPS uses neighbor lists (Verlet lists) to keep track of nearby particles. 
+The lists are optimized for systems with particles that repel at short distances, 
+so that the local density of particles never grows too large.
+
+Another stragety for optimization in large systems is domain decomposition.
+LAMMPS uses spatial-decomposition techniques to partition the simulation domain into small 3d sub-domains, 
+one of which is assigned to different processes. 
+Processes communicate and store ghost atom information for atoms that border their subdomain. 
+LAMMPS is most efficient (in a parallel computing sense) for systems whose particles fill a 3D rectangular 
+box with approximately uniform density.
+
+In this tutorial we will demonstrate how to use a hybrid combination for LAMMPS.
+We will combine MPI, OpenMP and GPU acceleration for a simple benchmark case.
+
+Creating the input file
+------------------------
+
+Select a good location for executing the simulation.
+For example use $SCRATCH/LAMMPS::
+
+	$> mkdir $SCRATCH/LAMMPS
+	$> cd $SCRATCH/LAMMPS
+
+Download the two examples from the NAMD UIUC webserver::
+
+	$> wget https://lammps.sandia.gov/inputs/in.lj.txt
+
+The example is very simple, alternatively you can just copy and paste the input file below::
+
+    # 3d Lennard-Jones melt
+
+    variable    x index 1
+    variable    y index 1
+    variable    z index 1
+
+    variable    xx equal 20*$x
+    variable    yy equal 20*$y
+    variable    zz equal 20*$z
+
+    units       lj
+    atom_style  atomic
+
+    lattice     fcc 0.8442
+    region      box block 0 ${xx} 0 ${yy} 0 ${zz}
+    create_box  1 box
+    create_atoms    1 box
+    mass        1 1.0
+
+    velocity    all create 1.44 87287 loop geom
+
+    pair_style  lj/cut 2.5
+    pair_coeff  1 1 1.0 1.0 2.5
+
+    neighbor    0.3 bin
+    neigh_modify    delay 0 every 20 check no
+
+    fix     1 all nve
+
+    run     100
+
+
+Requesting an interactive job
+-----------------------------
+
+For the purpose of this example we will use an interactive job.
+Down below we will show how to achieve the same result via a batch job
+We start by requesting and entire GPU compute node.
+On Thorny Flat GPU nodes have 3 GPU cards and 24 CPU cores.
+That is what we are requesting here for a job with a wall time of 2 hours::
+
+    $> srun -p comm_gpu_inter -G 3 -t 2:00:00 -c 24 --pty bash
+
+After a few seconds we are redirected to one of the GPU compute nodes.
+We can check which are the GPU cards that were assigned to us with the command `nvidia-smi`::
+
+	tcogq003:~/scratch/LAMMPS$ nvidia-smi
+	Wed May  3 18:37:41 2023       
+	+---------------------------------------------------------------------------------------+
+	| NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
+	|-----------------------------------------+----------------------+----------------------+
+	| GPU  Name                  Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+	| Fan  Temp  Perf            Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+	|                                         |                      |               MIG M. |
+	|=========================================+======================+======================|
+	|   0  Quadro P6000                    Off| 00000000:37:00.0 Off |                  Off |
+	| 26%   18C    P8                8W / 250W|      0MiB / 24576MiB |      0%      Default |
+	|                                         |                      |                  N/A |
+	+-----------------------------------------+----------------------+----------------------+
+	|   1  Quadro P6000                    Off| 00000000:AF:00.0 Off |                  Off |
+	| 26%   19C    P8                8W / 250W|      0MiB / 24576MiB |      0%      Default |
+	|                                         |                      |                  N/A |
+	+-----------------------------------------+----------------------+----------------------+
+	|   2  Quadro P6000                    Off| 00000000:D8:00.0 Off |                  Off |
+	| 26%   21C    P8                8W / 250W|      0MiB / 24576MiB |      0%      Default |
+	|                                         |                      |                  N/A |
+	+-----------------------------------------+----------------------+----------------------+
+																							 
+	+---------------------------------------------------------------------------------------+
+	| Processes:                                                                            |
+	|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+	|        ID   ID                                                             Usage      |
+	|=======================================================================================|
+	|  No running processes found                                                           |
+	+---------------------------------------------------------------------------------------+
+
+
+We can see 3 GPU cards. They are **NVIDIA Quadro P6000** which are our older cards.
+It is important to verify this becase that will determine which capabilites are available on 
+the cards and the corresponding build of LAMMPS that we can use
+
+Our next step is to load singularity as the LAMMPS we will use is an image optimized for GPUs.
+Execute this command::
+
+	tcogq003:~/scratch/LAMMPS$ module load singularity 
+
+Now we are ready to enter into the filesystem of the container.
+The container we will use is ``NGC_LAMMPS_patch_3Nov2022.sif`` located in `/shared/containers` 
+
+Get a shell inside the cntainer with the command::
+
+    tcogq003:~/scratch/LAMMPS$ singularity shell --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif 
+
+Remember to use the argument `--nv` to access the GPUs inside the container. 
+It is a good practice to double check that such is the case::
+
+	Singularity> nvidia-smi 
+	Wed May  3 18:48:19 2023       
+	+---------------------------------------------------------------------------------------+
+	| NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
+	|-----------------------------------------+----------------------+----------------------+
+	| GPU  Name                  Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+	| Fan  Temp  Perf            Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+	|                                         |                      |               MIG M. |
+	|=========================================+======================+======================|
+	|   0  Quadro P6000                    Off| 00000000:37:00.0 Off |                  Off |
+	| 26%   18C    P8                8W / 250W|      0MiB / 24576MiB |      0%      Default |
+	|                                         |                      |                  N/A |
+	+-----------------------------------------+----------------------+----------------------+
+	|   1  Quadro P6000                    Off| 00000000:AF:00.0 Off |                  Off |
+	| 26%   19C    P8                8W / 250W|      0MiB / 24576MiB |      0%      Default |
+	|                                         |                      |                  N/A |
+	+-----------------------------------------+----------------------+----------------------+
+	|   2  Quadro P6000                    Off| 00000000:D8:00.0 Off |                  Off |
+	| 26%   21C    P8                8W / 250W|      0MiB / 24576MiB |      0%      Default |
+	|                                         |                      |                  N/A |
+	+-----------------------------------------+----------------------+----------------------+
+																							 
+	+---------------------------------------------------------------------------------------+
+	| Processes:                                                                            |
+	|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+	|        ID   ID                                                             Usage      |
+	|=======================================================================================|
+	|  No running processes found                                                           |
+	+---------------------------------------------------------------------------------------+
+
+We can now prepare the variables to execute LAMMPS.
+
+The first variable is export `OMP_NUM_THREADS`. This variable controls the number of OpenMP 
+threads that a process can create. We have 3 GPU cards and 24 CPU cores. As we will see in 
+a minute a good distribution is to assigned one GPU to one MPI process and use OpenMP to use 
+the extra cores via OpenMP threads. 
+Most of the processing is taking place on the GPU so it is not critical but a good way for 
+trying to maximize the use of resources.
+Execute this command::
+
+	export OMP_NUM_THREADS=8
+
+The next command depends on the Hardware Capabilities of the GPU we are using.
+The NVIDIA P6000 support software architecture (gencode) SM 6.1
+
+The container offers several builds of LAMMPS::
+
+	Singularity> ls /usr/local/lammps/
+	sm60  sm70  sm75  sm80	sm86  sm90
+
+The selection of which build to use must be consistent with the highest gencode supported by the hardware.
+
+This table could Guide you about the selection of the appropiated gencode
+
+.. list-table:: Title
+   :widths: 11 11 11 11 11 11 11 11 12
+   :header-rows: 1
+
+   * - Fermi
+     - Kepler
+     - Maxwell
+     - Pascal
+     - Volta
+     - Turing
+     - Ampere
+     - Ada (Lovelace)
+     - Hopper
+   * - sm_20
+     - sm_30
+     - sm_50
+     - sm_60
+     - sm_70
+     - sm_75
+     - sm_80
+     - sm_89
+     - sm_90
+   * -
+     - sm_35
+     - sm_52
+     - sm_61
+     - sm_72 (Xavier)
+     -
+     - sm_86
+     -
+     - sm_90a (Thor)
+   * -
+     - sm_37
+     - sm_53
+     - sm_62
+     -
+     -
+     - sm_87 (Orin)		
+     -
+     -
+
+What matters to us is that the P6000 will not support a gencode other than sm60.
+We will setup the variable `LD_LIBRARY_PATH` to search for the lammps variables on the right location
+Execute::
+
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lammps/sm60/lib
+
+We are now ready to execute LAMMPS:
+The following command will ask for 3 MPI processes 3 GPU cards to run the input file above::
+
+	Singularity> mpirun -n 3 /usr/local/lammps/sm60/bin/lmp  -k on g 3 -sf kk -pk kokkos cuda/aware on neigh full comm device binsize 2.8 -var x 8 -var y 4 -var z 8 -in in.lj.txt 
+
+The code runs is just a few seconds.
+The output looks like this::
+
+	LAMMPS (3 Nov 2022)
+	KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+	  will use up to 3 GPU(s) per node
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	  using 1 OpenMP thread(s) per MPI task
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+	Created orthogonal box = (0 0 0) to (268.73539 134.3677 268.73539)
+	  1 by 1 by 3 MPI processor grid
+	Created 8192000 atoms
+	  using lattice units in orthogonal box = (0 0 0) to (268.73539 134.3677 268.73539)
+	  create_atoms CPU = 0.964 seconds
+	Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+	Neighbor list info ...
+	  update: every = 20 steps, delay = 0 steps, check = no
+	  max neighbors/atom: 2000, page size: 100000
+	  master list distance cutoff = 2.8
+	  ghost atom cutoff = 2.8
+	  binsize = 2.8, bins = 96 48 96
+	  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+	  (1) pair lj/cut/kk, perpetual
+		  attributes: full, newton off, kokkos_device
+		  pair build: full/bin/kk/device
+		  stencil: full/bin/3d
+		  bin: kk/device
+	Setting up Verlet run ...
+	  Unit style    : lj
+	  Current step  : 0
+	  Time step     : 0.005
+	Per MPI rank memory allocation (min/avg/max) = 417.8 | 419.8 | 423 Mbytes
+	   Step          Temp          E_pair         E_mol          TotEng         Press     
+			 0   1.44          -6.7733681      0             -4.6133683     -5.0196694    
+		   100   0.75927734    -5.761232       0             -4.6223161      0.19102612   
+	Loop time of 3.78732 on 3 procs for 100 steps with 8192000 atoms
+
+	Performance: 11406.477 tau/day, 26.404 timesteps/s, 216.301 Matom-step/s
+	64.0% CPU use with 3 MPI tasks x 1 OpenMP threads
+
+	MPI task timing breakdown:
+	Section |  min time  |  avg time  |  max time  |%varavg| %total
+	---------------------------------------------------------------
+	Pair    | 0.054429   | 0.054921   | 0.055782   |   0.3 |  1.45
+	Neigh   | 0.57971    | 0.60578    | 0.63878    |   3.2 | 16.00
+	Comm    | 0.51117    | 0.53519    | 0.55821    |   2.6 | 14.13
+	Output  | 0.00041937 | 0.00451    | 0.0078808  |   4.6 |  0.12
+	Modify  | 2.5216     | 2.5246     | 2.5287     |   0.2 | 66.66
+	Other   |            | 0.06236    |            |       |  1.65
+
+	Nlocal:    2.73067e+06 ave 2.73706e+06 max  2.7274e+06 min
+	Histogram: 2 0 0 0 0 0 0 0 0 1
+	Nghost:         361536 ave      368174 max      348360 min
+	Histogram: 1 0 0 0 0 0 0 0 0 2
+	Neighs:              0 ave           0 max           0 min
+	Histogram: 3 0 0 0 0 0 0 0 0 0
+	FullNghs:  2.05098e+08 ave 2.05575e+08 max 2.04853e+08 min
+	Histogram: 2 0 0 0 0 0 0 0 0 1
+
+	Total # of neighbors = 6.1529347e+08
+	Ave neighs/atom = 75.109066
+	Neighbor list builds = 5
+	Dangerous builds not checked
+	Total wall time: 0:00:08
+
+Executing LAMMPS from a batch job
+---------------------------------
+
+We can use all that we learn above to convert the execution into a submission script
+Write a submission script that we will call here `runjob.slurm`::
+
+#!/bin/bash
+
+#SBATCH --job-name=LAMMPS
+#SBATCH -p comm_gpu_inter 
+#SBATCH -G 3 
+#SBATCH -t 2:00:00 
+#SBATCH -c 24
+
+module purge
+module load singularity
+
+cd $SLURM_SUBMIT_DIR
+pwd
+singularity exec --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif ./run_lammps.sh
+
+We need also another file that will set the variables and run LAMMPS inside the container::
+The file is called `run_lammps.sh` and the content is this::
+
+	#!/bin/bash
+
+	export OMP_NUM_THREADS=8
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lammps/sm60/lib
+
+	mpirun -n 3 /usr/local/lammps/sm60/bin/lmp  -k on g 3 -sf kk -pk kokkos cuda/aware on neigh full comm device binsize 2.8 -var x 8 -var y 4 -var z 8 -in in.lj.txt 
+
+We need to make this file executable using the command::
+
+	$> chmod +x run_lammps.sh
+
+Now we can submit the job and wait for the result.
+Submit the job with the command::
+
+	$> sbatch runjob.slurm 
+
+We will get two files `log.lammps` that is the traditional log from LAMMPS and a file that looks like `slurm-194660.out`.
+The output from LAMMPS that instead of being shown on the screen is stored on a file with the corresponding JobID 
+
+The file looks similar to the output from our interactive execution::
+
+	tcogq003:~/scratch/LAMMPS$ cat slurm-194660.out 
+	Removing gcc version 9.3.0 : lang/gcc/9.3.0
+	Removing git version 2.29.1 : dev/git/2.29.1
+	/gpfs20/scratch/gufranco/LAMMPS
+	LAMMPS (3 Nov 2022)
+	KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+	  will use up to 3 GPU(s) per node
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	Kokkos::Cuda::initialize WARNING: running kernels compiled for compute capability 6.0 on device with compute capability 6.1 , this will likely reduce potential performance.
+	  using 1 OpenMP thread(s) per MPI task
+	Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+	Created orthogonal box = (0 0 0) to (268.73539 134.3677 268.73539)
+	  1 by 1 by 3 MPI processor grid
+	Created 8192000 atoms
+	  using lattice units in orthogonal box = (0 0 0) to (268.73539 134.3677 268.73539)
+	  create_atoms CPU = 0.963 seconds
+	Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+	Neighbor list info ...
+	  update: every = 20 steps, delay = 0 steps, check = no
+	  max neighbors/atom: 2000, page size: 100000
+	  master list distance cutoff = 2.8
+	  ghost atom cutoff = 2.8
+	  binsize = 2.8, bins = 96 48 96
+	  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+	  (1) pair lj/cut/kk, perpetual
+		  attributes: full, newton off, kokkos_device
+		  pair build: full/bin/kk/device
+		  stencil: full/bin/3d
+		  bin: kk/device
+	Setting up Verlet run ...
+	  Unit style    : lj
+	  Current step  : 0
+	  Time step     : 0.005
+	Per MPI rank memory allocation (min/avg/max) = 417.8 | 419.8 | 423 Mbytes
+	   Step          Temp          E_pair         E_mol          TotEng         Press     
+			 0   1.44          -6.7733681      0             -4.6133683     -5.0196694    
+		   100   0.75927734    -5.761232       0             -4.6223161      0.19102612   
+	Loop time of 3.78997 on 3 procs for 100 steps with 8192000 atoms
+
+	Performance: 11398.509 tau/day, 26.385 timesteps/s, 216.149 Matom-step/s
+	63.1% CPU use with 3 MPI tasks x 1 OpenMP threads
+
+	MPI task timing breakdown:
+	Section |  min time  |  avg time  |  max time  |%varavg| %total
+	---------------------------------------------------------------
+	Pair    | 0.054214   | 0.054977   | 0.056248   |   0.4 |  1.45
+	Neigh   | 0.57713    | 0.60327    | 0.63866    |   3.3 | 15.92
+	Comm    | 0.50607    | 0.54467    | 0.57153    |   3.8 | 14.37
+	Output  | 0.00047028 | 0.012894   | 0.03579    |  14.3 |  0.34
+	Modify  | 2.5112     | 2.5169     | 2.5282     |   0.5 | 66.41
+	Other   |            | 0.05729    |            |       |  1.51
+
+	Nlocal:    2.73067e+06 ave 2.73706e+06 max  2.7274e+06 min
+	Histogram: 2 0 0 0 0 0 0 0 0 1
+	Nghost:         361536 ave      368174 max      348360 min
+	Histogram: 1 0 0 0 0 0 0 0 0 2
+	Neighs:              0 ave           0 max           0 min
+	Histogram: 3 0 0 0 0 0 0 0 0 0
+	FullNghs:  2.05098e+08 ave 2.05575e+08 max 2.04853e+08 min
+	Histogram: 2 0 0 0 0 0 0 0 0 1
+
+	Total # of neighbors = 6.1529347e+08
+	Ave neighs/atom = 75.109066
+	Neighbor list builds = 5
+	Dangerous builds not checked
+	Total wall time: 0:00:08
+

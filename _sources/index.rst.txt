@@ -98,7 +98,7 @@ Main Responsible for Documentation and Scientific Outreach
    text/40.AdvancedUsage
    text/500.ScientificProgramming
    text/600.SoftAdmin
-   text/70.DomainSpecific
+   text/700.DomainSpecific
    text/80.ClusterSpecific
    text/90.References
 
