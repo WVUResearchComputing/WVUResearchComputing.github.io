@@ -504,19 +504,22 @@ The output looks like this:</p>
 <h2>Executing LAMMPS from a batch job<a class="headerlink" href="#executing-lammps-from-a-batch-job" title="Permalink to this headline">¶</a></h2>
 <p>We can use all that we learn above to convert the execution into a submission script
 Write a submission script that we will call here <cite>runjob.slurm</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-</pre></div>
-</div>
-<p>#SBATCH –job-name=LAMMPS
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#SBATCH --job-name=LAMMPS
 #SBATCH -p comm_gpu_inter
 #SBATCH -G 3
 #SBATCH -t 2:00:00
-#SBATCH -c 24</p>
-<p>module purge
-module load singularity</p>
-<p>cd $SLURM_SUBMIT_DIR
+#SBATCH -c 24
+
+module purge
+module load singularity
+
+cd $SLURM_SUBMIT_DIR
 pwd
-singularity exec –nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif ./run_lammps.sh</p>
+singularity exec --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif ./run_lammps.sh
+</pre></div>
+</div>
 <p>We need also another file that will set the variables and run LAMMPS inside the container::
 The file is called <cite>run_lammps.sh</cite> and the content is this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash

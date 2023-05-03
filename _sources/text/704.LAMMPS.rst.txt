@@ -315,20 +315,20 @@ Executing LAMMPS from a batch job
 We can use all that we learn above to convert the execution into a submission script
 Write a submission script that we will call here `runjob.slurm`::
 
-#!/bin/bash
+    #!/bin/bash
 
-#SBATCH --job-name=LAMMPS
-#SBATCH -p comm_gpu_inter 
-#SBATCH -G 3 
-#SBATCH -t 2:00:00 
-#SBATCH -c 24
+    #SBATCH --job-name=LAMMPS
+    #SBATCH -p comm_gpu_inter 
+    #SBATCH -G 3 
+    #SBATCH -t 2:00:00 
+    #SBATCH -c 24
 
-module purge
-module load singularity
+    module purge
+    module load singularity
 
-cd $SLURM_SUBMIT_DIR
-pwd
-singularity exec --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif ./run_lammps.sh
+    cd $SLURM_SUBMIT_DIR
+    pwd
+    singularity exec --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif ./run_lammps.sh
 
 We need also another file that will set the variables and run LAMMPS inside the container::
 The file is called `run_lammps.sh` and the content is this::
