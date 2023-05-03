@@ -31,7 +31,7 @@ For example use $SCRATCH/LAMMPS::
 	$> mkdir $SCRATCH/LAMMPS
 	$> cd $SCRATCH/LAMMPS
 
-Download the two examples from the NAMD UIUC webserver::
+Download the two examples from the LAMMPS webserver::
 
 	$> wget https://lammps.sandia.gov/inputs/in.lj.txt
 
