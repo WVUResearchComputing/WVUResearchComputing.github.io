@@ -108,76 +108,76 @@ Youtube Videos
 Introduction to HPC
 ~~~~~~~~~~~~~~~~~~~
 
- * `Day 1 <https://youtu.be/aF-l-BilFJw>`_
+ * `Introduction to HPC Day 1 <https://youtu.be/aF-l-BilFJw>`_
 
- * `Day 2 <https://youtu.be/FTNa8yxrbXU>`_
+ * `Introduction to HPC Day 2 <https://youtu.be/FTNa8yxrbXU>`_
 
- * `Day 3 <https://youtu.be/QsywsJQd8hI>`_
+ * `Introduction to HPC Day 3 <https://youtu.be/QsywsJQd8hI>`_
 
- * `Day 4 <https://youtu.be/QsywsJQd8hI>`_
+ * `Introduction to HPC Day 4 <https://youtu.be/QsywsJQd8hI>`_
 
 Deep Learning
 ~~~~~~~~~~~~~
 
- * `Day 1 <https://youtu.be/Fz_u1kS38y0>`_
+ * `Deep Learning Day 1 <https://youtu.be/Fz_u1kS38y0>`_
 
- * `Day 2 <https://youtu.be/RgbwXfv3EuE>`_
+ * `Deep Learning Day 2 <https://youtu.be/RgbwXfv3EuE>`_
 
- * `Day 3 <https://youtu.be/Sp_aswQaBy4>`_
+ * `Deep Learning Day 3 <https://youtu.be/Sp_aswQaBy4>`_
 
 Modern Fortran
 ~~~~~~~~~~~~~~
 
- * `Day 1 <https://youtu.be/tf1Jo8LxtfU>`_
+ * `Modern Fortran Day 1 <https://youtu.be/tf1Jo8LxtfU>`_
 
- * `Day 2 <https://youtu.be/-7-nMz_ztBo>`_
+ * `Modern Fortran Day 2 <https://youtu.be/-7-nMz_ztBo>`_
 
- * `Day 3 <https://youtu.be/r5BihCjavls>`_
+ * `Modern Fortran Day 3 <https://youtu.be/r5BihCjavls>`_
 
- * `Day 4 <https://youtu.be/Ug0F6ol_S7c>`_
+ * `Modern Fortran Day 4 <https://youtu.be/Ug0F6ol_S7c>`_
 
 2018 Summer Workshop
 ~~~~~~~~~~~~~~~~~~~~
 
- * `Day 1 <https://youtu.be/ExQ0Fr3GMNk>`_
+ * `2018 Summer Workshop Day 1 <https://youtu.be/ExQ0Fr3GMNk>`_
 
- * `Day 2 <https://youtu.be/3ygpoxxVzpo>`_
+ * `2018 Summer Workshop Day 2 <https://youtu.be/3ygpoxxVzpo>`_
 
- * `Day 3 <https://youtu.be/Qh7I6DbvZ14>`_
+ * `2018 Summer Workshop Day 3 <https://youtu.be/Qh7I6DbvZ14>`_
 
- * `Day 4 <https://youtu.be/SBVFMkO-jGY>`_
+ * `2018 Summer Workshop Day 4 <https://youtu.be/SBVFMkO-jGY>`_
 
 2019 Summer Workshop
 ~~~~~~~~~~~~~~~~~~~~
 
- * `Day 1 Session 1 <https://youtu.be/XO9ivm5nykc>`_
+ * `2019 Summer Workshop Day 1 Session 1 <https://youtu.be/XO9ivm5nykc>`_
 
- * `Day 1 Session 2 <https://youtu.be/EhbjdLxD54s>`_
+ * `2019 Summer Workshop Day 1 Session 2 <https://youtu.be/EhbjdLxD54s>`_
 
- * `Day 1 Session 3 <https://youtu.be/ahfhHi6jdg0>`_
+ * `2019 Summer Workshop Day 1 Session 3 <https://youtu.be/ahfhHi6jdg0>`_
 
- * `Day 2 Session 1 <https://youtu.be/7R2PaWY-XEI>`_
+ * `2019 Summer Workshop Day 2 Session 1 <https://youtu.be/7R2PaWY-XEI>`_
 
- * `Day 2 Session 2 <https://youtu.be/oF9AScIfD7w>`_
+ * `2019 Summer Workshop Day 2 Session 2 <https://youtu.be/oF9AScIfD7w>`_
 
- * `Day 2 Session 3 <https://youtu.be/_QNFlZwJhZQ>`_
+ * `2019 Summer Workshop Day 2 Session 3 <https://youtu.be/_QNFlZwJhZQ>`_
 
 
 Big Data with Spark
 ~~~~~~~~~~~~~~~~~~~
 
- * `Day 1 <https://youtu.be/tT1BWKGD7EE>`_
+ * `Big Data with Spark Day 1 <https://youtu.be/tT1BWKGD7EE>`_
 
- * `Day 2 <https://youtu.be/IWMcg1fertg>`_
+ * `Big Data with Spark Day 2 <https://youtu.be/IWMcg1fertg>`_
 
- * `Day 3 <https://youtu.be/IWMcg1fertg>`_
+ * `Big Data with Spark Day 3 <https://youtu.be/IWMcg1fertg>`_
 
 CUDA Programming
 ~~~~~~~~~~~~~~~~
 
- * `Day 1 <https://youtu.be/9loQ08o4rQc>`_
+ * `CUDA Programming Day 1 <https://youtu.be/9loQ08o4rQc>`_
 
- * `Day 2 <https://youtu.be/VlLR78nEiqk>`_
+ * `CUDA Programming Day 2 <https://youtu.be/VlLR78nEiqk>`_
 
 Mini Workshops
 ~~~~~~~~~~~~~~
