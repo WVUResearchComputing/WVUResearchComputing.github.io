@@ -47,7 +47,7 @@ Summer Workshop 2018
 
 The Workshop:
 
- * `Summer Workshop 2018 <https://wvuhpc.github.io/2018_Summer_Workshop>`
+ * `Summer Workshop 2018 <https://wvuhpc.github.io/2018_Summer_Workshop>`_
 
 Lessons:
 
