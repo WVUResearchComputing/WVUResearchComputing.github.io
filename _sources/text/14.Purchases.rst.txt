@@ -1,6 +1,5 @@
 .. _int-purchases:
 
-
 Purchasing Compute Nodes
 ========================
 

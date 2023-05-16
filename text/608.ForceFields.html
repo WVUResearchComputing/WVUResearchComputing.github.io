@@ -109,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Force Field Molecular Dynamics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#plumed">Plumed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#amber">AMBER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amber-22">AMBER 22</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#gcc-9-3-serial">GCC 9.3 (Serial)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gcc-9-3-openmp">GCC 9.3 (OpenMP)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gcc-9-3-mpich-3-4-1">GCC 9.3 (MPICH 3.4.1)</a></li>
@@ -235,19 +235,21 @@ provide hierarchical data storage for numerical data. Finally, a Python implemen
 </ul>
 </div></blockquote>
 <p>We compile PLUMED with the following modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4.1</span><span class="n">_gcc93</span> \
-<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.13</span><span class="n">_gcc93</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="mf">2.29.1</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21.1</span> \
+<span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4.1</span><span class="n">_gcc93</span> \
+<span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.10.5</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.20</span><span class="n">_gcc93</span> \
 <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3.9</span><span class="n">_gcc93</span>
 </pre></div>
 </div>
 <p>Download PLUMED from:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">plumed2</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v2</span><span class="mf">.7.1</span><span class="o">/</span><span class="n">plumed</span><span class="o">-</span><span class="mf">2.7.1</span><span class="o">.</span><span class="n">tgz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">plumed2</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v2</span><span class="mf">.8.2</span><span class="o">/</span><span class="n">plumed</span><span class="o">-</span><span class="mf">2.8.2</span><span class="o">.</span><span class="n">tgz</span>
 </pre></div>
 </div>
 <p>Uncompress and configure the build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar -zxvf plumed-2.7.1.tgz
-cd plumed-2.7.1
-./configure --prefix=/shared/software/atomistic/plumed/2.7.1_gcc93_mpic341 PYTHON_BIN=python3 --enable-external-blas --enable-external-lapack LDFLAGS=-L${MD_OPENBLAS}/lib LIBS=-lopenblas
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tar -zxvf plumed-2.8.2.tgz
+cd plumed-2.8.2
+./configure --prefix=/shared/software/atomistic/plumed/2.8.2_gcc93_mpic341 PYTHON_BIN=python3 --enable-external-blas --enable-external-lapack LDFLAGS=-L${MD_OPENBLAS}/lib LIBS=-lopenblas
 </pre></div>
 </div>
 <p>After configuring the build. Execute:</p>
@@ -261,40 +263,43 @@ cd plumed-2.7.1
 </div>
 <p>The final lines of the tests show no failures:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
++ check file ves/rt-td-uniform/report.txt for more information
++ test ves/rt-td-vonmises/ NOT APPLICABLE
 + check file ves/rt-td-vonmises/report.txt for more information
 + test ves/rt-VesDeltaF/ NOT APPLICABLE
 + check file ves/rt-VesDeltaF/report.txt for more information
 + test ves/rt-VesDeltaF-mwalkers/ NOT APPLICABLE
 + check file ves/rt-VesDeltaF-mwalkers/report.txt for more information
++ test ves/rt-waveletgrid/ NOT APPLICABLE
++ check file ves/rt-waveletgrid/report.txt for more information
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 + Final report:
-+ 298 tests performed, 223 tests not applicable
++ 321 tests performed, 268 tests not applicable
 + 0 errors found
 + Well done!!
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-make[1]: Leaving directory &#39;/gpfs20/shared/src/plumed-2.7.1/regtest&#39;
 </pre></div>
 </div>
 <p>After installation, PLUMED offers a very convenient prepared module file.
 The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7.1</span><span class="n">_gcc93_mpic341</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">modulefile</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">tier2</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.7.1</span><span class="n">_gcc93_mpic341</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.8.2</span><span class="n">_gcc93_mpic341</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="n">modulefile</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">tier2</span><span class="o">/</span><span class="n">atomistic</span><span class="o">/</span><span class="n">plumed</span><span class="o">/</span><span class="mf">2.8.2</span><span class="n">_gcc93_mpic341</span>
 </pre></div>
 </div>
 <p>The only change needed for this modulefile is adding one line loading the other modules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#%Module1.0##############################################</span>
 
 <span class="c1"># Manually add here dependencies and conflicts</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4.1</span><span class="n">_gcc93</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.9.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.13</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3.9</span><span class="n">_gcc93</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4.1</span><span class="n">_gcc93</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.10.5</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.20</span><span class="n">_gcc93</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3.9</span><span class="n">_gcc93</span>
 <span class="o">...</span>
 </pre></div>
 </div>
+<p>PLUMED is ready to used and can be integrated with some other MD codes as we will see below</p>
 </section>
-<section id="amber">
-<h2>AMBER<a class="headerlink" href="#amber" title="Permalink to this headline">¶</a></h2>
+<section id="amber-22">
+<h2>AMBER 22<a class="headerlink" href="#amber-22" title="Permalink to this headline">¶</a></h2>
 <p>Amber is a suite of biomolecular simulation programs.
 It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.</p>
-<p>In this document, we provide instructions to compile Amber using GCC 9.3, 11.1, and Intel Compilers 2021
+<p>In this document, we provide instructions to compile Amber using GCC 9.3, and Intel oneAPI 2023
 Amber can be compiled with a variety of options for parallelization.
 Amber can be compiled as pure serial code,  using multithreading with OpenMP, distributed parallelism with MPI, and using GPUs with CUDA.
 We will be building Amber with each option and one final compilation enabling OpenMP, MPI, and CUDA.</p>
@@ -302,11 +307,11 @@ We will be building Amber with each option and one final compilation enabling Op
 Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is distributed with a paid license.
 AmberTools is a free package that collect open-source code to be used in conjunction with Amber.
 The version used to produce these notes is Amber 20, the latest version available by mid-2021.</p>
-<p>We start with two files, <code class="docutils literal notranslate"><span class="pre">Amber20.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools20.tar.bz2</span></code>.
+<p>We start with two files, <code class="docutils literal notranslate"><span class="pre">Amber22.tar.bz2</span></code> and <code class="docutils literal notranslate"><span class="pre">AmberTools23.tar.bz2</span></code>.
 The first step is to uncompress both of them.
-The two compressed tars will uncompress on the same target folder <code class="docutils literal notranslate"><span class="pre">amber20_src</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">Amber20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
-<span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">AmberTools20</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+The two compressed tars will uncompress on the same target folder <code class="docutils literal notranslate"><span class="pre">amber22_src</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">amber22</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">jxvf</span> <span class="n">AmberTools23</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
 <span class="n">cd</span> <span class="n">amber20_src</span>
 </pre></div>
 </div>
@@ -322,10 +327,12 @@ It is always convenient to build the code on a folder separated from the sources
 Create a folder for each build, for the serial case, we suggest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">amber20_src</span>
 <span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
+<span class="n">cd</span> <span class="n">build_gcc93_mpic341</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">amber22_src</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">run_cmake</span><span class="o">.</span><span class="n">sample</span> <span class="n">run_cmake</span>
 </pre></div>
 </div>
 <p>The reason for the name is that in this folder we will compile all builds, including the MPI version using MPICH 3.4.1
-Inside this folder copy the file <code class="docutils literal notranslate"><span class="pre">amber20_src/build/run_cmake.sample</span></code>
+Inside this folder copy the file <code class="docutils literal notranslate"><span class="pre">amber22_src/build/run_cmake.sample</span></code>
 The orginal content of this file is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
@@ -354,7 +361,7 @@ if [ `uname -s|awk &#39;{print $1}&#39;` = &quot;Darwin&quot; ]; then
          cmake=cmake
   fi
 
-  $cmake $AMBER_PREFIX/amber20_src \
+  $cmake $AMBER_PREFIX/amber22_src \
         -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
         -DCOMPILER=CLANG  -DBLA_VENDOR=Apple \
         -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
@@ -365,7 +372,7 @@ else
 
 #  Assume this is Linux:
 
-  cmake $AMBER_PREFIX/amber20_src \
+  cmake $AMBER_PREFIX/amber22_src \
         -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
         -DCOMPILER=GNU  \
         -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
@@ -384,7 +391,7 @@ echo &quot;&quot;
 echo &quot;If the cmake build report looks OK, you should now do the following:&quot;
 echo &quot;&quot;
 echo &quot;    make install&quot;
-echo &quot;    source $AMBER_PREFIX/amber20/amber.sh&quot;
+echo &quot;    source $AMBER_PREFIX/amber22/amber.sh&quot;
 echo &quot;&quot;
 echo &quot;Consider adding the last line to your login startup script, e.g. ~/.bashrc&quot;
 echo &quot;&quot;
@@ -393,14 +400,14 @@ echo &quot;&quot;
 <p>We will only make modifications to this file in two locations.
 We add an extra variable for defining the PREFIX:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
-PREFIX=/shared/software/atomistic/amber/20_gcc93_serial
+PREFIX=/shared/software/atomistic/amber/22_gcc93_serial
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the Serial compilation
 The other change is inside the block for running cmake for the Linux build:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
-cmake $AMBER_PREFIX/amber20_src \
+cmake $AMBER_PREFIX/amber22_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
   -DOPENMP=FALSE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
@@ -413,7 +420,7 @@ cmake $AMBER_PREFIX/amber20_src \
 Amber uses CMAKE as a software builder.
 The version included with RedHat 7.x (2.18) is too old for most scientific codes.
 We will load modules for cmake 3.21.1 and GCC 9.3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21.1</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.9.5</span><span class="n">_gcc93</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dev</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.21.1</span>  <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span>  <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.10.5</span><span class="n">_gcc93</span> <span class="n">parallel</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">11.7</span>
 </pre></div>
 </div>
 <p>There is a bug in the script for Miniconda, that will prevent cmake of building a complete environment.
@@ -446,14 +453,14 @@ We will preserve this folder for all other builds, in particular those for CUDA 
 <h3>GCC 9.3 (OpenMP)<a class="headerlink" href="#gcc-9-3-openmp" title="Permalink to this headline">¶</a></h3>
 <p>The variable defining the PREFIX will be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AMBER_PREFIX=$(dirname $(dirname `pwd`))
-PREFIX=/shared/software/atomistic/amber/20_gcc93_openmp
+PREFIX=/shared/software/atomistic/amber/22_gcc93_openmp
 </pre></div>
 </div>
 <p>This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#  Assume this is Linux:
 
-cmake $AMBER_PREFIX/amber20_src \
+cmake $AMBER_PREFIX/amber22_src \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
   -DOPENMP=TRUE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \

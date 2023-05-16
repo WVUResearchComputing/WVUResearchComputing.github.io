@@ -26,67 +26,73 @@ PLUMED is an open-source library that provides a wide range of different methods
 
 We compile PLUMED with the following modules::
 
-  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 \
-  lang/python/cpython_3.9.5_gcc93 libs/openblas/0.3.13_gcc93 \
-  libs/fftw/3.3.9_gcc93
+    module load dev/git/2.29.1 dev/cmake/3.21.1 \
+    lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 \
+    lang/python/cpython_3.10.5_gcc93 \
+    libs/openblas/0.3.20_gcc93 \
+    libs/fftw/3.3.9_gcc93
 
 Download PLUMED from::
 
-  wget https://github.com/plumed/plumed2/releases/download/v2.7.1/plumed-2.7.1.tgz
+    wget https://github.com/plumed/plumed2/releases/download/v2.8.2/plumed-2.8.2.tgz
 
 Uncompress and configure the build::
 
-  tar -zxvf plumed-2.7.1.tgz
-  cd plumed-2.7.1
-  ./configure --prefix=/shared/software/atomistic/plumed/2.7.1_gcc93_mpic341 PYTHON_BIN=python3 --enable-external-blas --enable-external-lapack LDFLAGS=-L${MD_OPENBLAS}/lib LIBS=-lopenblas
+    tar -zxvf plumed-2.8.2.tgz
+    cd plumed-2.8.2
+    ./configure --prefix=/shared/software/atomistic/plumed/2.8.2_gcc93_mpic341 PYTHON_BIN=python3 --enable-external-blas --enable-external-lapack LDFLAGS=-L${MD_OPENBLAS}/lib LIBS=-lopenblas
 
 After configuring the build. Execute::
 
-  make -j 12
-  make install
+    make -j 12
+    make install
 
 PLUMED includes a test suite and it is always a good practice to test the compilation. Call make to run the test suite::
 
-  make check
+    make check
 
 The final lines of the tests show no failures::
 
-  ...
-  + check file ves/rt-td-vonmises/report.txt for more information
-  + test ves/rt-VesDeltaF/ NOT APPLICABLE
-  + check file ves/rt-VesDeltaF/report.txt for more information
-  + test ves/rt-VesDeltaF-mwalkers/ NOT APPLICABLE
-  + check file ves/rt-VesDeltaF-mwalkers/report.txt for more information
-  +++++++++++++++++++++++++++++++++++++++++++++++++++++
-  + Final report:
-  + 298 tests performed, 223 tests not applicable
-  + 0 errors found
-  + Well done!!
-  +++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-  make[1]: Leaving directory '/gpfs20/shared/src/plumed-2.7.1/regtest'
+    ...
+    + check file ves/rt-td-uniform/report.txt for more information
+    + test ves/rt-td-vonmises/ NOT APPLICABLE
+    + check file ves/rt-td-vonmises/report.txt for more information
+    + test ves/rt-VesDeltaF/ NOT APPLICABLE
+    + check file ves/rt-VesDeltaF/report.txt for more information
+    + test ves/rt-VesDeltaF-mwalkers/ NOT APPLICABLE
+    + check file ves/rt-VesDeltaF-mwalkers/report.txt for more information
+    + test ves/rt-waveletgrid/ NOT APPLICABLE
+    + check file ves/rt-waveletgrid/report.txt for more information
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    + Final report:
+    + 321 tests performed, 268 tests not applicable
+    + 0 errors found
+    + Well done!!
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 After installation, PLUMED offers a very convenient prepared module file.
 The file can be copied along with the rest of modulefiles with a simple edit for loading the modules used during compilation::
 
-  cp /shared/software/atomistic/plumed/2.7.1_gcc93_mpic341/lib/plumed/modulefile /shared/modulefiles/tier2/atomistic/plumed/2.7.1_gcc93_mpic341
+  cp /shared/software/atomistic/plumed/2.8.2_gcc93_mpic341/lib/plumed/modulefile /shared/modulefiles/tier2/atomistic/plumed/2.8.2_gcc93_mpic341
 
 The only change needed for this modulefile is adding one line loading the other modules::
 
   #%Module1.0##############################################
 
   # Manually add here dependencies and conflicts
-  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 lang/python/cpython_3.9.5_gcc93 libs/openblas/0.3.13_gcc93 libs/fftw/3.3.9_gcc93
+  module load lang/gcc/9.3.0 parallel/mpich/3.4.1_gcc93 lang/python/cpython_3.10.5_gcc93 libs/openblas/0.3.20_gcc93 libs/fftw/3.3.9_gcc93
   ...
 
-AMBER
------
+PLUMED is ready to used and can be integrated with some other MD codes as we will see below
+
+AMBER 22
+--------
 
 Amber is a suite of biomolecular simulation programs.
 It is used to simulate large and complex atomic compounds using a set of molecular mechanical force fields for the simulation of biomolecules.
 
-In this document, we provide instructions to compile Amber using GCC 9.3, 11.1, and Intel Compilers 2021
+In this document, we provide instructions to compile Amber using GCC 9.3, and Intel oneAPI 2023
 Amber can be compiled with a variety of options for parallelization.
 Amber can be compiled as pure serial code,  using multithreading with OpenMP, distributed parallelism with MPI, and using GPUs with CUDA.
 We will be building Amber with each option and one final compilation enabling OpenMP, MPI, and CUDA.
@@ -96,19 +102,18 @@ Amber facilitates faster simulations (on parallel CPU or GPU hardware) and is di
 AmberTools is a free package that collect open-source code to be used in conjunction with Amber.
 The version used to produce these notes is Amber 20, the latest version available by mid-2021.
 
-We start with two files, ``Amber20.tar.bz2`` and ``AmberTools20.tar.bz2``.
+We start with two files, ``Amber22.tar.bz2`` and ``AmberTools23.tar.bz2``.
 The first step is to uncompress both of them.
-The two compressed tars will uncompress on the same target folder ``amber20_src``::
+The two compressed tars will uncompress on the same target folder ``amber22_src``::
 
-  tar -jxvf Amber20.tar.bz2
-  tar -jxvf AmberTools20.tar.bz2
+  tar -jxvf amber22.tar.bz2
+  tar -jxvf AmberTools23.tar.bz2
   cd amber20_src
 
 We start with GCC 9.3 where most of the tools can be enabled and the compilation is easier.
 We start with a pure Serial build, we move after to enable OpenMP, after that, we disable OpenMP and enable MPI.
 We move the building process to a GPU node to compile a CUDA version disabling OpenMP and MPI and we finalize enabling all options for a final build.
 The reason for doing this is that keeping just one parallelization active will facilitate the usage for casual users, instead of dealing with complex combinations of threads, MPI processes, and GPU cards.
-
 
 GCC 9.3 (Serial)
 ~~~~~~~~~~~~~~~~
@@ -118,11 +123,13 @@ There is one file ``amber20_src/build/run_cmake.sample`` that we will use as a t
 It is always convenient to build the code on a folder separated from the sources.
 Create a folder for each build, for the serial case, we suggest::
 
-   cd amber20_src
-   mkdir build_gcc93_mpic341
+    cd amber20_src
+    mkdir build_gcc93_mpic341
+    cd build_gcc93_mpic341
+    cp ../amber22_src/build/run_cmake.sample run_cmake
 
 The reason for the name is that in this folder we will compile all builds, including the MPI version using MPICH 3.4.1
-Inside this folder copy the file ``amber20_src/build/run_cmake.sample``
+Inside this folder copy the file ``amber22_src/build/run_cmake.sample``
 The orginal content of this file is::
 
 	#!/bin/bash
@@ -152,7 +159,7 @@ The orginal content of this file is::
 		 cmake=cmake
 	  fi
 
-	  $cmake $AMBER_PREFIX/amber20_src \
+	  $cmake $AMBER_PREFIX/amber22_src \
 		-DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
 		-DCOMPILER=CLANG  -DBLA_VENDOR=Apple \
 		-DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
@@ -163,7 +170,7 @@ The orginal content of this file is::
 
 	#  Assume this is Linux:
 
-	  cmake $AMBER_PREFIX/amber20_src \
+	  cmake $AMBER_PREFIX/amber22_src \
 		-DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 \
 		-DCOMPILER=GNU  \
 		-DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
@@ -182,7 +189,7 @@ The orginal content of this file is::
 	echo "If the cmake build report looks OK, you should now do the following:"
 	echo ""
 	echo "    make install"
-	echo "    source $AMBER_PREFIX/amber20/amber.sh"
+	echo "    source $AMBER_PREFIX/amber22/amber.sh"
 	echo ""
 	echo "Consider adding the last line to your login startup script, e.g. ~/.bashrc"
 	echo ""
@@ -192,14 +199,14 @@ We will only make modifications to this file in two locations.
 We add an extra variable for defining the PREFIX::
 
   AMBER_PREFIX=$(dirname $(dirname `pwd`))
-  PREFIX=/shared/software/atomistic/amber/20_gcc93_serial
+  PREFIX=/shared/software/atomistic/amber/22_gcc93_serial
 
 This is the PREFIX that we will use for the Serial compilation
 The other change is inside the block for running cmake for the Linux build::
 
   #  Assume this is Linux:
 
-  cmake $AMBER_PREFIX/amber20_src \
+  cmake $AMBER_PREFIX/amber22_src \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
     -DOPENMP=FALSE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \
@@ -213,7 +220,7 @@ Amber uses CMAKE as a software builder.
 The version included with RedHat 7.x (2.18) is too old for most scientific codes.
 We will load modules for cmake 3.21.1 and GCC 9.3::
 
-  module load dev/cmake/3.21.1 lang/gcc/9.3.0 lang/python/cpython_3.9.5_gcc93
+    module load dev/cmake/3.21.1  lang/gcc/9.3.0  lang/python/cpython_3.10.5_gcc93 parallel/cuda/11.7
 
 There is a bug in the script for Miniconda, that will prevent cmake of building a complete environment.
 On the line 153 of ``amber20_src/cmake/UseMiniconda.cmake`` add a line to install pip via conda::
@@ -247,14 +254,14 @@ GCC 9.3 (OpenMP)
 The variable defining the PREFIX will be::
 
   AMBER_PREFIX=$(dirname $(dirname `pwd`))
-  PREFIX=/shared/software/atomistic/amber/20_gcc93_openmp
+  PREFIX=/shared/software/atomistic/amber/22_gcc93_openmp
 
 This is the PREFIX that we will use for the OpenMP compilation.
 The other change is inside the block for running cmake for the Linux build::
 
   #  Assume this is Linux:
 
-  cmake $AMBER_PREFIX/amber20_src \
+  cmake $AMBER_PREFIX/amber22_src \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DCOMPILER=GNU  -DBZIP2_LIBRARIES=/shared/software/lang/gcc/9.3.0/lib/libbz2.a \
     -DOPENMP=TRUE -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE \

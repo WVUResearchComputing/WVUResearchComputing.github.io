@@ -32,4 +32,5 @@ The final chapter :ref:`chap-references` collect tables and references about Uni
    12.GettingHelp.rst
    13.Policies.rst
    14.Purchases.rst
+   15.Training.rst
 
