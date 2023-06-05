@@ -114,7 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#abinit-9-6-2-on-spruce-knob-using-gcc-10-3">ABINIT 9.6.2 on Spruce Knob using GCC 10.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#using-openmpi-3-1-6">Using OpenMPI 3.1.6</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#abinit-9-6-2-on-thorny-using-intel-2021-4">ABINIT 9.6.2 on Thorny using Intel 2021.4</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#abinit-9-4-2-on-spruce-using-intel-2019">ABINIT 9.4.2 on Spruce using Intel 2019</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#abinit-9-4-2-on-spruce-knob-using-intel-2019">ABINIT 9.4.2 on Spruce Knob using Intel 2019</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parallel-version-with-gcc-9-3-and-mpich-3-4-1">Parallel version with GCC 9.3 and MPICH 3.4.1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cuda-version-with-gcc-9-3-mpich-3-4-1-and-cuda-11-1">CUDA Version with GCC 9.3, MPICH 3.4.1 and CUDA 11.1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#abinit-9-6-2-on-spruce-with-gcc-10-3-and-openmpi-3-1-6">Abinit 9.6.2 on Spruce with GCC 10.3 and OpenMPI 3.1.6</a></li>
@@ -122,12 +122,12 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#octopus-11-3-on-thorny-flat-using-intel-2021-4">Octopus 11.3 on Thorny Flat using Intel 2021.4</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#octopus-11-0-on-spruce-using-intel-2019">Octopus 11.0 on Spruce using Intel 2019</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#octopus-11-0-on-spruce-knob-using-intel-2019">Octopus 11.0 on Spruce Knob using Intel 2019</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#octopus-10-4-with-gcc-9-3">Octopus 10.4 with GCC 9.3</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#quantum-espresso">Quantum Espresso</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#quantum-espresso-6-8-on-spruce-using-intel-2019">Quantum Espresso 6.8 on Spruce using Intel 2019</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantum-espresso-7-0-on-thorny-flat-using-intel-compilers">Quantum Espresso 7.0 on Thorny Flat using Intel Compilers</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a></li>
@@ -359,8 +359,8 @@ $&gt; make install
 </pre></div>
 </div>
 </section>
-<section id="abinit-9-4-2-on-spruce-using-intel-2019">
-<h3>ABINIT 9.4.2 on Spruce using Intel 2019<a class="headerlink" href="#abinit-9-4-2-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
+<section id="abinit-9-4-2-on-spruce-knob-using-intel-2019">
+<h3>ABINIT 9.4.2 on Spruce Knob using Intel 2019<a class="headerlink" href="#abinit-9-4-2-on-spruce-knob-using-intel-2019" title="Permalink to this headline">¶</a></h3>
 <p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
@@ -766,8 +766,8 @@ $&gt; make check
 </pre></div>
 </div>
 </section>
-<section id="octopus-11-0-on-spruce-using-intel-2019">
-<h3>Octopus 11.0 on Spruce using Intel 2019<a class="headerlink" href="#octopus-11-0-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
+<section id="octopus-11-0-on-spruce-knob-using-intel-2019">
+<h3>Octopus 11.0 on Spruce Knob using Intel 2019<a class="headerlink" href="#octopus-11-0-on-spruce-knob-using-intel-2019" title="Permalink to this headline">¶</a></h3>
 <p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
 </pre></div>
@@ -876,42 +876,51 @@ The foler <code class="docutils literal notranslate"><span class="pre">build_gcc
 </section>
 <section id="quantum-espresso">
 <h2>Quantum Espresso<a class="headerlink" href="#quantum-espresso" title="Permalink to this headline">¶</a></h2>
-<section id="quantum-espresso-6-8-on-spruce-using-intel-2019">
-<h3>Quantum Espresso 6.8 on Spruce using Intel 2019<a class="headerlink" href="#quantum-espresso-6-8-on-spruce-using-intel-2019" title="Permalink to this headline">¶</a></h3>
+<section id="quantum-espresso-7-0-on-thorny-flat-using-intel-compilers">
+<h3>Quantum Espresso 7.0 on Thorny Flat using Intel Compilers<a class="headerlink" href="#quantum-espresso-7-0-on-thorny-flat-using-intel-compilers" title="Permalink to this headline">¶</a></h3>
 <p>Download the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">QEF</span><span class="o">/</span><span class="n">q</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">6.8</span><span class="o">-</span><span class="n">ReleasePack</span><span class="o">.</span><span class="n">tgz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">QEF</span><span class="o">/</span><span class="n">q</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">7.0</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">7.0</span><span class="o">-</span><span class="n">ReleasePack</span><span class="o">.</span><span class="n">tgz</span>
 </pre></div>
 </div>
-<p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
+<p>This is the canonical configuration for module <code class="docutils literal notranslate"><span class="pre">dft_intel22</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel22</span>
 </pre></div>
 </div>
 <p>The list of modules loaded are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:/shared/src/qe-7.0$ module list
 Currently Loaded Modulefiles:
-  1) lang/gcc/9.3.0                       10) libs/gridxc/0.9.6_intel19
-  2) lang/intel/2019                      11) atomistic/abinit/9.4.2_intel19
-  3) lang/python/cpython_3.9.7_gcc93      12) atomistic/vasp/6.2.1_intel19
-  4) libs/libxc/5.1.5_intel19             13) atomistic/octopus/11.0_intel19
-  5) libs/hdf5/1.12.1_intel19             14) atomistic/espresso/6.8_intel19
-  6) libs/fftw/3.3.8_intel19              15) atomistic/elk/7.2.42_intel19
-  7) libs/arpack-ng/3.8.0_intel19         16) atomistic/siesta/4.1.5_intel19
-  8) libs/xmlf90/1.5.4_intel19            17) atomistic/siesta/4.1.5_psml_intel19
-  9) libs/psml/1.1.10_intel19             18) dft_intel19
+  1) dev/git/2.29.1                            19) libs/arpack-ng/3.8.0_intel22_impi22
+  2) dev/cmake/3.21.1                          20) libs/xmlf90/1.5.4_intel22
+  3) lang/gcc/9.3.0                            21) libs/libpsml/1.1.10_intel22
+  4) tbb/latest                                22) libs/gridxc/0.9.6_intel22
+  5) compiler-rt/latest                        23) libs/elpa/2021.11.002_intel22
+  6) oclfpga/latest                            24) libs/elsi/2.9.1_intel22
+  7) compiler/latest                           25) libs/futile/1.8_intel22_impi22
+  8) mpi/latest                                26) libs/atlab/1.0_intel22
+  9) mkl/latest                                27) libs/nlopt/2.7.1_intel22
+ 10) lang/python/intelpython_3.9               28) atomistic/wannier90/3.1.0_intel22
+ 11) parallel/cuda/11.7                        29) atomistic/abinit/9.6.2_intel22_impi22
+ 12) libs/openblas/0.3.20_intel22              30) atomistic/vasp/6.2.1_intel22_impi22
+ 13) libs/libxc/5.2.3_intel22                  31) atomistic/octopus/11.4_intel22_impi22
+ 14) libs/hdf5/1.12.2_intel22                  32) atomistic/espresso/7.0_intel22_impi22
+ 15) libs/hdf5/1.12.2_intel22_impi22           33) atomistic/elk/8.4.6_intel22_impi22
+ 16) libs/netcdf/4.8.1_intel22_impi22          34) atomistic/siesta/4.1.5_intel22_impi22
+ 17) libs/netcdf/fortran-4.5.4_intel22_impi22  35) dft_intel22
+ 18) libs/fftw/3.3.10_intel22_impi22
 </pre></div>
 </div>
 <p>Uncompress the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf qe-6.8-ReleasePack.tgz
-$&gt; cd qe-6.8
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf qe-7.0-ReleasePack.tgz
+$&gt; cd qe-7.0
 </pre></div>
 </div>
 <p>Configure the sources to use HDF5, libXC and FFTW 3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
---prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
+--prefix=/shared/software/atomistic/espresso/7.0_intel22_impi22 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
 </pre></div>
 </div>
 <p>Build the binaries:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make all
 $&gt; make install
 $&gt; make check
 </pre></div>

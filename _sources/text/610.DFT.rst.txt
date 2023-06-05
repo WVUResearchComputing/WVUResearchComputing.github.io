@@ -149,8 +149,8 @@ The results of the testsuite::
     Summary: failed=14, succeeded=723, passed=164, skipped=194, disabled=0
 
 
-ABINIT 9.4.2 on Spruce using Intel 2019
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ABINIT 9.4.2 on Spruce Knob using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is the canonical configuration for Spruce module ``dft_intel19``::
 
@@ -564,8 +564,8 @@ The results of the testsuite were::
 	Total run-time of the testsuite: 00:10:11
 
 
-Octopus 11.0 on Spruce using Intel 2019
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Octopus 11.0 on Spruce Knob using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is the canonical configuration for Spruce module ``dft_intel19``::
 
@@ -678,48 +678,55 @@ On Thorny Flat the results from the testsuite were::
 Quantum Espresso
 ----------------
 
-Quantum Espresso 6.8 on Spruce using Intel 2019
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quantum Espresso 7.0 on Thorny Flat using Intel Compilers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Download the sources::
 
-    wget https://github.com/QEF/q-e/releases/download/qe-6.8/qe-6.8-ReleasePack.tgz
+    wget https://github.com/QEF/q-e/releases/download/qe-7.0/qe-7.0-ReleasePack.tgz
 
-This is the canonical configuration for Spruce module ``dft_intel19``::
+This is the canonical configuration for module ``dft_intel22``::
 
-    module load dft_intel19
+    module load dft_intel22
 
 The list of modules loaded are::
 
-	$> module list
+	trcis001:/shared/src/qe-7.0$ module list
 	Currently Loaded Modulefiles:
-	  1) lang/gcc/9.3.0                       10) libs/gridxc/0.9.6_intel19
-	  2) lang/intel/2019                      11) atomistic/abinit/9.4.2_intel19
-	  3) lang/python/cpython_3.9.7_gcc93      12) atomistic/vasp/6.2.1_intel19
-	  4) libs/libxc/5.1.5_intel19             13) atomistic/octopus/11.0_intel19
-	  5) libs/hdf5/1.12.1_intel19             14) atomistic/espresso/6.8_intel19
-	  6) libs/fftw/3.3.8_intel19              15) atomistic/elk/7.2.42_intel19
-	  7) libs/arpack-ng/3.8.0_intel19         16) atomistic/siesta/4.1.5_intel19
-	  8) libs/xmlf90/1.5.4_intel19            17) atomistic/siesta/4.1.5_psml_intel19
-	  9) libs/psml/1.1.10_intel19             18) dft_intel19
+	  1) dev/git/2.29.1                            19) libs/arpack-ng/3.8.0_intel22_impi22
+	  2) dev/cmake/3.21.1                          20) libs/xmlf90/1.5.4_intel22
+	  3) lang/gcc/9.3.0                            21) libs/libpsml/1.1.10_intel22
+	  4) tbb/latest                                22) libs/gridxc/0.9.6_intel22
+	  5) compiler-rt/latest                        23) libs/elpa/2021.11.002_intel22
+	  6) oclfpga/latest                            24) libs/elsi/2.9.1_intel22
+	  7) compiler/latest                           25) libs/futile/1.8_intel22_impi22
+	  8) mpi/latest                                26) libs/atlab/1.0_intel22
+	  9) mkl/latest                                27) libs/nlopt/2.7.1_intel22
+	 10) lang/python/intelpython_3.9               28) atomistic/wannier90/3.1.0_intel22
+	 11) parallel/cuda/11.7                        29) atomistic/abinit/9.6.2_intel22_impi22
+	 12) libs/openblas/0.3.20_intel22              30) atomistic/vasp/6.2.1_intel22_impi22
+	 13) libs/libxc/5.2.3_intel22                  31) atomistic/octopus/11.4_intel22_impi22
+	 14) libs/hdf5/1.12.2_intel22                  32) atomistic/espresso/7.0_intel22_impi22
+	 15) libs/hdf5/1.12.2_intel22_impi22           33) atomistic/elk/8.4.6_intel22_impi22
+	 16) libs/netcdf/4.8.1_intel22_impi22          34) atomistic/siesta/4.1.5_intel22_impi22
+	 17) libs/netcdf/fortran-4.5.4_intel22_impi22  35) dft_intel22
+	 18) libs/fftw/3.3.10_intel22_impi22
 
 Uncompress the sources::
 
-	$> tar -zxvf qe-6.8-ReleasePack.tgz 
-	$> cd qe-6.8
+	$> tar -zxvf qe-7.0-ReleasePack.tgz 
+	$> cd qe-7.0
 
 Configure the sources to use HDF5, libXC and FFTW 3::
 
     $> ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
-    --prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS="-L${MD_FFTW}/lib -lfftw3"
+    --prefix=/shared/software/atomistic/espresso/7.0_intel22_impi22 LDFLAGS="-L${MD_FFTW}/lib -lfftw3"
 
 Build the binaries::
 	
-	$> make
+	$> make all
 	$> make install
 	$> make check
-
-
 
 Siesta
 ------
