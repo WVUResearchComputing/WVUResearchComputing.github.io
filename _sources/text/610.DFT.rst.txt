@@ -5,7 +5,7 @@ ABINIT
 ------
 
 ABINIT 9.6.2 on Spruce Knob using GCC 10.3
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are 4 builds of GCC 10.3 using various implementations of MPI
 
@@ -64,13 +64,6 @@ After the configure is executed a folder ``fallbacks``, move to that folder and 
     $> FCFLAGS=-fallow-argument-mismatch ./build-abinit-fallbacks.sh 
 
 After building the fallbacks the lines can be integrated to the file ``srih0001.ac9``.
-
-
-
-
-
-
-
 
 
 
@@ -850,6 +843,12 @@ Testsuite can be run by going into testsuite and running::
 Octopus
 -------
 
+Octopus 12.2 on Thorny Flat using Intel compilers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
 Octopus 11.3 on Thorny Flat using Intel 2021.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1038,7 +1037,7 @@ On Thorny Flat the results from the testsuite were::
 Quantum Espresso
 ----------------
 
-Quantum Espresso 7.0 on Thorny Flat using Intel Compilers
+Quantum Espresso 7.0 on Thorny Flat using Intel compilers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Download the sources::
@@ -1270,7 +1269,7 @@ Siesta 4.1.5 on Thorny flat using Intel compilers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Siesta is a electronic structure code using linear scaling algorithms.
-The version compiled was 4.1.5. The code was compiled with Intel Compilers 2023
+The version compiled was 4.1.5. The code was compiled with Intel compilers 2023
 
 Download the sources and uncompress them::
 
