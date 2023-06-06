@@ -120,6 +120,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#abinit-9-6-2-on-spruce-with-gcc-10-3-and-openmpi-3-1-6">Abinit 9.6.2 on Spruce with GCC 10.3 and OpenMPI 3.1.6</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#castep">CASTEP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vasp">VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vasp-6-2-1-on-thorny-flat-with-intel-2021-4">VASP 6.2.1 on Thorny Flat with Intel 2021.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vasp-6-2-1-on-spruce-using-intel-2019">VASP 6.2.1 on Spruce using Intel 2019</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">VASP 6.2.1 on Spruce using Intel 2019</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#octopus">Octopus</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#octopus-11-3-on-thorny-flat-using-intel-2021-4">Octopus 11.3 on Thorny Flat using Intel 2021.4</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#octopus-11-0-on-spruce-knob-using-intel-2019">Octopus 11.0 on Spruce Knob using Intel 2019</a></li>
@@ -130,16 +137,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#quantum-espresso-7-0-on-thorny-flat-using-intel-compilers">Quantum Espresso 7.0 on Thorny Flat using Intel Compilers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#castep">CASTEP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vasp">VASP</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#vasp-6-2-1-on-thorny-flat-with-intel-2021-4">VASP 6.2.1 on Thorny Flat with Intel 2021.4</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vasp-6-2-1-on-spruce-using-intel-2019">VASP 6.2.1 on Spruce using Intel 2019</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">VASP 6.2.1 on Spruce using Intel 2019</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elk">ELK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#elk-8-8-26-on-thorny-flat-using-intel-compilers">ELK 8.8.26 on Thorny Flat using Intel compilers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#elk">ELK</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#elk-8-3-22-on-spruce">ELK 8.3.22 on Spruce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#siesta-4-1-5-on-thorny-flat-using-intel-compilers">Siesta 4.1.5 on Thorny flat using Intel compilers</a></li>
 </ul>
 </li>
 </ul>
@@ -696,290 +699,6 @@ with_xmlf90=&quot;${MD_XMLF90}&quot;
 </div>
 </section>
 </section>
-<section id="octopus">
-<h2>Octopus<a class="headerlink" href="#octopus" title="Permalink to this headline">¶</a></h2>
-<section id="octopus-11-3-on-thorny-flat-using-intel-2021-4">
-<h3>Octopus 11.3 on Thorny Flat using Intel 2021.4<a class="headerlink" href="#octopus-11-3-on-thorny-flat-using-intel-2021-4" title="Permalink to this headline">¶</a></h3>
-<p>Use the metamodule for DFT codes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
-$&gt; module load dft_intel21
-</pre></div>
-</div>
-<p>Resulting in these modules being loaded:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
- <span class="mi">1</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span>                            <span class="mi">15</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">arpack</span><span class="o">-</span><span class="n">ng</span><span class="o">/</span><span class="mf">3.8.0</span><span class="n">_intel21_impi21</span>
- <span class="mi">2</span><span class="p">)</span> <span class="n">tbb</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">16</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5.5</span><span class="n">_intel21</span>
- <span class="mi">3</span><span class="p">)</span> <span class="n">compiler</span><span class="o">-</span><span class="n">rt</span><span class="o">/</span><span class="n">latest</span>                        <span class="mi">17</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1.10</span><span class="n">_intel21</span>
- <span class="mi">4</span><span class="p">)</span> <span class="n">compiler</span><span class="o">/</span><span class="n">latest</span>                           <span class="mi">18</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">gridxc</span><span class="o">/</span><span class="mf">0.9.6</span><span class="n">_intel21</span>
- <span class="mi">5</span><span class="p">)</span> <span class="n">mpi</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">19</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">wannier90</span><span class="o">/</span><span class="mf">3.1.0</span><span class="n">_intel21</span>
- <span class="mi">6</span><span class="p">)</span> <span class="n">mkl</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">20</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">abinit</span><span class="o">/</span><span class="mf">9.6.2</span><span class="n">_intel21_impi21</span>
- <span class="mi">7</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.9.7</span><span class="n">_gcc93</span>           <span class="mi">21</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">vasp</span><span class="o">/</span><span class="mf">6.2.1</span><span class="n">_intel21</span>
- <span class="mi">8</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.17</span><span class="n">_intel21</span>              <span class="mi">22</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">11.3</span><span class="n">_intel21_impi21</span>
- <span class="mi">9</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">5.1.7</span><span class="n">_intel21</span>                  <span class="mi">23</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">espresso</span><span class="o">/</span><span class="mf">6.8</span><span class="n">_intel21</span>
-<span class="mi">10</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12.1</span><span class="n">_intel21</span>                  <span class="mi">24</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">elk</span><span class="o">/</span><span class="mf">8.3.15</span><span class="n">_intel21</span>
-<span class="mi">11</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12.1</span><span class="n">_intel21_impi21</span>           <span class="mi">25</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">siesta</span><span class="o">/</span><span class="mf">4.1.5</span><span class="n">_intel21</span>
-<span class="mi">12</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.8.1</span><span class="n">_intel21_impi21</span>          <span class="mi">26</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">siesta</span><span class="o">/</span><span class="mf">4.1.5</span><span class="n">_psml_intel21</span>
-<span class="mi">13</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5.3</span><span class="n">_intel21_impi21</span>  <span class="mi">27</span><span class="p">)</span> <span class="n">dft_intel21</span>
-<span class="mi">14</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3.9</span><span class="n">_intel21_impi21</span>
-</pre></div>
-</div>
-<p>The building folder is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.3</span><span class="o">/</span><span class="n">build_intel21</span>
-</pre></div>
-</div>
-<p>Run the configure script:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MKL=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl&quot;
-
-../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
---with-blas=&quot;${MKL}&quot; \
---with-lapack=&quot;${MKL}&quot; \
---enable-mpi \
---with-libxc-prefix=$MD_LIBXC \
---with-boost=/shared/software/libs/boost/1.78_gcc93 \
---with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
-CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS=&quot;-g -traceback -heap-arrays 1 -O2 -fp-model=precise&quot;
-</pre></div>
-</div>
-<p>Compile the code using 12 compilation threads:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make -j 12
-</pre></div>
-</div>
-<p>Run the testsuite:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ulimit -s unlimited
-$&gt; make check
-</pre></div>
-</div>
-<p>The results of the testsuite were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
-        <span class="n">Passed</span><span class="p">:</span>  <span class="mi">223</span> <span class="o">/</span> <span class="mi">228</span>
-        <span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">228</span>
-        <span class="n">Failed</span><span class="p">:</span>  <span class="mi">4</span> <span class="o">/</span> <span class="mi">228</span>
-
-        <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
-        <span class="o">------------------------------------------------------------------------------</span>
-        <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">17</span><span class="o">-</span><span class="n">aluminium</span><span class="o">.</span><span class="n">test</span>                          <span class="mi">4</span>
-        <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">TiO2</span><span class="o">.</span><span class="n">test</span>                               <span class="mi">2</span>
-        <span class="n">lda_u</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">noncollinear</span><span class="o">.</span><span class="n">test</span>                                  <span class="mi">3</span>
-        <span class="n">functionals</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">mgga</span><span class="o">.</span><span class="n">test</span>                                    <span class="mi">8</span>
-
-<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">11</span>
-</pre></div>
-</div>
-</section>
-<section id="octopus-11-0-on-spruce-knob-using-intel-2019">
-<h3>Octopus 11.0 on Spruce Knob using Intel 2019<a class="headerlink" href="#octopus-11-0-on-spruce-knob-using-intel-2019" title="Permalink to this headline">¶</a></h3>
-<p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
-</pre></div>
-</div>
-<p>The list of modules loaded are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
-Currently Loaded Modulefiles:
-  1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
-  2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
-  3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
-  4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
-  5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
-</pre></div>
-</div>
-<p>The building folder is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.0</span><span class="o">/</span><span class="n">build_intel19</span>
-</pre></div>
-</div>
-<p>Execute this configure line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
---with-lapack=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
---with-blas=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
---with-blacs=&quot;${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a&quot; \
---with-scalapack=&quot;${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a  CC=mpiicc CXX=mpiicpc FC=mpiifort
-</pre></div>
-</div>
-<p>Build the software and install:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
-$&gt; make install
-</pre></div>
-</div>
-<p>Running the tests with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make check
-</pre></div>
-</div>
-<p>The results were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
-    <span class="n">Passed</span><span class="p">:</span>  <span class="mi">217</span> <span class="o">/</span> <span class="mi">223</span>
-    <span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">223</span>
-    <span class="n">Failed</span><span class="p">:</span>  <span class="mi">5</span> <span class="o">/</span> <span class="mi">223</span>
-
-    <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
-    <span class="o">------------------------------------------------------------------------------</span>
-    <span class="n">maxwell</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">external</span><span class="o">-</span><span class="n">current</span><span class="o">.</span><span class="n">test</span>                            <span class="mi">3</span>
-    <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">06</span><span class="o">-</span><span class="n">h2o_pol_lr</span><span class="o">.</span><span class="n">test</span>                         <span class="mi">2</span>
-    <span class="n">linear_response</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">casida</span><span class="o">.</span><span class="n">test</span>                              <span class="mi">16</span>
-    <span class="n">pseudopotentials</span><span class="o">/</span><span class="mi">14</span><span class="o">-</span><span class="n">carbon_dojo_psp8</span><span class="o">.</span><span class="n">test</span>                   <span class="mi">1</span>
-    <span class="n">functionals</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">mgga</span><span class="o">.</span><span class="n">test</span>                                    <span class="mi">8</span>
-
-
-<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">02</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">08</span>
-
-<span class="n">make</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">876</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">base</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">5</span>
-<span class="n">make</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs/shared/src/octopus-11.0/build_intel19/testsuite&#39;</span>
-<span class="n">make</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">865</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">wrapper</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">2</span>
-<span class="n">make</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs/shared/src/octopus-11.0/build_intel19/testsuite&#39;</span>
-<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">853</span><span class="p">:</span> <span class="n">check</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">2</span>
-<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs/shared/src/octopus-11.0/build_intel19/testsuite&#39;</span>
-<span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">545</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">recursive</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</section>
-<section id="octopus-10-4-with-gcc-9-3">
-<h3>Octopus 10.4 with GCC 9.3<a class="headerlink" href="#octopus-10-4-with-gcc-9-3" title="Permalink to this headline">¶</a></h3>
-<p>Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3</p>
-<p>The modules loaded for compilation were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3.4</span><span class="n">_gcc93</span>  \
-<span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12.0</span><span class="n">_gcc93</span> \
-<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.7.4</span><span class="n">_gcc93</span> \
-<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5.3</span><span class="n">_gcc93</span> \
-<span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.10</span><span class="n">_gcc93</span> \
-<span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3.9</span><span class="n">_gcc93</span> \
-<span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4.1</span><span class="n">_gcc93</span>
-</pre></div>
-</div>
-<p>The sources can be downloaded from the developers and uncompressed with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">octopus</span><span class="o">-</span><span class="n">code</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">10.4</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-</pre></div>
-</div>
-<p>It is customary to compile codes on a separate folder from the sources.
-The foler <code class="docutils literal notranslate"><span class="pre">build_gcc93</span></code> is created inside the sources for that purpose:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span>
-<span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
-<span class="n">cd</span> <span class="n">build_gcc93_mpich341</span>
-</pre></div>
-</div>
-<p>The configure line was:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
---with-libxc-prefix=${MD_LIBXC} --with-blas=&quot; -L${MD_OPENBLAS} -lopenblas&quot; \
---with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
---with-mpi=${MD_MPICH} --enable-mpi
-</pre></div>
-</div>
-<p>On Thorny Flat the results from the testsuite were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">************************</span>
-<span class="n">Passed</span><span class="p">:</span>  <span class="mi">184</span> <span class="o">/</span> <span class="mi">200</span>
-<span class="n">Skipped</span><span class="p">:</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">200</span>
-
-<span class="n">Everything</span> <span class="n">seems</span> <span class="n">to</span> <span class="n">be</span> <span class="n">OK</span>
-
-<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">42</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="quantum-espresso">
-<h2>Quantum Espresso<a class="headerlink" href="#quantum-espresso" title="Permalink to this headline">¶</a></h2>
-<section id="quantum-espresso-7-0-on-thorny-flat-using-intel-compilers">
-<h3>Quantum Espresso 7.0 on Thorny Flat using Intel Compilers<a class="headerlink" href="#quantum-espresso-7-0-on-thorny-flat-using-intel-compilers" title="Permalink to this headline">¶</a></h3>
-<p>Download the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">QEF</span><span class="o">/</span><span class="n">q</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">7.0</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">7.0</span><span class="o">-</span><span class="n">ReleasePack</span><span class="o">.</span><span class="n">tgz</span>
-</pre></div>
-</div>
-<p>This is the canonical configuration for module <code class="docutils literal notranslate"><span class="pre">dft_intel22</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel22</span>
-</pre></div>
-</div>
-<p>The list of modules loaded are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:/shared/src/qe-7.0$ module list
-Currently Loaded Modulefiles:
-  1) dev/git/2.29.1                            19) libs/arpack-ng/3.8.0_intel22_impi22
-  2) dev/cmake/3.21.1                          20) libs/xmlf90/1.5.4_intel22
-  3) lang/gcc/9.3.0                            21) libs/libpsml/1.1.10_intel22
-  4) tbb/latest                                22) libs/gridxc/0.9.6_intel22
-  5) compiler-rt/latest                        23) libs/elpa/2021.11.002_intel22
-  6) oclfpga/latest                            24) libs/elsi/2.9.1_intel22
-  7) compiler/latest                           25) libs/futile/1.8_intel22_impi22
-  8) mpi/latest                                26) libs/atlab/1.0_intel22
-  9) mkl/latest                                27) libs/nlopt/2.7.1_intel22
- 10) lang/python/intelpython_3.9               28) atomistic/wannier90/3.1.0_intel22
- 11) parallel/cuda/11.7                        29) atomistic/abinit/9.6.2_intel22_impi22
- 12) libs/openblas/0.3.20_intel22              30) atomistic/vasp/6.2.1_intel22_impi22
- 13) libs/libxc/5.2.3_intel22                  31) atomistic/octopus/11.4_intel22_impi22
- 14) libs/hdf5/1.12.2_intel22                  32) atomistic/espresso/7.0_intel22_impi22
- 15) libs/hdf5/1.12.2_intel22_impi22           33) atomistic/elk/8.4.6_intel22_impi22
- 16) libs/netcdf/4.8.1_intel22_impi22          34) atomistic/siesta/4.1.5_intel22_impi22
- 17) libs/netcdf/fortran-4.5.4_intel22_impi22  35) dft_intel22
- 18) libs/fftw/3.3.10_intel22_impi22
-</pre></div>
-</div>
-<p>Uncompress the sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf qe-7.0-ReleasePack.tgz
-$&gt; cd qe-7.0
-</pre></div>
-</div>
-<p>Configure the sources to use HDF5, libXC and FFTW 3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
---prefix=/shared/software/atomistic/espresso/7.0_intel22_impi22 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
-</pre></div>
-</div>
-<p>Build the binaries:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make all
-$&gt; make install
-$&gt; make check
-</pre></div>
-</div>
-</section>
-</section>
-<section id="siesta">
-<h2>Siesta<a class="headerlink" href="#siesta" title="Permalink to this headline">¶</a></h2>
-<p>Siesta is a electronic structure code using linear scaling algorithms.
-The version compiled was 4.0.2. The code was compiled with Intel Compilers 2018
-and 2019</p>
-<p>To compile the code a arch.make needs to be created. The contents of the file
-are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SIESTA_ARCH=intel-mpi
-
-FC=mpiifort
-FFLAGS=-g -xHost -O3 -prec-div -prec-sqrt -fp-model precise -qopt-prefetch -fPIC -m64
-
-DUMMY_FOX=--enable-dummy
-FFLAGS_DEBUG=-g -O2 -debug full -traceback -C
-LDFLAGS= -static-intel -static-libgcc
-RANLIB=ranlib
-FC_SERIAL=ifort
-FPPFLAGS_CDF=
-
-MPI_INTERFACE=libmpi_f90.a
-MKL_INCLUDE=-I$(MKLROOT)/include
-MPI_LIBS=-L$(I_MPI_ROOT)/intel64/lib -lmpi
-MKL_LIBS=$(MKLROOT)/lib/intel64
-MPI_INCLUDE=-I$(I_MPI_ROOT)/intel64/include
-INCFLAGS=$(MPI_INCLUDE) $(MKL_INCLUDE)
-
-FPPFLAGS_MPI=-DMPI -DMPI_TIMING -DFC_HAVE_FLUSH -DFC_HAVE_ABORT -DSIESTA__NO_MRRR
-
-NETCDF_LIBS=
-NETCDF_INTERFACE=
-
-LIBS=-mkl=cluster $(MPI_LIBS) -qopenmp -lpthread -lstdc++ -ldl
-
-SYS=nag
-FPPFLAGS= $(FPPFLAGS_CDF) $(FPPFLAGS_MPI)
-
-
-atom.o: atom.F
-        $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $&lt;
-state_analysis.o: state_analysis.F
-        $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $&lt;
-
-.F.o:
-        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $&lt;
-.f.o:
-        $(FC) -c $(FFLAGS) $(INCFLAGS) $&lt;
-.F90.o:
-        $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $&lt;
-.f90.o:
-        $(FC) -c $(FFLAGS) $(INCFLAGS) $&lt;
-</pre></div>
-</div>
-</section>
 <section id="castep">
 <h2>CASTEP<a class="headerlink" href="#castep" title="Permalink to this headline">¶</a></h2>
 <p>CASTEP is a leading code for calculating the properties of materials from first principles. Using density functional theory, it can simulate a wide range of properties of materials proprieties including energetics, structure at the atomic level, vibrational properties, electronic response properties etc. In particular it has a wide range of spectroscopic features that link directly to experiment, such as infra-red and Raman spectroscopies, NMR, and core level spectra.</p>
@@ -1326,86 +1045,388 @@ $&gt; ./runtest
 </div>
 </section>
 </section>
-<section id="elk">
-<h2>ELK<a class="headerlink" href="#elk" title="Permalink to this headline">¶</a></h2>
-<section id="elk-8-3-22-on-spruce">
-<h3>ELK 8.3.22 on Spruce<a class="headerlink" href="#elk-8-3-22-on-spruce" title="Permalink to this headline">¶</a></h3>
-<p>Modules used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 lang/python/cpython_3.10.2_gcc103 \
-atomistic/wannier90/3.1.0_gcc103 libs/fftw/3.3.10_gcc103 parallel/openmpi/4.0.7_gcc103  \
-libs/libxc/5.2.2_gcc103
+<section id="octopus">
+<h2>Octopus<a class="headerlink" href="#octopus" title="Permalink to this headline">¶</a></h2>
+<section id="octopus-11-3-on-thorny-flat-using-intel-2021-4">
+<h3>Octopus 11.3 on Thorny Flat using Intel 2021.4<a class="headerlink" href="#octopus-11-3-on-thorny-flat-using-intel-2021-4" title="Permalink to this headline">¶</a></h3>
+<p>Use the metamodule for DFT codes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module purge
+$&gt; module load dft_intel21
 </pre></div>
 </div>
-<p>The file <code class="docutils literal notranslate"><span class="pre">make.inc</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAKE = make
-F90 = gfortran
-F90_OPTS = -O3 -ffast-math -funroll-loops -fopenmp -fallow-argument-mismatch
-F77 = gfortran
-F77_OPTS = -O3 -ffast-math -funroll-loops -fopenmp -fallow-argument-mismatch
-AR = ar
-LIB_SYS =
-# LAPACK and BLAS libraries
-LIB_LPK = ${MD_OPENBLAS}/lib/libopenblas.a
-LIB_FFT = fftlib.a
-SRC_OMP =
+<p>Resulting in these modules being loaded:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
+ <span class="mi">1</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span>                            <span class="mi">15</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">arpack</span><span class="o">-</span><span class="n">ng</span><span class="o">/</span><span class="mf">3.8.0</span><span class="n">_intel21_impi21</span>
+ <span class="mi">2</span><span class="p">)</span> <span class="n">tbb</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">16</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">xmlf90</span><span class="o">/</span><span class="mf">1.5.5</span><span class="n">_intel21</span>
+ <span class="mi">3</span><span class="p">)</span> <span class="n">compiler</span><span class="o">-</span><span class="n">rt</span><span class="o">/</span><span class="n">latest</span>                        <span class="mi">17</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libpsml</span><span class="o">/</span><span class="mf">1.1.10</span><span class="n">_intel21</span>
+ <span class="mi">4</span><span class="p">)</span> <span class="n">compiler</span><span class="o">/</span><span class="n">latest</span>                           <span class="mi">18</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">gridxc</span><span class="o">/</span><span class="mf">0.9.6</span><span class="n">_intel21</span>
+ <span class="mi">5</span><span class="p">)</span> <span class="n">mpi</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">19</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">wannier90</span><span class="o">/</span><span class="mf">3.1.0</span><span class="n">_intel21</span>
+ <span class="mi">6</span><span class="p">)</span> <span class="n">mkl</span><span class="o">/</span><span class="n">latest</span>                                <span class="mi">20</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">abinit</span><span class="o">/</span><span class="mf">9.6.2</span><span class="n">_intel21_impi21</span>
+ <span class="mi">7</span><span class="p">)</span> <span class="n">lang</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython_3</span><span class="mf">.9.7</span><span class="n">_gcc93</span>           <span class="mi">21</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">vasp</span><span class="o">/</span><span class="mf">6.2.1</span><span class="n">_intel21</span>
+ <span class="mi">8</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.17</span><span class="n">_intel21</span>              <span class="mi">22</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">octopus</span><span class="o">/</span><span class="mf">11.3</span><span class="n">_intel21_impi21</span>
+ <span class="mi">9</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">5.1.7</span><span class="n">_intel21</span>                  <span class="mi">23</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">espresso</span><span class="o">/</span><span class="mf">6.8</span><span class="n">_intel21</span>
+<span class="mi">10</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12.1</span><span class="n">_intel21</span>                  <span class="mi">24</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">elk</span><span class="o">/</span><span class="mf">8.3.15</span><span class="n">_intel21</span>
+<span class="mi">11</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12.1</span><span class="n">_intel21_impi21</span>           <span class="mi">25</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">siesta</span><span class="o">/</span><span class="mf">4.1.5</span><span class="n">_intel21</span>
+<span class="mi">12</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.8.1</span><span class="n">_intel21_impi21</span>          <span class="mi">26</span><span class="p">)</span> <span class="n">atomistic</span><span class="o">/</span><span class="n">siesta</span><span class="o">/</span><span class="mf">4.1.5</span><span class="n">_psml_intel21</span>
+<span class="mi">13</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5.3</span><span class="n">_intel21_impi21</span>  <span class="mi">27</span><span class="p">)</span> <span class="n">dft_intel21</span>
+<span class="mi">14</span><span class="p">)</span> <span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3.9</span><span class="n">_intel21_impi21</span>
+</pre></div>
+</div>
+<p>The building folder is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.3</span><span class="o">/</span><span class="n">build_intel21</span>
+</pre></div>
+</div>
+<p>Run the configure script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MKL=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl&quot;
 
-#-------------------------------------------------------------------------------
-SRC_MPI = mpi_stub.f90
-# To enable MPI parallelism the MPI version of the Fortran compiler must be
-# used. This is usually mpif90 or mpiifort. Uncomment the following lines and
-# run &#39;make clean&#39; followed by &#39;make&#39;.
-F90 = mpif90
-F77 = mpif90
-SRC_MPI =
-#-------------------------------------------------------------------------------
+../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+--with-blas=&quot;${MKL}&quot; \
+--with-lapack=&quot;${MKL}&quot; \
+--enable-mpi \
+--with-libxc-prefix=$MD_LIBXC \
+--with-boost=/shared/software/libs/boost/1.78_gcc93 \
+--with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
+CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS=&quot;-g -traceback -heap-arrays 1 -O2 -fp-model=precise&quot;
+</pre></div>
+</div>
+<p>Compile the code using 12 compilation threads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make -j 12
+</pre></div>
+</div>
+<p>Run the testsuite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ulimit -s unlimited
+$&gt; make check
+</pre></div>
+</div>
+<p>The results of the testsuite were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
+        <span class="n">Passed</span><span class="p">:</span>  <span class="mi">223</span> <span class="o">/</span> <span class="mi">228</span>
+        <span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">228</span>
+        <span class="n">Failed</span><span class="p">:</span>  <span class="mi">4</span> <span class="o">/</span> <span class="mi">228</span>
+
+        <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
+        <span class="o">------------------------------------------------------------------------------</span>
+        <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">17</span><span class="o">-</span><span class="n">aluminium</span><span class="o">.</span><span class="n">test</span>                          <span class="mi">4</span>
+        <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">TiO2</span><span class="o">.</span><span class="n">test</span>                               <span class="mi">2</span>
+        <span class="n">lda_u</span><span class="o">/</span><span class="mi">07</span><span class="o">-</span><span class="n">noncollinear</span><span class="o">.</span><span class="n">test</span>                                  <span class="mi">3</span>
+        <span class="n">functionals</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">mgga</span><span class="o">.</span><span class="n">test</span>                                    <span class="mi">8</span>
+
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">11</span>
+</pre></div>
+</div>
+</section>
+<section id="octopus-11-0-on-spruce-knob-using-intel-2019">
+<h3>Octopus 11.0 on Spruce Knob using Intel 2019<a class="headerlink" href="#octopus-11-0-on-spruce-knob-using-intel-2019" title="Permalink to this headline">¶</a></h3>
+<p>This is the canonical configuration for Spruce module <code class="docutils literal notranslate"><span class="pre">dft_intel19</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel19</span>
+</pre></div>
+</div>
+<p>The list of modules loaded are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module list
+Currently Loaded Modulefiles:
+  1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
+  2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
+  3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
+  4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
+  5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
+</pre></div>
+</div>
+<p>The building folder is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">11.0</span><span class="o">/</span><span class="n">build_intel19</span>
+</pre></div>
+</div>
+<p>Execute this configure line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
+--with-lapack=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
+--with-blas=&quot;-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl&quot; \
+--with-blacs=&quot;${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a&quot; \
+--with-scalapack=&quot;${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a  CC=mpiicc CXX=mpiicpc FC=mpiifort
+</pre></div>
+</div>
+<p>Build the software and install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+$&gt; make install
+</pre></div>
+</div>
+<p>Running the tests with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make check
+</pre></div>
+</div>
+<p>The results were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">8</span> <span class="n">failures</span>
+    <span class="n">Passed</span><span class="p">:</span>  <span class="mi">217</span> <span class="o">/</span> <span class="mi">223</span>
+    <span class="n">Skipped</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">223</span>
+    <span class="n">Failed</span><span class="p">:</span>  <span class="mi">5</span> <span class="o">/</span> <span class="mi">223</span>
+
+    <span class="n">testfile</span>                                                    <span class="c1"># failed testcases</span>
+    <span class="o">------------------------------------------------------------------------------</span>
+    <span class="n">maxwell</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">external</span><span class="o">-</span><span class="n">current</span><span class="o">.</span><span class="n">test</span>                            <span class="mi">3</span>
+    <span class="n">periodic_systems</span><span class="o">/</span><span class="mi">06</span><span class="o">-</span><span class="n">h2o_pol_lr</span><span class="o">.</span><span class="n">test</span>                         <span class="mi">2</span>
+    <span class="n">linear_response</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">casida</span><span class="o">.</span><span class="n">test</span>                              <span class="mi">16</span>
+    <span class="n">pseudopotentials</span><span class="o">/</span><span class="mi">14</span><span class="o">-</span><span class="n">carbon_dojo_psp8</span><span class="o">.</span><span class="n">test</span>                   <span class="mi">1</span>
+    <span class="n">functionals</span><span class="o">/</span><span class="mi">18</span><span class="o">-</span><span class="n">mgga</span><span class="o">.</span><span class="n">test</span>                                    <span class="mi">8</span>
+
+
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">02</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">08</span>
+
+<span class="n">make</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">876</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">base</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">5</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs/shared/src/octopus-11.0/build_intel19/testsuite&#39;</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">865</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">wrapper</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">2</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs/shared/src/octopus-11.0/build_intel19/testsuite&#39;</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">853</span><span class="p">:</span> <span class="n">check</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">2</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Leaving</span> <span class="n">directory</span> <span class="s1">&#39;/gpfs/shared/src/octopus-11.0/build_intel19/testsuite&#39;</span>
+<span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">545</span><span class="p">:</span> <span class="n">check</span><span class="o">-</span><span class="n">recursive</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="octopus-10-4-with-gcc-9-3">
+<h3>Octopus 10.4 with GCC 9.3<a class="headerlink" href="#octopus-10-4-with-gcc-9-3" title="Permalink to this headline">¶</a></h3>
+<p>Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3</p>
+<p>The modules loaded for compilation were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">lang</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">libs</span><span class="o">/</span><span class="n">libxc</span><span class="o">/</span><span class="mf">4.3.4</span><span class="n">_gcc93</span>  \
+<span class="n">libs</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="mf">1.12.0</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="mf">4.7.4</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">netcdf</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="mf">4.5.3</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.10</span><span class="n">_gcc93</span> \
+<span class="n">libs</span><span class="o">/</span><span class="n">fftw</span><span class="o">/</span><span class="mf">3.3.9</span><span class="n">_gcc93</span> \
+<span class="n">parallel</span><span class="o">/</span><span class="n">mpich</span><span class="o">/</span><span class="mf">3.4.1</span><span class="n">_gcc93</span>
+</pre></div>
+</div>
+<p>The sources can be downloaded from the developers and uncompressed with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">octopus</span><span class="o">-</span><span class="n">code</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">10.4</span><span class="o">/</span><span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>It is customary to compile codes on a separate folder from the sources.
+The foler <code class="docutils literal notranslate"><span class="pre">build_gcc93</span></code> is created inside the sources for that purpose:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">octopus</span><span class="o">-</span><span class="mf">10.4</span>
+<span class="n">mkdir</span> <span class="n">build_gcc93_mpic341</span>
+<span class="n">cd</span> <span class="n">build_gcc93_mpich341</span>
+</pre></div>
+</div>
+<p>The configure line was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
+--with-libxc-prefix=${MD_LIBXC} --with-blas=&quot; -L${MD_OPENBLAS} -lopenblas&quot; \
+--with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
+--with-mpi=${MD_MPICH} --enable-mpi
+</pre></div>
+</div>
+<p>On Thorny Flat the results from the testsuite were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">************************</span>
+<span class="n">Passed</span><span class="p">:</span>  <span class="mi">184</span> <span class="o">/</span> <span class="mi">200</span>
+<span class="n">Skipped</span><span class="p">:</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">200</span>
+
+<span class="n">Everything</span> <span class="n">seems</span> <span class="n">to</span> <span class="n">be</span> <span class="n">OK</span>
+
+<span class="n">Total</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">testsuite</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">42</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="quantum-espresso">
+<h2>Quantum Espresso<a class="headerlink" href="#quantum-espresso" title="Permalink to this headline">¶</a></h2>
+<section id="quantum-espresso-7-0-on-thorny-flat-using-intel-compilers">
+<h3>Quantum Espresso 7.0 on Thorny Flat using Intel Compilers<a class="headerlink" href="#quantum-espresso-7-0-on-thorny-flat-using-intel-compilers" title="Permalink to this headline">¶</a></h3>
+<p>Download the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">QEF</span><span class="o">/</span><span class="n">q</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">7.0</span><span class="o">/</span><span class="n">qe</span><span class="o">-</span><span class="mf">7.0</span><span class="o">-</span><span class="n">ReleasePack</span><span class="o">.</span><span class="n">tgz</span>
+</pre></div>
+</div>
+<p>This is the canonical configuration for module <code class="docutils literal notranslate"><span class="pre">dft_intel22</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dft_intel22</span>
+</pre></div>
+</div>
+<p>The list of modules loaded are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:/shared/src/qe-7.0$ module list
+Currently Loaded Modulefiles:
+  1) dev/git/2.29.1                            19) libs/arpack-ng/3.8.0_intel22_impi22
+  2) dev/cmake/3.21.1                          20) libs/xmlf90/1.5.4_intel22
+  3) lang/gcc/9.3.0                            21) libs/libpsml/1.1.10_intel22
+  4) tbb/latest                                22) libs/gridxc/0.9.6_intel22
+  5) compiler-rt/latest                        23) libs/elpa/2021.11.002_intel22
+  6) oclfpga/latest                            24) libs/elsi/2.9.1_intel22
+  7) compiler/latest                           25) libs/futile/1.8_intel22_impi22
+  8) mpi/latest                                26) libs/atlab/1.0_intel22
+  9) mkl/latest                                27) libs/nlopt/2.7.1_intel22
+ 10) lang/python/intelpython_3.9               28) atomistic/wannier90/3.1.0_intel22
+ 11) parallel/cuda/11.7                        29) atomistic/abinit/9.6.2_intel22_impi22
+ 12) libs/openblas/0.3.20_intel22              30) atomistic/vasp/6.2.1_intel22_impi22
+ 13) libs/libxc/5.2.3_intel22                  31) atomistic/octopus/11.4_intel22_impi22
+ 14) libs/hdf5/1.12.2_intel22                  32) atomistic/espresso/7.0_intel22_impi22
+ 15) libs/hdf5/1.12.2_intel22_impi22           33) atomistic/elk/8.4.6_intel22_impi22
+ 16) libs/netcdf/4.8.1_intel22_impi22          34) atomistic/siesta/4.1.5_intel22_impi22
+ 17) libs/netcdf/fortran-4.5.4_intel22_impi22  35) dft_intel22
+ 18) libs/fftw/3.3.10_intel22_impi22
+</pre></div>
+</div>
+<p>Uncompress the sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf qe-7.0-ReleasePack.tgz
+$&gt; cd qe-7.0
+</pre></div>
+</div>
+<p>Configure the sources to use HDF5, libXC and FFTW 3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
+--prefix=/shared/software/atomistic/espresso/7.0_intel22_impi22 LDFLAGS=&quot;-L${MD_FFTW}/lib -lfftw3&quot;
+</pre></div>
+</div>
+<p>Build the binaries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make all
+$&gt; make install
+</pre></div>
+</div>
+</section>
+</section>
+<section id="elk">
+<h2>ELK<a class="headerlink" href="#elk" title="Permalink to this headline">¶</a></h2>
+<section id="elk-8-8-26-on-thorny-flat-using-intel-compilers">
+<h3>ELK 8.8.26 on Thorny Flat using Intel compilers<a class="headerlink" href="#elk-8-8-26-on-thorny-flat-using-intel-compilers" title="Permalink to this headline">¶</a></h3>
+<p>Sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="s2">&quot;https://downloads.sourceforge.net/project/elk/elk-8.8.26.tgz?ts=gAAAAABkflN5svkw2PK8pODBTbPUQoL6dgtGrRRQq_ukUoq_cyw5hTsTlj35MVjayWSunyDkpRLz7l-hOlhMn8sBhoPOaN-GMA%3D%3D&amp;r=https%3A</span><span class="si">%2F%2F</span><span class="s2">sourceforge.net</span><span class="si">%2F</span><span class="s2">projects</span><span class="si">%2F</span><span class="s2">elk</span><span class="si">%2F</span><span class="s2">files</span><span class="si">%2F</span><span class="s2">latest</span><span class="si">%2F</span><span class="s2">download&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span> <span class="o">-</span><span class="n">O</span> <span class="n">elk</span><span class="o">-</span><span class="mf">8.8.26</span><span class="o">.</span><span class="n">tgz</span>
+</pre></div>
+</div>
+<p>Uncompress sources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf elk-8.8.26.tgz
+$&gt; cd elk-8.8.26
+</pre></div>
+</div>
+<p>Modules used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load dft_intel22
+</pre></div>
+</div>
+<p>Copy the file for intel DFTI (Intel implementation of FFT):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cp /shared/software/intel/toolkit/mkl/2023.1.0/include/mkl_dfti.f90 src
+</pre></div>
+</div>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">make.inc</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAKE = make
+AR = ar
+
+
+# Elk requires BLAS/LAPACK and fast Fourier transform (FFT) libraries.
+
+# We recommend using optimised, mutithreaded BLAS/LAPACK libaries such as those
+# provided by the Intel Math Kernel Library (MKL), OpenBLAS or BLIS.
+
+# Elk can use either the Fastest Fourier Transform in the West (FFTW) or the
+# MKL FFT. Both single and double precision versions of the FFT are needed.
+
+
+
+#------------------------------------------------------------------------------#
+#                                  Libraries                                   #
+#------------------------------------------------------------------------------#
 
 #-------------------------------------------------------------------------------
 SRC_MKL = mkl_stub.f90
-# To enable MKL parallelism, link with the MKL library then uncomment the
-# following line and run &#39;make clean&#39; followed by &#39;make&#39;.
-#SRC_MKL =
+# To enable MKL multithreaded parallelism, uncomment the following line and link
+# with the MKL library.
+SRC_MKL =
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 SRC_OBLAS = oblas_stub.f90
-# To enable OpenBLAS parallelism, link with the OpenBLAS library then uncomment
-# the following line and run &#39;make clean&#39; followed by &#39;make&#39;.
-SRC_OBLAS = ${MD_OPENBLAS}/lib/libopenblas.a
+# To enable OpenBLAS multithreaded parallelism, uncomment the following line and
+# link with the OpenBLAS library.
+#SRC_OBLAS =
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 SRC_BLIS = blis_stub.f90
-# To enable BLIS parallelism, link with the BLIS library then uncomment the
-# following line and run &#39;make clean&#39; followed by &#39;make&#39;.
+# To enable BLIS multithreaded parallelism, uncomment the following line and
+# link with the BLIS library.
 #SRC_BLIS =
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-SRC_libxc = libxcifc_stub.f90
-# To enable Libxc first download and compile version 5.x of the library. Next
-# copy the files libxcf90.a and libxc.a to the elk/src directory. Then uncomment
-# the following lines and run &#39;make clean&#39; followed by &#39;make&#39;.
-LIB_libxc = ${MD_LIBXC}/lib/libxcf90.a ${MD_LIBXC}/lib/libxc.a
-SRC_libxc = libxcf90.f90 libxcifc.f90
+# If your compiler does *not* support the Message Passing Interface (MPI) then
+# uncomment the line below.
+#SRC_MPI = mpi_stub.f90
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-SRC_FFT = zfftifc.f90
-# To use a different FFT library, copy the relevant library or include files to
-# the elk/src directory (eg. mkl_dfti.f90), uncomment the appropriate lines
-# below and run &#39;make clean&#39; followed by &#39;make&#39;.
-SRC_FFT = zfftifc_fftw.f90
-#LIB_FFT = libfftw3.a
-LIB_FFT = ${MD_FFTW}/lib/libfftw3.a
-#SRC_FFT = mkl_dfti.f90 zfftifc_mkl.f90
+# Elk supports two FFT libraries:
+#   Fastest Fourier Transform in the West (FFTW)
+#   Intel Math Kernel Library (MKL) Fast Fourier Transform
+#
+# FFTW is enabled by default with:
+SRC_FFT = zfftifc_fftw.f90 cfftifc_fftw.f90
+#
+# To enable MKL FFT instead, copy mkl_dfti.f90 to the elk/src directory and
+# uncomment the line below.
+SRC_FFT = mkl_dfti.f90 zfftifc_mkl.f90 cfftifc_mkl.f90
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+SRC_LIBXC = libxcifc_stub.f90
+# To enable Libxc first download and compile version 6.x of the library. Next
+# copy the files libxcf90.a and libxc.a to the elk/src directory and uncomment
+# the following lines.
+LIB_LIBXC = ${MD_LIBXC}/lib/libxcf90.a ${MD_LIBXC}/lib/libxc.a
+SRC_LIBXC = libxcf90.f90 libxcifc.f90
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 SRC_W90S = w90_stub.f90
-# To enable the Wannier90 library copy libwannier.a to the elk/src directory.
-# Then uncomment the following lines and run &#39;make clean&#39; followed by &#39;make&#39;.
+# To enable the Wannier90 library copy libwannier.a to the elk/src directory and
+# uncomment the following lines.
 SRC_W90S =
+LIB_W90 = libwannier.a
 LIB_W90 = ${MD_WANNIER90}/lib/libwannier.a
+#-------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------#
+#                                  Compilers                                   #
+#------------------------------------------------------------------------------#
+
+#-------------------------------------------------------------------------------
+# Intel MPI Fortran version 18 and later.
+F90 = mpiifort
+F90_OPTS = -O3 -xHost -ipo -qopenmp -qmkl=parallel
+F90_LIB = -liomp5 -lpthread -lm -ldl
+SRC_MKL =
+AR = xiar
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# GNU Fortran compiler with MKL.
+#F90 = mpif90
+#F90_OPTS = -Ofast -march=native -mtune=native -fomit-frame-pointer -fopenmp -ffpe-summary=none -fallow-argument-mismatch
+#F90_LIB = -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lpthread
+#SRC_MKL =
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# GNU Fortran compiler with BLIS, libflame and FFTW
+#F90 = mpif90
+#F90_OPTS = -Ofast -march=native -mtune=native -fomit-frame-pointer -fopenmp -ffpe-summary=none -fallow-argument-mismatch
+#F90_LIB = -lblis -lflame -lfftw3 -lfftw3f
+#SRC_BLIS =
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# GNU Fortran compiler with OpenBLAS, LAPACK and FFTW
+#F90 = mpif90
+#F90_OPTS = -Ofast -march=native -mtune=native -fomit-frame-pointer -fopenmp -ffpe-summary=none -fallow-argument-mismatch
+#F90_LIB = -lopenblas -llapack -lfftw3 -lfftw3f
+#SRC_OBLAS =
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Intel Fortran with profiling options.
+#F90 = mpiifort
+#F90_OPTS = -O3 -qopenmp -mkl=parallel -pg
+#F90_LIB = -liomp5 -lpthread -lm -ldl
+#SRC_MKL =
+#AR = ar
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# GNU Fortran debugging options.
+#F90 = gfortran
+#F90_OPTS = -O3 -Wunused -fopenmp
+#F90_LIB = -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lpthread
+#SRC_MKL =
+#SRC_MPI = mpi_stub.f90
 #-------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -1414,9 +1435,126 @@ LIB_W90 = ${MD_WANNIER90}/lib/libwannier.a
 </pre></div>
 </div>
 <p>Installation folder is manually created and the binaries are copied there:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir -p /shared/software/atomistic/elk/8.3.22_gcc103/bin
-$&gt; rsync -av src/eos/eos src/spacegroup/spacegroup src/protex src/elk src/rmspaces src/vimelk /shared/software/atomistic/elk/8.3.22_gcc103/bin
-$&gt; rsync -av species /shared/software/atomistic/elk/8.3.22_gcc103
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ELK_PREFIX=/shared/software/atomistic/elk/8.8.26_intel22_impi22
+$&gt; mkdir -p ${ELK_PREFIX}/bin
+$&gt; rsync -av src/eos/eos src/spacegroup/spacegroup src/protex src/elk src/rmspaces src/vimelk ${ELK_PREFIX}/bin
+$&gt; rsync -av species ${ELK_PREFIX}
+</pre></div>
+</div>
+<p>Run the tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd tests
+$&gt; ./test-mpi.sh
+</pre></div>
+</div>
+</section>
+</section>
+<section id="siesta">
+<h2>Siesta<a class="headerlink" href="#siesta" title="Permalink to this headline">¶</a></h2>
+<section id="siesta-4-1-5-on-thorny-flat-using-intel-compilers">
+<h3>Siesta 4.1.5 on Thorny flat using Intel compilers<a class="headerlink" href="#siesta-4-1-5-on-thorny-flat-using-intel-compilers" title="Permalink to this headline">¶</a></h3>
+<p>Siesta is a electronic structure code using linear scaling algorithms.
+The version compiled was 4.1.5. The code was compiled with Intel Compilers 2023</p>
+<p>Download the sources and uncompress them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf siesta-4.1.5.tar.gz
+$&gt; cd siesta-4.1.5
+$&gt; mkdir Obj_Intel
+$&gt; cd Obj_Intel
+$&gt; ../Src/obj_setup.sh
+</pre></div>
+</div>
+<p>To compile the code a <cite>arch.make</cite> needs to be created. The contents of the file
+can be copied from <cite>Src/intel.make</cite> with following changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#
+# Copyright (C) 1996-2016       The SIESTA group
+#  This file is distributed under the terms of the
+#  GNU General Public License: see COPYING in the top directory
+#  or http://www.gnu.org/copyleft/gpl.txt.
+# See Docs/Contributors.txt for a list of contributors.
+#
+#-------------------------------------------------------------------
+# arch.make file for gfortran compiler.
+# To use this arch.make file you should rename it to
+#   arch.make
+# or make a sym-link.
+# For an explanation of the flags see DOCUMENTED-TEMPLATE.make
+
+.SUFFIXES:
+.SUFFIXES: .f .F .o .c .a .f90 .F90
+
+SIESTA_ARCH = Intel_2023.1
+
+CC = icc
+FPP = $(FC) -E -P
+FC = mpiifort
+FC_SERIAL = ifort
+
+FFLAGS = -O2 -g3 -traceback -fPIC -fp-model source -heap-arrays 1
+
+AR = ar
+RANLIB = ranlib
+
+SYS = nag
+
+SP_KIND = 4
+DP_KIND = 8
+KINDS = $(SP_KIND) $(DP_KIND)
+
+LDFLAGS =
+
+#COMP_LIBS = libsiestaLAPACK.a libsiestaBLAS.a
+
+MPI_INTERFACE = libmpi_f90.a
+MPI_INCLUDE = .
+
+FPPFLAGS = $(DEFS_PREFIX)-DFC_HAVE_ABORT -DMPI
+
+XMLF90_ROOT=/shared/software/libs/xmlf90/1.5.5_intel21
+XMLF90_LIBS=-L$(XMLF90_ROOT)/lib -lxmlf90
+#PSML_ROOT=/shared/software/libs/psml/1.1.10_intel21
+#PSML_LIBS=-L$(PSML_ROOT)/lib -lpsml
+#GRIDXC_ROOT=/shared/software/libs/libgridxc/0.9.6_intel21
+#GRIDXC_INCFLAGS=-I $(GRIDXC_ROOT)/include/gridxc
+#GRIDXC_LIBS=-L$(GRIDXC_ROOT)/lib -lgridxc
+
+MKL_PATH        = $(MKLROOT)/lib/intel64
+BLAS_LIBS       = -qmkl=sequential -static-intel
+LAPACK_LIBS     = $(BLAS_LIBS)
+BLACS_LIBS      = -lmkl_blacs_intelmpi_lp64
+SCALAPACK_LIBS  = $(MKL_PATH)/libmkl_scalapack_lp64.a $(BLACS_LIBS)
+
+LIBS = $(NETCDF_LIBS) $(SCALAPACK_LIBS) $(LAPACK_LIBS) $(MPI_LIBS) $(COMP_LIBS) $(GRIDXC_LIBS) $(PSML_LIBS) $(XMLF90_LIBS)
+
+# Dependency rules ---------
+
+FFLAGS_DEBUG = -O0 -g3 -traceback -fPIC -check all -fp-model source -heap-arrays 1 # your appropriate flags here...
+
+# The atom.f code is very vulnerable. Particularly the Intel compiler
+# will make an erroneous compilation of atom.f with high optimization
+# levels.
+atom.o: atom.F
+                $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $&lt;
+state_analysis.o: state_analysis.F
+                $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $&lt;
+
+.c.o:
+                $(CC) -c $(CFLAGS) $(INCFLAGS) $(CPPFLAGS) $&lt;
+.F.o:
+                $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F)  $&lt;
+.F90.o:
+                $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_free_F90) $&lt;
+.f.o:
+                $(FC) -c $(FFLAGS) $(INCFLAGS) $(FCFLAGS_fixed_f)  $&lt;
+.f90.o:
+                $(FC) -c $(FFLAGS) $(INCFLAGS) $(FCFLAGS_free_f90)  $&lt;
+</pre></div>
+</div>
+<p>Compile the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+</pre></div>
+</div>
+<p>Finally, copy the resulting binary <cite>siesta</cite> to the folder in <cite>software/atomistic</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir -p /shared/software/atomistic/siesta/4.1.5_intel22_impi22/bin
+$&gt; cp siesta /shared/software/atomistic/siesta/4.1.5_intel22_impi22/bin
 </pre></div>
 </div>
 </section>
