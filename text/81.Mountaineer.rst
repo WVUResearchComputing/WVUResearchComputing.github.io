@@ -1,5 +1,5 @@
-Mountaineer Cluster
-===================
+Mountaineer (2013-2018)
+=======================
 
 Mountaineer was the first centrally managed HPC cluster at WVU.
 Mountaineer was replaced by the HPC cluster Spruce Knob on Fall of 2018.

@@ -1,5 +1,5 @@
-Dolly Sods HPC Cluster
-======================
+Dolly Sods (2023-)
+==================
 
 Dolly Sods is WVU Latest HPC Cluster.
 It will be deployed in August 2023. The cluster has a total of 37 nodes. 
