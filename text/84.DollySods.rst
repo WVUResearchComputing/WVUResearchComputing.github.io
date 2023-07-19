@@ -7,21 +7,25 @@ The system has 155 NVIDIA GPU cards. They are distributed as 120 NVIDIA A30, 19 
 
 .. image:: /_static/Dolly_Sods_1.jpg
     :height: 600px
-    :width: 300 px
+    :width: 800 px
     :scale: 50 %
     :alt: Thorny Flat
     :align: center
+
+<br>
 
 .. image:: /_static/Dolly_Sods_2.jpg
     :height: 600px
-    :width: 300 px
+    :width: 800 px
     :scale: 50 %
     :alt: Thorny Flat
     :align: center
 
+<br>
+
 .. image:: /_static/Dolly_Sods_3.jpg
     :height: 600px
-    :width: 300 px
+    :width: 800 px
     :scale: 50 %
     :alt: Thorny Flat
     :align: center
