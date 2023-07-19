@@ -3,209 +3,723 @@
 Workload Manager (SLURM)
 ========================
 
-The login node (the shell you get upon logging into a cluster) should be
-used for text editing, file transfer, and job submissions. No Jobs
-should be run directly on the login node. Jobs that take up too much CPU
-time or RAM will be cancelled by the WVU RC staff to ensure proper
-functioning of the cluster. Jobs should be run using the cluster's
-queuing system, which uses the Moab Cluster Manager. Both batch jobs and
-interactive jobs should be submitted using the queuing system.
+A workload manager is a piece of software that transforms a set of networked computers into a HPC cluster.
+The workload manager has several responsibilites: Resource Manager and Scheduler.
+In the case of SLURM both tasks are assumeb by the same piece of software.
+Is the workload manager what makes an HPC cluster to look like a supercomputer rather than a set of independent machines on a datacenter.
 
-Batch queues
-------------
 
-Both batch jobs and interactive jobs will be submitted to a batch queue,
-which specifies the length and resources available to your job. Current
-status of a cluster's queues can be found using the ``qstat`` command.
-There are several options that you can use to get an idea about the
-queues available on the system, the output here is for Spruce cluster
+Resource manager has several subtasks associated with it.
+From one side, it keeps track of the resources present in the cluster and the availability on a given point in time.
+Individual computers could be added or removed from the pool of resources. Their load is recorded periodically to determine the feasibility of executing more jobs.
+It also keeps records for accounting purposes or profiling.
 
-::
+The scheduler side of a workload manager takes care of the jobs submitted to the cluster. 
+Process the list of resources requested for each job and priorizes the execution according to some criteria or constrains imposed on the job or the current state of the cluster.
 
-   $ qstat -q
+In this section we will cover in more detail the commands, variables and directives used by SLURM to help users to submit, monitor and control the jobs on the cluster.
+The configuration and administration of SLURM is out of scope for this section. 
 
-   server: srih0001.hpc.wvu.edu
+Understanding Partitions
+------------------------
 
-   Queue            Memory CPU Time Walltime Node  Run Que Lm  State
-   ---------------- ------ -------- -------- ----  --- --- --  -----
-   comm_mmem_week     --      --    168:00:0   --   26   0 --   E R
-   standby            --      --    04:00:00   --  182 122 --   E R
-   comm_256g_mem      --      --    168:00:0   --    0   0 --   E R
-   comm_mmem_day      --      --    24:00:00   --  566 592 --   E R
-   debug              --      --    00:15:00   --    0   0 --   E R
-   comm_gpu           --      --    168:00:0   --    0   0 --   E R
-   batch              --      --    04:00:00   --    0   0 --   D S
-   comm_smp           --      --    168:00:0   --    0  20 --   E R
-   comm_large_mem     --      --    168:00:0   --    0   0 --   E R
-   ...
-                                                  ----- -----
-                                                    877   914
+The compute nodes on an HPC cluster are logically segmented into partitions.
+A partition is just a list of compute nodes where jobs submitted to it can execute.
+A compute node could belong to several partitions.
+A partition also include rules that must be followed before a job can be admitted and rules that declare how jobs will run on the cluster and conditions on when and how jobs can start execution.
 
-This command will give you an idea about the Walltime of the queues and
-the number of jobs and queue and running.
+All jobs regardless of if they are batch jobs or interactive jobs they are always submitted to some partition.
+To know the list of partitions on the cluster execute::
 
-Each queue has a designated Walltime, which specifies how long a
-particular job can run. We recommend that users submit job scripts first
-to the debug queue which has the highest priority (meaning your job will
-be placed running before all other jobs submitted to other queues). The
-debug queue only has a 5 minute Walltime, but is perfect for making sure
-your job script is valid and no errors will occur. Without first running
-a job in the debug queue, you run the risk of waiting a couple of hours
-before your job starts and then finding errors. Other queues including
-week, hour and long are more appropriate for longer running jobs and
-your job's priority runs using your user's priority which is explained
-in the `Policies <Policies>`__ page. If you cannot run your job within
-the specified runtime limits, please let us know.
+	$ sinfo -s
+	PARTITION       AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
+	standby*           up    4:00:00      88/77/2/167 taicm[001-009],tarcl100,
+                                                      tarcs[100,200-206,300-304],tbdcx001,
+                                                      tbmcs[001-011,100-103],tbpcm200,tbpcs001,
+                                                      tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],
+                                                      tcocs[001-064,100],tcocx[001-003],tcscm300,
+                                                      tjscl100,tjscm001,tmmcm[100-108],tngcm200,
+                                                      tpmcm[001-006],tsacs001,tsdcl[001-002],
+                                                      tsscl[001-002],ttmcm[100-101],tzecl[100-107],
+                                                      tzecs[100-115]
+	comm_small_day     up 1-00:00:00        64/0/1/65 tcocs[001-064,100]
+	comm_small_week    up 7-00:00:00        64/0/1/65 tcocs[001-064,100]
+	comm_med_day       up 1-00:00:00          4/1/0/5 tcocm[100-104]
+	comm_med_week      up 7-00:00:00          4/1/0/5 tcocm[100-104]
+	comm_xl_week       up 7-00:00:00          0/3/0/3 tcocx[001-003]
+	comm_gpu_inter     up    4:00:00         5/6/0/11 tbegq[200-202],tbmgq[001,100],tcogq[001-006]
+	comm_gpu_week      up 7-00:00:00          1/5/0/6 tcogq[001-006]
+	aei0001            up   infinite          2/6/1/9 taicm[001-009]
+	alromero           up   infinite        14/0/0/14 tarcl100,tarcs[100,200-206,300-304]
+	be_gpu             up   infinite          2/1/0/3 tbegq[200-202]
+	bvpopp             up   infinite          0/1/0/1 tbpcs001
+	cedumitrescu       up   infinite          0/1/0/1 tcdcx100
+	cfb0001            up   infinite          0/1/0/1 tcbcx100
+	cgriffin           up   infinite          1/0/0/1 tcgcx300
+	chemdept           up   infinite          0/4/0/4 tbmcs[100-103]
+	chemdept-gpu       up   infinite          1/0/0/1 tbmgq100
+	cs00048            up   infinite          0/1/0/1 tcscm300
+	jaspeir            up   infinite          0/2/0/2 tjscl100,tjscm001
+	jbmertz            up   infinite        3/14/0/17 tbmcs[001-011,100-103],tbmgq[001,100]
+	mamclaughlin       up   infinite          0/9/0/9 tmmcm[100-108]
+	ngarapat           up   infinite          0/1/0/1 tngcm200
+	pmm0026            up   infinite          0/6/0/6 tpmcm[001-006]
+	sbs0016            up   infinite          0/2/0/2 tsscl[001-002]
+	spdifazio          up   infinite          0/2/0/2 tsdcl[001-002]
+	tdmusho            up   infinite          0/2/0/2 ttmcm[100-101]
+	vyakkerman         up   infinite          0/1/0/1 tsacs001
+	zbetienne          up   infinite        1/23/0/24 tzecl[100-107],tzecs[100-115]
+	zbetienne_large    up   infinite          0/8/0/8 tzecl[100-107]
+	zbetienne_small    up   infinite        1/15/0/16 tzecs[100-115]
 
-Useful Commands for Job Submission/Status
+The first column is the name of the partition. The star (*) after ``default`` indicates that this will be the selected partition if not specified during the submission of the job either via command line arguments or submission directives in the submission file. All the partitions starting with ``comm_`` are community partitions, meaning that anyone with an user account can submit on them. Faculty can purchase compute nodes that will receive its own partition with no limits on the amount of time the job can run on their own partition.
+Community queues use a name schema that makes easy to identify its specifications. 
+
+.. list-table:: User Commands
+   :widths: 50 50 
+   :header-rows: 1
+
+   * - Word
+     - Meaning
+   * - ``_small``
+     - Compute nodes associated to the partition offer 96GB of RAM
+   * - ``_med``
+     - Compute nodes associated to the partition offer 192GB of RAM   
+   * - ``_xl``
+     - Compute nodes associated to the partition offer 768GB of RAM
+   * - ``_gpu``
+     - Compute nodes associated to the partition include GPU cards
+   * - ``_day``
+     - The partition has a walltime of maximum 1 day
+   * - ``_week``
+     - The partition has a walltime of maximum 1 week
+   * - ``comm_gpu_inter``
+     - Partition for interactive jobs with GPUs. The walltime is 4 hours
+   
+The second column is the availability of the partition. At this point all partitions are enable and that is indicated with the word ``up``.
+
+The third column is the amount of time a job submitted to that partition can run, this is also known as the **walltime**. 
+Jobs submitted without any limit of time explicitly indicated will received the walltime of the partition.
+Jobs that declare a larger walltime than the maximum allowed by the partition will be rejected inmediately after submission. 
+
+The fourth column provides a summary of the condition of nodes associated to the partition. The format is indicated as (A/I/O/T) and means (allocated/idle/other/total).
+Allocated are nodes executing one or more jobs. Idle are compute nodes currently inactive but enable to execute jobs. 
+Other include nodes that are not allowed to execute jobs, due to maintnance or some other condition.
+The sum of all these 3 states is the total number of compute nodes associated with the partition.
+
+The fifth column is the nodelist. This is a compacted listing of all the machines associated with each partition. 
+The compact form is particularly useful in large HPC clusters with hundreds of compute nodes. 
+Notice for example that compute nodes ``tcocs[001-064,100]`` appear as nodes associated to ``standby``, ``comm_small_day`` and ``comm_small_week``. 
+
+Submitting batch jobs
+---------------------
+
+A batch job is a job that has not expectations of running inmediately and will not be interactively operated when start running.
+This is the kind of jobs an HPC cluster is preferentially built for. 
+You simply write on a text file the list of resources you need for the job and the list of steps to execute in the form of script and the job will be put in execution when resources became available.
+The text file is called a **submission script** and it has two roles. 
+From one side, it has the script that will be put in execution on the compute node associated to the job.
+From the other side, it has a set of lines starting with ``#SBATCH``. 
+Those lines start with ``#`` meaning that they are ignored by the shell when running the script.
+Those lines are important for SLURM as it will interpret those lines and compile a list of requirements and configurations associated to the job.
+The lines starting with  ``#SBATCH`` will not interpret shell variables or environment variables.
+These lines will contain resource requests such as the number of compute nodes, number of CPU cores, memory requested, partition.
+They also could contain the name of the job, specification for sending emails when the job start, ends of fails, where the output of the script wil go. 
+These lines could also include other configurations that will be used before, during and after the job enters in execution.
+
+Our first example will be very simple.
+Consider a submission script for a job called **PI**.
+The job will compute the value of pi using the the arbitrary precision calculator bc.
+The command to be executed will be::
+
+	echo $(echo "scale=65; 4*a(1)" | bc -l) 
+
+This is a simple execution that takes a fraction of a second on any modern computer. 
+However, our purpose here is to use it to demonstrate how to submit a job that will be executed on a compute node.
+In practical cases the execution will require several hours or even days and need multiple CPU cores or multiple compute nodes.
+The submission script could be written like this::
+
+    #!/bin/bash
+
+    #SBATCH -J PI
+    #SBATCH -N 1
+    #SBATCH -c 1
+    #SBATCH -n 1
+    #SBATCH -p standby
+    #SBATCH -t 4:00:00
+
+    echo "The first 65 digits of PI are:"
+    echo $(echo "scale=65; 4*a(1)" | bc -l)
+
+    echo ""
+    echo "Job ID:              $SLURM_JOB_ID"
+    echo "Job Name:            $SLURM_JOB_NAME" 
+    echo "Number of Nodes:     $SLURM_JOB_NUM_NODES"
+    echo "Number of CPU cores: $SLURM_CPUS_ON_NODE"
+    echo "Number of Tasks:     $SLURM_NTASKS"
+    echo "Partition:           $SLURM_JOB_PARTITION"
+
+Assuming that this text is written on a file called ``runjob.pbs``. Submit the job using the command::
+
+	trcis001:~$ sbatch runjob.pbs
+
+The job will most likely execute after a few seconds. A file with a name such as ``slurm-<jobid>.out`` is created.
+For example, if the job ID were 122014. The output produce by the submission script will contain::
+
+    trcis001:~$ cat slurm-122014.out 
+    The first 65 digits of PI are:
+    3.14159265358979323846264338327950288419716939937510582097494459228
+
+    Job ID:              122014
+    Job Name:            PI
+    Number of Nodes:     1
+    Number of CPU cores: 1
+    Number of Tasks:     1
+    Partition:           standby
+
+Let us now understand the lines present on this first submission script.
+The first line is called a `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`__ 
+This is used to indicate which interpreter will be used for the lines on the script.
+In this case we are saying that ``bash`` which is a commom shell interpreter must be used for the script.
+
+The next 6 lines all start with ``$SBATCH``::
+
+    #SBATCH -J PI
+    #SBATCH -N 1
+    #SBATCH -c 1
+    #SBATCH -n 1
+    #SBATCH -p standby
+    #SBATCH -t 4:00:00
+
+The lines will each in order, set the name of the job (-J), the number of compute nodes (-N), the number of CPU cores per task (-c), the number of tasks (-n), the partition selected for the job (-p) and the limit of time for the job (-t).
+Except for the job name which is undefined by default, all other values here correspont to the default values.
+The job name is optional and the other 5 lines can be removed from the submission script and the script will take assume the default values.
+For this simple case all that result being one: One node, one task, one cpu per task and one cpu per node. 
+The concepts nodes, tasks and cpus per task or node will be covered below.
+
+The next 2 lines are the actual execution that we want takes place on a compute node. 
+It could be a complex numerical simulation, solve a complex optimization problem, a genomic alignment.
+Any computationally demanding operation will be here.
+
+In the final 6 lines we are demonstrating the used of some Environment variables that are created when the job start running on the compute node.
+In this case we are revelaling the content of those variables and writing those along with the output of the script.
+These variables can be use in the script to change the execution lines according to their values. 
+More SLURM environment variables will be described below.
+
+The output is all that the script or the programs call by the script writes produces to be seen on the screen.
+If the script were executed directly, the standard output is the terminal window. 
+In the case of a batch script, all the output is directed to a couple of files.
+The normal output also called standard output is written to a file that by default looks like ``slurm-<jobid>.out``
+The error output, text that is considered could be aside to the normal output is called standard error and it is sent to a separate file.
+In our case we do not have any error and no error file is generated.
+
+All the ``#SBATCH`` directives are optional and there are default values for many of them or no value at all if not declared.
+Consider for example the same submission script removing all the lines starting with ``#SBATCH``::
+
+    #!/bin/bash
+
+    echo "The first 65 digits of PI are:"
+    echo $(echo "scale=65; 4*a(1)" | bc -l)
+
+    echo ""
+    echo "Job ID:              $SLURM_JOB_ID"
+    echo "Job Name:            $SLURM_JOB_NAME" 
+    echo "Number of Nodes:     $SLURM_JOB_NUM_NODES"
+    echo "Number of CPU cores: $SLURM_CPUS_ON_NODE"
+    echo "Number of Tasks:     $SLURM_NTASKS"
+    echo "Partition:           $SLURM_JOB_PARTITION"
+
+Producing a similar result in the output file::
+
+    trcis001:~$ cat slurm-122439.out 
+    The first 65 digits of PI are:
+    3.14159265358979323846264338327950288419716939937510582097494459228
+
+    Job ID:              122439
+    Job Name:            runjob2.slurm
+    Number of Nodes:     1
+    Number of CPU cores: 1
+    Number of Tasks:     
+    Partition:           standby
+
+Notice that if the job has no name, the name of the submission script becomes its name.
+One single node will be use and one single CPU core assigned to the job.
+No declaring a number of tasks will create a job with no value for that.
+
+We will explore more complex submission scripts and the meaning of the multiple options associated but first lets explore how to monitor the jobs submitted and how to cancel jobs.
+
+Monitoring jobs
+---------------
+
+Lets consider a variation of the submission script were we will be asking for several many compute nodes::
+
+    #!/bin/bash
+
+    #SBATCH -J PI
+    #SBATCH -N 80
+    #SBATCH -c 40
+    #SBATCH -n 80
+    #SBATCH -p standby
+    #SBATCH -t 4:00:00
+
+    echo "The first 65 digits of PI are:"
+    echo $(echo "scale=65; 4*a(1)" | bc -l)
+
+    echo ""
+    echo "Job ID:              $SLURM_JOB_ID"
+    echo "Job Name:            $SLURM_JOB_NAME" 
+    echo "Number of Nodes:     $SLURM_JOB_NUM_NODES"
+    echo "Number of CPU cores: $SLURM_CPUS_ON_NODE"
+    echo "Number of Tasks:     $SLURM_NTASKS"
+    echo "Partition:           $SLURM_JOB_PARTITION"
+
+Asumming this submission script was written on a file called ``runjob_80n.slurm``, submit the job with the command::
+
+    trcis001:~$ sbatch runjob_40n.slurm 
+    Submitted batch job 122837  
+
+This time no output in the form of the file ``slurm-<jobis>.out`` 
+Check the status of the jobs using the command ``squeue``.
+The command alone will return a listing of all the jobs running or in queue in the cluster.
+To restrict the listing just to jobs submitted by the user with the command::
+
+	trcis001:~$ squeue -u $USER
+				 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+				122837   standby       PI gufranco PD       0:00     80 (Resources)
+				122895   standby       PI gufranco PD       0:00     40 (Priority)
+
+Notice that we have here two jobs that are in queue. 
+The status of PD means that the jobs are **pending** of execution. 
+The ST column gives the state of the job.
+In the case above, both jobs are in **pending** state. 
+The following codes:
+
+.. list-table:: Job State Codes
+   :widths: 25 25 50
+   :header-rows: 1
+  
+   * - Status
+     - Meaning
+     - Description
+   * - R
+     - Running
+     - Job currently has an allocation
+   * - PD
+     - PenDing
+     - Job is awaiting resource allocation
+   * - TO
+     - TimedOut
+     - Job terminated upon reaching its time limit
+   * - PR
+     - PReempted
+     - Job terminated due to preemption
+   * - S
+     - Suspended
+     - Execution has been suspended and CPUs have been released for other jobs 
+   * - CD
+     - CompleteD
+     - Job has terminated all processes on all nodes with an exit code of zero
+   * - CA
+     - CAncelled
+     - Job was explicitly cancelled by the user or system administrator
+   * - F
+     - Failed
+     - Job terminated with non-zero exit code or other failure condition
+   * - NF
+     - Node Failure
+     - Job terminated due to failure of one or more allocated nodes
+
+There are a few other state conditions that appear less often.
+If you see one state that is not one above, check on the manual page for `squeue <https://slurm.schedmd.com/squeue.html>`__ under **JOB STATE CODES**.
+
+The columns are for most part self-explanatory.
+The final column shows briefly the reasons why the job is still not running.
+One of the jobs states that could not run due to a lack of **Resources**, ie there are no 80 compute nodes available at this point.
+The other job is pending due to **Priority**, ie there are resources availables but they will be assigned to another job with higher priority.
+
+There are several messages over the Reasons column. 
+A common set of reasons messages with explanations follows.
+
+.. list-table:: Job Reason Codes
+   :widths: 10 90
+   :header-rows: 1
+
+   * - Reason
+     - Description
+   * - Resources
+     - Scheduler is unable to find sufficient idle resources to run your job
+   * - Priority
+     - There are jobs with higher priority ahead of this job in the queue
+   * - QOSMaxCpuPerUserLimit
+     - The CPU request exceeds the maximum each user is allowed to use
+   * - Licenses
+     - The job is waiting for a license.
+
+There are more reason codes that can be found in the `SLURM documentation for Resource Limits <https://slurm.schedmd.com/resource_limits.html#reasons>`__
+
+Canceling a job
+---------------
+
+Lets assume we want to delete the job 122837 that we submitted above. 
+The job can be canceled with the command ``scancel`` followed by the jobid of the job you want to cancel::
+
+	trcis001:~$ squeue -u $USER
+				 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+				122837   standby       PI gufranco PD       0:00     80 (Resources)
+	trcis001:~$ scancel 122837
+	trcis001:~$ squeue -u $USER
+				 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+
+As the canceling of a job is an irreversible action it is suggested to use an interactive version that allow you to double check not only the job ID but also the job name and partition in case of mistyping the jobID::
+
+	trcis001:~$ scancel -i 123807
+	Cancel job_id=123807 name=PI partition=standby [y/n]? y
+
+Estimation of the starting time for a job
 -----------------------------------------
 
-+-----------------------------------+-----------------------------------+
-| **qsub**                          | Used to submit both batch and     |
-|                                   | interactive jobs (explained       |
-|                                   | below)                            |
-+-----------------------------------+-----------------------------------+
-| **canceljob**                     | Terminates a job in the queue or  |
-|                                   | a running job                     |
-+-----------------------------------+-----------------------------------+
-| **checkjob**                      | Displays detailed job state       |
-|                                   | information                       |
-+-----------------------------------+-----------------------------------+
+SLURM tries to schedule all jobs as quickly as possible, subject to a number of dynamic constrains. 
+These constrains could be cluster policies, available hardware, allocation priorities (contributers to the cluster get higher priority allocations), etc. 
+Typically jobs submitted into a **day** queue could start running within a day or so.
+Week queues could demand more time as jobs there last longer in execution.  
+All this can vary a a given point of time on the cluster.
 
-Submitting a Batch job to the Queue
------------------------------------
+The command ``squeue``, has some arguments that can show you the scheduler's estimate of when a pending/idle job will start running. 
+It is just the scheduler's best estimate, given current conditions, that on a cluster are permanently changing. 
+The actual time a job starts might be earlier or later than that depending on factors such as the behavior of currently running jobs, the submission of new jobs, and hardware issues.
 
-To submit a batch job to the queue use the qsub command to submit a job
-submission shell script. Useable job submission shell scripts are
-available for easy modification at `Sample Job
-Scripts <Sample_Job_Scripts>`__.
+To see this, you need to request that squeue show the %S field in the output format option.
+One particularly good set of arguments in this situations could be::
 
-::
+	trcis001:~$ squeue -o "%.9i %.9P %.8j %.8u %.2t %.10M %.6D %S" -u $USER
+		JOBID PARTITION     NAME     USER ST       TIME  NODES START_TIME
+	   123809   standby       PI gufranco PD       0:00     40 2023-03-29T22:11:53
+	   123808   standby       PI gufranco PD       0:00     80 2023-03-30T15:10:06
 
-   $> qsub <environment_options> <shellscriptname>
+It makes sense that requesting 80 nodes will take more time than requesting 40.
+It could happens that some of the jobs running finish before the walltime and the job will enter earlier or could happen than newer jobs enter in partition with higher priority than standby and the job gets delayed.
+Use this estimation as a guidance more than a commitment.
 
-** are options qsub takes to specify job submission parameters including
-the specified queue to submit the job, how many CPUs/much RAM is needed,
-working directories etc (more on this below under Serial Jobs). ** is
-the name of a shell script (bash, tcsh, etc.) that contains the commands
-that will be executed at run time. Default standard output and standard
-error of the job will be placed in files named
-*jobname*.\ **o**\ *jobid* and *jobname*.\ **e**\ *jobid*, respectively.
-These files will be written to the directory in which the qsub command
-was executed in. Where jobname is specified using the -N environment
-option and jobid is given at run time by the system. A trivial example
-is
+Detailed information about jobs
+-------------------------------
 
-::
+The information provided by the command ``squeue`` sometimes is not enough and you would like to gather a more complete picture of the state of a particular job.
+The command ``scontrol`` provides a wealth of information about jobs but also partitions and nodes.
+Information about a job::
 
-   $> qsub -N example -q debug ./batch_job.sh
-   42129.mountaineer
+	trcis001:~$ scontrol show job 123809 
+	JobId=123809 JobName=PI
+	   UserId=gufranco(318130) GroupId=its-rc-thorny(1079001) MCS_label=N/A
+	   Priority=10675 Nice=0 Account=its-rc-admin QOS=normal
+	   JobState=PENDING Reason=Resources Dependency=(null)
+	   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+	   RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A
+	   SubmitTime=2023-03-29T19:05:08 EligibleTime=2023-03-29T19:05:08
+	   AccrueTime=2023-03-29T19:05:08
+	   StartTime=2023-03-29T22:11:53 EndTime=2023-03-30T02:11:53 Deadline=N/A
+	   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2023-03-29T19:18:33 Scheduler=Backfill:*
+	   Partition=standby AllocNode:Sid=trcis001:28116
+	   ReqNodeList=(null) ExcNodeList=(null)
+	   NodeList= SchedNodeList=tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-105]
+	   NumNodes=40-40 NumCPUs=800 NumTasks=40 CPUs/Task=20 ReqB:S:C:T=0:0:*:*
+	   TRES=cpu=800,mem=7717080M,node=40,billing=800
+	   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+	   MinCPUsNode=20 MinMemoryNode=0 MinTmpDiskNode=0
+	   Features=(null) DelayBoot=00:00:00
+	   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+	   Command=/gpfs20/users/gufranco/runjob_40n.slurm
+	   WorkDir=/gpfs20/users/gufranco
+	   StdErr=/gpfs20/users/gufranco/slurm-123809.out
+	   StdIn=/dev/null
+	   StdOut=/gpfs20/users/gufranco/slurm-123809.out
+	   Power=
 
-In this example output files are named example.o42129 and example.e42129
-for standard output and standard error, respectively.
+Information about a parition uses a similar command::
 
-Batch Shell Scripts
-~~~~~~~~~~~~~~~~~~~
+	trcis001:~$ scontrol show partition standby
+	PartitionName=standby
+	   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+	   AllocNodes=ALL Default=YES QoS=N/A
+	   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
+	   MaxNodes=UNLIMITED MaxTime=04:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
+	   NodeSets=compute
+	   Nodes=taicm[001-009],tarcl100,tarcs[100,200-206,300-304],tbdcx001,tbmcs[001-011,100-103],
+             tbpcm200,tbpcs001,tcbcx100,tcdcx100,tcgcx300,tcocm[100-104],tcocs[001-064,100],
+             tcocx[001-003],tcscm300,tjscl100,tjscm001,tmmcm[100-108],tngcm200,tpmcm[001-006],
+             tsacs001,tsdcl[001-002],tsscl[001-002],ttmcm[100-101],tzecl[100-107],tzecs[100-115]
+	   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+	   OverTimeLimit=NONE PreemptMode=CANCEL
+	   State=UP TotalCPUs=6140 TotalNodes=167 SelectTypeParameters=NONE
+	   JobDefaults=(null)
+	   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+	   TRES=cpu=6140,mem=27963188M,node=167,billing=6140
 
-Serial batch jobs (jobs not requiring any MPI libraries) are submitted
-to the system using shell scripts. An example (very simple) shell script
-could be
+We can also ask for information about a compute node::
 
-::
+	trcis001:~$ scontrol show node tbdcx001
+	NodeName=tbdcx001 Arch=x86_64 CoresPerSocket=20 
+	   CPUAlloc=40 CPUEfctv=40 CPUTot=40 CPULoad=42.22
+	   AvailableFeatures=xl,compute,bio
+	   ActiveFeatures=xl,compute,bio
+	   Gres=(null)
+	   NodeAddr=tbdcx001 NodeHostName=tbdcx001 Version=22.05.6
+	   OS=Linux 3.10.0-1160.24.1.el7.x86_64 #1 SMP Thu Mar 25 21:21:56 UTC 2021 
+	   RealMemory=773491 AllocMem=0 FreeMem=646603 Sockets=2 Boards=1
+	   State=ALLOCATED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
+	   Partitions=standby 
+	   BootTime=2023-02-23T22:45:08 SlurmdStartTime=2023-02-24T08:35:36
+	   LastBusyTime=2023-03-29T15:58:11
+	   CfgTRES=cpu=40,mem=773491M,billing=40
+	   AllocTRES=cpu=40
+	   CapWatts=n/a
+	   CurrentWatts=0 AveWatts=0
+	   ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
 
-   #!/bin/bash
+Controling the limit of time for a job
+--------------------------------------
 
-   time command_to_be_executed
+If no time limit is declared on the submission script or the command line for ``sbatch``, a job receives the time limit associated to the partition where it was submitted.
+There are ways to declare a time limit and help the scheduler to decide if your job can start running ahead some others with larger time limits. 
+This is particularly important if your job uses one of the ``_week`` partitions and you only need 2 or 3 days.
+In those cases, the ``_day`` partitions are not a good fit and you can declare a 3 day time limit and the job could enter in execution faster than other jobs with an entire week of execution.
 
-The above bash script, if submitted to the system using qsub would
-execute a single command. The unix time command before the
-command_to_be_executed is a very useful tool when using HPC scheduler
-systems. This command will report the real time it takes for a command
-to begin and complete execution. Times will be reported in the standard
-error file, and are useful for knowledge about how much walltime a
-command actually uses. The bash script shown above, when executed using
-the qsub command, the user would have to specify environment options at
-the command line. An easier way is to place environment options directly
-into you shell script using #PBS comments.
+ To specify your estimated runtime, use the --time=TIME or -t TIME parameter to sbatch. This value TIME can in any of the following formats:
 
-::
+.. list-table:: User Commands
+   :widths: 50 25 25 
+   :header-rows: 1
 
-   #!/bin/bash
+   * - Format
+     - Description
+     - Example
+   * - M
+     - M minutes
+     - -t 45 (45 minutes)
+   * - M:S
+     - M minutes, S seconds
+     - -t 2:30 (Two minutes and 30 seconds)
+   * - H:M:S
+     - H hours, M minutes, S seconds
+     - -t 1:30:00 (One hour and half)
+   * - D-H
+     - D days, H hours
+     - -t 3-12 (3 days and a half)
+   * - D-H:M
+     - D days, H hours, M minutes
+     - -t 1-12:30 (1 day, 12 hours and 30 minutes)
+   * - D-H:M:S
+     - D days, H hours, M minutes, S seconds
+     - -t 6-23:59:59 (One second less than a full week)
 
-   #PBS -N example
-   #PBS -q debug
+Specifying number of Nodes, tasks and CPU Cores
+-----------------------------------------------
 
-   time command_to_be_executed
+Computationally intesive HPC applications generally use a combination of distributed parallel computing, multithreading or SMP parallelism and accelerators.
 
-By adding the -N and -q options directly into your shell script you no
-longer have to specify these options on the command line when issuing
-the qsub command.
+The dominant interface for distributed parallel computing is MPI. 
+MPI uses intependent processes, also called ranks or tasks.
+Those processes could potentially run on separate computers and that is the solution programmers implement when the problems are so big than a single computer cannot complete the task alone on a reasonable amount of time.
 
-**Note: Do not place a job in the background using the '&' symbol, you
-will confuse the scheduler and potentially loose your command output.**
+Multithreading or SMP parallelism uses the multiple CPU cores present in all modern-day computers. 
+Those cores can all see the entire RAM of the machine.
+SMP parallelism is implemented in codes that uses OpenMP, OpenACC.
+In high level languages like Python the use of ``multiprocessing`` module can take advantage of multiple CPU cores on the same machine.
+Some Linear Algebra libraries implement SMP parallelism, such as OpenBLAS and Intel MKL.
 
-Qsub Environment Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enivironment variables can be specified on the command line using the
-qsub command.
+Sometimes, the access to the certain portion of RAM is faster for one core than the other.
+We say that those systems have Non-Uniform Memory Access (NUMA).
+For example, a machine with a dual scoket could have a portion of RAM that is associated with each CPU.
+In some cases we can gain important speedups by trying to concentrate the memory than a CPU uses into the RAM associated with it.
 
-::
+To better understand how all this can be controlled from SLURM imagine that we have a code that will use a number of CPU cores distributed across several machines.
+Consider that N represent the number of MPI tasks, and M represent the number of threads needed by the job. 
+N MPI tasks can run on N compute nodes but not necessarly.
+On the other side if one of those MPI tasks uses multiple CPU cores, all those cores must be on the same machine.
+That is a necessary condition for multithreading parallelism.
 
-   $> qsub -N batch_job -q week -l procs=3 ./batch_job.sh
+Most jobs then fall into one of these categories: 
 
-The above example would submit a job named batch_job to the week queue
-with 3 CPUs used and would execute batch_job.sh located in the current
-directory. The output files would be batch_job.o\ *jobid* and
-batch_job.e\ *jobid*. Another way is to specify these options directly
-in the shell script using #PBS commands.
+#. Sequential/Serial: 
 
-::
+#. Shared Memory Parallel:
 
-   #!/bin/bash
+#. Distributed Parallelism:
 
-   #PBS -N batch_job
-   #PBS -q week
-   #PBS -l nodes=1:ppn=3
+#. Hybrid SMP+Distributed Parallelism:
 
-   time command_to_be_executed
+#. Accelerator Based Parallelism:
 
-With the environment options contained in the shell script, you no
-longer have to specify them on the command line.
 
-::
 
-   $> qsub ./batch_job.sh
+Translating PBS Scripts to Slurm Scripts
+----------------------------------------
 
-The qsub command without options is identical to the previous command
-with options. Below is a list of commonly used qsub environment options,
-and these options are further explained in below sections.
+All our previous clusters, Mountaineer, Spruce Knob and Thorny Flat used Torque as Resource Manager and Moab as Scheduler. In 2022 we transition to SLURM as workload manager.
+For most part the transition is transparent as we installed a set of wrappers that translate on the fly the usual commands from Torque and Moab into the equivalents for SLURM.
+The same happens with submission scripts where the lines with ``#PBS`` get translated into the corresponding ``$SBATCH`` versions. 
+That being said is good for our users, specially new users to get used to SLURM commands and directives and stop using as much as possible the Torque commands that could become deprecated at some point in the future or the wrappers not being installed in future HPC clusters.
 
-+-----------------------------------+-----------------------------------+
-| **-N**                            | Job Name                          |
-+-----------------------------------+-----------------------------------+
-| **-q**                            | Queue specification               |
-+-----------------------------------+-----------------------------------+
-| **-l**                            | Used to specify job resources     |
-|                                   | (number of CPUs, nodes, length of |
-|                                   | Walltime)                         |
-+-----------------------------------+-----------------------------------+
-| **-m**                            | E-mail options                    |
-+-----------------------------------+-----------------------------------+
-| **-M**                            | E-mail address(es) for e-mail     |
-|                                   | options                           |
-+-----------------------------------+-----------------------------------+
-| **-e**                            | Path for error stream             |
-+-----------------------------------+-----------------------------------+
-| **-o**                            | Path for output stream            |
-+-----------------------------------+-----------------------------------+
-| **-t**                            | request for array jobs            |
-+-----------------------------------+-----------------------------------+
+The following are a set of tables that contains a list of common commands and terms used with the TORQUE/PBS resource manager and scheduler, and the corresponding commands and terms used under the SLURM workload manager. 
+These tables can be used to assist you in translating existing PBS scripts into proper SLURM scripts that can be interpreted directly.
+The same tables can be used for reference when writing new submission scripts directly in SLURM format
 
-**Note: More information about the PBS system can be found using the man
-pbs command at the terminal. Further an extensive list of qsub options
-including environment variables can be found using the man qsub
-command.**
+.. list-table:: User Commands
+   :widths: 50 25 25 
+   :header-rows: 1
+
+   * - User Commands
+     - PBS/Torque
+     - SLURM
+   * - Job submission
+     - qsub [script_file]
+     - sbatch [script_file]
+   * - Job deletion
+     - qdel [job_id]
+     - scancel [job_id]
+   * - Job status (by job)
+     - qstat [job_id]
+     - squeue [job_id]
+   * - Job status (by user)
+     - qstat -u [user_name]
+     - squeue -u [user_name]
+   * - Job hold
+     - qhold [job_id]
+     - scontrol hold [job_id]
+   * - Job release
+     - qrls [job_id]
+     - scontrol release [job_id]
+   * - Queue list
+     - qstat -Q
+     - squeue
+   * - Node list
+     - pbsnodes -l
+     - sinfo -N OR scontrol show nodes
+   * - Cluster status
+     - qstat -a
+     - sinfo
+
+.. list-table:: Environment Variables
+   :widths: 50 25 25 
+   :header-rows: 1
+
+   * - Environment
+     - PBS/Torque
+     - SLURM
+   * - Job ID
+     - $PBS_JOBID
+     - $SLURM_JOB_ID
+   * - Submit Directory
+     - $PBS_O_WORKDIR
+     - $SLURM_SUBMIT_DIR
+   * - Submit Host
+     - $PBS_O_HOST
+     - $SLURM_SUBMIT_HOST
+   * - Node List
+     - $PBS_NODEFILE
+     - $SLURM_JOB_NODELIST
+   * - Job Name
+     - $PBS_JOBNAME
+     - $SLURM_JOB_NAME
+   * - Number of nodes
+     - $PBS_NUM_NODES
+     - $SLURM_JOB_NUM_NODES
+   * - Number of cores per node
+     - $PBS_NUM_PPN
+     - $SLURM_CPUS_ON_NODE
+   * - Unique index used for Job Arrays
+     - $PBS_ARRAYID
+     - $SLURM_ARRAY_TASK_ID
+
+.. list-table:: Job Directives or Specifications
+   :widths: 50 25 25
+   :header-rows: 1
+
+   * - Job Specification
+     - PBS/Torque
+     - SLURM
+   * - Script directive
+     - #PBS
+     - #SBATCH
+   * - Queue/Partition
+     - -q [name]
+     - -p [name]
+   * - Node Count
+     - -l nodes=[count]
+     - -N [min[-max]]
+   * - Total Task Count
+     - -l ppn=[count]
+     - -n OR --ntasks=ntasks
+   * - Total Task Count
+     - -l mppwidth=[PE_count]
+     - -n OR --ntasks=ntasks
+   * - Wall Clock Limit
+     - -l walltime=[hh:mm:ss]
+     - -t [min] OR -t [days-hh:mm:ss]
+   * - Standard Output File
+     - -o [file_name]
+     - -o [file_name]
+   * - Standard Error File
+     - -e [file_name]
+     - -e [file_name]
+   * - Write stderr -> stdout
+     - -j oe (both to stdout) 
+     - (use -o without -e)
+   * - Write stdout -> stderr
+     - -j eo (both to stderr)
+     - (use -e without -o)
+   * - Copy Environment
+     - -V
+     - --export=[ALL | NONE | variables]
+   * - Event Notification
+     - -m abe
+     - --mail-type=[events]
+   * - Email Address
+     - -M [address]
+     - --mail-user=[address]
+   * - Job Name
+     - -N [name]
+     - --job-name=[name] OR -J [name]
+   * - Job Restart
+     - -r [y | n]
+     - --requeue OR --no-requeue
+   * - Resource Sharing
+     - -l naccesspolicy=singlejob
+     - --exclusive OR --shared
+   * - Memory Size
+     - -l mem=[MB]
+     - --mem=[mem][M | G | T]
+   * - Memory Size
+     - -l mem=[MB]
+     - --mem-per-cpu=[mem][M | G | T]      
+   * - Accounts to charge
+     - -A OR -W group_list=[account]
+     - --account=[account] OR -A
+   * - Tasks Per Node
+     - -l mppnppn [PEs_per_node]
+     - --ntasks-per-node=[count]
+   * - CPUs Per Task
+     - N/A
+     - --cpus-per-task=[count]
+   * - Job Dependency
+     - -d [job_id]
+     - --depend=[state:job_id]
+   * - Quality of Service
+     - -l qos=[name]
+     - --qos=[normal | high]
+   * - Job Arrays
+     - -t [array_spec]
+     - --array=[array_spec]
+   * - Generic Resources
+     - -l other=[resource_spec]
+     - --gres=[resource_spec]
+   * - Job Enqueue Time
+     - -a “YYYY-MM-DD HH:MM:SS”
+     - --begin=YYYY-MM-DD[THH:MM[:SS]]
+
+
+OLD DOCUMENTATION
+-----------------
 
 Resource Specification
 ~~~~~~~~~~~~~~~~~~~~~~

@@ -9,16 +9,53 @@ Research Computing at West Virginia University
 .. image:: /_static/ResearchComputing.png
 
 West Virginia University Research Computing (WVU-RC) is a team inside WVU's
-Research Office dedicated to supporting, enabling and
-advancing computational research at WVU.
+Research Office dedicated to supporting, enabling and advancing computational research at WVU.
 
-This site contains information about how to use the various technologies
-provided by the Research Computing division at West Virginia University.
-Most documentation here refers to our High Performance Computing clusters
-but we also provide a variety of other services a large storage service called
-DataDepot, a DMZ (demilitarized zone) for high speed data transfers called
-Research Exchange (REX) and support and training in areas of High Performance
-Computing, Data Analysis and Parallel Programming.
+WVU Research Computing maintains a portafolio of infraestructures to support its mission.
+We maintain several High Performance Computing (HPC) **Clusters** from general purpose to specialized ones, both on premises as on the cloud.
+WVU Research Computing also provides other services such as a large research storage facility called
+**DataDepot**, and a Demilitarized Zone (DMZ) for high speed data transfers called **WVU Research Exchange (REX)**.
+
+In addition to maintaining these facilities, WVU Research Computing offers support, consulting and training 
+in areas of High Performance Computing, Data Analysis, Machine Learning and Parallel Programming.
+
+The table below shows our portafolio of HPC resources (past and present):
+
+.. table:: HPC Portafolio at WVU Research Computing
+   :widths: 10 10 10 10 60
+
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Infraestructure/** | | **Compute**    | | **CPU**        | | **Accelerators** | | **Description**                                             |
+   | | **HPC Clusters**     | | **Nodes**      | | **Cores**      | | **GPUs**         | |                                                             |
+   | |                      | | (total/active) | | (total/active) | | (total/active)   | |                                                             |
+   +========================+==================+==================+====================+===============================================================+
+   | | **Mountaineer**      |      32/0        |      384/0       |       0/0          | | First centrally managed HPC Cluster for WVU.                |
+   | | (decommissioned)     |                  |                  |                    | | CPUs from Intel Westmere microarchitecture (32 nm).         |
+   |                        |                  |                  |                    | | Decomissioned on 2018.                                      |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Spruce Knob**      |     176/148      |    3376/3036     | | 14/5 NVIDIA GPUs | | General-purpose HPC cluster first commissioned in 2017.     |
+   | | (end-of-life         |                  |                  | | Tesla K20m       | | Heterogeneous cluster with Intel processors.                |   
+   | |  decom. 2023)        |                  |                  | | Tesla K20Xm      | | Sandy Bridge, Ivy Bridge, Haswell and Broadwell.            |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Thorny Flat**      |     178/178      |    6516/6516     | | 47 NVIDIA GPUs   | | General-purpose HPC cluster.                                |
+   | | (in production)      |                  |                  | | P6000 (21)       | | Intel processors with Skylake and Cascade Lake.             |
+   |                        |                  |                  | | RTX 6000 (24)    | | Installed at Pittsburgh Supercomputer Center.               |
+   |                        |                  |                  | | A100 (2)         |                                                               |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **GoFirst**          |                  |                  |                    | | Virtual Infraestructure running on AWS.                     |
+   | | (in production)      |                  |                  |                    | | Serves Business Data Analytics (BUDA) program.              |
+   |                        |                  |                  |                    | | Chambers College of Business and Economics.                 |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Dolly Sods**       |       37         |    1248          | | 155 NVIDIA GPUs  | | GPU Accelerated HPC Cluster.                                |
+   | | (to be installed     |                  |                  | | A30 (120)        | | To be provisioned in Spring 2023.                           |
+   | |  spring 2023)        |                  |                  | | A40 (19)         |                                                               |
+   | |                      |                  |                  | | A100 (16)        |                                                               |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **WVCTSI Cluster**   |       8/8        |     320/320      | | 4 NVIDIA GPUs    | | HPC Cluster for use with                                    |
+   | | Secure Cluster       |                  |                  | | Tesla V100S      | | Protected Health Information (PHI)                          |
+   | | (in production)      |                  |                  |                    | | HIPAA compliant                                             |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+
 
 The contents of this website can be downloaded as a single PDF here:
 `docs_hpc_wvu.pdf <https://docs.hpc.wvu.edu/docs_hpc_wvu.pdf>`_
@@ -61,7 +98,7 @@ Main Responsible for Documentation and Scientific Outreach
    text/40.AdvancedUsage
    text/500.ScientificProgramming
    text/600.SoftAdmin
-   text/70.DomainSpecific
+   text/700.DomainSpecific
    text/80.ClusterSpecific
    text/90.References
 

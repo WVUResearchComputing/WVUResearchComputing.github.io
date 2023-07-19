@@ -3,11 +3,11 @@
 Connect to the cluster (SSH)
 ============================
 
-An HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop or even workstations are intended for a single user at a time. In general, Graphical User Interfaces (GUI) consume an important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.
+An HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop, or even workstation is intended for a single user at a time. In general, Graphical User Interfaces (GUI) consume an important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.
 
-Due to security reasons, HPC clusters are intended to be accessed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as the internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.
+Due to security reasons, HPC clusters are intended to be accessed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as the Internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.
 
-In order to connect to any of our clusters, you need a *username*, your name as a user of the cluster.
+In order to connect to any of our clusters, you need a *username*, and your name as a user of the cluster.
 You should have obtained that *username* with your *WVU Login account*
 
 WVU's clusters are also open to users who are currently associated with another Higher Education Institution in the state of West Virginia.  These users will still need a WVU Login account for access.  If you are working with someone (i.e. a PI) at WVU and need access, please have that person complete the form located `here <login.wvu.edu/sponsored>`__.  If you are not working with anyone at WVU, please send an email helpdesk@hpc.wvu.edu
@@ -23,7 +23,7 @@ An SSH Client is a piece of software that allows you to run a remote session on 
 An SSH client is usually come installed on MacOS and most Unix/Linux distributions so if you are using one of those Operating Systems you do not need to install anything.
 
 Windows users will have to acquire an SSH client.
-PuTTY is a free implementation of SSH for Windows platforms, it comes along with an xterm terminal emulator.
+PuTTY is a free implementation of SSH for Windows platforms, it comes along with an `xterm` terminal emulator.
 
 Go to `PuTTy <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`__ to know more about the product or download it directly from `PuTTY Download <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`__.
 
@@ -104,7 +104,7 @@ At this point, you will get a terminal prompt such as::
 
   <username>@srih0001:~$
 
-All the commands executed from now on are happening on a remote machine, the Spruce Knob *head node*, this is the place were most of your direct interaction with the cluster happens.
+All the commands executed from now on are happening on a remote machine, the Spruce Knob *head node*, this is the place where most of your direct interaction with the cluster happens.
 
 Logging Out
 -----------
@@ -120,13 +120,13 @@ In some cases, you will get an error that jobs are either currently running or c
    [1]+ 3325 Stopped            vim script56.py
 
 The output of jobs -l will give you the job PID number (in this case 3325) and
-the command (vim script56.py).  To kill jobs preventing successful log out,
+the command (vim script56.py).  To kill jobs preventing successful logout,
 use the kill command::
 
    $> kill -s 9 3325
 
 Once all jobs are terminated, the exit command will close the connection to the host.
-On section :ref:`qs-workload-manager` we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.
+In section :ref:`qs-workload-manager` we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.
 
 Putty Example
 -------------

@@ -5,7 +5,7 @@ ABINIT
 ------
 
 ABINIT 9.6.2 on Spruce Knob using GCC 10.3
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are 4 builds of GCC 10.3 using various implementations of MPI
 
@@ -64,13 +64,6 @@ After the configure is executed a folder ``fallbacks``, move to that folder and 
     $> FCFLAGS=-fallow-argument-mismatch ./build-abinit-fallbacks.sh 
 
 After building the fallbacks the lines can be integrated to the file ``srih0001.ac9``.
-
-
-
-
-
-
-
 
 
 
@@ -149,8 +142,8 @@ The results of the testsuite::
     Summary: failed=14, succeeded=723, passed=164, skipped=194, disabled=0
 
 
-ABINIT 9.4.2 on Spruce using Intel 2019
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ABINIT 9.4.2 on Spruce Knob using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is the canonical configuration for Spruce module ``dft_intel19``::
 
@@ -491,291 +484,6 @@ Test Suite::
 
 
 
-Octopus
--------
-
-Octopus 11.3 on Thorny Flat using Intel 2021.4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Use the metamodule for DFT codes::
-
-    $> module purge
-    $> module load dft_intel21
-
-Resulting in these modules being loaded::
-
-    Currently Loaded Modulefiles:
-     1) lang/gcc/9.3.0                            15) libs/arpack-ng/3.8.0_intel21_impi21
-     2) tbb/latest                                16) libs/xmlf90/1.5.5_intel21
-     3) compiler-rt/latest                        17) libs/libpsml/1.1.10_intel21
-     4) compiler/latest                           18) libs/gridxc/0.9.6_intel21
-     5) mpi/latest                                19) atomistic/wannier90/3.1.0_intel21
-     6) mkl/latest                                20) atomistic/abinit/9.6.2_intel21_impi21
-     7) lang/python/cpython_3.9.7_gcc93           21) atomistic/vasp/6.2.1_intel21
-     8) libs/openblas/0.3.17_intel21              22) atomistic/octopus/11.3_intel21_impi21
-     9) libs/libxc/5.1.7_intel21                  23) atomistic/espresso/6.8_intel21
-    10) libs/hdf5/1.12.1_intel21                  24) atomistic/elk/8.3.15_intel21
-    11) libs/hdf5/1.12.1_intel21_impi21           25) atomistic/siesta/4.1.5_intel21
-    12) libs/netcdf/4.8.1_intel21_impi21          26) atomistic/siesta/4.1.5_psml_intel21
-    13) libs/netcdf/fortran-4.5.3_intel21_impi21  27) dft_intel21
-    14) libs/fftw/3.3.9_intel21_impi21
-
-The building folder is::
-
-    /shared/src/octopus-11.3/build_intel21
-
-Run the configure script::
-
-	MKL="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl"
-
-	../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
-	--with-blas="${MKL}" \
-	--with-lapack="${MKL}" \
-	--enable-mpi \
-	--with-libxc-prefix=$MD_LIBXC \
-	--with-boost=/shared/software/libs/boost/1.78_gcc93 \
-	--with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
-	CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS="-g -traceback -heap-arrays 1 -O2 -fp-model=precise"
-
-
-Compile the code using 12 compilation threads::
-
-    $> make -j 12
-
-Run the testsuite::
-
-    $> ulimit -s unlimited
-    $> make check
-
-The results of the testsuite were::
-
-	Status: 8 failures
-		Passed:  223 / 228
-		Skipped: 1 / 228
-		Failed:  4 / 228
-
-		testfile                                                    # failed testcases
-		------------------------------------------------------------------------------
-		periodic_systems/17-aluminium.test                          4
-		periodic_systems/18-TiO2.test                               2
-		lda_u/07-noncollinear.test                                  3
-		functionals/18-mgga.test                                    8
-
-	Total run-time of the testsuite: 00:10:11
-
-
-Octopus 11.0 on Spruce using Intel 2019
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This is the canonical configuration for Spruce module ``dft_intel19``::
-
-  module load dft_intel19
-
-The list of modules loaded are::
-
-  $> module list
-  Currently Loaded Modulefiles:
-    1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
-    2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
-    3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
-    4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
-    5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
-
-The building folder is::
-
-  /shared/src/octopus-11.0/build_intel19
-
-Execute this configure line::
-
-  $> ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
-  --with-lapack="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
-  --with-blas="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
-  --with-blacs="${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a" \
-  --with-scalapack="${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a  CC=mpiicc CXX=mpiicpc FC=mpiifort
-
-Build the software and install::
-
-  $> make
-  $> make install
-
-Running the tests with::
-
-  $> make check
-
-The results were::
-
-  Status: 8 failures
-      Passed:  217 / 223
-      Skipped: 1 / 223
-      Failed:  5 / 223
-
-      testfile                                                    # failed testcases
-      ------------------------------------------------------------------------------
-      maxwell/02-external-current.test                            3
-      periodic_systems/06-h2o_pol_lr.test                         2
-      linear_response/01-casida.test                              16
-      pseudopotentials/14-carbon_dojo_psp8.test                   1
-      functionals/18-mgga.test                                    8
-
-
-  Total run-time of the testsuite: 02:16:08
-
-  make[3]: *** [Makefile:876: check-base] Error 5
-  make[3]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
-  make[2]: *** [Makefile:865: check-wrapper] Error 2
-  make[2]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
-  make[1]: *** [Makefile:853: check] Error 2
-  make[1]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
-  make: *** [Makefile:545: check-recursive] Error 1
-
-
-Octopus 10.4 with GCC 9.3
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3
-
-The modules loaded for compilation were::
-
-  module load lang/gcc/9.3.0 libs/libxc/4.3.4_gcc93  \
-  libs/hdf5/1.12.0_gcc93 \
-  libs/netcdf/4.7.4_gcc93 \
-  libs/netcdf/fortran-4.5.3_gcc93 \
-  libs/openblas/0.3.10_gcc93 \
-  libs/fftw/3.3.9_gcc93 \
-  parallel/mpich/3.4.1_gcc93
-
-The sources can be downloaded from the developers and uncompressed with::
-
-  wget https://octopus-code.org/download/10.4/octopus-10.4.tar.gz
-  tar -zxvf octopus-10.4.tar.gz
-
-It is customary to compile codes on a separate folder from the sources.
-The foler ``build_gcc93`` is created inside the sources for that purpose::
-
-  cd octopus-10.4
-  mkdir build_gcc93_mpic341
-  cd build_gcc93_mpich341
-
-The configure line was::
-
-  ../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
-  --with-libxc-prefix=${MD_LIBXC} --with-blas=" -L${MD_OPENBLAS} -lopenblas" \
-  --with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
-  --with-mpi=${MD_MPICH} --enable-mpi
-
-
-On Thorny Flat the results from the testsuite were::
-
-
-  ************************
-  Passed:  184 / 200
-  Skipped: 16 / 200
-
-  Everything seems to be OK
-
-  Total run-time of the testsuite: 00:20:42
-
-Quantum Espresso
-----------------
-
-Quantum Espresso 6.8 on Spruce using Intel 2019
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Download the sources::
-
-    wget https://github.com/QEF/q-e/releases/download/qe-6.8/qe-6.8-ReleasePack.tgz
-
-This is the canonical configuration for Spruce module ``dft_intel19``::
-
-    module load dft_intel19
-
-The list of modules loaded are::
-
-	$> module list
-	Currently Loaded Modulefiles:
-	  1) lang/gcc/9.3.0                       10) libs/gridxc/0.9.6_intel19
-	  2) lang/intel/2019                      11) atomistic/abinit/9.4.2_intel19
-	  3) lang/python/cpython_3.9.7_gcc93      12) atomistic/vasp/6.2.1_intel19
-	  4) libs/libxc/5.1.5_intel19             13) atomistic/octopus/11.0_intel19
-	  5) libs/hdf5/1.12.1_intel19             14) atomistic/espresso/6.8_intel19
-	  6) libs/fftw/3.3.8_intel19              15) atomistic/elk/7.2.42_intel19
-	  7) libs/arpack-ng/3.8.0_intel19         16) atomistic/siesta/4.1.5_intel19
-	  8) libs/xmlf90/1.5.4_intel19            17) atomistic/siesta/4.1.5_psml_intel19
-	  9) libs/psml/1.1.10_intel19             18) dft_intel19
-
-Uncompress the sources::
-
-	$> tar -zxvf qe-6.8-ReleasePack.tgz 
-	$> cd qe-6.8
-
-Configure the sources to use HDF5, libXC and FFTW 3::
-
-    $> ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
-    --prefix=/shared/software/atomistic/qe/6.8_intel19 LDFLAGS="-L${MD_FFTW}/lib -lfftw3"
-
-Build the binaries::
-	
-	$> make
-	$> make install
-	$> make check
-
-
-
-Siesta
-------
-
-Siesta is a electronic structure code using linear scaling algorithms.
-The version compiled was 4.0.2. The code was compiled with Intel Compilers 2018
-and 2019
-
-To compile the code a arch.make needs to be created. The contents of the file
-are::
-
-  SIESTA_ARCH=intel-mpi
-
-  FC=mpiifort
-  FFLAGS=-g -xHost -O3 -prec-div -prec-sqrt -fp-model precise -qopt-prefetch -fPIC -m64
-
-  DUMMY_FOX=--enable-dummy
-  FFLAGS_DEBUG=-g -O2 -debug full -traceback -C
-  LDFLAGS= -static-intel -static-libgcc
-  RANLIB=ranlib
-  FC_SERIAL=ifort
-  FPPFLAGS_CDF=
-
-  MPI_INTERFACE=libmpi_f90.a
-  MKL_INCLUDE=-I$(MKLROOT)/include
-  MPI_LIBS=-L$(I_MPI_ROOT)/intel64/lib -lmpi
-  MKL_LIBS=$(MKLROOT)/lib/intel64
-  MPI_INCLUDE=-I$(I_MPI_ROOT)/intel64/include
-  INCFLAGS=$(MPI_INCLUDE) $(MKL_INCLUDE)
-
-  FPPFLAGS_MPI=-DMPI -DMPI_TIMING -DFC_HAVE_FLUSH -DFC_HAVE_ABORT -DSIESTA__NO_MRRR
-
-  NETCDF_LIBS=
-  NETCDF_INTERFACE=
-
-  LIBS=-mkl=cluster $(MPI_LIBS) -qopenmp -lpthread -lstdc++ -ldl
-
-  SYS=nag
-  FPPFLAGS= $(FPPFLAGS_CDF) $(FPPFLAGS_MPI)
-
-
-  atom.o: atom.F
-          $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
-  state_analysis.o: state_analysis.F
-          $(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
-
-  .F.o:
-          $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $<
-  .f.o:
-          $(FC) -c $(FFLAGS) $(INCFLAGS) $<
-  .F90.o:
-          $(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $<
-  .f90.o:
-          $(FC) -c $(FFLAGS) $(INCFLAGS) $<
-
-
 CASTEP
 ------
 
@@ -903,13 +611,6 @@ Before compiling VASP, you need to edit the file `makefile.include` for the sequ
 Running tests::
 
 	$> make test
-
-
-
-
-
-
-
 
 
 VASP 6.2.1 on Spruce using Intel 2019
@@ -1138,92 +839,411 @@ Testsuite can be run by going into testsuite and running::
   $> cd testsuite
   $> ./runtest
 
+
+Octopus
+-------
+
+Octopus 12.2 on Thorny Flat using Intel compilers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+Octopus 11.3 on Thorny Flat using Intel 2021.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the metamodule for DFT codes::
+
+    $> module purge
+    $> module load dft_intel21
+
+Resulting in these modules being loaded::
+
+    Currently Loaded Modulefiles:
+     1) lang/gcc/9.3.0                            15) libs/arpack-ng/3.8.0_intel21_impi21
+     2) tbb/latest                                16) libs/xmlf90/1.5.5_intel21
+     3) compiler-rt/latest                        17) libs/libpsml/1.1.10_intel21
+     4) compiler/latest                           18) libs/gridxc/0.9.6_intel21
+     5) mpi/latest                                19) atomistic/wannier90/3.1.0_intel21
+     6) mkl/latest                                20) atomistic/abinit/9.6.2_intel21_impi21
+     7) lang/python/cpython_3.9.7_gcc93           21) atomistic/vasp/6.2.1_intel21
+     8) libs/openblas/0.3.17_intel21              22) atomistic/octopus/11.3_intel21_impi21
+     9) libs/libxc/5.1.7_intel21                  23) atomistic/espresso/6.8_intel21
+    10) libs/hdf5/1.12.1_intel21                  24) atomistic/elk/8.3.15_intel21
+    11) libs/hdf5/1.12.1_intel21_impi21           25) atomistic/siesta/4.1.5_intel21
+    12) libs/netcdf/4.8.1_intel21_impi21          26) atomistic/siesta/4.1.5_psml_intel21
+    13) libs/netcdf/fortran-4.5.3_intel21_impi21  27) dft_intel21
+    14) libs/fftw/3.3.9_intel21_impi21
+
+The building folder is::
+
+    /shared/src/octopus-11.3/build_intel21
+
+Run the configure script::
+
+	MKL="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl"
+
+	../configure --prefix=/shared/software/atomistic/octopus/11.3_intel21_impi21 \
+	--with-blas="${MKL}" \
+	--with-lapack="${MKL}" \
+	--enable-mpi \
+	--with-libxc-prefix=$MD_LIBXC \
+	--with-boost=/shared/software/libs/boost/1.78_gcc93 \
+	--with-sparskit=/shared/software/libs/sparskit2/lib/libskit.a \
+	CC=mpiicc CXX=mpiicpc FC=mpiifort FCFLAGS="-g -traceback -heap-arrays 1 -O2 -fp-model=precise"
+
+
+Compile the code using 12 compilation threads::
+
+    $> make -j 12
+
+Run the testsuite::
+
+    $> ulimit -s unlimited
+    $> make check
+
+The results of the testsuite were::
+
+	Status: 8 failures
+		Passed:  223 / 228
+		Skipped: 1 / 228
+		Failed:  4 / 228
+
+		testfile                                                    # failed testcases
+		------------------------------------------------------------------------------
+		periodic_systems/17-aluminium.test                          4
+		periodic_systems/18-TiO2.test                               2
+		lda_u/07-noncollinear.test                                  3
+		functionals/18-mgga.test                                    8
+
+	Total run-time of the testsuite: 00:10:11
+
+
+Octopus 11.0 on Spruce Knob using Intel 2019
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the canonical configuration for Spruce module ``dft_intel19``::
+
+  module load dft_intel19
+
+The list of modules loaded are::
+
+  $> module list
+  Currently Loaded Modulefiles:
+    1) lang/gcc/9.3.0                    6) libs/fftw/3.3.8_intel19          11) atomistic/elk/7.2.42_intel19
+    2) lang/intel/2019                   7) atomistic/abinit/9.4.2_intel19   12) atomistic/siesta/4.0.2_intel19
+    3) lang/python/cpython_3.9.6_gcc93   8) atomistic/vasp/6.2.1_intel19     13) dft_intel19
+    4) libs/libxc/5.1.5_intel19          9) atomistic/octopus/11.0_intel19
+    5) libs/hdf5/1.12.1_intel19         10) atomistic/espresso/6.8_intel19
+
+The building folder is::
+
+  /shared/src/octopus-11.0/build_intel19
+
+Execute this configure line::
+
+  $> ../configure --prefix=/shared/software/atomistic/octopus/11.0_intel19 \
+  --with-lapack="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
+  --with-blas="-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl" \
+  --with-blacs="${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a" \
+  --with-scalapack="${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a  CC=mpiicc CXX=mpiicpc FC=mpiifort
+
+Build the software and install::
+
+  $> make
+  $> make install
+
+Running the tests with::
+
+  $> make check
+
+The results were::
+
+  Status: 8 failures
+      Passed:  217 / 223
+      Skipped: 1 / 223
+      Failed:  5 / 223
+
+      testfile                                                    # failed testcases
+      ------------------------------------------------------------------------------
+      maxwell/02-external-current.test                            3
+      periodic_systems/06-h2o_pol_lr.test                         2
+      linear_response/01-casida.test                              16
+      pseudopotentials/14-carbon_dojo_psp8.test                   1
+      functionals/18-mgga.test                                    8
+
+
+  Total run-time of the testsuite: 02:16:08
+
+  make[3]: *** [Makefile:876: check-base] Error 5
+  make[3]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
+  make[2]: *** [Makefile:865: check-wrapper] Error 2
+  make[2]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
+  make[1]: *** [Makefile:853: check] Error 2
+  make[1]: Leaving directory '/gpfs/shared/src/octopus-11.0/build_intel19/testsuite'
+  make: *** [Makefile:545: check-recursive] Error 1
+
+
+Octopus 10.4 with GCC 9.3
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Octopus is a Real Space DFT code. This instructions show how to compile Octopus 10.4 (latest version by 2021.04.19). This is the parallel version compiled with GCC 9.3
+
+The modules loaded for compilation were::
+
+  module load lang/gcc/9.3.0 libs/libxc/4.3.4_gcc93  \
+  libs/hdf5/1.12.0_gcc93 \
+  libs/netcdf/4.7.4_gcc93 \
+  libs/netcdf/fortran-4.5.3_gcc93 \
+  libs/openblas/0.3.10_gcc93 \
+  libs/fftw/3.3.9_gcc93 \
+  parallel/mpich/3.4.1_gcc93
+
+The sources can be downloaded from the developers and uncompressed with::
+
+  wget https://octopus-code.org/download/10.4/octopus-10.4.tar.gz
+  tar -zxvf octopus-10.4.tar.gz
+
+It is customary to compile codes on a separate folder from the sources.
+The foler ``build_gcc93`` is created inside the sources for that purpose::
+
+  cd octopus-10.4
+  mkdir build_gcc93_mpic341
+  cd build_gcc93_mpich341
+
+The configure line was::
+
+  ../configure --prefix=/shared/software/atomistic/octopus/10.4_gcc93_mpic341  \
+  --with-libxc-prefix=${MD_LIBXC} --with-blas=" -L${MD_OPENBLAS} -lopenblas" \
+  --with-fftw-prefix=${MD_FFTW} --with-netcdf-prefix=${MD_NETCDF_FORTRAN} \
+  --with-mpi=${MD_MPICH} --enable-mpi
+
+
+On Thorny Flat the results from the testsuite were::
+
+
+  ************************
+  Passed:  184 / 200
+  Skipped: 16 / 200
+
+  Everything seems to be OK
+
+  Total run-time of the testsuite: 00:20:42
+
+
+
+
  
+Quantum Espresso
+----------------
+
+Quantum Espresso 7.0 on Thorny Flat using Intel compilers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Download the sources::
+
+    wget https://github.com/QEF/q-e/releases/download/qe-7.0/qe-7.0-ReleasePack.tgz
+
+This is the canonical configuration for module ``dft_intel22``::
+
+    module load dft_intel22
+
+The list of modules loaded are::
+
+	trcis001:/shared/src/qe-7.0$ module list
+	Currently Loaded Modulefiles:
+	  1) dev/git/2.29.1                            19) libs/arpack-ng/3.8.0_intel22_impi22
+	  2) dev/cmake/3.21.1                          20) libs/xmlf90/1.5.4_intel22
+	  3) lang/gcc/9.3.0                            21) libs/libpsml/1.1.10_intel22
+	  4) tbb/latest                                22) libs/gridxc/0.9.6_intel22
+	  5) compiler-rt/latest                        23) libs/elpa/2021.11.002_intel22
+	  6) oclfpga/latest                            24) libs/elsi/2.9.1_intel22
+	  7) compiler/latest                           25) libs/futile/1.8_intel22_impi22
+	  8) mpi/latest                                26) libs/atlab/1.0_intel22
+	  9) mkl/latest                                27) libs/nlopt/2.7.1_intel22
+	 10) lang/python/intelpython_3.9               28) atomistic/wannier90/3.1.0_intel22
+	 11) parallel/cuda/11.7                        29) atomistic/abinit/9.6.2_intel22_impi22
+	 12) libs/openblas/0.3.20_intel22              30) atomistic/vasp/6.2.1_intel22_impi22
+	 13) libs/libxc/5.2.3_intel22                  31) atomistic/octopus/11.4_intel22_impi22
+	 14) libs/hdf5/1.12.2_intel22                  32) atomistic/espresso/7.0_intel22_impi22
+	 15) libs/hdf5/1.12.2_intel22_impi22           33) atomistic/elk/8.4.6_intel22_impi22
+	 16) libs/netcdf/4.8.1_intel22_impi22          34) atomistic/siesta/4.1.5_intel22_impi22
+	 17) libs/netcdf/fortran-4.5.4_intel22_impi22  35) dft_intel22
+	 18) libs/fftw/3.3.10_intel22_impi22
+
+Uncompress the sources::
+
+	$> tar -zxvf qe-7.0-ReleasePack.tgz 
+	$> cd qe-7.0
+
+Configure the sources to use HDF5, libXC and FFTW 3::
+
+    $> ./configure CC=mpiicc CXX=mpiicpc FC=mpiifort --with-hdf5 --with-libxc --enable-parallel \
+    --prefix=/shared/software/atomistic/espresso/7.0_intel22_impi22 LDFLAGS="-L${MD_FFTW}/lib -lfftw3"
+
+Build the binaries::
+	
+	$> make all
+	$> make install
+
 ELK
 ---
 
-ELK 8.3.22 on Spruce
-~~~~~~~~~~~~~~~~~~~~
+ELK 8.8.26 on Thorny Flat using Intel compilers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Sources::
+
+    wget "https://downloads.sourceforge.net/project/elk/elk-8.8.26.tgz?ts=gAAAAABkflN5svkw2PK8pODBTbPUQoL6dgtGrRRQq_ukUoq_cyw5hTsTlj35MVjayWSunyDkpRLz7l-hOlhMn8sBhoPOaN-GMA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Felk%2Ffiles%2Flatest%2Fdownload" --no-check-certificate -O elk-8.8.26.tgz
+
+Uncompress sources::
+
+    $> tar -zxvf elk-8.8.26.tgz
+    $> cd elk-8.8.26
 
 Modules used::
 
-	$> module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 lang/python/cpython_3.10.2_gcc103 \
-	atomistic/wannier90/3.1.0_gcc103 libs/fftw/3.3.10_gcc103 parallel/openmpi/4.0.7_gcc103	\
-	libs/libxc/5.2.2_gcc103
+	$> module load dft_intel22
 
-The file ``make.inc``::
+Copy the file for intel DFTI (Intel implementation of FFT)::
+
+    $> cp /shared/software/intel/toolkit/mkl/2023.1.0/include/mkl_dfti.f90 src
+
+
+Edit the file ``make.inc`` as follows::
 
 	MAKE = make
-	F90 = gfortran
-	F90_OPTS = -O3 -ffast-math -funroll-loops -fopenmp -fallow-argument-mismatch
-	F77 = gfortran
-	F77_OPTS = -O3 -ffast-math -funroll-loops -fopenmp -fallow-argument-mismatch
 	AR = ar
-	LIB_SYS =    
-	# LAPACK and BLAS libraries  
-	LIB_LPK = ${MD_OPENBLAS}/lib/libopenblas.a    
-	LIB_FFT = fftlib.a
-	SRC_OMP =
-																			  
+
+
+	# Elk requires BLAS/LAPACK and fast Fourier transform (FFT) libraries.
+
+	# We recommend using optimised, mutithreaded BLAS/LAPACK libaries such as those
+	# provided by the Intel Math Kernel Library (MKL), OpenBLAS or BLIS.
+
+	# Elk can use either the Fastest Fourier Transform in the West (FFTW) or the
+	# MKL FFT. Both single and double precision versions of the FFT are needed.
+
+
+
+	#------------------------------------------------------------------------------#
+	#                                  Libraries                                   #
+	#------------------------------------------------------------------------------#
+
 	#-------------------------------------------------------------------------------
-	SRC_MPI = mpi_stub.f90          
-	# To enable MPI parallelism the MPI version of the Fortran compiler must be
-	# used. This is usually mpif90 or mpiifort. Uncomment the following lines and   
-	# run 'make clean' followed by 'make'.
-	F90 = mpif90 
-	F77 = mpif90 
-	SRC_MPI =
-	#-------------------------------------------------------------------------------
-										 
-	#-------------------------------------------------------------------------------
-	SRC_MKL = mkl_stub.f90 
-	# To enable MKL parallelism, link with the MKL library then uncomment the      
-	# following line and run 'make clean' followed by 'make'.
-	#SRC_MKL =   
+	SRC_MKL = mkl_stub.f90
+	# To enable MKL multithreaded parallelism, uncomment the following line and link
+	# with the MKL library.
+	SRC_MKL =
 	#-------------------------------------------------------------------------------
 
 	#-------------------------------------------------------------------------------
 	SRC_OBLAS = oblas_stub.f90
-	# To enable OpenBLAS parallelism, link with the OpenBLAS library then uncomment
-	# the following line and run 'make clean' followed by 'make'.    
-	SRC_OBLAS = ${MD_OPENBLAS}/lib/libopenblas.a
+	# To enable OpenBLAS multithreaded parallelism, uncomment the following line and
+	# link with the OpenBLAS library.
+	#SRC_OBLAS =
 	#-------------------------------------------------------------------------------
 
 	#-------------------------------------------------------------------------------
 	SRC_BLIS = blis_stub.f90
-	# To enable BLIS parallelism, link with the BLIS library then uncomment the
-	# following line and run 'make clean' followed by 'make'.
+	# To enable BLIS multithreaded parallelism, uncomment the following line and
+	# link with the BLIS library.
 	#SRC_BLIS =
 	#-------------------------------------------------------------------------------
 
 	#-------------------------------------------------------------------------------
-	SRC_libxc = libxcifc_stub.f90
-	# To enable Libxc first download and compile version 5.x of the library. Next
-	# copy the files libxcf90.a and libxc.a to the elk/src directory. Then uncomment
-	# the following lines and run 'make clean' followed by 'make'.
-	LIB_libxc = ${MD_LIBXC}/lib/libxcf90.a ${MD_LIBXC}/lib/libxc.a
-	SRC_libxc = libxcf90.f90 libxcifc.f90 
+	# If your compiler does *not* support the Message Passing Interface (MPI) then
+	# uncomment the line below.
+	#SRC_MPI = mpi_stub.f90
 	#-------------------------------------------------------------------------------
 
 	#-------------------------------------------------------------------------------
-	SRC_FFT = zfftifc.f90
-	# To use a different FFT library, copy the relevant library or include files to
-	# the elk/src directory (eg. mkl_dfti.f90), uncomment the appropriate lines
-	# below and run 'make clean' followed by 'make'.
-	SRC_FFT = zfftifc_fftw.f90
-	#LIB_FFT = libfftw3.a
-	LIB_FFT = ${MD_FFTW}/lib/libfftw3.a
-	#SRC_FFT = mkl_dfti.f90 zfftifc_mkl.f90
+	# Elk supports two FFT libraries:
+	#   Fastest Fourier Transform in the West (FFTW)
+	#   Intel Math Kernel Library (MKL) Fast Fourier Transform
+	#
+	# FFTW is enabled by default with:
+	SRC_FFT = zfftifc_fftw.f90 cfftifc_fftw.f90
+	#
+	# To enable MKL FFT instead, copy mkl_dfti.f90 to the elk/src directory and
+	# uncomment the line below.
+	SRC_FFT = mkl_dfti.f90 zfftifc_mkl.f90 cfftifc_mkl.f90
+	#-------------------------------------------------------------------------------
+
+	#-------------------------------------------------------------------------------
+	SRC_LIBXC = libxcifc_stub.f90
+	# To enable Libxc first download and compile version 6.x of the library. Next
+	# copy the files libxcf90.a and libxc.a to the elk/src directory and uncomment
+	# the following lines.
+	LIB_LIBXC = ${MD_LIBXC}/lib/libxcf90.a ${MD_LIBXC}/lib/libxc.a
+	SRC_LIBXC = libxcf90.f90 libxcifc.f90
 	#-------------------------------------------------------------------------------
 
 	#-------------------------------------------------------------------------------
 	SRC_W90S = w90_stub.f90
-	# To enable the Wannier90 library copy libwannier.a to the elk/src directory.
-	# Then uncomment the following lines and run 'make clean' followed by 'make'.
+	# To enable the Wannier90 library copy libwannier.a to the elk/src directory and
+	# uncomment the following lines.
 	SRC_W90S =
+	LIB_W90 = libwannier.a
 	LIB_W90 = ${MD_WANNIER90}/lib/libwannier.a
 	#-------------------------------------------------------------------------------
+
+
+	#------------------------------------------------------------------------------#
+	#                                  Compilers                                   #
+	#------------------------------------------------------------------------------#
+
+	#-------------------------------------------------------------------------------
+	# Intel MPI Fortran version 18 and later.
+	F90 = mpiifort
+	F90_OPTS = -O3 -xHost -ipo -qopenmp -qmkl=parallel
+	F90_LIB = -liomp5 -lpthread -lm -ldl
+	SRC_MKL =
+	AR = xiar
+	#-------------------------------------------------------------------------------
+
+	#-------------------------------------------------------------------------------
+	# GNU Fortran compiler with MKL.
+	#F90 = mpif90
+	#F90_OPTS = -Ofast -march=native -mtune=native -fomit-frame-pointer -fopenmp -ffpe-summary=none -fallow-argument-mismatch
+	#F90_LIB = -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lpthread
+	#SRC_MKL =
+	#-------------------------------------------------------------------------------
+
+	#-------------------------------------------------------------------------------
+	# GNU Fortran compiler with BLIS, libflame and FFTW
+	#F90 = mpif90
+	#F90_OPTS = -Ofast -march=native -mtune=native -fomit-frame-pointer -fopenmp -ffpe-summary=none -fallow-argument-mismatch
+	#F90_LIB = -lblis -lflame -lfftw3 -lfftw3f
+	#SRC_BLIS =
+	#-------------------------------------------------------------------------------
+
+	#-------------------------------------------------------------------------------
+	# GNU Fortran compiler with OpenBLAS, LAPACK and FFTW
+	#F90 = mpif90
+	#F90_OPTS = -Ofast -march=native -mtune=native -fomit-frame-pointer -fopenmp -ffpe-summary=none -fallow-argument-mismatch
+	#F90_LIB = -lopenblas -llapack -lfftw3 -lfftw3f
+	#SRC_OBLAS =
+	#-------------------------------------------------------------------------------
+
+	#-------------------------------------------------------------------------------
+	# Intel Fortran with profiling options.
+	#F90 = mpiifort
+	#F90_OPTS = -O3 -qopenmp -mkl=parallel -pg
+	#F90_LIB = -liomp5 -lpthread -lm -ldl
+	#SRC_MKL =
+	#AR = ar
+	#-------------------------------------------------------------------------------
+
+	#-------------------------------------------------------------------------------
+	# GNU Fortran debugging options.
+	#F90 = gfortran
+	#F90_OPTS = -O3 -Wunused -fopenmp
+	#F90_LIB = -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lpthread
+	#SRC_MKL =
+	#SRC_MPI = mpi_stub.f90
+	#-------------------------------------------------------------------------------
+
 
 Execute ``make`` to compile the codes::
 
@@ -1231,8 +1251,127 @@ Execute ``make`` to compile the codes::
 
 Installation folder is manually created and the binaries are copied there::
 
-    $> mkdir -p /shared/software/atomistic/elk/8.3.22_gcc103/bin
-    $> rsync -av src/eos/eos src/spacegroup/spacegroup src/protex src/elk src/rmspaces src/vimelk /shared/software/atomistic/elk/8.3.22_gcc103/bin
-    $> rsync -av species /shared/software/atomistic/elk/8.3.22_gcc103
+    $> ELK_PREFIX=/shared/software/atomistic/elk/8.8.26_intel22_impi22
+    $> mkdir -p ${ELK_PREFIX}/bin
+    $> rsync -av src/eos/eos src/spacegroup/spacegroup src/protex src/elk src/rmspaces src/vimelk ${ELK_PREFIX}/bin
+    $> rsync -av species ${ELK_PREFIX}
+
+Run the tests::
+
+    $> cd tests
+    $> ./test-mpi.sh 
+
+
+Siesta
+------
+
+Siesta 4.1.5 on Thorny flat using Intel compilers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Siesta is a electronic structure code using linear scaling algorithms.
+The version compiled was 4.1.5. The code was compiled with Intel compilers 2023
+
+Download the sources and uncompress them::
+
+	$> tar -zxvf siesta-4.1.5.tar.gz 
+	$> cd siesta-4.1.5
+ 	$> mkdir Obj_Intel
+	$> cd Obj_Intel
+ 	$> ../Src/obj_setup.sh 
+
+To compile the code a `arch.make` needs to be created. The contents of the file
+can be copied from `Src/intel.make` with following changes::
+
+	#                           
+	# Copyright (C) 1996-2016       The SIESTA group
+	#  This file is distributed under the terms of the                                                                     
+	#  GNU General Public License: see COPYING in the top directory
+	#  or http://www.gnu.org/copyleft/gpl.txt.                                                                             
+	# See Docs/Contributors.txt for a list of contributors.                                                                
+	#        
+	#-------------------------------------------------------------------
+	# arch.make file for gfortran compiler.                                                                                
+	# To use this arch.make file you should rename it to
+	#   arch.make                                                                                                          
+	# or make a sym-link.
+	# For an explanation of the flags see DOCUMENTED-TEMPLATE.make
+															   
+	.SUFFIXES:
+	.SUFFIXES: .f .F .o .c .a .f90 .F90                                                                                    
+															   
+	SIESTA_ARCH = Intel_2023.1                                                                                             
+															   
+	CC = icc                                                                                                               
+	FPP = $(FC) -E -P
+	FC = mpiifort                                                                                                          
+	FC_SERIAL = ifort
+															   
+	FFLAGS = -O2 -g3 -traceback -fPIC -fp-model source -heap-arrays 1
+
+	AR = ar
+	RANLIB = ranlib
+
+	SYS = nag
+
+	SP_KIND = 4
+	DP_KIND = 8
+	KINDS = $(SP_KIND) $(DP_KIND)
+
+	LDFLAGS =
+
+	#COMP_LIBS = libsiestaLAPACK.a libsiestaBLAS.a
+
+	MPI_INTERFACE = libmpi_f90.a
+	MPI_INCLUDE = .
+
+	FPPFLAGS = $(DEFS_PREFIX)-DFC_HAVE_ABORT -DMPI
+
+	XMLF90_ROOT=/shared/software/libs/xmlf90/1.5.5_intel21
+	XMLF90_LIBS=-L$(XMLF90_ROOT)/lib -lxmlf90
+	#PSML_ROOT=/shared/software/libs/psml/1.1.10_intel21
+	#PSML_LIBS=-L$(PSML_ROOT)/lib -lpsml
+	#GRIDXC_ROOT=/shared/software/libs/libgridxc/0.9.6_intel21
+	#GRIDXC_INCFLAGS=-I $(GRIDXC_ROOT)/include/gridxc
+	#GRIDXC_LIBS=-L$(GRIDXC_ROOT)/lib -lgridxc
+
+	MKL_PATH        = $(MKLROOT)/lib/intel64
+	BLAS_LIBS       = -qmkl=sequential -static-intel
+	LAPACK_LIBS     = $(BLAS_LIBS)
+	BLACS_LIBS      = -lmkl_blacs_intelmpi_lp64
+	SCALAPACK_LIBS  = $(MKL_PATH)/libmkl_scalapack_lp64.a $(BLACS_LIBS)
+
+	LIBS = $(NETCDF_LIBS) $(SCALAPACK_LIBS) $(LAPACK_LIBS) $(MPI_LIBS) $(COMP_LIBS) $(GRIDXC_LIBS) $(PSML_LIBS) $(XMLF90_LIBS)
+
+	# Dependency rules ---------
+
+	FFLAGS_DEBUG = -O0 -g3 -traceback -fPIC -check all -fp-model source -heap-arrays 1 # your appropriate flags here...
+
+	# The atom.f code is very vulnerable. Particularly the Intel compiler
+	# will make an erroneous compilation of atom.f with high optimization
+	# levels.
+	atom.o: atom.F
+			$(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+	state_analysis.o: state_analysis.F
+			$(FC) -c $(FFLAGS_DEBUG) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F) $<
+
+	.c.o:
+			$(CC) -c $(CFLAGS) $(INCFLAGS) $(CPPFLAGS) $<
+	.F.o:
+			$(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_fixed_F)  $<
+	.F90.o:
+			$(FC) -c $(FFLAGS) $(INCFLAGS) $(FPPFLAGS) $(FPPFLAGS_free_F90) $<
+	.f.o:
+			$(FC) -c $(FFLAGS) $(INCFLAGS) $(FCFLAGS_fixed_f)  $<
+	.f90.o:
+			$(FC) -c $(FFLAGS) $(INCFLAGS) $(FCFLAGS_free_f90)  $<
+
+Compile the code::
+	
+	$> make
+
+Finally, copy the resulting binary `siesta` to the folder in `software/atomistic`::
+
+	$> mkdir -p /shared/software/atomistic/siesta/4.1.5_intel22_impi22/bin
+	$> cp siesta /shared/software/atomistic/siesta/4.1.5_intel22_impi22/bin
 
 

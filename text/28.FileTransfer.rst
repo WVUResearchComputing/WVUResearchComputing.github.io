@@ -3,53 +3,138 @@
 File Transfer (Globus)
 ======================
 
-Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:
-
-* DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN's are connected to `WVU's Science DMZ network <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782>`__ which is a dedicated network to science/research data across campus.
-* Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.
-
-WVU's recommended method for transferring data is `Globus Online <https://www.globus.org/>`__.  The other supported method is sftp.
-
-Data Transfer Nodes
--------------------
-
-Research Computing offers dedicated servers for transferring files at each one of its supported systems/locations (i.e. Spruce Knob, Thorny Flat, and the Data Depot).  The following table describes the services available at each location as well as the associated Globus Endpoint Name or sftp Hostname.
-
-+-----------------+------------------+----------------------+----------------------------+--------------------+
-|                 | Spruce Knob      | Thorny Flat          | Data Depot                 | MIX Google Drive   |
-+=================+==================+======================+============================+====================+
-| Globus Endpoint | wvu#hpcdtn       | wvu#thornydtn        | wvu#datadepot              | wvu#GoogleDrive    |
-+-----------------+------------------+----------------------+----------------------------+--------------------+
-| sftp Hostname   | data.hpc.wvu.edu | tf-data.hpc.wvu.edu  | datadepot-sftp.hpc.wvu.edu | NA                 |
-+-----------------+------------------+----------------------+----------------------------+--------------------+
-
 Using Globus Online
 -------------------
 
-Globus Online is the preferred method for transferring files to, from, and between Research Computing Resources.  WVU is also a `Globus Subscriber <https://www.globus.org/subscriptions>`__ which provides additional services over the basic/free subscription.   Globus Online offers the following advantages over traditional transfer methods (i.e. scp, sftp, rsync):
+Copying files and folders in and out of an HPC cluster is a routine task for HPC users. Users need to move input data to the cluster before this data can be processed. The results will be moved out of the cluster in form of files and folders containing text, figures, tables or some other data. The amount of data could be as small as a simple text file with a few lines or as big as a large binary file or several folders summing Giga Bytes of data. 
 
-* Auto performance tuning to ensure the data is transferred as quickly as possible.  One can expect a speedup of at least 2x over traditional transfer methods.
-* Safe transfers by ensuring data integrity using checksum methods.
-* Transfers are automatically restarted after a failed or stopped connection.
-* Ability to only transfer files that have yet to be transferred (similar to rsync).
-* Transfers are done in the background so users do not need to remain logged into the system.
+There are several ways of moving data in and out of our HPC clusters.
+In this section, we will focus on the simplest, most effective way of moving data from/to the clusters regardless of the size or number of items to be transferred.
 
-WVU's Globus Subscription adds the following features:
+Globus Online is the preferred method for transferring files to, from, and between HPC clusters.  
+There are several advantages to using Globus compared to other methods that will be covered on :ref:`File Transfer Section <bs-file-transfer>`:
+We can summarize the advantages as:
 
-* Ability to archive/transfer data with unlimited storage to user's `Google Drive MIX Account <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868>`__.
-* Sharing of data with others inside and outside the university.
-* Sharing of data from personal workstations via `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`__.
+* ° Globus works from a web browser, not need to learn commands for a terminal.
+* ° Transfers are done in the background so users do not need to keep the browser open. The transfer happens behind the curtains.
+* ° Auto performance tuning to ensure the data is transferred as quickly as possible. One can expect a speedup of at least 2x over traditional transfer methods.
+* ° Transfers can work in parallel, and data could be encrypted during transfer.
+* ° The integrity of the transfer can be ensured via checksum methods (Hashes).
+* ° Transfers are automatically restarted after a failed or stopped connection.
+* ° Ability to only transfer files that have yet to be transferred (similar to rsync).
 
-**Review** https://www.globus.org/researchers/getting-started for a step by step guide on use Globus Online.
+In addition to all these advantages, WVU is also a `Globus Subscriber <https://www.globus.org/subscriptions>`__ which provides additional services over the basic/free subscription. WVU's Globus Subscription adds the following features:
 
-For more details, including writen instructions, please visit this `page <https://docs.hpc.wvu.edu/text/33.GlobusOnline.html>`__
+#.  Ability to archive/transfer data with unlimited storage to user's `Google Drive MIX Account <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868>`__.
+#.  Sharing of data with others inside and outside the university.
+#.  Sharing of data from personal workstations via `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`__.
 
-Note: For a video on how to utilize Globus Online with Google Drive, please see https://www.youtube.com/watch?v=tDdVsNVK3ko&feature=youtu.be.
+Understanding Globus
+--------------------
 
-Alternative Transfer Methods
-----------------------------
+Globus works by properly connecting data storage locations such as your data on one of our HPC clusters with some other data storage locations.
+Those storage locations are called "endpoints"
+Your own computer could be also an "endpoint". To become an endpoint your computer needs to run an small application called "Globus Connect Personal".
+This is the software that will run behind curtains and execute the transfer tasks between your computer and a remote endpoint such as the HPC cluster.
 
-To transfer files to Research Computing systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found `here <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server>`__.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:
+Once a storage defined as an endpoint, it will be available for authorized users to transfer files to or from this endpoint. You can install multiple personal endpoints on several of your computers and transfer from the HPC cluster to your desktop computer initiating the transfer from your laptop.
 
-* https://winscp.net/eng/index.php
-* https://filezilla-project.org/
+The following instructions will take step by step into the process of connecting your HPC account with Globus and installing the personal endpoint on your computer.
+
+Connecting to the Globus Web App
+--------------------------------
+
+To be able to move data in and out the HPC cluster to your own computer, there are two tasks to be completed. 
+Link Globus to your personal WVU account so you can access the end points to our clusters and download and install "Globus Connect Personal" which is a small piece of software that will transfor your own computer into an endpoint where you can interchange data with the HPC cluster.
+
+The steps are very simple all from your web browser and after a few minutes you will have setup the end points and will be able to tranfer files. 
+The first step is to connect `Globus Homepage <https://www.globus.org>`__ by clicking on the link or by directly typing `www.globus.org` on your web browser.
+
+Once the initial page of globus is displayed, clic on the top right corner over **Log in**
+
+.. image:: /_static/Globus-intro1.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 1)
+
+
+You will be redirected to a page indicating to log in to use the **Globus Web App**.
+On the field **Use your existing organizational login**. Go to the text field and start typing "West Virginia University" until you can see the name and select it.
+Clic on the **Continue** button.
+
+.. image:: /_static/Globus-intro2.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 2)
+
+
+After clicking on **Continue**, you are redirected to WVU Single Sign-On.
+There you need to provide your username and password and after you authenticate using your duo passcode or via a push on your DUO phone app. 
+
+.. image:: /_static/Globus-intro3.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 3)
+
+
+Once you are authenticated you end on the **Globus File Manager**. There are several options on your left and three ways of showing panels on the top right.
+
+.. image:: /_static/Globus-intro4.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 4)
+
+
+In the field called **Collection**, search for **wvu#thornydtn**. It shows as `Managed: GCSv4 Host`.
+This is the name of the endpoint connecting to the files in the HPC Cluster Thorny Flat.
+
+
+.. image:: /_static/Globus-intro5.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 5)
+
+
+Selecting **wvu#thornydtn** will show you two folders `scratch` and `users`. They correspont to the two location where you can store data on Thorny Flat. 
+From one side is `users` where there is your ``$HOME`` folder. 
+On Thorny Flat you have a data quota of 10GB of data storage.
+The other folder is `scratch` pointing to your ``$SCRATCH`` folder where you can store upto 20TB of data.
+
+The next step is to install **Globus Connect Personal**. The application to convert your own computer into a endpoint. Click on **Collections** on the left side bar
+
+.. image:: /_static/Globus-intro6.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 6)
+
+
+On the top right corner you will see a link to **Get Globus Connect Personal**.
+Click there to go to the Download page for the software.
+
+.. image:: /_static/Globus-intro7.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 7)
+
+
+Click on **Download Globus Connect Personal**.
+The page is programmed to detect your operating system. If the installer that you want is for a different operating system click on **Show me other supported operating systems**
+
+.. image:: /_static/Globus-intro8.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 8)
+
+
+Globus Connect Personal is available on macOS, Windows, and Linux. 
+
+.. image:: /_static/Globus-intro9.jpg
+ :width: 600
+ :alt: Globus Introduction (figure 9)
+
+The installation procedure varies for each Operating System.
+In the case of a Mac, the package is a dmg, once the dmg is opened and the app is dragged to the *Applications* folder.
+
+.. image:: /_static/Globus_Personal_Connect_macOS.png 
+ :width: 400
+ :alt: Globus Connect Personal installation on macOS
+
+Other methods of data transfer
+------------------------------
+
+Globus is not the only way for transferring files between your computer and the HPC cluster.
+Other methods include using a Data Transfer Node (DTN) or transferring files using Open On-Demand File Manager. Those methods have limitations and will be covered in the :ref:`File Transfer Section <bs-file-transfer>`: 
+
+

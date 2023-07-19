@@ -1,0 +1,224 @@
+.. _int-training:
+
+Training
+========
+
+Previous Workshops and Lessons
+------------------------------
+
+Workshops are sets of Lessons. Here is a list of Wokrshops and Lessons. Some workshops contain the same Lessons but for most part they are independent
+
+Summer Workshop 2016 
+~~~~~~~~~~~~~~~~~~~~
+
+The Workshop:
+
+ * `Summer Workshop 2016 <http://wvuhpc.github.io/2016_HPC_Summer_Workshop>`_
+
+Lessons:
+
+ * `Big Data with HPC (2016)  <https://wvuhpc.github.io/2016-bigDatai>`_
+
+ * `Building software on HPC (2016) <https://wvuhpc.github.io/2016-build-software>`_
+
+ * `Working with Remote Systems <https://wvuhpc.github.io/2016-remote-systems>`_
+
+ * `Submitting Jobs to HPC systems <https://wvuhpc.github.io/2016-submitjobs-HPC>`_
+
+ * `Using workflows on HPC systems <https://wvuhpc.github.io/2016-workflows-HPC>`_
+
+Summer Workshop 2017
+~~~~~~~~~~~~~~~~~~~~
+
+The Workshop:
+
+ * `Summer Workshop 2017 <https://wvuhpc.github.io/2017_Summer_Workshop>`_
+
+Lessons: 
+
+ * `Logging to Spruce, text editors and modules <https://wvuhpc.github.io/2017-Lesson_1>`_
+
+ * `Bash and Python Scripting <https://wvuhpc.github.io/2017-Lesson_2>`_
+
+ * `Programming in C and Fortran, Parallel Programming in OpenMP and MPI <https://wvuhpc.github.io/2017-Lesson_3>`_
+
+Summer Workshop 2018
+~~~~~~~~~~~~~~~~~~~~
+
+The Workshop:
+
+ * `Summer Workshop 2018 <https://wvuhpc.github.io/2018_Summer_Workshop>`_
+
+Lessons:
+
+ * `Using an HPC cluster <https://wvuhpc.github.io/2018-Lesson_1>`_
+
+ * `Languages for Scientific Computing <https://wvuhpc.github.io/2018-Lesson_2>`_
+
+ * `Data Processing <https://wvuhpc.github.io/2018-Lesson_3>`_
+
+ * `Parallel Programming <https://wvuhpc.github.io/2018-Lesson_4>`_
+
+
+Summer Workshop 2019
+~~~~~~~~~~~~~~~~~~~~
+
+Lessons:
+
+ * `Introduction to High-Performance Computing <https://wvuhpc.github.io/2019-Intro-HPC>`_
+
+ * `Python Programming for HPC <https://wvuhpc.github.io/2019-Python>`_
+
+ * `Introduction to Machine Learning with Python <https://wvuhpc.github.io/2019-Machine-Learning>`_
+
+
+Summer Workshop 2020
+~~~~~~~~~~~~~~~~~~~~
+
+Lessons:
+
+ * `Advanced Topics in High-Performance Computing <https://wvuhpc.github.io/Advanced-Topics-HPC>`_
+
+ * `GPU Parallel Computing <https://wvuhpc.github.io/GPU_Parallel_Computing>`_
+
+ * `Interactive Scientific Computing <https://wvuhpc.github.io/Interactive-Scientific-Computing>`_
+
+Summer Workshops 2021
+~~~~~~~~~~~~~~~~~~~~~
+
+ * `Introduction to High-Performance Computing (Workshop) <https://wvuhpc.github.io/Introduction_HPC>`_
+
+ * `Introduction to High-Performance Computing (4-day Lesson) <https://wvuhpc.github.io/Introduction-HPC>`_
+
+ * `Modern Fortran (Workshop) <https://wvuhpc.github.io/Modern_Fortran>`_
+
+ * `Modern Fortran (4-day Lesson) <https://wvuhpc.github.io/Modern-Fortran>`_
+
+Mini workshops
+~~~~~~~~~~~~~~
+
+ * `Molecular Dynamics <https://wvuhpc.github.io/Molecular-Dynamics>`_
+
+ * `Tutorial on using R on an HPC cluster <https://wvuhpc.github.io/tutorials>`_
+
+
+Youtube Videos
+--------------
+
+Introduction to HPC
+~~~~~~~~~~~~~~~~~~~
+
+ * `Introduction to HPC Day 1 <https://youtu.be/aF-l-BilFJw>`_
+
+ * `Introduction to HPC Day 2 <https://youtu.be/FTNa8yxrbXU>`_
+
+ * `Introduction to HPC Day 3 <https://youtu.be/QsywsJQd8hI>`_
+
+ * `Introduction to HPC Day 4 <https://youtu.be/QsywsJQd8hI>`_
+
+Deep Learning
+~~~~~~~~~~~~~
+
+ * `Deep Learning Day 1 <https://youtu.be/Fz_u1kS38y0>`_
+
+ * `Deep Learning Day 2 <https://youtu.be/RgbwXfv3EuE>`_
+
+ * `Deep Learning Day 3 <https://youtu.be/Sp_aswQaBy4>`_
+
+Modern Fortran
+~~~~~~~~~~~~~~
+
+ * `Modern Fortran Day 1 <https://youtu.be/tf1Jo8LxtfU>`_
+
+ * `Modern Fortran Day 2 <https://youtu.be/-7-nMz_ztBo>`_
+
+ * `Modern Fortran Day 3 <https://youtu.be/r5BihCjavls>`_
+
+ * `Modern Fortran Day 4 <https://youtu.be/Ug0F6ol_S7c>`_
+
+2018 Summer Workshop
+~~~~~~~~~~~~~~~~~~~~
+
+ * `2018 Summer Workshop Day 1 <https://youtu.be/ExQ0Fr3GMNk>`_
+
+ * `2018 Summer Workshop Day 2 <https://youtu.be/3ygpoxxVzpo>`_
+
+ * `2018 Summer Workshop Day 3 <https://youtu.be/Qh7I6DbvZ14>`_
+
+ * `2018 Summer Workshop Day 4 <https://youtu.be/SBVFMkO-jGY>`_
+
+2019 Summer Workshop
+~~~~~~~~~~~~~~~~~~~~
+
+ * `2019 Summer Workshop Day 1 Session 1 <https://youtu.be/XO9ivm5nykc>`_
+
+ * `2019 Summer Workshop Day 1 Session 2 <https://youtu.be/EhbjdLxD54s>`_
+
+ * `2019 Summer Workshop Day 1 Session 3 <https://youtu.be/ahfhHi6jdg0>`_
+
+ * `2019 Summer Workshop Day 2 Session 1 <https://youtu.be/7R2PaWY-XEI>`_
+
+ * `2019 Summer Workshop Day 2 Session 2 <https://youtu.be/oF9AScIfD7w>`_
+
+ * `2019 Summer Workshop Day 2 Session 3 <https://youtu.be/_QNFlZwJhZQ>`_
+
+
+Big Data with Spark
+~~~~~~~~~~~~~~~~~~~
+
+ * `Big Data with Spark Day 1 <https://youtu.be/tT1BWKGD7EE>`_
+
+ * `Big Data with Spark Day 2 <https://youtu.be/IWMcg1fertg>`_
+
+ * `Big Data with Spark Day 3 <https://youtu.be/IWMcg1fertg>`_
+
+CUDA Programming
+~~~~~~~~~~~~~~~~
+
+ * `CUDA Programming Day 1 <https://youtu.be/9loQ08o4rQc>`_
+
+ * `CUDA Programming Day 2 <https://youtu.be/VlLR78nEiqk>`_
+
+Mini Workshops
+~~~~~~~~~~~~~~
+
+ * `Open OnDemand and Interactive Computing Workshop <https://youtu.be/3KGm5SJd6hw>`_
+
+ * `Open OnDemand Workshop (2020-09-18) <https://youtu.be/15p3fAAWdMQ>`_
+
+ * `Python in High Performance Computing Workshop (2020-10-16) <https://youtu.be/Y4vc4O5lpxc>`_
+
+ * `How to link your Globus account to your Mix/Google Drive account <https://youtu.be/tDdVsNVK3ko>`_
+
+ * `Molecular Dynamics Mini workshop <https://youtu.be/e-VGtHAXFIs>`_
+
+Globus Tutorials
+~~~~~~~~~~~~~~~~
+
+ * `Globus Tutorial: Globus Connect Personal <https://youtu.be/KRe6NVLoRNI>`_
+
+ * `Globus Tutorial: OneDrive <https://youtu.be/7KKy2nzUVug>`_
+
+ * `Globus Tutorial: Google Drive <https://youtu.be/UJ7a1dPhL9Y>`_
+
+Matlab on Thorny Flat
+~~~~~~~~~~~~~~~~~~~~~
+
+ * `Matlab on Thorny Flat <https://youtu.be/AuvSAhisqUY>`_
+
+
+Mini Tutorials
+~~~~~~~~~~~~~~
+
+ * `01 Introduction  <https://youtu.be/R59I_wjBhqA>`_
+
+ * `02 Command Line Interface <https://youtu.be/uYRNqWfhFpY>`_
+
+ * `03 Text Editors <https://youtu.be/S6Qa2raf30o>`_
+
+ * `04 tmux <https://youtu.be/f4TosumXhms>`_
+
+ * `05 Torque/Moab <https://youtu.be/xGklPgnEGEw>`_
+
+ * `06 Environment Modules <https://youtu.be/U8DnSlZtZSo>`_
+

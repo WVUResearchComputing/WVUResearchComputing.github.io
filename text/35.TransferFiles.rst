@@ -10,12 +10,15 @@ Overview
 
 For a quick start guide please visit: `Globus: How to Get Started <https://docs.globus.org/how-to/get-started/>`__.
 
-If you need further assistance beyond this documentation, please contact
-helpdesk@hpc.wvu.edu.
+
+If you need further assistance beyond this documentation, please contact `iour helpdesk <mailto://helpdesk@hpc.wvu.edu>`__.
+
+**Review** https://www.globus.org/researchers/getting-started for a step by step guide on use Globus Online.
+
+Note: For a video on how to utilize Globus Online with Google Drive, please see https://www.youtube.com/watch?v=tDdVsNVK3ko&feature=youtu.be.
 
 Transfer Data
 -------------
-
 
 Use Globus Online web browser to transfer data files between your PC/workstation and the WVU HPC systems.
 There are two dedicated servers, data transfer nodes (DTNs), that are connected to `WVU's Science DMZ (REX) <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782>`__ that allow data to be transferred with low latency and high bandwidth across WVU campus as well as to other locations around the globe.
@@ -114,3 +117,33 @@ and their member collections and are searchable by other Globus users.
   If you are not using an endpoint that starts with ``wvu\#``, before you can start sharing data using Globus, you must contact Research Computing and request that a shared endpoint be created for you.
 
 For more information on how to publish your data sets using Globus Online, visit `Globus, Data Publication User Guide <https://docs.globus.org/data-publication-user-guide/>`__.
+
+
+Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:
+
+* DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN's are connected to `WVU's Science DMZ network <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782>`__ which is a dedicated network to science/research data across campus.
+* Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.
+
+WVU's recommended method for transferring data is `Globus Online <https://www.globus.org/>`__.  The other supported method is sftp.
+
+Data Transfer Nodes
+-------------------
+
+Research Computing offers dedicated servers for transferring files at each one of its supported systems/locations (i.e. Spruce Knob, Thorny Flat, and the Data Depot).  The following table describes the services available at each location as well as the associated Globus Endpoint Name or sftp Hostname.
+
++-----------------+------------------+----------------------+----------------------------+--------------------+
+|                 | Spruce Knob      | Thorny Flat          | Data Depot                 | MIX Google Drive   |
++=================+==================+======================+============================+====================+
+| Globus Endpoint | wvu#hpcdtn       | wvu#thornydtn        | wvu#datadepot              | wvu#GoogleDrive    |
++-----------------+------------------+----------------------+----------------------------+--------------------+
+| sftp Hostname   | data.hpc.wvu.edu | tf-data.hpc.wvu.edu  | datadepot-sftp.hpc.wvu.edu | NA                 |
++-----------------+------------------+----------------------+----------------------------+--------------------+
+
+Alternative Transfer Methods
+----------------------------
+
+To transfer files to Research Computing systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found `here <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server>`__.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:
+
+* https://winscp.net/eng/index.php
+* https://filezilla-project.org/
+
