@@ -47,8 +47,8 @@ The table below shows our portafolio of HPC resources (past and present):
    |                        |                  |                  |                    | | Chambers College of Business and Economics.                 |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Dolly Sods**       |       37         |    1248          | | 155 NVIDIA GPUs  | | GPU Accelerated HPC Cluster.                                |
-   | | (to be installed     |                  |                  | | A30 (120)        | | To be provisioned in Spring 2023.                           |
-   | |  spring 2023)        |                  |                  | | A40 (19)         |                                                               |
+   | | (to be installed     |                  |                  | | A30 (120)        | | To be provisioned in August 2023.                           |
+   | |  August 2023)        |                  |                  | | A40 (19)         |                                                               |
    | |                      |                  |                  | | A100 (16)        |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **WVCTSI Cluster**   |       8/8        |     320/320      | | 4 NVIDIA GPUs    | | HPC Cluster for use with                                    |

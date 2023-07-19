@@ -1,0 +1,28 @@
+Dolly Sods HPC Cluster
+======================
+
+Dolly Sods is WVU Latest HPC Cluster.
+It will be deployed in August 2023. The cluster has a total of 37 nodes. 
+The system has 155 NVIDIA GPU cards. They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
+
+.. image:: /_static/Dolly_Sods_1.jpg
+    :height: 600px
+    :width: 300 px
+    :scale: 50 %
+    :alt: Thorny Flat
+    :align: center
+
+.. image:: /_static/Dolly_Sods_2.jpg
+    :height: 600px
+    :width: 300 px
+    :scale: 50 %
+    :alt: Thorny Flat
+    :align: center
+
+.. image:: /_static/Dolly_Sods_3.jpg
+    :height: 600px
+    :width: 300 px
+    :scale: 50 %
+    :alt: Thorny Flat
+    :align: center
+

@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dolly Sods HPC Cluster &mdash; WVU-RC 2023.04.03 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Go First Data-Analytics Cluster" href="85.GoFirst.html" />
+    <link rel="prev" title="Thorny Flat Cluster" href="83.ThornyFlat.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2023.04
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUsage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="500.ScientificProgramming.html">Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="81.Mountaineer.html">Mountaineer Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html">Spruce Knob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html">Thorny Flat Cluster</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dolly Sods HPC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="85.GoFirst.html">Go First Data-Analytics Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="80.ClusterSpecific.html">Clusters Specifications</a> &raquo;</li>
+        
+      <li>Dolly Sods HPC Cluster</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/84.DollySods.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="dolly-sods-hpc-cluster">
+<h1>Dolly Sods HPC Cluster<a class="headerlink" href="#dolly-sods-hpc-cluster" title="Permalink to this headline">¶</a></h1>
+<p>Dolly Sods is WVU Latest HPC Cluster.
+It will be deployed in August 2023. The cluster has a total of 37 nodes.
+The system has 155 NVIDIA GPU cards. They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.</p>
+<a class="reference internal image-reference" href="../_images/Dolly_Sods_1.jpg"><img alt="Thorny Flat" class="align-center" src="../_images/Dolly_Sods_1.jpg" style="width: 150.0px; height: 300.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/Dolly_Sods_2.jpg"><img alt="Thorny Flat" class="align-center" src="../_images/Dolly_Sods_2.jpg" style="width: 150.0px; height: 300.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/Dolly_Sods_3.jpg"><img alt="Thorny Flat" class="align-center" src="../_images/Dolly_Sods_3.jpg" style="width: 150.0px; height: 300.0px;" /></a>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="85.GoFirst.html" class="btn btn-neutral float-right" title="Go First Data-Analytics Cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="83.ThornyFlat.html" class="btn btn-neutral float-left" title="Thorny Flat Cluster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
