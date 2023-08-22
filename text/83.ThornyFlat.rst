@@ -53,18 +53,24 @@ We ask our users to acknowledge the use of Thorny Flat in all publications that 
 Total Compute Resources
 ~~~~~~~~~~~~~~~~~~~~~~~
 
- * 6516 CPU Cores
- * 178 Compute nodes 
-   * 167 CPU-only Compute nodes 
-   * 7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards)
-   * 3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)
-   * 1 Hardware-accelerated compute node with 2 NVIDIA A100
- * 4 Management Nodes
+Aggregated numbers:
+
+#. Total number of Compute nodes: 178
+#. Total number of CPU cores: 6516
+#. Total RAM: 29.4 TB
+
+General description of compute nodes:
+
+#. 167 CPU-only Compute nodes 
+#. 7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards)
+#. 3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)
+#. 1 Hardware-accelerated compute node with 2 NVIDIA A100
+#. 4 Management Nodes
 
 Shared Interconnect
 ~~~~~~~~~~~~~~~~~~~
 
- * Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1
+All the nodes in Thorny Flat are interconnected using Intel(R) Omnipath(R) 100 Gbps with switches in a blocking ratio of 5:1
 
 Resource manager and system scheduler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
