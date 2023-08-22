@@ -22,7 +22,7 @@ Supercomputer Center and was built thanks to NSF Major Research Instrumentation
 (MRI) Grant Award #1726534
 
 Thorny Flat is a cluster of 178 compute nodes plus 4 management nodes.
-The total number of CPU cores is 6516.
+The total number of CPU cores in compute nodes is 6516.
 The distribution of CPU cores is as follows:
 140 compute nodes with a dual-socket Intel(R) Xeon(R) Gold 6138 or 6230 (40 cores per node).
 7 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (24 cores per node)
@@ -55,17 +55,17 @@ Total Compute Resources
 
 Aggregated numbers:
 
-#. Total number of Compute nodes: 178
-#. Total number of CPU cores: 6516
-#. Total RAM: 29.4 TB
+* Total number of Compute nodes: 178
+* Total number of CPU cores: 6516
+* Total RAM: 29.4 TB
 
 General description of compute nodes:
 
-#. 167 CPU-only Compute nodes 
-#. 7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards)
-#. 3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)
-#. 1 Hardware-accelerated compute node with 2 NVIDIA A100
-#. 4 Management Nodes
+* 167 CPU-only Compute nodes.
+* 7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards).
+* 3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards).
+* 1 Hardware-accelerated compute node with 2 NVIDIA A100.
+* 4 Management Nodes.
 
 Shared Interconnect
 ~~~~~~~~~~~~~~~~~~~
@@ -167,60 +167,60 @@ Thorny Flat has 11 compute nodes with hardware accelerators in the form of NVIDI
 The GPUs present on Thorny Flat are NVIDIA P6000, NVIDIA QUADRO RTX6000 and NVIDIA A100
 The following table describes the distribution of accelerators in the GPU compute nodes.
 
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| Node Name     | Description                                      | | Quadro    | | Quadro    | A100      |
-|               |                                                  | | P6000     | | RTX 6000  |           |
-+===============+==================================================+=============+=============+===========+
-| tcogq001      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
-|               | | Total RAM: 96GB                                |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tcogq002      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
-|               | | Total RAM: 96GB                                |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tcogq003      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
-|               | | Total RAM: 96GB                                |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tcogq004      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
-|               | | Total RAM: 96GB                                |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tcogq005      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
-|               | | Total RAM: 96GB                                |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tcogq006      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
-|               | | Total RAM: 96GB                                |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tbmgq001      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
-|               | | Total RAM: 96GB                                |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tbmgq100      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0           | 8           | 0         |
-|               | | Total RAM: 192GB                               |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tbegq201      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0           | 8           | 0         |
-|               | | Total RAM: 192GB                               |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tbegq202      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0           | 8           | 0         |
-|               | | Total RAM: 192GB                               |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| tbegq200      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0           | 0           | 2         |
-|               | | Total RAM: 192GB                               |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
-| TOTAL         | | CPU: 7 x 24 cores + 4 x 52 cores = 376 cores   | 21          | 24          | 2         |
-|               | | RAM: 7 x 96GB + 4 x 192GB = 1440 GB            |             |             |           |
-+---------------+--------------------------------------------------+-------------+-------------+-----------+
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| Node Name     | Description                                      | | Quadro  | | Quadro    | A100  |
+|               |                                                  | | P6000   | | RTX 6000  |       |
++===============+==================================================+===========+=============+=======+
+| tcogq001      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3         | 0           | 0     |
+|               | | Total RAM: 96GB                                |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tcogq002      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3         | 0           | 0     |
+|               | | Total RAM: 96GB                                |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tcogq003      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3         | 0           | 0     |
+|               | | Total RAM: 96GB                                |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tcogq004      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3         | 0           | 0     |
+|               | | Total RAM: 96GB                                |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tcogq005      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3         | 0           | 0     |
+|               | | Total RAM: 96GB                                |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tcogq006      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3         | 0           | 0     |
+|               | | Total RAM: 96GB                                |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tbmgq001      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3         | 0           | 0     |
+|               | | Total RAM: 96GB                                |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tbmgq100      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0         | 8           | 0     |
+|               | | Total RAM: 192GB                               |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tbegq201      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0         | 8           | 0     |
+|               | | Total RAM: 192GB                               |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tbegq202      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0         | 8           | 0     |
+|               | | Total RAM: 192GB                               |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| tbegq200      | | 2x Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz   | 0         | 0           | 2     |
+|               | | Total RAM: 192GB                               |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
+| TOTAL         | | CPU: 7 x 24 cores + 4 x 52 cores = 376 cores   | 21        | 24          | 2     |
+|               | | RAM: 7 x 96GB + 4 x 192GB = 1440 GB            |           |             |       |
++---------------+--------------------------------------------------+-----------+-------------+-------+
 
 The specifications of the three kinds of GPU cards on Thorny Flat are shown in the table below
 
-+-----------------+----------------+--------------+----------+----------------+-----------------+
-| | GPU Card      | | GPU          | | CUDA       | | Tensor | | Max Power    | | Compute       |
-| | Model         | | Memory       | | Cores      | | Cores  | | Compsumption | | Capability    |
-+=================+================+==============+==========+================+=================+
-| Quadro P6000    | 24 GB GDDR5X   | 3840         |          | 250 W          | 6.1             |
-+-----------------+----------------+--------------+----------+----------------+-----------------+
-| Quadro RTX 6000 | 24 GB GDDR6    | 4608         | 576      | 250 W          | 7.5             |
-+-----------------+----------------+--------------+----------+----------------+-----------------+
-| A100-PCIE-40GB  | 40 GB HBM2     | | 6912 FP32  | 432      | 250 W          | 8.0             |
-|                 |                | | 3456 FP64  |          |                |                 |
-+-----------------+----------------+--------------+----------+----------------+-----------------+
++-----------------+----------------+--------------+----------+----------------+---------------+
+| | GPU Card      | | GPU          | | CUDA       | | Tensor | | Max Power    | | Compute     |
+| | Model         | | Memory       | | Cores      | | Cores  | | Compsumption | | Capability  |
++=================+================+==============+==========+================+===============+
+| Quadro P6000    | 24 GB GDDR5X   | 3840         |          | 250 W          | 6.1           |
++-----------------+----------------+--------------+----------+----------------+---------------+
+| Quadro RTX 6000 | 24 GB GDDR6    | 4608         | 576      | 250 W          | 7.5           |
++-----------------+----------------+--------------+----------+----------------+---------------+
+| A100-PCIE-40GB  | 40 GB HBM2     | | 6912 FP32  | 432      | 250 W          | 8.0           |
+|                 |                | | 3456 FP64  |          |                |               |
++-----------------+----------------+--------------+----------+----------------+---------------+
 
 Full specifications for the GPU cards can be found for `Quadro P6000`_ , `Quadro RTX 6000`_ and `NVIDIA A100`_ 
 
@@ -240,6 +240,4 @@ You can see `Compute Capabilities`_ for other GPU cards.
 .. _Quadro RTX 6000:  https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/quadro-rtx-6000-us-nvidia-704093-r4-web.pdf
 .. _NVIDIA A100: https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf
 .. _Compute Capabilities: https://developer.nvidia.com/cuda-gpus
-
-
 

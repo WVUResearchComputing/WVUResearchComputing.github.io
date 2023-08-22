@@ -105,7 +105,12 @@
 <li class="toctree-l2"><a class="reference internal" href="81.Mountaineer.html">Mountaineer (2013-2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="82.Spruce.html">Spruce Knob (2018-2023)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html">Thorny Flat (2019-)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Dolly Sods (2023-)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dolly Sods (2023-)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acknowledgment-message">Acknowledgment Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-acceleration">Hardware Acceleration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="85.GoFirst.html">Go First Data-Analytics Cluster</a></li>
 </ul>
 </li>
@@ -179,12 +184,110 @@
             
   <section id="dolly-sods-2023">
 <h1>Dolly Sods (2023-)<a class="headerlink" href="#dolly-sods-2023" title="Permalink to this headline">¶</a></h1>
-<p>Dolly Sods is WVU Latest HPC Cluster.
-It will be deployed in August 2023. The cluster has a total of 37 nodes.
-The system has 155 NVIDIA GPU cards. They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.</p>
+<p>Dolly Sods is WVU latest HPC Cluster. It was deployed in July/August 2023 and was funded by <cite>NSF Major Research Instrumentation (MRI) Grant Award #2117575 &lt;https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117575&gt;</cite>.
+The cluster has a total of 37 nodes.
+The system has 155 NVIDIA GPU cards.
+They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.</p>
 <a class="reference internal image-reference" href="../_images/Dolly_Sods_1.jpg"><img alt="Thorny Flat" class="align-center" src="../_images/Dolly_Sods_1.jpg" style="width: 400.0px; height: 300.0px;" /></a>
 <a class="reference internal image-reference" href="../_images/Dolly_Sods_2.jpg"><img alt="Thorny Flat" class="align-center" src="../_images/Dolly_Sods_2.jpg" style="width: 400.0px; height: 300.0px;" /></a>
 <a class="reference internal image-reference" href="../_images/Dolly_Sods_3.jpg"><img alt="Thorny Flat" class="align-center" src="../_images/Dolly_Sods_3.jpg" style="width: 400.0px; height: 300.0px;" /></a>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>(This text can be used for proposals to Grant Funding Agencies)</p>
+<p>Dolly Sods is a hardware-accelerated High-Performance Computing (HPC) cluster. Dolly Sods serves the HPC needs for West Virginia University (WVU) and other higher education institutions in West Virginia. It is hosted in Morgantown, WV and was built thanks to NSF Major Research Instrumentation (MRI) Grant Award #2117575</p>
+<p>Thorny Flat is a cluster of 178 compute nodes plus 4 management nodes. The total number of CPU cores is 6516. The distribution of CPU cores is as follows: 140 compute nodes with a dual-socket Intel(R) Xeon(R) Gold 6138 or 6230 (40 cores per node). 7 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (24 cores per node) 27 compute nodes with dual-socket Intel(R) Xeon(R) Silver 4210 (20 cores per node). 4 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (52 cores per node). Memory on compute nodes range from 96GB to 768GB. The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1.</p>
+<p>Thorny Flat has 11 compute nodes with hardware accelerators in the form of NVIDIA GPUs. There is a total of 47 GPU cards distributed as follows: 7 compute nodes with 3 GPUs NVIDIA(R) Quadro P6000 24GB PCIe GPUs. 3 compute nodes with 8 GPUs NVIDIA(R) Quadro RTX 6000 24GB PCIe GPUs. 1 compute node with 2 GPUs NVIDIA(R) A100 40GB PCIe GPUs.</p>
+<p>Thorny Flat scored 115 TeraFLOPS using 101 CPU-only compute nodes. Score was measured from the HPL Linpack benchmark.</p>
+<p>Thorny Flat uses SLURM for workload managment and it has a variety of compilers, numerical libraries and scientific software specifically compiled and optimized for the hardware architecture.</p>
+</section>
+<section id="acknowledgment-message">
+<h2>Acknowledgment Message<a class="headerlink" href="#acknowledgment-message" title="Permalink to this headline">¶</a></h2>
+<p>We ask our users to acknowledge the use of Thorny Flat in all publications that were possible thanks to the use of this resource. The message on the acknowledgment section could be as follows:</p>
+<p>Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.</p>
+</section>
+<section id="hardware-acceleration">
+<h2>Hardware Acceleration<a class="headerlink" href="#hardware-acceleration" title="Permalink to this headline">¶</a></h2>
+<p>The specifications of the three kinds of GPU cards on Dolly Sods are shown in the table below</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 18%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line">GPU Card</div>
+<div class="line">Model</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">GPU</div>
+<div class="line">Memory</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CUDA</div>
+<div class="line">Cores</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Tensor</div>
+<div class="line">Cores</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Max Power</div>
+<div class="line">Compsumption</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Compute</div>
+<div class="line">Capability</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NVIDIA A30</p></td>
+<td><p>24 GB HBM2</p></td>
+<td><p>3804</p></td>
+<td><p>224</p></td>
+<td><p>165 W</p></td>
+<td><p>8.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>NVIDIA A40</p></td>
+<td><p>48 GB GDDR6 ECC</p></td>
+<td><p>10752</p></td>
+<td><p>336</p></td>
+<td><p>300 W</p></td>
+<td><p>8.6</p></td>
+</tr>
+<tr class="row-even"><td><p>NVIDIA A100</p></td>
+<td><p>40 GB HBM2e ECC</p></td>
+<td><div class="line-block">
+<div class="line">6912 FP32</div>
+<div class="line">3456 FP64</div>
+</div>
+</td>
+<td><p>432</p></td>
+<td><p>250 W</p></td>
+<td><p>8.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Full specifications for the GPU cards can be found for <a class="reference external" href="https://www.nvidia.com/content/dam/en-zz/Solutions/data-center/products/a30-gpu/pdf/a30-datasheet.pdf">NVIDIA A30</a> , <a class="reference external" href="https://images.nvidia.com/content/Solutions/data-center/a40/nvidia-a40-datasheet.pdf">NVIDIA A40</a> and <a class="reference external" href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf">NVIDIA A100</a></p>
+<p>The GPUs in Sods have different compute capabilities.
+The compute capability of a device is represented by a version number, also sometimes called its “SM version”.
+This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU.</p>
+<p>The compute capability comprises a major revision number X and a minor revision number Y and is denoted by X.Y.
+All the nodes in Dolly Sods have the same major revision number but different minor revision numbers.
+Devices with the same major revision number are of the same core architecture.
+The major revision number is 8 is for devices based on the NVIDIA Ampere GPU architecture.</p>
+<p>You can see <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">Compute Capabilities</a> for other GPU cards.</p>
+</section>
 </section>
 
 

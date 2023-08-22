@@ -1,9 +1,10 @@
 Dolly Sods (2023-)
 ==================
 
-Dolly Sods is WVU Latest HPC Cluster.
-It will be deployed in August 2023. The cluster has a total of 37 nodes. 
-The system has 155 NVIDIA GPU cards. They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
+Dolly Sods is WVU latest HPC Cluster. It was deployed in July/August 2023 and was funded by `NSF Major Research Instrumentation (MRI) Grant Award #2117575 <https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117575>`. 
+The cluster has a total of 37 nodes. 
+The system has 155 NVIDIA GPU cards. 
+They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
 
 .. image:: /_static/Dolly_Sods_1.jpg
     :height: 600px
@@ -27,4 +28,63 @@ The system has 155 NVIDIA GPU cards. They are distributed as 120 NVIDIA A30, 19 
     :scale: 50 %
     :alt: Thorny Flat
     :align: center
+
+Overview
+--------
+
+(This text can be used for proposals to Grant Funding Agencies)
+
+Dolly Sods is a hardware-accelerated High-Performance Computing (HPC) cluster. Dolly Sods serves the HPC needs for West Virginia University (WVU) and other higher education institutions in West Virginia. It is hosted in Morgantown, WV and was built thanks to NSF Major Research Instrumentation (MRI) Grant Award #2117575
+
+Thorny Flat is a cluster of 178 compute nodes plus 4 management nodes. The total number of CPU cores is 6516. The distribution of CPU cores is as follows: 140 compute nodes with a dual-socket Intel(R) Xeon(R) Gold 6138 or 6230 (40 cores per node). 7 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (24 cores per node) 27 compute nodes with dual-socket Intel(R) Xeon(R) Silver 4210 (20 cores per node). 4 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (52 cores per node). Memory on compute nodes range from 96GB to 768GB. The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1.
+
+Thorny Flat has 11 compute nodes with hardware accelerators in the form of NVIDIA GPUs. There is a total of 47 GPU cards distributed as follows: 7 compute nodes with 3 GPUs NVIDIA(R) Quadro P6000 24GB PCIe GPUs. 3 compute nodes with 8 GPUs NVIDIA(R) Quadro RTX 6000 24GB PCIe GPUs. 1 compute node with 2 GPUs NVIDIA(R) A100 40GB PCIe GPUs.
+
+Thorny Flat scored 115 TeraFLOPS using 101 CPU-only compute nodes. Score was measured from the HPL Linpack benchmark.
+
+Thorny Flat uses SLURM for workload managment and it has a variety of compilers, numerical libraries and scientific software specifically compiled and optimized for the hardware architecture.
+
+Acknowledgment Message
+----------------------
+
+We ask our users to acknowledge the use of Thorny Flat in all publications that were possible thanks to the use of this resource. The message on the acknowledgment section could be as follows:
+
+Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.
+
+
+Hardware Acceleration
+---------------------
+
+The specifications of the three kinds of GPU cards on Dolly Sods are shown in the table below
+
++-----------------+-----------------+--------------+----------+----------------+---------------+
+| | GPU Card      | | GPU           | | CUDA       | | Tensor | | Max Power    | | Compute     |
+| | Model         | | Memory        | | Cores      | | Cores  | | Compsumption | | Capability  |
++=================+=================+==============+==========+================+===============+
+| NVIDIA A30      | 24 GB HBM2      | 3804         | 224      | 165 W          | 8.0           |
++-----------------+-----------------+--------------+----------+----------------+---------------+
+| NVIDIA A40      | 48 GB GDDR6 ECC | 10752        | 336      | 300 W          | 8.6           |
++-----------------+-----------------+--------------+----------+----------------+---------------+
+| NVIDIA A100     | 40 GB HBM2e ECC | | 6912 FP32  | 432      | 250 W          | 8.0           |
+|                 |                 | | 3456 FP64  |          |                |               |
++-----------------+-----------------+--------------+----------+----------------+---------------+
+
+Full specifications for the GPU cards can be found for `NVIDIA A30`_ , `NVIDIA A40`_ and `NVIDIA A100`_
+
+The GPUs in Sods have different compute capabilities.
+The compute capability of a device is represented by a version number, also sometimes called its “SM version”.
+This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU.
+
+The compute capability comprises a major revision number X and a minor revision number Y and is denoted by X.Y.
+All the nodes in Dolly Sods have the same major revision number but different minor revision numbers.
+Devices with the same major revision number are of the same core architecture.
+The major revision number is 8 is for devices based on the NVIDIA Ampere GPU architecture.
+
+You can see `Compute Capabilities`_ for other GPU cards.
+
+
+.. _NVIDIA A30: https://www.nvidia.com/content/dam/en-zz/Solutions/data-center/products/a30-gpu/pdf/a30-datasheet.pdf
+.. _NVIDIA A40: https://images.nvidia.com/content/Solutions/data-center/a40/nvidia-a40-datasheet.pdf
+.. _NVIDIA A100: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf
+.. _Compute Capabilities: https://developer.nvidia.com/cuda-gpus
 
