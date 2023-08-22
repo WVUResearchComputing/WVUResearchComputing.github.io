@@ -227,7 +227,7 @@ specifically compiled and optimized for the hardware architecture.</p>
 <h3>Acknowledgment Message<a class="headerlink" href="#acknowledgment-message" title="Permalink to this headline">¶</a></h3>
 <p>We ask our users to acknowledge the use of Thorny Flat in all publications that were possible thanks to the use of this resource. The message on the acknowledgment section could be as follows:</p>
 <blockquote>
-<div><p>Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.</p>
+<div><p><em>Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.</em></p>
 </div></blockquote>
 </section>
 <section id="resource-manager-and-system-scheduler">
@@ -271,21 +271,23 @@ specifically compiled and optimized for the hardware architecture.</p>
 <col style="width: 9%" />
 <col style="width: 7%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Node Type</p></td>
-<td><p>Description</p></td>
-<td><div class="line-block">
+<thead>
+<tr class="row-odd"><th class="head"><p>Node Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><div class="line-block">
 <div class="line">Community</div>
 <div class="line">Nodes</div>
 </div>
-</td>
-<td><div class="line-block">
+</th>
+<th class="head"><div class="line-block">
 <div class="line">Condo</div>
 <div class="line">Nodes</div>
 </div>
-</td>
-<td><p>Total</p></td>
+</th>
+<th class="head"><p>Total</p></th>
 </tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p>Small Memory</p></td>
 <td><ul class="simple">
 <li><p>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</p></li>
@@ -394,32 +396,32 @@ The GPUs present on Thorny Flat are NVIDIA P6000, NVIDIA QUADRO RTX6000 and NVID
 The following table describes the distribution of accelerators in the GPU compute nodes.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 47%" />
-<col style="width: 12%" />
-<col style="width: 17%" />
-<col style="width: 10%" />
+<col style="width: 15%" />
+<col style="width: 49%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Node Name</p></td>
-<td><p>Description</p></td>
-<td><div class="line-block">
-<div class="line">NVIDIA</div>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Node Name</p></th>
+<th class="head" rowspan="2"><p>Description</p></th>
+<th class="head" colspan="3"><p>NVIDIA</p></th>
+</tr>
+<tr class="row-even"><th class="head"><div class="line-block">
+<div class="line">Quadro</div>
 <div class="line">P6000</div>
 </div>
-</td>
-<td><div class="line-block">
-<div class="line">NVIDIA</div>
-<div class="line">Quadro RTX6000</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Quadro</div>
+<div class="line">RTX 6000</div>
 </div>
-</td>
-<td><div class="line-block">
-<div class="line">NVIDIA</div>
-<div class="line">A100</div>
-</div>
-</td>
+</th>
+<th class="head"><p>A100</p></th>
 </tr>
-<tr class="row-even"><td><p>tcogq001</p></td>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>tcogq001</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -429,7 +431,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tcogq002</p></td>
+<tr class="row-even"><td><p>tcogq002</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -439,7 +441,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tcogq003</p></td>
+<tr class="row-odd"><td><p>tcogq003</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -449,7 +451,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tcogq004</p></td>
+<tr class="row-even"><td><p>tcogq004</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -459,7 +461,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tcogq005</p></td>
+<tr class="row-odd"><td><p>tcogq005</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -469,7 +471,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tcogq006</p></td>
+<tr class="row-even"><td><p>tcogq006</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -479,7 +481,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tbmgq001</p></td>
+<tr class="row-odd"><td><p>tbmgq001</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -489,7 +491,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tbmgq100</p></td>
+<tr class="row-even"><td><p>tbmgq100</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -499,7 +501,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>8</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tbegq201</p></td>
+<tr class="row-odd"><td><p>tbegq201</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -509,7 +511,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>8</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tbegq202</p></td>
+<tr class="row-even"><td><p>tbegq202</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -519,7 +521,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>8</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tbegq200</p></td>
+<tr class="row-odd"><td><p>tbegq200</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -529,7 +531,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>2</p></td>
 </tr>
-<tr class="row-odd"><td><p>TOTAL</p></td>
+<tr class="row-even"><td><p>TOTAL</p></td>
 <td><div class="line-block">
 <div class="line">CPU: 7 x 24 cores + 4 x 52 cores = 376 cores</div>
 <div class="line">RAM: 7 x 96GB + 4 x 192GB = 1440 GB</div>
@@ -544,29 +546,43 @@ The following table describes the distribution of accelerators in the GPU comput
 <p>The specifications of the three kinds of GPU cards on Thorny Flat are shown in the table below</p>
 <table class="docutils align-default">
 <colgroup>
+<col style="width: 19%" />
 <col style="width: 18%" />
-<col style="width: 17%" />
-<col style="width: 15%" />
 <col style="width: 16%" />
-<col style="width: 17%" />
+<col style="width: 11%" />
 <col style="width: 18%" />
+<col style="width: 19%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p>GPU Card</p></td>
-<td><p>GPU Memory</p></td>
-<td><p>CUDA Cores</p></td>
-<td><p>Tensor Cores</p></td>
-<td><div class="line-block">
+<thead>
+<tr class="row-odd"><th class="head"><p>GPU Card</p></th>
+<th class="head"><div class="line-block">
+<div class="line">GPU</div>
+<div class="line">Memory</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CUDA</div>
+<div class="line">Cores</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Tensor</div>
+<div class="line">Cores</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
 <div class="line">Max Power</div>
 <div class="line">Compsumption</div>
 </div>
-</td>
-<td><div class="line-block">
+</th>
+<th class="head"><div class="line-block">
 <div class="line">Compute</div>
 <div class="line">Capability</div>
 </div>
-</td>
+</th>
 </tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p>Quadro P6000</p></td>
 <td><p>24 GB GDDR5X</p></td>
 <td><p>3840</p></td>
