@@ -21,25 +21,27 @@ higher education institutions in West Virginia. It is hosted in Pittsburgh
 Supercomputer Center and was built thanks to NSF Major Research Instrumentation
 (MRI) Grant Award #1726534
 
-Thorny Flat is a cluster of 170 compute nodes plus 4 management nodes.
-101 nodes have a dual-socket motherboard with Intel(R) Xeon(R) Gold 6138
-Processors for a total of 40 cores per node.
-The remaining 7 nodes have dual socket motherboard with Intel(R) Xeon(R) Gold
-6126 Processors for a total of 24 cores per node. The total number of cores is
-4208.
-
-The 7 nodes with 24 cores also have 3 NVIDIA(R) Quadro P6000 24GB PCIe GPUs
-for a total of 21 GPU cards on the cluster.
+Thorny Flat is a cluster of 178 compute nodes plus 4 management nodes.
+The total number of CPU cores is 6516.
+The distribution of CPU cores is as follows:
+140 compute nodes with a dual-socket Intel(R) Xeon(R) Gold 6138 or 6230 (40 cores per node).
+7 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (24 cores per node)
+27 compute nodes with dual-socket Intel(R) Xeon(R) Silver 4210 (20 cores per node).
+4 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (52 cores per node).
 Memory on compute nodes range from 96GB to 768GB.
-The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps
-with a blocking ratio of 5:1.
+The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1.
 
-Thorny Flat scored 115 TeraFLOPS using jut the 101 CPU-only compute nodes.
+Thorny Flat has 11 compute nodes with hardware accelerators in the form of NVIDIA GPUs.
+There is a total of 47 GPU cards distributed as follows:
+7 compute nodes with 3 GPUs NVIDIA(R) Quadro P6000 24GB PCIe GPUs.
+3 compute nodes with 8 GPUs NVIDIA(R) Quadro RTX 6000 24GB PCIe GPUs.
+1 compute node with 2 GPUs NVIDIA(R) A100 40GB PCIe GPUs.
+
+Thorny Flat scored 115 TeraFLOPS using 101 CPU-only compute nodes.
 Score was measured from the HPL Linpack benchmark.
 
-Thorny Flat uses Torque and Moab for Resource Managment and Job Scheduling.
-It has a variety of compilers, numerical libraries and scientific software
-specifically compiled and optimized for the hardware architecture.
+Thorny Flat uses SLURM for workload managment and it has a variety of compilers, 
+numerical libraries and scientific software specifically compiled and optimized for the hardware architecture.
 
 Acknowledgment Message
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -48,26 +50,26 @@ We ask our users to acknowledge the use of Thorny Flat in all publications that 
 
     *Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.*
 
-Resource manager and system scheduler
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Thorny Flat uses SLURM as workload manager version 22.05.6. 
-
 Total Compute Resources
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* 6196 Cores
-* 159 Compute Nodes (CPU only)
-* 7 Compute nodes with 3 NVIDIA P6000 (21 GPU cards)
-* 3 Compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)
-* 1 Compute node with 2 NVIDIA A100
-* 4 Management Nodes
+ * 6516 CPU Cores
+ * 178 Compute nodes 
+   * 167 CPU-only Compute nodes 
+   * 7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards)
+   * 3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)
+   * 1 Hardware-accelerated compute node with 2 NVIDIA A100
+ * 4 Management Nodes
 
 Shared Interconnect
 ~~~~~~~~~~~~~~~~~~~
 
-* Intel Omnipath 100 Gbps
-* 5:1 Blocking
+ * Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1
+
+Resource manager and system scheduler
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Thorny Flat uses SLURM as workload manager version 22.05.6. 
 
 Hardware
 --------
@@ -160,11 +162,8 @@ The GPUs present on Thorny Flat are NVIDIA P6000, NVIDIA QUADRO RTX6000 and NVID
 The following table describes the distribution of accelerators in the GPU compute nodes.
 
 +---------------+--------------------------------------------------+-------------+-------------+-----------+
-| Node Name     | Description                                      |  NVIDIA                               |
-|               |                                                  +-------------+-------------+-----------+
-|               |                                                  | | Quadro    | | Quadro    | A100      |
+| Node Name     | Description                                      | | Quadro    | | Quadro    | A100      |
 |               |                                                  | | P6000     | | RTX 6000  |           |
-|               |                                                  |             |             |           |
 +===============+==================================================+=============+=============+===========+
 | tcogq001      | | 2x Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz    | 3           | 0           | 0         |
 |               | | Total RAM: 96GB                                |             |             |           |
@@ -206,8 +205,8 @@ The following table describes the distribution of accelerators in the GPU comput
 The specifications of the three kinds of GPU cards on Thorny Flat are shown in the table below
 
 +-----------------+----------------+--------------+----------+----------------+-----------------+
-| GPU Card        | | GPU          | | CUDA       | | Tensor | | Max Power    | | Compute       |
-|                 | | Memory       | | Cores      | | Cores  | | Compsumption | | Capability    |
+| | GPU Card      | | GPU          | | CUDA       | | Tensor | | Max Power    | | Compute       |
+| | Model         | | Memory       | | Cores      | | Cores  | | Compsumption | | Capability    |
 +=================+================+==============+==========+================+=================+
 | Quadro P6000    | 24 GB GDDR5X   | 3840         |          | 250 W          | 6.1             |
 +-----------------+----------------+--------------+----------+----------------+-----------------+

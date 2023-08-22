@@ -107,9 +107,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Thorny Flat (2019-)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#acknowledgment-message">Acknowledgment Message</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resource-manager-and-system-scheduler">Resource manager and system scheduler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#total-compute-resources">Total Compute Resources</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#shared-interconnect">Shared Interconnect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-manager-and-system-scheduler">Resource manager and system scheduler</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a><ul>
@@ -207,22 +207,24 @@ Thorny Flat serves the HPC needs for West Virginia University (WVU) and other
 higher education institutions in West Virginia. It is hosted in Pittsburgh
 Supercomputer Center and was built thanks to NSF Major Research Instrumentation
 (MRI) Grant Award #1726534</p>
-<p>Thorny Flat is a cluster of 170 compute nodes plus 4 management nodes.
-101 nodes have a dual-socket motherboard with Intel(R) Xeon(R) Gold 6138
-Processors for a total of 40 cores per node.
-The remaining 7 nodes have dual socket motherboard with Intel(R) Xeon(R) Gold
-6126 Processors for a total of 24 cores per node. The total number of cores is
-4208.</p>
-<p>The 7 nodes with 24 cores also have 3 NVIDIA(R) Quadro P6000 24GB PCIe GPUs
-for a total of 21 GPU cards on the cluster.
+<p>Thorny Flat is a cluster of 178 compute nodes plus 4 management nodes.
+The total number of CPU cores is 6516.
+The distribution of CPU cores is as follows:
+140 compute nodes with a dual-socket Intel(R) Xeon(R) Gold 6138 or 6230 (40 cores per node).
+7 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (24 cores per node)
+27 compute nodes with dual-socket Intel(R) Xeon(R) Silver 4210 (20 cores per node).
+4 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (52 cores per node).
 Memory on compute nodes range from 96GB to 768GB.
-The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps
-with a blocking ratio of 5:1.</p>
-<p>Thorny Flat scored 115 TeraFLOPS using jut the 101 CPU-only compute nodes.
+The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1.</p>
+<p>Thorny Flat has 11 compute nodes with hardware accelerators in the form of NVIDIA GPUs.
+There is a total of 47 GPU cards distributed as follows:
+7 compute nodes with 3 GPUs NVIDIA(R) Quadro P6000 24GB PCIe GPUs.
+3 compute nodes with 8 GPUs NVIDIA(R) Quadro RTX 6000 24GB PCIe GPUs.
+1 compute node with 2 GPUs NVIDIA(R) A100 40GB PCIe GPUs.</p>
+<p>Thorny Flat scored 115 TeraFLOPS using 101 CPU-only compute nodes.
 Score was measured from the HPL Linpack benchmark.</p>
-<p>Thorny Flat uses Torque and Moab for Resource Managment and Job Scheduling.
-It has a variety of compilers, numerical libraries and scientific software
-specifically compiled and optimized for the hardware architecture.</p>
+<p>Thorny Flat uses SLURM for workload managment and it has a variety of compilers,
+numerical libraries and scientific software specifically compiled and optimized for the hardware architecture.</p>
 <section id="acknowledgment-message">
 <h3>Acknowledgment Message<a class="headerlink" href="#acknowledgment-message" title="Permalink to this headline">¶</a></h3>
 <p>We ask our users to acknowledge the use of Thorny Flat in all publications that were possible thanks to the use of this resource. The message on the acknowledgment section could be as follows:</p>
@@ -230,27 +232,31 @@ specifically compiled and optimized for the hardware architecture.</p>
 <div><p><em>Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.</em></p>
 </div></blockquote>
 </section>
-<section id="resource-manager-and-system-scheduler">
-<h3>Resource manager and system scheduler<a class="headerlink" href="#resource-manager-and-system-scheduler" title="Permalink to this headline">¶</a></h3>
-<p>Thorny Flat uses SLURM as workload manager version 22.05.6.</p>
-</section>
 <section id="total-compute-resources">
 <h3>Total Compute Resources<a class="headerlink" href="#total-compute-resources" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>6196 Cores</p></li>
-<li><p>159 Compute Nodes (CPU only)</p></li>
-<li><p>7 Compute nodes with 3 NVIDIA P6000 (21 GPU cards)</p></li>
-<li><p>3 Compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)</p></li>
-<li><p>1 Compute node with 2 NVIDIA A100</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p>6516 CPU Cores</p></li>
+<li><p>178 Compute nodes
+* 167 CPU-only Compute nodes
+* 7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards)
+* 3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards)
+* 1 Hardware-accelerated compute node with 2 NVIDIA A100</p></li>
 <li><p>4 Management Nodes</p></li>
 </ul>
+</div></blockquote>
 </section>
 <section id="shared-interconnect">
 <h3>Shared Interconnect<a class="headerlink" href="#shared-interconnect" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Intel Omnipath 100 Gbps</p></li>
-<li><p>5:1 Blocking</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p>Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1</p></li>
 </ul>
+</div></blockquote>
+</section>
+<section id="resource-manager-and-system-scheduler">
+<h3>Resource manager and system scheduler<a class="headerlink" href="#resource-manager-and-system-scheduler" title="Permalink to this headline">¶</a></h3>
+<p>Thorny Flat uses SLURM as workload manager version 22.05.6.</p>
 </section>
 </section>
 <section id="hardware">
@@ -403,11 +409,9 @@ The following table describes the distribution of accelerators in the GPU comput
 <col style="width: 11%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head" rowspan="2"><p>Node Name</p></th>
-<th class="head" rowspan="2"><p>Description</p></th>
-<th class="head" colspan="3"><p>NVIDIA</p></th>
-</tr>
-<tr class="row-even"><th class="head"><div class="line-block">
+<tr class="row-odd"><th class="head"><p>Node Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><div class="line-block">
 <div class="line">Quadro</div>
 <div class="line">P6000</div>
 </div>
@@ -421,7 +425,7 @@ The following table describes the distribution of accelerators in the GPU comput
 </tr>
 </thead>
 <tbody>
-<tr class="row-odd"><td><p>tcogq001</p></td>
+<tr class="row-even"><td><p>tcogq001</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -431,7 +435,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tcogq002</p></td>
+<tr class="row-odd"><td><p>tcogq002</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -441,7 +445,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tcogq003</p></td>
+<tr class="row-even"><td><p>tcogq003</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -451,7 +455,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tcogq004</p></td>
+<tr class="row-odd"><td><p>tcogq004</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -461,7 +465,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tcogq005</p></td>
+<tr class="row-even"><td><p>tcogq005</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -471,7 +475,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tcogq006</p></td>
+<tr class="row-odd"><td><p>tcogq006</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -481,7 +485,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tbmgq001</p></td>
+<tr class="row-even"><td><p>tbmgq001</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
@@ -491,7 +495,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tbmgq100</p></td>
+<tr class="row-odd"><td><p>tbmgq100</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -501,7 +505,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>8</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tbegq201</p></td>
+<tr class="row-even"><td><p>tbegq201</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -511,7 +515,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>8</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p>tbegq202</p></td>
+<tr class="row-odd"><td><p>tbegq202</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -521,7 +525,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>8</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-odd"><td><p>tbegq200</p></td>
+<tr class="row-even"><td><p>tbegq200</p></td>
 <td><div class="line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
@@ -531,7 +535,7 @@ The following table describes the distribution of accelerators in the GPU comput
 <td><p>0</p></td>
 <td><p>2</p></td>
 </tr>
-<tr class="row-even"><td><p>TOTAL</p></td>
+<tr class="row-odd"><td><p>TOTAL</p></td>
 <td><div class="line-block">
 <div class="line">CPU: 7 x 24 cores + 4 x 52 cores = 376 cores</div>
 <div class="line">RAM: 7 x 96GB + 4 x 192GB = 1440 GB</div>
@@ -554,7 +558,11 @@ The following table describes the distribution of accelerators in the GPU comput
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>GPU Card</p></th>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line">GPU Card</div>
+<div class="line">Model</div>
+</div>
+</th>
 <th class="head"><div class="line-block">
 <div class="line">GPU</div>
 <div class="line">Memory</div>
