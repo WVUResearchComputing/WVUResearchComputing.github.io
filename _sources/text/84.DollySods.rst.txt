@@ -7,10 +7,10 @@ The system has 155 NVIDIA GPU cards.
 They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
 
 .. |logo1| image:: /_static/Dolly_Sods_1.jpg  
-   :scale: 2%
+   :scale: 3%
    :align: top
 .. |logo2| image:: /_static/Dolly_Sods_2.jpg
-   :scale: 2%
+   :scale: 3%
    :align: top
 .. |logo3| image:: /_static/Dolly_Sods_3.jpg
    :scale: 8%
@@ -23,6 +23,14 @@ They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
 |         | |logo2| |
 +---------+---------+
 
+.. list-table:: Title
+   :widths: 75 25
+   :header-rows: 0
+
+   * - |logo3|
+     - |logo1|
+   * - 
+     - |logo2|
 
 Overview
 --------
