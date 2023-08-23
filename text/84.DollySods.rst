@@ -29,6 +29,19 @@ They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
     :alt: Dolly Sods
     :align: center
 
+
+.. |logo1| image:: /_static/Dolly_Sods_1.jpg  
+   :scale: 100%
+   :align: middle
+.. |logo2| image:: /_static/Dolly_Sods_1.jpg
+   :scale: 50%
+   :align: top
+
++---------+---------+
+| |logo1| | |logo2| |
++---------+---------+
+
+
 Overview
 --------
 
@@ -81,7 +94,7 @@ This version number identifies the features supported by the GPU hardware and is
 The compute capability comprises a major revision number X and a minor revision number Y and is denoted by X.Y.
 All the nodes in Dolly Sods have the same major revision number but different minor revision numbers.
 Devices with the same major revision number are of the same core architecture.
-The major revision number is 8 is for devices based on the NVIDIA Ampere GPU architecture.
+The major revision number is 8 for devices based on the NVIDIA Ampere GPU architecture.
 
 You can see `Compute Capabilities`_ for other GPU cards.
 
