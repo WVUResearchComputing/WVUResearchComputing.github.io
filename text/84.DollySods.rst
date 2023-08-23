@@ -6,30 +6,6 @@ The cluster has a total of 37 nodes.
 The system has 155 NVIDIA GPU cards. 
 They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
 
-.. image:: /_static/Dolly_Sods_1.jpg
-    :height: 600px
-    :width: 800 px
-    :scale: 50 %
-    :alt: Dolly Sods
-    :align: center
-
-
-.. image:: /_static/Dolly_Sods_2.jpg
-    :height: 600px
-    :width: 800 px
-    :scale: 50 %
-    :alt: Dolly Sods
-    :align: center
-
-
-.. image:: /_static/Dolly_Sods_3.jpg
-    :height: 600px
-    :width: 800 px
-    :scale: 50 %
-    :alt: Dolly Sods
-    :align: center
-
-
 .. |logo1| image:: /_static/Dolly_Sods_1.jpg  
    :scale: 5%
    :align: middle
@@ -37,7 +13,7 @@ They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
    :scale: 5%
    :align: top
 .. |logo3| image:: /_static/Dolly_Sods_3.jpg
-   :scale: 10%
+   :scale: 15%
    :align: top
 
 
