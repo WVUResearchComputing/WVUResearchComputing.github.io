@@ -7,17 +7,17 @@ The system has 155 NVIDIA GPU cards.
 They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
 
 .. |logo1| image:: /_static/Dolly_Sods_1.jpg  
-   :scale: 5%
+   :scale: 6%
    :align: top
 .. |logo2| image:: /_static/Dolly_Sods_2.jpg
-   :scale: 5%
+   :scale: 6%
    :align: top
 .. |logo3| image:: /_static/Dolly_Sods_3.jpg
    :scale: 12%
    :align: top
 
 .. list-table:: Dolly Sods
-   :widths: 60 40
+   :widths: 62 38
    :header-rows: 0
 
    * - |logo3|
@@ -33,8 +33,7 @@ Overview
 Dolly Sods is a hardware-accelerated High-Performance Computing (HPC) cluster. Dolly Sods serves the HPC needs for West Virginia University (WVU) and other higher education institutions in West Virginia. It is hosted in Morgantown, WV and was built thanks to NSF Major Research Instrumentation (MRI) Grant Award #2117575
 
 Dolly Sods is a cluster of 37 compute nodes.
-
-All compute nodes in Dolly Sods have hardware accelerators in the form of NVIDIA GPUs. 
+All compute nodes have hardware accelerators in the form of NVIDIA GPUs. 
 There is a total of 155 GPU cards distributed as follows: 
 30 compute nodes with 4 GPUs NVIDIA(R) A30 24GB PCIe. 
 4 compute nodes with 4 GPUs NVIDIA(R) A40 24GB PCIe. 
