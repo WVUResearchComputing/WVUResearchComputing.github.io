@@ -102,6 +102,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Fortran, C and C++</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-c-c-and-fortran-compilers">Accessing C, C++ and Fortran Compilers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compiling-codes">Compiling codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-using-the-gnu-compiler-collection-gcc">Compiling using the GNU Compiler Collection (GCC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-using-nvidia-hpc-sdk">Compiling using NVIDIA HPC SDK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-using-intel-oneapi-hpc-toolkit">Compiling using Intel® oneAPI HPC Toolkit</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="502.Python.html">Python Language</a></li>
@@ -273,9 +276,9 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 <tbody>
 <tr class="row-even"><td><p>GCC</p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/8.2.0</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/9.3.0</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/11.2.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/gcc/12.2.0</span></code></div>
+<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </td>
@@ -291,8 +294,8 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 <td><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2018</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">lang/intel/2019</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.2.0</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2021.4.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2022.1.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">compiler/2023.1.0</span></code></div>
 </div>
 </td>
 <td><div class="line-block">
@@ -304,9 +307,9 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 </tr>
 <tr class="row-even"><td><p>NVIDIA</p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/20.7</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/21.3</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/21.11</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/22.3</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/23.3</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">lang/nvidia/nvhpc/23.7</span></code></div>
 </div>
 </td>
 <td><div class="line-block">
@@ -321,64 +324,83 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 </section>
 <section id="compiling-codes">
 <h2>Compiling codes<a class="headerlink" href="#compiling-codes" title="Permalink to this headline">¶</a></h2>
+<p>We will now demonstrate how to compile simple codes using compilers from the 3 vendors above.
+For doing that, consider the algorithm that compule the <a class="reference external" href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>.
+We have the same algorithm implemented in C and Fortran.
+The code can be copied into files and we will proceed to compile it.</p>
+<p>To download the code you can execute the following command directly on the cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.c
+trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.f90
+</pre></div>
+</div>
+<p>Or download the files <a class="reference download internal" download="" href="../_downloads/bbe471875eeaa4422d52e81adf74ddbd/sieve.c"><code class="xref download docutils literal notranslate"><span class="pre">sieve.c</span></code></a> and <a class="reference download internal" download="" href="../_downloads/d5db12817b87e1930ee43148b31797c1/sieve.f90"><code class="xref download docutils literal notranslate"><span class="pre">sieve.f90</span></code></a>.</p>
+<p>If you download the files to your own computer you can later upload them to the cluster using Globus <a class="reference internal" href="28.FileTransfer.html#qs-file-transfer"><span class="std std-ref">File Transfer (Globus)</span></a></p>
+<p>C version (<code class="docutils literal notranslate"><span class="pre">sieve.c</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
 <span class="c1">#include &lt;stdlib.h&gt;</span>
 
-<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">);</span>
+<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">);</span>
 
 <span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
   <span class="o">/*</span> <span class="n">Declaring</span> <span class="n">variables</span> <span class="o">*/</span>
-  <span class="nb">int</span> <span class="o">*</span><span class="n">array</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">array</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">n</span><span class="p">;</span>
 
   <span class="o">/*</span> <span class="n">Reading</span> <span class="n">command</span> <span class="n">line</span> <span class="n">arguments</span> <span class="o">*/</span>
   <span class="k">if</span> <span class="p">(</span> <span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span> <span class="p">)</span> <span class="o">/*</span> <span class="n">argc</span> <span class="n">should</span> <span class="n">be</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">correct</span> <span class="n">execution</span> <span class="o">*/</span>
-    <span class="p">{</span>
-      <span class="o">/*</span> <span class="n">We</span> <span class="nb">print</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">assuming</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">program</span> <span class="n">name</span> <span class="o">*/</span>
-      <span class="n">printf</span><span class="p">(</span> <span class="s2">&quot;usage: </span><span class="si">%s</span><span class="s2"> max_number</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
-    <span class="p">}</span>
+        <span class="p">{</span>
+          <span class="o">/*</span> <span class="n">We</span> <span class="nb">print</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">assuming</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">program</span> <span class="n">name</span> <span class="o">*/</span>
+          <span class="n">printf</span><span class="p">(</span> <span class="s2">&quot;usage: </span><span class="si">%s</span><span class="s2"> max_number</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+        <span class="p">}</span>
   <span class="k">else</span>
-    <span class="p">{</span>
-      <span class="n">n</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-      <span class="n">array</span> <span class="o">=</span><span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">));</span>
-      <span class="n">sieve</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
-    <span class="p">}</span>
+        <span class="p">{</span>
+          <span class="n">n</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+          <span class="n">array</span> <span class="o">=</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">sizeof</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span><span class="p">));</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; Sieve for prime numbers up to </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+          <span class="n">sieve</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+        <span class="p">}</span>
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 
   <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">i:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">printf</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">j:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Before a[</span><span class="si">%d</span><span class="s2">*</span><span class="si">%d</span><span class="s2">]: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">]);</span>
-    <span class="n">a</span><span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">After a[</span><span class="si">%d</span><span class="s2">*</span><span class="si">%d</span><span class="s2">]: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">]);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span> <span class="p">(</span><span class="nb">int</span><span class="p">)(</span><span class="n">n</span><span class="o">/</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">((</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span> <span class="n">a</span><span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Primes numbers from 1 to </span><span class="si">%d</span><span class="s2"> are : &quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
-  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">, &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1000</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="k">else</span> <span class="p">{</span>
+          <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                  <span class="n">counter</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; Total number of primes: </span><span class="si">%d</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Fortran version (<code class="docutils literal notranslate"><span class="pre">sieve.f90</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module str2int_mod
 contains
 
-  elemental subroutine str2int(str,int,stat)
+        elemental subroutine str2int(str,int,stat)
         implicit none
         ! Arguments
         character(len=*),intent(in) :: str
@@ -395,7 +417,7 @@ program sieve
   use str2int_mod
   implicit none
 
-  integer :: i, stat, i_max=0
+  integer :: i, stat, i_max=0, counter=0
   logical, dimension(:), allocatable :: is_prime
   character(len=32) :: arg
 
@@ -424,14 +446,99 @@ program sieve
   do i = 2, int (sqrt (real (i_max)))
         if (is_prime (i)) is_prime (i * i : i_max : i) = .false.
   end do
-  do i = 1, i_max
-        if (is_prime (i)) write (*, &#39;(i0, 1x)&#39;, advance = &#39;no&#39;) i
-  end do
-  write (*, *)
+
+  if (i_max &lt;= 1000 ) then
+          do i = 1, i_max
+                if (is_prime (i)) write (*, &#39;(i0, 1x)&#39;, advance = &#39;no&#39;) i
+          end do
+          write (*, *)
+  else
+          do i = 1, i_max
+                if (is_prime (i)) counter=counter+1
+          end do
+          write (*,*) &#39;Total number of primes: &#39;, counter
+  end if
 
 end program sieve
 </pre></div>
 </div>
+</section>
+<section id="compiling-using-the-gnu-compiler-collection-gcc">
+<h2>Compiling using the GNU Compiler Collection (GCC)<a class="headerlink" href="#compiling-using-the-gnu-compiler-collection-gcc" title="Permalink to this headline">¶</a></h2>
+<p>We will start compiling this code with a modern version of GCC.
+Load the module for GCC 12.2</p>
+<blockquote>
+<div><p>$&gt; module load lang/gcc/12.2.0</p>
+</div></blockquote>
+<p>The module for GCC 12.2 includes compilers for Fortran, C, and C++.
+We can compile the codes above with the commands:</p>
+<blockquote>
+<div><p>$&gt; gcc sieve.c -o sieve_c_gcc122
+$&gt; gfortran sieve.f90 -o sieve_f90_gcc122</p>
+</div></blockquote>
+<p>Now we can execute the binaries:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>$&gt; ./sieve_c_gcc122 100000000</dt><dd><p>Sieve for prime numbers up to 100000000
+Total number of primes: 5761455</p>
+</dd>
+<dt>$&gt; ./sieve_f90_gcc122 100000000</dt><dd><p>Sieve for prime numbers up to   100000000
+Total number of primes:      5761455</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="compiling-using-nvidia-hpc-sdk">
+<h2>Compiling using NVIDIA HPC SDK<a class="headerlink" href="#compiling-using-nvidia-hpc-sdk" title="Permalink to this headline">¶</a></h2>
+<p>Another suite that can be use for compiling this code is the NVIDIA HPC SDK
+Load the module for NVIDIA HPC SDK 23.7</p>
+<blockquote>
+<div><p>$&gt; module load lang/nvidia/nvhpc/23.7</p>
+</div></blockquote>
+<p>The module for the NVIDIA compilers includes compilers for Fortran, C, and C++.
+We can compile the codes above with the commands:</p>
+<blockquote>
+<div><p>$&gt; nvc sieve.c -o sieve_c_nv237
+$&gt; nvfortran sieve.f90 -o sieve_f90_nv237</p>
+</div></blockquote>
+<p>Now we can execute the binaries:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>$&gt; ./sieve_c_nv237 100000000</dt><dd><p>Sieve for prime numbers up to 100000000
+Total number of primes: 5761455</p>
+</dd>
+<dt>$&gt; ./sieve_f90_nv237 100000000</dt><dd><p>Sieve for prime numbers up to   100000000
+Total number of primes:      5761455</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="compiling-using-intel-oneapi-hpc-toolkit">
+<h2>Compiling using Intel® oneAPI HPC Toolkit<a class="headerlink" href="#compiling-using-intel-oneapi-hpc-toolkit" title="Permalink to this headline">¶</a></h2>
+<p>There are several suites currently offered by Intel.
+Intel® oneAPI HPC Toolkit includes compilers for Fortran, C, and C++.
+In addition it also includes Intel MKL which is an optimized implementation of BLAS and LAPACK linear algebra routines.</p>
+<p>Load the module for the Intel compilers</p>
+<blockquote>
+<div><p>$&gt; module load compiler/2021.4.0</p>
+</div></blockquote>
+<p>The module includes Intel compilers for Fortran, C, and C++.
+We can compile the codes above with the commands:</p>
+<blockquote>
+<div><p>$&gt; icc sieve.c -o sieve_c_intel2021
+$&gt; ifort sieve.f90 -o sieve_f90_intel2021</p>
+</div></blockquote>
+<p>Now we can execute the binaries:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>$&gt; ./sieve_c_intel2021 100000000</dt><dd><p>Sieve for prime numbers up to 100000000
+Total number of primes: 5761455</p>
+</dd>
+<dt>$&gt; ./sieve_f90_intel2021 100000000</dt><dd><p>Sieve for prime numbers up to   100000000
+Total number of primes:      5761455</p>
+</dd>
+</dl>
+</div></blockquote>
 </section>
 </section>
 
