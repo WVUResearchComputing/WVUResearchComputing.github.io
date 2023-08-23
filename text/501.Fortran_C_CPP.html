@@ -335,210 +335,267 @@ trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.f90
 </div>
 <p>Or download the files <a class="reference download internal" download="" href="../_downloads/bbe471875eeaa4422d52e81adf74ddbd/sieve.c"><code class="xref download docutils literal notranslate"><span class="pre">sieve.c</span></code></a> and <a class="reference download internal" download="" href="../_downloads/d5db12817b87e1930ee43148b31797c1/sieve.f90"><code class="xref download docutils literal notranslate"><span class="pre">sieve.f90</span></code></a>.</p>
 <p>If you download the files to your own computer you can later upload them to the cluster using Globus <a class="reference internal" href="28.FileTransfer.html#qs-file-transfer"><span class="std std-ref">File Transfer (Globus)</span></a></p>
-<p>C version (<code class="docutils literal notranslate"><span class="pre">sieve.c</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
-<span class="c1">#include &lt;stdlib.h&gt;</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
-<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="p">,</span> <span class="nb">int</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">sieve</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Declaring variables */</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">array</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
 
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-  <span class="o">/*</span> <span class="n">Declaring</span> <span class="n">variables</span> <span class="o">*/</span>
-  <span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">array</span><span class="p">;</span>
-  <span class="nb">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="w">  </span><span class="cm">/* Reading command line arguments */</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="cm">/* argc should be 2 for correct execution */</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* We print argv[0] assuming it is the program name */</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;usage: %s max_number</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">n</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="w">      </span><span class="n">array</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; Sieve for prime numbers up to %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">sieve</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-  <span class="o">/*</span> <span class="n">Reading</span> <span class="n">command</span> <span class="n">line</span> <span class="n">arguments</span> <span class="o">*/</span>
-  <span class="k">if</span> <span class="p">(</span> <span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span> <span class="p">)</span> <span class="o">/*</span> <span class="n">argc</span> <span class="n">should</span> <span class="n">be</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">correct</span> <span class="n">execution</span> <span class="o">*/</span>
-        <span class="p">{</span>
-          <span class="o">/*</span> <span class="n">We</span> <span class="nb">print</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">assuming</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">program</span> <span class="n">name</span> <span class="o">*/</span>
-          <span class="n">printf</span><span class="p">(</span> <span class="s2">&quot;usage: </span><span class="si">%s</span><span class="s2"> max_number</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
-        <span class="p">}</span>
-  <span class="k">else</span>
-        <span class="p">{</span>
-          <span class="n">n</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-          <span class="n">array</span> <span class="o">=</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">sizeof</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span><span class="p">));</span>
-          <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; Sieve for prime numbers up to </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
-          <span class="n">sieve</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
-        <span class="p">}</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">sieve</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-<span class="n">void</span> <span class="n">sieve</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span> <span class="p">(</span><span class="nb">int</span><span class="p">)(</span><span class="n">n</span><span class="o">/</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">((</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span> <span class="n">a</span><span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1000</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-                  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
-          <span class="p">}</span>
-          <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">else</span> <span class="p">{</span>
-          <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-                  <span class="n">counter</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
-          <span class="p">}</span>
-          <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; Total number of primes: </span><span class="si">%d</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">n</span><span class="o">/</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">counter</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; Total number of primes: %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Fortran version (<code class="docutils literal notranslate"><span class="pre">sieve.f90</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module str2int_mod
-contains
-
-        elemental subroutine str2int(str,int,stat)
-        implicit none
-        ! Arguments
-        character(len=*),intent(in) :: str
-        integer,intent(out)         :: int
-        integer,intent(out)         :: stat
-
-        read(str,*,iostat=stat)  int
-  end subroutine str2int
-
-end module
-
-program sieve
-
-  use str2int_mod
-  implicit none
-
-  integer :: i, stat, i_max=0, counter=0
-  logical, dimension(:), allocatable :: is_prime
-  character(len=32) :: arg
-
-  i = 0
-  do
-        call get_command_argument(i, arg)
-        if (len_trim(arg) == 0) exit
-
-        i = i+1
-        if ( i == 2 ) then
-           call str2int(trim(arg), i_max, stat)
-           write(*,*) &quot;Sieve for prime numbers up to&quot;, i_max
-        end if
-
-  end do
-
-  if (i_max .lt. 1) then
-         write (*,*) &quot;Enter the maximum number to search for primes&quot;
-         call exit(1)
-  end if
-
-  allocate(is_prime(i_max))
-
-  is_prime = .true.
-  is_prime (1) = .false.
-  do i = 2, int (sqrt (real (i_max)))
-        if (is_prime (i)) is_prime (i * i : i_max : i) = .false.
-  end do
-
-  if (i_max &lt;= 1000 ) then
-          do i = 1, i_max
-                if (is_prime (i)) write (*, &#39;(i0, 1x)&#39;, advance = &#39;no&#39;) i
-          end do
-          write (*, *)
-  else
-          do i = 1, i_max
-                if (is_prime (i)) counter=counter+1
-          end do
-          write (*,*) &#39;Total number of primes: &#39;, counter
-  end if
-
-end program sieve
+<p>C version (<code class="docutils literal notranslate"><span class="pre">sieve.c</span></code>)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w">     </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="linenos"> 2</span><span class="w">     </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="nf">sieve</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">       </span><span class="cm">/* Declaring variables */</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">       </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">array</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="w">       </span><span class="cm">/* Reading command line arguments */</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="cm">/* argc should be 2 for correct execution */</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">               </span><span class="cm">/* We print argv[0] assuming it is the program name */</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">               </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;usage: %s max_number</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">             </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">       </span><span class="k">else</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">               </span><span class="n">n</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">               </span><span class="n">array</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">               </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; Sieve for prime numbers up to %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">               </span><span class="n">sieve</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">             </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="nf">sieve</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">             </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">37</span><span class="w">             </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">               </span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">n</span><span class="o">/</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">               </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">             </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">               </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">                     </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">                       </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">               </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">               </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">       </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">               </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">                     </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">                       </span><span class="n">counter</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">55</span><span class="w">               </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">               </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; Total number of primes: %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Fortran version (<code class="docutils literal notranslate"><span class="pre">sieve.f90</span></code>)</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w">     </span><span class="k">module </span><span class="n">str2int_mod</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">     </span><span class="k">contains</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">             elemental subroutine </span><span class="n">str2int</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">stat</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">             </span><span class="k">implicit none</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">             </span><span class="c">! Arguments</span>
+<span class="linenos"> 7</span><span class="w">             </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">str</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">             </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="nb">int</span>
+<span class="linenos"> 9</span><span class="nb">             </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="nb">stat</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nb">             </span><span class="k">read</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="o">*</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span><span class="w">  </span><span class="nb">int</span>
+<span class="linenos">12</span><span class="nb">       </span><span class="k">end subroutine </span><span class="n">str2int</span><span class="w"></span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">     </span><span class="k">end module</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="k">     program </span><span class="n">sieve</span><span class="w"></span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="w">       </span><span class="k">use </span><span class="n">str2int_mod</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">       </span><span class="k">implicit none</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="k">       </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="p">,</span><span class="w"> </span><span class="n">i_max</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">       </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">is_prime</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">       </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">arg</span><span class="w"></span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="w">       </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">       </span><span class="k">do</span>
+<span class="linenos">27</span><span class="k">             call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">exit</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="k">             </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos">32</span><span class="k">                call </span><span class="n">str2int</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span><span class="w"> </span><span class="n">i_max</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Sieve for prime numbers up to&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i_max</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">             </span><span class="k">end if</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="k">       end do</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="k">       if</span><span class="w"> </span><span class="p">(</span><span class="n">i_max</span><span class="w"> </span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos">39</span><span class="k">              write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Enter the maximum number to search for primes&quot;</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">              </span><span class="k">call exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">       </span><span class="k">end if</span>
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="k">       allocate</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="n">i_max</span><span class="p">))</span><span class="w"></span>
+<span class="linenos">44</span>
+<span class="linenos">45</span><span class="w">       </span><span class="n">is_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">       </span><span class="n">is_prime</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="p">(</span><span class="nb">sqrt</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="n">i_max</span><span class="p">)))</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_prime</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="n">is_prime</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">i_max</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">       </span><span class="k">end do</span>
+<span class="linenos">50</span>
+<span class="linenos">51</span><span class="k">       if</span><span class="w"> </span><span class="p">(</span><span class="n">i_max</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos">52</span><span class="k">               do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i_max</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_prime</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(i0, 1x)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;no&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">               </span><span class="k">end do</span>
+<span class="linenos">55</span><span class="k">               write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">       </span><span class="k">else</span>
+<span class="linenos">57</span><span class="k">               do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i_max</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_prime</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="n">counter</span><span class="o">=</span><span class="n">counter</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="linenos">59</span><span class="w">               </span><span class="k">end do</span>
+<span class="linenos">60</span><span class="k">               write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Total number of primes: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="w"></span>
+<span class="linenos">61</span><span class="w">       </span><span class="k">end if</span>
+<span class="linenos">62</span>
+<span class="linenos">63</span><span class="k">     end program </span><span class="n">sieve</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="compiling-using-the-gnu-compiler-collection-gcc">
 <h2>Compiling using the GNU Compiler Collection (GCC)<a class="headerlink" href="#compiling-using-the-gnu-compiler-collection-gcc" title="Permalink to this headline">¶</a></h2>
 <p>We will start compiling this code with a modern version of GCC.
-Load the module for GCC 12.2</p>
-<blockquote>
-<div><p>$&gt; module load lang/gcc/12.2.0</p>
-</div></blockquote>
+Load the module for GCC 12.2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/12.2.0
+</pre></div>
+</div>
 <p>The module for GCC 12.2 includes compilers for Fortran, C, and C++.
 We can compile the codes above with the commands:</p>
-<blockquote>
-<div><p>$&gt; gcc sieve.c -o sieve_c_gcc122
-$&gt; gfortran sieve.f90 -o sieve_f90_gcc122</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; gcc sieve.c -o sieve_c_gcc122
+$&gt; gfortran sieve.f90 -o sieve_f90_gcc122
+</pre></div>
+</div>
 <p>Now we can execute the binaries:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>$&gt; ./sieve_c_gcc122 100000000</dt><dd><p>Sieve for prime numbers up to 100000000
-Total number of primes: 5761455</p>
-</dd>
-<dt>$&gt; ./sieve_f90_gcc122 100000000</dt><dd><p>Sieve for prime numbers up to   100000000
-Total number of primes:      5761455</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./sieve_c_gcc122 100000000
+ Sieve for prime numbers up to 100000000
+ Total number of primes: 5761455
+
+$&gt; ./sieve_f90_gcc122 100000000
+ Sieve for prime numbers up to   100000000
+ Total number of primes:      5761455
+</pre></div>
+</div>
 </section>
 <section id="compiling-using-nvidia-hpc-sdk">
 <h2>Compiling using NVIDIA HPC SDK<a class="headerlink" href="#compiling-using-nvidia-hpc-sdk" title="Permalink to this headline">¶</a></h2>
 <p>Another suite that can be use for compiling this code is the NVIDIA HPC SDK
-Load the module for NVIDIA HPC SDK 23.7</p>
-<blockquote>
-<div><p>$&gt; module load lang/nvidia/nvhpc/23.7</p>
-</div></blockquote>
+Load the module for NVIDIA HPC SDK 23.7:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/nvidia/nvhpc/23.7
+</pre></div>
+</div>
 <p>The module for the NVIDIA compilers includes compilers for Fortran, C, and C++.
 We can compile the codes above with the commands:</p>
-<blockquote>
-<div><p>$&gt; nvc sieve.c -o sieve_c_nv237
-$&gt; nvfortran sieve.f90 -o sieve_f90_nv237</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; nvc sieve.c -o sieve_c_nv237
+$&gt; nvfortran sieve.f90 -o sieve_f90_nv237
+</pre></div>
+</div>
 <p>Now we can execute the binaries:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>$&gt; ./sieve_c_nv237 100000000</dt><dd><p>Sieve for prime numbers up to 100000000
-Total number of primes: 5761455</p>
-</dd>
-<dt>$&gt; ./sieve_f90_nv237 100000000</dt><dd><p>Sieve for prime numbers up to   100000000
-Total number of primes:      5761455</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./sieve_c_nv237 100000000
+ Sieve for prime numbers up to 100000000
+ Total number of primes: 5761455
+
+$&gt; ./sieve_f90_nv237 100000000
+ Sieve for prime numbers up to   100000000
+ Total number of primes:      5761455
+</pre></div>
+</div>
 </section>
 <section id="compiling-using-intel-oneapi-hpc-toolkit">
 <h2>Compiling using Intel® oneAPI HPC Toolkit<a class="headerlink" href="#compiling-using-intel-oneapi-hpc-toolkit" title="Permalink to this headline">¶</a></h2>
 <p>There are several suites currently offered by Intel.
 Intel® oneAPI HPC Toolkit includes compilers for Fortran, C, and C++.
 In addition it also includes Intel MKL which is an optimized implementation of BLAS and LAPACK linear algebra routines.</p>
-<p>Load the module for the Intel compilers</p>
-<blockquote>
-<div><p>$&gt; module load compiler/2021.4.0</p>
-</div></blockquote>
+<p>Load the module for the Intel compilers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load compiler/2021.4.0
+</pre></div>
+</div>
 <p>The module includes Intel compilers for Fortran, C, and C++.
 We can compile the codes above with the commands:</p>
-<blockquote>
-<div><p>$&gt; icc sieve.c -o sieve_c_intel2021
-$&gt; ifort sieve.f90 -o sieve_f90_intel2021</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; icc sieve.c -o sieve_c_intel2021
+$&gt; ifort sieve.f90 -o sieve_f90_intel2021
+</pre></div>
+</div>
 <p>Now we can execute the binaries:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>$&gt; ./sieve_c_intel2021 100000000</dt><dd><p>Sieve for prime numbers up to 100000000
-Total number of primes: 5761455</p>
-</dd>
-<dt>$&gt; ./sieve_f90_intel2021 100000000</dt><dd><p>Sieve for prime numbers up to   100000000
-Total number of primes:      5761455</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ./sieve_c_intel2021 100000000
+ Sieve for prime numbers up to 100000000
+ Total number of primes: 5761455
+
+$&gt; ./sieve_f90_intel2021 100000000
+ Sieve for prime numbers up to   100000000
+ Total number of primes:      5761455
+</pre></div>
+</div>
 </section>
 </section>
 

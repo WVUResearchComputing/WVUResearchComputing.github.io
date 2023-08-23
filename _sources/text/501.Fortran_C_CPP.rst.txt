@@ -107,8 +107,14 @@ Or download the files :download:`sieve.c <../_static/sieve.c>` and :download:`si
     
 If you download the files to your own computer you can later upload them to the cluster using Globus :ref:`qs-file-transfer` 
 
-C version (``sieve.c``)::
+.. literalinclude:: ../_static/sieve.c
+  :language: C
 
+
+C version (``sieve.c``)
+
+.. code-block:: c
+   :linenos:
 
 	#include <stdio.h>
 	#include <stdlib.h>
@@ -170,7 +176,10 @@ C version (``sieve.c``)::
 	}
 
 
-Fortran version (``sieve.f90``)::
+Fortran version (``sieve.f90``)
+
+.. code-block:: fortran
+   :linenos:
 
 	module str2int_mod
 	contains
@@ -240,17 +249,17 @@ Compiling using the GNU Compiler Collection (GCC)
 -------------------------------------------------
 
 We will start compiling this code with a modern version of GCC. 
-Load the module for GCC 12.2
+Load the module for GCC 12.2::
 
 	$> module load lang/gcc/12.2.0
 
 The module for GCC 12.2 includes compilers for Fortran, C, and C++. 
-We can compile the codes above with the commands:
+We can compile the codes above with the commands::
 
 	$> gcc sieve.c -o sieve_c_gcc122
 	$> gfortran sieve.f90 -o sieve_f90_gcc122 
 
-Now we can execute the binaries:
+Now we can execute the binaries::
 
 	$> ./sieve_c_gcc122 100000000 
  	 Sieve for prime numbers up to 100000000 
@@ -264,17 +273,17 @@ Compiling using NVIDIA HPC SDK
 ------------------------------
 
 Another suite that can be use for compiling this code is the NVIDIA HPC SDK 
-Load the module for NVIDIA HPC SDK 23.7
+Load the module for NVIDIA HPC SDK 23.7::
 
 	$> module load lang/nvidia/nvhpc/23.7
 
 The module for the NVIDIA compilers includes compilers for Fortran, C, and C++. 
-We can compile the codes above with the commands:
+We can compile the codes above with the commands::
 
 	$> nvc sieve.c -o sieve_c_nv237
 	$> nvfortran sieve.f90 -o sieve_f90_nv237 
 
-Now we can execute the binaries:
+Now we can execute the binaries::
 
 	$> ./sieve_c_nv237 100000000 
  	 Sieve for prime numbers up to 100000000 
@@ -291,17 +300,17 @@ There are several suites currently offered by Intel.
 Intel® oneAPI HPC Toolkit includes compilers for Fortran, C, and C++.
 In addition it also includes Intel MKL which is an optimized implementation of BLAS and LAPACK linear algebra routines.
 
-Load the module for the Intel compilers
+Load the module for the Intel compilers::
 
 	$> module load compiler/2021.4.0  
 
 The module includes Intel compilers for Fortran, C, and C++. 
-We can compile the codes above with the commands:
+We can compile the codes above with the commands::
 
 	$> icc sieve.c -o sieve_c_intel2021
 	$> ifort sieve.f90 -o sieve_f90_intel2021
 
-Now we can execute the binaries:
+Now we can execute the binaries::
 
 	$> ./sieve_c_intel2021 100000000 
  	 Sieve for prime numbers up to 100000000 
