@@ -28,9 +28,8 @@ They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
    :header-rows: 0
 
    * - |logo3|
-     - |logo1|
-   * - 
-     - |logo2|
+     - | |logo1| 
+       | |logo2|
 
 Overview
 --------
