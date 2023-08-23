@@ -48,7 +48,7 @@ Acknowledgment Message
 
 We ask our users to acknowledge the use of Thorny Flat in all publications that were possible thanks to the use of this resource. The message on the acknowledgment section could be as follows:
 
-    *Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.*
+ *Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.*
 
 Total Compute Resources
 ~~~~~~~~~~~~~~~~~~~~~~~
