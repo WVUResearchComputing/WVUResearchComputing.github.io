@@ -28,7 +28,7 @@ They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
 Overview
 --------
 
-(This text can be used for proposals to Grant Funding Agencies)
+*(This text can be used for proposals to Grant Funding Agencies)*
 
 Dolly Sods is a hardware-accelerated High-Performance Computing (HPC) cluster. Dolly Sods serves the HPC needs for West Virginia University (WVU) and other higher education institutions in West Virginia. It is hosted in Morgantown, WV and was built thanks to NSF Major Research Instrumentation (MRI) Grant Award #2117575
 
@@ -47,7 +47,7 @@ Acknowledgment Message
 
 We ask our users to acknowledge the use of Dolly Sods in all publications that were possible thanks to the use of this resource. The message on the acknowledgment section could be as follows:
 
-Computational resources were provided by the WVU Research Computing Dolly Sods HPC cluster, which is funded in part by NSF OAC-2117575.
+  *Computational resources were provided by the WVU Research Computing Dolly Sods HPC cluster, which is funded in part by NSF OAC-2117575.*
 
 
 Hardware Acceleration
