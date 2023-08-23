@@ -13,7 +13,7 @@ They are distributed as 120 NVIDIA A30, 19 NVIDIA A40, and 16 NVIDIA A100.
    :scale: 2%
    :align: top
 .. |logo3| image:: /_static/Dolly_Sods_3.jpg
-   :scale: 5%
+   :scale: 8%
    :align: top
 
 
