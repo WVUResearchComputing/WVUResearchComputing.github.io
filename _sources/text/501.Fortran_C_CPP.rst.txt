@@ -39,7 +39,7 @@ The table below shows the names of the compilers for each of the three languages
 
    * - Language
      - GNU Compiler Collection (GCC)
-     - Intel Compiler Suite
+     - Intel® oneAPI HPC Toolkit
      - NVIDIA HPC SDK
    * - Fortran
      - gfortran
@@ -81,7 +81,8 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 +----------+-------------------------------+--------------------------------------------------+
 | Intel    | | ``lang/intel/2018``         | | Compilers that optimize particularly well      |
 |          | | ``lang/intel/2019``         | | on Intel Hardware.                             |
-|          | | ``compiler/2022.1.0``       | | Good support for OpenMP but not OpenACC        |
+|          | | ``compiler/2021.4.0``       | | Good support for OpenMP but not OpenACC        |
+|          | | ``compiler/2022.1.0``       |                                                  |
 |          | | ``compiler/2023.1.0``       |                                                  |
 +----------+-------------------------------+--------------------------------------------------+
 | NVIDIA   | | ``lang/nvidia/nvhpc/22.3``  | | Good support for OpenACC in addition to        |
