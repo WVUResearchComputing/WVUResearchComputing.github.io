@@ -104,21 +104,21 @@ The code can be copied into files and we will proceed to compile it.
 
 To download the code you can execute the following command directly on the cluster::
 
-    trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.c
-    trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.f90
+    $> wget https://docs.hpc.wvu.edu/_static/sieve.c
+    $> wget https://docs.hpc.wvu.edu/_static/sieve.f90
 
 Or download the files :download:`sieve.c <../_static/sieve.c>` and :download:`sieve.f90 <../_static/sieve.f90>`.
     
 If you download the files to your own computer you can later upload them to the cluster using :ref:`qs-file-transfer` 
 
 
-C version (`sieve.c <../_static/sieve.c>`)
+C version (:download:`sieve.c <../_static/sieve.c>`)
 
 .. literalinclude:: ../_static/sieve.c
   :language: C
 
 
-Fortran version (`sieve.f90 <../_static/sieve.f90>`)
+Fortran version (:download:`sieve.f90 <../_static/sieve.f90>`)
 
 .. literalinclude:: ../_static/sieve.f90
   :language: Fortran

@@ -336,13 +336,13 @@ For doing that, consider the algorithm that compule the <a class="reference exte
 We have the same algorithm implemented in C and Fortran.
 The code can be copied into files and we will proceed to compile it.</p>
 <p>To download the code you can execute the following command directly on the cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.c
-trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.f90
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://docs.hpc.wvu.edu/_static/sieve.c
+$&gt; wget https://docs.hpc.wvu.edu/_static/sieve.f90
 </pre></div>
 </div>
 <p>Or download the files <a class="reference download internal" download="" href="../_downloads/bbe471875eeaa4422d52e81adf74ddbd/sieve.c"><code class="xref download docutils literal notranslate"><span class="pre">sieve.c</span></code></a> and <a class="reference download internal" download="" href="../_downloads/d5db12817b87e1930ee43148b31797c1/sieve.f90"><code class="xref download docutils literal notranslate"><span class="pre">sieve.f90</span></code></a>.</p>
 <p>If you download the files to your own computer you can later upload them to the cluster using <a class="reference internal" href="28.FileTransfer.html#qs-file-transfer"><span class="std std-ref">File Transfer (Globus)</span></a></p>
-<p>C version (<cite>sieve.c &lt;../_static/sieve.c&gt;</cite>)</p>
+<p>C version (<a class="reference download internal" download="" href="../_downloads/bbe471875eeaa4422d52e81adf74ddbd/sieve.c"><code class="xref download docutils literal notranslate"><span class="pre">sieve.c</span></code></a>)</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
@@ -403,7 +403,7 @@ trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.f90
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Fortran version (<cite>sieve.f90 &lt;../_static/sieve.f90&gt;</cite>)</p>
+<p>Fortran version (<a class="reference download internal" download="" href="../_downloads/d5db12817b87e1930ee43148b31797c1/sieve.f90"><code class="xref download docutils literal notranslate"><span class="pre">sieve.f90</span></code></a>)</p>
 <div class="highlight-Fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">str2int_mod</span><span class="w"></span>
 <span class="k">contains</span>
 
