@@ -100,11 +100,16 @@
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUsage.html">Advanced Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="500.ScientificProgramming.html">Scientific Programming</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Fortran, C and C++</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-c-c-and-fortran-compilers">Accessing C, C++ and Fortran Compilers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compiling-codes">Compiling codes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compiling-using-the-gnu-compiler-collection-gcc">Compiling using the GNU Compiler Collection (GCC)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compiling-using-nvidia-hpc-sdk">Compiling using NVIDIA HPC SDK</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compiling-using-intel-oneapi-hpc-toolkit">Compiling using Intel® oneAPI HPC Toolkit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementations-of-c-c-and-fortran-compilers">Implementations of C, C++, and Fortran Compilers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#environment-modules">Environment Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-codes">Compiling codes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-using-the-gnu-compiler-collection-gcc">Compiling using the GNU Compiler Collection (GCC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-using-nvidia-hpc-sdk">Compiling using NVIDIA HPC SDK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-using-intel-oneapi-hpc-toolkit">Compiling using Intel® oneAPI HPC Toolkit</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="502.Python.html">Python Language</a></li>
@@ -203,8 +208,8 @@ Fortran 77 was for many years the standard de facto for scientific computing and
 <p>C is a general purpose language and used in most of the basic software written in Unix environments. The language itself is not targeted to write scientific programs so it less expressive for vectors and matrices compared to Fortran.</p>
 <p>C++ is the third language in the list. C++ is in many ways an extension of C with high element constructs such as classes. C++ is widely used in desktop applications, games and also scientific applications.</p>
 <p>Fortran, C and C++ shared a number of attributes. These languages need a compiler that translates the source code into machine code. Parallelization interfaces such as MPI are written with explicit support for those three languages and compiler suites such as GCC, Intel and NVIDIA HPC include those languages by default.</p>
-<section id="accessing-c-c-and-fortran-compilers">
-<h2>Accessing C, C++ and Fortran Compilers<a class="headerlink" href="#accessing-c-c-and-fortran-compilers" title="Permalink to this headline">¶</a></h2>
+<section id="implementations-of-c-c-and-fortran-compilers">
+<h2>Implementations of C, C++, and Fortran Compilers<a class="headerlink" href="#implementations-of-c-c-and-fortran-compilers" title="Permalink to this headline">¶</a></h2>
 <p>In an HPC cluster is customary to include compilers for Fortran, C and C++ by default.
 On Linux machines the usual compilers are from the GNU Compiler Collection (GCC).
 Apart from GCC, there are other vendors of compilers for these three languages.
@@ -259,6 +264,8 @@ Thread model: posix
 gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
 </pre></div>
 </div>
+<section id="environment-modules">
+<h3>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h3>
 <p>It is usually better to use environment modules to access newer versions of GCC or compilers from other vendors such as Intel or NVIDIA.
 The table below shows the modules that can be used on Thorny Flat to load the modules for compilers from different vendors and from several versions</p>
 <table class="docutils align-default">
@@ -322,6 +329,7 @@ The table below shows the modules that can be used on Thorny Flat to load the mo
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 <section id="compiling-codes">
 <h2>Compiling codes<a class="headerlink" href="#compiling-codes" title="Permalink to this headline">¶</a></h2>
@@ -523,9 +531,8 @@ trcis001:~$ wget https://docs.hpc.wvu.edu/_static/sieve.f90
 <span class="linenos">63</span><span class="k">     end program </span><span class="n">sieve</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
 <section id="compiling-using-the-gnu-compiler-collection-gcc">
-<h2>Compiling using the GNU Compiler Collection (GCC)<a class="headerlink" href="#compiling-using-the-gnu-compiler-collection-gcc" title="Permalink to this headline">¶</a></h2>
+<h3>Compiling using the GNU Compiler Collection (GCC)<a class="headerlink" href="#compiling-using-the-gnu-compiler-collection-gcc" title="Permalink to this headline">¶</a></h3>
 <p>We will start compiling this code with a modern version of GCC.
 Load the module for GCC 12.2:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/12.2.0
@@ -549,7 +556,7 @@ $&gt; ./sieve_f90_gcc122 100000000
 </div>
 </section>
 <section id="compiling-using-nvidia-hpc-sdk">
-<h2>Compiling using NVIDIA HPC SDK<a class="headerlink" href="#compiling-using-nvidia-hpc-sdk" title="Permalink to this headline">¶</a></h2>
+<h3>Compiling using NVIDIA HPC SDK<a class="headerlink" href="#compiling-using-nvidia-hpc-sdk" title="Permalink to this headline">¶</a></h3>
 <p>Another suite that can be use for compiling this code is the NVIDIA HPC SDK
 Load the module for NVIDIA HPC SDK 23.7:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/nvidia/nvhpc/23.7
@@ -573,7 +580,7 @@ $&gt; ./sieve_f90_nv237 100000000
 </div>
 </section>
 <section id="compiling-using-intel-oneapi-hpc-toolkit">
-<h2>Compiling using Intel® oneAPI HPC Toolkit<a class="headerlink" href="#compiling-using-intel-oneapi-hpc-toolkit" title="Permalink to this headline">¶</a></h2>
+<h3>Compiling using Intel® oneAPI HPC Toolkit<a class="headerlink" href="#compiling-using-intel-oneapi-hpc-toolkit" title="Permalink to this headline">¶</a></h3>
 <p>There are several suites currently offered by Intel.
 Intel® oneAPI HPC Toolkit includes compilers for Fortran, C, and C++.
 In addition it also includes Intel MKL which is an optimized implementation of BLAS and LAPACK linear algebra routines.</p>
@@ -597,6 +604,7 @@ $&gt; ./sieve_f90_intel2021 100000000
  Total number of primes:      5761455
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 

@@ -20,8 +20,8 @@ C++ is the third language in the list. C++ is in many ways an extension of C wit
 
 Fortran, C and C++ shared a number of attributes. These languages need a compiler that translates the source code into machine code. Parallelization interfaces such as MPI are written with explicit support for those three languages and compiler suites such as GCC, Intel and NVIDIA HPC include those languages by default.
 
-Accessing C, C++ and Fortran Compilers
---------------------------------------
+Implementations of C, C++, and Fortran Compilers
+------------------------------------------------
 
 In an HPC cluster is customary to include compilers for Fortran, C and C++ by default. 
 On Linux machines the usual compilers are from the GNU Compiler Collection (GCC). 
@@ -67,6 +67,9 @@ On Thorny Flat the default version of the compilers is 4.8, one way of identifyi
   Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --disable-libgcj --with-isl=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/isl-install --with-cloog=/builddir/build/BUILD/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/cloog-install --enable-gnu-indirect-function --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux
   Thread model: posix
   gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)
+
+Environment Modules
+~~~~~~~~~~~~~~~~~~~
 
 It is usually better to use environment modules to access newer versions of GCC or compilers from other vendors such as Intel or NVIDIA.
 The table below shows the modules that can be used on Thorny Flat to load the modules for compilers from different vendors and from several versions
@@ -247,7 +250,7 @@ Fortran version (``sieve.f90``)
 	end program sieve
 
 Compiling using the GNU Compiler Collection (GCC)
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will start compiling this code with a modern version of GCC. 
 Load the module for GCC 12.2::
@@ -271,7 +274,7 @@ Now we can execute the binaries::
  	 Total number of primes:      5761455 
 
 Compiling using NVIDIA HPC SDK
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Another suite that can be use for compiling this code is the NVIDIA HPC SDK 
 Load the module for NVIDIA HPC SDK 23.7::
@@ -295,7 +298,7 @@ Now we can execute the binaries::
  	 Total number of primes:      5761455 
 
 Compiling using Intel® oneAPI HPC Toolkit
------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are several suites currently offered by Intel.
 Intel® oneAPI HPC Toolkit includes compilers for Fortran, C, and C++.
