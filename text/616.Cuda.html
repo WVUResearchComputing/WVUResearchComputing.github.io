@@ -205,12 +205,12 @@ You must provide a reason when disabling a node.</p>
 <blockquote>
 <div><ul>
 <li><p><strong>Disable</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scontrol</span> <span class="n">update</span> <span class="n">NodeName</span><span class="o">=</span><span class="n">tcogq</span><span class="p">[</span><span class="mi">001</span><span class="o">-</span><span class="mi">006</span><span class="p">]</span> <span class="n">State</span><span class="o">=</span><span class="n">DRAIN</span> <span class="n">Reason</span><span class="o">=</span><span class="s2">&quot;CUDA UPDATE&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">trcis001</span> <span class="o">~</span><span class="p">]</span><span class="c1"># scontrol update NodeName=tcogq[001-006] State=DRAIN Reason=&quot;CUDA UPDATE&quot;</span>
 </pre></div>
 </div>
 </li>
 <li><p><strong>Enable</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scontrol</span> <span class="n">update</span> <span class="n">NodeName</span><span class="o">=</span><span class="n">tcogq</span><span class="p">[</span><span class="mi">001</span><span class="o">-</span><span class="mi">006</span><span class="p">]</span> <span class="n">State</span><span class="o">=</span><span class="n">RESUME</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">trcis001</span> <span class="o">~</span><span class="p">]</span><span class="c1"># scontrol update NodeName=tcogq[001-006] State=RESUME</span>
 </pre></div>
 </div>
 </li>
@@ -221,20 +221,20 @@ You must provide a reason when disabling a node.</p>
 <h2>Updating the NVIDIA Driver and CUDA Toolkit<a class="headerlink" href="#updating-the-nvidia-driver-and-cuda-toolkit" title="Permalink to this headline">¶</a></h2>
 <p>Connect via SSH to the compute node and execute these steps:</p>
 <p>1. Stop daemon that uses nvidia kernel module</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; systemctl stop nvidia-dcgm
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&gt; systemctl stop nvidia-dcgm</span>
 </pre></div>
 </div>
 <p>2. Remove all modules depending on <code class="docutils literal notranslate"><span class="pre">nvidia</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rmmod nvidia_drm nvidia_modeset nvidia_uvm nvidia
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&gt; rmmod nvidia_drm nvidia_modeset nvidia_uvm nvidia</span>
 </pre></div>
 </div>
 <p>3. Install NVIDIA Driver and CUDA Toolkit</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --driver
-$&gt; sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --toolkit
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&gt; sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --driver</span>
+<span class="c1">#&gt; sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --toolkit</span>
 </pre></div>
 </div>
 <p>4. Restart the machine</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; reboot
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&gt; reboot</span>
 </pre></div>
 </div>
 </section>
