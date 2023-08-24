@@ -196,9 +196,17 @@ The compute node must be drained in advance on SLURM</p>
 <p>On SLURM, the command <code class="docutils literal notranslate"><span class="pre">scontrol</span></code> can modify the state of the machine by specifying the node and the new state.
 You must provide a reason when disabling a node.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p><strong>Disable:</strong> <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">update</span> <span class="pre">NodeName=tcogq[001-006]</span> <span class="pre">State=DRAIN</span> <span class="pre">Reason=&quot;CUDA</span> <span class="pre">UPDATE&quot;</span></code></p></li>
-<li><p><strong>Enable :</strong> <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">update</span> <span class="pre">NodeName=tcogq[001-006]</span> <span class="pre">State=RESUME</span></code></p></li>
+<div><ul>
+<li><p><strong>Disable</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scontrol</span> <span class="n">update</span> <span class="n">NodeName</span><span class="o">=</span><span class="n">tcogq</span><span class="p">[</span><span class="mi">001</span><span class="o">-</span><span class="mi">006</span><span class="p">]</span> <span class="n">State</span><span class="o">=</span><span class="n">DRAIN</span> <span class="n">Reason</span><span class="o">=</span><span class="s2">&quot;CUDA UPDATE&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Enable</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scontrol</span> <span class="n">update</span> <span class="n">NodeName</span><span class="o">=</span><span class="n">tcogq</span><span class="p">[</span><span class="mi">001</span><span class="o">-</span><span class="mi">006</span><span class="p">]</span> <span class="n">State</span><span class="o">=</span><span class="n">RESUME</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div></blockquote>
 <p>Connect via SSH to the compute node and execute these steps:</p>
