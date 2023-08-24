@@ -8,8 +8,13 @@ The compute node must be drained in advance on SLURM
 On SLURM, the command ``scontrol`` can modify the state of the machine by specifying the node and the new state. 
 You must provide a reason when disabling a node.
 
- * **Disable:** ``scontrol update NodeName=tcogq[001-006] State=DRAIN Reason="CUDA UPDATE"``
- * **Enable :** ``scontrol update NodeName=tcogq[001-006] State=RESUME``
+ * **Disable**::
+
+    scontrol update NodeName=tcogq[001-006] State=DRAIN Reason="CUDA UPDATE"
+
+ * **Enable**::
+
+    scontrol update NodeName=tcogq[001-006] State=RESUME
 
 Connect via SSH to the compute node and execute these steps:
 
