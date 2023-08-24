@@ -1,11 +1,28 @@
-Cuda
-----
+Updating NVIDIA Driver and CUDA Toolkit
+---------------------------------------
 
-Installing new CUDA drivers on GPU compute nodes
+Steps to install new NVIDIA Driver and CUDA Toolkit
+This procedure must be executed as root on a machine that is not running jobs.
+The compute node must be drained in advance on SLURM
+
+1. Stop daemon that uses nvidia kernel module
 ::
 
 	$> systemctl stop nvidia-dcgm
-	$> rmmod nvidia_modeset nvidia_drm nvidia_uvm nvidia
-	$> sh /shared/src/cuda_11.7.0_515.43.04_linux.run --silent --driver
-	$> sh /shared/src/cuda_11.7.0_515.43.04_linux.run --silent --toolkit
+
+2. Remove all modules depending on ``nvidia``
+::
+
+    $> rmmod nvidia_modeset nvidia_drm nvidia_uvm nvidia
+
+3. Install NVIDIA Driver and CUDA Toolkit
+::
+
+	$> sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --driver
+	$> sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --toolkit
+
+4. Restart the machine
+::
+
+    $> reboot
 
