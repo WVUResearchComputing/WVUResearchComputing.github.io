@@ -14,11 +14,11 @@ You must provide a reason when disabling a node.
 
  * **Disable**::
 
-    scontrol update NodeName=tcogq[001-006] State=DRAIN Reason="CUDA UPDATE"
+    [trcis001 ~]# scontrol update NodeName=tcogq[001-006] State=DRAIN Reason="CUDA UPDATE"
 
  * **Enable**::
 
-    scontrol update NodeName=tcogq[001-006] State=RESUME
+    [trcis001 ~]# scontrol update NodeName=tcogq[001-006] State=RESUME
 
 Updating the NVIDIA Driver and CUDA Toolkit
 -------------------------------------------
@@ -28,23 +28,23 @@ Connect via SSH to the compute node and execute these steps:
 1. Stop daemon that uses nvidia kernel module
 ::
 
-	$> systemctl stop nvidia-dcgm
+	#> systemctl stop nvidia-dcgm
 
 2. Remove all modules depending on ``nvidia``
 ::
 
-    $> rmmod nvidia_drm nvidia_modeset nvidia_uvm nvidia
+    #> rmmod nvidia_drm nvidia_modeset nvidia_uvm nvidia
 
 3. Install NVIDIA Driver and CUDA Toolkit
 ::
 
-	$> sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --driver
-	$> sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --toolkit
+	#> sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --driver
+	#> sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --toolkit
 
 4. Restart the machine
 ::
 
-    $> reboot
+    #> reboot
 
 Verify NVIDIA Driver and CUDA Toolkit versions
 ----------------------------------------------
