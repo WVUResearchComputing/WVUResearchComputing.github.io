@@ -21,7 +21,7 @@ Connect via SSH to the compute node and execute these steps:
 2. Remove all modules depending on ``nvidia``
 ::
 
-    $> rmmod nvidia_modeset nvidia_drm nvidia_uvm nvidia
+    $> rmmod nvidia_drm nvidia_modeset nvidia_uvm nvidia
 
 3. Install NVIDIA Driver and CUDA Toolkit
 ::
