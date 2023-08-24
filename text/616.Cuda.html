@@ -115,7 +115,12 @@
 <li class="toctree-l2"><a class="reference internal" href="613.Matlab_MMX.html">Matlab N-D multithreaded matrix operations (MMX)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="614.Julia.html">Building Julia</a></li>
 <li class="toctree-l2"><a class="reference internal" href="615.Tinker9.html">Tinker9</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Updating NVIDIA Driver and CUDA Toolkit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Updating NVIDIA Driver and CUDA Toolkit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#draining-the-nodes">Draining the nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-the-nvidia-driver-and-cuda-toolkit">Updating the NVIDIA Driver and CUDA Toolkit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-nvidia-driver-and-cuda-toolkit-versions">Verify NVIDIA Driver and CUDA Toolkit versions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a></li>
@@ -191,8 +196,10 @@
   <section id="updating-nvidia-driver-and-cuda-toolkit">
 <h1>Updating NVIDIA Driver and CUDA Toolkit<a class="headerlink" href="#updating-nvidia-driver-and-cuda-toolkit" title="Permalink to this headline">¶</a></h1>
 <p>Steps to install new NVIDIA Driver and CUDA Toolkit
-This procedure must be executed as root on a machine that is not running jobs.
-The compute node must be drained in advance on SLURM</p>
+This procedure must be executed as root on a machine that is not running jobs.</p>
+<section id="draining-the-nodes">
+<h2>Draining the nodes<a class="headerlink" href="#draining-the-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The compute node must be drained in advance on SLURM</p>
 <p>On SLURM, the command <code class="docutils literal notranslate"><span class="pre">scontrol</span></code> can modify the state of the machine by specifying the node and the new state.
 You must provide a reason when disabling a node.</p>
 <blockquote>
@@ -209,6 +216,9 @@ You must provide a reason when disabling a node.</p>
 </li>
 </ul>
 </div></blockquote>
+</section>
+<section id="updating-the-nvidia-driver-and-cuda-toolkit">
+<h2>Updating the NVIDIA Driver and CUDA Toolkit<a class="headerlink" href="#updating-the-nvidia-driver-and-cuda-toolkit" title="Permalink to this headline">¶</a></h2>
 <p>Connect via SSH to the compute node and execute these steps:</p>
 <p>1. Stop daemon that uses nvidia kernel module</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; systemctl stop nvidia-dcgm
@@ -227,6 +237,46 @@ $&gt; sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --toolkit
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; reboot
 </pre></div>
 </div>
+</section>
+<section id="verify-nvidia-driver-and-cuda-toolkit-versions">
+<h2>Verify NVIDIA Driver and CUDA Toolkit versions<a class="headerlink" href="#verify-nvidia-driver-and-cuda-toolkit-versions" title="Permalink to this headline">¶</a></h2>
+<p>On the infraestructure machine verify the versions using Ansible</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">trcis009</span> <span class="o">~</span><span class="p">]</span><span class="c1"># ansible thorny-gpu -m shell -a &quot;nvidia-smi | grep CUDA&quot;</span>
+<span class="n">tcogq001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tcogq002</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tcogq003</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tcogq006</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tcogq004</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tcogq005</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tbmgq001</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">530.30.02</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">530.30.02</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.1</span>     <span class="o">|</span>
+
+<span class="n">tbegq201</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tbegq202</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+
+<span class="n">tbmgq100</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">530.30.02</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">530.30.02</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.1</span>     <span class="o">|</span>
+
+<span class="n">tbegq200</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span> <span class="o">|</span> <span class="n">CHANGED</span> <span class="o">|</span> <span class="n">rc</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;&gt;</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">535.86.10</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">535.86.10</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.2</span>     <span class="o">|</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
