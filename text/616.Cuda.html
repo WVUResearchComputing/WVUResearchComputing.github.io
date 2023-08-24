@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Cuda &mdash; WVU-RC 2023.04.03 documentation</title>
+  <title>Updating NVIDIA Driver and CUDA Toolkit &mdash; WVU-RC 2023.04.03 documentation</title>
   
 
   
@@ -115,7 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="613.Matlab_MMX.html">Matlab N-D multithreaded matrix operations (MMX)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="614.Julia.html">Building Julia</a></li>
 <li class="toctree-l2"><a class="reference internal" href="615.Tinker9.html">Tinker9</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Cuda</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Updating NVIDIA Driver and CUDA Toolkit</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a></li>
@@ -169,7 +169,7 @@
         
           <li><a href="600.SoftAdmin.html">Software Administration</a> &raquo;</li>
         
-      <li>Cuda</li>
+      <li>Updating NVIDIA Driver and CUDA Toolkit</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -188,13 +188,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="cuda">
-<h1>Cuda<a class="headerlink" href="#cuda" title="Permalink to this headline">¶</a></h1>
-<p>Installing new CUDA drivers on GPU compute nodes</p>
+  <section id="updating-nvidia-driver-and-cuda-toolkit">
+<h1>Updating NVIDIA Driver and CUDA Toolkit<a class="headerlink" href="#updating-nvidia-driver-and-cuda-toolkit" title="Permalink to this headline">¶</a></h1>
+<p>Steps to install new NVIDIA Driver and CUDA Toolkit
+This procedure must be executed as root on a machine that is not running jobs.
+The compute node must be drained in advance on SLURM</p>
+<p>1. Stop daemon that uses nvidia kernel module</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; systemctl stop nvidia-dcgm
-$&gt; rmmod nvidia_modeset nvidia_drm nvidia_uvm nvidia
-$&gt; sh /shared/src/cuda_11.7.0_515.43.04_linux.run --silent --driver
-$&gt; sh /shared/src/cuda_11.7.0_515.43.04_linux.run --silent --toolkit
+</pre></div>
+</div>
+<p>2. Remove all modules depending on <code class="docutils literal notranslate"><span class="pre">nvidia</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; rmmod nvidia_modeset nvidia_drm nvidia_uvm nvidia
+</pre></div>
+</div>
+<p>3. Install NVIDIA Driver and CUDA Toolkit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --driver
+$&gt; sh /shared/src/cuda_12.2.1_535.86.10_linux.run --silent --toolkit
+</pre></div>
+</div>
+<p>4. Restart the machine</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; reboot
 </pre></div>
 </div>
 </section>
