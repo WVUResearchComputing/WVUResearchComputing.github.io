@@ -1,8 +1,12 @@
 Updating NVIDIA Driver and CUDA Toolkit
----------------------------------------
+=======================================
 
 Steps to install new NVIDIA Driver and CUDA Toolkit
 This procedure must be executed as root on a machine that is not running jobs.
+
+Draining the nodes
+------------------
+
 The compute node must be drained in advance on SLURM
 
 On SLURM, the command ``scontrol`` can modify the state of the machine by specifying the node and the new state. 
@@ -15,6 +19,9 @@ You must provide a reason when disabling a node.
  * **Enable**::
 
     scontrol update NodeName=tcogq[001-006] State=RESUME
+
+Updating the NVIDIA Driver and CUDA Toolkit
+-------------------------------------------
 
 Connect via SSH to the compute node and execute these steps:
 
@@ -38,4 +45,46 @@ Connect via SSH to the compute node and execute these steps:
 ::
 
     $> reboot
+
+Verify NVIDIA Driver and CUDA Toolkit versions
+----------------------------------------------
+
+On the infraestructure machine verify the versions using Ansible
+::
+
+    [trcis009 ~]# ansible thorny-gpu -m shell -a "nvidia-smi | grep CUDA"
+    tcogq001.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tcogq002.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tcogq003.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tcogq006.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tcogq004.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tcogq005.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tbmgq001.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
+
+    tbegq201.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tbegq202.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+    tbmgq100.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
+
+    tbegq200.hpc.wvu.edu | CHANGED | rc=0 >>
+    | NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+
+
 
