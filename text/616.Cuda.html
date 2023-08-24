@@ -193,6 +193,15 @@
 <p>Steps to install new NVIDIA Driver and CUDA Toolkit
 This procedure must be executed as root on a machine that is not running jobs.
 The compute node must be drained in advance on SLURM</p>
+<p>On SLURM, the command <code class="docutils literal notranslate"><span class="pre">scontrol</span></code> can modify the state of the machine by specifying the node and the new state.
+You must provide a reason when disabling a node.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Disable:</strong> <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">update</span> <span class="pre">NodeName=tcogq[001-006]</span> <span class="pre">State=DRAIN</span> <span class="pre">Reason=&quot;CUDA</span> <span class="pre">UPDATE&quot;</span></code></p></li>
+<li><p><strong>Enable :</strong> <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">update</span> <span class="pre">NodeName=tcogq[001-006]</span> <span class="pre">State=RESUME</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>Connect via SSH to the compute node and execute these steps:</p>
 <p>1. Stop daemon that uses nvidia kernel module</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; systemctl stop nvidia-dcgm
 </pre></div>
