@@ -1,7 +1,7 @@
 Thorny Flat (2019-)
 ===================
 
-Thorny Flat is WVU Latest HPC Cluster.  It was deployed in Feburary 2019 and funded in large part by `NSF Major Research Instrumentation (MRI) Grant Award #1726534 <https://www.nsf.gov/awardsearch/showAward?AWD_ID=1726534&HistoricalAwards=false>`_. The cluster has a total of 6196 CPU cores spread over 170 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phases and currently is in phase 2.
+Thorny Flat is WVU's Latest HPC Cluster.  It was deployed in February 2019 and funded in large part by `NSF Major Research Instrumentation (MRI) Grant Award #1726534 <https://www.nsf.gov/awardsearch/showAward?AWD_ID=1726534&HistoricalAwards=false>`_. The cluster has a total of 6196 CPU cores spread over 170 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phases and currently is in phase 2.
 
 .. image:: /_static/ThornyFlat.jpg
     :height: 600px
@@ -16,7 +16,7 @@ Overview
 *(This text can be used for proposals to Grant Funding Agencies)*
 
 Thorny Flat is a general-purpose High-Performance Computing (HPC) cluster.
-Thorny Flat serves the HPC needs for West Virginia University (WVU) and other
+Thorny Flat serves the HPC needs of West Virginia University (WVU) and other
 higher education institutions in West Virginia. It is hosted in Pittsburgh
 Supercomputer Center and was built thanks to NSF Major Research Instrumentation
 (MRI) Grant Award #1726534
@@ -28,7 +28,7 @@ The distribution of CPU cores is as follows:
 7 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (24 cores per node)
 27 compute nodes with dual-socket Intel(R) Xeon(R) Silver 4210 (20 cores per node).
 4 compute nodes with dual-socket Intel(R) Xeon(R) Gold 6126 (52 cores per node).
-Memory on compute nodes range from 96GB to 768GB.
+Memory on compute nodes ranges from 96 GB to 768 GB.
 The machines are interconnected using Intel(R) Omnipath(R) 100 Gbps with a blocking ratio of 5:1.
 
 Thorny Flat has 11 compute nodes with hardware accelerators in the form of NVIDIA GPUs.
@@ -40,13 +40,13 @@ There is a total of 47 GPU cards distributed as follows:
 Thorny Flat scored 115 TeraFLOPS using 101 CPU-only compute nodes.
 Score was measured from the HPL Linpack benchmark.
 
-Thorny Flat uses SLURM for workload managment and it has a variety of compilers, 
+Thorny Flat uses SLURM for workload management and it has a variety of compilers, 
 numerical libraries and scientific software specifically compiled and optimized for the hardware architecture.
 
 Acknowledgment Message
 ~~~~~~~~~~~~~~~~~~~~~~
 
-We ask our users to acknowledge the use of Thorny Flat in all publications that were possible thanks to the use of this resource. The message on the acknowledgment section could be as follows:
+We ask our users to acknowledge the use of Thorny Flat in all possible publications thanks to this resource. The message in the acknowledgment section could be as follows:
 
  *Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.*
 
@@ -153,13 +153,13 @@ Research teams that have bought their own compute nodes have private partitions 
 Standby Partition
 -----------------
 
-The standy partition is for using resources from research teams partitions that are not currently being used. Priority on the standby partition is set by fair share queuing. This means that user priority is assigned based on a combination of the size of the job and how much system resources the user have used during the given week, with higher priority assigned to larger jobs and/or user jobs that have used fewer system resources in the week. Further, the standby partition has a 4 hour wall time.
+The standy partition is for using resources from research teams partitions that are not currently being used. Priority on the standby partition is set by fair share queuing. This means that user priority is assigned based on a combination of the size of the job and how much system resources the user have used during the given week, with higher priority assigned to larger jobs and/or user jobs that have used fewer system resources in the week. Further, the standby partition has a 4-hour wall time.
 
 Community Node Partitions
 -------------------------
 
-Thorny Flat has several partitions that start with the word 'comm'. These partitions are linked to the 73 compute/GPU nodes bought using NSF funding sources, and as such is open for Statewide Higher Education use. 
-These partitions are separated by node type (i.e.  extra large memory, and gpu) and can be used by all users. Currently, these nodes are regulated by fair share queuing. This means that user priority is assigned based on a combination of the size of the job and how much system resources the user have used during the given week, with higher priority assigned to larger jobs and/or user jobs that have used less system resources in the week. Further, all community partitions have a week wall time, except for the (comm\_small\_day). comm\_small\_day allows jobs up 24 hours; and, this partition class has access to a larger number of resources than than comm\_small\_week). These restrictions are set to prevent a single user occupying a large number of the community resources for an excessively long time.
+Thorny Flat has several partitions that start with the word 'comm'. These partitions are linked to the 73 compute/GPU nodes bought using NSF funding sources, and as such open for Statewide Higher Education use. 
+These partitions are separated by node type (i.e. extra large memory, and GPU) and can be used by all users. Currently, these nodes are regulated by fair share queuing. This means that user priority is assigned based on a combination of the size of the job and how much system resources the user has used during the given week, with higher priority assigned to larger jobs and/or user jobs that have used less system resources in the week. Further, all community partitions have a week wall time, except for the (comm\_small\_day). comm\_small\_day allows jobs up 24 hours; and, this partition class has access to a larger number of resources than than comm\_small\_week). These restrictions are set to prevent a single user from occupying a large number of the community resources for an excessively long time.
 
 Hardware acceleration
 ---------------------
