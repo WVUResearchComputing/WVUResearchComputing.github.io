@@ -40,7 +40,7 @@ There is a total of 155 GPU cards distributed as follows:
 2 compute nodes with 8 GPUs NVIDIA(R) A100 40GB PCIe.
 The login node also has 3 GPUs NVIDIA(R) A40 24GB PCIe. 
 
-Dolly Sods uses SLURM for workload management and it has a variety of compilers, numerical libraries and scientific software specifically compiled and optimized for the hardware architecture.
+Dolly Sods uses SLURM for workload management and it has a variety of compilers, numerical libraries, and scientific software specifically compiled and optimized for the hardware architecture.
 
 Acknowledgment Message
 ----------------------
