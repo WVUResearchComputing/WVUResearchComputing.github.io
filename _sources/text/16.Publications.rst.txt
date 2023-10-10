@@ -12,7 +12,6 @@ Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Sys
 Mahesh, Siddharth, Sean T. McWilliams, and Michal Pirog. 
 `"Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems." <https://arxiv.org/abs/2305.01533>`_ 
 arXiv preprint arXiv:2305.01533 (2023).
-https://arxiv.org/abs/2305.01533
 
 .. image:: /_static/publications_2023/2023\ 2305.01533\ Analytical\ and\ Numerical\ Analysis\ of\ Circumbinary\ Disk\ Dynamics\ -\ I,\ Coplanar\ Systems.png
 
@@ -22,7 +21,9 @@ https://arxiv.org/abs/2305.01533
     title={Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems},
     author={Mahesh, Siddharth and McWilliams, Sean T and Pirog, Michal},
     journal={arXiv preprint arXiv:2305.01533},
-    year={2023}
+    year={2023},
+    doi={},
+    url={https://arxiv.org/abs/2305.01533}
     }
 
 An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmentation Problem
@@ -31,7 +32,6 @@ An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmen
 Restanio, Jacob Thomas. 
 `"An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmentation Problem." <https://doi.org/10.33915/etd.12089>`_
 (2023).
-https://doi.org/10.33915/etd.12089
 
 .. image:: /_static/publications_2023/2023\ An\ Empirical\ Analysis\ of\ Approximation\ Algorithms\ for\ the\ Unweigh.png
 
@@ -40,7 +40,9 @@ https://doi.org/10.33915/etd.12089
     @article{restanio2023empirical,
     title={An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmentation Problem},
     author={Restanio, Jacob Thomas},
-    year={2023}
+    year={2023},
+    doi={10.33915/etd.12089},
+    url={https://doi.org/10.33915/etd.12089}
     }
 
 The NANOGrav 12.5 yr Data Set: Bayesian Limits on Gravitational Waves from Individual Supermassive Black Hole Binaries
@@ -49,7 +51,6 @@ The NANOGrav 12.5 yr Data Set: Bayesian Limits on Gravitational Waves from Indiv
 Arzoumanian, Zaven, et al. 
 `"The NANOGrav 12.5 yr Data Set: Bayesian Limits on Gravitational Waves from Individual Supermassive Black Hole Binaries." <https://doi.org/10.3847/2041-8213/acdbc7>`_ 
 The Astrophysical Journal Letters 951.2 (2023): L28.
-https://doi.org/10.3847/2041-8213/acdbc7
 
 .. image:: /_static/publications_2023/2023\ Arzoumanian_2023_ApJL_951_L28.png
 
@@ -64,7 +65,9 @@ https://doi.org/10.3847/2041-8213/acdbc7
     number={2},
     pages={L28},
     year={2023},
-    publisher={IOP Publishing}
+    publisher={IOP Publishing},
+    doi={10.3847/2041-8213/acdbc7},
+    url={https://doi.org/10.3847/2041-8213/acdbc7}
     }
 
 Crime variability, peer effects, and economic inequality in social networks
@@ -73,7 +76,6 @@ Crime variability, peer effects, and economic inequality in social networks
 Velásquez-Giraldo, Mateo, Gustavo Canavire-Bacarreza, and Alexander Lundberg. 
 `"Crime variability, peer effects, and economic inequality in social networks." <https://doi.org/10.1016/j.jeconc.2023.100011>`_
 Journal of Economic Criminology 1 (2023): 100011.
-https://doi.org/10.1016/j.jeconc.2023.100011
 
 .. image:: /_static/publications_2023/2023\ Crime\ variability,\ peer\ effects,\ and\ economic\ inequality\ in\ social\ networks.png
 
@@ -86,7 +88,9 @@ https://doi.org/10.1016/j.jeconc.2023.100011
     volume={1},
     pages={100011},
     year={2023},
-    publisher={Elsevier}
+    publisher={Elsevier},
+    doi={10.1016/j.jeconc.2023.100011},
+    url={https://doi.org/10.1016/j.jeconc.2023.100011}
     }
 
 Imitation Learning for Swarm Control using Variational Inference
@@ -95,7 +99,6 @@ Imitation Learning for Swarm Control using Variational Inference
 Jimoh, Hafeez Olafisayo. 
 `"Imitation Learning for Swarm Control using Variational Inference." <https://doi.org/10.33915/etd.12115>`_
 (2023).
-https://doi.org/10.33915/etd.12115
 
 .. image:: /_static/publications_2023/2023\ Imitation\ Learning\ for\ Swarm\ Control\ using\ Variational\ Inference.png
 
@@ -104,7 +107,9 @@ https://doi.org/10.33915/etd.12115
     @article{jimoh2023imitation,
     title={Imitation Learning for Swarm Control using Variational Inference},
     author={Jimoh, Hafeez Olafisayo},
-    year={2023}
+    year={2023},
+    doi={10.33915/etd.12115},
+    url={https://doi.org/10.33915/etd.12115}
     }
 
 
@@ -114,7 +119,6 @@ Inverse design of a polarization demultiplexer for on-chip path-entangled photon
 Melo, Emerson G., et al. 
 `"Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots." <https://doi.org/10.1364/OL.496129>`_ 
 Optics Letters 48.17 (2023): 4516-4519.
-https://doi.org/10.1364/OL.496129
 
 .. image:: /_static/publications_2023/2023\ Inverse\ design\ of\ a\ polarization\ demultiplexer\ for\ on-chip\ path-entangled\ photon-pair\ sources\ based\ on\ single\ quantum\ dots.png
 
@@ -128,7 +132,9 @@ https://doi.org/10.1364/OL.496129
   	number={17},
   	pages={4516--4519},
   	year={2023},
-  	publisher={Optica Publishing Group}
+  	publisher={Optica Publishing Group},
+    doi={10.1364/OL.496129},
+    url={https://doi.org/10.1364/OL.496129}
 	}
 
 
@@ -138,7 +144,6 @@ Evaluation and classification of fentanyl‐related compounds using EC‐SERS an
 Cooman, Travon, Colby E. Ott, and Luis E. Arroyo. 
 `"Evaluation and classification of fentanyl‐related compounds using EC‐SERS and machine learning." <https://doi.org/10.1111/1556-4029.15285>`_ 
 Journal of Forensic Sciences (2023). 
-https://doi.org/10.1111/1556-4029.15285
 
 .. image:: /_static/publications_2023/2023\ Journal\ of\ Forensic\ Sciences\ -\ 2023\ -\ Cooman\ -\ Evaluation\ and\ classification\ of\ fentanyl‐related\ compounds\ using\ EC‐SERS.png
 
@@ -149,7 +154,9 @@ https://doi.org/10.1111/1556-4029.15285
   	author={Cooman, Travon and Ott, Colby E and Arroyo, Luis E},
   	journal={Journal of Forensic Sciences},
   	year={2023},
-  	publisher={Wiley Online Library}
+  	publisher={Wiley Online Library},
+    doi={10.1111/1556-4029.15285},
+    url={https://doi.org/10.1111/1556-4029.15285}
 	}
 
 
@@ -159,7 +166,6 @@ Predicting dry matter intake in beef cattle
 Blake, Nathan E., et al. 
 `"Predicting dry matter intake in beef cattle." <https://doi.org/10.1093/jas/skad269>`_
 Journal of Animal Science (2023): skad269.
-https://doi.org/10.1093/jas/skad269
 
 .. image:: /_static/publications_2023/2023\ Predicting\ dry\ matter\ intake\ in\ beef\ cattle.png
 
@@ -171,16 +177,16 @@ https://doi.org/10.1093/jas/skad269
     journal={Journal of Animal Science},
     pages={skad269},
     year={2023},
-    publisher={Oxford University Press US}
+    publisher={Oxford University Press US},
+    doi={10.1093/jas/skad269},
+    url={https://doi.org/10.1093/jas/skad269}
     }
-
 
 Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Cruz, Alfredo A., et al. 
 `"Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux." <https://doi.org/10.22541/essoar.169466161.13316560/v1>`
-https://doi.org/10.22541/essoar.169466161.13316560/v1
 
 .. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
 
@@ -188,7 +194,9 @@ https://doi.org/10.22541/essoar.169466161.13316560/v1
 
     @article{cruzreduced,
     title={Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux},
-    author={Cruz, Alfredo A and Mehta, Piyush M and Morley, Steven K and Godinez, Humberto C and Jordanova, Vania K}
+    author={Cruz, Alfredo A and Mehta, Piyush M and Morley, Steven K and Godinez, Humberto C and Jordanova, Vania K},
+    doi={10.22541/essoar.169466161.13316560/v1},
+    url={https://doi.org/10.22541/essoar.169466161.13316560/v1}
     }
 
 
@@ -198,7 +206,6 @@ Systematic determination of a material's magnetic ground state from first princi
 Mora, Andres Tellez, et al. 
 `"Systematic determination of a material's magnetic ground state from first principles." <https://doi.org/10.21203/rs.3.rs-3179548/v1>`_ 
 (2023).
-https://doi.org/10.21203/rs.3.rs-3179548/v1
 
 .. image:: /_static/publications_2023/2023\ Systematic\ determination\ of\ a\ material’s\ magnetic\ ground\ state\ from\ first\ principles.png
 
@@ -207,7 +214,9 @@ https://doi.org/10.21203/rs.3.rs-3179548/v1
 	@article{mora2023systematic,
   	title={Systematic determination of a material's magnetic ground state from first principles},
   	author={Mora, Andres Tellez and He, Xu and Bousquet, Eric and Wirtz, Ludger and Romero, Aldo},
-  	year={2023}
+  	year={2023},
+    doi={10.21203/rs.3.rs-3179548/v1},
+    url={https://doi.org/10.21203/rs.3.rs-3179548/v1}
 	}
 
 The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
@@ -216,7 +225,6 @@ The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
 Agazie, Gabriella, et al. 
 `"The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars." <https://doi.org/10.3847/2041-8213/acda9a>`_ 
 The Astrophysical Journal Letters 951.1 (2023): L9.
-https://doi.org/10.3847/2041-8213/acda9a
 
 .. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Observations\ and\ Timing\ of\ 68\ Millisecond\ Pulsars.png
 
@@ -231,7 +239,9 @@ https://doi.org/10.3847/2041-8213/acda9a
   	number={1},
   	pages={L9},
   	year={2023},
-  	publisher={IOP Publishing}
+  	publisher={IOP Publishing},
+    doi={10.3847/2041-8213/acda9a},
+    url={https://doi.org/10.3847/2041-8213/acda9a}
 	}
 
 
@@ -241,7 +251,6 @@ The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries fro
 Agazie, Gabriella, et al. 
 `"The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background." <https://doi.org/10.3847/2041-8213/ace18b>`_ 
 The Astrophysical Journal Letters 952.2 (2023): L37.
-https://doi.org/10.3847/2041-8213/ace18b
 
 .. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Constraints\ on\ Supermassive\ Black\ Hole\ Binaries\ from\ the\ Gravitational-wave\ Background.png
 
@@ -256,7 +265,9 @@ https://doi.org/10.3847/2041-8213/ace18b
   	number={2},
   	pages={L37},
   	year={2023},
-  	publisher={IOP Publishing}
+  	publisher={IOP Publishing},
+    doi={10.3847/2041-8213/ace18b},
+    url={https://doi.org/10.3847/2041-8213/ace18b}
 	}
 
 
@@ -266,7 +277,6 @@ Assessment of Enzyme Functionality at Metal–Organic Framework Interfaces Devel
 Chapman, Jordan, and Cerasela Zoica Dinu. 
 `"Assessment of Enzyme Functionality at Metal–Organic Framework Interfaces Developed through Molecular Simulations." <https://doi.org/10.1021/acs.langmuir.2c02347>`_ 
 Langmuir 39.5 (2023): 1750-1763.
-https://doi.org/10.1021/acs.langmuir.2c02347
 
 .. image:: /_static/publications_2023/2023\ acs.langmuir.2c02347.png
 
@@ -280,7 +290,9 @@ https://doi.org/10.1021/acs.langmuir.2c02347
     number={5},
     pages={1750--1763},
     year={2023},
-    publisher={ACS Publications}
+    publisher={ACS Publications},
+    doi={10.1021/acs.langmuir.2c02347},
+    url={https://doi.org/10.1021/acs.langmuir.2c02347}
     }
 
 Elucidation of Structure–Function Relationships of Hyaluronic Acid-Based Polymers via Combinatorial Approaches
@@ -289,7 +301,6 @@ Elucidation of Structure–Function Relationships of Hyaluronic Acid-Based Polym
 Chapman, Jordan, et al. 
 `"Elucidation of Structure–Function Relationships of Hyaluronic Acid-Based Polymers via Combinatorial Approaches." <https://doi.org/10.1021/acsapm.2c01518>`_ 
 ACS Applied Polymer Materials 5.2 (2023): 1109-1124.
-https://doi.org/10.1021/acsapm.2c01518
 
 .. image:: /_static/publications_2023/2023\ acsapm.2c01518.png
 
@@ -303,7 +314,9 @@ https://doi.org/10.1021/acsapm.2c01518
     number={2},
     pages={1109--1124},
     year={2023},
-    publisher={ACS Publications}
+    publisher={ACS Publications},
+    doi={10.1021/acsapm.2c01518},
+    url={https://doi.org/10.1021/acsapm.2c01518}
     }
 
 The uncertain future of mountaintop-removal-mined landscapes 2: Modeling the influence of topography and vegetation
@@ -312,7 +325,6 @@ The uncertain future of mountaintop-removal-mined landscapes 2: Modeling the inf
 Bower, Samuel J., et al. 
 `"The uncertain future of mountaintop-removal-mined landscapes 2: Modeling the influence of topography and vegetation." <https://doi.org/10.31223/X5468R>`_ 
 (2023).
-https://doi.org/10.31223/X5468R
 
 .. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
 
@@ -322,6 +334,8 @@ https://doi.org/10.31223/X5468R
     title={The uncertain future of mountaintop-removal-mined landscapes 2: Modeling the influence of topography and vegetation},
     author={Bower, Samuel J and Shobe, Charles Merritt and Maxwell, Aaron E and Campforts, Benjamin},
     year={2023},
-    publisher={EarthArXiv}
+    publisher={EarthArXiv},
+    doi={10.31223/X5468R},
+    url={https://doi.org/10.31223/X5468R}
     }
 
