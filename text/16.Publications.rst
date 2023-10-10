@@ -13,7 +13,7 @@ Fava, Mauro, et al.
 "Large and tunable spin-orbit effect of 6p orbitals through structural cavities in crystals." 
 arXiv preprint arXiv:2307.09545 (2023).
 
-.. image:: /_static/publications_2023/2023\ 10.48550\/arXiv.2307.09545.png
+.. image:: /_static/publications_2023/2023\ 10.48550_arXiv.2307.09545.png
 
 ::
 
@@ -32,7 +32,7 @@ Tarek, Mehedi Hasan, and Emily Garner.
 `"A proposed framework for the identification of indicator genes for monitoring antibiotic resistance in wastewater: Insights from metagenomic sequencing." <https://doi.org/10.1016/j.scitotenv.2022.158698>`_ 
 Science of The Total Environment 854 (2023): 158698.
 
-.. image:: /_static/publications_2023/2023\ 10.1016\/j.scitotenv.2022.158698.png
+.. image:: /_static/publications_2023/2023\ 10.1016_j.scitotenv.2022.158698.png
 
 ::
 
