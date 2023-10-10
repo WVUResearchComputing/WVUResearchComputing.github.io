@@ -1,4 +1,4 @@
-.. _int-training:
+.. _int-publications:
 
 Publications
 ============
@@ -6,18 +6,18 @@ Publications
 2023
 ----
 
-.. image:: /_static/publications_2023/2023 2305.01533 Analytical and Numerical Analysis of Circumbinary Disk Dynamics - I, Coplanar Systems.png
-.. image:: /_static/publications_2023/2023 An Empirical Analysis of Approximation Algorithms for the Unweigh.png
-.. image:: /_static/publications_2023/2023 Arzoumanian_2023_ApJL_951_L28.png
-.. image:: /_static/publications_2023/2023 Crime variability, peer effects, and economic inequality in social networks.png
-.. image:: /_static/publications_2023/2023 Imitation Learning for Swarm Control using Variational Inference.png
-.. image:: /_static/publications_2023/2023 Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots.png
-.. image:: /_static/publications_2023/2023 Journal of Forensic Sciences - 2023 - Cooman - Evaluation and classification of fentanyl‐related compounds using EC‐SERS.png
-.. image:: /_static/publications_2023/2023 Predicting dry matter intake in beef cattle.png
-.. image:: /_static/publications_2023/2023 Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models; Application to RAM-SCB Particle Flux.png
-.. image:: /_static/publications_2023/2023 Systematic determination of a material’s magnetic ground state from first principles.png
-.. image:: /_static/publications_2023/2023 The NANOGrav 15 yr Data Set, Observations and Timing of 68 Millisecond Pulsars.png
-.. image:: /_static/publications_2023/2023 The NANOGrav 15 yr Data Set; Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background.png
-.. image:: /_static/publications_2023/2023 acs.langmuir.2c02347.png
-.. image:: /_static/publications_2023/2023 acsapm.2c01518.png
-.. image:: /_static/publications_2023/2023 bower_mtr_part_2_earth_arxiv.png
+.. image:: /_static/publications_2023/2023\ 2305.01533\ Analytical\ and\ Numerical\ Analysis\ of\ Circumbinary\ Disk\ Dynamics\ -\ I,\ Coplanar\ Systems.png
+.. image:: /_static/publications_2023/2023\ An\ Empirical\ Analysis\ of\ Approximation\ Algorithms\ for\ the\ Unweigh.png
+.. image:: /_static/publications_2023/2023\ Arzoumanian_2023_ApJL_951_L28.png
+.. image:: /_static/publications_2023/2023\ Crime\ variability,\ peer\ effects,\ and\ economic\ inequality\ in\ social\ networks.png
+.. image:: /_static/publications_2023/2023\ Imitation\ Learning\ for\ Swarm\ Control\ using\ Variational\ Inference.png
+.. image:: /_static/publications_2023/2023\ Inverse\ design\ of\ a\ polarization\ demultiplexer\ for\ on-chip\ path-entangled\ photon-pair\ sources\ based\ on\ single\ quantum\ dots.png
+.. image:: /_static/publications_2023/2023\ Journal\ of\ Forensic\ Sciences\ -\ 2023\ -\ Cooman\ -\ Evaluation\ and\ classification\ of\ fentanyl‐related\ compounds\ using\ EC‐SERS.png
+.. image:: /_static/publications_2023/2023\ Predicting\ dry\ matter\ intake\ in\ beef\ cattle.png
+.. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
+.. image:: /_static/publications_2023/2023\ Systematic\ determination\ of\ a\ material’s\ magnetic\ ground\ state\ from\ first\ principles.png
+.. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Observations\ and\ Timing\ of\ 68\ Millisecond\ Pulsars.png
+.. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Constraints\ on\ Supermassive\ Black\ Hole\ Binaries\ from\ the\ Gravitational-wave\ Background.png
+.. image:: /_static/publications_2023/2023\ acs.langmuir.2c02347.png
+.. image:: /_static/publications_2023/2023\ acsapm.2c01518.png
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
