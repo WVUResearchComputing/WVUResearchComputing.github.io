@@ -15,6 +15,23 @@ Publications
 .. image:: /_static/publications_2023/2023\ Journal\ of\ Forensic\ Sciences\ -\ 2023\ -\ Cooman\ -\ Evaluation\ and\ classification\ of\ fentanyl‐related\ compounds\ using\ EC‐SERS.png
 .. image:: /_static/publications_2023/2023\ Predicting\ dry\ matter\ intake\ in\ beef\ cattle.png
 .. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
+
+Systematic determination of a material's magnetic ground state from first principles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ Mora, Andres Tellez, et al. 
+ "Systematic determination of a material's magnetic ground state from first principles." 
+ (2023).
+
+::
+
+	@article{mora2023systematic,
+  	title={Systematic determination of a material's magnetic ground state from first principles},
+  	author={Mora, Andres Tellez and He, Xu and Bousquet, Eric and Wirtz, Ludger and Romero, Aldo},
+  	year={2023}
+	}
+
+
 .. image:: /_static/publications_2023/2023\ Systematic\ determination\ of\ a\ material’s\ magnetic\ ground\ state\ from\ first\ principles.png
 
 The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
