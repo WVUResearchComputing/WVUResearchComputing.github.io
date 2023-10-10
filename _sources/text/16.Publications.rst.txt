@@ -21,7 +21,9 @@ arXiv preprint arXiv:2307.09545 (2023).
     title={Large and tunable spin-orbit effect of 6p orbitals through structural cavities in crystals},
     author={Fava, Mauro and Lafargue-Dit-Hauret, William and Romero, Aldo H and Bousquet, Eric},
     journal={arXiv preprint arXiv:2307.09545},
-    year={2023}
+    year={2023},
+    doi={10.48550/arXiv.2307.09545},
+    url={https://doi.org/10.48550/arXiv.2307.09545}
     }
 
 
@@ -43,7 +45,9 @@ Science of The Total Environment 854 (2023): 158698.
     volume={854},
     pages={158698},
     year={2023},
-    publisher={Elsevier}
+    publisher={Elsevier},
+    doi={10.1016/j.scitotenv.2022.158698},
+    url={https://doi.org/10.1016/j.scitotenv.2022.158698}
     }
 
 
