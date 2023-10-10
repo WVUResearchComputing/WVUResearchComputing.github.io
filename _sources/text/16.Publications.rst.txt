@@ -10,7 +10,7 @@ Large and tunable spin-orbit effect of 6p orbitals through structural cavities i
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Fava, Mauro, et al. 
-"Large and tunable spin-orbit effect of 6p orbitals through structural cavities in crystals." 
+`"Large and tunable spin-orbit effect of 6p orbitals through structural cavities in crystals." <https://doi.org/10.48550/arXiv.2307.09545>`_ 
 arXiv preprint arXiv:2307.09545 (2023).
 
 .. image:: /_static/publications_2023/2023\ 10.48550_arXiv.2307.09545.png
