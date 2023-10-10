@@ -6,10 +6,84 @@ Publications
 2023
 ----
 
+Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Mahesh, Siddharth, Sean T. McWilliams, and Michal Pirog. 
+"Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems." 
+arXiv preprint arXiv:2305.01533 (2023).
+
 .. image:: /_static/publications_2023/2023\ 2305.01533\ Analytical\ and\ Numerical\ Analysis\ of\ Circumbinary\ Disk\ Dynamics\ -\ I,\ Coplanar\ Systems.png
+
+::
+
+    @article{mahesh2023analytical,
+    title={Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems},
+    author={Mahesh, Siddharth and McWilliams, Sean T and Pirog, Michal},
+    journal={arXiv preprint arXiv:2305.01533},
+    year={2023}
+    }
+
+An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmentation Problem
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Restanio, Jacob Thomas. 
+"An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmentation Problem." 
+(2023).
+
 .. image:: /_static/publications_2023/2023\ An\ Empirical\ Analysis\ of\ Approximation\ Algorithms\ for\ the\ Unweigh.png
+
+::
+
+    @article{restanio2023empirical,
+    title={An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmentation Problem},
+    author={Restanio, Jacob Thomas},
+    year={2023}
+    }
+
+The NANOGrav 12.5 yr Data Set: Bayesian Limits on Gravitational Waves from Individual Supermassive Black Hole Binaries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Arzoumanian, Zaven, et al. 
+"The NANOGrav 12.5 yr Data Set: Bayesian Limits on Gravitational Waves from Individual Supermassive Black Hole Binaries." 
+The Astrophysical Journal Letters 951.2 (2023): L28.
+
 .. image:: /_static/publications_2023/2023\ Arzoumanian_2023_ApJL_951_L28.png
+
+::
+
+    @article{arzoumanian2023nanograv,
+    title={The NANOGrav 12.5 yr Data Set: Bayesian Limits on Gravitational Waves from Individual Supermassive Black Hole Binaries},
+    author={Arzoumanian, Zaven and Baker, Paul T and Blecha, Laura and Blumer, Harsha and Brazier, Adam and Brook, 
+            Paul R and Burke-Spolaor, Sarah and B{\'e}csy, Bence and Casey-Clyde, J Andrew and Charisi, Maria and others},
+    journal={The Astrophysical Journal Letters},
+    volume={951},
+    number={2},
+    pages={L28},
+    year={2023},
+    publisher={IOP Publishing}
+    }
+
+Crime variability, peer effects, and economic inequality in social networks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Velásquez-Giraldo, Mateo, Gustavo Canavire-Bacarreza, and Alexander Lundberg. 
+"Crime variability, peer effects, and economic inequality in social networks." 
+Journal of Economic Criminology 1 (2023): 100011.
+
 .. image:: /_static/publications_2023/2023\ Crime\ variability,\ peer\ effects,\ and\ economic\ inequality\ in\ social\ networks.png
+
+::
+
+    @article{velasquez2023crime,
+    title={Crime variability, peer effects, and economic inequality in social networks},
+    author={Vel{\'a}squez-Giraldo, Mateo and Canavire-Bacarreza, Gustavo and Lundberg, Alexander},
+    journal={Journal of Economic Criminology},
+    volume={1},
+    pages={100011},
+    year={2023},
+    publisher={Elsevier}
+    }
 
 Imitation Learning for Swarm Control using Variational Inference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -174,7 +248,69 @@ The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries fro
 	}
 
 
+Assessment of Enzyme Functionality at Metal–Organic Framework Interfaces Developed through Molecular Simulations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Chapman, Jordan, and Cerasela Zoica Dinu. 
+"Assessment of Enzyme Functionality at Metal–Organic Framework Interfaces Developed through Molecular Simulations." 
+Langmuir 39.5 (2023): 1750-1763.
 
 .. image:: /_static/publications_2023/2023\ acs.langmuir.2c02347.png
+
+::
+    
+    @article{chapman2023assessment,
+    title={Assessment of Enzyme Functionality at Metal--Organic Framework Interfaces Developed through Molecular Simulations},
+    author={Chapman, Jordan and Zoica Dinu, Cerasela},
+    journal={Langmuir},
+    volume={39},
+    number={5},
+    pages={1750--1763},
+    year={2023},
+    publisher={ACS Publications}
+    }
+
+Assessment of Enzyme Functionality at Metal–Organic Framework Interfaces Developed through Molecular Simulations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Chapman, Jordan, and Cerasela Zoica Dinu. 
+"Assessment of Enzyme Functionality at Metal–Organic Framework Interfaces Developed through Molecular Simulations." 
+Langmuir 39.5 (2023): 1750-1763.
+
 .. image:: /_static/publications_2023/2023\ acsapm.2c01518.png
+
+::
+
+    @article{chapman2023assessment,
+    title={Assessment of Enzyme Functionality at Metal--Organic Framework Interfaces Developed through Molecular Simulations},
+    author={Chapman, Jordan and Zoica Dinu, Cerasela},
+    journal={Langmuir},
+    volume={39},
+    number={5},
+    pages={1750--1763},
+    year={2023},
+    publisher={ACS Publications}
+    }
+
+Elucidation of Structure–Function Relationships of Hyaluronic Acid-Based Polymers via Combinatorial Approaches
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Chapman, Jordan, et al. 
+"Elucidation of Structure–Function Relationships of Hyaluronic Acid-Based Polymers via Combinatorial Approaches." 
+ACS Applied Polymer Materials 5.2 (2023): 1109-1124.
+
 .. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+    @article{chapman2023elucidation,
+    title={Elucidation of Structure--Function Relationships of Hyaluronic Acid-Based Polymers via Combinatorial Approaches},
+    author={Chapman, Jordan and Arnold, Jackie and Martinez de la Torre, Celia and Dinu, Cerasela Zoica},
+    journal={ACS Applied Polymer Materials},
+    volume={5},
+    number={2},
+    pages={1109--1124},
+    year={2023},
+    publisher={ACS Publications}
+    }
+
