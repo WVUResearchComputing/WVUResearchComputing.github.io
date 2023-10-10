@@ -55,7 +55,7 @@ Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Sys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Mahesh, Siddharth, Sean T. McWilliams, and Michal Pirog. 
-`"Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems." <https://arxiv.org/abs/2305.01533>`_ 
+`"Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems." <https://doi.org/10.48550/arXiv.2305.01533>`_ 
 arXiv preprint arXiv:2305.01533 (2023).
 
 .. image:: /_static/publications_2023/2023\ 2305.01533\ Analytical\ and\ Numerical\ Analysis\ of\ Circumbinary\ Disk\ Dynamics\ -\ I,\ Coplanar\ Systems.png
@@ -67,8 +67,8 @@ arXiv preprint arXiv:2305.01533 (2023).
     author={Mahesh, Siddharth and McWilliams, Sean T and Pirog, Michal},
     journal={arXiv preprint arXiv:2305.01533},
     year={2023},
-    doi={},
-    url={https://arxiv.org/abs/2305.01533}
+    doi={10.48550/arXiv.2305.01533},
+    url={https://doi.org/10.48550/arXiv.2305.01533}
     }
 
 An Empirical Analysis of Approximation Algorithms for the Unweighted Tree Augmentation Problem
