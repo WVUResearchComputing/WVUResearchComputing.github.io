@@ -16,8 +16,54 @@ Publications
 .. image:: /_static/publications_2023/2023\ Predicting\ dry\ matter\ intake\ in\ beef\ cattle.png
 .. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
 .. image:: /_static/publications_2023/2023\ Systematic\ determination\ of\ a\ material’s\ magnetic\ ground\ state\ from\ first\ principles.png
+
+The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ Agazie, Gabriella, et al. 
+ "The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars." 
+ The Astrophysical Journal Letters 951.1 (2023): L9.
+
+::
+
+	@article{agazie2023nanograv,
+  	title={The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars},
+  	author={Agazie, Gabriella and Alam, Md Faisal and Anumarlapudi, Akash and Archibald, Anne M and Arzoumanian, 
+			Zaven and Baker, Paul T and Blecha, Laura and Bonidie, Victoria and Brazier, Adam and Brook, Paul R and others},
+  	journal={The Astrophysical Journal Letters},
+ 	volume={951},
+  	number={1},
+  	pages={L9},
+  	year={2023},
+  	publisher={IOP Publishing}
+	}
+
 .. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Observations\ and\ Timing\ of\ 68\ Millisecond\ Pulsars.png
+
+The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ Agazie, Gabriella, et al. 
+ "The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background." 
+ The Astrophysical Journal Letters 952.2 (2023): L37.
+
+::
+
+	@article{agazie2023nanograv,
+	title={The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background},
+  	author={Agazie, Gabriella and Anumarlapudi, Akash and Archibald, Anne M and Baker, Paul T and B{\'e}csy, 
+			Bence and Blecha, Laura and Bonilla, Alexander and Brazier, Adam and Brook, Paul R and Burke-Spolaor, Sarah and others},
+  	journal={The Astrophysical Journal Letters},
+  	volume={952},
+  	number={2},
+  	pages={L37},
+  	year={2023},
+  	publisher={IOP Publishing}
+	}
+
 .. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Constraints\ on\ Supermassive\ Black\ Hole\ Binaries\ from\ the\ Gravitational-wave\ Background.png
+
+
 .. image:: /_static/publications_2023/2023\ acs.langmuir.2c02347.png
 .. image:: /_static/publications_2023/2023\ acsapm.2c01518.png
 .. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
