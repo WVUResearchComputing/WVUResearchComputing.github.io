@@ -15,12 +15,11 @@ Publications
 Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Melo, Emerson G., et al. 
+"Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots." 
+Optics Letters 48.17 (2023): 4516-4519.
 
 .. image:: /_static/publications_2023/2023\ Inverse\ design\ of\ a\ polarization\ demultiplexer\ for\ on-chip\ path-entangled\ photon-pair\ sources\ based\ on\ single\ quantum\ dots.png
-
- Melo, Emerson G., et al. 
- "Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots." 
- Optics Letters 48.17 (2023): 4516-4519.
 
 ::
 	
@@ -39,12 +38,11 @@ Inverse design of a polarization demultiplexer for on-chip path-entangled photon
 Evaluation and classification of fentanyl‐related compounds using EC‐SERS and machine learning
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-.. image:: /_static/publications_2023/2023\ Journal\ of\ Forensic\ Sciences\ -\ 2023\ -\ Cooman\ -\ Evaluation\ and\ classification\ of\ fentanyl‐related\ compounds\ using\ EC‐SERS.png
-
  Cooman, Travon, Colby E. Ott, and Luis E. Arroyo. 
  "Evaluation and classification of fentanyl‐related compounds using EC‐SERS and machine learning." 
  Journal of Forensic Sciences (2023). 
+
+.. image:: /_static/publications_2023/2023\ Journal\ of\ Forensic\ Sciences\ -\ 2023\ -\ Cooman\ -\ Evaluation\ and\ classification\ of\ fentanyl‐related\ compounds\ using\ EC‐SERS.png
 
 ::
 
@@ -60,13 +58,11 @@ Evaluation and classification of fentanyl‐related compounds using EC‐SERS an
 Predicting dry matter intake in beef cattle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-.. image:: /_static/publications_2023/2023\ Predicting\ dry\ matter\ intake\ in\ beef\ cattle.png
-
-
  Blake, Nathan E., et al. 
  "Predicting dry matter intake in beef cattle." 
  Journal of Animal Science (2023): skad269.
+
+.. image:: /_static/publications_2023/2023\ Predicting\ dry\ matter\ intake\ in\ beef\ cattle.png
 
 ::
 
@@ -83,12 +79,10 @@ Predicting dry matter intake in beef cattle
 Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-.. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
-
-
  Cruz, Alfredo A., et al. 
  "Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux."
+
+.. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
 
 ::
 
@@ -101,13 +95,11 @@ Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Appl
 Systematic determination of a material's magnetic ground state from first principles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-.. image:: /_static/publications_2023/2023\ Systematic\ determination\ of\ a\ material’s\ magnetic\ ground\ state\ from\ first\ principles.png
-
-
  Mora, Andres Tellez, et al. 
  "Systematic determination of a material's magnetic ground state from first principles." 
  (2023).
+
+.. image:: /_static/publications_2023/2023\ Systematic\ determination\ of\ a\ material’s\ magnetic\ ground\ state\ from\ first\ principles.png
 
 ::
 
@@ -117,18 +109,14 @@ Systematic determination of a material's magnetic ground state from first princi
   	year={2023}
 	}
 
-
-
 The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-.. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Observations\ and\ Timing\ of\ 68\ Millisecond\ Pulsars.png
-
 
  Agazie, Gabriella, et al. 
  "The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars." 
  The Astrophysical Journal Letters 951.1 (2023): L9.
+
+.. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Observations\ and\ Timing\ of\ 68\ Millisecond\ Pulsars.png
 
 ::
 
@@ -148,13 +136,11 @@ The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
 The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-.. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Constraints\ on\ Supermassive\ Black\ Hole\ Binaries\ from\ the\ Gravitational-wave\ Background.png
-
-
  Agazie, Gabriella, et al. 
  "The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background." 
  The Astrophysical Journal Letters 952.2 (2023): L37.
+
+.. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Constraints\ on\ Supermassive\ Black\ Hole\ Binaries\ from\ the\ Gravitational-wave\ Background.png
 
 ::
 
