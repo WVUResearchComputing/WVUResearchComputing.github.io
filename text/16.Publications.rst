@@ -11,8 +11,49 @@ Publications
 .. image:: /_static/publications_2023/2023\ Arzoumanian_2023_ApJL_951_L28.png
 .. image:: /_static/publications_2023/2023\ Crime\ variability,\ peer\ effects,\ and\ economic\ inequality\ in\ social\ networks.png
 .. image:: /_static/publications_2023/2023\ Imitation\ Learning\ for\ Swarm\ Control\ using\ Variational\ Inference.png
+
+Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. image:: /_static/publications_2023/2023\ Inverse\ design\ of\ a\ polarization\ demultiplexer\ for\ on-chip\ path-entangled\ photon-pair\ sources\ based\ on\ single\ quantum\ dots.png
+
+ Melo, Emerson G., et al. 
+ "Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots." 
+ Optics Letters 48.17 (2023): 4516-4519.
+
+::
+	
+	@article{melo2023inverse,
+  	title={Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots},
+  	author={Melo, Emerson G and Eshbaugh, William and Flagg, Edward B and Davanco, Marcelo},
+  	journal={Optics Letters},
+  	volume={48},
+  	number={17},
+  	pages={4516--4519},
+  	year={2023},
+  	publisher={Optica Publishing Group}
+	}
+
+
+Evaluation and classification of fentanyl‐related compounds using EC‐SERS and machine learning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. image:: /_static/publications_2023/2023\ Journal\ of\ Forensic\ Sciences\ -\ 2023\ -\ Cooman\ -\ Evaluation\ and\ classification\ of\ fentanyl‐related\ compounds\ using\ EC‐SERS.png
+
+ Cooman, Travon, Colby E. Ott, and Luis E. Arroyo. 
+ "Evaluation and classification of fentanyl‐related compounds using EC‐SERS and machine learning." 
+ Journal of Forensic Sciences (2023). 
+
+::
+
+	@article{cooman2023evaluation,
+  	title={Evaluation and classification of fentanyl-related compounds using EC-SERS and machine learning},
+  	author={Cooman, Travon and Ott, Colby E and Arroyo, Luis E},
+  	journal={Journal of Forensic Sciences},
+  	year={2023},
+  	publisher={Wiley Online Library}
+	}
+
 
 Predicting dry matter intake in beef cattle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,8 +81,8 @@ Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Appl
 
 .. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
 
-Cruz, Alfredo A., et al. 
-"Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux."
+ Cruz, Alfredo A., et al. 
+ "Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux."
 
 ::
 
