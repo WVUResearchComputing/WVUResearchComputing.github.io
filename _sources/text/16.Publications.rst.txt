@@ -10,7 +10,24 @@ Publications
 .. image:: /_static/publications_2023/2023\ An\ Empirical\ Analysis\ of\ Approximation\ Algorithms\ for\ the\ Unweigh.png
 .. image:: /_static/publications_2023/2023\ Arzoumanian_2023_ApJL_951_L28.png
 .. image:: /_static/publications_2023/2023\ Crime\ variability,\ peer\ effects,\ and\ economic\ inequality\ in\ social\ networks.png
+
+Imitation Learning for Swarm Control using Variational Inference
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jimoh, Hafeez Olafisayo. 
+"Imitation Learning for Swarm Control using Variational Inference." 
+(2023).
+
 .. image:: /_static/publications_2023/2023\ Imitation\ Learning\ for\ Swarm\ Control\ using\ Variational\ Inference.png
+
+::
+
+    @article{jimoh2023imitation,
+    title={Imitation Learning for Swarm Control using Variational Inference},
+    author={Jimoh, Hafeez Olafisayo},
+    year={2023}
+    }
+
 
 Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
