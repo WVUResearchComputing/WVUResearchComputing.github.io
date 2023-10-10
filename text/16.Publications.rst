@@ -15,6 +15,7 @@ Publications
 Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 .. image:: /_static/publications_2023/2023\ Inverse\ design\ of\ a\ polarization\ demultiplexer\ for\ on-chip\ path-entangled\ photon-pair\ sources\ based\ on\ single\ quantum\ dots.png
 
  Melo, Emerson G., et al. 
@@ -38,6 +39,7 @@ Inverse design of a polarization demultiplexer for on-chip path-entangled photon
 Evaluation and classification of fentanyl‐related compounds using EC‐SERS and machine learning
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 .. image:: /_static/publications_2023/2023\ Journal\ of\ Forensic\ Sciences\ -\ 2023\ -\ Cooman\ -\ Evaluation\ and\ classification\ of\ fentanyl‐related\ compounds\ using\ EC‐SERS.png
 
  Cooman, Travon, Colby E. Ott, and Luis E. Arroyo. 
@@ -58,7 +60,9 @@ Evaluation and classification of fentanyl‐related compounds using EC‐SERS an
 Predicting dry matter intake in beef cattle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 .. image:: /_static/publications_2023/2023\ Predicting\ dry\ matter\ intake\ in\ beef\ cattle.png
+
 
  Blake, Nathan E., et al. 
  "Predicting dry matter intake in beef cattle." 
@@ -79,7 +83,9 @@ Predicting dry matter intake in beef cattle
 Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 .. image:: /_static/publications_2023/2023\ Reduced-Order\ Probabilistic\ Emulation\ of\ Physics-Based\ Ring\ Current\ Models;\ Application\ to\ RAM-SCB\ Particle\ Flux.png
+
 
  Cruz, Alfredo A., et al. 
  "Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux."
@@ -95,7 +101,9 @@ Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Appl
 Systematic determination of a material's magnetic ground state from first principles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 .. image:: /_static/publications_2023/2023\ Systematic\ determination\ of\ a\ material’s\ magnetic\ ground\ state\ from\ first\ principles.png
+
 
  Mora, Andres Tellez, et al. 
  "Systematic determination of a material's magnetic ground state from first principles." 
@@ -114,7 +122,9 @@ Systematic determination of a material's magnetic ground state from first princi
 The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 .. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Observations\ and\ Timing\ of\ 68\ Millisecond\ Pulsars.png
+
 
  Agazie, Gabriella, et al. 
  "The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars." 
@@ -138,7 +148,9 @@ The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
 The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 .. image:: /_static/publications_2023/2023\ The\ NANOGrav\ 15\ yr\ Data\ Set;\ Constraints\ on\ Supermassive\ Black\ Hole\ Binaries\ from\ the\ Gravitational-wave\ Background.png
+
 
  Agazie, Gabriella, et al. 
  "The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background." 
