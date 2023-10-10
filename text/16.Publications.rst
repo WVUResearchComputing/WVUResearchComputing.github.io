@@ -6,6 +6,47 @@ Publications
 2023
 ----
 
+Large and tunable spin-orbit effect of 6p orbitals through structural cavities in crystals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Fava, Mauro, et al. 
+"Large and tunable spin-orbit effect of 6p orbitals through structural cavities in crystals." 
+arXiv preprint arXiv:2307.09545 (2023).
+
+.. image:: /_static/publications_2023/2023\ 10.48550\/arXiv.2307.09545.png
+
+::
+
+    @article{fava2023large,
+    title={Large and tunable spin-orbit effect of 6p orbitals through structural cavities in crystals},
+    author={Fava, Mauro and Lafargue-Dit-Hauret, William and Romero, Aldo H and Bousquet, Eric},
+    journal={arXiv preprint arXiv:2307.09545},
+    year={2023}
+    }
+
+
+A proposed framework for the identification of indicator genes for monitoring antibiotic resistance in wastewater: Insights from metagenomic sequencing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tarek, Mehedi Hasan, and Emily Garner. 
+`"A proposed framework for the identification of indicator genes for monitoring antibiotic resistance in wastewater: Insights from metagenomic sequencing." <https://doi.org/10.1016/j.scitotenv.2022.158698>`_ 
+Science of The Total Environment 854 (2023): 158698.
+
+.. image:: /_static/publications_2023/2023\ 10.1016\/j.scitotenv.2022.158698.png
+
+::
+
+    @article{tarek2023proposed,
+    title={A proposed framework for the identification of indicator genes for monitoring antibiotic resistance in wastewater: Insights from metagenomic sequencing},
+    author={Tarek, Mehedi Hasan and Garner, Emily},
+    journal={Science of The Total Environment},
+    volume={854},
+    pages={158698},
+    year={2023},
+    publisher={Elsevier}
+    }
+
+
 Analytical and Numerical Analysis of Circumbinary Disk Dynamics--I: Coplanar Systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
