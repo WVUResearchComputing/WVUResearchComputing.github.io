@@ -801,7 +801,7 @@ The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galax
 Arzoumanian, Z., Baker, P. T., Brazier, A., Brook, P. R., Burke-Spolaor, S., Becsy, B., Charisi, M., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Elliott, R. D., Ellis, J. A., Ferrara, E. C., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Good, D. C., Hazboun, J. S., Islo, K., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Kelley, L. Z., Key, J. S., Lam, M. T., (2021). 
 "The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc."
 The Astrophysical Journal, 914(2), 121.
-    
+
 On the Detectability of Ultracompact Binary Pulsar Systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -828,14 +828,7 @@ Astrophysics milestones for pulsar timing array gravitational-wave detection
 Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
 "Astrophysics milestones for pulsar timing array gravitational-wave detection."
 The Astrophysical Journal Letters, 911(2), L34.
-    
-The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Arzoumanian, Z., Baker, P. T., Brazier, A., Brook, P. R., Burke-Spolaor, S., Becsy, B., Charisi, M., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Elliott, R. D., Ellis, J. A., Ferrara, E. C., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Good, D. C., Hazboun, J. S., Islo, K., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Kelley, L. Z., Key, J. S., Lam, M. T., (2021).
-"The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc."
-The Astrophysical Journal, 914(2), 121.
-    
+        
 Robust Assessment of Clustering Methods for Fast Radio Transient Candidates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -856,13 +849,6 @@ Astrophysics milestones for pulsar timing array gravitational-wave detection
 Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
 "Astrophysics milestones for pulsar timing array gravitational-wave detection."
 The Astrophysical Journal Letters, 911(2), L34.
-    
-The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Arzoumanian, Z., Baker, P. T., Brazier, A., Brook, P. R., Burke-Spolaor, S., Becsy, B., Charisi, M., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Elliott, R. D., Ellis, J. A., Ferrara, E. C., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Good, D. C., Hazboun, J. S., Islo, K., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Kelley, L. Z., Key, J. S., Lam, M. T., (2021). 
-"The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc."
-The Astrophysical Journal, 914(2), 121.
     
 NRPyElliptic: A Fast Hyperbolic Relaxation Elliptic Solver for Numerical Relativity, I: Conformally Flat, Binary Puncture Initial Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
