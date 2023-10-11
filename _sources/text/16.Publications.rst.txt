@@ -691,107 +691,184 @@ Journal of forensic sciences 66.5 (2021): 1704-1720.
 	url={https://doi.org/10.1111/1556-4029.14758}
 	}
 
+Impacts of fuel nonequidiffusivity on premixed flame propagation in channels with open ends
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Abidakun, O., Adebiyi, A., Valiev, D., & Akkerman, V. (2021). 
-Impacts of fuel nonequidiffusivity on premixed flame propagation in channels with open ends. 
+"Impacts of fuel nonequidiffusivity on premixed flame propagation in channels with open ends."
 Physics of Fluids, 33(1), 013604.
 
+Comprehensive analysis of a dense sample of FRB 121102 bursts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Aggarwal, K., Agarwal, D., Lewis, E. F., Anna-Thomas, R., Tremblay, J. C., Burke-Spolaor, S., McLaughlin, M. A., & Lorimer, D. R. (2021). 
-Comprehensive analysis of a dense sample of FRB 121102 bursts. 
+"Comprehensive analysis of a dense sample of FRB 121102 bursts."
 The Astrophysical Journal, 922(2), 115.
-    
+
+Authorship and citation cultural nature in Density Functional Theory from solid state computational packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Dumaz, M., Boucher, R., Marques, M. A., & Romero, A. H. (2021). 
-Authorship and citation cultural nature in Density Functional Theory from solid state computational packages. 
+"Authorship and citation cultural nature in Density Functional Theory from solid state computational packages."
 Scientometrics, 126(8), 6681-6695.
-    
+
+A general model to explain repeated turnovers of sex determination in the Salicaceae
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Yang, W., Wang, D., Li, Y., Zhang, Z., Tong, S., Li, M., Zhang, X., Zhang, L., Ren, L., Ma, X., Zhou, R., Sanderson, B. J., Keefover-Ring, K., Yin, T., Smart, L. B., Liu, J., DiFazio, S. P., Olson, M., & Ma, T. (2021). 
-A general model to explain repeated turnovers of sex determination in the Salicaceae. 
+"A general model to explain repeated turnovers of sex determination in the Salicaceae."
 Molecular biology and evolution, 38(3), 968-980.
-    
+
+MechElastic: A Python library for analysis of mechanical and elastic properties of bulk and 2D materials
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Singh, S., Lang, L., Dovale-Farelo, V., Herath, U., Tavadze, P., Coudert, F., & Romero, A. H. (2021). 
-MechElastic: A Python library for analysis of mechanical and elastic properties of bulk and 2D materials. 
+"MechElastic: A Python library for analysis of mechanical and elastic properties of bulk and 2D materials."
 Computer Physics Communications, 267108068.
+
+Molecular dynamics simulations of a hydrophilic MIL-160-based membrane demonstrate pressure-dependent selective uptake of industrially relevant greenhouse gases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
 Chapman, J., Garapati, N., Glezakou, V., Duan, Y., Hu, J., & Dinu, C. Z. (2021). 
-Molecular dynamics simulations of a hydrophilic MIL-160-based membrane demonstrate pressure-dependent selective uptake of industrially relevant greenhouse gases. 
+"Molecular dynamics simulations of a hydrophilic MIL-160-based membrane demonstrate pressure-dependent selective uptake of industrially relevant greenhouse gases."
 Materials Advances, 2(18), 5922-5934.
-    
+
+Integration of high-density genetic mapping with transcriptome analysis uncovers numerous agronomic QTL and reveals candidate genes for the control of tillering in sorghum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Govindarajulu, R., Hostetler, A. N., Xiao, Y., Chaluvadi, S. R., Mauro-Herrera, M., Siddoway, M. L., Whipple, C., Bennetzen, J. L., Devos, K. M., Doust, A. N., & Hawkins, J. S. (2021). 
-Integration of high-density genetic mapping with transcriptome analysis uncovers numerous agronomic QTL and reveals candidate genes for the control of tillering in sorghum. 
+"Integration of high-density genetic mapping with transcriptome analysis uncovers numerous agronomic QTL and reveals candidate genes for the control of tillering in sorghum." 
 G3, 11(2), jkab024.
-    
+
+DMFTWDFT: An open-source code combining dynamical mean field theory with various density functional theory packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Singh, V., Herath, U., Wah, B., Liao, X., Romero, A. H., & Park, H. (2021). 
-DMFTWDFT: An open-source code combining dynamical mean field theory with various density functional theory packages. 
+"DMFTWDFT: An open-source code combining dynamical mean field theory with various density functional theory packages."
 Computer Physics Communications, 261107778.
     
+Impact of driver and model uncertainty on drag and orbit prediction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Licata, R. J., Mehta, P., & Tobiska, W. K. (2021). 
-Impact of driver and model uncertainty on drag and orbit prediction. 
+"Impact of driver and model uncertainty on drag and orbit prediction."
 Proceedings of the 31st AAS/AIAA Space Flight Mechanics Meeting, .
     
+Sensitivity of present and future detectors across the black-hole binary gravitational wave spectrum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Kaiser, A. R., & McWilliams, S. T. (2021). 
-Sensitivity of present and future detectors across the black-hole binary gravitational wave spectrum. 
+"Sensitivity of present and future detectors across the black-hole binary gravitational wave spectrum."
 Classical and Quantum Gravity, 38(5), 055009.
-    
+
+Bacterial analogs to cholesterol affect dimerization of proteorhodopsin and modulates preferred dimer interface    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Sefah, E., & Mertz, B. (2021). 
-Bacterial analogs to cholesterol affect dimerization of proteorhodopsin and modulates preferred dimer interface. 
+"Bacterial analogs to cholesterol affect dimerization of proteorhodopsin and modulates preferred dimer interface."
 Journal of Chemical Theory and Computation, 17(4), 2502-2512.
     
-(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus. 
+(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus."
 Elife, 10e66662.
     
+Estimating multiple precision matrices with cluster fusion regularization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Price, B. S., Molstad, A. J., & Sherwood, B. (2021). 
-Estimating multiple precision matrices with cluster fusion regularization. 
+"Estimating multiple precision matrices with cluster fusion regularization."
 Journal of Computational and Graphical Statistics, 30(4), 823-834.
     
+Dynamics of explosions in cylindrical vented enclosures: validation of a computational model by experiments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Ogunfuye, S., Sezer, H., Kodakoglu, F., Farahani, H. F., Rangwala, A. S., & Akkerman, V. (2021). 
-Dynamics of explosions in cylindrical vented enclosures: validation of a computational model by experiments. 
+"Dynamics of explosions in cylindrical vented enclosures: validation of a computational model by experiments."
 Fire, 4(1), 9.
     
+Astrophysics milestones for pulsar timing array gravitational-wave detection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
-Astrophysics milestones for pulsar timing array gravitational-wave detection. 
+"Astrophysics milestones for pulsar timing array gravitational-wave detection."
 The Astrophysical Journal Letters, 911(2), L34.
     
+The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Arzoumanian, Z., Baker, P. T., Brazier, A., Brook, P. R., Burke-Spolaor, S., Becsy, B., Charisi, M., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Elliott, R. D., Ellis, J. A., Ferrara, E. C., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Good, D. C., Hazboun, J. S., Islo, K., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Kelley, L. Z., Key, J. S., Lam, M. T., (2021). 
-The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc. 
+"The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc."
 The Astrophysical Journal, 914(2), 121.
     
+On the Detectability of Ultracompact Binary Pulsar Systems
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Pol, N., McLaughlin, M., Lorimer, D. R., & Garver-Daniels, N. (2021). 
-On the Detectability of Ultracompact Binary Pulsar Systems. 
+"On the Detectability of Ultracompact Binary Pulsar Systems."
 The Astrophysical Journal, 912(1), 22.
     
+Assessing Nickel Titanium Binary Systems Using Structural Search Methods and Ab Initio Calculations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Lang, L., Payne, A., Valencia-Jaime, I., Verstraete, M. J., Bautista-Hernández, A., & Romero, A. H. (2021). 
-Assessing Nickel Titanium Binary Systems Using Structural Search Methods and Ab Initio Calculations. 
+"Assessing Nickel Titanium Binary Systems Using Structural Search Methods and Ab Initio Calculations."
 The Journal of Physical Chemistry C, 125(2), 1578-1591.
     
-(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus. 
+(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus."
 Elife, 10e66662.
     
+Astrophysics milestones for pulsar timing array gravitational-wave detection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
-Astrophysics milestones for pulsar timing array gravitational-wave detection. 
+"Astrophysics milestones for pulsar timing array gravitational-wave detection."
 The Astrophysical Journal Letters, 911(2), L34.
     
-Arzoumanian, Z., Baker, P. T., Brazier, A., Brook, P. R., Burke-Spolaor, S., Becsy, B., Charisi, M., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Elliott, R. D., Ellis, J. A., Ferrara, E. C., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Good, D. C., Hazboun, J. S., Islo, K., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Kelley, L. Z., Key, J. S., Lam, M. T., (2021). 
-The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc. 
+The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Arzoumanian, Z., Baker, P. T., Brazier, A., Brook, P. R., Burke-Spolaor, S., Becsy, B., Charisi, M., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Elliott, R. D., Ellis, J. A., Ferrara, E. C., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Good, D. C., Hazboun, J. S., Islo, K., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Kelley, L. Z., Key, J. S., Lam, M. T., (2021).
+"The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc."
 The Astrophysical Journal, 914(2), 121.
     
+Robust Assessment of Clustering Methods for Fast Radio Transient Candidates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Aggarwal, K., Burke-Spolaor, S., Law, C. J., Bower, G. C., Butler, B. J., Demorest, P. B., (2021). 
-Robust Assessment of Clustering Methods for Fast Radio Transient Candidates. 
+"Robust Assessment of Clustering Methods for Fast Radio Transient Candidates."
 The Astrophysical Journal, 914(1), 53.
     
+Quasars with Periodic Variability: Capabilities and Limitations of Bayesian Searches for Supermassive Black Hole Binaries in Time-Domain Surveys
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Witt, C. A., Charisi, M., Taylor, S. R., & Burke-Spolaor, S. (2021). 
-Quasars with Periodic Variability: Capabilities and Limitations of Bayesian Searches for Supermassive Black Hole Binaries in Time-Domain Surveys. 
+"Quasars with Periodic Variability: Capabilities and Limitations of Bayesian Searches for Supermassive Black Hole Binaries in Time-Domain Surveys."
 arXiv preprint arXiv:2110.07465, .
     
+Astrophysics milestones for pulsar timing array gravitational-wave detection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
-Astrophysics milestones for pulsar timing array gravitational-wave detection. 
+"Astrophysics milestones for pulsar timing array gravitational-wave detection."
 The Astrophysical Journal Letters, 911(2), L34.
     
+The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Arzoumanian, Z., Baker, P. T., Brazier, A., Brook, P. R., Burke-Spolaor, S., Becsy, B., Charisi, M., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Elliott, R. D., Ellis, J. A., Ferrara, E. C., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Good, D. C., Hazboun, J. S., Islo, K., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Kelley, L. Z., Key, J. S., Lam, M. T., (2021). 
-The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc. 
+"The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc."
 The Astrophysical Journal, 914(2), 121.
     
+NRPyElliptic: A Fast Hyperbolic Relaxation Elliptic Solver for Numerical Relativity, I: Conformally Flat, Binary Puncture Initial Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Assumpcao, T., Werneck, L. R., Jacques, T. P., & Etienne, Z. B. (2021). 
-NRPyElliptic: A Fast Hyperbolic Relaxation Elliptic Solver for Numerical Relativity, I: Conformally Flat, Binary Puncture Initial Data. 
+"NRPyElliptic: A Fast Hyperbolic Relaxation Elliptic Solver for Numerical Relativity, I: Conformally Flat, Binary Puncture Initial Data."
 arXiv preprint arXiv:2111.02424, .
     
 
@@ -1162,25 +1239,43 @@ AGU Fall Meeting Abstracts, 2017GC31F-02.
 2016
 ----
    
+Reactions of atomic carbon with butene isomers: Implications for molecular growth in carbon-rich environments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Bourgalais, J., Spencer, M., Osborn, D. L., Goulay, F., & Picard, S. L. (2016). 
 "Reactions of atomic carbon with butene isomers: Implications for molecular growth in carbon-rich environments."
 The Journal of Physical Chemistry A, 120(46), 9138-9150.
    
+The Mechanism of CO2 Adsorption under Dry and Humid Conditions in Mesoporous Silica-Supported Amine Sorbents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Li, K., Kress, J. D., & Mebane, D. S. (2016). 
 "The Mechanism of CO2 Adsorption under Dry and Humid Conditions in Mesoporous Silica-Supported Amine Sorbents."
 The Journal of Physical Chemistry C, 120(41), 23683-23691.
+
+Theoretical evidence for multiple charge transfer pathways in Bacteriorhodopsin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lee, C., & Mertz, B. (2016). 
 "Theoretical evidence for multiple charge transfer pathways in Bacteriorhodopsin."
 Journal of Chemical Theory and Computation, 12(4), 1639-1646.
     
+Study of the inorganic substitution in a functionalized UiO-66 metal–organic framework
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Yasin, A. S., Li, J., Wu, N., & Musho, T. (2016). 
 "Study of the inorganic substitution in a functionalized UiO-66 metal–organic framework."
 Physical Chemistry Chemical Physics, 18(18), 12748-12754.
     
+Thermodynamics of the oxygen evolution electrocatalysis in a functionalized UiO‐66 metal‐organic frameworks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Musho, T., Li, J., & Wu, N. (2016). 
 "Thermodynamics of the oxygen evolution electrocatalysis in a functionalized UiO‐66 metal‐organic frameworks."
 International Journal of Quantum Chemistry, 116(15), 1153-1159.
+
+Prediction and control of spin polarization in a Weyl semimetallic phase of BiSb
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Singh, S., Garcia-Castro, A., Valencia-Jaime, I., Munoz, F., & Romero, A. H. (2016). 
 "Prediction and control of spin polarization in a Weyl semimetallic phase of BiSb."
@@ -1189,42 +1284,72 @@ Physical Review B, 94(16), 161116.
 2015
 ----
 
+Acceleration of Non-Equidiffusive Flames in Channels: Computational Simulations and Analytical Studies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Bilgili, S. A.(2015). 
 "Acceleration of Non-Equidiffusive Flames in Channels: Computational Simulations and Analytical Studies."
 Journal of Mass Spectrometry.
+
+Phylogenetic reconstruction using four low-copy nuclear loci strongly supports a polyphyletic origin of the genus Sorghum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Hawkins, J. S., Ramachandran, D., Henderson, A., Freeman, J., Carlise, M., Harris, A., & Willison-Headley, Z. (2015). 
 "Phylogenetic reconstruction using four low-copy nuclear loci strongly supports a polyphyletic origin of the genus Sorghum."
 Annals of Botany, 116(2), 291-299.
     
+Huntingtin N-terminal monomeric and multimeric structures destabilized by covalent modification of heteroatomic residues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Arndt, J. R., Kondalaji, S. G., Maurer, M. M., Parker, A., Legleiter, J., & Valentine, S. J. (2015). 
 "Huntingtin N-terminal monomeric and multimeric structures destabilized by covalent modification of heteroatomic residues."
 Biochemistry, 54(28), 4285-4296.
+
+A Bayesian approach to electrical conductivity relaxation and isotope exchange/secondary ion mass spectrometry
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Blair, J., & Mebane, D. S. (2015). 
 "A Bayesian approach to electrical conductivity relaxation and isotope exchange/secondary ion mass spectrometry."
 Solid State Ionics, 27047-53.
 
+Retinal flip in rhodopsin activation?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Feng, J., Brown, M. F., & Mertz, B. (2015). 
 "Retinal flip in rhodopsin activation?."
 Biophysical journal, 108(12), 2767-2770.
-    
+
+Explaining the mobility of retinal in activated rhodopsin and opsin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Mertz, B., Feng, J., Corcoran, C., & Neeley, B. (2015). 
 "Explaining the mobility of retinal in activated rhodopsin and opsin."
 Photochemical & Photobiological Sciences, 14(11), 1952-1964.
+
+Ab initio calculation of electronic charge mobility in metal–organic frameworks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Musho, T., & Wu, N. (2015). 
 "Ab initio calculation of electronic charge mobility in metal–organic frameworks."
 Physical Chemistry Chemical Physics, 17(39), 26160-26165.
     
+Predicting the figure of merit of nanostructured thermoelectric materials
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Musho, T.(2015). 
 "Predicting the figure of merit of nanostructured thermoelectric materials."
 Journal of Materials Research, 30(17), 2628-2637.
     
+Thermodynamics of the Oxygen Evolution Electrocatalysis in Metal-Organic Frameworks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Musho, T., Li, J., & Wu, N. (2015). 
 "Thermodynamics of the Oxygen Evolution Electrocatalysis in Metal-Organic Frameworks."
 arXiv preprint arXiv:1510.04851, .
-    
+
+IllinoisGRMHD: an open-source, user-friendly GRMHD code for dynamical spacetimes    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Etienne, Z. B., Paschalidis, V., Haas, R., Mösta, P., & Shapiro, S. L. (2015). 
 "IllinoisGRMHD: an open-source, user-friendly GRMHD code for dynamical spacetimes."
 Classical and Quantum Gravity, 32(17), 175009.
@@ -1232,13 +1357,22 @@ Classical and Quantum Gravity, 32(17), 175009.
 2014
 ----
 
+Variation in allelic expression associated with a recombination hotspot in Zea mays
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Hawkins, J. S., Delgado, V., Feng, L., Carlise, M., Dooner, H. K., & Bennetzen, J. L. (2014). 
 "Variation in allelic expression associated with a recombination hotspot in Zea mays."
 The Plant Journal, 79(3), 375-384.
 
+Band gap modulation of functionalized metal-organic frameworks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Musho, T. D., Li, J., & Wu, N. (2014). 
 "Band gap modulation of functionalized metal-organic frameworks."
 Phys Chem Chem Phys, 16(43), 23646-53.
+
+Predicting the Influence of Secondary Phases on the Thermoelectric Performance in Cobalt Containing Spinels (ACo2O4; A={Co,Ni,Zn})
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Musho, T., Koneru, A., & Mebane, D. (2014). 
 "Predicting the Influence of Secondary Phases on the Thermoelectric Performance in Cobalt Containing Spinels (ACo2O4; A={Co,Ni,Zn})."
@@ -1248,13 +1382,22 @@ APS March Meeting Abstracts, 2014Y25. 006.
 2013
 ----
 
+Reservoir simulation for production of CH4 from gas hydrate reservoirs using CO2/CO2+ N2 by HydrateResSim
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Garapati, N.(2013). 
 "Reservoir simulation for production of CH4 from gas hydrate reservoirs using CO2/CO2+ N2 by HydrateResSim."
 Cryogenics, .
 
+Reservoir Modelling and Numerical Analysis of the Iġnik Sikumi Gas Hydrate Field Trial
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Anderson, B., Garapati, N., & McGuire, P. (2013). 
 "Reservoir Modelling and Numerical Analysis of the Iġnik Sikumi Gas Hydrate Field Trial."
 Materials Advances, cp-349-00004.
+
+Transport, Zwitterions, and the Role of Water for CO2 Adsorption in Mesoporous Silica-Supported Amine Sorbents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Mebane, D. S., Kress, J. D., Storlie, C. B., Fauth, D. J., Gray, M. L., & Li, K. (2013). 
 "Transport, Zwitterions, and the Role of Water for CO2 Adsorption in Mesoporous Silica-Supported Amine Sorbents."
