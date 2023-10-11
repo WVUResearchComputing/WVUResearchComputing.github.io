@@ -773,7 +773,7 @@ Journal of Chemical Theory and Computation, 17(4), 2502-2512.
 
 "(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus."
 Elife, 10e66662.
-    
+
 Estimating multiple precision matrices with cluster fusion regularization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -814,20 +814,7 @@ Assessing Nickel Titanium Binary Systems Using Structural Search Methods and Ab 
 
 Lang, L., Payne, A., Valencia-Jaime, I., Verstraete, M. J., Bautista-Hernández, A., & Romero, A. H. (2021). 
 "Assessing Nickel Titanium Binary Systems Using Structural Search Methods and Ab Initio Calculations."
-The Journal of Physical Chemistry C, 125(2), 1578-1591.
-    
-(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-"(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus."
-Elife, 10e66662.
-    
-Astrophysics milestones for pulsar timing array gravitational-wave detection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
-"Astrophysics milestones for pulsar timing array gravitational-wave detection."
-The Astrophysical Journal Letters, 911(2), L34.
+The Journal of Physical Chemistry C, 125(2), 1578-1591.    
         
 Robust Assessment of Clustering Methods for Fast Radio Transient Candidates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
