@@ -168,19 +168,19 @@ Optics Letters 48.17 (2023): 4516-4519.
 .. image:: /_static/publications/2023/10.1364_OL.496129.png
 
 ::
-	
-	@article{melo2023inverse,
-  	title={Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots},
-  	author={Melo, Emerson G and Eshbaugh, William and Flagg, Edward B and Davanco, Marcelo},
-  	journal={Optics Letters},
-  	volume={48},
-  	number={17},
-  	pages={4516--4519},
-  	year={2023},
-  	publisher={Optica Publishing Group},
+  
+  @article{melo2023inverse,
+    title={Inverse design of a polarization demultiplexer for on-chip path-entangled photon-pair sources based on single quantum dots},
+    author={Melo, Emerson G and Eshbaugh, William and Flagg, Edward B and Davanco, Marcelo},
+    journal={Optics Letters},
+    volume={48},
+    number={17},
+    pages={4516--4519},
+    year={2023},
+    publisher={Optica Publishing Group},
     doi={10.1364/OL.496129},
     url={https://doi.org/10.1364/OL.496129}
-	}
+  }
 
 
 Evaluation and classification of fentanyl‐related compounds using EC‐SERS and machine learning
@@ -194,15 +194,15 @@ Journal of Forensic Sciences (2023).
 
 ::
 
-	@article{cooman2023evaluation,
-  	title={Evaluation and classification of fentanyl-related compounds using EC-SERS and machine learning},
-  	author={Cooman, Travon and Ott, Colby E and Arroyo, Luis E},
-  	journal={Journal of Forensic Sciences},
-  	year={2023},
-  	publisher={Wiley Online Library},
+  @article{cooman2023evaluation,
+    title={Evaluation and classification of fentanyl-related compounds using EC-SERS and machine learning},
+    author={Cooman, Travon and Ott, Colby E and Arroyo, Luis E},
+    journal={Journal of Forensic Sciences},
+    year={2023},
+    publisher={Wiley Online Library},
     doi={10.1111/1556-4029.15285},
     url={https://doi.org/10.1111/1556-4029.15285}
-	}
+  }
 
 
 Predicting dry matter intake in beef cattle
@@ -256,13 +256,13 @@ Mora, Andres Tellez, et al.
 
 ::
 
-	@article{mora2023systematic,
-  	title={Systematic determination of a material's magnetic ground state from first principles},
-  	author={Mora, Andres Tellez and He, Xu and Bousquet, Eric and Wirtz, Ludger and Romero, Aldo},
-  	year={2023},
+  @article{mora2023systematic,
+    title={Systematic determination of a material's magnetic ground state from first principles},
+    author={Mora, Andres Tellez and He, Xu and Bousquet, Eric and Wirtz, Ludger and Romero, Aldo},
+    year={2023},
     doi={10.21203/rs.3.rs-3179548/v1},
     url={https://doi.org/10.21203/rs.3.rs-3179548/v1}
-	}
+  }
 
 The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -275,19 +275,19 @@ The Astrophysical Journal Letters 951.1 (2023): L9.
 
 ::
 
-	@article{agazie2023nanograv,
-  	title={The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars},
-  	author={Agazie, Gabriella and Alam, Md Faisal and Anumarlapudi, Akash and Archibald, Anne M and Arzoumanian, 
-			Zaven and Baker, Paul T and Blecha, Laura and Bonidie, Victoria and Brazier, Adam and Brook, Paul R and others},
-  	journal={The Astrophysical Journal Letters},
- 	volume={951},
-  	number={1},
-  	pages={L9},
-  	year={2023},
-  	publisher={IOP Publishing},
+  @article{agazie2023nanograv,
+    title={The NANOGrav 15 yr Data Set: Observations and Timing of 68 Millisecond Pulsars},
+    author={Agazie, Gabriella and Alam, Md Faisal and Anumarlapudi, Akash and Archibald, Anne M and Arzoumanian, 
+      Zaven and Baker, Paul T and Blecha, Laura and Bonidie, Victoria and Brazier, Adam and Brook, Paul R and others},
+    journal={The Astrophysical Journal Letters},
+    volume={951},
+    number={1},
+    pages={L9},
+    year={2023},
+    publisher={IOP Publishing},
     doi={10.3847/2041-8213/acda9a},
     url={https://doi.org/10.3847/2041-8213/acda9a}
-	}
+  }
 
 
 The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background
@@ -301,19 +301,19 @@ The Astrophysical Journal Letters 952.2 (2023): L37.
 
 ::
 
-	@article{agazie2023nanograv,
-	title={The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background},
-  	author={Agazie, Gabriella and Anumarlapudi, Akash and Archibald, Anne M and Baker, Paul T and B{\'e}csy, 
-			Bence and Blecha, Laura and Bonilla, Alexander and Brazier, Adam and Brook, Paul R and Burke-Spolaor, Sarah and others},
-  	journal={The Astrophysical Journal Letters},
-  	volume={952},
-  	number={2},
-  	pages={L37},
-  	year={2023},
-  	publisher={IOP Publishing},
+  @article{agazie2023nanograv,
+  title={The NANOGrav 15 yr Data Set: Constraints on Supermassive Black Hole Binaries from the Gravitational-wave Background},
+    author={Agazie, Gabriella and Anumarlapudi, Akash and Archibald, Anne M and Baker, Paul T and B{\'e}csy, 
+      Bence and Blecha, Laura and Bonilla, Alexander and Brazier, Adam and Brook, Paul R and Burke-Spolaor, Sarah and others},
+    journal={The Astrophysical Journal Letters},
+    volume={952},
+    number={2},
+    pages={L37},
+    year={2023},
+    publisher={IOP Publishing},
     doi={10.3847/2041-8213/ace18b},
     url={https://doi.org/10.3847/2041-8213/ace18b}
-	}
+  }
 
 
 Assessment of Enzyme Functionality at Metal–Organic Framework Interfaces Developed through Molecular Simulations
@@ -376,12 +376,12 @@ Bower, Samuel J., et al.
 ::
 
     @article{bower2023uncertain,
-    title={The uncertain future of mountaintop-removal-mined landscapes 2: Modeling the influence of topography and vegetation},
-    author={Bower, Samuel J and Shobe, Charles Merritt and Maxwell, Aaron E and Campforts, Benjamin},
-    year={2023},
-    publisher={EarthArXiv},
-    doi={10.31223/X5468R},
-    url={https://doi.org/10.31223/X5468R}
+      title={The uncertain future of mountaintop-removal-mined landscapes 2: Modeling the influence of topography and vegetation},
+      author={Bower, Samuel J and Shobe, Charles Merritt and Maxwell, Aaron E and Campforts, Benjamin},
+      year={2023},
+      publisher={EarthArXiv},
+      doi={10.31223/X5468R},
+      url={https://doi.org/10.31223/X5468R}
     }
 
 2022
@@ -398,18 +398,18 @@ Organometallics 41.6 (2022): 686-697.
 
 ::
 
-	@article{amason2022synthesis,
-  	title={Synthesis and Reactivity of Ampy-Based Ruthenium (II) Catalysts for Transfer Hydrogenation of Ketones},
-  	author={Amason, Edith K and Rajabimoghadam, Khashayar and Baughman, Notashia N and Ghareeb, C Roland and Bourgeois, Samantha K and Keuk, Channita and Manacsa, Gayle and Popp, Brian V and Garcia-Bosch, Isaac and Ferrence, Gregory M and others},
-  	journal={Organometallics},
-  	volume={41},
-  	number={6},
-  	pages={686--697},
-  	year={2022},
-  	publisher={ACS Publications},
-	doi={10.1021/acs.organomet.1c00444},
-	url={https://doi.org/10.1021/acs.organomet.1c00444}
-	}
+  @article{amason2022synthesis,
+    title={Synthesis and Reactivity of Ampy-Based Ruthenium (II) Catalysts for Transfer Hydrogenation of Ketones},
+    author={Amason, Edith K and Rajabimoghadam, Khashayar and Baughman, Notashia N and Ghareeb, C Roland and Bourgeois, Samantha K and Keuk, Channita and Manacsa, Gayle and Popp, Brian V and Garcia-Bosch, Isaac and Ferrence, Gregory M and others},
+    journal={Organometallics},
+    volume={41},
+    number={6},
+    pages={686--697},
+    year={2022},
+    publisher={ACS Publications},
+    doi={10.1021/acs.organomet.1c00444},
+    url={https://doi.org/10.1021/acs.organomet.1c00444}
+  }
 
 Deep Radio Observations and the Role of the Cosmic Web in Galaxy Evolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -422,14 +422,14 @@ West Virginia University, 2022.
 
 ::
 
-	@book{luber2022deep,
-  	title={Deep Radio Observations and the Role of the Cosmic Web in Galaxy Evolution},
-  	author={Luber, Nicholas M},
-  	year={2022},
-  	publisher={West Virginia University},
-	doi={10.33915/etd.11429},
-	url={https://doi.org/10.33915/etd.11429}
-	}
+  @book{luber2022deep,
+    title={Deep Radio Observations and the Role of the Cosmic Web in Galaxy Evolution},
+    author={Luber, Nicholas M},
+    year={2022},
+    publisher={West Virginia University},
+    doi={10.33915/etd.11429},
+    url={https://doi.org/10.33915/etd.11429}
+  }
 
 
 Physicochemical properties altered by the tail group of lipid membranes influence Huntingtin aggregation and lipid binding
@@ -443,18 +443,18 @@ The Journal of Physical Chemistry B 126.16 (2022): 3067-3081.
 
 ::
 
-	@article{beasley2022physicochemical,
-  	title={Physicochemical properties altered by the tail group of lipid membranes influence Huntingtin aggregation and lipid binding},
-  	author={Beasley, Maryssa and Frazee, Nicolas and Groover, Sharon and Valentine, Stephen J and Mertz, Blake and Legleiter, Justin},
-  	journal={The Journal of Physical Chemistry B},
-  	volume={126},
-  	number={16},
-  	pages={3067--3081},
-  	year={2022},
-  	publisher={ACS Publications},
-	doi={10.1021/acs.jpcb.1c10254},
-	url={https://doi.org/10.1021/acs.jpcb.1c10254}
-	}
+  @article{beasley2022physicochemical,
+    title={Physicochemical properties altered by the tail group of lipid membranes influence Huntingtin aggregation and lipid binding},
+    author={Beasley, Maryssa and Frazee, Nicolas and Groover, Sharon and Valentine, Stephen J and Mertz, Blake and Legleiter, Justin},
+    journal={The Journal of Physical Chemistry B},
+    volume={126},
+    number={16},
+    pages={3067--3081},
+    year={2022},
+    publisher={ACS Publications},
+    doi={10.1021/acs.jpcb.1c10254},
+    url={https://doi.org/10.1021/acs.jpcb.1c10254}
+  }
 
 Spatial frequency of randomly acquired characteristics on outsoles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -467,18 +467,18 @@ Journal of Forensic Sciences 67.5 (2022): 1810-1824.
 
 ::
 
-	@article{richetelli2022spatial,
-  	title={Spatial frequency of randomly acquired characteristics on outsoles},
-  	author={Richetelli, Nicole and Speir, Jacqueline A},
-  	journal={Journal of Forensic Sciences},
-  	volume={67},
-  	number={5},
-  	pages={1810--1824},
-  	year={2022},
-  	publisher={Wiley Online Library},
-	doi={10.1111/1556-4029.15112},
-	url={https://doi.org/10.1111/1556-4029.15112}
-	}
+  @article{richetelli2022spatial,
+    title={Spatial frequency of randomly acquired characteristics on outsoles},
+    author={Richetelli, Nicole and Speir, Jacqueline A},
+    journal={Journal of Forensic Sciences},
+    volume={67},
+    number={5},
+    pages={1810--1824},
+    year={2022},
+    publisher={Wiley Online Library},
+    doi={10.1111/1556-4029.15112},
+    url={https://doi.org/10.1111/1556-4029.15112}
+  }
 
 Implementing machine learning for the identification and classification of compound and mixtures in portable Raman instruments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -491,17 +491,17 @@ Chemical Physics Letters 787 (2022): 139283.
 
 ::
 
-	@article{cooman2022implementing,
-  	title={Implementing machine learning for the identification and classification of compound and mixtures in portable Raman instruments},
-  	author={Cooman, Travon and Trejos, Tatiana and Romero, Aldo H and Arroyo, Luis E},
-  	journal={Chemical Physics Letters},
-  	volume={787},
-  	pages={139283},
-  	year={2022},
-  	publisher={Elsevier},
-	doi={10.1016/j.cplett.2021.139283},
-	url={https://dx.doi.org/10.1016/j.cplett.2021.139283}
-	}
+  @article{cooman2022implementing,
+    title={Implementing machine learning for the identification and classification of compound and mixtures in portable Raman instruments},
+    author={Cooman, Travon and Trejos, Tatiana and Romero, Aldo H and Arroyo, Luis E},
+    journal={Chemical Physics Letters},
+    volume={787},
+    pages={139283},
+    year={2022},
+    publisher={Elsevier},
+    doi={10.1016/j.cplett.2021.139283},
+    url={https://dx.doi.org/10.1016/j.cplett.2021.139283}
+  }
 
 Exploring Cyberterrorism, Topic Models and Social Networks of Jihadists Dark Web Forums: A Computational Social Science Approach
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -514,14 +514,14 @@ West Virginia University, 2022.
 
 ::
 
-	@book{guetler2022exploring,
-  	title={Exploring Cyberterrorism, Topic Models and Social Networks of Jihadists Dark Web Forums: A Computational Social Science Approach},
-  	author={Guetler, Vivian Fiona},
-  	year={2022},
-  	publisher={West Virginia University},
-	doi={10.33915/etd.11253},
-	url={https://doi.org/10.33915/etd.11253}
-	}
+  @book{guetler2022exploring,
+    title={Exploring Cyberterrorism, Topic Models and Social Networks of Jihadists Dark Web Forums: A Computational Social Science Approach},
+    author={Guetler, Vivian Fiona},
+    year={2022},
+    publisher={West Virginia University},
+    doi={10.33915/etd.11253},
+    url={https://doi.org/10.33915/etd.11253}
+  }
 
 Vickers hardness prediction from machine learning methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -534,18 +534,18 @@ Scientific Reports 12.1 (2022): 22475.
 
 ::
 
-	@article{dovale2022vickers,
-  	title={Vickers hardness prediction from machine learning methods},
-  	author={Dovale-Farelo, Viviana and Tavadze, Pedram and Lang, Logan and Bautista-Hernandez, Alejandro and Romero, Aldo H},
-  	journal={Scientific Reports},
-  	volume={12},
-  	number={1},
-  	pages={22475},
-  	year={2022},
-  	publisher={Nature Publishing Group UK London},
-	doi={10.1038/s41598-022-26729-3},
-	url={https://doi.org/10.1038/s41598-022-26729-3}
-	}
+  @article{dovale2022vickers,
+    title={Vickers hardness prediction from machine learning methods},
+    author={Dovale-Farelo, Viviana and Tavadze, Pedram and Lang, Logan and Bautista-Hernandez, Alejandro and Romero, Aldo H},
+    journal={Scientific Reports},
+    volume={12},
+    number={1},
+    pages={22475},
+    year={2022},
+    publisher={Nature Publishing Group UK London},
+    doi={10.1038/s41598-022-26729-3},
+    url={https://doi.org/10.1038/s41598-022-26729-3}
+  }
 
 Chiral magnetism, lattice dynamics, and anomalous Hall conductivity in antiferromagnetic antiperovskite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -558,18 +558,18 @@ Physical Review Materials 6.12 (2022): 125003.
 
 ::
 
-	@article{duran2022chiral,
-  	title={Chiral magnetism, lattice dynamics, and anomalous Hall conductivity in V 3 AuN antiferromagnetic antiperovskite},
-  	author={Duran-Pinilla, JM and Romero, Aldo H and Garcia-Castro, AC},
-  	journal={Physical Review Materials},
-  	volume={6},
-  	number={12},
-  	pages={125003},
-  	year={2022},
-  	publisher={APS},
-	doi={10.1103/PhysRevMaterials.6.125003},
-	url={https://doi.org/10.1103/PhysRevMaterials.6.125003}
-	}
+  @article{duran2022chiral,
+    title={Chiral magnetism, lattice dynamics, and anomalous Hall conductivity in V 3 AuN antiferromagnetic antiperovskite},
+    author={Duran-Pinilla, JM and Romero, Aldo H and Garcia-Castro, AC},
+    journal={Physical Review Materials},
+    volume={6},
+    number={12},
+    pages={125003},
+    year={2022},
+    publisher={APS},
+    doi={10.1103/PhysRevMaterials.6.125003},
+    url={https://doi.org/10.1103/PhysRevMaterials.6.125003}
+  }
 
 Stability and diffusion of oxygen vacancies in LaNiO3: a DMFT study
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -582,14 +582,14 @@ arXiv preprint arXiv:2212.07348 (2022).
 
 ::
 
-	@article{herath2022stability,
-  	title={Stability and diffusion of oxygen vacancies in LaNiO $ \_3 $: a DMFT study},
-  	author={Herath, Uthpala and Singh, Vijay and Bhat, Soumya S and Park, Hyowon and Romero, Aldo H},
-  	journal={arXiv preprint arXiv:2212.07348},
-  	year={2022},
-	doi={10.48550/arXiv.2212.07348},
-	url={https://doi.org/10.48550/arXiv.2212.07348}
-	}
+  @article{herath2022stability,
+    title={Stability and diffusion of oxygen vacancies in LaNiO $ \_3 $: a DMFT study},
+    author={Herath, Uthpala and Singh, Vijay and Bhat, Soumya S and Park, Hyowon and Romero, Aldo H},
+    journal={arXiv preprint arXiv:2212.07348},
+    year={2022},
+    doi={10.48550/arXiv.2212.07348},
+    url={https://doi.org/10.48550/arXiv.2212.07348}
+  }
 
 
 Symmetry-based computational search for novel binary and ternary 2D materials
@@ -603,18 +603,18 @@ Wang, Hai-Chen, et al.
 
 ::
 
-	@article{wang2023symmetry,
- 	title={Symmetry-based computational search for novel binary and ternary 2D materials},
-  	author={Wang, Hai-Chen and Schmidt, Jonathan and Marques, Miguel AL and Wirtz, Ludger and Romero, Aldo H},
-  	journal={2D Materials},
-  	volume={10},
-  	number={3},
-  	pages={035007},
-  	year={2023},
-  	publisher={IOP Publishing},
-	doi={10.1088/2053-1583/accc43},
-	url={https://doi.org/10.1088/2053-1583/accc43}
-	}
+  @article{wang2023symmetry,
+    title={Symmetry-based computational search for novel binary and ternary 2D materials},
+    author={Wang, Hai-Chen and Schmidt, Jonathan and Marques, Miguel AL and Wirtz, Ludger and Romero, Aldo H},
+    journal={2D Materials},
+    volume={10},
+    number={3},
+    pages={035007},
+    year={2023},
+    publisher={IOP Publishing},
+    doi={10.1088/2053-1583/accc43},
+    url={https://doi.org/10.1088/2053-1583/accc43}
+  }
 
 
 Stochastic modeling of physical drag coefficient-its impact on orbit prediction and space traffic management
@@ -628,15 +628,15 @@ Advances in Space Research (2023).
 
 ::
 
-	@article{paul2023stochastic,
-  	title={Stochastic modeling of physical drag coefficient-its impact on orbit prediction and space traffic management},
-  	author={Paul, Smriti Nandan and Sheridan, Phillip Logan and Licata, Richard J and Mehta, Piyush M},
-  	journal={Advances in Space Research},
-  	year={2023},
-  	publisher={Elsevier},
-	doi={10.1016/j.asr.2023.06.006},
-	url={https://doi.org/10.1016/j.asr.2023.06.006}
-	}
+  @article{paul2023stochastic,
+    title={Stochastic modeling of physical drag coefficient-its impact on orbit prediction and space traffic management},
+    author={Paul, Smriti Nandan and Sheridan, Phillip Logan and Licata, Richard J and Mehta, Piyush M},
+    journal={Advances in Space Research},
+    year={2023},
+    publisher={Elsevier},
+    doi={10.1016/j.asr.2023.06.006},
+    url={https://doi.org/10.1016/j.asr.2023.06.006}
+  }
 
 
 2021
@@ -653,18 +653,18 @@ The Journal of Physical Chemistry C 125.6 (2021): 3577-3583.
 
 ::
 
-	@article{aziziha2021identification,
-  	title={Identification of a Fe-Dependent Optical Mode in CuAl1--x Fe x O2},
-  	author={Aziziha, Mina and Akbarshahi, Saeed and Pittala, Suresh and Ghosh, Sayandeep and Sooriyagoda, Rishmali and Romero, Aldo H and Thota, Subhash and Bristow, Alan D and Seehra, Mohindar S and Johnson, Matthew B},
-  	journal={The Journal of Physical Chemistry C},
-  	volume={125},
-  	number={6},
-  	pages={3577--3583},
-  	year={2021},
-  	publisher={ACS Publications},
-	doi={10.1021/acs.jpcc.0c10440},
-	url={https://doi.org/10.1021/acs.jpcc.0c10440}
-	}
+  @article{aziziha2021identification,
+    title={Identification of a Fe-Dependent Optical Mode in CuAl1--x Fe x O2},
+    author={Aziziha, Mina and Akbarshahi, Saeed and Pittala, Suresh and Ghosh, Sayandeep and Sooriyagoda, Rishmali and Romero, Aldo H and Thota, Subhash and Bristow, Alan D and Seehra, Mohindar S and Johnson, Matthew B},
+    journal={The Journal of Physical Chemistry C},
+    volume={125},
+    number={6},
+    pages={3577--3583},
+    year={2021},
+    publisher={ACS Publications},
+    doi={10.1021/acs.jpcc.0c10440},
+    url={https://doi.org/10.1021/acs.jpcc.0c10440}
+  }
 
 
 Evaluating firearm examiner conclusion variability using cartridge case reproductions
@@ -678,18 +678,18 @@ Journal of forensic sciences 66.5 (2021): 1704-1720.
 
 ::
 
-	@article{law2021evaluating,
-  	title={Evaluating firearm examiner conclusion variability using cartridge case reproductions},
-  	author={Law, Eric F and Morris, Keith B},
-  	journal={Journal of forensic sciences},
-  	volume={66},
-  	number={5},
-  	pages={1704--1720},
-  	year={2021},
-  	publisher={Wiley Online Library},
-	doi={10.1111/1556-4029.14758},
-	url={https://doi.org/10.1111/1556-4029.14758}
-	}
+  @article{law2021evaluating,
+    title={Evaluating firearm examiner conclusion variability using cartridge case reproductions},
+    author={Law, Eric F and Morris, Keith B},
+    journal={Journal of forensic sciences},
+    volume={66},
+    number={5},
+    pages={1704--1720},
+    year={2021},
+    publisher={Wiley Online Library},
+    doi={10.1111/1556-4029.14758},
+    url={https://doi.org/10.1111/1556-4029.14758}
+  }
 
 Impacts of fuel nonequidiffusivity on premixed flame propagation in channels with open ends
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -872,18 +872,18 @@ Organometallics 40.1 (2020): 23-37.
 
 ::
 
-	@article{baughman2020experimental,
-  	title={Experimental and Computational Analysis of CO2 Addition Reactions Relevant to Copper-Catalyzed Boracarboxylation of Vinyl Arenes: Evidence for a Phosphine-Promoted Mechanism},
-  	author={Baughman, Notashia N and Akhmedov, Novruz G and Petersen, Jeffrey L and Popp, Brian V},
-  	journal={Organometallics},
-  	volume={40},
-  	number={1},
-  	pages={23--37},
-  	year={2020},
-  	publisher={ACS Publications},
-	doi={10.1021/acs.organomet.0c00488},
-	url={https://doi.org/10.1021/acs.organomet.0c00488}
-	}
+  @article{baughman2020experimental,
+    title={Experimental and Computational Analysis of CO2 Addition Reactions Relevant to Copper-Catalyzed Boracarboxylation of Vinyl Arenes: Evidence for a Phosphine-Promoted Mechanism},
+    author={Baughman, Notashia N and Akhmedov, Novruz G and Petersen, Jeffrey L and Popp, Brian V},
+    journal={Organometallics},
+    volume={40},
+    number={1},
+    pages={23--37},
+    year={2020},
+    publisher={ACS Publications},
+    doi={10.1021/acs.organomet.0c00488},
+    url={https://doi.org/10.1021/acs.organomet.0c00488}
+  }
 
 Acceleration of Premixed Flames in Obstructed Pipes with Both Extremes Open
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
