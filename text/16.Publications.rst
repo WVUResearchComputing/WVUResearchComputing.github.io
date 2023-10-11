@@ -384,3 +384,260 @@ Bower, Samuel J., et al.
     url={https://doi.org/10.31223/X5468R}
     }
 
+2022
+----
+
+Synthesis and Reactivity of Ampy-Based Ruthenium (II) Catalysts for Transfer Hydrogenation of Ketones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Amason, Edith K., et al. 
+`"Synthesis and Reactivity of Ampy-Based Ruthenium (II) Catalysts for Transfer Hydrogenation of Ketones." <https://doi.org/10.1021/acs.organomet.1c00444>`_ 
+Organometallics 41.6 (2022): 686-697.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{amason2022synthesis,
+  	title={Synthesis and Reactivity of Ampy-Based Ruthenium (II) Catalysts for Transfer Hydrogenation of Ketones},
+  	author={Amason, Edith K and Rajabimoghadam, Khashayar and Baughman, Notashia N and Ghareeb, C Roland and Bourgeois, Samantha K and Keuk, Channita and Manacsa, Gayle and Popp, Brian V and Garcia-Bosch, Isaac and Ferrence, Gregory M and others},
+  	journal={Organometallics},
+  	volume={41},
+  	number={6},
+  	pages={686--697},
+  	year={2022},
+  	publisher={ACS Publications},
+	doi={10.1021/acs.organomet.1c00444},
+	url={https://doi.org/10.1021/acs.organomet.1c00444}
+	}
+
+Deep Radio Observations and the Role of the Cosmic Web in Galaxy Evolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Luber, Nicholas M. 
+`"Deep Radio Observations and the Role of the Cosmic Web in Galaxy Evolution." <https://doi.org/10.33915/etd.11429>`_
+West Virginia University, 2022.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@book{luber2022deep,
+  	title={Deep Radio Observations and the Role of the Cosmic Web in Galaxy Evolution},
+  	author={Luber, Nicholas M},
+  	year={2022},
+  	publisher={West Virginia University},
+	doi={10.33915/etd.11429},
+	url={https://doi.org/10.33915/etd.11429}
+	}
+
+
+Physicochemical properties altered by the tail group of lipid membranes influence Huntingtin aggregation and lipid binding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Beasley, Maryssa, et al. 
+"Physicochemical properties altered by the tail group of lipid membranes influence Huntingtin aggregation and lipid binding." 
+The Journal of Physical Chemistry B 126.16 (2022): 3067-3081.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{beasley2022physicochemical,
+  	title={Physicochemical properties altered by the tail group of lipid membranes influence Huntingtin aggregation and lipid binding},
+  	author={Beasley, Maryssa and Frazee, Nicolas and Groover, Sharon and Valentine, Stephen J and Mertz, Blake and Legleiter, Justin},
+  	journal={The Journal of Physical Chemistry B},
+  	volume={126},
+  	number={16},
+  	pages={3067--3081},
+  	year={2022},
+  	publisher={ACS Publications},
+	doi={10.1021/acs.jpcb.1c10254},
+	url={https://doi.org/10.1021/acs.jpcb.1c10254}
+	}
+
+Spatial frequency of randomly acquired characteristics on outsoles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Richetelli, Nicole, and Jacqueline A. Speir. 
+`"Spatial frequency of randomly acquired characteristics on outsoles." <https://doi.org/10.1111/1556-4029.15112>`_
+Journal of Forensic Sciences 67.5 (2022): 1810-1824.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{richetelli2022spatial,
+  	title={Spatial frequency of randomly acquired characteristics on outsoles},
+  	author={Richetelli, Nicole and Speir, Jacqueline A},
+  	journal={Journal of Forensic Sciences},
+  	volume={67},
+  	number={5},
+  	pages={1810--1824},
+  	year={2022},
+  	publisher={Wiley Online Library},
+	doi={10.1111/1556-4029.15112},
+	url={https://doi.org/10.1111/1556-4029.15112}
+	}
+
+Implementing machine learning for the identification and classification of compound and mixtures in portable Raman instruments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Cooman, Travon, et al. 
+`"Implementing machine learning for the identification and classification of compound and mixtures in portable Raman instruments." <https://dx.doi.org/10.1016/j.cplett.2021.139283>`_ 
+Chemical Physics Letters 787 (2022): 139283.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{cooman2022implementing,
+  	title={Implementing machine learning for the identification and classification of compound and mixtures in portable Raman instruments},
+  	author={Cooman, Travon and Trejos, Tatiana and Romero, Aldo H and Arroyo, Luis E},
+  	journal={Chemical Physics Letters},
+  	volume={787},
+  	pages={139283},
+  	year={2022},
+  	publisher={Elsevier},
+	doi={10.1016/j.cplett.2021.139283},
+	url={https://dx.doi.org/10.1016/j.cplett.2021.139283}
+	}
+
+Exploring Cyberterrorism, Topic Models and Social Networks of Jihadists Dark Web Forums: A Computational Social Science Approach
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Guetler, Vivian Fiona. 
+`"Exploring Cyberterrorism, Topic Models and Social Networks of Jihadists Dark Web Forums: A Computational Social Science Approach." <https://doi.org/10.33915/etd.11253>`_
+West Virginia University, 2022.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@book{guetler2022exploring,
+  	title={Exploring Cyberterrorism, Topic Models and Social Networks of Jihadists Dark Web Forums: A Computational Social Science Approach},
+  	author={Guetler, Vivian Fiona},
+  	year={2022},
+  	publisher={West Virginia University},
+	doi={10.33915/etd.11253},
+	url={https://doi.org/10.33915/etd.11253}
+	}
+
+Vickers hardness prediction from machine learning methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Dovale-Farelo, Viviana, et al. 
+`"Vickers hardness prediction from machine learning methods." <https://doi.org/10.1038/s41598-022-26729-3>`_
+Scientific Reports 12.1 (2022): 22475.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{dovale2022vickers,
+  	title={Vickers hardness prediction from machine learning methods},
+  	author={Dovale-Farelo, Viviana and Tavadze, Pedram and Lang, Logan and Bautista-Hernandez, Alejandro and Romero, Aldo H},
+  	journal={Scientific Reports},
+  	volume={12},
+  	number={1},
+  	pages={22475},
+  	year={2022},
+  	publisher={Nature Publishing Group UK London},
+	doi={10.1038/s41598-022-26729-3},
+	url={https://doi.org/10.1038/s41598-022-26729-3}
+	}
+
+Chiral magnetism, lattice dynamics, and anomalous Hall conductivity in antiferromagnetic antiperovskite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Duran-Pinilla, J. M., Aldo H. Romero, and A. C. Garcia-Castro. 
+`"Chiral magnetism, lattice dynamics, and anomalous Hall conductivity in V 3 AuN antiferromagnetic antiperovskite." <https://doi.org/10.1103/PhysRevMaterials.6.125003>`_ 
+Physical Review Materials 6.12 (2022): 125003.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{duran2022chiral,
+  	title={Chiral magnetism, lattice dynamics, and anomalous Hall conductivity in V 3 AuN antiferromagnetic antiperovskite},
+  	author={Duran-Pinilla, JM and Romero, Aldo H and Garcia-Castro, AC},
+  	journal={Physical Review Materials},
+  	volume={6},
+  	number={12},
+  	pages={125003},
+  	year={2022},
+  	publisher={APS},
+	doi={10.1103/PhysRevMaterials.6.125003},
+	url={https://doi.org/10.1103/PhysRevMaterials.6.125003}
+	}
+
+Stability and diffusion of oxygen vacancies in LaNiO3: a DMFT study
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Herath, Uthpala, et al. 
+`"Stability and diffusion of oxygen vacancies in LaNiO $ _3 $: a DMFT study." <https://doi.org/10.48550/arXiv.2212.07348>`_ 
+arXiv preprint arXiv:2212.07348 (2022).
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{herath2022stability,
+  	title={Stability and diffusion of oxygen vacancies in LaNiO $ \_3 $: a DMFT study},
+  	author={Herath, Uthpala and Singh, Vijay and Bhat, Soumya S and Park, Hyowon and Romero, Aldo H},
+  	journal={arXiv preprint arXiv:2212.07348},
+  	year={2022},
+	doi={10.48550/arXiv.2212.07348},
+	url={https://doi.org/10.48550/arXiv.2212.07348}
+	}
+
+
+Symmetry-based computational search for novel binary and ternary 2D materials
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Wang, Hai-Chen, et al. 
+`"Symmetry-based computational search for novel binary and ternary 2D materials." <https://doi.org/10.1088/2053-1583/accc43>`_
+2D Materials 10.3 (2023): 035007.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{wang2023symmetry,
+ 	title={Symmetry-based computational search for novel binary and ternary 2D materials},
+  	author={Wang, Hai-Chen and Schmidt, Jonathan and Marques, Miguel AL and Wirtz, Ludger and Romero, Aldo H},
+  	journal={2D Materials},
+  	volume={10},
+  	number={3},
+  	pages={035007},
+  	year={2023},
+  	publisher={IOP Publishing},
+	doi={10.1088/2053-1583/accc43},
+	url={https://doi.org/10.1088/2053-1583/accc43}
+	}
+
+
+Stochastic modeling of physical drag coefficient-its impact on orbit prediction and space traffic management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Paul, Smriti Nandan, et al. 
+`"Stochastic modeling of physical drag coefficient-its impact on orbit prediction and space traffic management." <https://doi.org/10.1016/j.asr.2023.06.006>`_
+Advances in Space Research (2023).
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{paul2023stochastic,
+  	title={Stochastic modeling of physical drag coefficient-its impact on orbit prediction and space traffic management},
+  	author={Paul, Smriti Nandan and Sheridan, Phillip Logan and Licata, Richard J and Mehta, Piyush M},
+  	journal={Advances in Space Research},
+  	year={2023},
+  	publisher={Elsevier},
+	doi={10.1016/j.asr.2023.06.006},
+	url={https://doi.org/10.1016/j.asr.2023.06.006}
+	}
+
+
+
+
