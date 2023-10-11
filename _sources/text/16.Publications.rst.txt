@@ -773,7 +773,7 @@ Journal of Chemical Theory and Computation, 17(4), 2502-2512.
 
 "(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus."
 Elife, 10e66662.
-    
+
 Estimating multiple precision matrices with cluster fusion regularization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -794,7 +794,7 @@ Astrophysics milestones for pulsar timing array gravitational-wave detection
 Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
 "Astrophysics milestones for pulsar timing array gravitational-wave detection."
 The Astrophysical Journal Letters, 911(2), L34.
-    
+
 The NANOGrav 11 yr Data Set: Limits on Supermassive Black Hole Binaries in Galaxies within 500 Mpc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -814,20 +814,7 @@ Assessing Nickel Titanium Binary Systems Using Structural Search Methods and Ab 
 
 Lang, L., Payne, A., Valencia-Jaime, I., Verstraete, M. J., Bautista-Hernández, A., & Romero, A. H. (2021). 
 "Assessing Nickel Titanium Binary Systems Using Structural Search Methods and Ab Initio Calculations."
-The Journal of Physical Chemistry C, 125(2), 1578-1591.
-    
-(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-"(2021). Homo-oligomerization of the human adenosine A2A receptor is driven by the intrinsically disordered C-terminus."
-Elife, 10e66662.
-    
-Astrophysics milestones for pulsar timing array gravitational-wave detection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
-"Astrophysics milestones for pulsar timing array gravitational-wave detection."
-The Astrophysical Journal Letters, 911(2), L34.
+The Journal of Physical Chemistry C, 125(2), 1578-1591.    
         
 Robust Assessment of Clustering Methods for Fast Radio Transient Candidates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -843,12 +830,6 @@ Witt, C. A., Charisi, M., Taylor, S. R., & Burke-Spolaor, S. (2021).
 "Quasars with Periodic Variability: Capabilities and Limitations of Bayesian Searches for Supermassive Black Hole Binaries in Time-Domain Surveys."
 arXiv preprint arXiv:2110.07465, .
     
-Astrophysics milestones for pulsar timing array gravitational-wave detection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Pol, N. S., Taylor, S. R., Kelley, L. Z., Vigeland, S. J., Simon, J., Chen, S., Arzoumanian, Z., Baker, P. T., Bécsy, B., Brazier, A., Brook, P. R., Burke-Spolaor, S., Chatterjee, S., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., DeCesar, M. E., Demorest, P. B., Dolch, T., Ferrara, E. C., Fiore, W., Fonseca, E., Garver-Daniels, N., Good, D. C., Hazboun, J. S., Jennings, R. J., Jones, M. L., Kaiser, A. R., Kaplan, D. L., Key, J. S., Lam, M. T., (2021). 
-"Astrophysics milestones for pulsar timing array gravitational-wave detection."
-The Astrophysical Journal Letters, 911(2), L34.
     
 NRPyElliptic: A Fast Hyperbolic Relaxation Elliptic Solver for Numerical Relativity, I: Conformally Flat, Binary Puncture Initial Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1297,7 +1278,7 @@ The NANOGrav 11 year data set: pulsar-timing constraints on the stochastic gravi
 Arzoumanian, Z., Baker, P., Brazier, A., Burke-Spolaor, S., Chamberlin, S., Chatterjee, S., Christy, B., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., Crowter, K., DeCesar, M., Demorest, P. B., Dolch, T., Ellis, J. A., Ferdman, R. D., Ferrara, E., Folkner, W., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Haas, R., Hazboun, J., Huerta, E., Islo, K., Jones, G., Jones, M. L., Kaplan, D. L., Kaspi, V. M., Lam, M. T., (2018). 
 "The NANOGrav 11 year data set: pulsar-timing constraints on the stochastic gravitational-wave background."
 The Astrophysical Journal, 859(1), 47.
-    
+   
 Cooperative Non-bonded Forces Control Membrane Binding of the pH-Low Insertion Peptide pHLIP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1332,14 +1313,7 @@ Dielectric measurement of powdery materials using a coaxial transmission line
 Tempke, R., Wildfire, C., Shekhawat, D., & Musho, T. (2018). 
 "Dielectric measurement of powdery materials using a coaxial transmission line."
 arXiv preprint arXiv:1810.11472, .
-    
-The NANOGrav 11 year data set: pulsar-timing constraints on the stochastic gravitational-wave background
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Arzoumanian, Z., Baker, P., Brazier, A., Burke-Spolaor, S., Chamberlin, S., Chatterjee, S., Christy, B., Cordes, J. M., Cornish, N. J., Crawford, F., Cromartie, H. T., Crowter, K., DeCesar, M., Demorest, P. B., Dolch, T., Ellis, J. A., Ferdman, R. D., Ferrara, E., Folkner, W., Fonseca, E., Garver-Daniels, N., Gentile, P. A., Haas, R., Hazboun, J., Huerta, E., Islo, K., Jones, G., Jones, M. L., Kaplan, D. L., Kaspi, V. M., Lam, M. T., (2018). 
-"The NANOGrav 11 year data set: pulsar-timing constraints on the stochastic gravitational-wave background."
-The Astrophysical Journal, 859(1), 47.
-    
+        
 Elastic, mechanical, and thermodynamic properties of Bi-Sb binaries: Effect of spin-orbit coupling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
