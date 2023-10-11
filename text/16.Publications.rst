@@ -639,5 +639,83 @@ Advances in Space Research (2023).
 	}
 
 
+2021
+----
+
+Identification of a Fe-Dependent Optical Mode in CuAl1–x Fe x O2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aziziha, Mina, et al. 
+`"Identification of a Fe-Dependent Optical Mode in CuAl1–x Fe x O2." <https://doi.org/10.1021/acs.jpcc.0c10440>`_
+The Journal of Physical Chemistry C 125.6 (2021): 3577-3583.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{aziziha2021identification,
+  	title={Identification of a Fe-Dependent Optical Mode in CuAl1--x Fe x O2},
+  	author={Aziziha, Mina and Akbarshahi, Saeed and Pittala, Suresh and Ghosh, Sayandeep and Sooriyagoda, Rishmali and Romero, Aldo H and Thota, Subhash and Bristow, Alan D and Seehra, Mohindar S and Johnson, Matthew B},
+  	journal={The Journal of Physical Chemistry C},
+  	volume={125},
+  	number={6},
+  	pages={3577--3583},
+  	year={2021},
+  	publisher={ACS Publications},
+	doi={10.1021/acs.jpcc.0c10440},
+	url={https://doi.org/10.1021/acs.jpcc.0c10440}
+	}
+
+
+Evaluating firearm examiner conclusion variability using cartridge case reproductions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Law, Eric F., and Keith B. Morris. 
+`"Evaluating firearm examiner conclusion variability using cartridge case reproductions." <https://doi.org/10.1111/1556-4029.14758>`_
+Journal of forensic sciences 66.5 (2021): 1704-1720.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{law2021evaluating,
+  	title={Evaluating firearm examiner conclusion variability using cartridge case reproductions},
+  	author={Law, Eric F and Morris, Keith B},
+  	journal={Journal of forensic sciences},
+  	volume={66},
+  	number={5},
+  	pages={1704--1720},
+  	year={2021},
+  	publisher={Wiley Online Library},
+	doi={10.1111/1556-4029.14758},
+	url={https://doi.org/10.1111/1556-4029.14758}
+	}
+
+2020
+----
+
+Experimental and Computational Analysis of CO2 Addition Reactions Relevant to Copper-Catalyzed Boracarboxylation of Vinyl Arenes: Evidence for a Phosphine-Promoted Mechanism
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Baughman, Notashia N., et al. 
+`"Experimental and Computational Analysis of CO2 Addition Reactions Relevant to Copper-Catalyzed Boracarboxylation of Vinyl Arenes: Evidence for a Phosphine-Promoted Mechanism." <https://doi.org/10.1021/acs.organomet.0c00488>`_
+Organometallics 40.1 (2020): 23-37.
+
+.. image:: /_static/publications_2023/2023\ bower_mtr_part_2_earth_arxiv.png
+
+::
+
+	@article{baughman2020experimental,
+  	title={Experimental and Computational Analysis of CO2 Addition Reactions Relevant to Copper-Catalyzed Boracarboxylation of Vinyl Arenes: Evidence for a Phosphine-Promoted Mechanism},
+  	author={Baughman, Notashia N and Akhmedov, Novruz G and Petersen, Jeffrey L and Popp, Brian V},
+  	journal={Organometallics},
+  	volume={40},
+  	number={1},
+  	pages={23--37},
+  	year={2020},
+  	publisher={ACS Publications},
+	doi={10.1021/acs.organomet.0c00488},
+	url={https://doi.org/10.1021/acs.organomet.0c00488}
+	}
 
 
