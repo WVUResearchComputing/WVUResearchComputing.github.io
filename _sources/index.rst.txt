@@ -64,7 +64,7 @@ There are several websites associated with WVU-RC activities, here is a list of
 the most relevant ones:
 
 The official webpage in Research Office portal about the Research Computing Division
-   `WVU Research Computing - Research Office <https://research.wvu.edu/researchers/computational-research/hpc>`_
+   `WVU Research Computing - Research Office <https://research.wvu.edu/tools/research-computing>`_
 
 The legacy documentation was a Wiki website that will continue to be online for a while
    `WVU Research Computing - Legacy Wiki <https://wiki.hpc.wvu.edu/hpc_wiki/index.php/Main_Page>`_
@@ -80,6 +80,10 @@ For Spruce Knob:
 For Thorny Flat:
 
     "Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534."
+
+For Dolly Sods:
+
+    "Computational resources were provided by the WVU Research Computing Dolly Sods HPC cluster, which is funded in part by NSF OAC-2117575."
 
 For requesting help, create a new ticket at the Research Computing HPC Help
 Desk web page. You are welcome to e-mail any member of the WVU-RC team directly,
