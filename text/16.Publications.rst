@@ -231,7 +231,7 @@ Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Appl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Cruz, Alfredo A., et al. 
-`"Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux." <https://doi.org/10.22541/essoar.169466161.13316560/v1>`
+`"Reduced-Order Probabilistic Emulation of Physics-Based Ring Current Models: Application to RAM-SCB Particle Flux." <https://doi.org/10.22541/essoar.169466161.13316560/v1>_`
 
 .. image:: /_static/publications/2023/10.22541_essoar.169466161.13316560_v1.png
 
