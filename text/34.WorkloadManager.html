@@ -101,7 +101,10 @@
 <li class="toctree-l2"><a class="reference internal" href="32.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.EnvModules.html">Environment Modules</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#understanding-partitions">Understanding Partitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-partitions">Understanding Partitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sockets-cpu-cores-and-hyperthreading">Sockets, CPU cores, and Hyperthreading</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#submitting-batch-jobs">Submitting batch jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#monitoring-jobs">Monitoring jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#canceling-a-job">Canceling a job</a></li>
@@ -320,6 +323,20 @@ The sum of all these 3 states is the total number of compute nodes associated wi
 <p>The fifth column is the nodelist. This is a compacted listing of all the machines associated with each partition.
 The compact form is particularly useful in large HPC clusters with hundreds of compute nodes.
 Notice for example that compute nodes <code class="docutils literal notranslate"><span class="pre">tcocs[001-064,100]</span></code> appear as nodes associated to <code class="docutils literal notranslate"><span class="pre">standby</span></code>, <code class="docutils literal notranslate"><span class="pre">comm_small_day</span></code> and <code class="docutils literal notranslate"><span class="pre">comm_small_week</span></code>.</p>
+<section id="sockets-cpu-cores-and-hyperthreading">
+<h3>Sockets, CPU cores, and Hyperthreading<a class="headerlink" href="#sockets-cpu-cores-and-hyperthreading" title="Permalink to this headline">¶</a></h3>
+<p>On a desktop computer or laptop, you will find a single processor also called Central Processing Unit (CPU).
+The CPU is the main chip responsible for most computational calculations taking place on the machine.
+Different from Desktop computers and laptops, on HPC, compute nodes it is often the case to find two or four CPU chips.
+Each CPU is located in what is called a socket. A dual socket node is then a node with two CPU chips.
+Those CPUs are in general identical and the Operating System will distribute the workload among them.</p>
+<p>Modern CPUs are made of multiple cores. A CPU core is a completely functional processing unit and several CPU cores are printed on a single chip.
+We called these CPUs multicore and almost all CPUs today are multicore.</p>
+<p>Some CPUs are capable of “logically dividing” each CPU core into two hardware threads, a technology called Hyperthreading.
+Hardware threads are designed to hide the latencies of the memory and feed the compute units fast enough to keep them busy all the time.
+Hyperthreading can be activated or deactivated depending on the cluster or its workload.
+Depending on the code running on the node hyperthreading can benefit or harm the performance.</p>
+</section>
 </section>
 <section id="submitting-batch-jobs">
 <h2>Submitting batch jobs<a class="headerlink" href="#submitting-batch-jobs" title="Permalink to this headline">¶</a></h2>

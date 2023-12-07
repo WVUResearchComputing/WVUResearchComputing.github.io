@@ -103,14 +103,16 @@
 <li class="toctree-l2"><a class="reference internal" href="25.DataStorage.html">Data Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="26.Software.html">Software Packages</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Workload Manager (SLURM)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#concepts">Concepts</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#compute-nodes">Compute Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slurm-concepts">SLURM Concepts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nodes">Nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#partitions">Partitions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#jobs">Jobs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sockets-cpu-cores-and-hyperthreading">Sockets, CPU cores, and Hyperthreading</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#the-roles-of-a-workload-manager">The roles of a workload manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-roles-of-a-workload-manager">The roles of a workload manager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resource-manager">Resource Manager</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#gathering-cluster-information">Gathering cluster information</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#job-submission">Job Submission</a></li>
 </ul>
@@ -195,67 +197,103 @@
             
   <section id="workload-manager-slurm">
 <span id="qs-workload-manager"></span><h1>Workload Manager (SLURM)<a class="headerlink" href="#workload-manager-slurm" title="Permalink to this headline">¶</a></h1>
-<p>The workload manager is the software tool that makes a computer cluster appear and work like a single entity rather than like a simple aggregate of computers on a network.
-WVU clusters now use SLURM as a workload manager and users must be familiar with a few commands to effectively use an HPC cluster.</p>
-<section id="concepts">
-<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h2>
-<p>Before introducing the basic commands on SLURM we need to understand some concepts used here</p>
-<section id="compute-nodes">
-<h3>Compute Nodes<a class="headerlink" href="#compute-nodes" title="Permalink to this headline">¶</a></h3>
-<p>A High-Performance Compute cluster (HPC cluster) is made of a collection of computers, the term used for each computer is “node”.
-These nodes are linked together through a fast network such as Gigabit Ethernet or Infiniband.
-In the particular case of Thorny Flat, we use the Omni-Path Architecture (OPA) as the fast network fabric.</p>
-<p>A cluster typically hosts multiple types of nodes:</p>
+<p>The workload manager is the software tool that makes a computer cluster appear and work like a single entity rather than an aggregate of computers on a network.
+Our clusters use SLURM as their workload manager, and users must be familiar with a few commands to use an HPC cluster effectively.</p>
+<p>We will describe the different commands in <a class="reference internal" href="34.WorkloadManager.html#bs-workload-manager"><span class="std std-ref">Workload Manager (SLURM)</span></a>, but if you are eager to know the list, here is a table with the commands you will use more often:</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span></code></p></td>
+<td><p>Submit a batch script for later execution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scancel</span></code></p></td>
+<td><p>Signal a job to be removed from the queue or its execution stopped.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code></p></td>
+<td><p>View information about jobs currently in queue or execution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code></p></td>
+<td><p>View information about nodes and partitions.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scontrol</span></code></p></td>
+<td><p>View and modify the configuration and state of jobs, nodes, and partitions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sacct</span></code></p></td>
+<td><p>View accounting information, including data about previous jobs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">salloc</span></code></p></td>
+<td><p>Obtain an interactive job allocation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">srun</span></code></p></td>
+<td><p>Execute an application, including its allocation if needed.</p></td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the commands above deal with three main concepts: jobs, nodes, and partitions.
+To be able to work effectively with SLURM, you must be familiar with these three concepts.</p>
+<section id="slurm-concepts">
+<h2>SLURM Concepts<a class="headerlink" href="#slurm-concepts" title="Permalink to this headline">¶</a></h2>
+<p>To use SLURM effectively, we need to understand the concepts of compute node, partition, and job.
+SLURM provides a set of commands to submit, cancel, and monitor jobs.
+These jobs will execute on compute nodes that are organized logically in partitions.
+Let us elaborate on these three concepts before submitting our first job.</p>
+<section id="nodes">
+<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h3>
+<p>A High-Performance Computing cluster (HPC cluster) is made of a collection of computers. The term used for each computer is “node”.
+These nodes are linked through a fast network such as Gigabit Ethernet or Infiniband.
+In the case of Thorny Flat, we use the Omni-Path Architecture (OPA) as the fast network fabric.
+In the case of Dolly Sods, the fabric is Infiniband.</p>
+<p>The nodes in an HPC cluster are configured to serve different purposes. A typical organization of a cluster divides the nodes into four categories:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>management nodes:</strong> These computers run management services, databases, monitoring tools, reporting applications, provisioning tools, and other related services used by system administrators. Normal users have no direct access to these nodes.</p></li>
-<li><p><strong>login nodes:</strong> These computers are the machines where users login in through SSH to submit jobs and check results. Users must never use login nodes for any intense computations</p></li>
-<li><p><strong>storage nodes:</strong> These computers host user files in possibly multiple filesystems. We use dedicated storage systems running distributed filesystems such as GPFS.</p></li>
-<li><p><strong>compute nodes:</strong> These are the computers where jobs run and where the computations actually take place. In the context of SLURM these machines are simply referred to as “nodes”</p></li>
+<li><p><strong>Management nodes:</strong> These computers run management services, databases, monitoring tools, reporting applications, provisioning tools, and other related services system administrators use. Regular users have no direct access to these nodes.</p></li>
+<li><p><strong>Login nodes:</strong> These computers are the machines where users log in through SSH to submit jobs and check results. Users must never use login nodes for any intense computations as many people is served by these machines, and they should be kept at a reasonable load to properly serve the users currently connected.</p></li>
+<li><p><strong>Storage nodes:</strong> These computers host user files in possibly multiple filesystems. We use dedicated storage systems running distributed filesystems such as GPFS.</p></li>
+<li><p><strong>Compute nodes:</strong> These are the computers where jobs run and where the computations actually take place. As most nodes on an HPC cluster are compute nodes, we refer to them simply as “nodes”. We will make the distinction when needed.</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="partitions">
 <h3>Partitions<a class="headerlink" href="#partitions" title="Permalink to this headline">¶</a></h3>
-<p>In SLURM, a partition is a set of compute nodes grouped logically based on either the physical properties of the hardware or job scheduling policies.
-Compute nodes can belong to several partitions making the term partition a bit misleading.
-In other resource managers partitions are called “queues” which is a more appropriate term.
-In general, compute nodes are grouped based on common features shared by the nodes such as the presence of GPUs or node memory (RAM). Another reason to create partitions is to manage jobs that run for a day from those that could run for up to a week.</p>
+<p>In SLURM, a partition is a set of compute nodes grouped logically based on the hardware’s physical properties or job-scheduling policies.
+The term “partition” can be misleading as the same compute node can belong to several partitions.
+In other resource managers, partitions are called “queues” which is an alternative term also used in HPC.
+In general, compute nodes are grouped based on the features shared by the nodes, such as the presence of GPUs or the amount of memory (RAM) installed. Another reason to create partitions is to manage jobs that run under different job-scheduling policies, such as priority or the amount of time a job is allowed to run on a partition.</p>
 </section>
 <section id="jobs">
 <h3>Jobs<a class="headerlink" href="#jobs" title="Permalink to this headline">¶</a></h3>
-<p>Jobs are the atomic structure of a workload manager like SLURM.
-A Job is made of one or more sequential steps, each step consisting in one or multiple parallel tasks that could be dispatched to multiple CPU cores on a single node or to several nodes on the cluster.</p>
-</section>
-<section id="sockets-cpu-cores-and-hyperthreading">
-<h3>Sockets, CPU cores, and Hyperthreading<a class="headerlink" href="#sockets-cpu-cores-and-hyperthreading" title="Permalink to this headline">¶</a></h3>
-<p>On a desktop computer or laptop, you will find a single processor also called Central Processing Unit (CPU).
-The CPU is the main chip responsible for most computational calculations taking place on the machine.
-Different from Desktop computers and laptops, on HPC, compute nodes it is often the case to find two or four CPU chips.
-Each CPU is located in what is called a socket. A dual socket node is then a node with two CPU chips.
-Those CPUs are in general identical and the Operating System will distribute the workload among them.</p>
-<p>Modern CPUs are made of multiple cores. A CPU core is a completely functional processing unit and several CPU cores are printed on a single chip.
-We called these CPUs multicore and almost all CPUs today are multicore.</p>
-<p>Some CPUs are capable of “logically dividing” each CPU core into two hardware threads, a technology called Hyperthreading.
-Hardware threads are designed to hide the latencies of the memory and feed the compute units fast enough to keep them busy all the time.
-Hyperthreading can be activated or deactivated depending on the cluster or its workload.
-Depending on the code running on the node hyperthreading can benefit or harm the performance.</p>
+<p>A Job is the central structure of a workload manager like SLURM.
+A Job is made of one or more sequential steps, each step consisting of one or multiple parallel tasks that could be dispatched to multiple CPU cores on a single node or to several nodes on the cluster.
+At a given time, many jobs exist on an HPC cluster.
+A cluster like Thorny Flat or Dolly Sods usually has thousands of jobs running or in the queue.</p>
+<p>Once a job is submitted, it stays pending of resources being allocated for it in the form of a fraction, one or more compute nodes. Jobs run on compute nodes until they complete the tasks they are supposed to run or the limit of time allowed for them is reached.
+Once the job is finished, accounting information is stored in databases so information is preserved even if the job is no longer listed in the queue.</p>
 </section>
 </section>
 <section id="the-roles-of-a-workload-manager">
 <h2>The roles of a workload manager<a class="headerlink" href="#the-roles-of-a-workload-manager" title="Permalink to this headline">¶</a></h2>
 <p>A workload manager like SLURM serves two main roles: <strong>Resource Manager</strong>  and <strong>Job Scheduler</strong>.</p>
-<p><strong>Resource Manager</strong></p>
-<p>The role of resource manager is to collect information about all the computers in the cluster, their characteristics and current state.
+<section id="resource-manager">
+<h3>Resource Manager<a class="headerlink" href="#resource-manager" title="Permalink to this headline">¶</a></h3>
+<p>The resource manager’s role is to collect information about all the computers in the cluster, their characteristics, and their current state.
 A human equivalent for a resource manager is a mix of an accountant and a manager.
-The resource manager role is mainly resposible for gluing a HPC cluster to appear to users a single entity rather than a pile of computers.
-A resource manager provide tools to execute tasks of a HPC cluster with several nodes, and nodes with several cores as simple to use as an individual computer.
-Consider for example executing the command to know the name of the computer were the command is executed, on a single machine you run:</p>
+The resource manager role is mainly responsible for gluing an HPC cluster to appear to users as a single entity rather than a pile of computers.
+A resource manager provides tools to execute tasks of an HPC cluster with several nodes and nodes with several cores as simple to use as an individual computer.</p>
+<p>To better understand what a job is, consider first a simple command that return the name of the computer where it is executed. For example, on the login node execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; hostname
 trcis001.hpc.wvu.edu
 </pre></div>
 </div>
-<p>If we want to execute the same command on 3 machines, we can use SLURM and execute:</p>
+<p>If we want to execute the same command on three machines, we can use SLURM command <code class="docutils literal notranslate"><span class="pre">srun</span></code> and execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; srun -N3 hostname
 srun: job 3410 queued and waiting for resources
 srun: job 3410 has been allocated resources
@@ -281,6 +319,7 @@ The SLURM commands that you will learn in this section will allow you to:</p>
 <li><p>List the partitions on the cluster and their state</p></li>
 </ul>
 </div></blockquote>
+</section>
 </section>
 <section id="gathering-cluster-information">
 <h2>Gathering cluster information<a class="headerlink" href="#gathering-cluster-information" title="Permalink to this headline">¶</a></h2>
