@@ -1,0 +1,149 @@
+Bioinformatics: Stacks
+======================
+
+What is Stacks?
+---------------
+
+Stacks is a software pipeline for building loci from short-read sequences, such as those generated on the Illumina platform. Stacks was developed to work with restriction enzyme-based data, such as RAD-seq, for the purpose of building genetic maps and conducting population genomics and phylogeography. 
+
+This tutorial will demonstrate using SLURM Job Array Support to execute the Stacks commands on many samples for Population genomics analysis.
+
+Getting the Samples
+-------------------
+
+The first step is preparing the folders where Stacks will operate. It is a good practice to separate the data we will work with under a set of folders to help us organize it.
+We have the samples, a set of short-read sequences that we want to align.
+We will use the command ``ustacks``. The unique stacks program will take as input a set of short-read sequences and align them into exactly-matching stacks (or putative alleles). Comparing the stacks it will form a set of putative loci and detect SNPs at each locus using a maximum likelihood framework.
+
+These samples we go into a folder called ``SAMPLES``.
+
+The command ``ustacks`` will process each file in samples and produce a set of other files that we will store in the folder ``USTACKS``.
+The commands will also produce log files; SLURM jobs create two files: a standard output and a standard error. These two files will contain the messages produced during the execution of the job. We will also separate the output of ``ustacks``, which has its own output file.
+All these logs will be stored in a folder called ``LOGS``.
+
+We start creating these 3 folders on a good location inside your $SCRATCH folder::
+
+    $ mkdir SAMPLES LOGS USTACKS
+
+The folder structure should be::
+
+    $ ls -1
+    LOGS
+    SAMPLES
+    USTACKS
+
+We need to transfer all the samples to the folder ``SAMPLES``. In our case we have a set of files like this::
+
+    $ cd SAMPLES
+    $ ls
+    Erie18_00548.1.fq.gz  Erie19_12229.1.fq.gz  New19_146.1.fq.gz  RC03.fq.gz  RC25.fq.gz
+    Erie18_00549.1.fq.gz  Erie19_12230.1.fq.gz  New19_15.1.fq.gz   RC04.fq.gz  TG14001.1.fq.gz
+    Erie18_00550.1.fq.gz  Erie19_12231.1.fq.gz  New19_156.1.fq.gz  RC05.fq.gz  TG14002.1.fq.gz
+    Erie18_00551.1.fq.gz  Erie19_12232.1.fq.gz  New19_157.1.fq.gz  RC06.fq.gz  TG14003.1.fq.gz
+    Erie18_00552.1.fq.gz  Erie19_12233.1.fq.gz  New19_16.1.fq.gz   RC07.fq.gz  TG14004.1.fq.gz
+    Erie18_00553.1.fq.gz  Erie19_12234.1.fq.gz  New19_17.1.fq.gz   RC08.fq.gz  TG14005.1.fq.gz
+    Erie18_00554.1.fq.gz  Erie19_12235.1.fq.gz  New19_175.1.fq.gz  RC09.fq.gz  TG14006.1.fq.gz
+    Erie18_00555.1.fq.gz  Erie19_12236.1.fq.gz  New19_176.1.fq.gz  RC10.fq.gz  TG14007.1.fq.gz
+    Erie18_00556.1.fq.gz  Erie19_12237.1.fq.gz  New19_191.1.fq.gz  RC11.fq.gz  TG14008.1.fq.gz
+    Erie18_00557.1.fq.gz  Erie19_12238.1.fq.gz  New19_30.1.fq.gz   RC12.fq.gz  TG14009.1.fq.gz
+    Erie18_00558.1.fq.gz  Erie19_12239.1.fq.gz  New19_35.1.fq.gz   RC13.fq.gz  TG14010.1.fq.gz
+    Erie18_00559.1.fq.gz  Erie19_12240.1.fq.gz  New19_38.1.fq.gz   RC14.fq.gz  TG14011.1.fq.gz
+    Erie18_00560.1.fq.gz  Erie19_12241.1.fq.gz  New19_47.1.fq.gz   RC15.fq.gz  TG14012.1.fq.gz
+    Erie18_00561.1.fq.gz  Erie19_12242.1.fq.gz  New19_5.1.fq.gz    RC16.fq.gz  TG14013.1.fq.gz
+    Erie18_00562.1.fq.gz  Erie19_12288.1.fq.gz  New19_55.1.fq.gz   RC17.fq.gz  TG14014.1.fq.gz
+    Erie18_00563.1.fq.gz  Erie19_12289.1.fq.gz  New19_75.1.fq.gz   RC18.fq.gz  TG14015.1.fq.gz
+    Erie18_00564.1.fq.gz  Erie19_12290.1.fq.gz  New19_76.1.fq.gz   RC19.fq.gz  TG14016.1.fq.gz
+    Erie18_00565.1.fq.gz  Erie19_12291.1.fq.gz  New19_85.1.fq.gz   RC20.fq.gz  TG14017.1.fq.gz
+    Erie19_12225.1.fq.gz  New19_108.1.fq.gz     New19_86.1.fq.gz   RC21.fq.gz  TG14018.1.fq.gz
+    Erie19_12226.1.fq.gz  New19_1.1.fq.gz       New19_96.1.fq.gz   RC22.fq.gz  TG14019.1.fq.gz
+    Erie19_12227.1.fq.gz  New19_120.1.fq.gz     RC01.fq.gz         RC23.fq.gz  TG14020.1.fq.gz
+    Erie19_12228.1.fq.gz  New19_144.1.fq.gz     RC02.fq.gz         RC24.fq.gz
+
+Notice that some of the files have a suffix ``.1.fq.gz`` while others have ``.fq.gz``. If we want to know how many files we have there we can execute the command::
+
+    $ ls -1 | wc -l
+    109
+
+In order to process each of those files with ``ustacks`` we will use a file that list the names of those samples.
+The following command will list all the files stripping from the the extensions. This list will be called ``SAMPLES`` and will also be inside the folder ``SAMPLES``. This is the command to create the text file with the list of samples::
+
+    $ ls -1 *.fq.gz | awk -F. '{print $1}' > SAMPLES
+
+We can double check that the number of lines in the file ``SAMPLES`` is still 109::
+ 
+    $ wc -l SAMPLES
+    109 SAMPLES
+
+Preparing the SLURM submission script
+-------------------------------------
+
+We want to use the same command for each file in ``SAMPLES``
+
+For example, for the file ``SAMPLES/Erie19_12228.1.fq.gz`` the command will be::
+
+   ustacks -f SAMPLES/Erie19_12228.1.fq.gz -o ./USTACKS -m 3 -M 1 -p 5
+
+We will be using the Singularity for stacks 2.65. 
+The command line for running stacks from inside a the singularity container looks like this::
+
+   singularity exec /shared/containers/Stacks-2.65.sif ustacks -f SAMPLES/Erie19_12228.1.fq.gz -o ./USTACKS -m 3 -M 1 -p 5
+
+
+The submission script looks like this (``ustacks.slurm``)::
+
+   #!/bin/sh                                                                                                                                  
+                                     
+   #SBATCH --job-name=ustacks                                                
+   #SBATCH --mail-type=BEGIN,END,FAIL
+   #SBATCH --output=./LOGS/O-%x.%j.out
+   #SBATCH --error=./LOGS/E-%x.%j.err
+   #SBATCH --partition=standby
+   #SBATCH --nodes=1
+   #SBATCH --ntasks=1
+   #SBATCH --mem=13G
+   #SBATCH --mail-user=gufranco@mail.wvu.edu
+   #SBATCH --array=1-109                                                     
+   #SBATCH --cpus-per-task=5                                                                                                                           
+                                                                          
+   echo ""
+   echo "Job ID:              $SLURM_JOB_ID"      
+   echo "Task ID:             $SLURM_ARRAY_TASK_ID"
+   echo "Job Name:            $SLURM_JOB_NAME"
+   echo "Partition:           $SLURM_JOB_PARTITION"
+   echo "Number of Nodes:     $SLURM_JOB_NUM_NODES"
+   echo "Number of Tasks:     $SLURM_NTASKS"
+   echo "CPUs on Node:        $SLURM_CPUS_ON_NODE"
+   echo "CPUs per Task:       $SLURM_CPUS_PER_TASK"
+
+   module load singularity
+   SIMAGE=/shared/containers/Stacks-2.65.sif
+
+   cd $SLURM_SUBMIT_DIR
+   CASE=`cat ./SAMPLES/SAMPLES | head -n ${SLURM_ARRAY_TASK_ID} | tail -1`
+
+   if [ -f ./SAMPLES/${CASE}.fq.gz ]
+   then
+      FILENAME="./SAMPLES/${CASE}.fq.gz"
+      echo "Input file: " $FILENAME
+   elif [ -f ./SAMPLES/${CASE}.1.fq.gz ] 
+   then 
+      FILENAME="./SAMPLES/${CASE}.1.fq.gz"
+      echo "Input file: " $FILENAME
+   else
+      echo "ERROR: Possible input file not found" 
+      exit 1
+   fi
+
+   if [ ! -d USTACKS ]
+   then
+      mkdir USTACKS
+   fi
+
+   echo "Start:" $(date +%Y.%m.%d_%H:%M:%S)
+   singularity exec ${SIMAGE} ustacks -f $FILENAME -o ./USTACKS -m 3 -M 1 -p 5 --name ${CASE} &> ./LOGS/U-${CASE}.log
+   echo "End:" $(date +%Y.%m.%d_%H:%M:%S)
+
+To submit this job execute::
+
+    $ sbatch ustacks.slurm
+

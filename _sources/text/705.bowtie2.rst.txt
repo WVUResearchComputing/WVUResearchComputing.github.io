@@ -263,9 +263,9 @@ again. This small python script could help you with that task
             print("Some jobs need to be resubmitted:")
             print(failures)
 
-In order to check if all the jobs are complete execute:
+In order to check if all the jobs are complete execute::
 
-`` ./BSresubmit.py -d OUTPUT -p Estrogen_24. -s .align.bs_seeker2_log -n 279``
+   ./BSresubmit.py -d OUTPUT -p Estrogen_24. -s .align.bs_seeker2_log -n 279
 
 Once you have all the data you can move forward and merge the files
 using samtools:

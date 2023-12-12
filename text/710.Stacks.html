@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bioinformatics: Stacks &mdash; WVU-RC 2023.10.11 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clusters Specifications" href="80.ClusterSpecific.html" />
+    <link rel="prev" title="NAMD" href="709.NAMD.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2023.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUsage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="500.ScientificProgramming.html">Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="701.Ansys.html">Engineering: ANSYS Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="702.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="703.OpenFoam.html">Engineering: OpenFOAM 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="704.LAMMPS.html">LAMMPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="705.bowtie2.html">Bioinformatics: Using Bowtie2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="707.Visit.html">Visualization: VisIt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="708.PlanetaryScience.html">Compiling Planetary Modeling Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="709.NAMD.html">NAMD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bioinformatics: Stacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-stacks">What is Stacks?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-the-samples">Getting the Samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-the-slurm-submission-script">Preparing the SLURM submission script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="700.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
+        
+      <li>Bioinformatics: Stacks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/710.Stacks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="bioinformatics-stacks">
+<h1>Bioinformatics: Stacks<a class="headerlink" href="#bioinformatics-stacks" title="Permalink to this headline">¶</a></h1>
+<section id="what-is-stacks">
+<h2>What is Stacks?<a class="headerlink" href="#what-is-stacks" title="Permalink to this headline">¶</a></h2>
+<p>Stacks is a software pipeline for building loci from short-read sequences, such as those generated on the Illumina platform. Stacks was developed to work with restriction enzyme-based data, such as RAD-seq, for the purpose of building genetic maps and conducting population genomics and phylogeography.</p>
+<p>This tutorial will demonstrate using SLURM Job Array Support to execute the Stacks commands on many samples for Population genomics analysis.</p>
+</section>
+<section id="getting-the-samples">
+<h2>Getting the Samples<a class="headerlink" href="#getting-the-samples" title="Permalink to this headline">¶</a></h2>
+<p>The first step is preparing the folders where Stacks will operate. It is a good practice to separate the data we will work with under a set of folders to help us organize it.
+We have the samples, a set of short-read sequences that we want to align.
+We will use the command <code class="docutils literal notranslate"><span class="pre">ustacks</span></code>. The unique stacks program will take as input a set of short-read sequences and align them into exactly-matching stacks (or putative alleles). Comparing the stacks it will form a set of putative loci and detect SNPs at each locus using a maximum likelihood framework.</p>
+<p>These samples we go into a folder called <code class="docutils literal notranslate"><span class="pre">SAMPLES</span></code>.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">ustacks</span></code> will process each file in samples and produce a set of other files that we will store in the folder <code class="docutils literal notranslate"><span class="pre">USTACKS</span></code>.
+The commands will also produce log files; SLURM jobs create two files: a standard output and a standard error. These two files will contain the messages produced during the execution of the job. We will also separate the output of <code class="docutils literal notranslate"><span class="pre">ustacks</span></code>, which has its own output file.
+All these logs will be stored in a folder called <code class="docutils literal notranslate"><span class="pre">LOGS</span></code>.</p>
+<p>We start creating these 3 folders on a good location inside your $SCRATCH folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir SAMPLES LOGS USTACKS
+</pre></div>
+</div>
+<p>The folder structure should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -1
+LOGS
+SAMPLES
+USTACKS
+</pre></div>
+</div>
+<p>We need to transfer all the samples to the folder <code class="docutils literal notranslate"><span class="pre">SAMPLES</span></code>. In our case we have a set of files like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd SAMPLES
+$ ls
+Erie18_00548.1.fq.gz  Erie19_12229.1.fq.gz  New19_146.1.fq.gz  RC03.fq.gz  RC25.fq.gz
+Erie18_00549.1.fq.gz  Erie19_12230.1.fq.gz  New19_15.1.fq.gz   RC04.fq.gz  TG14001.1.fq.gz
+Erie18_00550.1.fq.gz  Erie19_12231.1.fq.gz  New19_156.1.fq.gz  RC05.fq.gz  TG14002.1.fq.gz
+Erie18_00551.1.fq.gz  Erie19_12232.1.fq.gz  New19_157.1.fq.gz  RC06.fq.gz  TG14003.1.fq.gz
+Erie18_00552.1.fq.gz  Erie19_12233.1.fq.gz  New19_16.1.fq.gz   RC07.fq.gz  TG14004.1.fq.gz
+Erie18_00553.1.fq.gz  Erie19_12234.1.fq.gz  New19_17.1.fq.gz   RC08.fq.gz  TG14005.1.fq.gz
+Erie18_00554.1.fq.gz  Erie19_12235.1.fq.gz  New19_175.1.fq.gz  RC09.fq.gz  TG14006.1.fq.gz
+Erie18_00555.1.fq.gz  Erie19_12236.1.fq.gz  New19_176.1.fq.gz  RC10.fq.gz  TG14007.1.fq.gz
+Erie18_00556.1.fq.gz  Erie19_12237.1.fq.gz  New19_191.1.fq.gz  RC11.fq.gz  TG14008.1.fq.gz
+Erie18_00557.1.fq.gz  Erie19_12238.1.fq.gz  New19_30.1.fq.gz   RC12.fq.gz  TG14009.1.fq.gz
+Erie18_00558.1.fq.gz  Erie19_12239.1.fq.gz  New19_35.1.fq.gz   RC13.fq.gz  TG14010.1.fq.gz
+Erie18_00559.1.fq.gz  Erie19_12240.1.fq.gz  New19_38.1.fq.gz   RC14.fq.gz  TG14011.1.fq.gz
+Erie18_00560.1.fq.gz  Erie19_12241.1.fq.gz  New19_47.1.fq.gz   RC15.fq.gz  TG14012.1.fq.gz
+Erie18_00561.1.fq.gz  Erie19_12242.1.fq.gz  New19_5.1.fq.gz    RC16.fq.gz  TG14013.1.fq.gz
+Erie18_00562.1.fq.gz  Erie19_12288.1.fq.gz  New19_55.1.fq.gz   RC17.fq.gz  TG14014.1.fq.gz
+Erie18_00563.1.fq.gz  Erie19_12289.1.fq.gz  New19_75.1.fq.gz   RC18.fq.gz  TG14015.1.fq.gz
+Erie18_00564.1.fq.gz  Erie19_12290.1.fq.gz  New19_76.1.fq.gz   RC19.fq.gz  TG14016.1.fq.gz
+Erie18_00565.1.fq.gz  Erie19_12291.1.fq.gz  New19_85.1.fq.gz   RC20.fq.gz  TG14017.1.fq.gz
+Erie19_12225.1.fq.gz  New19_108.1.fq.gz     New19_86.1.fq.gz   RC21.fq.gz  TG14018.1.fq.gz
+Erie19_12226.1.fq.gz  New19_1.1.fq.gz       New19_96.1.fq.gz   RC22.fq.gz  TG14019.1.fq.gz
+Erie19_12227.1.fq.gz  New19_120.1.fq.gz     RC01.fq.gz         RC23.fq.gz  TG14020.1.fq.gz
+Erie19_12228.1.fq.gz  New19_144.1.fq.gz     RC02.fq.gz         RC24.fq.gz
+</pre></div>
+</div>
+<p>Notice that some of the files have a suffix <code class="docutils literal notranslate"><span class="pre">.1.fq.gz</span></code> while others have <code class="docutils literal notranslate"><span class="pre">.fq.gz</span></code>. If we want to know how many files we have there we can execute the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -1 | wc -l
+109
+</pre></div>
+</div>
+<p>In order to process each of those files with <code class="docutils literal notranslate"><span class="pre">ustacks</span></code> we will use a file that list the names of those samples.
+The following command will list all the files stripping from the the extensions. This list will be called <code class="docutils literal notranslate"><span class="pre">SAMPLES</span></code> and will also be inside the folder <code class="docutils literal notranslate"><span class="pre">SAMPLES</span></code>. This is the command to create the text file with the list of samples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -1 *.fq.gz | awk -F. &#39;{print $1}&#39; &gt; SAMPLES
+</pre></div>
+</div>
+<p>We can double check that the number of lines in the file <code class="docutils literal notranslate"><span class="pre">SAMPLES</span></code> is still 109:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -l SAMPLES
+109 SAMPLES
+</pre></div>
+</div>
+</section>
+<section id="preparing-the-slurm-submission-script">
+<h2>Preparing the SLURM submission script<a class="headerlink" href="#preparing-the-slurm-submission-script" title="Permalink to this headline">¶</a></h2>
+<p>We want to use the same command for each file in <code class="docutils literal notranslate"><span class="pre">SAMPLES</span></code></p>
+<p>For example, for the file <code class="docutils literal notranslate"><span class="pre">SAMPLES/Erie19_12228.1.fq.gz</span></code> the command will be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ustacks</span> <span class="o">-</span><span class="n">f</span> <span class="n">SAMPLES</span><span class="o">/</span><span class="n">Erie19_12228</span><span class="mf">.1</span><span class="o">.</span><span class="n">fq</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">USTACKS</span> <span class="o">-</span><span class="n">m</span> <span class="mi">3</span> <span class="o">-</span><span class="n">M</span> <span class="mi">1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>We will be using the Singularity for stacks 2.65.
+The command line for running stacks from inside a the singularity container looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">exec</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">containers</span><span class="o">/</span><span class="n">Stacks</span><span class="o">-</span><span class="mf">2.65</span><span class="o">.</span><span class="n">sif</span> <span class="n">ustacks</span> <span class="o">-</span><span class="n">f</span> <span class="n">SAMPLES</span><span class="o">/</span><span class="n">Erie19_12228</span><span class="mf">.1</span><span class="o">.</span><span class="n">fq</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">USTACKS</span> <span class="o">-</span><span class="n">m</span> <span class="mi">3</span> <span class="o">-</span><span class="n">M</span> <span class="mi">1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>The submission script looks like this (<code class="docutils literal notranslate"><span class="pre">ustacks.slurm</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
+
+#SBATCH --job-name=ustacks
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --output=./LOGS/O-%x.%j.out
+#SBATCH --error=./LOGS/E-%x.%j.err
+#SBATCH --partition=standby
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=13G
+#SBATCH --mail-user=gufranco@mail.wvu.edu
+#SBATCH --array=1-109
+#SBATCH --cpus-per-task=5
+
+echo &quot;&quot;
+echo &quot;Job ID:              $SLURM_JOB_ID&quot;
+echo &quot;Task ID:             $SLURM_ARRAY_TASK_ID&quot;
+echo &quot;Job Name:            $SLURM_JOB_NAME&quot;
+echo &quot;Partition:           $SLURM_JOB_PARTITION&quot;
+echo &quot;Number of Nodes:     $SLURM_JOB_NUM_NODES&quot;
+echo &quot;Number of Tasks:     $SLURM_NTASKS&quot;
+echo &quot;CPUs on Node:        $SLURM_CPUS_ON_NODE&quot;
+echo &quot;CPUs per Task:       $SLURM_CPUS_PER_TASK&quot;
+
+module load singularity
+SIMAGE=/shared/containers/Stacks-2.65.sif
+
+cd $SLURM_SUBMIT_DIR
+CASE=`cat ./SAMPLES/SAMPLES | head -n ${SLURM_ARRAY_TASK_ID} | tail -1`
+
+if [ -f ./SAMPLES/${CASE}.fq.gz ]
+then
+   FILENAME=&quot;./SAMPLES/${CASE}.fq.gz&quot;
+   echo &quot;Input file: &quot; $FILENAME
+elif [ -f ./SAMPLES/${CASE}.1.fq.gz ]
+then
+   FILENAME=&quot;./SAMPLES/${CASE}.1.fq.gz&quot;
+   echo &quot;Input file: &quot; $FILENAME
+else
+   echo &quot;ERROR: Possible input file not found&quot;
+   exit 1
+fi
+
+if [ ! -d USTACKS ]
+then
+   mkdir USTACKS
+fi
+
+echo &quot;Start:&quot; $(date +%Y.%m.%d_%H:%M:%S)
+singularity exec ${SIMAGE} ustacks -f $FILENAME -o ./USTACKS -m 3 -M 1 -p 5 --name ${CASE} &amp;&gt; ./LOGS/U-${CASE}.log
+echo &quot;End:&quot; $(date +%Y.%m.%d_%H:%M:%S)
+</pre></div>
+</div>
+<p>To submit this job execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbatch ustacks.slurm
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="80.ClusterSpecific.html" class="btn btn-neutral float-right" title="Clusters Specifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="709.NAMD.html" class="btn btn-neutral float-left" title="NAMD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

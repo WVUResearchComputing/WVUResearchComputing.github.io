@@ -817,40 +817,40 @@ The same tables can be used for reference when writing new submission scripts di
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Job submission</p></td>
-<td><p>qsub [script_file]</p></td>
-<td><p>sbatch [script_file]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">[script_file]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">[script_file]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Job deletion</p></td>
-<td><p>qdel [job_id]</p></td>
-<td><p>scancel [job_id]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qdel</span> <span class="pre">[job_id]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">[job_id]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Job status (by job)</p></td>
-<td><p>qstat [job_id]</p></td>
-<td><p>squeue [job_id]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">[job_id]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">[job_id]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Job status (by user)</p></td>
-<td><p>qstat -u [user_name]</p></td>
-<td><p>squeue -u [user_name]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-u</span> <span class="pre">[user_name]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">[user_name]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Job hold</p></td>
-<td><p>qhold [job_id]</p></td>
-<td><p>scontrol hold [job_id]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qhold</span> <span class="pre">[job_id]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">hold</span> <span class="pre">[job_id]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Job release</p></td>
-<td><p>qrls [job_id]</p></td>
-<td><p>scontrol release [job_id]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qrls</span> <span class="pre">[job_id]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">release</span> <span class="pre">[job_id]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Queue list</p></td>
-<td><p>qstat -Q</p></td>
-<td><p>squeue</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-Q</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Node list</p></td>
-<td><p>pbsnodes -l</p></td>
-<td><p>sinfo -N OR scontrol show nodes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pbsnodes</span> <span class="pre">-l</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sinfo</span> <span class="pre">-N</span></code> OR <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">nodes</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Cluster status</p></td>
-<td><p>qstat -a</p></td>
-<td><p>sinfo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-a</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -869,36 +869,36 @@ The same tables can be used for reference when writing new submission scripts di
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Job ID</p></td>
-<td><p>$PBS_JOBID</p></td>
-<td><p>$SLURM_JOB_ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_JOBID</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_ID</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Submit Directory</p></td>
-<td><p>$PBS_O_WORKDIR</p></td>
-<td><p>$SLURM_SUBMIT_DIR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_O_WORKDIR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_SUBMIT_DIR</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Submit Host</p></td>
-<td><p>$PBS_O_HOST</p></td>
-<td><p>$SLURM_SUBMIT_HOST</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_O_HOST</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_SUBMIT_HOST</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Node List</p></td>
-<td><p>$PBS_NODEFILE</p></td>
-<td><p>$SLURM_JOB_NODELIST</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_NODEFILE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NODELIST</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Job Name</p></td>
-<td><p>$PBS_JOBNAME</p></td>
-<td><p>$SLURM_JOB_NAME</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_JOBNAME</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NAME</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Number of nodes</p></td>
-<td><p>$PBS_NUM_NODES</p></td>
-<td><p>$SLURM_JOB_NUM_NODES</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_NUM_NODES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NUM_NODES</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Number of cores per node</p></td>
-<td><p>$PBS_NUM_PPN</p></td>
-<td><p>$SLURM_CPUS_ON_NODE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_NUM_PPN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_CPUS_ON_NODE</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Unique index used for Job Arrays</p></td>
-<td><p>$PBS_ARRAYID</p></td>
-<td><p>$SLURM_ARRAY_TASK_ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_ARRAYID</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -917,108 +917,108 @@ The same tables can be used for reference when writing new submission scripts di
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Script directive</p></td>
-<td><p>#PBS</p></td>
-<td><p>#SBATCH</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#PBS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Queue/Partition</p></td>
-<td><p>-q [name]</p></td>
-<td><p>-p [name]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-q</span> <span class="pre">[name]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--partition=[name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">[name]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Node Count</p></td>
-<td><p>-l nodes=[count]</p></td>
-<td><p>-N [min[-max]]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">nodes=[count]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--nodes=[min[-max]]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">[min[-max]]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Total Task Count</p></td>
-<td><p>-l ppn=[count]</p></td>
-<td><p>-n OR –ntasks=ntasks</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">ppn=[count]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks=ntasks</span></code> OR <code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Total Task Count</p></td>
-<td><p>-l mppwidth=[PE_count]</p></td>
-<td><p>-n OR –ntasks=ntasks</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mppwidth=[PE_count]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks=ntasks</span></code> OR <code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Wall Clock Limit</p></td>
-<td><p>-l walltime=[hh:mm:ss]</p></td>
-<td><p>-t [min] OR -t [days-hh:mm:ss]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">walltime=[hh:mm:ss]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--time=[days-hh:mm:ss]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">[min]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Standard Output File</p></td>
-<td><p>-o [file_name]</p></td>
-<td><p>-o [file_name]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">[file_name]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--output=[file_name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">[file_name]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Standard Error File</p></td>
-<td><p>-e [file_name]</p></td>
-<td><p>-e [file_name]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">[file_name]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--error=[file_name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">[file_name]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Write stderr -&gt; stdout</p></td>
-<td><p>-j oe (both to stdout)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">oe</span> <span class="pre">(both</span> <span class="pre">to</span> <span class="pre">stdout)</span></code></p></td>
 <td><p>(use -o without -e)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Write stdout -&gt; stderr</p></td>
-<td><p>-j eo (both to stderr)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">eo</span> <span class="pre">(both</span> <span class="pre">to</span> <span class="pre">stderr)</span></code></p></td>
 <td><p>(use -e without -o)</p></td>
 </tr>
 <tr class="row-even"><td><p>Copy Environment</p></td>
-<td><p>-V</p></td>
-<td><p>–export=[ALL | NONE | variables]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-V</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--export=[ALL</span> <span class="pre">|</span> <span class="pre">NONE</span> <span class="pre">|</span> <span class="pre">variables]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Event Notification</p></td>
-<td><p>-m abe</p></td>
-<td><p>–mail-type=[events]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">abe</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--mail-type=[events]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Email Address</p></td>
-<td><p>-M [address]</p></td>
-<td><p>–mail-user=[address]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-M</span> <span class="pre">[address]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--mail-user=[address]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Job Name</p></td>
-<td><p>-N [name]</p></td>
-<td><p>–job-name=[name] OR -J [name]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">[name]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--job-name=[name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-J</span> <span class="pre">[name]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Job Restart</p></td>
-<td><p>-r [y | n]</p></td>
-<td><p>–requeue OR –no-requeue</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">[y</span> <span class="pre">|</span> <span class="pre">n]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--requeue</span></code> OR <code class="docutils literal notranslate"><span class="pre">--no-requeue</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Resource Sharing</p></td>
-<td><p>-l naccesspolicy=singlejob</p></td>
-<td><p>–exclusive OR –shared</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">naccesspolicy=singlejob</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--exclusive</span></code> OR <code class="docutils literal notranslate"><span class="pre">--shared</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Memory Size</p></td>
-<td><p>-l mem=[MB]</p></td>
-<td><p>–mem=[mem][M | G | T]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mem=[MB]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--mem=[mem][M</span> <span class="pre">|</span> <span class="pre">G</span> <span class="pre">|</span> <span class="pre">T]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Memory Size</p></td>
-<td><p>-l mem=[MB]</p></td>
-<td><p>–mem-per-cpu=[mem][M | G | T]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mem=[MB]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--mem-per-cpu=[mem][M</span> <span class="pre">|</span> <span class="pre">G</span> <span class="pre">|</span> <span class="pre">T]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Accounts to charge</p></td>
-<td><p>-A OR -W group_list=[account]</p></td>
-<td><p>–account=[account] OR -A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-A</span></code> OR <code class="docutils literal notranslate"><span class="pre">-W</span> <span class="pre">group_list=[account]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--account=[account]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-A</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Tasks Per Node</p></td>
-<td><p>-l mppnppn [PEs_per_node]</p></td>
-<td><p>–ntasks-per-node=[count]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mppnppn</span> <span class="pre">[PEs_per_node]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks-per-node=[count]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>CPUs Per Task</p></td>
 <td><p>N/A</p></td>
-<td><p>–cpus-per-task=[count]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--cpus-per-task=[count]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Job Dependency</p></td>
-<td><p>-d [job_id]</p></td>
-<td><p>–depend=[state:job_id]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">[job_id]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--depend=[state:job_id]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Quality of Service</p></td>
-<td><p>-l qos=[name]</p></td>
-<td><p>–qos=[normal | high]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">qos=[name]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--qos=[normal</span> <span class="pre">|</span> <span class="pre">high]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Job Arrays</p></td>
-<td><p>-t [array_spec]</p></td>
-<td><p>–array=[array_spec]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">[array_spec]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--array=[array_spec]</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Generic Resources</p></td>
-<td><p>-l other=[resource_spec]</p></td>
-<td><p>–gres=[resource_spec]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">other=[resource_spec]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--gres=[resource_spec]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Job Enqueue Time</p></td>
-<td><p>-a “YYYY-MM-DD HH:MM:SS”</p></td>
-<td><p>–begin=YYYY-MM-DD[THH:MM[:SS]]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-a</span> <span class="pre">“YYYY-MM-DD</span> <span class="pre">HH:MM:SS”</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--begin=YYYY-MM-DD[THH:MM[:SS]]</span></code></p></td>
 </tr>
 </tbody>
 </table>
