@@ -590,32 +590,32 @@ The same tables can be used for reference when writing new submission scripts di
      - PBS/Torque
      - SLURM
    * - Job submission
-     - qsub [script_file]
-     - sbatch [script_file]
+     - ``qsub [script_file]``
+     - ``sbatch [script_file]``
    * - Job deletion
-     - qdel [job_id]
-     - scancel [job_id]
+     - ``qdel [job_id]``
+     - ``scancel [job_id]``
    * - Job status (by job)
-     - qstat [job_id]
-     - squeue [job_id]
+     - ``qstat [job_id]``
+     - ``squeue [job_id]``
    * - Job status (by user)
-     - qstat -u [user_name]
-     - squeue -u [user_name]
+     - ``qstat -u [user_name]``
+     - ``squeue -u [user_name]``
    * - Job hold
-     - qhold [job_id]
-     - scontrol hold [job_id]
+     - ``qhold [job_id]``
+     - ``scontrol hold [job_id]``
    * - Job release
-     - qrls [job_id]
-     - scontrol release [job_id]
+     - ``qrls [job_id]``
+     - ``scontrol release [job_id]``
    * - Queue list
-     - qstat -Q
-     - squeue
+     - ``qstat -Q``
+     - ``squeue``
    * - Node list
-     - pbsnodes -l
-     - sinfo -N OR scontrol show nodes
+     - ``pbsnodes -l``
+     - ``sinfo -N`` OR ``scontrol show nodes``
    * - Cluster status
-     - qstat -a
-     - sinfo
+     - ``qstat -a``
+     - ``sinfo``
 
 .. list-table:: Environment Variables
    :widths: 50 25 25 
@@ -625,29 +625,29 @@ The same tables can be used for reference when writing new submission scripts di
      - PBS/Torque
      - SLURM
    * - Job ID
-     - $PBS_JOBID
-     - $SLURM_JOB_ID
+     - ``$PBS_JOBID``
+     - ``$SLURM_JOB_ID``
    * - Submit Directory
-     - $PBS_O_WORKDIR
-     - $SLURM_SUBMIT_DIR
+     - ``$PBS_O_WORKDIR``
+     - ``$SLURM_SUBMIT_DIR``
    * - Submit Host
-     - $PBS_O_HOST
-     - $SLURM_SUBMIT_HOST
+     - ``$PBS_O_HOST``
+     - ``$SLURM_SUBMIT_HOST``
    * - Node List
-     - $PBS_NODEFILE
-     - $SLURM_JOB_NODELIST
+     - ``$PBS_NODEFILE``
+     - ``$SLURM_JOB_NODELIST``
    * - Job Name
-     - $PBS_JOBNAME
-     - $SLURM_JOB_NAME
+     - ``$PBS_JOBNAME``
+     - ``$SLURM_JOB_NAME``
    * - Number of nodes
-     - $PBS_NUM_NODES
-     - $SLURM_JOB_NUM_NODES
+     - ``$PBS_NUM_NODES``
+     - ``$SLURM_JOB_NUM_NODES``
    * - Number of cores per node
-     - $PBS_NUM_PPN
-     - $SLURM_CPUS_ON_NODE
+     - ``$PBS_NUM_PPN``
+     - ``$SLURM_CPUS_ON_NODE``
    * - Unique index used for Job Arrays
-     - $PBS_ARRAYID
-     - $SLURM_ARRAY_TASK_ID
+     - ``$PBS_ARRAYID``
+     - ``$SLURM_ARRAY_TASK_ID``
 
 .. list-table:: Job Directives or Specifications
    :widths: 50 25 25
@@ -657,83 +657,83 @@ The same tables can be used for reference when writing new submission scripts di
      - PBS/Torque
      - SLURM
    * - Script directive
-     - #PBS
-     - #SBATCH
+     - ``#PBS``
+     - ``#SBATCH``
    * - Queue/Partition
-     - -q [name]
-     - -p [name]
+     - ``-q [name]``
+     - ``--partition=[name]`` OR ``-p [name]``
    * - Node Count
-     - -l nodes=[count]
-     - -N [min[-max]]
+     - ``-l nodes=[count]``
+     - ``--nodes=[min[-max]]`` OR ``-N [min[-max]]``
    * - Total Task Count
-     - -l ppn=[count]
-     - -n OR --ntasks=ntasks
+     - ``-l ppn=[count]``
+     - ``--ntasks=ntasks`` OR ``-n``
    * - Total Task Count
-     - -l mppwidth=[PE_count]
-     - -n OR --ntasks=ntasks
+     - ``-l mppwidth=[PE_count]``
+     - ``--ntasks=ntasks`` OR ``-n``
    * - Wall Clock Limit
-     - -l walltime=[hh:mm:ss]
-     - -t [min] OR -t [days-hh:mm:ss]
+     - ``-l walltime=[hh:mm:ss]``
+     - ``--time=[days-hh:mm:ss]`` OR ``-t [min]``
    * - Standard Output File
-     - -o [file_name]
-     - -o [file_name]
+     - ``-o [file_name]``
+     - ``--output=[file_name]`` OR ``-o [file_name]``
    * - Standard Error File
-     - -e [file_name]
-     - -e [file_name]
+     - ``-e [file_name]``
+     - ``--error=[file_name]`` OR ``-e [file_name]``
    * - Write stderr -> stdout
-     - -j oe (both to stdout) 
+     - ``-j oe (both to stdout)``
      - (use -o without -e)
    * - Write stdout -> stderr
-     - -j eo (both to stderr)
+     - ``-j eo (both to stderr)``
      - (use -e without -o)
    * - Copy Environment
-     - -V
-     - --export=[ALL | NONE | variables]
+     - ``-V``
+     - ``--export=[ALL | NONE | variables]``
    * - Event Notification
-     - -m abe
-     - --mail-type=[events]
+     - ``-m abe``
+     - ``--mail-type=[events]``
    * - Email Address
-     - -M [address]
-     - --mail-user=[address]
+     - ``-M [address]``
+     - ``--mail-user=[address]``
    * - Job Name
-     - -N [name]
-     - --job-name=[name] OR -J [name]
+     - ``-N [name]``
+     - ``--job-name=[name]`` OR ``-J [name]``
    * - Job Restart
-     - -r [y | n]
-     - --requeue OR --no-requeue
+     - ``-r [y | n]``
+     - ``--requeue`` OR ``--no-requeue``
    * - Resource Sharing
-     - -l naccesspolicy=singlejob
-     - --exclusive OR --shared
+     - ``-l naccesspolicy=singlejob``
+     - ``--exclusive`` OR ``--shared``
    * - Memory Size
-     - -l mem=[MB]
-     - --mem=[mem][M | G | T]
+     - ``-l mem=[MB]``
+     - ``--mem=[mem][M | G | T]``
    * - Memory Size
-     - -l mem=[MB]
-     - --mem-per-cpu=[mem][M | G | T]      
+     - ``-l mem=[MB]``
+     - ``--mem-per-cpu=[mem][M | G | T]``  
    * - Accounts to charge
-     - -A OR -W group_list=[account]
-     - --account=[account] OR -A
+     - ``-A`` OR ``-W group_list=[account]``
+     - ``--account=[account]`` OR ``-A``
    * - Tasks Per Node
-     - -l mppnppn [PEs_per_node]
-     - --ntasks-per-node=[count]
+     - ``-l mppnppn [PEs_per_node]``
+     - ``--ntasks-per-node=[count]``
    * - CPUs Per Task
      - N/A
-     - --cpus-per-task=[count]
+     - ``--cpus-per-task=[count]``
    * - Job Dependency
-     - -d [job_id]
-     - --depend=[state:job_id]
+     - ``-d [job_id]``
+     - ``--depend=[state:job_id]``
    * - Quality of Service
-     - -l qos=[name]
-     - --qos=[normal | high]
+     - ``-l qos=[name]``
+     - ``--qos=[normal | high]``
    * - Job Arrays
-     - -t [array_spec]
-     - --array=[array_spec]
+     - ``-t [array_spec]``
+     - ``--array=[array_spec]``
    * - Generic Resources
-     - -l other=[resource_spec]
-     - --gres=[resource_spec]
+     - ``-l other=[resource_spec]``
+     - ``--gres=[resource_spec]``
    * - Job Enqueue Time
-     - -a “YYYY-MM-DD HH:MM:SS”
-     - --begin=YYYY-MM-DD[THH:MM[:SS]]
+     - ``-a “YYYY-MM-DD HH:MM:SS”``
+     - ``--begin=YYYY-MM-DD[THH:MM[:SS]]``
 
 
 OLD DOCUMENTATION
