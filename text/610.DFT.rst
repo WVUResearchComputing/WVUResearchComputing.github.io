@@ -1089,26 +1089,25 @@ Build the binaries::
 ELK
 ---
 
-ELK 8.8.26 on Thorny Flat using Intel compilers
+ELK 9.5.14 on Thorny Flat using Intel compilers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sources::
 
-    wget "https://downloads.sourceforge.net/project/elk/elk-8.8.26.tgz?ts=gAAAAABkflN5svkw2PK8pODBTbPUQoL6dgtGrRRQq_ukUoq_cyw5hTsTlj35MVjayWSunyDkpRLz7l-hOlhMn8sBhoPOaN-GMA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Felk%2Ffiles%2Flatest%2Fdownload" --no-check-certificate -O elk-8.8.26.tgz
+    $> wget "https://downloads.sourceforge.net/project/elk/elk-9.5.14.tgz?ts=gAAAAABmJvWjEWBNqcGS8x4psUYJ6SVLd0i3fd3fa72osTpJx3IDNgcg8RSRSWxG6fgxRYdmKjVEB0Z1ebZ2aa6dOuEzaC8duQ%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Felk%2Ffiles%2Felk-9.5.14.tgz%2Fdownload" --no-check-certificate -O elk-9.5.14.tgz
 
 Uncompress sources::
 
-    $> tar -zxvf elk-8.8.26.tgz
-    $> cd elk-8.8.26
+    $> tar -zxvf elk-9.5.14.tgz
+    $> cd elk-9.5.14
 
 Modules used::
 
-	$> module load dft_intel22
+	$> module load dft_intel21
 
 Copy the file for intel DFTI (Intel implementation of FFT)::
 
-    $> cp /shared/software/intel/toolkit/mkl/2023.1.0/include/mkl_dfti.f90 src
-
+    $> cp $MKLROOT/include/mkl_dfti.f90 src
 
 Edit the file ``make.inc`` as follows::
 
@@ -1251,7 +1250,7 @@ Execute ``make`` to compile the codes::
 
 Installation folder is manually created and the binaries are copied there::
 
-    $> ELK_PREFIX=/shared/software/atomistic/elk/8.8.26_intel22_impi22
+    $> ELK_PREFIX=/shared/software/atomistic/elk/9.5.14_intel21_impi21
     $> mkdir -p ${ELK_PREFIX}/bin
     $> rsync -av src/eos/eos src/spacegroup/spacegroup src/protex src/elk src/rmspaces src/vimelk ${ELK_PREFIX}/bin
     $> rsync -av species ${ELK_PREFIX}
