@@ -106,11 +106,11 @@ To check which versions are available execute::
     trcis001:~$ module avail matlab
 
     -------------------- /shared/modulefiles/tier1 --------------------
-    matlab/2021a matlab/2022b
+    matlab/2022b matlab/2024a
 
 Load the desired version with::
 
-    trcis001:~$ module avail matlab/2021a
+    trcis001:~$ module avail matlab/2024a
 
 or simply load the latest version executing::
 
@@ -133,17 +133,17 @@ From the login node, request a interactive session with SLURM::
 
     tarcl100:~$ module load matlab
     Loading gcc version 9.3.0 : lang/gcc/9.3.0
-    Loading matlab version 2022b : matlab/2022b
+    Loading matlab version 2024a : matlab/2024a
 
 ::
 
-	tarcl100:~$ matlab
-	MATLAB is selecting SOFTWARE OPENGL rendering.
+	trcis001:~$ matlab
+	MATLAB is selecting SOFTWARE rendering.
 
-                                      < M A T L A B (R) >
-                             Copyright 1984-2022 The MathWorks, Inc.
-                        R2022b Update 3 (9.13.0.2126072) 64-bit (glnxa64)
-                                       November 17, 2022
+												  < M A T L A B (R) >
+										Copyright 1984-2024 The MathWorks, Inc.
+								   R2024a Update 1 (24.1.0.2568132) 64-bit (glnxa64)
+													 March 28, 2024
 
 	 
 	To get started, type doc.

@@ -139,7 +139,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#elk">ELK</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#elk-8-8-26-on-thorny-flat-using-intel-compilers">ELK 8.8.26 on Thorny Flat using Intel compilers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elk-9-5-14-on-thorny-flat-using-intel-compilers">ELK 9.5.14 on Thorny Flat using Intel compilers</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#siesta">Siesta</a><ul>
@@ -1281,23 +1281,23 @@ $&gt; make install
 </section>
 <section id="elk">
 <h2>ELK<a class="headerlink" href="#elk" title="Permalink to this headline">¶</a></h2>
-<section id="elk-8-8-26-on-thorny-flat-using-intel-compilers">
-<h3>ELK 8.8.26 on Thorny Flat using Intel compilers<a class="headerlink" href="#elk-8-8-26-on-thorny-flat-using-intel-compilers" title="Permalink to this headline">¶</a></h3>
+<section id="elk-9-5-14-on-thorny-flat-using-intel-compilers">
+<h3>ELK 9.5.14 on Thorny Flat using Intel compilers<a class="headerlink" href="#elk-9-5-14-on-thorny-flat-using-intel-compilers" title="Permalink to this headline">¶</a></h3>
 <p>Sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="s2">&quot;https://downloads.sourceforge.net/project/elk/elk-8.8.26.tgz?ts=gAAAAABkflN5svkw2PK8pODBTbPUQoL6dgtGrRRQq_ukUoq_cyw5hTsTlj35MVjayWSunyDkpRLz7l-hOlhMn8sBhoPOaN-GMA%3D%3D&amp;r=https%3A</span><span class="si">%2F%2F</span><span class="s2">sourceforge.net</span><span class="si">%2F</span><span class="s2">projects</span><span class="si">%2F</span><span class="s2">elk</span><span class="si">%2F</span><span class="s2">files</span><span class="si">%2F</span><span class="s2">latest</span><span class="si">%2F</span><span class="s2">download&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span> <span class="o">-</span><span class="n">O</span> <span class="n">elk</span><span class="o">-</span><span class="mf">8.8.26</span><span class="o">.</span><span class="n">tgz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget &quot;https://downloads.sourceforge.net/project/elk/elk-9.5.14.tgz?ts=gAAAAABmJvWjEWBNqcGS8x4psUYJ6SVLd0i3fd3fa72osTpJx3IDNgcg8RSRSWxG6fgxRYdmKjVEB0Z1ebZ2aa6dOuEzaC8duQ%3D%3D&amp;r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Felk%2Ffiles%2Felk-9.5.14.tgz%2Fdownload&quot; --no-check-certificate -O elk-9.5.14.tgz
 </pre></div>
 </div>
 <p>Uncompress sources:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf elk-8.8.26.tgz
-$&gt; cd elk-8.8.26
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; tar -zxvf elk-9.5.14.tgz
+$&gt; cd elk-9.5.14
 </pre></div>
 </div>
 <p>Modules used:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load dft_intel22
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load dft_intel21
 </pre></div>
 </div>
 <p>Copy the file for intel DFTI (Intel implementation of FFT):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cp /shared/software/intel/toolkit/mkl/2023.1.0/include/mkl_dfti.f90 src
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cp $MKLROOT/include/mkl_dfti.f90 src
 </pre></div>
 </div>
 <p>Edit the file <code class="docutils literal notranslate"><span class="pre">make.inc</span></code> as follows:</p>
@@ -1439,7 +1439,7 @@ AR = xiar
 </pre></div>
 </div>
 <p>Installation folder is manually created and the binaries are copied there:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ELK_PREFIX=/shared/software/atomistic/elk/8.8.26_intel22_impi22
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ELK_PREFIX=/shared/software/atomistic/elk/9.5.14_intel21_impi21
 $&gt; mkdir -p ${ELK_PREFIX}/bin
 $&gt; rsync -av src/eos/eos src/spacegroup/spacegroup src/protex src/elk src/rmspaces src/vimelk ${ELK_PREFIX}/bin
 $&gt; rsync -av species ${ELK_PREFIX}
