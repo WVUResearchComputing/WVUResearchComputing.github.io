@@ -75,7 +75,7 @@ The differences are::
 
 	$ diff -u build_mmx.m /shared/software/matlab/r2024a/extern/lib/glnxa64/build_mmx.m 
 	--- build_mmx.m	2022-01-10 10:22:56.969414000 -0500
-	+++ /shared/software/matlab/r2024a/extern/lib/glnxa64/build_mmx.m	2022-01-09 10:19:34.160261000 -0500
+	+++ /shared/software/matlab/r2024a/extern/lib/glnxa64/build_mmx.m 2022-01-09 10:19:34.160261000 -0500
 	@@ -126,7 +126,7 @@
 					link     = {'mwblas','mwlapack','pthread'};
 					define   = {'UNIX_SYSTEM','USE_BLAS'};
