@@ -140,347 +140,475 @@ This is the complete output in verbose mode::
     To get started, type doc.
     For product information, visit www.mathworks.com.
      
-    >> build_mmx(verbose=true)
-    Error using build_mmx
-    Too many input arguments.
-     
-    >> build_mmx(true)        
+	>> build_mmx(true)
 
-    ==========
-    Trying to compile 'mmx_mkl_single', using 
-    -v, CXXFLAGS="\$CXXFLAGS -I/shared/software/intel/2024.4/mkl/2024.4.0/include ", LDFLAGS="\$LDFLAGS -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 ", -lsingle_mkl_ilp64, -lpthread, -DUNIX_SYSTEM, -DUSE_BLAS, -DMKL_ILP64, 
-    Verbose mode is on.
-    No MEX options file identified; looking for an implicit selection.
-    ... Looking for compiler 'g++' ...
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
-    ... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
-    ... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
-    Found installed compiler 'g++'.
-    Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
-    Options file details
-    -------------------------------------------------------------------
-        Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
-        Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
-        CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
-        CXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
-        MATLABMEX : -DMATLAB_MEX_FILE 
-        CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
-        CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include 
-        INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
-        CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
-        CXXDEBUGFLAGS : -g
-        LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        LDFLAGS : \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 
-        LDTYPE : -shared
-        LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
-        LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
-        LINKLIBS : -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
-        LDOPTIMFLAGS : -O
-        LDDEBUGFLAGS : -g
-        MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
-        OBJEXT : .o
-        LDEXT : .mexa64
-        SETENV : CC="gcc"
-                    CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    CXXFLAGS="\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    COPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CXXOPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CDEBUGFLAGS="-g"
-                    CXXDEBUGFLAGS="-g"
-                    MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
-                    LD="gcc"
-                    LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    LDFLAGS="\-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
-                    LDDEBUGFLAGS="-g"
-        GCC : /shared/software/lang/gcc/9.3.0/bin/g++
-        CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
-        VER : 9.3.0
-        GCCDIR : /shared/software/lang/gcc/9.3.0
-        GCC_TARGET : x86_64-pc-linux-gnu
-        MATLABROOT : /gpfs20/shared/software/matlab/r2024a
-        ARCH : glnxa64
-        SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
-        OBJ : /tmp/mex_59078790081513512_46067/mmx.o;/tmp/mex_59078790081513512_46067/cpp_mexapi_version.o
-        OBJS : /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o 
-        SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
-        DEF : /tmp/mex_59078790081513512_46067/mmx_mkl_single.def
-        EXP : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.exp"
-        LIB : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.lib"
-        EXE : /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
-        ILK : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.ilk"
-        MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64.manifest"
-        TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_mkl_single
-        EXEDIR : /gpfs20/users/vh0010/mmx/src/
-        EXENAME : mmx_mkl_single
-        OPTIM : -O2 -fwrapv -DNDEBUG
-        LINKOPTIM : -O
-        CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078790081513512_46067/mmx.o
-        CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o
-    -------------------------------------------------------------------
-    Building with 'g++'.
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078790081513512_46067/mmx.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
-    Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
-    /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078790081513512_46067/mmx.o /tmp/mex_59078790081513512_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
-    MEX completed successfully.
-    Compilation of 'mmx_mkl_single' succeeded.
-    Compiling again to 'mmx' target using 'mmx_mkl_single' build.
-    Verbose mode is on.
-    ... Looking for compiler 'g++' ...
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
-    ... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
-    ... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
-    Found installed compiler 'g++'.
-    Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
-    Options file details
-    -------------------------------------------------------------------
-        Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
-        Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
-        CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64
-        CXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
-        MATLABMEX : -DMATLAB_MEX_FILE 
-        CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
-        CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include 
-        INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
-        CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
-        CXXDEBUGFLAGS : -g
-        LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        LDFLAGS : \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 
-        LDTYPE : -shared
-        LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
-        LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
-        LINKLIBS : -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
-        LDOPTIMFLAGS : -O
-        LDDEBUGFLAGS : -g
-        MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
-        OBJEXT : .o
-        LDEXT : .mexa64
-        SETENV : CC="gcc"
-                    CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    CXXFLAGS="\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    COPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CXXOPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CDEBUGFLAGS="-g"
-                    CXXDEBUGFLAGS="-g"
-                    MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
-                    LD="gcc"
-                    LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    LDFLAGS="\-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
-                    LDDEBUGFLAGS="-g"
-        GCC : /shared/software/lang/gcc/9.3.0/bin/g++
-        CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
-        VER : 9.3.0
-        GCCDIR : /shared/software/lang/gcc/9.3.0
-        GCC_TARGET : x86_64-pc-linux-gnu
-        MATLABROOT : /gpfs20/shared/software/matlab/r2024a
-        ARCH : glnxa64
-        SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
-        OBJ : /tmp/mex_59078796776035188_46067/mmx.o;/tmp/mex_59078796776035188_46067/cpp_mexapi_version.o
-        OBJS : /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o 
-        SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
-        DEF : /tmp/mex_59078796776035188_46067/mmx.def
-        EXP : "/gpfs20/users/vh0010/mmx/src/mmx.exp"
-        LIB : "/gpfs20/users/vh0010/mmx/src/mmx.lib"
-        EXE : /gpfs20/users/vh0010/mmx/src/mmx.mexa64
-        ILK : "/gpfs20/users/vh0010/mmx/src/mmx.ilk"
-        MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx.mexa64.manifest"
-        TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx
-        EXEDIR : /gpfs20/users/vh0010/mmx/src/
-        EXENAME : mmx
-        OPTIM : -O2 -fwrapv -DNDEBUG
-        LINKOPTIM : -O
-        CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078796776035188_46067/mmx.o
-        CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o
-    -------------------------------------------------------------------
-    Building with 'g++'.
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078796776035188_46067/mmx.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64
-    Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/shared/software/intel/2024.4/mkl/2024.4.0/include  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
-    /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078796776035188_46067/mmx.o /tmp/mex_59078796776035188_46067/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64
-    MEX completed successfully.
-    ==========
-    Trying to compile 'mmx_mkl_multi', using 
-    -v, CXXFLAGS="\$CXXFLAGS -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 ", -lmwblas, -lmwlapack, -lpthread, -DUNIX_SYSTEM, -DUSE_BLAS, 
-    Verbose mode is on.
-    ... Looking for compiler 'g++' ...
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
-    ... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
-    ... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
-    Found installed compiler 'g++'.
-    Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
-    Options file details
-    -------------------------------------------------------------------
-        Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
-        Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
-        CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
-        CXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
-        MATLABMEX : -DMATLAB_MEX_FILE 
-        CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
-        CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 
-        INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
-        CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
-        CXXDEBUGFLAGS : -g
-        LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        LDFLAGS : -pthread -Wl,--no-undefined 
-        LDTYPE : -shared
-        LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
-        LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
-        LINKLIBS : -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
-        LDOPTIMFLAGS : -O
-        LDDEBUGFLAGS : -g
-        MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
-        OBJEXT : .o
-        LDEXT : .mexa64
-        SETENV : CC="gcc"
-                    CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    CXXFLAGS="\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    COPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CXXOPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CDEBUGFLAGS="-g"
-                    CXXDEBUGFLAGS="-g"
-                    MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
-                    LD="gcc"
-                    LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    LDFLAGS="-pthread -Wl,--no-undefined  -shared -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
-                    LDDEBUGFLAGS="-g"
-        GCC : /shared/software/lang/gcc/9.3.0/bin/g++
-        CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
-        VER : 9.3.0
-        GCCDIR : /shared/software/lang/gcc/9.3.0
-        GCC_TARGET : x86_64-pc-linux-gnu
-        MATLABROOT : /gpfs20/shared/software/matlab/r2024a
-        ARCH : glnxa64
-        SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
-        OBJ : /tmp/mex_59078799484017262_46067/mmx.o;/tmp/mex_59078799484017262_46067/cpp_mexapi_version.o
-        OBJS : /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o 
-        SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
-        DEF : /tmp/mex_59078799484017262_46067/mmx_mkl_multi.def
-        EXP : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.exp"
-        LIB : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.lib"
-        EXE : /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
-        ILK : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.ilk"
-        MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64.manifest"
-        TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi
-        EXEDIR : /gpfs20/users/vh0010/mmx/src/
-        EXENAME : mmx_mkl_multi
-        OPTIM : -O2 -fwrapv -DNDEBUG
-        LINKOPTIM : -O
-        CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078799484017262_46067/mmx.o
-        CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o
-    -------------------------------------------------------------------
-    Building with 'g++'.
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078799484017262_46067/mmx.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
-    Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
-    /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078799484017262_46067/mmx.o /tmp/mex_59078799484017262_46067/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
-    MEX completed successfully.
-    Compilation of 'mmx_mkl_multi' succeeded.
-    ==========
-    Trying to compile 'mmx_naive', using 
-    -v, -lpthread, -DUNIX_SYSTEM, 
-    Verbose mode is on.
-    ... Looking for compiler 'g++' ...
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
-    ... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
-    ... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
-    ... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
-    ... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
-    Found installed compiler 'g++'.
-    Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
-    Options file details
-    -------------------------------------------------------------------
-        Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
-        Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
-        CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
-        CXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        DEFINES : -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
-        MATLABMEX : -DMATLAB_MEX_FILE 
-        CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread
-        CXXFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11
-        INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
-        CXXOPTIMFLAGS : -O2 -fwrapv -DNDEBUG
-        CXXDEBUGFLAGS : -g
-        LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
-        LDFLAGS : -pthread -Wl,--no-undefined 
-        LDTYPE : -shared
-        LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
-        LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
-        LINKLIBS : -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
-        LDOPTIMFLAGS : -O
-        LDDEBUGFLAGS : -g
-        MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
-        OBJEXT : .o
-        LDEXT : .mexa64
-        SETENV : CC="gcc"
-                    CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    CXXFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
-                    COPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CXXOPTIMFLAGS="-O2 -fwrapv -DNDEBUG"
-                    CDEBUGFLAGS="-g"
-                    CXXDEBUGFLAGS="-g"
-                    MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
-                    LD="gcc"
-                    LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
-                    LDFLAGS="-pthread -Wl,--no-undefined  -shared -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
-                    LDDEBUGFLAGS="-g"
-        GCC : /shared/software/lang/gcc/9.3.0/bin/g++
-        CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
-        VER : 9.3.0
-        GCCDIR : /shared/software/lang/gcc/9.3.0
-        GCC_TARGET : x86_64-pc-linux-gnu
-        MATLABROOT : /gpfs20/shared/software/matlab/r2024a
-        ARCH : glnxa64
-        SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
-        OBJ : /tmp/mex_59078801684538554_46067/mmx.o;/tmp/mex_59078801684538554_46067/cpp_mexapi_version.o
-        OBJS : /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o 
-        SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
-        DEF : /tmp/mex_59078801684538554_46067/mmx_naive.def
-        EXP : "/gpfs20/users/vh0010/mmx/src/mmx_naive.exp"
-        LIB : "/gpfs20/users/vh0010/mmx/src/mmx_naive.lib"
-        EXE : /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
-        ILK : "/gpfs20/users/vh0010/mmx/src/mmx_naive.ilk"
-        MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64.manifest"
-        TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_naive
-        EXEDIR : /gpfs20/users/vh0010/mmx/src/
-        EXENAME : mmx_naive
-        OPTIM : -O2 -fwrapv -DNDEBUG
-        LINKOPTIM : -O
-        CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078801684538554_46067/mmx.o
-        CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o
-    -------------------------------------------------------------------
-    Building with 'g++'.
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_59078801684538554_46067/mmx.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o
-    /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
-    Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
-    /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -std=c++11 -O2 -fwrapv -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
-    /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_59078801684538554_46067/mmx.o /tmp/mex_59078801684538554_46067/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
-    MEX completed successfully.
-    Compilation of 'mmx_naive' succeeded.
-    >>  
+	Warning: Colon operands must be real scalars. This warning will become an error in a future release. 
+	> In build_mmx>check_dir (line 220)
+	In build_mmx (line 197)
+	 
+	==========
+	Trying to compile 'mmx_mkl_single', using 
+	-v, CXXFLAGS="\$CXXFLAGS -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include ", LDFLAGS="\$LDFLAGS -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 ", -lsingle_mkl_ilp64, -lpthread, -DUNIX_SYSTEM, -DUSE_BLAS, -DMKL_ILP64, 
+	Verbose mode is on.
+	No MEX options file identified; looking for an implicit selection.
+	... Looking for compiler 'g++' ...
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
+	... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
+	... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
+	Found installed compiler 'g++'.
+	Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+	Options file details
+	-------------------------------------------------------------------
+		Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+		Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
+		CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339948869503256_17258/mmx.o /tmp/mex_151339948869503256_17258/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
+		CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
+		MATLABMEX : -DMATLAB_MEX_FILE 
+		CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv
+		CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include 
+		INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
+		CXXOPTIMFLAGS : -O2 -DNDEBUG
+		CXXDEBUGFLAGS : -g
+		LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		LDFLAGS : \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 
+		LDTYPE : -shared
+		LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
+		LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
+		LINKLIBS : -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
+		LDOPTIMFLAGS : -O
+		LDDEBUGFLAGS : -g
+		MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
+		OBJEXT : .o
+		LDEXT : .mexa64
+		SETENV : CC="gcc"
+					CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					CXXFLAGS="\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					COPTIMFLAGS="-O2 -DNDEBUG"
+					CXXOPTIMFLAGS="-O2 -DNDEBUG"
+					CDEBUGFLAGS="-g"
+					CXXDEBUGFLAGS="-g"
+					MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
+					LD="gcc"
+					LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					LDFLAGS="\-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
+					LDDEBUGFLAGS="-g"
+		GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+		CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+		VER : 9.3.0
+		GCCDIR : /shared/software/lang/gcc/9.3.0
+		GCC_TARGET : x86_64-pc-linux-gnu
+		MATLABROOT : /gpfs20/shared/software/matlab/r2024a
+		ARCH : glnxa64
+		SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
+		OBJ : /tmp/mex_151339948869503256_17258/mmx.o;/tmp/mex_151339948869503256_17258/cpp_mexapi_version.o
+		OBJS : /tmp/mex_151339948869503256_17258/mmx.o /tmp/mex_151339948869503256_17258/cpp_mexapi_version.o 
+		SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+		DEF : /tmp/mex_151339948869503256_17258/mmx_mkl_single.def
+		EXP : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.exp"
+		LIB : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.lib"
+		EXE : /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64
+		ILK : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.ilk"
+		TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_mkl_single
+		EXEDIR : /gpfs20/users/vh0010/mmx/src/
+		EXENAME : mmx_mkl_single
+		MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64.manifest"
+		OPTIM : -O2 -DNDEBUG
+		LINKOPTIM : -O
+		CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339948869503256_17258/mmx.o
+		CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339948869503256_17258/cpp_mexapi_version.o
+	-------------------------------------------------------------------
+	Building with 'g++'.
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339948869503256_17258/mmx.o
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339948869503256_17258/cpp_mexapi_version.o
+	{ 
+	  "bundle.symbolic_name" : "15c77af0-da20-499d-8ae1-ca7172b55a16", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 0,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339948869503256_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339948869503256_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339948869503256_17258/mmx.o /tmp/mex_151339948869503256_17258/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339948869503256_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339948869503256_17258/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+	{ 
+	  "bundle.symbolic_name" : "9094ce00-7fea-485a-86fa-c0bc0dc91575", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 730,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339948869503256_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339948869503256_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339948869503256_17258/mmx.o /tmp/mex_151339948869503256_17258/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_single.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339948869503256_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	MEX completed successfully.
+	Compilation of 'mmx_mkl_single' succeeded.
+	Compiling again to 'mmx' target using 'mmx_mkl_single' build.
+	Verbose mode is on.
+	... Looking for compiler 'g++' ...
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
+	... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
+	... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
+	Found installed compiler 'g++'.
+	Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+	Options file details
+	-------------------------------------------------------------------
+		Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+		Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
+		CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339957101815700_17258/mmx.o /tmp/mex_151339957101815700_17258/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64
+		CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
+		MATLABMEX : -DMATLAB_MEX_FILE 
+		CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv
+		CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include 
+		INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
+		CXXOPTIMFLAGS : -O2 -DNDEBUG
+		CXXDEBUGFLAGS : -g
+		LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		LDFLAGS : \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 
+		LDTYPE : -shared
+		LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
+		LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
+		LINKLIBS : -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
+		LDOPTIMFLAGS : -O
+		LDDEBUGFLAGS : -g
+		MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
+		OBJEXT : .o
+		LDEXT : .mexa64
+		SETENV : CC="gcc"
+					CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					CXXFLAGS="\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					COPTIMFLAGS="-O2 -DNDEBUG"
+					CXXOPTIMFLAGS="-O2 -DNDEBUG"
+					CDEBUGFLAGS="-g"
+					CXXDEBUGFLAGS="-g"
+					MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
+					LD="gcc"
+					LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					LDFLAGS="\-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
+					LDDEBUGFLAGS="-g"
+		GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+		CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+		VER : 9.3.0
+		GCCDIR : /shared/software/lang/gcc/9.3.0
+		GCC_TARGET : x86_64-pc-linux-gnu
+		MATLABROOT : /gpfs20/shared/software/matlab/r2024a
+		ARCH : glnxa64
+		SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
+		OBJ : /tmp/mex_151339957101815700_17258/mmx.o;/tmp/mex_151339957101815700_17258/cpp_mexapi_version.o
+		OBJS : /tmp/mex_151339957101815700_17258/mmx.o /tmp/mex_151339957101815700_17258/cpp_mexapi_version.o 
+		SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+		DEF : /tmp/mex_151339957101815700_17258/mmx.def
+		EXP : "/gpfs20/users/vh0010/mmx/src/mmx.exp"
+		LIB : "/gpfs20/users/vh0010/mmx/src/mmx.lib"
+		EXE : /gpfs20/users/vh0010/mmx/src/mmx.mexa64
+		ILK : "/gpfs20/users/vh0010/mmx/src/mmx.ilk"
+		TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx
+		EXEDIR : /gpfs20/users/vh0010/mmx/src/
+		EXENAME : mmx
+		MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx.mexa64.manifest"
+		OPTIM : -O2 -DNDEBUG
+		LINKOPTIM : -O
+		CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339957101815700_17258/mmx.o
+		CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339957101815700_17258/cpp_mexapi_version.o
+	-------------------------------------------------------------------
+	Building with 'g++'.
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339957101815700_17258/mmx.o
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339957101815700_17258/cpp_mexapi_version.o
+	{ 
+	  "bundle.symbolic_name" : "ab79f1c6-0752-40a4-a1a5-9a54d0b67816", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 0,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339957101815700_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339957101815700_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339957101815700_17258/mmx.o /tmp/mex_151339957101815700_17258/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339957101815700_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMKL_ILP64  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/intel/toolkit/mkl/2023.2.0/include  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339957101815700_17258/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+	{ 
+	  "bundle.symbolic_name" : "0560dbcc-5ed2-4198-8c4d-ca43bca0f356", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 730,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339957101815700_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339957101815700_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ \-pthread -Wl,--no-undefined  -L/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339957101815700_17258/mmx.o /tmp/mex_151339957101815700_17258/cpp_mexapi_version.o   -lsingle_mkl_ilp64  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339957101815700_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	MEX completed successfully.
+	==========
+	Trying to compile 'mmx_mkl_multi', using 
+	-v, CXXFLAGS="\$CXXFLAGS -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 ", -lmwblas, -lmwlapack, -lpthread, -DUNIX_SYSTEM, -DUSE_BLAS, 
+	Verbose mode is on.
+	... Looking for compiler 'g++' ...
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
+	... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
+	... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
+	Found installed compiler 'g++'.
+	Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+	Options file details
+	-------------------------------------------------------------------
+		Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+		Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
+		CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339961011708370_17258/mmx.o /tmp/mex_151339961011708370_17258/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
+		CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		DEFINES : -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
+		MATLABMEX : -DMATLAB_MEX_FILE 
+		CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv
+		CXXFLAGS : \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64 
+		INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
+		CXXOPTIMFLAGS : -O2 -DNDEBUG
+		CXXDEBUGFLAGS : -g
+		LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		LDFLAGS : -pthread -Wl,--no-undefined 
+		LDTYPE : -shared
+		LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
+		LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
+		LINKLIBS : -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
+		LDOPTIMFLAGS : -O
+		LDDEBUGFLAGS : -g
+		MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
+		OBJEXT : .o
+		LDEXT : .mexa64
+		SETENV : CC="gcc"
+					CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					CXXFLAGS="\-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					COPTIMFLAGS="-O2 -DNDEBUG"
+					CXXOPTIMFLAGS="-O2 -DNDEBUG"
+					CDEBUGFLAGS="-g"
+					CXXDEBUGFLAGS="-g"
+					MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
+					LD="gcc"
+					LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					LDFLAGS="-pthread -Wl,--no-undefined  -shared -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
+					LDDEBUGFLAGS="-g"
+		GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+		CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+		VER : 9.3.0
+		GCCDIR : /shared/software/lang/gcc/9.3.0
+		GCC_TARGET : x86_64-pc-linux-gnu
+		MATLABROOT : /gpfs20/shared/software/matlab/r2024a
+		ARCH : glnxa64
+		SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
+		OBJ : /tmp/mex_151339961011708370_17258/mmx.o;/tmp/mex_151339961011708370_17258/cpp_mexapi_version.o
+		OBJS : /tmp/mex_151339961011708370_17258/mmx.o /tmp/mex_151339961011708370_17258/cpp_mexapi_version.o 
+		SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+		DEF : /tmp/mex_151339961011708370_17258/mmx_mkl_multi.def
+		EXP : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.exp"
+		LIB : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.lib"
+		EXE : /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64
+		ILK : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.ilk"
+		TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi
+		EXEDIR : /gpfs20/users/vh0010/mmx/src/
+		EXENAME : mmx_mkl_multi
+		MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64.manifest"
+		OPTIM : -O2 -DNDEBUG
+		LINKOPTIM : -O
+		CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339961011708370_17258/mmx.o
+		CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339961011708370_17258/cpp_mexapi_version.o
+	-------------------------------------------------------------------
+	Building with 'g++'.
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339961011708370_17258/mmx.o
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339961011708370_17258/cpp_mexapi_version.o
+	{ 
+	  "bundle.symbolic_name" : "907b7d40-0501-45e1-9218-419f4150a300", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 0,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339961011708370_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339961011708370_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339961011708370_17258/mmx.o /tmp/mex_151339961011708370_17258/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339961011708370_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DUSE_BLAS  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" \-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -I/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64  -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339961011708370_17258/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+	{ 
+	  "bundle.symbolic_name" : "0349057d-1f1d-461b-8eb1-8cbb19e22227", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 730,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339961011708370_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339961011708370_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339961011708370_17258/mmx.o /tmp/mex_151339961011708370_17258/cpp_mexapi_version.o   -lmwblas  -lmwlapack  -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_mkl_multi.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339961011708370_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	MEX completed successfully.
+	Compilation of 'mmx_mkl_multi' succeeded.
+	==========
+	Trying to compile 'mmx_naive', using 
+	-v, -lpthread, -DUNIX_SYSTEM, 
+	Verbose mode is on.
+	... Looking for compiler 'g++' ...
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Executing command 'g++ -print-file-name=libstdc++.so' ...Yes ('/shared/software/lang/gcc/9.3.0/lib64/libstdc++.so').
+	... Executing command 'g++ -dumpversion' ...Yes ('9.3.0').
+	... Executing command 'which g++' ...Yes ('/shared/software/lang/gcc/9.3.0/bin/g++').
+	... Looking for folder '/shared/software/lang/gcc/9.3.0' ...Yes.
+	... Executing command 'g++ -dumpmachine' ...Yes ('x86_64-pc-linux-gnu').
+	Found installed compiler 'g++'.
+	Set INCLUDE = /shared/software/lang/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/shared/software/lang/gcc/9.3.0/include/c++/9.3.0/backward;/shared/software/lang/gcc/9.3.0/include
+	Options file details
+	-------------------------------------------------------------------
+		Compiler location: /shared/software/lang/gcc/9.3.0/bin/g++
+		Options file: /gpfs20/shared/software/matlab/r2024a/bin/glnxa64/mexopts/g++_glnxa64.xml
+		CMDLINE2 : /shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339963941497994_17258/mmx.o /tmp/mex_151339963941497994_17258/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
+		CXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		DEFINES : -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE 
+		MATLABMEX : -DMATLAB_MEX_FILE 
+		CFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv
+		CXXFLAGS : -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv
+		INCLUDE : -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include"
+		CXXOPTIMFLAGS : -O2 -DNDEBUG
+		CXXDEBUGFLAGS : -g
+		LDXX : /shared/software/lang/gcc/9.3.0/bin/g++
+		LDFLAGS : -pthread -Wl,--no-undefined 
+		LDTYPE : -shared
+		LINKEXPORT : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map"
+		LINKEXPORTVER : -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map"
+		LINKLIBS : -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat
+		LDOPTIMFLAGS : -O
+		LDDEBUGFLAGS : -g
+		MWCPPLIB : "/gpfs20/shared/software/matlab/r2024a/sys/os/glnxa64/orig/libstdc++.so.6"
+		OBJEXT : .o
+		LDEXT : .mexa64
+		SETENV : CC="gcc"
+					CXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					CXXFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE "
+					COPTIMFLAGS="-O2 -DNDEBUG"
+					CXXOPTIMFLAGS="-O2 -DNDEBUG"
+					CDEBUGFLAGS="-g"
+					CXXDEBUGFLAGS="-g"
+					MW_GLIBC_SHIM="$MW_GLIBC_SHIM"
+					LD="gcc"
+					LDXX="/shared/software/lang/gcc/9.3.0/bin/g++"
+					LDFLAGS="-pthread -Wl,--no-undefined  -shared -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/mexFunction.map""
+					LDDEBUGFLAGS="-g"
+		GCC : /shared/software/lang/gcc/9.3.0/bin/g++
+		CPPLIB_DIR : /shared/software/lang/gcc/9.3.0/lib64/libstdc++.so
+		VER : 9.3.0
+		GCCDIR : /shared/software/lang/gcc/9.3.0
+		GCC_TARGET : x86_64-pc-linux-gnu
+		MATLABROOT : /gpfs20/shared/software/matlab/r2024a
+		ARCH : glnxa64
+		SRC : "/gpfs20/users/vh0010/mmx/src/mmx.cpp";"/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp"
+		OBJ : /tmp/mex_151339963941497994_17258/mmx.o;/tmp/mex_151339963941497994_17258/cpp_mexapi_version.o
+		OBJS : /tmp/mex_151339963941497994_17258/mmx.o /tmp/mex_151339963941497994_17258/cpp_mexapi_version.o 
+		SRCROOT : /gpfs20/users/vh0010/mmx/src/mmx
+		DEF : /tmp/mex_151339963941497994_17258/mmx_naive.def
+		EXP : "/gpfs20/users/vh0010/mmx/src/mmx_naive.exp"
+		LIB : "/gpfs20/users/vh0010/mmx/src/mmx_naive.lib"
+		EXE : /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64
+		ILK : "/gpfs20/users/vh0010/mmx/src/mmx_naive.ilk"
+		TEMPNAME : /gpfs20/users/vh0010/mmx/src/mmx_naive
+		EXEDIR : /gpfs20/users/vh0010/mmx/src/
+		EXENAME : mmx_naive
+		MANIFEST : "/gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64.manifest"
+		OPTIM : -O2 -DNDEBUG
+		LINKOPTIM : -O
+		CMDLINE1_0 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339963941497994_17258/mmx.o
+		CMDLINE1_1 : /shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339963941497994_17258/cpp_mexapi_version.o
+	-------------------------------------------------------------------
+	Building with 'g++'.
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -O2 -DNDEBUG "/gpfs20/users/vh0010/mmx/src/mmx.cpp" -o /tmp/mex_151339963941497994_17258/mmx.o
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339963941497994_17258/cpp_mexapi_version.o
+	{ 
+	  "bundle.symbolic_name" : "dbdaaf1a-3f40-4941-88b1-4424b05c1266", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 0,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339963941497994_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339963941497994_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339963941497994_17258/mmx.o /tmp/mex_151339963941497994_17258/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339963941497994_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	Recompile embedded version with '-DMATLAB_MEXCMD_RELEASE=R2017b'
+	/shared/software/lang/gcc/9.3.0/bin/g++ -c -DUNIX_SYSTEM  -DMATLAB_DEFAULT_RELEASE=R2017b  -DUSE_MEX_CMD   -D_GNU_SOURCE -DMATLAB_MEX_FILE  -I"/gpfs20/shared/software/matlab/r2024a/extern/include" -I"/gpfs20/shared/software/matlab/r2024a/simulink/include" -fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv -O2 -DNDEBUG "/gpfs20/shared/software/matlab/r2024a/extern/version/cpp_mexapi_version.cpp" -o /tmp/mex_151339963941497994_17258/cpp_mexapi_version.o -DMATLAB_MEXCMD_RELEASE=R2017b
+	{ 
+	  "bundle.symbolic_name" : "39f85815-6cc8-4f30-86b1-504a52ea234c", 
+	  "mw" : 
+	  { 
+		  "mex" : 
+		  {
+			  "apiVersion" : 730,
+			  "release" : "R2024a",
+			  "threadpoolSafe" : 0
+		  }
+	  } 
+	}
+
+
+	/gpfs20/shared/software/matlab/r2024a/bin/glnxa64/usResourceCompiler3 --manifest-add /tmp/mex_151339963941497994_17258//mw_mex_tempmex_manifest.json --bundle-name mexVersioning --out-file /tmp/mex_151339963941497994_17258//mw_mex_tempmex_bundle.zip
+
+	/shared/software/lang/gcc/9.3.0/bin/g++ -pthread -Wl,--no-undefined  -shared -O -Wl,--version-script,"/gpfs20/shared/software/matlab/r2024a/extern/lib/glnxa64/c_exportsmexfileversion.map" /tmp/mex_151339963941497994_17258/mmx.o /tmp/mex_151339963941497994_17258/cpp_mexapi_version.o   -lpthread   -lstdc++ -Wl,--as-needed -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/bin/glnxa64" -Wl,-rpath-link,/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64 -L"/gpfs20/shared/software/matlab/r2024a/extern/bin/glnxa64" -lMatlabDataArray -lmx -lmex -lm -lmat -o /gpfs20/users/vh0010/mmx/src/mmx_naive.mexa64 -Wl,--format=binary -Wl,/tmp/mex_151339963941497994_17258//mw_mex_tempmex_bundle.zip -Wl,--format=default 
+	MEX completed successfully.
+	Compilation of 'mmx_naive' succeeded.
+	>> 
 
 
 This is working because ``libsingle_mkl_ilp64.so`` on the MATLAB's glnxa64 folder::
