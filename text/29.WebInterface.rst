@@ -164,7 +164,7 @@ The first page you will see is asking for your credentials
 
 After entering your credentials and using your DUO authentication you will land on the Open On Demand Dashboard:
 
-.. image:: /_static/OOD-Dashboard.jpg
+.. image:: /_static/OOD-dashboard2.jpg
 
 From this dashboard you can launch interactive jobs, open terminals and access a file manager, we will see each of those operations in the next sections.
 
