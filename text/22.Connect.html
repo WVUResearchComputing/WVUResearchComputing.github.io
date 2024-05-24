@@ -195,25 +195,33 @@
             
   <section id="connect-to-the-cluster-ssh">
 <span id="qs-connect-ssh"></span><h1>Connect to the cluster (SSH)<a class="headerlink" href="#connect-to-the-cluster-ssh" title="Permalink to this headline">¶</a></h1>
-<p>An HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop, or even workstation is intended for a single user at a time. In general, Graphical User Interfaces (GUI) consume an important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.</p>
-<p>Due to security reasons, HPC clusters are intended to be accessed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as the Internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.</p>
-<p>In order to connect to any of our clusters, you need a <em>username</em>, and your name as a user of the cluster.
+<p>An HPC cluster is a big computing infrastructure intended for concurrent usage by many users.
+A desktop, laptop, or even workstation is intended for a single user at a time.
+Graphic User Interfaces (GUI) generally consume computing resources even when the user is not using them.
+That is one of the reasons why it is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.</p>
+<p>Due to security reasons, HPC clusters are intended to be accessed using a secure shell.
+Nowadays, SSH is the standard secure shell. Secure Shell (SSH) is a cryptographic protocol for securely operating network services over an unsecured network such as the Internet.
+The typical application of SSH in HPC is to provide remote command-line login and remote command execution.</p>
+<p>To connect to any of our clusters, you need a username and your name as a cluster user.
 You should have obtained that <em>username</em> with your <em>WVU Login account</em></p>
-<p>WVU’s clusters are also open to users who are currently associated with another Higher Education Institution in the state of West Virginia.  These users will still need a WVU Login account for access.  If you are working with someone (i.e. a PI) at WVU and need access, please have that person complete the form located <a class="reference external" href="login.wvu.edu/sponsored">here</a>.  If you are not working with anyone at WVU, please send an email <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>
-For this request to work the requestor must be on the campus network or using WVU’s VPN.</p>
+<p>WVU’s clusters are also open to users currently associated with another higher education institution in West Virginia.  These users will still need a WVU Login account to access it.
+If you are working with someone (i.e., a PI) at WVU and need access, please have that person complete the form located <a class="reference external" href="login.wvu.edu/sponsored">here</a>.
+If you are not working with anyone at WVU, please contact <a class="reference external" href="https://helpdesk.hpc.wvu.edu">WVU Research Computing - HPC HelpDesk</a>
+The requestor must be on the campus network or using WVU’s VPN for this request to work.</p>
 <p>The next step is to use an SSH client to connect to one of our clusters.</p>
 <section id="get-an-ssh-client">
 <h2>Get an SSH Client<a class="headerlink" href="#get-an-ssh-client" title="Permalink to this headline">¶</a></h2>
-<p>An SSH Client is a piece of software that allows you to run a remote session on a computer, over a network using a secure connection based on the SSH protocol.</p>
-<p>An SSH client is usually come installed on MacOS and most Unix/Linux distributions so if you are using one of those Operating Systems you do not need to install anything.</p>
+<p>An SSH client is software that allows you to run a remote session on a computer over a network using a secure connection based on the SSH protocol.</p>
+<p>An SSH client usually comes installed on MacOS and most Unix/Linux distributions, so if you are using one of those operating systems, you do not need to install anything.</p>
 <p>Windows users will have to acquire an SSH client.
-PuTTY is a free implementation of SSH for Windows platforms, it comes along with an <cite>xterm</cite> terminal emulator.</p>
+PuTTY is a free SSH implementation for Windows platforms. It comes with an <code class="docutils literal notranslate"><span class="pre">xterm</span></code> terminal emulator.</p>
 <p>Go to <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a> to know more about the product or download it directly from <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY Download</a>.</p>
-<p>PuTTY is not the only SSH client available for Windows. See for example <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_SSH_clients">Comparison of SSH clients</a> for several alternatives.</p>
+<p>PuTTY is not the only SSH client available for Windows. See, for example, <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_SSH_clients">Comparison of SSH clients</a> for several alternatives.</p>
 </section>
 <section id="connecting-to-wvu-s-clusters-via-ssh">
 <h2>Connecting to WVU’s Clusters via SSH<a class="headerlink" href="#connecting-to-wvu-s-clusters-via-ssh" title="Permalink to this headline">¶</a></h2>
-<p>Currently, WVU has two clusters available for access.  Depending on which cluster you are using, the instructions for connecting slightly differ.</p>
+<p>Currently, WVU has two clusters available for access.
+The instructions for connecting slightly differ depending on which cluster you are using.</p>
 <section id="general-ssh-connection-instructions">
 <h3>General SSH Connection Instructions<a class="headerlink" href="#general-ssh-connection-instructions" title="Permalink to this headline">¶</a></h3>
 <p>On MacOS and Unix/Linux, open a terminal shell and type:</p>
@@ -225,8 +233,8 @@ PuTTY is a free implementation of SSH for Windows platforms, it comes along with
 </pre></div>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> is your <em>WVU Login account</em> username and <code class="docutils literal notranslate"><span class="pre">&lt;hostname&gt;</span></code> is the name of the cluster you wish to connect to.
-The -X option is used to forward X windows applications running on the server to be forwarded to your local machine.
-Remember that the <code class="docutils literal notranslate"><span class="pre">$&gt;</span></code> symbols above are there to indicate a command on the terminal, you should not enter those initial characters.</p>
+The -X option forwards <em>XWindow</em> applications running on the server to your local machine.
+Remember that the <code class="docutils literal notranslate"><span class="pre">$&gt;</span></code> symbols above indicate a command on the terminal; you should not enter those initial characters.</p>
 <p>We currently have two clusters <em>Thorny Flat and *Spruce Knob</em> the hostnames are:</p>
 <table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">WVU’s High-Performance Computer (HPC) Clusters</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -263,11 +271,11 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 </section>
 <section id="thorny-flat-connectivity-instructions">
 <h3>Thorny Flat Connectivity Instructions<a class="headerlink" href="#thorny-flat-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
-<p>To connect to Thorny Flat, you will first have to connect to WVU’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
+<p>To connect to Thorny Flat, you must first connect to WVU’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
 </pre></div>
 </div>
-<p>More information on WVU’s Gateway Service can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301760886?src=-1814658256">here</a>.  When your account is created to for Thorny Flat, you will automatically be approved for access to WVU’s SSH Gateway Service.</p>
+<p>More information on WVU’s Gateway Service can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301760886?src=-1814658256">here</a>.  When your account is created for Thorny Flat, you will automatically be approved to access WVU’s SSH Gateway Service.</p>
 <p><strong>Note:</strong> Two-factor authentication is required to connect to WVU’s Gateway Service.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167">here</a>.</p>
 <p>then:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh tf.hpc.wvu.edu
@@ -275,7 +283,7 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or ssh client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
+<p><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
 </div>
 </section>
 </section>
@@ -296,25 +304,25 @@ with helpful commands and updates about the cluster.</p>
 </pre></div>
 </div>
 <p>The exit command will attempt to terminate any process running on the head.
-In some cases, you will get an error that jobs are either currently running or currently stopped.  You can view stopped jobs using the jobs command:</p>
+Sometimes, you will get an error that jobs are running or stopped.  You can view stopped jobs using the jobs command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; jobs -l
 [1]+ 3325 Stopped            vim script56.py
 </pre></div>
 </div>
-<p>The output of jobs -l will give you the job PID number (in this case 3325) and
+<p>The output of jobs -l will give you the job PID number (in this case, 3325) and
 the command (vim script56.py).  To kill jobs preventing successful logout,
 use the kill command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
 </pre></div>
 </div>
 <p>Once all jobs are terminated, the exit command will close the connection to the host.
-In section <a class="reference internal" href="27.WorkloadManager.html#qs-workload-manager"><span class="std std-ref">Workload Manager (SLURM)</span></a> we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.</p>
+In section <a class="reference internal" href="27.WorkloadManager.html#qs-workload-manager"><span class="std std-ref">Workload Manager (SLURM)</span></a>, we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.</p>
 </section>
 <section id="putty-example">
 <h2>Putty Example<a class="headerlink" href="#putty-example" title="Permalink to this headline">¶</a></h2>
-<p>If you are using Windows and PuTTy, click on PuTTy Icon and enter the hostname</p>
+<p>If you are using Windows and PuTTy, click on PuTTy Icon and enter the hostname.</p>
 <img alt="../_images/puttystartup.png" src="../_images/puttystartup.png" />
-<p>If you want to get X11 forwarding, ie remote windows popping on your local machine, enable X11 forwarding as shown below.</p>
+<p>If you want to enable X11 forwarding, i.e., remote windows popping up on your local machine, follow the steps below to enable X11 forwarding.</p>
 <img alt="../_images/putty_xforward.png" src="../_images/putty_xforward.png" />
 </section>
 </section>
