@@ -1,0 +1,50 @@
+Electronic Structure: Orca
+==========================
+
+ORCA is a general-purpose quantum chemistry program package that features several electronic structure methods (density functional theory, many-body perturbation and coupled cluster theories, and multireference and semiempirical methods). 
+
+ORCA is a flexible, efficient, and easy-to-use general-purpose tool for quantum chemistry with a specific emphasis on the spectroscopic properties of open-shell molecules. It features various standard quantum chemical methods ranging from semiempirical to DFT to single- and multireference correlated ab initio methods. 
+In addition, ORCA can also treat environmental and relativistic effects.
+
+ORCA uses standard Gaussian basis functions and can take advantage of CPU parallelization. Due to its user-friendly style, ORCA is a helpful tool for computational chemists, physicists, and biologists interested in developing a better understanding of experimental data with the help of electronic structure calculations.
+
+Levels of Theory
+----------------
+
+ORCA can optimize atomic geometries by following forces computed from electronic structure calculations. ORCA can also predict many spectroscopic parameters at different levels of theory. The levels of theory supported range from Hartee Fock (HF) to Density Functional Theory (DFT). Other levels, such as semiempirical methods and high-level ab initio quantum chemical methods, based on the configuration interaction and coupled cluster methods, are included in ORCA to an increasing degree.
+
+
+The ORCA input file
+-------------------
+
+The suffix of ORCA input file can be anything, ORCA documentation suggests the use of the extension ``.inp``. The general structure of an ORCA input file consists of several blocks with names like:
+
+  * **BASIS:** Basis sets are specified
+  * **CASSCF:** Control of CASSCF/NEVPT2 and DMRG calculations<
+  * **CIS:** Control of CIS and TD-DFT calculations (synonym is TDDFT)
+  * **COORDS:** Input of atomic coordinates
+  * **COSMO:** Control of the conductor-like screening model
+  * **ELPROP:** Control of electric property calculations
+  * **EPRNMR:** Control of SCF level EPR and NMR calculations
+  * **FREQ:** Control of frequency calculations
+  * **GEOM:** Control of geometry optimization
+  * **MD:** Control of molecular dynamics simulation
+  * **LOC:** Localization of orbitals
+  * **MDCI:** Controls single reference correlation methods
+  * **METHOD:** A computation method is specified here
+  * **MP2:** Controls the details of the MP2 calculation
+  * **MRCI:** Control of MRCI calculations
+  * **OUTPUT:** Control of output
+  * **PAL:** Control of parallel jobs
+  * **PARAS:** Input of semiempirial parameters
+  * **PLOTS:** Control of plot generation
+  * **REL:** Control of options relativistic
+  * **RR:** Control of resonance Raman and absorption/fluorescence bandshape calculations
+  * **SCF:** Control of the SCF procedure
+
+ORCA will ignore lines that start with a ``#`` and close by a second ``#``. 
+Blocks start with ‘%‘ and end with the word ``end``.
+
+Here is an example input file, which request a single point energy calculation on water:
+
+

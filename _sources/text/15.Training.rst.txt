@@ -6,7 +6,7 @@ Training
 Previous Workshops and Lessons
 ------------------------------
 
-Workshops are sets of Lessons. Here is a list of Wokrshops and Lessons. Some workshops contain the same Lessons but for most part they are independent
+Workshops are sets of Lessons. Here is a list of workshops and Lessons. Some workshops contain the same Lessons, but they are independent for the most part.
 
 Summer Workshop 2016 
 ~~~~~~~~~~~~~~~~~~~~
@@ -186,7 +186,7 @@ Mini Workshops
 
  * `Open OnDemand Workshop (2020-09-18) <https://youtu.be/15p3fAAWdMQ>`_
 
- * `Python in High Performance Computing Workshop (2020-10-16) <https://youtu.be/Y4vc4O5lpxc>`_
+ * `Python in High-Performance Computing Workshop (2020-10-16) <https://youtu.be/Y4vc4O5lpxc>`_
 
  * `How to link your Globus account to your Mix/Google Drive account <https://youtu.be/tDdVsNVK3ko>`_
 

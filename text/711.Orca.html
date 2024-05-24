@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Electronic Structure: Orca &mdash; WVU-RC 2023.10.11 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clusters Specifications" href="80.ClusterSpecific.html" />
+    <link rel="prev" title="Bioinformatics: Stacks" href="710.Stacks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2023.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUsage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="500.ScientificProgramming.html">Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="701.Ansys.html">Engineering: ANSYS Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="702.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="703.OpenFoam.html">Engineering: OpenFOAM 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="704.LAMMPS.html">LAMMPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="705.bowtie2.html">Bioinformatics: Using Bowtie2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="707.Visit.html">Visualization: VisIt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="708.PlanetaryScience.html">Compiling Planetary Modeling Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="709.NAMD.html">NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="710.Stacks.html">Bioinformatics: Stacks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Electronic Structure: Orca</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#levels-of-theory">Levels of Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-orca-input-file">The ORCA input file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="700.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
+        
+      <li>Electronic Structure: Orca</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/711.Orca.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="electronic-structure-orca">
+<h1>Electronic Structure: Orca<a class="headerlink" href="#electronic-structure-orca" title="Permalink to this headline">¶</a></h1>
+<p>ORCA is a general-purpose quantum chemistry program package that features several electronic structure methods (density functional theory, many-body perturbation and coupled cluster theories, and multireference and semiempirical methods).</p>
+<p>ORCA is a flexible, efficient, and easy-to-use general-purpose tool for quantum chemistry with a specific emphasis on the spectroscopic properties of open-shell molecules. It features various standard quantum chemical methods ranging from semiempirical to DFT to single- and multireference correlated ab initio methods.
+In addition, ORCA can also treat environmental and relativistic effects.</p>
+<p>ORCA uses standard Gaussian basis functions and can take advantage of CPU parallelization. Due to its user-friendly style, ORCA is a helpful tool for computational chemists, physicists, and biologists interested in developing a better understanding of experimental data with the help of electronic structure calculations.</p>
+<section id="levels-of-theory">
+<h2>Levels of Theory<a class="headerlink" href="#levels-of-theory" title="Permalink to this headline">¶</a></h2>
+<p>ORCA can optimize atomic geometries by following forces computed from electronic structure calculations. ORCA can also predict many spectroscopic parameters at different levels of theory. The levels of theory supported range from Hartee Fock (HF) to Density Functional Theory (DFT). Other levels, such as semiempirical methods and high-level ab initio quantum chemical methods, based on the configuration interaction and coupled cluster methods, are included in ORCA to an increasing degree.</p>
+</section>
+<section id="the-orca-input-file">
+<h2>The ORCA input file<a class="headerlink" href="#the-orca-input-file" title="Permalink to this headline">¶</a></h2>
+<p>The suffix of ORCA input file can be anything, ORCA documentation suggests the use of the extension <code class="docutils literal notranslate"><span class="pre">.inp</span></code>. The general structure of an ORCA input file consists of several blocks with names like:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>BASIS:</strong> Basis sets are specified</p></li>
+<li><p><strong>CASSCF:</strong> Control of CASSCF/NEVPT2 and DMRG calculations&lt;</p></li>
+<li><p><strong>CIS:</strong> Control of CIS and TD-DFT calculations (synonym is TDDFT)</p></li>
+<li><p><strong>COORDS:</strong> Input of atomic coordinates</p></li>
+<li><p><strong>COSMO:</strong> Control of the conductor-like screening model</p></li>
+<li><p><strong>ELPROP:</strong> Control of electric property calculations</p></li>
+<li><p><strong>EPRNMR:</strong> Control of SCF level EPR and NMR calculations</p></li>
+<li><p><strong>FREQ:</strong> Control of frequency calculations</p></li>
+<li><p><strong>GEOM:</strong> Control of geometry optimization</p></li>
+<li><p><strong>MD:</strong> Control of molecular dynamics simulation</p></li>
+<li><p><strong>LOC:</strong> Localization of orbitals</p></li>
+<li><p><strong>MDCI:</strong> Controls single reference correlation methods</p></li>
+<li><p><strong>METHOD:</strong> A computation method is specified here</p></li>
+<li><p><strong>MP2:</strong> Controls the details of the MP2 calculation</p></li>
+<li><p><strong>MRCI:</strong> Control of MRCI calculations</p></li>
+<li><p><strong>OUTPUT:</strong> Control of output</p></li>
+<li><p><strong>PAL:</strong> Control of parallel jobs</p></li>
+<li><p><strong>PARAS:</strong> Input of semiempirial parameters</p></li>
+<li><p><strong>PLOTS:</strong> Control of plot generation</p></li>
+<li><p><strong>REL:</strong> Control of options relativistic</p></li>
+<li><p><strong>RR:</strong> Control of resonance Raman and absorption/fluorescence bandshape calculations</p></li>
+<li><p><strong>SCF:</strong> Control of the SCF procedure</p></li>
+</ul>
+</div></blockquote>
+<p>ORCA will ignore lines that start with a <code class="docutils literal notranslate"><span class="pre">#</span></code> and close by a second <code class="docutils literal notranslate"><span class="pre">#</span></code>.
+Blocks start with ‘%‘ and end with the word <code class="docutils literal notranslate"><span class="pre">end</span></code>.</p>
+<p>Here is an example input file, which request a single point energy calculation on water:</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="80.ClusterSpecific.html" class="btn btn-neutral float-right" title="Clusters Specifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="710.Stacks.html" class="btn btn-neutral float-left" title="Bioinformatics: Stacks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
