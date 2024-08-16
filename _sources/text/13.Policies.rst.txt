@@ -10,13 +10,13 @@ Maintaining a first-class HPC environment is expensive in terms of both human an
 
 To acknowledge your use of the clusters, we request that you use the following wording:
 
-For Spruce Knob:
-
-    The authors acknowledge the computational resources provided by the WVU Research Computing Spruce Knob HPC cluster, which is funded in part by NSF EPS-1003907.
-
 For Thorny Flat:
 
     The authors acknowledge the computational resources provided by the WVU Research Computing Thorny Flat HPC cluster, partly funded by NSF OAC-1726534.
+
+For Dolly Sods:
+
+    The authors acknowledge the computational resources provided by the WVU Research Computing Dolly Sods HPC cluster, which is funded in part by NSF OAC-2117575.”
 
 We would also appreciate you informing us of publications in which you acknowledge one of the clusters.
 In retribution, we will work to give visibility to your work and the computational efforts that make it possible.
