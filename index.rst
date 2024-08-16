@@ -30,8 +30,8 @@ The table below shows our portfolio of HPC resources (past and present):
    | |                      | | (total/active) | | (total/active) | | (total/active)   | |                                                             |
    +========================+==================+==================+====================+===============================================================+
    | | **Mountaineer**      |      32/0        |      384/0       |       0/0          | | First centrally managed HPC Cluster for WVU.                |
-   | | (decommissioned)     |                  |                  |                    | | CPUs from Intel Westmere microarchitecture (32 nm).         |
-   |                        |                  |                  |                    | | Decomissioned on 2018.                                      |
+   | | (decommissioned in   |                  |                  |                    | | CPUs from Intel Westmere microarchitecture (32 nm).         |
+   |     2018)              |                  |                  |                    | |                                                             |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Spruce Knob**      |     176/148      |    3376/3036     | | 14/5 NVIDIA GPUs | | General-purpose HPC cluster first commissioned in 2017.     |
    | | (decommissioned on   |                  |                  | | Tesla K20m       | | Heterogeneous cluster with Intel processors.                |   
@@ -42,18 +42,23 @@ The table below shows our portfolio of HPC resources (past and present):
    |                        |                  |                  | | RTX 6000 (24)    | | Installed at Pittsburgh Supercomputer Center.               |
    |                        |                  |                  | | A100 (2)         |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **GoFirst**          |                  |                  |                    | | Virtual Infraestructure running on AWS.                     |
-   | | (in production)      |                  |                  |                    | | Serves Business Data Analytics (BUDA) program.              |
-   |                        |                  |                  |                    | | Chambers College of Business and Economics.                 |
-   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Dolly Sods**       |       37         |    1248          | | 155 NVIDIA GPUs  | | GPU Accelerated HPC Cluster.                                |
-   | | (to be installed     |                  |                  | | A30 (120)        | | To be provisioned in August 2023.                           |
-   | |  August 2023)        |                  |                  | | A40 (19)         |                                                               |
+   | | (in production)      |                  |                  | | A30 (120)        | | To be provisioned in August 2023.                           |
+   | |                      |                  |                  | | A40 (19)         |                                                               |
    | |                      |                  |                  | | A100 (16)        |                                                               |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Harpers Ferry**    |       TBD        |     TBD          | |                  | | General Purpose HPC Cluster.                                |
+   | | (expected for 2025)  |                  |                  | |                  | | To be provisioned in 2025.                                  |
+   | |                      |                  |                  | |                  |                                                               |
+   | |                      |                  |                  | |                  |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **WVCTSI Cluster**   |       8/8        |     320/320      | | 4 NVIDIA GPUs    | | HPC Cluster for use with                                    |
    | | Secure Cluster       |                  |                  | | Tesla V100S      | | Protected Health Information (PHI)                          |
    | | (in production)      |                  |                  |                    | | HIPAA compliant                                             |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **GoFirst**          |                  |                  |                    | | Virtual Infraestructure running on AWS.                     |
+   | | (in production)      |                  |                  |                    | | Serves Business Data Analytics (BUDA) program.              |
+   |                        |                  |                  |                    | | Chambers College of Business and Economics.                 |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
 
 
