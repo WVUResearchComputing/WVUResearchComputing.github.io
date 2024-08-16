@@ -78,9 +78,6 @@ The HelpDesk ticket system
    `WVU Research Computing - HPC HelpDesk <https://helpdesk.hpc.wvu.edu>`_
 
 If your research was possible thanks to the use of our clusters, please acknowledge the support using these comments:
-For Spruce Knob:
-
-    "Computational resources were provided by the WVU Research Computing Spruce Knob HPC cluster, which is funded in part by NSF EPS-1003907."
 
 For Thorny Flat:
 
