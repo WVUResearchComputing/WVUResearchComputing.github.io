@@ -47,8 +47,8 @@ The table below shows our portfolio of HPC resources (past and present):
    | |                      |                  |                  | | A40 (19)         |                                                               |
    | |                      |                  |                  | | A100 (16)        |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **Harpers Ferry**    |       TBD        |     TBD          | |                  | | General Purpose HPC Cluster.                                |
-   | | (expected for 2025)  |                  |                  | |                  | | To be provisioned in 2025.                                  |
+   | | **Harpers Ferry**    |       37         |     9472         | | None             | | General Purpose HPC Cluster.                                |
+   | | (expected for 2025)  |                  |                  | |                  | | To be provisioned during Spring 2025.                       |
    | |                      |                  |                  | |                  |                                                               |
    | |                      |                  |                  | |                  |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
