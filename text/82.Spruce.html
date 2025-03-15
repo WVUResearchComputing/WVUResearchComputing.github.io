@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Spruce Knob (2018-2023) &mdash; WVU-RC 2023.10.11 documentation</title>
+  <title>Spruce Knob (2014-2023) &mdash; WVU-RC 2025.03.15 documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2023.10
+                2025.03
               </div>
             
           
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="81.Mountaineer.html">Mountaineer (2013-2018)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Spruce Knob (2018-2023)</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spruce Knob (2014-2023)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#resource-manager-and-system-scheduler">Resource manager and system scheduler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#total-compute-resources">Total Compute Resources</a></li>
@@ -177,7 +177,7 @@
         
           <li><a href="80.ClusterSpecific.html">Clusters Specifications</a> &raquo;</li>
         
-      <li>Spruce Knob (2018-2023)</li>
+      <li>Spruce Knob (2014-2023)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,9 +196,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="spruce-knob-2018-2023">
-<h1>Spruce Knob (2018-2023)<a class="headerlink" href="#spruce-knob-2018-2023" title="Permalink to this headline">¶</a></h1>
-<p>Spruce Knob is a 3,376 core cluster spread over 176 nodes (155 active nodes with 3090 cores on February 2022) using a shared FDR Infiniband Network. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phase.  New hardware is no longer being added to this cluster.  Hardware that is still under warranty will be serviced.  Hardware that is out of warranty will be removed from the cluster upon failure.</p>
+  <section id="spruce-knob-2014-2023">
+<h1>Spruce Knob (2014-2023)<a class="headerlink" href="#spruce-knob-2014-2023" title="Permalink to this headline">¶</a></h1>
+<p>Spruce Knob was a 3,376 core cluster spread over 176 nodes using a shared FDR Infiniband Network.
+The system was a heterogeneous cluster with processors from Sandy Bridge, Ivy Bridge, Haswell and Broadwell generations.
+Over the years 2014 to 2018 additional nodes were added to the cluster called phases. Thhe cluster reached five phases.
+The cluster was decomissioned in 2023 after serving for almost a decade.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <section id="resource-manager-and-system-scheduler">
@@ -229,7 +232,7 @@
 </section>
 <section id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
-<p>Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
+<p>Spruce Knob was a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
 The table below shows the differences between the 4 architectures:</p>
 <table class="colwidths-given docutils align-default" id="id2" style="width: 90%">
 <caption><span class="caption-text">Microarchitectures present on <em>Spruce Knob</em></span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
@@ -246,7 +249,7 @@ The table below shows the differences between the 4 architectures:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Sandy Bridge</p></td>
-<td><p>2011</p></td>
+<td><p>2012</p></td>
 <td><dl class="simple">
 <dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX</strong>, VT-x, VT-d, AES-NI, CLMUL, TXT</p>
 </dd>
@@ -254,7 +257,7 @@ The table below shows the differences between the 4 architectures:</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Ivy Bridge</p></td>
-<td><p>2012</p></td>
+<td><p>2013</p></td>
 <td><dl class="simple">
 <dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX, F16C</strong>, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d</p>
 </dd>
@@ -262,7 +265,7 @@ The table below shows the differences between the 4 architectures:</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Haswell</p></td>
-<td><p>2013</p></td>
+<td><p>2014</p></td>
 <td><dl class="simple">
 <dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX, AVX2</strong>, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND,
 TXT</p>
@@ -271,7 +274,7 @@ TXT</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Broadwell</p></td>
-<td><p>2014</p></td>
+<td><p>2016</p></td>
 <td><dl class="simple">
 <dt>MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2,</dt><dd><p><strong>AVX, AVX2</strong>, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT, VT-x,
 VT-d</p>
@@ -298,9 +301,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </div></blockquote>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 57%" />
-<col style="width: 28%" />
+<col style="width: 18%" />
+<col style="width: 60%" />
+<col style="width: 22%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Node Type</p></th>
@@ -309,47 +312,77 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Sandy Bridge</p></td>
+<tr class="row-even"><td><dl class="simple">
+<dt>Sandy Bridge EP</dt><dd><p>Q2’12
+32 nm</p>
+</dd>
+</dl>
+</td>
 <td><ul class="simple">
 <li><p>4 X 8 Intel(R) Xeon(R) CPU E5-4620 0 &#64; 2.20GHz</p></li>
 <li><p>64GB memory</p></li>
 <li><p>1TB HDD</p></li>
+<li><p>HPE Proliant DL560 Gen8</p></li>
 </ul>
 </td>
 <td><p>14</p></td>
 </tr>
-<tr class="row-odd"><td><p>Ivy Bridge</p></td>
+<tr class="row-odd"><td><dl class="simple">
+<dt>Ivy Bridge EP</dt><dd><p>Q3’13
+22 nm</p>
+</dd>
+</dl>
+</td>
 <td><ul class="simple">
 <li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
 <li><p>32GB memory</p></li>
 <li><p>1TB HDD</p></li>
+<li><p>HPE ProLiant SL230s Gen 8</p></li>
 </ul>
 </td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>Ivy Bridge</p></td>
+<tr class="row-even"><td><dl class="simple">
+<dt>Ivy Bridge EP</dt><dd><p>Q3’13
+22 nm</p>
+</dd>
+</dl>
+</td>
 <td><ul class="simple">
 <li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
 <li><p>64GB memory</p></li>
 <li><p>1TB HDD</p></li>
+<li><p>HPE ProLiant SL230s Gen 8</p></li>
 </ul>
 </td>
 <td><p>95</p></td>
 </tr>
-<tr class="row-odd"><td><p>Ivy Bridge</p></td>
+<tr class="row-odd"><td><dl class="simple">
+<dt>Ivy Bridge EP</dt><dd><p>Q3’13
+22 nm</p>
+</dd>
+</dl>
+</td>
 <td><ul class="simple">
 <li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
 <li><p>256GB memory</p></li>
 <li><p>1TB HDD</p></li>
+<li><p>HPE ProLiant SL230s Gen 8</p></li>
 </ul>
 </td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>Ivy Bridge</p></td>
+<tr class="row-even"><td><dl class="simple">
+<dt>Ivy Bridge EP</dt><dd><p>Q3’13
+22 nm</p>
+</dd>
+</dl>
+</td>
 <td><ul class="simple">
 <li><p>2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 &#64; 2.60GHz</p></li>
 <li><p>512GB memory</p></li>
 <li><p>1TB HDD</p></li>
+<li><p>HPE ProLiant SL230s Gen 8</p></li>
 </ul>
 </td>
 <td><p>3</p></td>
@@ -366,9 +399,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </div></blockquote>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 57%" />
-<col style="width: 28%" />
+<col style="width: 17%" />
+<col style="width: 62%" />
+<col style="width: 21%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Node Type</p></th>
@@ -377,7 +410,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Haswell</p></td>
+<tr class="row-even"><td><p>Haswell
+Q3’14
+22 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
 <li><p>64GB memory</p></li>
@@ -386,7 +421,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </td>
 <td><p>14</p></td>
 </tr>
-<tr class="row-odd"><td><p>Haswell</p></td>
+<tr class="row-odd"><td><p>Haswell
+Q3’14
+22nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
 <li><p>128GB memory</p></li>
@@ -395,7 +432,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </td>
 <td><p>3</p></td>
 </tr>
-<tr class="row-even"><td><p>Haswell</p></td>
+<tr class="row-even"><td><p>Haswell
+Q3’14
+22 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
 <li><p>512GB memory</p></li>
@@ -416,9 +455,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </div></blockquote>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 57%" />
-<col style="width: 28%" />
+<col style="width: 16%" />
+<col style="width: 62%" />
+<col style="width: 22%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Node Type</p></th>
@@ -427,7 +466,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Haswell</p></td>
+<tr class="row-even"><td><p>Haswell
+Q3’14
+22 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
 <li><p>64GB memory</p></li>
@@ -436,7 +477,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td><p>Haswell</p></td>
+<tr class="row-odd"><td><p>Haswell
+Q3’14
+22 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
 <li><p>128GB memory</p></li>
@@ -445,7 +488,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </td>
 <td><p>10</p></td>
 </tr>
-<tr class="row-even"><td><p>Haswell</p></td>
+<tr class="row-even"><td><p>Haswell
+Q3’14
+22 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 &#64; 2.30GHz</p></li>
 <li><p>512GB memory</p></li>
@@ -466,9 +511,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </div></blockquote>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 57%" />
-<col style="width: 28%" />
+<col style="width: 17%" />
+<col style="width: 62%" />
+<col style="width: 21%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Node Type</p></th>
@@ -477,7 +522,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Broadwell</p></td>
+<tr class="row-even"><td><p>Broadwell
+Q1’16
+14 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</p></li>
 <li><p>64GB memory</p></li>
@@ -486,7 +533,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </td>
 <td><p>3</p></td>
 </tr>
-<tr class="row-odd"><td><p>Broadwell</p></td>
+<tr class="row-odd"><td><p>Broadwell
+Q1’16
+14 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</p></li>
 <li><p>128GB memory</p></li>
@@ -495,7 +544,9 @@ Each YMM register can hold and do simultaneous operations (math) on eight 32-bit
 </td>
 <td><p>7</p></td>
 </tr>
-<tr class="row-even"><td><p>Broadwell</p></td>
+<tr class="row-even"><td><p>Broadwell
+Q1’16
+14 nm</p></td>
 <td><ul class="simple">
 <li><p>2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 &#64; 2.20GHz</p></li>
 <li><p>512GB memory</p></li>
@@ -614,7 +665,7 @@ large number of the community resources for an excessively long time.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2023, West Virginia University
+        &copy; Copyright 2025, West Virginia University
 
     </p>
   </div>
