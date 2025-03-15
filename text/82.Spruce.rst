@@ -1,7 +1,10 @@
-Spruce Knob (2018-2023)
+Spruce Knob (2014-2023)
 =======================
 
-Spruce Knob is a 3,376 core cluster spread over 176 nodes (155 active nodes with 3090 cores on February 2022) using a shared FDR Infiniband Network. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phase.  New hardware is no longer being added to this cluster.  Hardware that is still under warranty will be serviced.  Hardware that is out of warranty will be removed from the cluster upon failure.
+Spruce Knob was a 3,376 core cluster spread over 176 nodes using a shared FDR Infiniband Network. 
+The system was a heterogeneous cluster with processors from Sandy Bridge, Ivy Bridge, Haswell and Broadwell generations.
+Over the years 2014 to 2018 additional nodes were added to the cluster called phases. Thhe cluster reached five phases.
+The cluster was decomissioned in 2023 after serving for almost a decade.
 
 Overview
 --------
@@ -29,7 +32,7 @@ Shared Interconnect
 Hardware
 --------
 
-Spruce Knob is a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
+Spruce Knob was a heterogeneous cluster with compute nodes with a variety of Intel Microarchitectures
 The table below shows the differences between the 4 architectures:
 
 .. csv-table:: Microarchitectures present on *Spruce Knob*
@@ -37,14 +40,14 @@ The table below shows the differences between the 4 architectures:
    :widths: 10, 10, 80
    :width:  90%
 
-    Sandy Bridge, 2011, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Sandy Bridge, 2012, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX**, VT-x, VT-d, AES-NI, CLMUL, TXT"
-    Ivy Bridge,   2012, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Ivy Bridge,   2013, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX, F16C**, AES-NI, CLMUL, RDRAND, TXT, VT-x, VT-d"
-    Haswell,      2013, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Haswell,      2014, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX, AVX2**, FMA3, VT-x, VT-d, AES-NI, CLMUL, RDRAND, 
     TXT"
-    Broadwell,    2014, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
+    Broadwell,    2016, "MMX, SSE, SSE2, SSE3, SSSE3, SSE4, SSE4.1, SSE4.2, 
     **AVX, AVX2**, TSX, FMA3, AES-NI, CLMUL, RDRAND, TXT, VT-x, 
     VT-d"
 
@@ -66,30 +69,35 @@ Phase 0/1 Hardware
   * `Intel(R) Xeon(R) CPU E5-4620 <https://ark.intel.com/content/www/us/en/ark/products/64607/intel-xeon-processor-e54620-16m-cache-2-20-ghz-7-20-gts-intel-qpi.html>`_
   * `Intel(R) Xeon(R) CPU E5-2650 v2 <https://ark.intel.com/content/www/us/en/ark/products/75269/intel-xeon-processor-e52650-v2-20m-cache-2-60-ghz.html>`_
 
-+---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | **Compute Nodes**         |
-|               |                                                        |                           |
-+===============+========================================================+===========================+
-| Sandy Bridge  | - 4 X 8 Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz       |            14             |
-|               | - 64GB memory                                          |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Ivy Bridge    | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |            1              |
-|               | - 32GB memory                                          |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Ivy Bridge    | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |           95              |
-|               | - 64GB memory                                          |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Ivy Bridge    | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |            1              |
-|               | - 256GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Ivy Bridge    | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |            3              |
-|               | - 512GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
++-----------------+--------------------------------------------------------+--------------------+
+| Node Type       | **Description**                                        | **Compute Nodes**  |
+|                 |                                                        |                    |
++=================+========================================================+====================+
+| Sandy Bridge EP | - 4 X 8 Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz       |         14         |
+|     Q2'12       | - 64GB memory                                          |                    |
+|     32 nm       | - 1TB HDD                                              |                    |
+|                 | - HPE Proliant DL560 Gen8                              |                    |
++-----------------+--------------------------------------------------------+--------------------+
+| Ivy Bridge EP   | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |          1         |
+|      Q3'13      | - 32GB memory                                          |                    |
+|      22 nm      | - 1TB HDD                                              |                    |
+|                 | - HPE ProLiant SL230s Gen 8                            |                    |
++-----------------+--------------------------------------------------------+--------------------+
+| Ivy Bridge EP   | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |         95         |
+|     Q3'13       | - 64GB memory                                          |                    |
+|     22 nm       | - 1TB HDD                                              |                    |
+|                 | - HPE ProLiant SL230s Gen 8                            |                    |
++-----------------+--------------------------------------------------------+--------------------+
+| Ivy Bridge EP   | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |          1         |
+|     Q3'13       | - 256GB memory                                         |                    |
+|     22 nm       | - 1TB HDD                                              |                    |
+|                 | - HPE ProLiant SL230s Gen 8                            |                    |
++-----------------+--------------------------------------------------------+--------------------+
+| Ivy Bridge EP   | - 2 X 8 Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz      |          3         |
+|     Q3'13       | - 512GB memory                                         |                    |
+|     22 nm       | - 1TB HDD                                              |                    |
+|                 | - HPE ProLiant SL230s Gen 8                            |                    |
++-----------------+--------------------------------------------------------+--------------------+
 
 
 Phase 2 Hardware
@@ -97,66 +105,66 @@ Phase 2 Hardware
 
   * `Intel(R) Xeon(R) CPU E5-2650 v3 <https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html>`_
 
-+---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | **Compute Nodes**         |
-|               |                                                        |                           |
-+===============+========================================================+===========================+
-| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |            14             |
-|               | - 64GB memory                                          |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |             3             |
-|               | - 128GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |             1             |
-|               | - 512GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
++---------------+--------------------------------------------------------+-------------------+
+| Node Type     | **Description**                                        | **Compute Nodes** |
+|               |                                                        |                   |
++===============+========================================================+===================+
+| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |        14         |
+| Q3'14         | - 64GB memory                                          |                   |
+| 22 nm         | - 1TB HDD                                              |                   |
++---------------+--------------------------------------------------------+-------------------+
+| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |         3         |
+| Q3'14         | - 128GB memory                                         |                   |
+| 22nm          | - 1TB HDD                                              |                   |
++---------------+--------------------------------------------------------+-------------------+
+| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |         1         |
+| Q3'14         | - 512GB memory                                         |                   |
+| 22 nm         | - 1TB HDD                                              |                   |
++---------------+--------------------------------------------------------+-------------------+
 
 Phase 3 Hardware
 ~~~~~~~~~~~~~~~~
 
   * `Intel(R) Xeon(R) CPU E5-2650 v3 <https://ark.intel.com/content/www/us/en/ark/products/81705/intel-xeon-processor-e52650-v3-25m-cache-2-30-ghz.html>`_
 
-+---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | **Compute Nodes**         |
-|               |                                                        |                           |
-+===============+========================================================+===========================+
-| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |             1             |
-|               | - 64GB memory                                          |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |            10             |
-|               | - 128GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |             1             |
-|               | - 512GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
++---------------+--------------------------------------------------------+--------------------+
+| Node Type     | **Description**                                        | **Compute Nodes**  |
+|               |                                                        |                    |
++===============+========================================================+====================+
+| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |         1          |
+| Q3'14         | - 64GB memory                                          |                    |
+| 22 nm         | - 1TB HDD                                              |                    |
++---------------+--------------------------------------------------------+--------------------+
+| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |        10          |
+| Q3'14         | - 128GB memory                                         |                    |
+| 22 nm         | - 1TB HDD                                              |                    |
++---------------+--------------------------------------------------------+--------------------+
+| Haswell       | - 2 X 10 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz     |         1          |
+| Q3'14         | - 512GB memory                                         |                    |
+| 22 nm         | - 1TB HDD                                              |                    |
++---------------+--------------------------------------------------------+--------------------+
 
 Phase 4 Hardware
 ~~~~~~~~~~~~~~~~
 
   * `Intel(R) Xeon(R) CPU E5-2650 v4 <https://ark.intel.com/content/www/us/en/ark/products/91767/intel-xeon-processor-e52650-v4-30m-cache-2-20-ghz.html>`_
 
-+---------------+--------------------------------------------------------+---------------------------+
-| Node Type     | **Description**                                        | **Compute Nodes**         |
-|               |                                                        |                           |
-+===============+========================================================+===========================+
-| Broadwell     | - 2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz     |             3             |
-|               | - 64GB memory                                          |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Broadwell     | - 2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz     |             7             |
-|               | - 128GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
-| Broadwell     | - 2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz     |             1             |
-|               | - 512GB memory                                         |                           |
-|               | - 1TB HDD                                              |                           |
-+---------------+--------------------------------------------------------+---------------------------+
++---------------+--------------------------------------------------------+-------------------+
+| Node Type     | **Description**                                        | **Compute Nodes** |
+|               |                                                        |                   |
++===============+========================================================+===================+
+| Broadwell     | - 2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz     |         3         |
+| Q1'16         | - 64GB memory                                          |                   |
+| 14 nm         | - 1TB HDD                                              |                   |
++---------------+--------------------------------------------------------+-------------------+
+| Broadwell     | - 2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz     |         7         |
+| Q1'16         | - 128GB memory                                         |                   |
+| 14 nm         | - 1TB HDD                                              |                   |
++---------------+--------------------------------------------------------+-------------------+
+| Broadwell     | - 2 X 12 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz     |         1         |
+| Q1'16         | - 512GB memory                                         |                   |
+| 14 nm         | - 1TB HDD                                              |                   |
++---------------+--------------------------------------------------------+-------------------+
 
 Queues
 ------
