@@ -39,6 +39,16 @@ On Thorny Flat the command to activate conda is::
 After activation your are positioned on the ``base`` environment.
 
 
+Activating Conda on DollySods
+------------------------------------------
+
+On Dolly Sods you can activate conda with::
+
+  module load conda
+
+After activation your are positioned on the ``base`` environment.
+
+
 Conda Environments
 ------------------
 
@@ -185,7 +195,7 @@ or::
 Conda and Python
 ----------------
 
-When you create a new environment, conda installs the same Python version used to install conda on Spruce and Thorny (3.7).
+When you create a new environment, conda installs the same Python version used to install conda on Spruce, Thorny, and Dolly (3.7).
 If you want to use a different version of Python, for example Python 2.7, simply create a new environment and specify the version of Python that you want::
 
   conda create --name python27 python=2.7

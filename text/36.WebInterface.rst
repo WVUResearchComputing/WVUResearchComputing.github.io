@@ -28,7 +28,7 @@ You can request more cores for your interactive job, for example::
 
   $> qsub -I -l nodes=1:ppn=4
 
-On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. A way of requesting an entire node could be::
+On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores.  In contrast, nodes on Dolly Sods focus on their GPU cards. A way of requesting an entire node could be::
 
   $> qsub -I -n
 

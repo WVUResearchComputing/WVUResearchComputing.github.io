@@ -30,7 +30,7 @@ You can request more cores for your interactive job, for example::
 
     trcis001:~$ srun -n 4 --pty bash
 
-On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. A way of requesting an entire node could be::
+On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. In contrast, Dolly Sods nodes focus on their GPU card. A way of requesting an entire node could be::
 
   $> qsub -I -n
 
@@ -156,7 +156,7 @@ The path for this tutorial is as follows. First we will demonstrate how to acces
 Accessing the Dashboard
 -----------------------
 
-First, go to `Thorny Flat On Demand Dashboard <https://ondemand-tf.hpc.wvu.edu>`_
+First, go to `Thorny Flat On Demand Dashboard <https://ondemand-tf.hpc.wvu.edu>`_ or `Dolly Sods On Demand Dashboard <https://ondemand-ds.hpc.wvu.edu>`_.
 
 The first page you will see is asking for your credentials
 

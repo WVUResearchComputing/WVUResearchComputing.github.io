@@ -57,7 +57,7 @@ Where ``<username>`` is your *WVU Login account* username and ``<hostname>`` is 
 The -X option forwards *XWindow* applications running on the server to your local machine.
 Remember that the ``$>`` symbols above indicate a command on the terminal; you should not enter those initial characters.
 
-We currently have two clusters *Thorny Flat and *Spruce Knob* the hostnames are:
+We currently have three clusters, *Dolly Sods*, *Thorny Flat*, and *Spruce Knob* the hostnames are:
 
 .. list-table:: WVU's High-Performance Computer (HPC) Clusters
    :widths: 25 50 25
@@ -71,6 +71,9 @@ We currently have two clusters *Thorny Flat and *Spruce Knob* the hostnames are:
      - Operational
    * - **Thorny Flat**
      - *tf.hpc.wvu.edu*
+     - Operational
+   * - **Dolly Sods**
+     - *ds.hpc.wvu.edu*
      - Operational
 
 Spruce Knob Connectivity Instructions
@@ -87,7 +90,7 @@ To connect to Spruce Knob use the following command::
 Thorny Flat Connectivity Instructions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To connect to Thorny Flat, you must first connect to WVU's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
+To connect to Thorny Flat, you must first connect to WVU's SSH gateway server.  This gateway server will allow you to connect to Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.::
 
   $ ssh <username>@ssh.wvu.edu
 
@@ -100,6 +103,24 @@ then::
   $ ssh tf.hpc.wvu.edu
 
 .. note::  **You cannot connect directly to Thorny Flat via SSH.** Executing directly from your terminal or SSH client ``ssh tf.hpc.wvu.edu`` will always fail.
+
+
+Dolly Sods Connectivity Instructions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To connect to Dolly Sods, you must first connect to WVU's SSH gateway server.  This gateway server will allow you to connect to Dolly Sods.::
+
+  $ ssh <username>@ssh.wvu.edu
+
+More information on WVU's Gateway Service can be found `here <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301760886?src=-1814658256>`__.  When your account is created for Dolly Sods, you will automatically be approved to access WVU's SSH Gateway Service.
+
+**Note:** Two-factor authentication is required to connect to WVU's Gateway Service.  More about WVU's Two-Factor Authentication system can be found `here <https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167>`__.
+
+then::
+
+  $ ssh ds.hpc.wvu.edu
+
+.. note::  **You cannot connect directly to Dolly Sods via SSH.** Executing directly from your terminal or SSH client ``ssh ds.hpc.wvu.edu`` will always fail.
 
 
 Logging In
