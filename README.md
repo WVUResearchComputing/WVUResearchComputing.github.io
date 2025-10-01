@@ -7,3 +7,4 @@ Branches:
   - sphinx: Source files using reStructuredText
 
 
+Main editor: Guillermo Avendano-Franco <gufranco@mail.wvu.edu>
