@@ -8,3 +8,4 @@ Branches:
 
 
 Main editor: Guillermo Avendano-Franco <gufranco@mail.wvu.edu>
+Assistant editor: Irene S. Burkhalter
