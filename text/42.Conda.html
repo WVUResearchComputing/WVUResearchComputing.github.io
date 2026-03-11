@@ -102,6 +102,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Conda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#anaconda-vs-minicoda">Anaconda vs Minicoda</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#activating-conda-on-spruce-and-thorny-flat">Activating Conda on Spruce and Thorny Flat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activating-conda-on-dollysods">Activating Conda on DollySods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#conda-environments">Conda Environments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#knowing-which-environments-are-available">Knowing which environments are available</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#activating-an-existing-environment">Activating an existing environment</a></li>
@@ -225,6 +226,14 @@ Miniconda is more suited for HPC environments where a minimal installation is al
 </div>
 <p>On Thorny Flat the command to activate conda is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">conda_init</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>After activation your are positioned on the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment.</p>
+</section>
+<section id="activating-conda-on-dollysods">
+<h2>Activating Conda on DollySods<a class="headerlink" href="#activating-conda-on-dollysods" title="Permalink to this headline">¶</a></h2>
+<p>On Dolly Sods you can activate conda with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">conda</span>
 </pre></div>
 </div>
 <p>After activation your are positioned on the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment.</p>
@@ -371,7 +380,7 @@ To check the environments available execute:</p>
 </section>
 <section id="conda-and-python">
 <h2>Conda and Python<a class="headerlink" href="#conda-and-python" title="Permalink to this headline">¶</a></h2>
-<p>When you create a new environment, conda installs the same Python version used to install conda on Spruce and Thorny (3.7).
+<p>When you create a new environment, conda installs the same Python version used to install conda on Spruce, Thorny, and Dolly (3.7).
 If you want to use a different version of Python, for example Python 2.7, simply create a new environment and specify the version of Python that you want:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">python27</span> <span class="n">python</span><span class="o">=</span><span class="mf">2.7</span>
 </pre></div>

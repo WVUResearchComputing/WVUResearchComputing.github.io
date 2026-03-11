@@ -103,6 +103,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#general-ssh-connection-instructions">General SSH Connection Instructions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#spruce-knob-connectivity-instructions">Spruce Knob Connectivity Instructions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#thorny-flat-connectivity-instructions">Thorny Flat Connectivity Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dolly-sods-connectivity-instructions">Dolly Sods Connectivity Instructions</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging In</a></li>
@@ -235,7 +236,7 @@ The instructions for connecting slightly differ depending on which cluster you a
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> is your <em>WVU Login account</em> username and <code class="docutils literal notranslate"><span class="pre">&lt;hostname&gt;</span></code> is the name of the cluster you wish to connect to.
 The -X option forwards <em>XWindow</em> applications running on the server to your local machine.
 Remember that the <code class="docutils literal notranslate"><span class="pre">$&gt;</span></code> symbols above indicate a command on the terminal; you should not enter those initial characters.</p>
-<p>We currently have two clusters <em>Thorny Flat and *Spruce Knob</em> the hostnames are:</p>
+<p>We currently have three clusters, <em>Dolly Sods</em>, <em>Thorny Flat</em>, and <em>Spruce Knob</em> the hostnames are:</p>
 <table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">WVU’s High-Performance Computer (HPC) Clusters</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -258,6 +259,10 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 <td><p><em>tf.hpc.wvu.edu</em></p></td>
 <td><p>Operational</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>Dolly Sods</strong></p></td>
+<td><p><em>ds.hpc.wvu.edu</em></p></td>
+<td><p>Operational</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -271,7 +276,7 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 </section>
 <section id="thorny-flat-connectivity-instructions">
 <h3>Thorny Flat Connectivity Instructions<a class="headerlink" href="#thorny-flat-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
-<p>To connect to Thorny Flat, you must first connect to WVU’s SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
+<p>To connect to Thorny Flat, you must first connect to WVU’s SSH gateway server.  This gateway server will allow you to connect to Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
 </pre></div>
 </div>
@@ -284,6 +289,23 @@ Remember that the <code class="docutils literal notranslate"><span class="pre">$
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
+</div>
+</section>
+<section id="dolly-sods-connectivity-instructions">
+<h3>Dolly Sods Connectivity Instructions<a class="headerlink" href="#dolly-sods-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
+<p>To connect to Dolly Sods, you must first connect to WVU’s SSH gateway server.  This gateway server will allow you to connect to Dolly Sods.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
+</pre></div>
+</div>
+<p>More information on WVU’s Gateway Service can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301760886?src=-1814658256">here</a>.  When your account is created for Dolly Sods, you will automatically be approved to access WVU’s SSH Gateway Service.</p>
+<p><strong>Note:</strong> Two-factor authentication is required to connect to WVU’s Gateway Service.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167">here</a>.</p>
+<p>then:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh ds.hpc.wvu.edu
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>You cannot connect directly to Dolly Sods via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">ds.hpc.wvu.edu</span></code> will always fail.</p>
 </div>
 </section>
 </section>

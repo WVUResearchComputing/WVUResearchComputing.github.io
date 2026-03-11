@@ -129,15 +129,15 @@ WVU's recommended method for transferring data is `Globus Online <https://www.gl
 Data Transfer Nodes
 -------------------
 
-Research Computing offers dedicated servers for transferring files at each one of its supported systems/locations (i.e. Spruce Knob, Thorny Flat, and the Data Depot).  The following table describes the services available at each location as well as the associated Globus Endpoint Name or sftp Hostname.
+Research Computing offers dedicated servers for transferring files at each one of its supported systems/locations (i.e. Spruce Knob, Thorny Flat, Dolly Sods, and the Data Depot).  The following table describes the services available at each location as well as the associated Globus Endpoint Name or sftp Hostname.
 
-+-----------------+------------------+----------------------+----------------------------+--------------------+
-|                 | Spruce Knob      | Thorny Flat          | Data Depot                 | MIX Google Drive   |
-+=================+==================+======================+============================+====================+
-| Globus Endpoint | wvu#hpcdtn       | wvu#thornydtn        | wvu#datadepot              | wvu#GoogleDrive    |
-+-----------------+------------------+----------------------+----------------------------+--------------------+
-| sftp Hostname   | data.hpc.wvu.edu | tf-data.hpc.wvu.edu  | datadepot-sftp.hpc.wvu.edu | NA                 |
-+-----------------+------------------+----------------------+----------------------------+--------------------+
++-----------------+------------------+----------------------+----------------------+----------------------------+--------------------+
+|                 | Spruce Knob      | Thorny Flat          | Dolly Sods           | Data Depot                 | MIX Google Drive   |
++=================+==================+======================+======================+============================+====================+
+| Globus Endpoint | wvu#hpcdtn       | wvu#thornydtn        | wvu#dollydtn         | wvu#datadepot              | wvu#GoogleDrive    |
++-----------------+------------------+----------------------+----------------------+----------------------------+--------------------+
+| sftp Hostname   | data.hpc.wvu.edu | tf-data.hpc.wvu.edu  | ds-data.hpc.wvu.edu  | datadepot-sftp.hpc.wvu.edu | NA                 |
++-----------------+------------------+----------------------+----------------------+----------------------------+--------------------+
 
 Alternative Transfer Methods
 ----------------------------

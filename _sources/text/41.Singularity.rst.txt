@@ -25,7 +25,7 @@ There are two main components in Singulairty containers. The runtime executable 
 
 The *Container Runtime* or *Singularity runtime* is designed to leverage the above mentioned container formats. The runtime program is called singularity and is capable not only of running singularity images but also to create them.
 
-To activate singularity on your current terminal, on both, Spruce and Thorny execute::
+To activate singularity on your current terminal, on both, Spruce, Thorny and Dolly execute::
 
   module load singularity/2.5.2
 
@@ -36,7 +36,7 @@ That will modify the `$PATH` variable allowing you to execute the main command f
 Singularity Images
 ------------------
 
-The second component are *Singularity images*. On Spruce and Thorny we have a number of centrally managed images::
+The second component are *Singularity images*. On Spruce, Thorny, and Dolly we have a number of centrally managed images::
 
   /shared/software/containers
 
@@ -44,7 +44,7 @@ or using the variable::
 
   $SNG_PATH
 
-The list of Singularity images on Spruce and Thorny is the same, the table below shows the current images available.
+The list of Singularity images on Spruce, Thorny, and Dolly is the same, the table below shows the current images available.
 
 +---------------------------------------+----------------------------------------------------------------------------------+------------------------+-----+-----+
 | Image Name                            | Description                                                                      | Based on               | GUI | GPU |
@@ -144,7 +144,7 @@ and you can get a shell inside the image with::
 Non-interactive execution with Submission scripts
 -------------------------------------------------
 
-In this case you do not need to export X11, just login into Spruce or Thorny::
+In this case you do not need to export X11, just login into Spruce, Thorny, or Dolly::
 
     ssh <username>@spruce.hpc.wvu.edu
 

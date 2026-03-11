@@ -201,7 +201,7 @@
 <h2>Activating Singularity<a class="headerlink" href="#activating-singularity" title="Permalink to this headline">¶</a></h2>
 <p>There are two main components in Singulairty containers. The runtime executable and the singularity image.</p>
 <p>The <em>Container Runtime</em> or <em>Singularity runtime</em> is designed to leverage the above mentioned container formats. The runtime program is called singularity and is capable not only of running singularity images but also to create them.</p>
-<p>To activate singularity on your current terminal, on both, Spruce and Thorny execute:</p>
+<p>To activate singularity on your current terminal, on both, Spruce, Thorny and Dolly execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5.2</span>
 </pre></div>
 </div>
@@ -212,7 +212,7 @@
 </section>
 <section id="singularity-images">
 <h2>Singularity Images<a class="headerlink" href="#singularity-images" title="Permalink to this headline">¶</a></h2>
-<p>The second component are <em>Singularity images</em>. On Spruce and Thorny we have a number of centrally managed images:</p>
+<p>The second component are <em>Singularity images</em>. On Spruce, Thorny, and Dolly we have a number of centrally managed images:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">containers</span>
 </pre></div>
 </div>
@@ -220,7 +220,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$SNG_PATH
 </pre></div>
 </div>
-<p>The list of Singularity images on Spruce and Thorny is the same, the table below shows the current images available.</p>
+<p>The list of Singularity images on Spruce, Thorny, and Dolly is the same, the table below shows the current images available.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
@@ -444,7 +444,7 @@ and you can get a shell inside the image with:</p>
 </section>
 <section id="non-interactive-execution-with-submission-scripts">
 <h2>Non-interactive execution with Submission scripts<a class="headerlink" href="#non-interactive-execution-with-submission-scripts" title="Permalink to this headline">¶</a></h2>
-<p>In this case you do not need to export X11, just login into Spruce or Thorny:</p>
+<p>In this case you do not need to export X11, just login into Spruce, Thorny, or Dolly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@spruce</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>

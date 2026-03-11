@@ -219,7 +219,7 @@ The job will be allocated on one compute node and one core on that node for the 
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ srun -n 4 --pty bash
 </pre></div>
 </div>
-<p>On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. A way of requesting an entire node could be:</p>
+<p>On Spruce Knob you can request 16 cores for an entire node. There are a few nodes with 20 and 24 cores but requesting with those numbers will reduce the chances of getting a node for your execution inmeately. On Thorny Flat most nodes have 40 cores. In contrast, Dolly Sods nodes focus on their GPU card. A way of requesting an entire node could be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -n
 </pre></div>
 </div>
@@ -337,7 +337,7 @@ For product information, visit www.mathworks.com.
 </section>
 <section id="accessing-the-dashboard">
 <h2>Accessing the Dashboard<a class="headerlink" href="#accessing-the-dashboard" title="Permalink to this headline">¶</a></h2>
-<p>First, go to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">Thorny Flat On Demand Dashboard</a></p>
+<p>First, go to <a class="reference external" href="https://ondemand-tf.hpc.wvu.edu">Thorny Flat On Demand Dashboard</a> or <a class="reference external" href="https://ondemand-ds.hpc.wvu.edu">Dolly Sods On Demand Dashboard</a>.</p>
 <p>The first page you will see is asking for your credentials</p>
 <img alt="../_images/OOD-CAS.jpg" src="../_images/OOD-CAS.jpg" />
 <p>After entering your credentials and using your DUO authentication you will land on the Open On Demand Dashboard:</p>

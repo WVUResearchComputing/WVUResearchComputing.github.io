@@ -20,7 +20,7 @@ of each one of them.
 Home Directory
 --------------
 
-Home directories on Spruce Knob and Thorny Flat are located in /users directory
+Home directories on Spruce Knob, Thorny Flat, and Dolly Sods are located in /users directory
 and they are the default login location for users.
 The default disk quota for each user is 10 GB.
 As such, we recommend that home directories use should be

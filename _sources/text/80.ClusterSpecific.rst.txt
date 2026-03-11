@@ -11,3 +11,6 @@ Clusters Specifications
   83.ThornyFlat.rst
   84.DollySods.rst
   85.GoFirst.rst
+  86.CTSI.rst
+  87.HarpersFerry.rst
+

@@ -40,6 +40,7 @@ They are called generically ``$HOME`` and ``$SCRATCH``.
 There are storage limits imposed on those folders to prevent a single user to exhaust the storage available on the cluster.
 These limits are called the *quota* and you can use the command ``quota`` to see your quota and how much data storage you are currently using.
 In the case of Thorny Flat, there is a quota of 10GB on the ``$HOME`` folder and 20TB on ``$SCRATCH``.
+In the case of Dolly Sods, there is a quota of 10GB on the ``$HOME`` folder.
 For information about where these directories are located and storage quotas, please visit the `Disk Storage <Disk Storage>`__ page.
 
 Sharing User Directories
