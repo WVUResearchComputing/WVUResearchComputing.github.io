@@ -1,21 +1,21 @@
-Mountaineer (2013-2018)
+Mountaineer (2011-2018)
 =======================
 
 Mountaineer was the first centrally managed HPC cluster at WVU.
-Mountaineer was replaced by the HPC cluster Spruce Knob on Fall of 2018.
+Mountaineer was replaced by the HPC clusters Spruce Knob that was introduced in 2013 and was finally decomissioned in 2018 before the launch of Thorny Flat in 2019.
 
-Mountaineer was built with 32 compute nodes. 
-Each compute nodes was a dual socket computer (2 CPUs per node).
-Each CPU on Thorny had 6 cores.
-The total amount of cores is the product 32 (nodes) x 2 (CPUs per node) x 6 (cores per CPU) equal to 384 cores.
+Mountaineer was built with 32 compute nodes.
+Each compute node had a dual socket mainboard (2 CPUs per node).
+On Mountaineer, each CPU had 6 CPU cores, ie 12 CPU cores per node.
 
-The total amount of memory per node is 48GB, considering that each node has 12 cores, the "Fair share" of memory for Mountaineer is 4GB per core. 
-It is important to know this number because you can take optimize the use of the cluster for adjusting your job requirements in such a way that your jobs use 4GB per core. For example, if you have a job that uses 16GB on two cores, maybe you could ask for 4 cores if by doing that your memory usage will not go to 32GB, that is sometimes the case. By a smart selection of the number of cores and memory, you could maximize your job and the overall performance of the cluster will be better. All of that assuming that your code takes advantage of parallelization.
+The total amount of cores was 384 as the product 32 (nodes) x 2 (CPUs per node) x 6 (cores per CPU).
+
+The total amount of memory per node was 48GB, considering that each node has 12 cores, the "fair-share" of memory for Mountaineer was 4GB per core. 
 
 Hardware
 --------
 
-Mountaineer is a 384 core cluster with 1.5 TB of RAM.
+Mountaineer was a 384 core cluster with an aggregated 1.5 TB of RAM.
 
   * Hostname
       * mountaineer.hpc.wvu.edu
@@ -29,13 +29,16 @@ Mountaineer is a 384 core cluster with 1.5 TB of RAM.
           * 32 compute nodes
           * Dual socket mainboards
           * Dual six-core `Intel Xeon X5650 2.67 GHz`__ CPUs.
+          * The CPU was a processor from the Westmere EP microarchitecture and released Q1 of 2010.
       * Memory
           * 48 GB of RAM per node
       * Network Specifics
           * 10 Gb fiber connections between compute nodes
           * 1 Gb Ethernet connection from nodes to network attached storage
 
-.. _X5650: https://ark.intel.com/content/www/us/en/ark/products/47922/intel-xeon-processor-x5650-12m-cache-2-66-ghz-6-40-gts-intel-qpi.html
+Moutaineer HPC Cluster was hosted in the facilities of West Virginia Network (WVNET) (837 Chestnut Ridge Road, Morgantown, WV 26505). 
+
+.. _X5650: https://www.intel.com/content/www/us/en/products/sku/47922/intel-xeon-processor-x5650-12m-cache-2-66-ghz-6-40-gts-intel-qpi/specifications.html
 
 __ X5650_
 
