@@ -1,0 +1,52 @@
+CTSI HPC Cluster (2021-)
+========================
+
+The CTSI HPC Cluster is a HIPAA compliant High-Performance Computing (HPC) cluster. The CTSI HPC Cluster serves the HPC needs of West Virginia University (WVU) implementing standards for the privacy and security of protected health information (PHI). It is hosted in WVU Medicine ITC Information Technology Center, 315 Point Marion Rd, Morgantown, WV 26505, United States.
+
+The CTSI HPC Cluster was deployed in June 2021, it has 8 compute nodes nodes, two infrastructure nodes and one login node. 
+The system has one node with 1.5TB of RAM and two nodes with two NVIDIA Tesla V100S on each node.
+
+Overview
+--------
+
+The CTSI HPC Cluster has 8 compute nodes.
+
+ * 5 compute nodes dual socket with Intel(R) Xeon(R) Gold 6248R CPU @ 3.00GHz (24 cores per CPU) and 384GB of RAM
+ * 1 compute nodes quad socket with Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz (20 cores per CPU) and 1.5TB
+ * 2 compute nodes are dual socket nodes with Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz (20 cores per CPU), 384 GB of RAM, and two NVIDIA Tesla V100S with 32GB of GPU RAM.
+
+The CTSI HPC Cluster uses Slurm as workload management and it has a variety of compilers, numerical libraries, and scientific software specifically compiled and optimized for the hardware architecture.
+
+Acknowledgment Message
+----------------------
+
+We ask our users to acknowledge the use of the CTSI HPC Cluster in all publications that were carried out thanks to this resource. The message in the acknowledgment section could be as follows:
+
+Hardware Acceleration
+---------------------
+
+The CTSI HPC Cluster has two nodes with GPU cards. Each GPIU node has two NVIDIA Tesla V100S PCI-Express and 32GB of GPU RAM.
+The specifications of each card can be seen in the table below:
+
++-----------------+-----------------+--------------+----------+----------------+---------------+
+| | GPU Card      | | GPU           | | CUDA       | | Tensor | | Max Power    | | Compute     |
+| | Model         | | Memory        | | Cores      | | Cores  | | Compsumption | | Capability  |
++=================+=================+==============+==========+================+===============+
+| NVIDIA V100     | 32 GB HBM2      | 5120         | 640      | 250 W          | 7.0           |
++-----------------+-----------------+--------------+----------+----------------+---------------+
+
+Full specifications for the GPU cards can be found for `NVIDIA V100`_ 
+
+The GPUs in the HPC Cluster have different compute capabilities.
+
+The NVIDIA Tesla V100S 32GB has a compute capability of 7.0, featuring 640 Tensor Cores and 5120 CUDA Cores, which allows it to perform high-level computations efficiently considering the age of the card.
+
+The compute capability of a device is represented by a version number, also sometimes called its “SM version”.
+This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU.
+
+The compute capability comprises a major revision number X and a minor revision number Y and is denoted by X.Y.
+You can see `Compute Capabilities`_ for the V100 and other GPU cards.
+
+.. _NVIDIA V100: https://images.nvidia.com/content/technologies/volta/pdf/volta-v100-datasheet-update-us-1165301-r5.pdf
+.. _Compute Capabilities: https://developer.nvidia.com/cuda-gpus
+

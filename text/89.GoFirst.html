@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Clusters Specifications &mdash; WVU-RC 2025.03.15 documentation</title>
+  <title>Go First Data-Analytics Cluster &mdash; WVU-RC 2025.03.15 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mountaineer (2011-2018)" href="81.Mountaineer.html" />
-    <link rel="prev" title="Electronic Structure: Orca" href="711.Orca.html" /> 
+    <link rel="next" title="References" href="90.References.html" />
+    <link rel="prev" title="Harpers Ferry (2025-)" href="86.HarpersFerry.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,14 +101,24 @@
 <li class="toctree-l1"><a class="reference internal" href="500.ScientificProgramming.html">Scientific Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Clusters Specifications</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="81.Mountaineer.html">Mountaineer (2011-2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="82.Spruce.html">Spruce Knob (2014-2023)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html">Thorny Flat (2019-)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="84.CTSI.html">CTSI HPC Cluster (2021-)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="85.DollySods.html">Dolly Sods (2023-)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="86.HarpersFerry.html">Harpers Ferry (2025-)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="89.GoFirst.html">Go First Data-Analytics Cluster</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Go First Data-Analytics Cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-in-node">Log in Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#name-node">Name Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#worker-nodes">3 Worker Nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-features">Additional Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
@@ -158,13 +168,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Clusters Specifications</li>
+          <li><a href="80.ClusterSpecific.html">Clusters Specifications</a> &raquo;</li>
+        
+      <li>Go First Data-Analytics Cluster</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/80.ClusterSpecific.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/89.GoFirst.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -177,58 +189,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="clusters-specifications">
-<span id="chap-cluster-specific"></span><h1>Clusters Specifications<a class="headerlink" href="#clusters-specifications" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="81.Mountaineer.html">Mountaineer (2011-2018)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="81.Mountaineer.html#hardware">Hardware</a></li>
+  <section id="go-first-data-analytics-cluster">
+<h1>Go First Data-Analytics Cluster<a class="headerlink" href="#go-first-data-analytics-cluster" title="Permalink to this headline">¶</a></h1>
+<p>GoFirst Cluster is a dedicated WVU MS Business Data Analytics computing resource that allows students in the Business Data Analytics M.S. program to gain experience in a controlled, secure cloud-computing environment. GoFirst is built from four compute nodes running HDFS shared filesystem, to run Hadoop and Spark jobs using RStudio as a front-end interface.</p>
+<section id="hardware">
+<h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
+<section id="log-in-node">
+<h3>Log in Node<a class="headerlink" href="#log-in-node" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Dual CPU E5-2650 v4 &#64; 2.20GHz</p></li>
+<li><p>24 Cores Total</p></li>
+<li><p>256GB Memory</p></li>
+<li><p>500 GB Raw Space</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="82.Spruce.html">Spruce Knob (2014-2023)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html#hardware">Hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html#queues">Queues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html#research-team-queues">Research Team Queues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html#standby-queue">Standby Queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html#community-node-queues">Community Node Queues</a></li>
+</section>
+<section id="name-node">
+<h3>Name Node<a class="headerlink" href="#name-node" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Dual Intel 2620 v3 &#64; 2.4 GHz</p></li>
+<li><p>12 Cores Total</p></li>
+<li><p>64 GB Memory</p></li>
+<li><p>3.4 TB Raw Space</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="83.ThornyFlat.html">Thorny Flat (2019-)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html#hardware">Hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html#partitions">Partitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html#research-team-partitions">Research Team Partitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html#standby-partition">Standby Partition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html#community-node-partitions">Community Node Partitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html#hardware-acceleration">Hardware acceleration</a></li>
+</section>
+<section id="worker-nodes">
+<h3>3 Worker Nodes<a class="headerlink" href="#worker-nodes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Dual Intel 2650 v3 &#64; 2.3 GHz</p></li>
+<li><p>20 Cores Each (60 Total)</p></li>
+<li><p>128 GB RAM Each (384 GB Total)</p></li>
+<li><p>21 TB Combined Worker Node Storage (7 TB usable)</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="84.CTSI.html">CTSI HPC Cluster (2021-)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="84.CTSI.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="84.CTSI.html#acknowledgment-message">Acknowledgment Message</a></li>
-<li class="toctree-l2"><a class="reference internal" href="84.CTSI.html#hardware-acceleration">Hardware Acceleration</a></li>
+</section>
+<section id="additional-features">
+<h3>Additional Features<a class="headerlink" href="#additional-features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>10 Gbps Ethernet Interconnect</p></li>
+<li><p>Shares HPC resources (i.e. additional storage).</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="85.DollySods.html">Dolly Sods (2023-)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="85.DollySods.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="85.DollySods.html#acknowledgment-message">Acknowledgment Message</a></li>
-<li class="toctree-l2"><a class="reference internal" href="85.DollySods.html#hardware-acceleration">Hardware Acceleration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="86.HarpersFerry.html">Harpers Ferry (2025-)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="86.HarpersFerry.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="86.HarpersFerry.html#acknowledgment-message">Acknowledgment Message</a></li>
-<li class="toctree-l2"><a class="reference internal" href="86.HarpersFerry.html#hardware-acceleration">Hardware Acceleration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="89.GoFirst.html">Go First Data-Analytics Cluster</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="89.GoFirst.html#hardware">Hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="89.GoFirst.html#usage">Usage</a></li>
-</ul>
-</li>
-</ul>
-</div>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Users connect to Citrix through MasterApps.wvu.edu. In Citrix the user should have IE and Firefox browsers they can launch. After launching one of them they can go to gbef4001.hpc.wvu.edu to access RStudio Server and work within RStudio. Jobs can be launched through Hadoop or Spark 2.</p>
+</section>
 </section>
 
 
@@ -239,10 +243,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="81.Mountaineer.html" class="btn btn-neutral float-right" title="Mountaineer (2011-2018)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="90.References.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="711.Orca.html" class="btn btn-neutral float-left" title="Electronic Structure: Orca" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="86.HarpersFerry.html" class="btn btn-neutral float-left" title="Harpers Ferry (2025-)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

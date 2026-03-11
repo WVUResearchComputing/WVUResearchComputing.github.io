@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CTSI HPC Cluster (2021-) &mdash; WVU-RC 2025.03.15 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dolly Sods (2023-)" href="85.DollySods.html" />
+    <link rel="prev" title="Thorny Flat (2019-)" href="83.ThornyFlat.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2025.03
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUsage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUsage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="500.ScientificProgramming.html">Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="600.SoftAdmin.html">Software Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="700.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="81.Mountaineer.html">Mountaineer (2011-2018)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="82.Spruce.html">Spruce Knob (2014-2023)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="83.ThornyFlat.html">Thorny Flat (2019-)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CTSI HPC Cluster (2021-)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acknowledgment-message">Acknowledgment Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-acceleration">Hardware Acceleration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="85.DollySods.html">Dolly Sods (2023-)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="86.HarpersFerry.html">Harpers Ferry (2025-)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="89.GoFirst.html">Go First Data-Analytics Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="80.ClusterSpecific.html">Clusters Specifications</a> &raquo;</li>
+        
+      <li>CTSI HPC Cluster (2021-)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/84.CTSI.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="ctsi-hpc-cluster-2021">
+<h1>CTSI HPC Cluster (2021-)<a class="headerlink" href="#ctsi-hpc-cluster-2021" title="Permalink to this headline">¶</a></h1>
+<p>The CTSI HPC Cluster is a HIPAA compliant High-Performance Computing (HPC) cluster. The CTSI HPC Cluster serves the HPC needs of West Virginia University (WVU) implementing standards for the privacy and security of protected health information (PHI). It is hosted in WVU Medicine ITC Information Technology Center, 315 Point Marion Rd, Morgantown, WV 26505, United States.</p>
+<p>The CTSI HPC Cluster was deployed in June 2021, it has 8 compute nodes nodes, two infrastructure nodes and one login node.
+The system has one node with 1.5TB of RAM and two nodes with two NVIDIA Tesla V100S on each node.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The CTSI HPC Cluster has 8 compute nodes.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>5 compute nodes dual socket with Intel(R) Xeon(R) Gold 6248R CPU &#64; 3.00GHz (24 cores per CPU) and 384GB of RAM</p></li>
+<li><p>1 compute nodes quad socket with Intel(R) Xeon(R) Gold 6248 CPU &#64; 2.50GHz (20 cores per CPU) and 1.5TB</p></li>
+<li><p>2 compute nodes are dual socket nodes with Intel(R) Xeon(R) Gold 6248 CPU &#64; 2.50GHz (20 cores per CPU), 384 GB of RAM, and two NVIDIA Tesla V100S with 32GB of GPU RAM.</p></li>
+</ul>
+</div></blockquote>
+<p>The CTSI HPC Cluster uses Slurm as workload management and it has a variety of compilers, numerical libraries, and scientific software specifically compiled and optimized for the hardware architecture.</p>
+</section>
+<section id="acknowledgment-message">
+<h2>Acknowledgment Message<a class="headerlink" href="#acknowledgment-message" title="Permalink to this headline">¶</a></h2>
+<p>We ask our users to acknowledge the use of the CTSI HPC Cluster in all publications that were carried out thanks to this resource. The message in the acknowledgment section could be as follows:</p>
+</section>
+<section id="hardware-acceleration">
+<h2>Hardware Acceleration<a class="headerlink" href="#hardware-acceleration" title="Permalink to this headline">¶</a></h2>
+<p>The CTSI HPC Cluster has two nodes with GPU cards. Each GPIU node has two NVIDIA Tesla V100S PCI-Express and 32GB of GPU RAM.
+The specifications of each card can be seen in the table below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 18%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line">GPU Card</div>
+<div class="line">Model</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">GPU</div>
+<div class="line">Memory</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CUDA</div>
+<div class="line">Cores</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Tensor</div>
+<div class="line">Cores</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Max Power</div>
+<div class="line">Compsumption</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Compute</div>
+<div class="line">Capability</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NVIDIA V100</p></td>
+<td><p>32 GB HBM2</p></td>
+<td><p>5120</p></td>
+<td><p>640</p></td>
+<td><p>250 W</p></td>
+<td><p>7.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Full specifications for the GPU cards can be found for <a class="reference external" href="https://images.nvidia.com/content/technologies/volta/pdf/volta-v100-datasheet-update-us-1165301-r5.pdf">NVIDIA V100</a></p>
+<p>The GPUs in the HPC Cluster have different compute capabilities.</p>
+<p>The NVIDIA Tesla V100S 32GB has a compute capability of 7.0, featuring 640 Tensor Cores and 5120 CUDA Cores, which allows it to perform high-level computations efficiently considering the age of the card.</p>
+<p>The compute capability of a device is represented by a version number, also sometimes called its “SM version”.
+This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU.</p>
+<p>The compute capability comprises a major revision number X and a minor revision number Y and is denoted by X.Y.
+You can see <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">Compute Capabilities</a> for the V100 and other GPU cards.</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="85.DollySods.html" class="btn btn-neutral float-right" title="Dolly Sods (2023-)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="83.ThornyFlat.html" class="btn btn-neutral float-left" title="Thorny Flat (2019-)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2025, West Virginia University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
