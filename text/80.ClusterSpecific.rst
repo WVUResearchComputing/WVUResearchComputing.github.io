@@ -9,8 +9,8 @@ Clusters Specifications
   81.Mountaineer.rst
   82.Spruce.rst
   83.ThornyFlat.rst
-  84.DollySods.rst
-  85.GoFirst.rst
-  86.CTSI.rst
-  87.HarpersFerry.rst
+  84.CTSI.rst
+  85.DollySods.rst
+  86.HarpersFerry.rst
+  89.GoFirst.rst
 
