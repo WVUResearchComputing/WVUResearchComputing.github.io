@@ -29,18 +29,12 @@ Specifications of AMD EPYC 9754
 
 Harpers Ferry compute nodes were build with dual socket 4th Generation AMD EPYC™ Processors.
 The following is a quick summary of some relevant features of these processors. 
-For more information visit `AMD 9754`_
+For more information visit the official website at `AMD 9754`_
 
 +---------------------------------+------------------+
 | **Name**                        | AMD EPYC™ 9754   |
 +---------------------------------+------------------+
-| **Family**                      | EPYC             |
-+---------------------------------+------------------+
-| **Series**                      | EPYC 9004 Series |
-+---------------------------------+------------------+
-| **Form Factor**                 | Servers          |
-+---------------------------------+------------------+
-| **Regional Availability**       | Global           |
+| **Family and Series**           | EPYC 9004 Series |
 +---------------------------------+------------------+
 | **# of CPU Cores**              | 128              |
 +---------------------------------+------------------+
@@ -54,9 +48,9 @@ For more information visit `AMD 9754`_
 +---------------------------------+------------------+
 | **L3 Cache**                    | 256 MB           |
 +---------------------------------+------------------+
-| **Default TDP**                 | 360W             |
+| **Default TDP**                 | 360 W            |
 +---------------------------------+------------------+
-| **AMD Configurable TDP (cTDP)** | 320-400W         |
+| **AMD Configurable TDP (cTDP)** | 320-400 W        |
 +---------------------------------+------------------+
 | **CPU Socket**                  | SP5              |
 +---------------------------------+------------------+
@@ -71,9 +65,7 @@ Software
 Workload Manager
 ~~~~~~~~~~~~~~~~
 
-Harpers Ferry uses Slurm as workload manager
-
-The partitions in the cluster follows:
+Harpers Ferry uses Slurm as workload manager. There are five paritions defined and there is a default memory per CPU defined for each partition. The default partition is `defq` and allows jobs for up to 6 hours. See table below for more information about the parititions defined.
 
 +-----------+-------------+------------+--------------------+------------------+
 | Partition | Time Limit  | | Number of| | Nodes in         | | Default Memory | 
@@ -94,7 +86,22 @@ The partitions in the cluster follows:
 Scientific Software
 ~~~~~~~~~~~~~~~~~~~
 
-Harpers Ferruy has a variety of compilers, numerical libraries, and scientific software specifically compiled and optimized for the hardware architecture.
+Harpers Ferry has a variety of compilers, numerical libraries, and scientific software specifically compiled and optimized for the hardware architecture.
+
++--------------+----------------+----------------+-------------+-------------------+
+|              | | GNU Compiler | | GNU Compiler | | NVIDIA    | | Intel           | 
+|              | | Collection   | | Collection   | | HPCSDK    | | oneAPI          |
++==============+================+================+=============+===================+
+| Env. Module  | Host compiler  | gcc/13.1.0     | nvhpc/26.1  | compiler/2025.3.2 |
++--------------+----------------+----------------+-------------+-------------------+
+| Version      | 11.5.0         | 13.1.0         | 26.1-0      | 2025.3.2          |
++--------------+----------------+----------------+-------------+-------------------+
+| C Compiler   | gcc            | gcc            | nvc         | icx               |
++--------------+----------------+----------------+-------------+-------------------+
+| C++ Compiler | g++            | g++            | nvc++       | icpx              |
++--------------+----------------+----------------+-------------+-------------------+
+| Fortran      | gfortran       | gfortran       | nvfortran   | ifx               |
++--------------+----------------+----------------+-------------+-------------------+
 
 
 Acknowledgment Message
@@ -106,8 +113,4 @@ We ask our users to acknowledge the use of Harpers Ferry in all publications tha
 
 
 .. _AMD 9754: https://www.amd.com/en/products/processors/server/epyc/4th-generation-9004-and-8004-series/amd-epyc-9754.html
-.. _NVIDIA A30: https://www.nvidia.com/content/dam/en-zz/Solutions/data-center/products/a30-gpu/pdf/a30-datasheet.pdf
-.. _NVIDIA A40: https://images.nvidia.com/content/Solutions/data-center/a40/nvidia-a40-datasheet.pdf
-.. _NVIDIA A100: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf
-.. _Compute Capabilities: https://developer.nvidia.com/cuda-gpus
 
