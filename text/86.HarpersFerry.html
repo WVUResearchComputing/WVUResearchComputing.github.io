@@ -259,26 +259,62 @@
 <p>Harpers Ferry compute nodes were build with dual socket 4th Generation AMD EPYC™ Processors.
 The following is a quick summary of some relevant features of these processors.
 For more information visit <a class="reference external" href="https://www.amd.com/en/products/processors/server/epyc/4th-generation-9004-and-8004-series/amd-epyc-9754.html">AMD 9754</a></p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Name: AMD EPYC™ 9754</p></li>
-<li><p>Family: EPYC</p></li>
-<li><p>Series: EPYC 9004 Series</p></li>
-<li><p>Form Factor: Servers</p></li>
-<li><p>Regional Availability: Global</p></li>
-<li><p># of CPU Cores: 128</p></li>
-<li><p># of Threads: 256</p></li>
-<li><p>Max. Boost Clock: Up to 3.1 GHz</p></li>
-<li><p>All Core Boost Speed: 3.1 GHz</p></li>
-<li><p>Base Clock: 2.25 GHz</p></li>
-<li><p>L3 Cache: 256 MB</p></li>
-<li><p>Default TDP: 360W</p></li>
-<li><p>AMD Configurable TDP (cTDP): 320-400W</p></li>
-<li><p>CPU Socket: SP5</p></li>
-<li><p>Socket Count: 1P / 2P</p></li>
-<li><p>Launch Date: 06/13/2023</p></li>
-</ul>
-</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 65%" />
+<col style="width: 35%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Name</strong></p></td>
+<td><p>AMD EPYC™ 9754</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Family</strong></p></td>
+<td><p>EPYC</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Series</strong></p></td>
+<td><p>EPYC 9004 Series</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Form Factor</strong></p></td>
+<td><p>Servers</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Regional Availability</strong></p></td>
+<td><p>Global</p></td>
+</tr>
+<tr class="row-even"><td><p><strong># of CPU Cores</strong></p></td>
+<td><p>128</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong># of Threads</strong></p></td>
+<td><p>256</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Max. Boost Clock</strong></p></td>
+<td><p>Up to 3.1 GHz</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>All Core Boost Speed</strong></p></td>
+<td><p>3.1 GHz</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Base Clock</strong></p></td>
+<td><p>2.25 GHz</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>L3 Cache</strong></p></td>
+<td><p>256 MB</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Default TDP</strong></p></td>
+<td><p>360W</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>AMD Configurable TDP (cTDP)</strong></p></td>
+<td><p>320-400W</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CPU Socket</strong></p></td>
+<td><p>SP5</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Socket Count</strong></p></td>
+<td><p>1P / 2P</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Launch Date</strong></p></td>
+<td><p>06/13/2023</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="software">
@@ -286,6 +322,68 @@ For more information visit <a class="reference external" href="https://www.amd.c
 <section id="workload-manager">
 <h3>Workload Manager<a class="headerlink" href="#workload-manager" title="Permalink to this headline">¶</a></h3>
 <p>Harpers Ferry uses Slurm as workload manager</p>
+<p>The partitions in the cluster follows:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 27%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Partition</p></th>
+<th class="head"><p>Time Limit</p></th>
+<th class="head"><div class="line-block">
+<div class="line">Number of</div>
+<div class="line">Nodes</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Nodes in</div>
+<div class="line">Partition</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Default Memory</div>
+<div class="line">per CPU</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>defq*</p></td>
+<td><p>6 hours</p></td>
+<td><p>35</p></td>
+<td><p>hcocs[001-035]</p></td>
+<td><p>3 GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>day_3gb</p></td>
+<td><p>1 day</p></td>
+<td><p>35</p></td>
+<td><p>hcocs[001-035]</p></td>
+<td><p>3 GB</p></td>
+</tr>
+<tr class="row-even"><td><p>day_12gb</p></td>
+<td><p>1 day</p></td>
+<td><p>2</p></td>
+<td><p>hcocx[001-002]</p></td>
+<td><p>12 GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>week_3gb</p></td>
+<td><p>1 week</p></td>
+<td><p>35</p></td>
+<td><p>hcocs[001-035]</p></td>
+<td><p>3 GB</p></td>
+</tr>
+<tr class="row-even"><td><p>week_12gb</p></td>
+<td><p>1 week</p></td>
+<td><p>2</p></td>
+<td><p>hcocx[001-002]</p></td>
+<td><p>12 GB</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="scientific-software">
 <h3>Scientific Software<a class="headerlink" href="#scientific-software" title="Permalink to this headline">¶</a></h3>

@@ -31,25 +31,39 @@ Harpers Ferry compute nodes were build with dual socket 4th Generation AMD EPYC�
 The following is a quick summary of some relevant features of these processors. 
 For more information visit `AMD 9754`_
 
-    * Name: AMD EPYC™ 9754 
-    * Family: EPYC 
-    * Series: EPYC 9004 Series 
-    * Form Factor: Servers 
-    * Regional Availability: Global 
-    * # of CPU Cores: 128 
-    * # of Threads: 256 
-    * Max. Boost Clock: Up to 3.1 GHz 
-    * All Core Boost Speed: 3.1 GHz 
-    * Base Clock: 2.25 GHz 
-    * L3 Cache: 256 MB 
-    * Default TDP: 360W 
-    * AMD Configurable TDP (cTDP): 320-400W 
-    * CPU Socket: SP5 
-    * Socket Count: 1P / 2P 
-    * Launch Date: 06/13/2023 
-
-
-
++---------------------------------+------------------+
+| **Name**                        | AMD EPYC™ 9754   |
++---------------------------------+------------------+
+| **Family**                      | EPYC             |
++---------------------------------+------------------+
+| **Series**                      | EPYC 9004 Series |
++---------------------------------+------------------+
+| **Form Factor**                 | Servers          |
++---------------------------------+------------------+
+| **Regional Availability**       | Global           |
++---------------------------------+------------------+
+| **# of CPU Cores**              | 128              |
++---------------------------------+------------------+
+| **# of Threads**                | 256              |
++---------------------------------+------------------+
+| **Max. Boost Clock**            | Up to 3.1 GHz    |
++---------------------------------+------------------+
+| **All Core Boost Speed**        | 3.1 GHz          |
++---------------------------------+------------------+
+| **Base Clock**                  | 2.25 GHz         |
++---------------------------------+------------------+
+| **L3 Cache**                    | 256 MB           |
++---------------------------------+------------------+
+| **Default TDP**                 | 360W             |
++---------------------------------+------------------+
+| **AMD Configurable TDP (cTDP)** | 320-400W         |
++---------------------------------+------------------+
+| **CPU Socket**                  | SP5              |
++---------------------------------+------------------+
+| **Socket Count**                | 1P / 2P          |
++---------------------------------+------------------+
+| **Launch Date**                 | 06/13/2023       |
++---------------------------------+------------------+
 
 Software
 --------
@@ -58,6 +72,24 @@ Workload Manager
 ~~~~~~~~~~~~~~~~
 
 Harpers Ferry uses Slurm as workload manager
+
+The partitions in the cluster follows:
+
++-----------+-------------+------------+--------------------+------------------+
+| Partition | Time Limit  | | Number of| | Nodes in         | | Default Memory | 
+|           |             | | Nodes    | | Partition        | | per CPU        |
++===========+=============+============+====================+==================+
+| defq*     | 6 hours     | 35         | hcocs[001-035]     | 3 GB             |
++-----------+-------------+------------+--------------------+------------------+
+| day_3gb   | 1 day       | 35         | hcocs[001-035]     | 3 GB             |
++-----------+-------------+------------+--------------------+------------------+
+| day_12gb  | 1 day       | 2          | hcocx[001-002]     | 12 GB            |
++-----------+-------------+------------+--------------------+------------------+
+| week_3gb  | 1 week      | 35         | hcocs[001-035]     | 3 GB             |
++-----------+-------------+------------+--------------------+------------------+
+| week_12gb | 1 week      | 2          | hcocx[001-002]     | 12 GB            |
++-----------+-------------+------------+--------------------+------------------+
+
 
 Scientific Software
 ~~~~~~~~~~~~~~~~~~~
