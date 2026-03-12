@@ -258,7 +258,7 @@
 <h3>Specifications of AMD EPYC 9754<a class="headerlink" href="#specifications-of-amd-epyc-9754" title="Permalink to this headline">¶</a></h3>
 <p>Harpers Ferry compute nodes were build with dual socket 4th Generation AMD EPYC™ Processors.
 The following is a quick summary of some relevant features of these processors.
-For more information visit <a class="reference external" href="https://www.amd.com/en/products/processors/server/epyc/4th-generation-9004-and-8004-series/amd-epyc-9754.html">AMD 9754</a></p>
+For more information visit the official website at <a class="reference external" href="https://www.amd.com/en/products/processors/server/epyc/4th-generation-9004-and-8004-series/amd-epyc-9754.html">AMD 9754</a></p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 65%" />
@@ -268,49 +268,40 @@ For more information visit <a class="reference external" href="https://www.amd.c
 <tr class="row-odd"><td><p><strong>Name</strong></p></td>
 <td><p>AMD EPYC™ 9754</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Family</strong></p></td>
-<td><p>EPYC</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Series</strong></p></td>
+<tr class="row-even"><td><p><strong>Family and Series</strong></p></td>
 <td><p>EPYC 9004 Series</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Form Factor</strong></p></td>
-<td><p>Servers</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Regional Availability</strong></p></td>
-<td><p>Global</p></td>
-</tr>
-<tr class="row-even"><td><p><strong># of CPU Cores</strong></p></td>
+<tr class="row-odd"><td><p><strong># of CPU Cores</strong></p></td>
 <td><p>128</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong># of Threads</strong></p></td>
+<tr class="row-even"><td><p><strong># of Threads</strong></p></td>
 <td><p>256</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Max. Boost Clock</strong></p></td>
+<tr class="row-odd"><td><p><strong>Max. Boost Clock</strong></p></td>
 <td><p>Up to 3.1 GHz</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>All Core Boost Speed</strong></p></td>
+<tr class="row-even"><td><p><strong>All Core Boost Speed</strong></p></td>
 <td><p>3.1 GHz</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Base Clock</strong></p></td>
+<tr class="row-odd"><td><p><strong>Base Clock</strong></p></td>
 <td><p>2.25 GHz</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>L3 Cache</strong></p></td>
+<tr class="row-even"><td><p><strong>L3 Cache</strong></p></td>
 <td><p>256 MB</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Default TDP</strong></p></td>
-<td><p>360W</p></td>
+<tr class="row-odd"><td><p><strong>Default TDP</strong></p></td>
+<td><p>360 W</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>AMD Configurable TDP (cTDP)</strong></p></td>
-<td><p>320-400W</p></td>
+<tr class="row-even"><td><p><strong>AMD Configurable TDP (cTDP)</strong></p></td>
+<td><p>320-400 W</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>CPU Socket</strong></p></td>
+<tr class="row-odd"><td><p><strong>CPU Socket</strong></p></td>
 <td><p>SP5</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Socket Count</strong></p></td>
+<tr class="row-even"><td><p><strong>Socket Count</strong></p></td>
 <td><p>1P / 2P</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Launch Date</strong></p></td>
+<tr class="row-odd"><td><p><strong>Launch Date</strong></p></td>
 <td><p>06/13/2023</p></td>
 </tr>
 </tbody>
@@ -321,8 +312,7 @@ For more information visit <a class="reference external" href="https://www.amd.c
 <h2>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h2>
 <section id="workload-manager">
 <h3>Workload Manager<a class="headerlink" href="#workload-manager" title="Permalink to this headline">¶</a></h3>
-<p>Harpers Ferry uses Slurm as workload manager</p>
-<p>The partitions in the cluster follows:</p>
+<p>Harpers Ferry uses Slurm as workload manager. There are five paritions defined and there is a default memory per CPU defined for each partition. The default partition is <cite>defq</cite> and allows jobs for up to 6 hours. See table below for more information about the parititions defined.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 15%" />
@@ -387,7 +377,72 @@ For more information visit <a class="reference external" href="https://www.amd.c
 </section>
 <section id="scientific-software">
 <h3>Scientific Software<a class="headerlink" href="#scientific-software" title="Permalink to this headline">¶</a></h3>
-<p>Harpers Ferruy has a variety of compilers, numerical libraries, and scientific software specifically compiled and optimized for the hardware architecture.</p>
+<p>Harpers Ferry has a variety of compilers, numerical libraries, and scientific software specifically compiled and optimized for the hardware architecture.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 17%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><div class="line-block">
+<div class="line">GNU Compiler</div>
+<div class="line">Collection</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">GNU Compiler</div>
+<div class="line">Collection</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">NVIDIA</div>
+<div class="line">HPCSDK</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Intel</div>
+<div class="line">oneAPI</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Env. Module</p></td>
+<td><p>Host compiler</p></td>
+<td><p>gcc/13.1.0</p></td>
+<td><p>nvhpc/26.1</p></td>
+<td><p>compiler/2025.3.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Version</p></td>
+<td><p>11.5.0</p></td>
+<td><p>13.1.0</p></td>
+<td><p>26.1-0</p></td>
+<td><p>2025.3.2</p></td>
+</tr>
+<tr class="row-even"><td><p>C Compiler</p></td>
+<td><p>gcc</p></td>
+<td><p>gcc</p></td>
+<td><p>nvc</p></td>
+<td><p>icx</p></td>
+</tr>
+<tr class="row-odd"><td><p>C++ Compiler</p></td>
+<td><p>g++</p></td>
+<td><p>g++</p></td>
+<td><p>nvc++</p></td>
+<td><p>icpx</p></td>
+</tr>
+<tr class="row-even"><td><p>Fortran</p></td>
+<td><p>gfortran</p></td>
+<td><p>gfortran</p></td>
+<td><p>nvfortran</p></td>
+<td><p>ifx</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="acknowledgment-message">
