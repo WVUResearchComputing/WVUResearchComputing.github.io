@@ -15,14 +15,40 @@ Hardware
 
 HPC has 37 compute nodes. There are two nodes with 3TB of RAM. All other 35 compute nodes have 768 GB.
 
-+-----------------+-----------------+--------------+-----------+-------------+------------------------+
-| | Names of      | | Number of     | | CPU cores  | | RAM per | | Number of | | CPU Manufacturer and |
-| | Nodes         | | Nodes         | | per node   | | Node    | | Sockets   | | Processor Model      |
-+=================+=================+==============+===========+=============+========================+
-| hcocs[001-035]  | 35              | 256          | 768 GB    | 2           | AMD EPYC 9754 128-Core |
-+-----------------+-----------------+--------------+-----------+-------------+------------------------+
-| hcocx[001-002]  | 2               | 256          | 3072 GB   | 2           | AMD EPYC 9754 128-Core |
-+-----------------+-----------------+--------------+-----------+-------------+------------------------+
++-----------------+-----------------+--------------+-----------+----------------------------+
+| | Names of      | | Number of     | | CPU cores  | | RAM per | | Sockets CPU Manufacturer |
+| | Nodes         | | Nodes         | | per node   | | Node    | | and Processor Model      |
++=================+=================+==============+===========+============================+
+| hcocs[001-035]  | 35              | 256          | 768 GB    | 2X AMD EPYC 9754 128-Core  |
++-----------------+-----------------+--------------+-----------+----------------------------+
+| hcocx[001-002]  | 2               | 256          | 3072 GB   | 2X AMD EPYC 9754 128-Core  |
++-----------------+-----------------+--------------+-----------+----------------------------+
+
+Specifications of AMD EPYC 9754
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Harpers Ferry compute nodes were build with dual socket 4th Generation AMD EPYC™ Processors.
+The following is a quick summary of some relevant features of these processors. 
+For more information visit `AMD 9754`_
+
+    * Name: AMD EPYC™ 9754 
+    * Family: EPYC 
+    * Series: EPYC 9004 Series 
+    * Form Factor: Servers 
+    * Regional Availability: Global 
+    * # of CPU Cores: 128 
+    * # of Threads: 256 
+    * Max. Boost Clock: Up to 3.1 GHz 
+    * All Core Boost Speed: 3.1 GHz 
+    * Base Clock: 2.25 GHz 
+    * L3 Cache: 256 MB 
+    * Default TDP: 360W 
+    * AMD Configurable TDP (cTDP): 320-400W 
+    * CPU Socket: SP5 
+    * Socket Count: 1P / 2P 
+    * Launch Date: 06/13/2023 
+
+
 
 
 Software
@@ -47,6 +73,7 @@ We ask our users to acknowledge the use of Harpers Ferry in all publications tha
   *Computational resources were provided by the WVU Research Computing Harpers Ferry HPC cluster, which is funded in part through a NASA Congressionally Directed Spending*
 
 
+.. _AMD 9754: https://www.amd.com/en/products/processors/server/epyc/4th-generation-9004-and-8004-series/amd-epyc-9754.html
 .. _NVIDIA A30: https://www.nvidia.com/content/dam/en-zz/Solutions/data-center/products/a30-gpu/pdf/a30-datasheet.pdf
 .. _NVIDIA A40: https://images.nvidia.com/content/Solutions/data-center/a40/nvidia-a40-datasheet.pdf
 .. _NVIDIA A100: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf
