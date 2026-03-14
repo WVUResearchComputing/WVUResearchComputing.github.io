@@ -27,39 +27,45 @@ The table below shows our portfolio of HPC resources (past and present):
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Infraestructure/** | | **Compute**    | | **CPU**        | | **Accelerators** | | **Description**                                             |
    | | **HPC Clusters**     | | **Nodes**      | | **Cores**      | | **GPUs**         | |                                                             |
-   | |                      | | (total/active) | | (total/active) | | (total/active)   | |                                                             |
    +========================+==================+==================+====================+===============================================================+
-   | | **Mountaineer**      |      32/0        |      384/0       |       0/0          | | First centrally managed HPC Cluster for WVU.                |
-   | | (decommissioned in   |                  |                  |                    | | CPUs from Intel Westmere microarchitecture (32 nm).         |
-   |     2018)              |                  |                  |                    | |                                                             |
+   | | **Harpers Ferry**    |       37         |       9472       | | None             | | General Purpose HPC Cluster.                                |
+   | | (in production)      |                  |                  | |                  | | To be provisioned during Spring 2025.                       |
+   | |                      |                  |                  | |                  |                                                               |
+   | |                      |                  |                  | |                  |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **Spruce Knob**      |     176/148      |    3376/3036     | | 14/5 NVIDIA GPUs | | General-purpose HPC cluster first commissioned in 2017.     |
-   | | (decommissioned on   |                  |                  | | Tesla K20m       | | Heterogeneous cluster with Intel processors.                |   
-   | |   2023)              |                  |                  | | Tesla K20Xm      | | Sandy Bridge, Ivy Bridge, Haswell and Broadwell.            |
-   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **Thorny Flat**      |     178/178      |    6516/6516     | | 47 NVIDIA GPUs   | | General-purpose HPC cluster.                                |
-   | | (in production)      |                  |                  | | P6000 (21)       | | Intel processors with Skylake and Cascade Lake.             |
-   |                        |                  |                  | | RTX 6000 (24)    | | Installed at Pittsburgh Supercomputer Center.               |
-   |                        |                  |                  | | A100 (2)         |                                                               |
-   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **Dolly Sods**       |       37         |    1248          | | 155 NVIDIA GPUs  | | GPU Accelerated HPC Cluster.                                |
+   | | **Dolly Sods**       |       37         |       1248       | | 155 NVIDIA GPUs  | | GPU Accelerated HPC Cluster.                                |
    | | (in production)      |                  |                  | | A30 (120)        | | To be provisioned in August 2023.                           |
    | |                      |                  |                  | | A40 (19)         |                                                               |
    | |                      |                  |                  | | A100 (16)        |                                                               |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **Harpers Ferry**    |       37         |     9472         | | None             | | General Purpose HPC Cluster.                                |
-   | | (expected for 2025)  |                  |                  | |                  | | To be provisioned during Spring 2025.                       |
-   | |                      |                  |                  | |                  |                                                               |
-   | |                      |                  |                  | |                  |                                                               |
-   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
-   | | **WVCTSI Cluster**   |       8/8        |     320/320      | | 4 NVIDIA GPUs    | | HPC Cluster for use with                                    |
+   | | **WVCTSI Cluster**   |        8         |        320       | | 4 NVIDIA GPUs    | | HPC Cluster for use with                                    |
    | | Secure Cluster       |                  |                  | | Tesla V100S      | | Protected Health Information (PHI)                          |
    | | (in production)      |                  |                  |                    | | HIPAA compliant                                             |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Thorny Flat**      |      111         |       4232       | | 21 NVIDIA GPUs   | | General-purpose HPC cluster.                                |
+   | | **Phase 0**          |                  |                  | | P6000 (21)       | | Intel processors with Skylake and Cascade Lake.             |
+   | | (in production)      |                  |                  | |                  | | Installed at Pittsburgh Supercomputer Center.               |
+   |                        |                  |                  | |                  | |                                                              |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Thorny Flat**      |       64         |       2560       | | None             | | General-purpose HPC cluster.                                |
+   | | **Big Mem**          |                  |                  | |                  | | Intel processors with Skylake and Cascade Lake.             |
+   | | (to be relaunched in |                  |                  | |                  | | Installed at Pittsburgh Supercomputer Center.               |
+   | |   2026)              |                  |                  | |                  | |                                                             |
+   |                        |                  |                  | |                  | |                                                              |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Spruce Knob**      |      120         |       3376       | | 14/5 NVIDIA GPUs | | General-purpose HPC cluster first commissioned in 2017.     |
+   | | (to be relaunched in |                  |                  | | Tesla K20m       | | Heterogeneous cluster with Intel processors.                |   
+   | |   2026)              |                  |                  | | Tesla K20Xm      | | Sandy Bridge, Ivy Bridge, Haswell and Broadwell.            |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **GoFirst**          |                  |                  |                    | | Virtual Infraestructure running on AWS.                     |
    | | (in production)      |                  |                  |                    | | Serves Business Data Analytics (BUDA) program.              |
    |                        |                  |                  |                    | | Chambers College of Business and Economics.                 |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+   | | **Mountaineer**      |       32         |        384       | | None             | | First centrally managed HPC Cluster for WVU.                |
+   | | (decommissioned in   |                  |                  | |                  | | CPUs from Intel Westmere microarchitecture (32 nm).         |
+   |     2018)              |                  |                  | |                  | |                                                             |
+   +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
+ 
 
 
 The contents of this website can be downloaded as a single PDF here:
