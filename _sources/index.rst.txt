@@ -63,7 +63,7 @@ The table below shows our portfolio of HPC resources (past and present):
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Mountaineer**      |       32         |        384       | | None             | | First centrally managed HPC Cluster for WVU.                |
    | | (decommissioned in   |                  |                  | |                  | | CPUs from Intel Westmere microarchitecture (32 nm).         |
-   |     2018)              |                  |                  | |                  | |                                                             |
+   | |    2018)             |                  |                  | |                  | |                                                             |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
 
 
