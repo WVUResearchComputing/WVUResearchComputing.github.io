@@ -45,16 +45,16 @@ The table below shows our portfolio of HPC resources (past and present):
    | | **Thorny Flat**      |      111         |       4232       | | 21 NVIDIA GPUs   | | General-purpose HPC cluster.                                |
    | | **Phase 0**          |                  |                  | | P6000 (21)       | | Intel processors with Skylake and Cascade Lake.             |
    | | (in production)      |                  |                  | |                  | | Installed at Pittsburgh Supercomputer Center.               |
-   |                        |                  |                  | |                  | |                                                              |
+   |                        |                  |                  | |                  | |                                                             |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Thorny Flat**      |       64         |       2560       | | None             | | General-purpose HPC cluster.                                |
    | | **Big Mem**          |                  |                  | |                  | | Intel processors with Skylake and Cascade Lake.             |
    | | (to be relaunched in |                  |                  | |                  | | Installed at Pittsburgh Supercomputer Center.               |
    | |   2026)              |                  |                  | |                  | |                                                             |
-   |                        |                  |                  | |                  | |                                                              |
+   |                        |                  |                  | |                  | |                                                             |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **Spruce Knob**      |      120         |       3376       | | 14/5 NVIDIA GPUs | | General-purpose HPC cluster first commissioned in 2017.     |
-   | | (to be relaunched in |                  |                  | | Tesla K20m       | | Heterogeneous cluster with Intel processors.                |   
+   | | (to be relaunched in |                  |                  | | Tesla K20m       | | Heterogeneous cluster with Intel processors.                |
    | |   2026)              |                  |                  | | Tesla K20Xm      | | Sandy Bridge, Ivy Bridge, Haswell and Broadwell.            |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
    | | **GoFirst**          |                  |                  |                    | | Virtual Infraestructure running on AWS.                     |
@@ -65,7 +65,7 @@ The table below shows our portfolio of HPC resources (past and present):
    | | (decommissioned in   |                  |                  | |                  | | CPUs from Intel Westmere microarchitecture (32 nm).         |
    |     2018)              |                  |                  | |                  | |                                                             |
    +------------------------+------------------+------------------+--------------------+---------------------------------------------------------------+
- 
+
 
 
 The contents of this website can be downloaded as a single PDF here:
