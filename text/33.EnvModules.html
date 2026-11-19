@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Environment Modules &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Workload Manager (SLURM)" href="34.WorkloadManager.html" />
@@ -185,9 +191,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="environment-modules">
+  <div class="section" id="environment-modules">
 <span id="bs-env-modules"></span><h1>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
-<section id="what-are-modulefiles">
+<div class="section" id="what-are-modulefiles">
 <h2>What are Modulefiles<a class="headerlink" href="#what-are-modulefiles" title="Permalink to this headline">¶</a></h2>
 <p>Modulefiles are files written in the Tool Command Language (Tcl) and are
 used by the module command to implement different environments for
@@ -218,12 +224,12 @@ modulefiles contain useful information such as version numbers, URLs for
 webpages and manuals, and MAN page information. Further, modulefiles are
 a great way to see what software, libraries and compilers are available
 on our systems.</p>
-</section>
-<section id="listing-available-modefiles">
+</div>
+<div class="section" id="listing-available-modefiles">
 <h2>Listing available modefiles<a class="headerlink" href="#listing-available-modefiles" title="Permalink to this headline">¶</a></h2>
 <p>To list the currentely available modulefiles on the system use the
 module command with the available subcommand:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module available
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module available
 
 --------------------------------------------- /usr/share/Modules/software ----------------------------------------------
 chemistry/autodock_vina genomics/clumpp         genomics/muscle         genomics/tabix
@@ -253,25 +259,25 @@ all compiler modulefiles start with ‘compilers/’ (i.e.
 compilers/gcc/4.8.2). The module available command can be given words
 for matching, and will return modulefiles that start with the given
 word. For instance, if you want to list all MPI modulefiles:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt;module available mpi
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt;module available mpi
 
 -------------------------------------------- /usr/share/Modules/development --------------------------------------------
 mpi/intel/4.1.1.036 mpi/mpich2/1.2.1    mpi/mvapich2/1.9    mpi/openmpi/1.6.5
 </pre></div>
 </div>
 <p>Further, you can list all gcc compilers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt;module available compilers/gcc
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt;module available compilers/gcc
 
 -------------------------------------------- /usr/share/Modules/development --------------------------------------------
 compilers/gcc/4.8.2 compilers/gcc/4.9.0
 </pre></div>
 </div>
-</section>
-<section id="showing-what-a-modulefile-does">
+</div>
+<div class="section" id="showing-what-a-modulefile-does">
 <h2>Showing what a modulefile does<a class="headerlink" href="#showing-what-a-modulefile-does" title="Permalink to this headline">¶</a></h2>
 <p>Viewing the contents of a modulefile can be done using the module
 command with the show subcommand:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module show compilers/intel/14.0
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module show compilers/intel/14.0
 
 -------------------------------------------------------------------
 /usr/share/Modules/development/compilers/intel/14.0:
@@ -293,7 +299,7 @@ prepend-path     LD_LIBRARY_PATH /shared/software/intel/lib/intel64
 lines module-whatis gives information about version numbers, categories
 for tools, URLs for more information. If you only want to see these
 first few lines you can use the whatis subcommand:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module whatis compilers/intel/14.0
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module whatis compilers/intel/14.0
 
 compilers/intel/14.0 : Name: Intel Compiler
 compilers/intel/14.0 : Version: 14.0
@@ -311,13 +317,13 @@ first prepend-path modifies the PATH environment variable by adding
 /shared/software/intel/bin to make that directory available to the user.
 More information about Tcl commands found in modulefiles can be found in
 the modulefile manpage (man modulefile).</p>
-</section>
-<section id="loading-and-unloading-modulefiles">
+</div>
+<div class="section" id="loading-and-unloading-modulefiles">
 <h2>Loading and Unloading modulefiles<a class="headerlink" href="#loading-and-unloading-modulefiles" title="Permalink to this headline">¶</a></h2>
 <p>Loading and unloading modulefiles can be done using the module command
 the subcommands load and unload. In this example, the Intel C compiler
 is named icc:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; icc
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; icc
 -bash: icc: command not found
 
 $&gt; module load compilers/intel
@@ -334,15 +340,15 @@ found. After loading the module, icc could be found (although I gave it
 no input so it gave me an error), and as expected after unloading the
 module icc could not be found anymore. For more information about module
 subcommands see the module manpage (man module)</p>
-</section>
-<section id="using-modulefiles-through-qsub">
+</div>
+<div class="section" id="using-modulefiles-through-qsub">
 <h2>Using modulefiles through qsub<a class="headerlink" href="#using-modulefiles-through-qsub" title="Permalink to this headline">¶</a></h2>
 <p>Modulefiles can be used through the scheduler just as on the command
 line. In your batch shell script (see <a class="reference external" href="RunningJobs">Running Jobs</a>
 for details) you can place the module load/unload or any other module
 subcommand directly before you executed commands.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

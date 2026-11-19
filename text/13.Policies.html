@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Policies &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Purchasing Compute Nodes" href="14.Purchases.html" />
@@ -188,43 +194,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="policies">
+  <div class="section" id="policies">
 <span id="int-policies"></span><h1>Policies<a class="headerlink" href="#policies" title="Permalink to this headline">¶</a></h1>
-<section id="acknowledging-your-use-of-the-wvu-high-performance-computing-environment">
+<div class="section" id="acknowledging-your-use-of-the-wvu-high-performance-computing-environment">
 <h2>Acknowledging Your Use of the WVU High-Performance Computing Environment<a class="headerlink" href="#acknowledging-your-use-of-the-wvu-high-performance-computing-environment" title="Permalink to this headline">¶</a></h2>
 <p>Maintaining a first-class HPC environment is expensive in terms of both human and material resources. The Research Office requests that you acknowledge your use of the campus clusters in papers or other publications of research that benefited from these campus resources. Such acknowledgments assist us in convincing people in our administration and funding agencies of the value of these resources to our community and help us obtain new funding for their continued maintenance and expansion.</p>
 <p>To acknowledge your use of the clusters, we request that you use the following wording:</p>
 <p>For Thorny Flat:</p>
 <blockquote>
-<div><p>The authors acknowledge the computational resources provided by the WVU Research Computing Thorny Flat HPC cluster, partly funded by NSF OAC-1726534.</p>
-</div></blockquote>
+<div>The authors acknowledge the computational resources provided by the WVU Research Computing Thorny Flat HPC cluster, partly funded by NSF OAC-1726534.</div></blockquote>
 <p>For Dolly Sods:</p>
 <blockquote>
-<div><p>The authors acknowledge the computational resources provided by the WVU Research Computing Dolly Sods HPC cluster, which is funded in part by NSF OAC-2117575.”</p>
-</div></blockquote>
+<div>The authors acknowledge the computational resources provided by the WVU Research Computing Dolly Sods HPC cluster, which is funded in part by NSF OAC-2117575.”</div></blockquote>
 <p>We would also appreciate you informing us of publications in which you acknowledge one of the clusters.
 In retribution, we will work to give visibility to your work and the computational efforts that make it possible.
 Contact us at <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and share with us the PDF or DOI of your publication.</p>
-</section>
-<section id="running-jobs-on-login-node">
+</div>
+<div class="section" id="running-jobs-on-login-node">
 <h2>Running Jobs on Login Node<a class="headerlink" href="#running-jobs-on-login-node" title="Permalink to this headline">¶</a></h2>
 <p>Running jobs/tasks on the login node (i.e., the node you see immediately after you log in) is not permitted.
 When the RC admin team notices this occurring, the processes will be killed immediately to
 ensure system stability. If you are having trouble submitting jobs through the scheduler, please follow the instructions on <a class="reference internal" href="12.GettingHelp.html#int-getting-help"><span class="std std-ref">Getting Help</span></a>.
 We would be happy to guide you through the proper process of submitting jobs to the cluster using Slurm commands.</p>
-</section>
-<section id="data-storage">
+</div>
+<div class="section" id="data-storage">
 <h2>Data storage<a class="headerlink" href="#data-storage" title="Permalink to this headline">¶</a></h2>
 <p>Users of our HPC clusters can store data typically in two locations.
-They are called generically <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.
-<code class="docutils literal notranslate"><span class="pre">$HOME</span></code> is usually the folder <code class="docutils literal notranslate"><span class="pre">/users/&lt;username&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> is <code class="docutils literal notranslate"><span class="pre">/scratch/&lt;username&gt;</span></code>.
+They are called generically <code class="docutils literal"><span class="pre">$HOME</span></code> and <code class="docutils literal"><span class="pre">$SCRATCH</span></code>.
+<code class="docutils literal"><span class="pre">$HOME</span></code> is usually the folder <code class="docutils literal"><span class="pre">/users/&lt;username&gt;</span></code> and <code class="docutils literal"><span class="pre">$SCRATCH</span></code> is <code class="docutils literal"><span class="pre">/scratch/&lt;username&gt;</span></code>.
 There are storage limits imposed on those folders to prevent a single user to exhaust the storage available on the cluster.
-These limits are called the <em>quota</em> and you can use the command <code class="docutils literal notranslate"><span class="pre">quota</span></code> to see your quota and how much data storage you are currently using.
-In the case of Thorny Flat, there is a quota of 10GB on the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder and 20TB on <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>.
-In the case of Dolly Sods, there is a quota of 10GB on the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder.
+These limits are called the <em>quota</em> and you can use the command <code class="docutils literal"><span class="pre">quota</span></code> to see your quota and how much data storage you are currently using.
+In the case of Thorny Flat, there is a quota of 10GB on the <code class="docutils literal"><span class="pre">$HOME</span></code> folder and 20TB on <code class="docutils literal"><span class="pre">$SCRATCH</span></code>.
+In the case of Dolly Sods, there is a quota of 10GB on the <code class="docutils literal"><span class="pre">$HOME</span></code> folder.
 For information about where these directories are located and storage quotas, please visit the <a class="reference external" href="DiskStorage">Disk Storage</a> page.</p>
-</section>
-<section id="sharing-user-directories">
+</div>
+<div class="section" id="sharing-user-directories">
 <h2>Sharing User Directories<a class="headerlink" href="#sharing-user-directories" title="Permalink to this headline">¶</a></h2>
 <p>Initially, sharing user directories or scratch space is not permitted.
 This is for tracking user purposes. However, we recognize that research
@@ -233,8 +237,8 @@ Therefore we are attentive to requests for sharing resources across user spaces 
 Please follow the instructions on <a class="reference internal" href="12.GettingHelp.html#int-getting-help"><span class="std std-ref">Getting Help</span></a> and the WVU-RC team with these requests.</p>
 <p>Users also have the option of using group storage to share files.
 A Principal Investigator (PI) may request up to 10 GB of group storage for free. Additional storage may be purchased if desired. For more information, please visit <a class="reference external" href="Disk_Storage_Spruce#Persistent_Group_Storage">Persistent Group Storage</a>.</p>
-</section>
-<section id="getting-software-installed-on-the-cluster">
+</div>
+<div class="section" id="getting-software-installed-on-the-cluster">
 <h2>Getting Software Installed On the Cluster<a class="headerlink" href="#getting-software-installed-on-the-cluster" title="Permalink to this headline">¶</a></h2>
 <p>Software needed on the cluster for research work can be installed at
 user request.
@@ -247,8 +251,8 @@ If the software/library has a large enough appeal (multiple users/multiple
 research teams), we can and will assist in installing a system-wide
 version.
 If you need assistance installing software/libraries locally in your user directory, please follow the instructions at <a class="reference internal" href="12.GettingHelp.html#int-getting-help"><span class="std std-ref">Getting Help</span></a>. The WVU-RC team will gladly assist.</p>
-</section>
-<section id="user-priority-for-job-submission">
+</div>
+<div class="section" id="user-priority-for-job-submission">
 <h2>User Priority for Job Submission<a class="headerlink" href="#user-priority-for-job-submission" title="Permalink to this headline">¶</a></h2>
 <p>Different priority defaults are assigned to your job submission depending on the hostname you are submitting jobs on.
 On Thorny Flat and Dolly Sods priority for partitions are set by fair share queueing.
@@ -257,8 +261,8 @@ priority assigned to larger jobs and/or user jobs that have used fewer
 system resources in the week.
 If you would like to have different priority settings for your research teams queue, please
 follow the instructions at <a class="reference internal" href="12.GettingHelp.html#int-getting-help"><span class="std std-ref">Getting Help</span></a> for the WVU-RC team to attend to your request.</p>
-</section>
-<section id="database-management-on-clusters">
+</div>
+<div class="section" id="database-management-on-clusters">
 <h2>Database Management on Clusters<a class="headerlink" href="#database-management-on-clusters" title="Permalink to this headline">¶</a></h2>
 <p>The current setup for the HPC clusters is for general HPC use.
 This means that the compute nodes were set up with the idea that data will
@@ -268,8 +272,8 @@ because the compute nodes were never initially set up to handle the
 data storage is required.
 However, if your research team requires Managed Database systems that have significant storage needs with a database management system back-end (i.e. MySQL, Oracle, etc) please
 <a class="reference internal" href="12.GettingHelp.html#int-getting-help"><span class="std std-ref">Getting Help</span></a> the WVU-RC team, and we can come up with solutions to handle these data requests.</p>
-</section>
-<section id="x11-forwarding-running-visualization-software">
+</div>
+<div class="section" id="x11-forwarding-running-visualization-software">
 <h2>X11 Forwarding - Running visualization software<a class="headerlink" href="#x11-forwarding-running-visualization-software" title="Permalink to this headline">¶</a></h2>
 <p>Non-compute intensive processes like visualization and quick data analysis can be run on
 the login node.
@@ -277,8 +281,8 @@ These processes can include Gnuplot, R, and Matlab.
 However, if your visualization job requires to process data to generate plot and figures, it is best to run these jobs through the scheduler in batch mode.
 Compute-intensive jobs, visualization or not, are not permitted to run on the head-node.
 If you have any questions about the best way to accomplish your computing goal, please follow the instructions on <a class="reference internal" href="12.GettingHelp.html#int-getting-help"><span class="std std-ref">Getting Help</span></a> through the help desk, and we will provide any assistance needed to fulfill your requirements.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

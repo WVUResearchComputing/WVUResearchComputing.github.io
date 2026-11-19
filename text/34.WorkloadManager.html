@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Workload Manager (SLURM) &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="File Transfer (Globus and SFTP)" href="35.TransferFiles.html" />
@@ -211,7 +217,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="workload-manager-slurm">
+  <div class="section" id="workload-manager-slurm">
 <span id="bs-workload-manager"></span><h1>Workload Manager (SLURM)<a class="headerlink" href="#workload-manager-slurm" title="Permalink to this headline">¶</a></h1>
 <p>A workload manager is a piece of software that transforms a set of networked computers into a HPC cluster.
 The workload manager has several responsibilites: Resource Manager and Scheduler.
@@ -225,7 +231,7 @@ It also keeps records for accounting purposes or profiling.</p>
 Process the list of resources requested for each job and priorizes the execution according to some criteria or constrains imposed on the job or the current state of the cluster.</p>
 <p>In this section we will cover in more detail the commands, variables and directives used by SLURM to help users to submit, monitor and control the jobs on the cluster.
 The configuration and administration of SLURM is out of scope for this section.</p>
-<section id="understanding-partitions">
+<div class="section" id="understanding-partitions">
 <h2>Understanding Partitions<a class="headerlink" href="#understanding-partitions" title="Permalink to this headline">¶</a></h2>
 <p>The compute nodes on an HPC cluster are logically segmented into partitions.
 A partition is just a list of compute nodes where jobs submitted to it can execute.
@@ -233,7 +239,7 @@ A compute node could belong to several partitions.
 A partition also include rules that must be followed before a job can be admitted and rules that declare how jobs will run on the cluster and conditions on when and how jobs can start execution.</p>
 <p>All jobs regardless of if they are batch jobs or interactive jobs they are always submitted to some partition.
 To know the list of partitions on the cluster execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sinfo -s
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sinfo -s
 PARTITION       AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
 standby*           up    4:00:00      88/77/2/167 taicm[001-009],tarcl100,
                                               tarcs[100,200-206,300-304],tbdcx001,
@@ -275,44 +281,44 @@ zbetienne_large    up   infinite          0/8/0/8 tzecl[100-107]
 zbetienne_small    up   infinite        1/15/0/16 tzecs[100-115]
 </pre></div>
 </div>
-<p>The first column is the name of the partition. The star (*) after <code class="docutils literal notranslate"><span class="pre">default</span></code> indicates that this will be the selected partition if not specified during the submission of the job either via command line arguments or submission directives in the submission file. All the partitions starting with <code class="docutils literal notranslate"><span class="pre">comm_</span></code> are community partitions, meaning that anyone with an user account can submit on them. Faculty can purchase compute nodes that will receive its own partition with no limits on the amount of time the job can run on their own partition.
+<p>The first column is the name of the partition. The star (*) after <code class="docutils literal"><span class="pre">default</span></code> indicates that this will be the selected partition if not specified during the submission of the job either via command line arguments or submission directives in the submission file. All the partitions starting with <code class="docutils literal"><span class="pre">comm_</span></code> are community partitions, meaning that anyone with an user account can submit on them. Faculty can purchase compute nodes that will receive its own partition with no limits on the amount of time the job can run on their own partition.
 Community queues use a name schema that makes easy to identify its specifications.</p>
-<table class="colwidths-given docutils align-default" id="id1">
+<table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col width="50%" />
+<col width="50%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Word</p></th>
-<th class="head"><p>Meaning</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Word</th>
+<th class="head">Meaning</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_small</span></code></p></td>
-<td><p>Compute nodes associated to the partition offer 96GB of RAM</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">_small</span></code></td>
+<td>Compute nodes associated to the partition offer 96GB of RAM</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_med</span></code></p></td>
-<td><p>Compute nodes associated to the partition offer 192GB of RAM</p></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">_med</span></code></td>
+<td>Compute nodes associated to the partition offer 192GB of RAM</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_xl</span></code></p></td>
-<td><p>Compute nodes associated to the partition offer 768GB of RAM</p></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">_xl</span></code></td>
+<td>Compute nodes associated to the partition offer 768GB of RAM</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_gpu</span></code></p></td>
-<td><p>Compute nodes associated to the partition include GPU cards</p></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">_gpu</span></code></td>
+<td>Compute nodes associated to the partition include GPU cards</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_day</span></code></p></td>
-<td><p>The partition has a walltime of maximum 1 day</p></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">_day</span></code></td>
+<td>The partition has a walltime of maximum 1 day</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_week</span></code></p></td>
-<td><p>The partition has a walltime of maximum 1 week</p></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">_week</span></code></td>
+<td>The partition has a walltime of maximum 1 week</td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">comm_gpu_inter</span></code></p></td>
-<td><p>Partition for interactive jobs with GPUs. The walltime is 4 hours</p></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">comm_gpu_inter</span></code></td>
+<td>Partition for interactive jobs with GPUs. The walltime is 4 hours</td>
 </tr>
 </tbody>
 </table>
-<p>The second column is the availability of the partition. At this point all partitions are enable and that is indicated with the word <code class="docutils literal notranslate"><span class="pre">up</span></code>.</p>
+<p>The second column is the availability of the partition. At this point all partitions are enable and that is indicated with the word <code class="docutils literal"><span class="pre">up</span></code>.</p>
 <p>The third column is the amount of time a job submitted to that partition can run, this is also known as the <strong>walltime</strong>.
 Jobs submitted without any limit of time explicitly indicated will received the walltime of the partition.
 Jobs that declare a larger walltime than the maximum allowed by the partition will be rejected inmediately after submission.</p>
@@ -322,8 +328,8 @@ Other include nodes that are not allowed to execute jobs, due to maintnance or s
 The sum of all these 3 states is the total number of compute nodes associated with the partition.</p>
 <p>The fifth column is the nodelist. This is a compacted listing of all the machines associated with each partition.
 The compact form is particularly useful in large HPC clusters with hundreds of compute nodes.
-Notice for example that compute nodes <code class="docutils literal notranslate"><span class="pre">tcocs[001-064,100]</span></code> appear as nodes associated to <code class="docutils literal notranslate"><span class="pre">standby</span></code>, <code class="docutils literal notranslate"><span class="pre">comm_small_day</span></code> and <code class="docutils literal notranslate"><span class="pre">comm_small_week</span></code>.</p>
-<section id="sockets-cpu-cores-and-hyperthreading">
+Notice for example that compute nodes <code class="docutils literal"><span class="pre">tcocs[001-064,100]</span></code> appear as nodes associated to <code class="docutils literal"><span class="pre">standby</span></code>, <code class="docutils literal"><span class="pre">comm_small_day</span></code> and <code class="docutils literal"><span class="pre">comm_small_week</span></code>.</p>
+<div class="section" id="sockets-cpu-cores-and-hyperthreading">
 <h3>Sockets, CPU cores, and Hyperthreading<a class="headerlink" href="#sockets-cpu-cores-and-hyperthreading" title="Permalink to this headline">¶</a></h3>
 <p>On a desktop computer or laptop, you will find a single processor also called Central Processing Unit (CPU).
 The CPU is the main chip responsible for most computational calculations taking place on the machine.
@@ -336,19 +342,19 @@ We called these CPUs multicore and almost all CPUs today are multicore.</p>
 Hardware threads are designed to hide the latencies of the memory and feed the compute units fast enough to keep them busy all the time.
 Hyperthreading can be activated or deactivated depending on the cluster or its workload.
 Depending on the code running on the node hyperthreading can benefit or harm the performance.</p>
-</section>
-</section>
-<section id="submitting-batch-jobs">
+</div>
+</div>
+<div class="section" id="submitting-batch-jobs">
 <h2>Submitting batch jobs<a class="headerlink" href="#submitting-batch-jobs" title="Permalink to this headline">¶</a></h2>
 <p>A batch job is a job that has not expectations of running inmediately and will not be interactively operated when start running.
 This is the kind of jobs an HPC cluster is preferentially built for.
 You simply write on a text file the list of resources you need for the job and the list of steps to execute in the form of script and the job will be put in execution when resources became available.
 The text file is called a <strong>submission script</strong> and it has two roles.
 From one side, it has the script that will be put in execution on the compute node associated to the job.
-From the other side, it has a set of lines starting with <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>.
-Those lines start with <code class="docutils literal notranslate"><span class="pre">#</span></code> meaning that they are ignored by the shell when running the script.
+From the other side, it has a set of lines starting with <code class="docutils literal"><span class="pre">#SBATCH</span></code>.
+Those lines start with <code class="docutils literal"><span class="pre">#</span></code> meaning that they are ignored by the shell when running the script.
 Those lines are important for SLURM as it will interpret those lines and compile a list of requirements and configurations associated to the job.
-The lines starting with  <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> will not interpret shell variables or environment variables.
+The lines starting with  <code class="docutils literal"><span class="pre">#SBATCH</span></code> will not interpret shell variables or environment variables.
 These lines will contain resource requests such as the number of compute nodes, number of CPU cores, memory requested, partition.
 They also could contain the name of the job, specification for sending emails when the job start, ends of fails, where the output of the script wil go.
 These lines could also include other configurations that will be used before, during and after the job enters in execution.</p>
@@ -356,14 +362,14 @@ These lines could also include other configurations that will be used before, du
 Consider a submission script for a job called <strong>PI</strong>.
 The job will compute the value of pi using the the arbitrary precision calculator bc.
 The command to be executed will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
+<div class="highlight-default"><div class="highlight"><pre><span></span>echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
 </pre></div>
 </div>
 <p>This is a simple execution that takes a fraction of a second on any modern computer.
 However, our purpose here is to use it to demonstrate how to submit a job that will be executed on a compute node.
 In practical cases the execution will require several hours or even days and need multiple CPU cores or multiple compute nodes.
 The submission script could be written like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH -J PI
 #SBATCH -N 1
@@ -384,13 +390,13 @@ echo &quot;Number of Tasks:     $SLURM_NTASKS&quot;
 echo &quot;Partition:           $SLURM_JOB_PARTITION&quot;
 </pre></div>
 </div>
-<p>Assuming that this text is written on a file called <code class="docutils literal notranslate"><span class="pre">runjob.pbs</span></code>. Submit the job using the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sbatch runjob.pbs
+<p>Assuming that this text is written on a file called <code class="docutils literal"><span class="pre">runjob.pbs</span></code>. Submit the job using the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ sbatch runjob.pbs
 </pre></div>
 </div>
-<p>The job will most likely execute after a few seconds. A file with a name such as <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobid&gt;.out</span></code> is created.
+<p>The job will most likely execute after a few seconds. A file with a name such as <code class="docutils literal"><span class="pre">slurm-&lt;jobid&gt;.out</span></code> is created.
 For example, if the job ID were 122014. The output produce by the submission script will contain:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ cat slurm-122014.out
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ cat slurm-122014.out
 The first 65 digits of PI are:
 3.14159265358979323846264338327950288419716939937510582097494459228
 
@@ -405,9 +411,9 @@ Partition:           standby
 <p>Let us now understand the lines present on this first submission script.
 The first line is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a>
 This is used to indicate which interpreter will be used for the lines on the script.
-In this case we are saying that <code class="docutils literal notranslate"><span class="pre">bash</span></code> which is a commom shell interpreter must be used for the script.</p>
-<p>The next 6 lines all start with <code class="docutils literal notranslate"><span class="pre">$SBATCH</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -J PI</span>
+In this case we are saying that <code class="docutils literal"><span class="pre">bash</span></code> which is a commom shell interpreter must be used for the script.</p>
+<p>The next 6 lines all start with <code class="docutils literal"><span class="pre">$SBATCH</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -J PI</span>
 <span class="c1">#SBATCH -N 1</span>
 <span class="c1">#SBATCH -c 1</span>
 <span class="c1">#SBATCH -n 1</span>
@@ -430,12 +436,12 @@ More SLURM environment variables will be described below.</p>
 <p>The output is all that the script or the programs call by the script writes produces to be seen on the screen.
 If the script were executed directly, the standard output is the terminal window.
 In the case of a batch script, all the output is directed to a couple of files.
-The normal output also called standard output is written to a file that by default looks like <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobid&gt;.out</span></code>
+The normal output also called standard output is written to a file that by default looks like <code class="docutils literal"><span class="pre">slurm-&lt;jobid&gt;.out</span></code>
 The error output, text that is considered could be aside to the normal output is called standard error and it is sent to a separate file.
 In our case we do not have any error and no error file is generated.</p>
-<p>All the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> directives are optional and there are default values for many of them or no value at all if not declared.
-Consider for example the same submission script removing all the lines starting with <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<p>All the <code class="docutils literal"><span class="pre">#SBATCH</span></code> directives are optional and there are default values for many of them or no value at all if not declared.
+Consider for example the same submission script removing all the lines starting with <code class="docutils literal"><span class="pre">#SBATCH</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 echo &quot;The first 65 digits of PI are:&quot;
 echo $(echo &quot;scale=65; 4*a(1)&quot; | bc -l)
@@ -450,7 +456,7 @@ echo &quot;Partition:           $SLURM_JOB_PARTITION&quot;
 </pre></div>
 </div>
 <p>Producing a similar result in the output file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ cat slurm-122439.out
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ cat slurm-122439.out
 The first 65 digits of PI are:
 3.14159265358979323846264338327950288419716939937510582097494459228
 
@@ -466,11 +472,11 @@ Partition:           standby
 One single node will be use and one single CPU core assigned to the job.
 No declaring a number of tasks will create a job with no value for that.</p>
 <p>We will explore more complex submission scripts and the meaning of the multiple options associated but first lets explore how to monitor the jobs submitted and how to cancel jobs.</p>
-</section>
-<section id="monitoring-jobs">
+</div>
+<div class="section" id="monitoring-jobs">
 <h2>Monitoring jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h2>
 <p>Lets consider a variation of the submission script were we will be asking for several many compute nodes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH -J PI
 #SBATCH -N 80
@@ -491,16 +497,16 @@ echo &quot;Number of Tasks:     $SLURM_NTASKS&quot;
 echo &quot;Partition:           $SLURM_JOB_PARTITION&quot;
 </pre></div>
 </div>
-<p>Asumming this submission script was written on a file called <code class="docutils literal notranslate"><span class="pre">runjob_80n.slurm</span></code>, submit the job with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sbatch runjob_40n.slurm
+<p>Asumming this submission script was written on a file called <code class="docutils literal"><span class="pre">runjob_80n.slurm</span></code>, submit the job with the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ sbatch runjob_40n.slurm
 Submitted batch job 122837
 </pre></div>
 </div>
-<p>This time no output in the form of the file <code class="docutils literal notranslate"><span class="pre">slurm-&lt;jobis&gt;.out</span></code>
-Check the status of the jobs using the command <code class="docutils literal notranslate"><span class="pre">squeue</span></code>.
+<p>This time no output in the form of the file <code class="docutils literal"><span class="pre">slurm-&lt;jobis&gt;.out</span></code>
+Check the status of the jobs using the command <code class="docutils literal"><span class="pre">squeue</span></code>.
 The command alone will return a listing of all the jobs running or in queue in the cluster.
 To restrict the listing just to jobs submitted by the user with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -u $USER
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ squeue -u $USER
                          JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
                         122837   standby       PI gufranco PD       0:00     80 (Resources)
                         122895   standby       PI gufranco PD       0:00     40 (Priority)
@@ -511,55 +517,55 @@ The status of PD means that the jobs are <strong>pending</strong> of execution.
 The ST column gives the state of the job.
 In the case above, both jobs are in <strong>pending</strong> state.
 The following codes:</p>
-<table class="colwidths-given docutils align-default" id="id2">
+<table border="1" class="colwidths-given docutils" id="id2">
 <caption><span class="caption-text">Job State Codes</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 50%" />
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Status</p></th>
-<th class="head"><p>Meaning</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Meaning</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>R</p></td>
-<td><p>Running</p></td>
-<td><p>Job currently has an allocation</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>R</td>
+<td>Running</td>
+<td>Job currently has an allocation</td>
 </tr>
-<tr class="row-odd"><td><p>PD</p></td>
-<td><p>PenDing</p></td>
-<td><p>Job is awaiting resource allocation</p></td>
+<tr class="row-odd"><td>PD</td>
+<td>PenDing</td>
+<td>Job is awaiting resource allocation</td>
 </tr>
-<tr class="row-even"><td><p>TO</p></td>
-<td><p>TimedOut</p></td>
-<td><p>Job terminated upon reaching its time limit</p></td>
+<tr class="row-even"><td>TO</td>
+<td>TimedOut</td>
+<td>Job terminated upon reaching its time limit</td>
 </tr>
-<tr class="row-odd"><td><p>PR</p></td>
-<td><p>PReempted</p></td>
-<td><p>Job terminated due to preemption</p></td>
+<tr class="row-odd"><td>PR</td>
+<td>PReempted</td>
+<td>Job terminated due to preemption</td>
 </tr>
-<tr class="row-even"><td><p>S</p></td>
-<td><p>Suspended</p></td>
-<td><p>Execution has been suspended and CPUs have been released for other jobs</p></td>
+<tr class="row-even"><td>S</td>
+<td>Suspended</td>
+<td>Execution has been suspended and CPUs have been released for other jobs</td>
 </tr>
-<tr class="row-odd"><td><p>CD</p></td>
-<td><p>CompleteD</p></td>
-<td><p>Job has terminated all processes on all nodes with an exit code of zero</p></td>
+<tr class="row-odd"><td>CD</td>
+<td>CompleteD</td>
+<td>Job has terminated all processes on all nodes with an exit code of zero</td>
 </tr>
-<tr class="row-even"><td><p>CA</p></td>
-<td><p>CAncelled</p></td>
-<td><p>Job was explicitly cancelled by the user or system administrator</p></td>
+<tr class="row-even"><td>CA</td>
+<td>CAncelled</td>
+<td>Job was explicitly cancelled by the user or system administrator</td>
 </tr>
-<tr class="row-odd"><td><p>F</p></td>
-<td><p>Failed</p></td>
-<td><p>Job terminated with non-zero exit code or other failure condition</p></td>
+<tr class="row-odd"><td>F</td>
+<td>Failed</td>
+<td>Job terminated with non-zero exit code or other failure condition</td>
 </tr>
-<tr class="row-even"><td><p>NF</p></td>
-<td><p>Node Failure</p></td>
-<td><p>Job terminated due to failure of one or more allocated nodes</p></td>
+<tr class="row-even"><td>NF</td>
+<td>Node Failure</td>
+<td>Job terminated due to failure of one or more allocated nodes</td>
 </tr>
 </tbody>
 </table>
@@ -571,39 +577,39 @@ One of the jobs states that could not run due to a lack of <strong>Resources</st
 The other job is pending due to <strong>Priority</strong>, ie there are resources availables but they will be assigned to another job with higher priority.</p>
 <p>There are several messages over the Reasons column.
 A common set of reasons messages with explanations follows.</p>
-<table class="colwidths-given docutils align-default" id="id3">
+<table border="1" class="colwidths-given docutils" id="id3">
 <caption><span class="caption-text">Job Reason Codes</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Reason</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Reason</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Resources</p></td>
-<td><p>Scheduler is unable to find sufficient idle resources to run your job</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Resources</td>
+<td>Scheduler is unable to find sufficient idle resources to run your job</td>
 </tr>
-<tr class="row-odd"><td><p>Priority</p></td>
-<td><p>There are jobs with higher priority ahead of this job in the queue</p></td>
+<tr class="row-odd"><td>Priority</td>
+<td>There are jobs with higher priority ahead of this job in the queue</td>
 </tr>
-<tr class="row-even"><td><p>QOSMaxCpuPerUserLimit</p></td>
-<td><p>The CPU request exceeds the maximum each user is allowed to use</p></td>
+<tr class="row-even"><td>QOSMaxCpuPerUserLimit</td>
+<td>The CPU request exceeds the maximum each user is allowed to use</td>
 </tr>
-<tr class="row-odd"><td><p>Licenses</p></td>
-<td><p>The job is waiting for a license.</p></td>
+<tr class="row-odd"><td>Licenses</td>
+<td>The job is waiting for a license.</td>
 </tr>
 </tbody>
 </table>
 <p>There are more reason codes that can be found in the <a class="reference external" href="https://slurm.schedmd.com/resource_limits.html#reasons">SLURM documentation for Resource Limits</a></p>
-</section>
-<section id="canceling-a-job">
+</div>
+<div class="section" id="canceling-a-job">
 <h2>Canceling a job<a class="headerlink" href="#canceling-a-job" title="Permalink to this headline">¶</a></h2>
 <p>Lets assume we want to delete the job 122837 that we submitted above.
-The job can be canceled with the command <code class="docutils literal notranslate"><span class="pre">scancel</span></code> followed by the jobid of the job you want to cancel:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -u $USER
+The job can be canceled with the command <code class="docutils literal"><span class="pre">scancel</span></code> followed by the jobid of the job you want to cancel:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ squeue -u $USER
                          JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
                         122837   standby       PI gufranco PD       0:00     80 (Resources)
 trcis001:~$ scancel 122837
@@ -612,24 +618,24 @@ trcis001:~$ squeue -u $USER
 </pre></div>
 </div>
 <p>As the canceling of a job is an irreversible action it is suggested to use an interactive version that allow you to double check not only the job ID but also the job name and partition in case of mistyping the jobID:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scancel -i 123807
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ scancel -i 123807
 Cancel job_id=123807 name=PI partition=standby [y/n]? y
 </pre></div>
 </div>
-</section>
-<section id="estimation-of-the-starting-time-for-a-job">
+</div>
+<div class="section" id="estimation-of-the-starting-time-for-a-job">
 <h2>Estimation of the starting time for a job<a class="headerlink" href="#estimation-of-the-starting-time-for-a-job" title="Permalink to this headline">¶</a></h2>
 <p>SLURM tries to schedule all jobs as quickly as possible, subject to a number of dynamic constrains.
 These constrains could be cluster policies, available hardware, allocation priorities (contributers to the cluster get higher priority allocations), etc.
 Typically jobs submitted into a <strong>day</strong> queue could start running within a day or so.
 Week queues could demand more time as jobs there last longer in execution.
 All this can vary a a given point of time on the cluster.</p>
-<p>The command <code class="docutils literal notranslate"><span class="pre">squeue</span></code>, has some arguments that can show you the scheduler’s estimate of when a pending/idle job will start running.
+<p>The command <code class="docutils literal"><span class="pre">squeue</span></code>, has some arguments that can show you the scheduler’s estimate of when a pending/idle job will start running.
 It is just the scheduler’s best estimate, given current conditions, that on a cluster are permanently changing.
 The actual time a job starts might be earlier or later than that depending on factors such as the behavior of currently running jobs, the submission of new jobs, and hardware issues.</p>
 <p>To see this, you need to request that squeue show the %S field in the output format option.
 One particularly good set of arguments in this situations could be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -o &quot;%.9i %.9P %.8j %.8u %.2t %.10M %.6D %S&quot; -u $USER
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ squeue -o &quot;%.9i %.9P %.8j %.8u %.2t %.10M %.6D %S&quot; -u $USER
         JOBID PARTITION     NAME     USER ST       TIME  NODES START_TIME
    123809   standby       PI gufranco PD       0:00     40 2023-03-29T22:11:53
    123808   standby       PI gufranco PD       0:00     80 2023-03-30T15:10:06
@@ -638,13 +644,13 @@ One particularly good set of arguments in this situations could be:</p>
 <p>It makes sense that requesting 80 nodes will take more time than requesting 40.
 It could happens that some of the jobs running finish before the walltime and the job will enter earlier or could happen than newer jobs enter in partition with higher priority than standby and the job gets delayed.
 Use this estimation as a guidance more than a commitment.</p>
-</section>
-<section id="detailed-information-about-jobs">
+</div>
+<div class="section" id="detailed-information-about-jobs">
 <h2>Detailed information about jobs<a class="headerlink" href="#detailed-information-about-jobs" title="Permalink to this headline">¶</a></h2>
-<p>The information provided by the command <code class="docutils literal notranslate"><span class="pre">squeue</span></code> sometimes is not enough and you would like to gather a more complete picture of the state of a particular job.
-The command <code class="docutils literal notranslate"><span class="pre">scontrol</span></code> provides a wealth of information about jobs but also partitions and nodes.
+<p>The information provided by the command <code class="docutils literal"><span class="pre">squeue</span></code> sometimes is not enough and you would like to gather a more complete picture of the state of a particular job.
+The command <code class="docutils literal"><span class="pre">scontrol</span></code> provides a wealth of information about jobs but also partitions and nodes.
 Information about a job:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show job 123809
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show job 123809
 JobId=123809 JobName=PI
    UserId=gufranco(318130) GroupId=its-rc-thorny(1079001) MCS_label=N/A
    Priority=10675 Nice=0 Account=its-rc-admin QOS=normal
@@ -673,7 +679,7 @@ JobId=123809 JobName=PI
 </pre></div>
 </div>
 <p>Information about a parition uses a similar command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show partition standby
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show partition standby
 PartitionName=standby
    AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
    AllocNodes=ALL Default=YES QoS=N/A
@@ -693,7 +699,7 @@ PartitionName=standby
 </pre></div>
 </div>
 <p>We can also ask for information about a compute node:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show node tbdcx001
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ scontrol show node tbdcx001
 NodeName=tbdcx001 Arch=x86_64 CoresPerSocket=20
    CPUAlloc=40 CPUEfctv=40 CPUTot=40 CPULoad=42.22
    AvailableFeatures=xl,compute,bio
@@ -713,58 +719,57 @@ NodeName=tbdcx001 Arch=x86_64 CoresPerSocket=20
    ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
 </pre></div>
 </div>
-</section>
-<section id="controling-the-limit-of-time-for-a-job">
+</div>
+<div class="section" id="controling-the-limit-of-time-for-a-job">
 <h2>Controling the limit of time for a job<a class="headerlink" href="#controling-the-limit-of-time-for-a-job" title="Permalink to this headline">¶</a></h2>
-<p>If no time limit is declared on the submission script or the command line for <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, a job receives the time limit associated to the partition where it was submitted.
+<p>If no time limit is declared on the submission script or the command line for <code class="docutils literal"><span class="pre">sbatch</span></code>, a job receives the time limit associated to the partition where it was submitted.
 There are ways to declare a time limit and help the scheduler to decide if your job can start running ahead some others with larger time limits.
-This is particularly important if your job uses one of the <code class="docutils literal notranslate"><span class="pre">_week</span></code> partitions and you only need 2 or 3 days.
-In those cases, the <code class="docutils literal notranslate"><span class="pre">_day</span></code> partitions are not a good fit and you can declare a 3 day time limit and the job could enter in execution faster than other jobs with an entire week of execution.</p>
+This is particularly important if your job uses one of the <code class="docutils literal"><span class="pre">_week</span></code> partitions and you only need 2 or 3 days.
+In those cases, the <code class="docutils literal"><span class="pre">_day</span></code> partitions are not a good fit and you can declare a 3 day time limit and the job could enter in execution faster than other jobs with an entire week of execution.</p>
 <blockquote>
-<div><p>To specify your estimated runtime, use the –time=TIME or -t TIME parameter to sbatch. This value TIME can in any of the following formats:</p>
-</div></blockquote>
-<table class="colwidths-given docutils align-default" id="id4">
+<div>To specify your estimated runtime, use the –time=TIME or -t TIME parameter to sbatch. This value TIME can in any of the following formats:</div></blockquote>
+<table border="1" class="colwidths-given docutils" id="id4">
 <caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col width="50%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Format</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Example</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>M</p></td>
-<td><p>M minutes</p></td>
-<td><p>-t 45 (45 minutes)</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>M</td>
+<td>M minutes</td>
+<td>-t 45 (45 minutes)</td>
 </tr>
-<tr class="row-odd"><td><p>M:S</p></td>
-<td><p>M minutes, S seconds</p></td>
-<td><p>-t 2:30 (Two minutes and 30 seconds)</p></td>
+<tr class="row-odd"><td>M:S</td>
+<td>M minutes, S seconds</td>
+<td>-t 2:30 (Two minutes and 30 seconds)</td>
 </tr>
-<tr class="row-even"><td><p>H:M:S</p></td>
-<td><p>H hours, M minutes, S seconds</p></td>
-<td><p>-t 1:30:00 (One hour and half)</p></td>
+<tr class="row-even"><td>H:M:S</td>
+<td>H hours, M minutes, S seconds</td>
+<td>-t 1:30:00 (One hour and half)</td>
 </tr>
-<tr class="row-odd"><td><p>D-H</p></td>
-<td><p>D days, H hours</p></td>
-<td><p>-t 3-12 (3 days and a half)</p></td>
+<tr class="row-odd"><td>D-H</td>
+<td>D days, H hours</td>
+<td>-t 3-12 (3 days and a half)</td>
 </tr>
-<tr class="row-even"><td><p>D-H:M</p></td>
-<td><p>D days, H hours, M minutes</p></td>
-<td><p>-t 1-12:30 (1 day, 12 hours and 30 minutes)</p></td>
+<tr class="row-even"><td>D-H:M</td>
+<td>D days, H hours, M minutes</td>
+<td>-t 1-12:30 (1 day, 12 hours and 30 minutes)</td>
 </tr>
-<tr class="row-odd"><td><p>D-H:M:S</p></td>
-<td><p>D days, H hours, M minutes, S seconds</p></td>
-<td><p>-t 6-23:59:59 (One second less than a full week)</p></td>
+<tr class="row-odd"><td>D-H:M:S</td>
+<td>D days, H hours, M minutes, S seconds</td>
+<td>-t 6-23:59:59 (One second less than a full week)</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="specifying-number-of-nodes-tasks-and-cpu-cores">
+</div>
+<div class="section" id="specifying-number-of-nodes-tasks-and-cpu-cores">
 <h2>Specifying number of Nodes, tasks and CPU Cores<a class="headerlink" href="#specifying-number-of-nodes-tasks-and-cpu-cores" title="Permalink to this headline">¶</a></h2>
 <p>Computationally intesive HPC applications generally use a combination of distributed parallel computing, multithreading or SMP parallelism and accelerators.</p>
 <p>The dominant interface for distributed parallel computing is MPI.
@@ -773,7 +778,7 @@ Those processes could potentially run on separate computers and that is the solu
 <p>Multithreading or SMP parallelism uses the multiple CPU cores present in all modern-day computers.
 Those cores can all see the entire RAM of the machine.
 SMP parallelism is implemented in codes that uses OpenMP, OpenACC.
-In high level languages like Python the use of <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> module can take advantage of multiple CPU cores on the same machine.
+In high level languages like Python the use of <code class="docutils literal"><span class="pre">multiprocessing</span></code> module can take advantage of multiple CPU cores on the same machine.
 Some Linear Algebra libraries implement SMP parallelism, such as OpenBLAS and Intel MKL.</p>
 <p>Sometimes, the access to the certain portion of RAM is faster for one core than the other.
 We say that those systems have Non-Uniform Memory Access (NUMA).
@@ -786,287 +791,287 @@ On the other side if one of those MPI tasks uses multiple CPU cores, all those c
 That is a necessary condition for multithreading parallelism.</p>
 <p>Most jobs then fall into one of these categories:</p>
 <ol class="arabic simple">
-<li><p>Sequential/Serial:</p></li>
-<li><p>Shared Memory Parallel:</p></li>
-<li><p>Distributed Parallelism:</p></li>
-<li><p>Hybrid SMP+Distributed Parallelism:</p></li>
-<li><p>Accelerator Based Parallelism:</p></li>
+<li>Sequential/Serial:</li>
+<li>Shared Memory Parallel:</li>
+<li>Distributed Parallelism:</li>
+<li>Hybrid SMP+Distributed Parallelism:</li>
+<li>Accelerator Based Parallelism:</li>
 </ol>
-</section>
-<section id="translating-pbs-scripts-to-slurm-scripts">
+</div>
+<div class="section" id="translating-pbs-scripts-to-slurm-scripts">
 <h2>Translating PBS Scripts to Slurm Scripts<a class="headerlink" href="#translating-pbs-scripts-to-slurm-scripts" title="Permalink to this headline">¶</a></h2>
 <p>All our previous clusters, Mountaineer, Spruce Knob and Thorny Flat used Torque as Resource Manager and Moab as Scheduler. In 2022 we transition to SLURM as workload manager.
 For most part the transition is transparent as we installed a set of wrappers that translate on the fly the usual commands from Torque and Moab into the equivalents for SLURM.
-The same happens with submission scripts where the lines with <code class="docutils literal notranslate"><span class="pre">#PBS</span></code> get translated into the corresponding <code class="docutils literal notranslate"><span class="pre">$SBATCH</span></code> versions.
+The same happens with submission scripts where the lines with <code class="docutils literal"><span class="pre">#PBS</span></code> get translated into the corresponding <code class="docutils literal"><span class="pre">$SBATCH</span></code> versions.
 That being said is good for our users, specially new users to get used to SLURM commands and directives and stop using as much as possible the Torque commands that could become deprecated at some point in the future or the wrappers not being installed in future HPC clusters.</p>
 <p>The following are a set of tables that contains a list of common commands and terms used with the TORQUE/PBS resource manager and scheduler, and the corresponding commands and terms used under the SLURM workload manager.
 These tables can be used to assist you in translating existing PBS scripts into proper SLURM scripts that can be interpreted directly.
 The same tables can be used for reference when writing new submission scripts directly in SLURM format</p>
-<table class="colwidths-given docutils align-default" id="id5">
+<table border="1" class="colwidths-given docutils" id="id5">
 <caption><span class="caption-text">User Commands</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col width="50%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>User Commands</p></th>
-<th class="head"><p>PBS/Torque</p></th>
-<th class="head"><p>SLURM</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">User Commands</th>
+<th class="head">PBS/Torque</th>
+<th class="head">SLURM</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Job submission</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">[script_file]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">[script_file]</span></code></p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Job submission</td>
+<td><code class="docutils literal"><span class="pre">qsub</span> <span class="pre">[script_file]</span></code></td>
+<td><code class="docutils literal"><span class="pre">sbatch</span> <span class="pre">[script_file]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Job deletion</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qdel</span> <span class="pre">[job_id]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">[job_id]</span></code></p></td>
+<tr class="row-odd"><td>Job deletion</td>
+<td><code class="docutils literal"><span class="pre">qdel</span> <span class="pre">[job_id]</span></code></td>
+<td><code class="docutils literal"><span class="pre">scancel</span> <span class="pre">[job_id]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Job status (by job)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">[job_id]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">[job_id]</span></code></p></td>
+<tr class="row-even"><td>Job status (by job)</td>
+<td><code class="docutils literal"><span class="pre">qstat</span> <span class="pre">[job_id]</span></code></td>
+<td><code class="docutils literal"><span class="pre">squeue</span> <span class="pre">[job_id]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Job status (by user)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-u</span> <span class="pre">[user_name]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">[user_name]</span></code></p></td>
+<tr class="row-odd"><td>Job status (by user)</td>
+<td><code class="docutils literal"><span class="pre">qstat</span> <span class="pre">-u</span> <span class="pre">[user_name]</span></code></td>
+<td><code class="docutils literal"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">[user_name]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Job hold</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qhold</span> <span class="pre">[job_id]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">hold</span> <span class="pre">[job_id]</span></code></p></td>
+<tr class="row-even"><td>Job hold</td>
+<td><code class="docutils literal"><span class="pre">qhold</span> <span class="pre">[job_id]</span></code></td>
+<td><code class="docutils literal"><span class="pre">scontrol</span> <span class="pre">hold</span> <span class="pre">[job_id]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Job release</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qrls</span> <span class="pre">[job_id]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">release</span> <span class="pre">[job_id]</span></code></p></td>
+<tr class="row-odd"><td>Job release</td>
+<td><code class="docutils literal"><span class="pre">qrls</span> <span class="pre">[job_id]</span></code></td>
+<td><code class="docutils literal"><span class="pre">scontrol</span> <span class="pre">release</span> <span class="pre">[job_id]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Queue list</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-Q</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code></p></td>
+<tr class="row-even"><td>Queue list</td>
+<td><code class="docutils literal"><span class="pre">qstat</span> <span class="pre">-Q</span></code></td>
+<td><code class="docutils literal"><span class="pre">squeue</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Node list</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">pbsnodes</span> <span class="pre">-l</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sinfo</span> <span class="pre">-N</span></code> OR <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">nodes</span></code></p></td>
+<tr class="row-odd"><td>Node list</td>
+<td><code class="docutils literal"><span class="pre">pbsnodes</span> <span class="pre">-l</span></code></td>
+<td><code class="docutils literal"><span class="pre">sinfo</span> <span class="pre">-N</span></code> OR <code class="docutils literal"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">nodes</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Cluster status</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-a</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code></p></td>
+<tr class="row-even"><td>Cluster status</td>
+<td><code class="docutils literal"><span class="pre">qstat</span> <span class="pre">-a</span></code></td>
+<td><code class="docutils literal"><span class="pre">sinfo</span></code></td>
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id6">
+<table border="1" class="colwidths-given docutils" id="id6">
 <caption><span class="caption-text">Environment Variables</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col width="50%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Environment</p></th>
-<th class="head"><p>PBS/Torque</p></th>
-<th class="head"><p>SLURM</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Environment</th>
+<th class="head">PBS/Torque</th>
+<th class="head">SLURM</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Job ID</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_JOBID</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_ID</span></code></p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Job ID</td>
+<td><code class="docutils literal"><span class="pre">$PBS_JOBID</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_JOB_ID</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Submit Directory</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_O_WORKDIR</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_SUBMIT_DIR</span></code></p></td>
+<tr class="row-odd"><td>Submit Directory</td>
+<td><code class="docutils literal"><span class="pre">$PBS_O_WORKDIR</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_SUBMIT_DIR</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Submit Host</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_O_HOST</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_SUBMIT_HOST</span></code></p></td>
+<tr class="row-even"><td>Submit Host</td>
+<td><code class="docutils literal"><span class="pre">$PBS_O_HOST</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_SUBMIT_HOST</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Node List</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_NODEFILE</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NODELIST</span></code></p></td>
+<tr class="row-odd"><td>Node List</td>
+<td><code class="docutils literal"><span class="pre">$PBS_NODEFILE</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_JOB_NODELIST</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Job Name</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_JOBNAME</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NAME</span></code></p></td>
+<tr class="row-even"><td>Job Name</td>
+<td><code class="docutils literal"><span class="pre">$PBS_JOBNAME</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_JOB_NAME</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Number of nodes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_NUM_NODES</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOB_NUM_NODES</span></code></p></td>
+<tr class="row-odd"><td>Number of nodes</td>
+<td><code class="docutils literal"><span class="pre">$PBS_NUM_NODES</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_JOB_NUM_NODES</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Number of cores per node</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_NUM_PPN</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_CPUS_ON_NODE</span></code></p></td>
+<tr class="row-even"><td>Number of cores per node</td>
+<td><code class="docutils literal"><span class="pre">$PBS_NUM_PPN</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_CPUS_ON_NODE</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Unique index used for Job Arrays</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$PBS_ARRAYID</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code></p></td>
+<tr class="row-odd"><td>Unique index used for Job Arrays</td>
+<td><code class="docutils literal"><span class="pre">$PBS_ARRAYID</span></code></td>
+<td><code class="docutils literal"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code></td>
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id7">
+<table border="1" class="colwidths-given docutils" id="id7">
 <caption><span class="caption-text">Job Directives or Specifications</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col width="50%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Job Specification</p></th>
-<th class="head"><p>PBS/Torque</p></th>
-<th class="head"><p>SLURM</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Job Specification</th>
+<th class="head">PBS/Torque</th>
+<th class="head">SLURM</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Script directive</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#PBS</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code></p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Script directive</td>
+<td><code class="docutils literal"><span class="pre">#PBS</span></code></td>
+<td><code class="docutils literal"><span class="pre">#SBATCH</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Queue/Partition</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-q</span> <span class="pre">[name]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--partition=[name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">[name]</span></code></p></td>
+<tr class="row-odd"><td>Queue/Partition</td>
+<td><code class="docutils literal"><span class="pre">-q</span> <span class="pre">[name]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--partition=[name]</span></code> OR <code class="docutils literal"><span class="pre">-p</span> <span class="pre">[name]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Node Count</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">nodes=[count]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--nodes=[min[-max]]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">[min[-max]]</span></code></p></td>
+<tr class="row-even"><td>Node Count</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">nodes=[count]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--nodes=[min[-max]]</span></code> OR <code class="docutils literal"><span class="pre">-N</span> <span class="pre">[min[-max]]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Total Task Count</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">ppn=[count]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks=ntasks</span></code> OR <code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
+<tr class="row-odd"><td>Total Task Count</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">ppn=[count]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--ntasks=ntasks</span></code> OR <code class="docutils literal"><span class="pre">-n</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Total Task Count</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mppwidth=[PE_count]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks=ntasks</span></code> OR <code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
+<tr class="row-even"><td>Total Task Count</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">mppwidth=[PE_count]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--ntasks=ntasks</span></code> OR <code class="docutils literal"><span class="pre">-n</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Wall Clock Limit</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">walltime=[hh:mm:ss]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--time=[days-hh:mm:ss]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">[min]</span></code></p></td>
+<tr class="row-odd"><td>Wall Clock Limit</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">walltime=[hh:mm:ss]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--time=[days-hh:mm:ss]</span></code> OR <code class="docutils literal"><span class="pre">-t</span> <span class="pre">[min]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Standard Output File</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">[file_name]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--output=[file_name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">[file_name]</span></code></p></td>
+<tr class="row-even"><td>Standard Output File</td>
+<td><code class="docutils literal"><span class="pre">-o</span> <span class="pre">[file_name]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--output=[file_name]</span></code> OR <code class="docutils literal"><span class="pre">-o</span> <span class="pre">[file_name]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Standard Error File</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">[file_name]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--error=[file_name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">[file_name]</span></code></p></td>
+<tr class="row-odd"><td>Standard Error File</td>
+<td><code class="docutils literal"><span class="pre">-e</span> <span class="pre">[file_name]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--error=[file_name]</span></code> OR <code class="docutils literal"><span class="pre">-e</span> <span class="pre">[file_name]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Write stderr -&gt; stdout</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">oe</span> <span class="pre">(both</span> <span class="pre">to</span> <span class="pre">stdout)</span></code></p></td>
-<td><p>(use -o without -e)</p></td>
+<tr class="row-even"><td>Write stderr -&gt; stdout</td>
+<td><code class="docutils literal"><span class="pre">-j</span> <span class="pre">oe</span> <span class="pre">(both</span> <span class="pre">to</span> <span class="pre">stdout)</span></code></td>
+<td>(use -o without -e)</td>
 </tr>
-<tr class="row-odd"><td><p>Write stdout -&gt; stderr</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">eo</span> <span class="pre">(both</span> <span class="pre">to</span> <span class="pre">stderr)</span></code></p></td>
-<td><p>(use -e without -o)</p></td>
+<tr class="row-odd"><td>Write stdout -&gt; stderr</td>
+<td><code class="docutils literal"><span class="pre">-j</span> <span class="pre">eo</span> <span class="pre">(both</span> <span class="pre">to</span> <span class="pre">stderr)</span></code></td>
+<td>(use -e without -o)</td>
 </tr>
-<tr class="row-even"><td><p>Copy Environment</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-V</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--export=[ALL</span> <span class="pre">|</span> <span class="pre">NONE</span> <span class="pre">|</span> <span class="pre">variables]</span></code></p></td>
+<tr class="row-even"><td>Copy Environment</td>
+<td><code class="docutils literal"><span class="pre">-V</span></code></td>
+<td><code class="docutils literal"><span class="pre">--export=[ALL</span> <span class="pre">|</span> <span class="pre">NONE</span> <span class="pre">|</span> <span class="pre">variables]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Event Notification</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">abe</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--mail-type=[events]</span></code></p></td>
+<tr class="row-odd"><td>Event Notification</td>
+<td><code class="docutils literal"><span class="pre">-m</span> <span class="pre">abe</span></code></td>
+<td><code class="docutils literal"><span class="pre">--mail-type=[events]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Email Address</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-M</span> <span class="pre">[address]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--mail-user=[address]</span></code></p></td>
+<tr class="row-even"><td>Email Address</td>
+<td><code class="docutils literal"><span class="pre">-M</span> <span class="pre">[address]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--mail-user=[address]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Job Name</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">[name]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--job-name=[name]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-J</span> <span class="pre">[name]</span></code></p></td>
+<tr class="row-odd"><td>Job Name</td>
+<td><code class="docutils literal"><span class="pre">-N</span> <span class="pre">[name]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--job-name=[name]</span></code> OR <code class="docutils literal"><span class="pre">-J</span> <span class="pre">[name]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Job Restart</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">[y</span> <span class="pre">|</span> <span class="pre">n]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--requeue</span></code> OR <code class="docutils literal notranslate"><span class="pre">--no-requeue</span></code></p></td>
+<tr class="row-even"><td>Job Restart</td>
+<td><code class="docutils literal"><span class="pre">-r</span> <span class="pre">[y</span> <span class="pre">|</span> <span class="pre">n]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--requeue</span></code> OR <code class="docutils literal"><span class="pre">--no-requeue</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Resource Sharing</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">naccesspolicy=singlejob</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--exclusive</span></code> OR <code class="docutils literal notranslate"><span class="pre">--shared</span></code></p></td>
+<tr class="row-odd"><td>Resource Sharing</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">naccesspolicy=singlejob</span></code></td>
+<td><code class="docutils literal"><span class="pre">--exclusive</span></code> OR <code class="docutils literal"><span class="pre">--shared</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Memory Size</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mem=[MB]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--mem=[mem][M</span> <span class="pre">|</span> <span class="pre">G</span> <span class="pre">|</span> <span class="pre">T]</span></code></p></td>
+<tr class="row-even"><td>Memory Size</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">mem=[MB]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--mem=[mem][M</span> <span class="pre">|</span> <span class="pre">G</span> <span class="pre">|</span> <span class="pre">T]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Memory Size</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mem=[MB]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--mem-per-cpu=[mem][M</span> <span class="pre">|</span> <span class="pre">G</span> <span class="pre">|</span> <span class="pre">T]</span></code></p></td>
+<tr class="row-odd"><td>Memory Size</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">mem=[MB]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--mem-per-cpu=[mem][M</span> <span class="pre">|</span> <span class="pre">G</span> <span class="pre">|</span> <span class="pre">T]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Accounts to charge</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-A</span></code> OR <code class="docutils literal notranslate"><span class="pre">-W</span> <span class="pre">group_list=[account]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--account=[account]</span></code> OR <code class="docutils literal notranslate"><span class="pre">-A</span></code></p></td>
+<tr class="row-even"><td>Accounts to charge</td>
+<td><code class="docutils literal"><span class="pre">-A</span></code> OR <code class="docutils literal"><span class="pre">-W</span> <span class="pre">group_list=[account]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--account=[account]</span></code> OR <code class="docutils literal"><span class="pre">-A</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Tasks Per Node</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">mppnppn</span> <span class="pre">[PEs_per_node]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--ntasks-per-node=[count]</span></code></p></td>
+<tr class="row-odd"><td>Tasks Per Node</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">mppnppn</span> <span class="pre">[PEs_per_node]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--ntasks-per-node=[count]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>CPUs Per Task</p></td>
-<td><p>N/A</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--cpus-per-task=[count]</span></code></p></td>
+<tr class="row-even"><td>CPUs Per Task</td>
+<td>N/A</td>
+<td><code class="docutils literal"><span class="pre">--cpus-per-task=[count]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Job Dependency</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">[job_id]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--depend=[state:job_id]</span></code></p></td>
+<tr class="row-odd"><td>Job Dependency</td>
+<td><code class="docutils literal"><span class="pre">-d</span> <span class="pre">[job_id]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--depend=[state:job_id]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Quality of Service</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">qos=[name]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--qos=[normal</span> <span class="pre">|</span> <span class="pre">high]</span></code></p></td>
+<tr class="row-even"><td>Quality of Service</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">qos=[name]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--qos=[normal</span> <span class="pre">|</span> <span class="pre">high]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Job Arrays</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">[array_spec]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--array=[array_spec]</span></code></p></td>
+<tr class="row-odd"><td>Job Arrays</td>
+<td><code class="docutils literal"><span class="pre">-t</span> <span class="pre">[array_spec]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--array=[array_spec]</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Generic Resources</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">other=[resource_spec]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--gres=[resource_spec]</span></code></p></td>
+<tr class="row-even"><td>Generic Resources</td>
+<td><code class="docutils literal"><span class="pre">-l</span> <span class="pre">other=[resource_spec]</span></code></td>
+<td><code class="docutils literal"><span class="pre">--gres=[resource_spec]</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Job Enqueue Time</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-a</span> <span class="pre">“YYYY-MM-DD</span> <span class="pre">HH:MM:SS”</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--begin=YYYY-MM-DD[THH:MM[:SS]]</span></code></p></td>
+<tr class="row-odd"><td>Job Enqueue Time</td>
+<td><code class="docutils literal"><span class="pre">-a</span> <span class="pre">“YYYY-MM-DD</span> <span class="pre">HH:MM:SS”</span></code></td>
+<td><code class="docutils literal"><span class="pre">--begin=YYYY-MM-DD[THH:MM[:SS]]</span></code></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="old-documentation">
+</div>
+<div class="section" id="old-documentation">
 <h2>OLD DOCUMENTATION<a class="headerlink" href="#old-documentation" title="Permalink to this headline">¶</a></h2>
-<section id="resource-specification">
+<div class="section" id="resource-specification">
 <h3>Resource Specification<a class="headerlink" href="#resource-specification" title="Permalink to this headline">¶</a></h3>
 <p>The #PBS -l option is used to specify resources such as number of CPUs,
 nodes, and length of Walltime for the job specified. The three most
 common resources specified for the Mountaineer cluster are</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col width="50%" />
+<col width="50%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>nodes</strong></p></td>
-<td><p>Number of nodes needed</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>nodes</strong></td>
+<td>Number of nodes needed</td>
 </tr>
-<tr class="row-even"><td><p><strong>walltime</strong></p></td>
-<td><p>Maximum limit for walltime given
-in the format hh:mm:ss</p></td>
+<tr class="row-even"><td><strong>walltime</strong></td>
+<td>Maximum limit for walltime given
+in the format hh:mm:ss</td>
 </tr>
-<tr class="row-odd"><td><p><strong>ppn</strong></p></td>
-<td><p>Processors per node</p></td>
+<tr class="row-odd"><td><strong>ppn</strong></td>
+<td>Processors per node</td>
 </tr>
-<tr class="row-even"><td><p><strong>procs</strong></p></td>
-<td><p>Number of processors requested</p></td>
+<tr class="row-even"><td><strong>procs</strong></td>
+<td>Number of processors requested</td>
 </tr>
-<tr class="row-odd"><td><p><strong>pvmem</strong></p></td>
-<td><p>Maximum amount of memory used by
-any single process in the job</p></td>
+<tr class="row-odd"><td><strong>pvmem</strong></td>
+<td>Maximum amount of memory used by
+any single process in the job</td>
 </tr>
-<tr class="row-even"><td><p><strong>vmem</strong></p></td>
-<td><p>Maximum amount of memory used by
+<tr class="row-even"><td><strong>vmem</strong></td>
+<td>Maximum amount of memory used by
 all concurrent processes in the
-job</p></td>
+job</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Note: procs is used when you do not require each CPU to be on the same
 node.</strong></p>
 <p>For example, the PBS directive</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,walltime=06:00:00</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,walltime=06:00:00</span>
 </pre></div>
 </div>
 <p>Specifies that the job will need 6 processors located on a single node
@@ -1080,7 +1085,7 @@ threads, you will most likely only specify a single processor for your
 job (procs=1). <strong>Note:</strong>Resources specifying per node request are
 given with the nodes directive and seperated with a :, on the same line
 in your script.</p>
-<section id="requesting-memory-specifications">
+<div class="section" id="requesting-memory-specifications">
 <h4>Requesting Memory Specifications<a class="headerlink" href="#requesting-memory-specifications" title="Permalink to this headline">¶</a></h4>
 <p>Requesting memory specifications for jobs is done with the attributes
 vmem or pvmem through the PBS -l directive (resource specification). The
@@ -1114,93 +1119,93 @@ pvmem attribute specifies the maximum amount of virtual memory used by
 any single processes in the job. Therefore, if you want a job that uses
 6 processors and needs 35 Gb of RAM you would specify the following
 resource directive line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,pvmem=6gb</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l nodes=1:ppn=6,pvmem=6gb</span>
 </pre></div>
 </div>
 <p>pvmem=6gb with 6 processors specifies 6*6 = 36Gb of total memory for the
 job.</p>
-</section>
-<section id="requesting-certain-node-types">
+</div>
+<div class="section" id="requesting-certain-node-types">
 <h4>Requesting Certain Node Types<a class="headerlink" href="#requesting-certain-node-types" title="Permalink to this headline">¶</a></h4>
 <p>There might be times where you want to be able to request a node with a
 particular feature or processor. The following will allow you to
 accomplish this task. Replace ‘feature_name” with one of the features in
 the below table.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=feature_name</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=feature_name</span>
 </pre></div>
 </div>
 <p>Note, you can also request a particular feature not by doing the
 following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=&#39;!feature_name&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l feature=&#39;!feature_name&#39;</span>
 </pre></div>
 </div>
-</section>
-<section id="available-features">
+</div>
+<div class="section" id="available-features">
 <h4>Available Features<a class="headerlink" href="#available-features" title="Permalink to this headline">¶</a></h4>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
+<col width="23%" />
+<col width="77%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Feature</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>smb</p></td>
-<td><p>Sandy Bridge Based Processor Nodes</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>smb</td>
+<td>Sandy Bridge Based Processor Nodes</td>
 </tr>
-<tr class="row-odd"><td><p>ivy</p></td>
-<td><p>Ivy Bridge Based Processor Nodes</p></td>
+<tr class="row-odd"><td>ivy</td>
+<td>Ivy Bridge Based Processor Nodes</td>
 </tr>
-<tr class="row-even"><td><p>haswell</p></td>
-<td><p>Haswell Based Processor Nodes</p></td>
+<tr class="row-even"><td>haswell</td>
+<td>Haswell Based Processor Nodes</td>
 </tr>
-<tr class="row-odd"><td><p>broadwell</p></td>
-<td><p>Broadwell Based Processor Nodes</p></td>
+<tr class="row-odd"><td>broadwell</td>
+<td>Broadwell Based Processor Nodes</td>
 </tr>
-<tr class="row-even"><td><p>avx</p></td>
-<td><p>Processors with AVX Extension</p></td>
+<tr class="row-even"><td>avx</td>
+<td>Processors with AVX Extension</td>
 </tr>
-<tr class="row-odd"><td><p>avx2</p></td>
-<td><p>Processors with AVX2 Extension</p></td>
+<tr class="row-odd"><td>avx2</td>
+<td>Processors with AVX2 Extension</td>
 </tr>
-<tr class="row-even"><td><p>f16c</p></td>
-<td><p>Processors with f16c Extension</p></td>
+<tr class="row-even"><td>f16c</td>
+<td>Processors with f16c Extension</td>
 </tr>
-<tr class="row-odd"><td><p>adx</p></td>
-<td><p>Processors with adx Extension</p></td>
+<tr class="row-odd"><td>adx</td>
+<td>Processors with adx Extension</td>
 </tr>
-<tr class="row-even"><td><p>large</p></td>
-<td><p>Nodes with 512 GB of memory</p></td>
+<tr class="row-even"><td>large</td>
+<td>Nodes with 512 GB of memory</td>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="e-mail-options">
+</div>
+</div>
+<div class="section" id="e-mail-options">
 <h3>E-mail options<a class="headerlink" href="#e-mail-options" title="Permalink to this headline">¶</a></h3>
 <p>The #PBS -m and #PBS -M options are used to specify when and to whom the
 scheduler will send e-mails. The -m option consists of either the single
 character “n”, or one or more of the characters “a”, “b”, and “e”.</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 89%" />
+<col width="11%" />
+<col width="89%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>n</strong></p></td>
-<td><p>No mail will be sent</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>n</strong></td>
+<td>No mail will be sent</td>
 </tr>
-<tr class="row-even"><td><p><strong>a</strong></p></td>
-<td><p>Mail is sent when the job is aborted by the batch system</p></td>
+<tr class="row-even"><td><strong>a</strong></td>
+<td>Mail is sent when the job is aborted by the batch system</td>
 </tr>
-<tr class="row-odd"><td><p><strong>b</strong></p></td>
-<td><p>Mail is sent when the job begins execution</p></td>
+<tr class="row-odd"><td><strong>b</strong></td>
+<td>Mail is sent when the job begins execution</td>
 </tr>
-<tr class="row-even"><td><p><strong>e</strong></p></td>
-<td><p>Mail is sent when the job ends</p></td>
+<tr class="row-even"><td><strong>e</strong></td>
+<td>Mail is sent when the job ends</td>
 </tr>
 </tbody>
 </table>
@@ -1208,7 +1213,7 @@ character “n”, or one or more of the characters “a”, “b”, and “e�
 is aborted.</strong></p>
 <p>The shellscript option #PBS -M specifies the e-mail addresses to send
 mail to. For example, the PBS directive</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -m ae</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -m ae</span>
 <span class="c1">#PBS -M user@mailserver.com</span>
 </pre></div>
 </div>
@@ -1216,7 +1221,7 @@ mail to. For example, the PBS directive</p>
 aborted, or when the job is completed. To specify more than one e-mail
 address with the -M option, each address should be separated with a
 comma without any spaces.</p>
-<section id="to-receive-no-e-mails-even-on-aborts">
+<div class="section" id="to-receive-no-e-mails-even-on-aborts">
 <h4>To Receive no e-mails even on aborts<a class="headerlink" href="#to-receive-no-e-mails-even-on-aborts" title="Permalink to this headline">¶</a></h4>
 <p>Even with the ‘n’ option of ‘-m’ directive, the system will still send
 an e-mail if the job is cancelled or aborts. To provide the ability for
@@ -1225,13 +1230,13 @@ address that can be used to bounce these e-mails. To receive absolutely
 no e-mails from the system, no matter what happens before, during and
 after execution of your job, use the <a class="reference external" href="mailto:noemail&#37;&#52;&#48;hpc&#46;wvu&#46;edu">noemail<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> address with
 the ‘n’ option:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -m n</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -m n</span>
 <span class="c1">#PBS -m noemail@hpc.wvu.edu</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="output-file-specification">
+</div>
+</div>
+<div class="section" id="output-file-specification">
 <h3>Output file specification<a class="headerlink" href="#output-file-specification" title="Permalink to this headline">¶</a></h3>
 <p>Default standard output and standard error of the job will be placed in
 files named <em>jobname</em>.<strong>o</strong><em>jobid</em> and <em>jobname</em>.<strong>e</strong><em>jobid</em>,
@@ -1240,22 +1245,22 @@ qsub command was executed in. Where jobname is specified using the -N
 environment option and jobid is given at run time by the system. The
 #PBS -e and #PBS -o options are used to specify what files should be
 written for the standard error and standard output stream, respectively.</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col width="15%" />
+<col width="85%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>-e</strong></p></td>
-<td><p>pathname for standard error stream output</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>-e</strong></td>
+<td>pathname for standard error stream output</td>
 </tr>
-<tr class="row-even"><td><p><strong>-o</strong></p></td>
-<td><p>pathname for standard output stream output</p></td>
+<tr class="row-even"><td><strong>-o</strong></td>
+<td>pathname for standard output stream output</td>
 </tr>
 </tbody>
 </table>
 <p>An example, the PBS directive</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -e /scratch/username/examplejob.error</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -e /scratch/username/examplejob.error</span>
 <span class="c1">#PBS -o /scratch/username/examplejob.output</span>
 </pre></div>
 </div>
@@ -1264,8 +1269,8 @@ and /scratch/username/examplejob.output for the standard error and
 standard output streams, respectively.</p>
 <p><strong>Note: Use full pathnames for your home directory and scratch
 directory</strong></p>
-</section>
-<section id="requesting-array-jobs">
+</div>
+<div class="section" id="requesting-array-jobs">
 <h3>Requesting Array jobs<a class="headerlink" href="#requesting-array-jobs" title="Permalink to this headline">¶</a></h3>
 <p>By using the directive #PBS -t , you can request a job to be repeated by
 a single script a number of times. This is useful if you have data where
@@ -1273,7 +1278,7 @@ you want a single parameter to range over a section of numbers. For
 instance, if I wanted a series of commands to be run, with a single
 variable in the command to be executed over a range of 10-20 I could use
 the following command directives in my shell script</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#PBS -N demographic_${PBS_ARRAYID}
+<div class="highlight-default"><div class="highlight"><pre><span></span>#PBS -N demographic_${PBS_ARRAYID}
 #PBS -l nodes=1:ppn=2
 #PBS -t 10-20
 
@@ -1297,20 +1302,20 @@ values. Note: this a theoretical example since I never specified
 walltime or a queue to execute this job from.</p>
 <p>The number range for array request does not have to be sequential. You
 can also list a comma separated list of numbers as</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 10,15,20,25</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 10,15,20,25</span>
 </pre></div>
 </div>
 <p>Further, you can also specify that only a certain number of jobs are
 queued at one time in cases where you have a large number of jobs and
 need to share a queue with another user</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 1-200%10</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -t 1-200%10</span>
 </pre></div>
 </div>
 <p>The above directive will only launch ten jobs to the queue at a time
 until all 200 job requests have been executed.</p>
-</section>
-</section>
-<section id="interactive-jobs">
+</div>
+</div>
+<div class="section" id="interactive-jobs">
 <h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline">¶</a></h2>
 <p>Interactive jobs allow a user to be given an interactive terminal on a
 compute node. This allows a user to “interact” directly with a compute
@@ -1321,7 +1326,7 @@ are also useful when needing to use a graphical program on the cluster.</p>
 <p>To run an interactive job use the following command followed by any
 necessary PBS variables/flags. If you don’t specify any flags, you will
 be given an interactive job in the default queue for the cluster.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span>
 </pre></div>
 </div>
 <p>Do note, interactive jobs are only allowed on certain queues. All condo
@@ -1330,8 +1335,8 @@ as ‘standby’ and ‘debug’. If you find you need an interactive queue on a
 community resource for a particular task or project, please contact
 <a class="reference external" href="https://helpdesk.hpc.wvu.edu">Research Computing Help Desk</a> for
 assistance.</p>
-</section>
-<section id="graphical-interface-jobs">
+</div>
+<div class="section" id="graphical-interface-jobs">
 <h2>Graphical Interface Jobs<a class="headerlink" href="#graphical-interface-jobs" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes it might be useful or required to run a graphical program on
 the cluster. Non-compute intensive processes for visualization purposes
@@ -1344,18 +1349,18 @@ review <a class="reference external" href="Using_X_Windows_applications">Using X
 to properly setup your X (i.e. display) environment. To launch a
 graphical job on a compute node, you will need to execute the following
 along with any necessary flags/pbs environment variables.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -X
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -I -X
 </pre></div>
 </div>
 <p>Once you are given an access to a interactive terminal you can run your
 the proper executable to launch your graphical (i.e. X Window) program.
 For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load statistics/matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load statistics/matlab
 $&gt; matlab &amp;
 </pre></div>
 </div>
-</section>
-<section id="checking-the-status-of-jobs">
+</div>
+<div class="section" id="checking-the-status-of-jobs">
 <h2>Checking the Status of Jobs<a class="headerlink" href="#checking-the-status-of-jobs" title="Permalink to this headline">¶</a></h2>
 <p>The status of a job currently submitted to the queue can be checked
 using the checkjob command. checkjob displays detailed job state
@@ -1364,12 +1369,12 @@ information is available for queued, blocked, active, and recently
 completed jobs. Users can use checkjob to view the status of their own
 jobs.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; checkjob -v &lt;jobid&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; checkjob -v &lt;jobid&gt;
 </pre></div>
 </div>
 <p>where is the jobid given at submission time.</p>
 <p>The output of checkjob looks like this</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="mi">1653450</span> <span class="p">(</span><span class="n">RM</span> <span class="n">job</span> <span class="s1">&#39;1653450.srih0001.hpc.wvu.edu&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="mi">1653450</span> <span class="p">(</span><span class="n">RM</span> <span class="n">job</span> <span class="s1">&#39;1653450.srih0001.hpc.wvu.edu&#39;</span><span class="p">)</span>
 
 <span class="n">AName</span><span class="p">:</span> <span class="n">IVY</span>
 <span class="n">State</span><span class="p">:</span> <span class="n">Completed</span>
@@ -1413,7 +1418,7 @@ jobs.</p>
 you can check the reasons with checkjob For example, consider this
 submission script where we ask for too much memory for a serial job.</p>
 <p>The submisssion script looks like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N TEST
 #PBS -l nodes=1:ppn=1,vmem=200g
@@ -1429,7 +1434,7 @@ date
 </div>
 <p>The jobs is accepted by torque but will see the job in queue for a long
 time. Now we execute checkjob to know the reasons for not being running</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; checkjob -v 1653589
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; checkjob -v 1653589
 
 job 1653589 (RM job &#39;1653589.srih0001.hpc.wvu.edu&#39;)
 
@@ -1509,11 +1514,11 @@ related. The Queue system search for 623 cores available and could not
 find a single machine with 200GB available to launch the job.</p>
 <p>Another important tool to monitor jobs and its state is showq</p>
 <p>You can get the eligible jobs and their priorities with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">showq</span><span class="o">-</span> <span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">showq</span><span class="o">-</span> <span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>For example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -i -u username
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -i -u username
 
 eligible jobs----------------------
 JOBID                 PRIORITY  XFACTOR  Q  USERNAME    GROUP  PROCS     WCLIMIT     CLASS      SYSTEMQUEUETIME
@@ -1545,7 +1550,7 @@ Total jobs:  18
 <p>Those are jobs that accrue priority as time passes for them on queue.
 Some jobs could become blocked, meaning that they are not gaining
 priority but will eventually become eligible later in time.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -b -u username
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -b -u username
 
 blocked jobs-----------------------
 JOBID              USERNAME    GROUP      STATE PROCS     WCLIMIT            QUEUETIME
@@ -1579,7 +1584,7 @@ Total jobs:  21
 </div>
 <p>Finally, you can see the jobs that are currently running with their
 remaining time until hit their wall time</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ showq -r -u username
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ showq -r -u username
 
 active jobs------------------------
 JOBID               S  PAR  EFFIC  XFACTOR  Q  USERNAME    GROUP            MHOST PROCS   REMAINING            STARTTIME
@@ -1610,12 +1615,12 @@ JOBID               S  PAR  EFFIC  XFACTOR  Q  USERNAME    GROUP            MHOS
 Total jobs:  19
 </pre></div>
 </div>
-</section>
-<section id="canceling-removing-a-job">
+</div>
+<div class="section" id="canceling-removing-a-job">
 <h2>Canceling/Removing a Job<a class="headerlink" href="#canceling-removing-a-job" title="Permalink to this headline">¶</a></h2>
 <p>Jobs can be cancelled or removed using the canceljob command. Users can
 only remove jobs they submitted to the scheduler.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $&gt; canceljob &lt;jobid&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $&gt; canceljob &lt;jobid&gt;
 
 is the jobid given at submission time.
 </pre></div>
@@ -1625,11 +1630,11 @@ jobs For example, if you want to cancel jobs that starts with 1693 you
 can use this command to cancel those jobs. As user you can only cancel
 jobs that you own so do not worry about canceling jobs from other users
 by doing this.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mjobctl -c &quot;x:1693.*&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mjobctl -c &quot;x:1693.*&quot;
 </pre></div>
 </div>
-</section>
-<section id="adding-prologue-and-epilogue-scripts-to-a-job">
+</div>
+<div class="section" id="adding-prologue-and-epilogue-scripts-to-a-job">
 <h2>Adding Prologue and Epilogue scripts to a Job<a class="headerlink" href="#adding-prologue-and-epilogue-scripts-to-a-job" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to declare scripts that run before and after the
 execution of the main submission script. The main advantage of those is
@@ -1637,17 +1642,17 @@ to keep a record of the conditions under which a given job is running.
 Here we present a simple example of how to declare an prologue and
 epilogue.</p>
 <p>Add these lines to your submission script:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#PBS -l prologue=/absolute/path/to/prologue.sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#PBS -l prologue=/absolute/path/to/prologue.sh</span>
 <span class="c1">#PBS -l epilogue=/absolute/path/to/epilogue.sh</span>
 </pre></div>
 </div>
 <p>The best way of working with those scripts is adding them to your home
 folder and use them on all your submission scripts. They should collect
 information that you can use later for debugging or profiling purposes.</p>
-<section id="example-of-prologue">
+<div class="section" id="example-of-prologue">
 <h3>Example of Prologue<a class="headerlink" href="#example-of-prologue" title="Permalink to this headline">¶</a></h3>
 <p>prologue.sh</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="n">echo</span> <span class="s2">&quot;&quot;</span>
 <span class="n">echo</span> <span class="s2">&quot;Prologue Args:&quot;</span>
@@ -1663,11 +1668,11 @@ information that you can use later for debugging or profiling purposes.</p>
 <span class="n">exit</span> <span class="mi">0</span>
 </pre></div>
 </div>
-</section>
-<section id="example-of-epilogue">
+</div>
+<div class="section" id="example-of-epilogue">
 <h3>Example of Epilogue<a class="headerlink" href="#example-of-epilogue" title="Permalink to this headline">¶</a></h3>
 <p>epilogue.sh</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="n">echo</span> <span class="s2">&quot;&quot;</span>
 <span class="n">echo</span> <span class="s2">&quot;Epilogue Args:&quot;</span>
@@ -1690,26 +1695,26 @@ information that you can use later for debugging or profiling purposes.</p>
 </pre></div>
 </div>
 <p>Both prologue and epilogue must be made executable, use “</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">prologue</span><span class="o">.</span><span class="n">sh</span> <span class="n">epilogue</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">prologue</span><span class="o">.</span><span class="n">sh</span> <span class="n">epilogue</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>to change their permissions.</p>
-</section>
-</section>
-<section id="samples-of-job-submission-scripts">
+</div>
+</div>
+<div class="section" id="samples-of-job-submission-scripts">
 <h2>Samples of Job Submission scripts<a class="headerlink" href="#samples-of-job-submission-scripts" title="Permalink to this headline">¶</a></h2>
 <p>Below are bash scripts that can be modified and submitted to the qsub
 command for job submission. For details about the different parts of the
 scripts please visit the <a class="reference external" href="RunningJobs">Running Jobs</a> page. These
 scripts can be copied and pasted in the terminal using any number of
 text editors (i.e. vi, emacs, etc…)</p>
-</section>
-<section id="script-for-running-a-non-array-batch-queue">
+</div>
+<div class="section" id="script-for-running-a-non-array-batch-queue">
 <h2>Script for running a non-array batch queue<a class="headerlink" href="#script-for-running-a-non-array-batch-queue" title="Permalink to this headline">¶</a></h2>
 <p>The below script has PBS directives to set-up commonly used variables
 such as job name, resources needed, e-mail address upon job completion
 and abnormal termination and specify a queue to run on</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#This is an example script for executing generic jobs with</span>
 <span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
@@ -1745,12 +1750,12 @@ and abnormal termination and specify a queue to run on</p>
 <span class="c1"># you want to use or use full path names</span>
 </pre></div>
 </div>
-</section>
-<section id="script-for-running-an-array-batch-queue">
+</div>
+<div class="section" id="script-for-running-an-array-batch-queue">
 <h2>Script for running an array batch queue<a class="headerlink" href="#script-for-running-an-array-batch-queue" title="Permalink to this headline">¶</a></h2>
 <p>Script is the same as above, but adds PBS -t to execute array request
 job submissions.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#This is an example script for executing genetic jobs with</span>
 <span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
@@ -1796,8 +1801,8 @@ job submissions.</p>
 <span class="c1"># Any parameter or filename that needs to use the current job number of the array number range use ${PBS_ARRAYID}</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

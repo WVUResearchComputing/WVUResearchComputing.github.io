@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Engineering: OpenFOAM 10 &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LAMMPS" href="704.LAMMPS.html" />
@@ -186,67 +192,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="engineering-openfoam-10">
+  <div class="section" id="engineering-openfoam-10">
 <h1>Engineering: OpenFOAM 10<a class="headerlink" href="#engineering-openfoam-10" title="Permalink to this headline">¶</a></h1>
 <p>On Thorny Flat OpenFOAM 10 is available via Singularity containers.
 There are two images on these locations:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">containers</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">-</span><span class="n">graphical</span><span class="o">-</span><span class="n">apps</span><span class="o">.</span><span class="n">sif</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">containers</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">-</span><span class="n">graphical</span><span class="o">-</span><span class="n">apps</span><span class="o">.</span><span class="n">sif</span>
 <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">containers</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">-</span><span class="n">paraview56</span><span class="o">.</span><span class="n">sif</span>
 </pre></div>
 </div>
-<section id="run-openfoam-with-an-interactive-job">
+<div class="section" id="run-openfoam-with-an-interactive-job">
 <h2>Run OpenFOAM with an interactive job<a class="headerlink" href="#run-openfoam-with-an-interactive-job" title="Permalink to this headline">¶</a></h2>
 <p>We start by creating an interactive job, for the simple examples such as the tutorials, requesting 4 cores is more than enough:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; qsub -I -l nodes=1:ppn=4
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qsub -I -l nodes=1:ppn=4
 </pre></div>
 </div>
 <p>After a few minutes you get a message indicating that a compute node and corresponding cores have been assigned, you get connected to the compute node:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>qsub: waiting for job 1660023.trcis002.hpc.wvu.edu to start
+<div class="highlight-default"><div class="highlight"><pre><span></span>qsub: waiting for job 1660023.trcis002.hpc.wvu.edu to start
 qsub: job 1660023.trcis002.hpc.wvu.edu ready
 
 18:28:50-username@tcgcx300:~$
 </pre></div>
 </div>
 <p>Lets work on the <cite>$SCRATCH</cite> folder and create a subfolder there:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cd $SCRATCH
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cd $SCRATCH
 $&gt; mkdir openfoam_tutorial
 $&gt; cd openfoam_tutorial
 </pre></div>
 </div>
 <p>Load the module for singularity and get a shell inside the container:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load singularity
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load singularity
 $&gt; singularity shell /shared/containers/openfoam10-paraview56.sif
 </pre></div>
 </div>
 <p>Lets copy one of the examples in the tutorials:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">/</span><span class="n">tutorials</span><span class="o">/</span><span class="n">incompressible</span><span class="o">/</span><span class="n">icoFoam</span><span class="o">/</span><span class="n">cavity</span> <span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">openfoam10</span><span class="o">/</span><span class="n">tutorials</span><span class="o">/</span><span class="n">incompressible</span><span class="o">/</span><span class="n">icoFoam</span><span class="o">/</span><span class="n">cavity</span> <span class="o">.</span>
 <span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">cavity</span><span class="o">/</span>
 <span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">ls</span>
 <span class="n">Allclean</span>  <span class="n">Allrun</span>  <span class="n">cavity</span>  <span class="n">cavityClipped</span>  <span class="n">cavityGrade</span>
 </pre></div>
 </div>
 <p>The tutorials include some scripts with easier access to the utilities in OpenFOAM:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Singularity&gt; . $WM_PROJECT_DIR/bin/tools/RunFunctions
+<div class="highlight-default"><div class="highlight"><pre><span></span>Singularity&gt; . $WM_PROJECT_DIR/bin/tools/RunFunctions
 </pre></div>
 </div>
 <p>The mesh is prepared with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">runApplication</span> <span class="n">blockMesh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">runApplication</span> <span class="n">blockMesh</span>
 <span class="n">Running</span> <span class="n">blockMesh</span> <span class="n">on</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gufranco</span><span class="o">/</span><span class="n">openfoam_tutorial</span><span class="o">/</span><span class="n">cavity</span><span class="o">/</span><span class="n">cavity</span>
 </pre></div>
 </div>
 <p>And running the particular application from OpenFOAM:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">runApplication</span> <span class="n">icoFoam</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">runApplication</span> <span class="n">icoFoam</span>
 <span class="n">Running</span> <span class="n">icoFoam</span> <span class="n">on</span> <span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gufranco</span><span class="o">/</span><span class="n">openfoam_tutorial</span><span class="o">/</span><span class="n">cavity</span><span class="o">/</span><span class="n">cavity</span>
 </pre></div>
 </div>
 <p>This is a very simple example that takes less than a second to run.
 The result of the mesh preparation and simulation is a set of files in the current folder and log files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">ls</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">ls</span>
 <span class="mi">0</span>  <span class="mf">0.1</span>  <span class="mf">0.2</span>  <span class="mf">0.3</span>  <span class="mf">0.4</span>  <span class="mf">0.5</span>  <span class="n">constant</span>  <span class="n">log</span><span class="o">.</span><span class="n">blockMesh</span>  <span class="n">log</span><span class="o">.</span><span class="n">icoFoam</span>  <span class="n">system</span>
 </pre></div>
 </div>
 <p>For example the ouput of the log for icoFoam is posted there (first and last lines):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=========</span>                 <span class="o">|</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">=========</span>                 <span class="o">|</span>
 \\      <span class="o">/</span>  <span class="n">F</span> <span class="n">ield</span>         <span class="o">|</span> <span class="n">OpenFOAM</span><span class="p">:</span> <span class="n">The</span> <span class="n">Open</span> <span class="n">Source</span> <span class="n">CFD</span> <span class="n">Toolbox</span>
  \\    <span class="o">/</span>   <span class="n">O</span> <span class="n">peration</span>     <span class="o">|</span> <span class="n">Website</span><span class="p">:</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openfoam</span><span class="o">.</span><span class="n">org</span>
   \\  <span class="o">/</span>    <span class="n">A</span> <span class="n">nd</span>           <span class="o">|</span> <span class="n">Version</span><span class="p">:</span>  <span class="mi">10</span>
@@ -310,25 +316,25 @@ The result of the mesh preparation and simulation is a set of files in the curre
    <span class="n">End</span>
 </pre></div>
 </div>
-</section>
-<section id="using-paraview-with-openfoam">
+</div>
+<div class="section" id="using-paraview-with-openfoam">
 <h2>Using ParaView with OpenFoam<a class="headerlink" href="#using-paraview-with-openfoam" title="Permalink to this headline">¶</a></h2>
 <p>Visualization of openFoam output can be executed from the head node. To
 use paraFoam, make sure you have logged in with <a class="reference external" href="UsingXWindowsapplications">X11 forwarding
 enabled</a>.</p>
 <p>Connect to Thorny using X11 Forwarding:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh -X &lt;username&gt;@ssh.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh -X &lt;username&gt;@ssh.wvu.edu
 $&gt; ssh -X tf.hpc.wvu.edu
 $&gt; module load singularity
 $&gt; singularity shell /shared/containers/openfoam10-paraview56.sif
 Singularity&gt; paraFoam -builtin
 </pre></div>
 </div>
-<figure class="align-default">
+<div class="figure">
 <img alt="ParaFoam" src="../_images/ParaFoam.png" />
-</figure>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

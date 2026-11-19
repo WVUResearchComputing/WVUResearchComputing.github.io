@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>File Transfer (Globus and SFTP) &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Web Interface (Open On-Demand)" href="36.WebInterface.html" />
@@ -194,41 +200,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="file-transfer-globus-and-sftp">
+  <div class="section" id="file-transfer-globus-and-sftp">
 <span id="bs-file-transfer"></span><h1>File Transfer (Globus and SFTP)<a class="headerlink" href="#file-transfer-globus-and-sftp" title="Permalink to this headline">¶</a></h1>
-<section id="overview">
+<div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>For a quick start guide please visit: <a class="reference external" href="https://docs.globus.org/how-to/get-started/">Globus: How to Get Started</a>.</p>
 <p>If you need further assistance beyond this documentation, please contact <a class="reference external" href="mailto://helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">iour helpdesk</a>.</p>
 <p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step by step guide on use Globus Online.</p>
 <p>Note: For a video on how to utilize Globus Online with Google Drive, please see <a class="reference external" href="https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be">https://www.youtube.com/watch?v=tDdVsNVK3ko&amp;feature=youtu.be</a>.</p>
-</section>
-<section id="transfer-data">
+</div>
+<div class="section" id="transfer-data">
 <h2>Transfer Data<a class="headerlink" href="#transfer-data" title="Permalink to this headline">¶</a></h2>
 <p>Use Globus Online web browser to transfer data files between your PC/workstation and the WVU HPC systems.
 There are two dedicated servers, data transfer nodes (DTNs), that are connected to <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782">WVU’s Science DMZ (REX)</a> that allow data to be transferred with low latency and high bandwidth across WVU campus as well as to other locations around the globe.
 This space is available for all researchers at WVU who need to temporarily store and transfer data.</p>
-<section id="logging-in-and-transferring-files">
+<div class="section" id="logging-in-and-transferring-files">
 <h3>Logging in and transferring files<a class="headerlink" href="#logging-in-and-transferring-files" title="Permalink to this headline">¶</a></h3>
 <p>Visit the URL <a class="reference external" href="https://auth.globus.org/p/login">Globus Online</a> to login.</p>
 <p>Select West Virginia University from the organizational list and login using your WVU Login username and password.</p>
-</section>
-<section id="transferring-data-to-your-local-workstations-pc">
+</div>
+<div class="section" id="transferring-data-to-your-local-workstations-pc">
 <h3>Transferring data to your local workstations/PC<a class="headerlink" href="#transferring-data-to-your-local-workstations-pc" title="Permalink to this headline">¶</a></h3>
 <p>To learn how to transfer data to your local workstation, you will need to install Globus Connect Personal.</p>
-</section>
-</section>
-<section id="share-data">
+</div>
+</div>
+<div class="section" id="share-data">
 <h2>Share Data<a class="headerlink" href="#share-data" title="Permalink to this headline">¶</a></h2>
 <p>Use Globus Online to share your data files with researchers located at
 other institutions around the world without needing administrative
 assistance.</p>
-<dl class="simple">
-<dt><em>Note</em></dt><dd><p>If you are not using an endpoint that starts with <code class="docutils literal notranslate"><span class="pre">wvu\#</span></code>, before you can start sharing data using Globus, you must contact Research Computing and request that a shared endpoint be created for you.</p>
-</dd>
+<dl class="docutils">
+<dt><em>Note</em></dt>
+<dd>If you are not using an endpoint that starts with <code class="docutils literal"><span class="pre">wvu\#</span></code>, before you can start sharing data using Globus, you must contact Research Computing and request that a shared endpoint be created for you.</dd>
 </dl>
-</section>
-<section id="archive-data">
+</div>
+<div class="section" id="archive-data">
 <h2>Archive Data<a class="headerlink" href="#archive-data" title="Permalink to this headline">¶</a></h2>
 <p>Globus Online provides an easy mechanism for researchers to archive
 their data sets for free to their MIX Google Drive account via a <a class="reference external" href="https://docs.globus.org/how-to/gcsv5.3/access-google-drive/">Google Drive Connector</a>.
@@ -254,84 +260,84 @@ helpdesk&#64;hpc.wvu.edu.</strong></p>
 instructions in the Globus Online Google Drive Connector Instructions,
 which will guide you on how to make a Shared Endpoint that you can
 attach to your MIX Google Drive Account to transfer data to/from.</p>
-<section id="globus-online-google-drive-connector-instructions">
+<div class="section" id="globus-online-google-drive-connector-instructions">
 <h3><a class="reference external" href="https://docs.globus.org/how-to/gcsv5.3/access-google-drive/">Globus Online Google Drive Connector Instructions</a><a class="headerlink" href="#globus-online-google-drive-connector-instructions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Note:</strong> In step one, when searching all endpoints you will need to
-search for ‘wvu#googledrive’.</p></li>
+<li><strong>Note:</strong> In step one, when searching all endpoints you will need to
+search for ‘wvu#googledrive’.</li>
 </ul>
 <p>To transfer files to your MIX Google Drive Account, review the “Transfer
 Data” Section above. You will want to select the name of the Shared
 Endpoint you just created in step 3 as one of the two endpoints. The
 other endpoint could be a WVU endpoint, such as wvu#hpcdtn or a personal
 endpoint you created that connects to your workstation/PC.</p>
-</section>
-</section>
-<section id="publish-data">
+</div>
+</div>
+<div class="section" id="publish-data">
 <h2>Publish Data<a class="headerlink" href="#publish-data" title="Permalink to this headline">¶</a></h2>
 <p>Use Globus Online to publish your datasets, possibly as a requirement
 from a granting agency. Published datasets are organized by communities
 and their member collections and are searchable by other Globus users.</p>
-<dl class="simple">
-<dt><em>Note</em></dt><dd><p>If you are not using an endpoint that starts with <code class="docutils literal notranslate"><span class="pre">wvu\#</span></code>, before you can start sharing data using Globus, you must contact Research Computing and request that a shared endpoint be created for you.</p>
-</dd>
+<dl class="docutils">
+<dt><em>Note</em></dt>
+<dd>If you are not using an endpoint that starts with <code class="docutils literal"><span class="pre">wvu\#</span></code>, before you can start sharing data using Globus, you must contact Research Computing and request that a shared endpoint be created for you.</dd>
 </dl>
 <p>For more information on how to publish your data sets using Globus Online, visit <a class="reference external" href="https://docs.globus.org/data-publication-user-guide/">Globus, Data Publication User Guide</a>.</p>
 <p>Due to a large amount of data users usually need to transfers to/from HPC systems, reliable, secure, and highly optimized transfer methods needs to be utilized.  As a result, WVU offers dedicated Data Transfer Nodes (DTNs) at each location it supports.  Transfers to our systems should only be done through one of these DTNs for several reasons:</p>
 <ul class="simple">
-<li><p>DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN’s are connected to <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782">WVU’s Science DMZ network</a> which is a dedicated network to science/research data across campus.</p></li>
-<li><p>Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.</p></li>
+<li>DTNs are dedicated to transferring data only and built specifically for allowing users to transfers data as quickly, efficiently, and securely as possible.  Only DTN’s are connected to <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301498369?src=-1698448782">WVU’s Science DMZ network</a> which is a dedicated network to science/research data across campus.</li>
+<li>Users who transfer data using a login node can put the login node under strain causing it to slow down affecting other users and even possibly cause the node to fail.</li>
 </ul>
 <p>WVU’s recommended method for transferring data is <a class="reference external" href="https://www.globus.org/">Globus Online</a>.  The other supported method is sftp.</p>
-</section>
-<section id="data-transfer-nodes">
+</div>
+<div class="section" id="data-transfer-nodes">
 <h2>Data Transfer Nodes<a class="headerlink" href="#data-transfer-nodes" title="Permalink to this headline">¶</a></h2>
 <p>Research Computing offers dedicated servers for transferring files at each one of its supported systems/locations (i.e. Spruce Knob, Thorny Flat, Dolly Sods, and the Data Depot).  The following table describes the services available at each location as well as the associated Globus Endpoint Name or sftp Hostname.</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 14%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 22%" />
-<col style="width: 16%" />
+<col width="13%" />
+<col width="14%" />
+<col width="17%" />
+<col width="17%" />
+<col width="22%" />
+<col width="16%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>Spruce Knob</p></th>
-<th class="head"><p>Thorny Flat</p></th>
-<th class="head"><p>Dolly Sods</p></th>
-<th class="head"><p>Data Depot</p></th>
-<th class="head"><p>MIX Google Drive</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">Spruce Knob</th>
+<th class="head">Thorny Flat</th>
+<th class="head">Dolly Sods</th>
+<th class="head">Data Depot</th>
+<th class="head">MIX Google Drive</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Globus Endpoint</p></td>
-<td><p>wvu#hpcdtn</p></td>
-<td><p>wvu#thornydtn</p></td>
-<td><p>wvu#dollydtn</p></td>
-<td><p>wvu#datadepot</p></td>
-<td><p>wvu#GoogleDrive</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Globus Endpoint</td>
+<td>wvu#hpcdtn</td>
+<td>wvu#thornydtn</td>
+<td>wvu#dollydtn</td>
+<td>wvu#datadepot</td>
+<td>wvu#GoogleDrive</td>
 </tr>
-<tr class="row-odd"><td><p>sftp Hostname</p></td>
-<td><p>data.hpc.wvu.edu</p></td>
-<td><p>tf-data.hpc.wvu.edu</p></td>
-<td><p>ds-data.hpc.wvu.edu</p></td>
-<td><p>datadepot-sftp.hpc.wvu.edu</p></td>
-<td><p>NA</p></td>
+<tr class="row-odd"><td>sftp Hostname</td>
+<td>data.hpc.wvu.edu</td>
+<td>tf-data.hpc.wvu.edu</td>
+<td>ds-data.hpc.wvu.edu</td>
+<td>datadepot-sftp.hpc.wvu.edu</td>
+<td>NA</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="alternative-transfer-methods">
+</div>
+<div class="section" id="alternative-transfer-methods">
 <h2>Alternative Transfer Methods<a class="headerlink" href="#alternative-transfer-methods" title="Permalink to this headline">¶</a></h2>
 <p>To transfer files to Research Computing systems without Globus Online, users may choose to utilize sftp to the hostnames in the above table.  Basic instructions on how to use SFTP can be found <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">here</a>.  For users who are more comfortable with Graphical User Interfaces, you may want to utilize one of the following clients:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://winscp.net/eng/index.php">https://winscp.net/eng/index.php</a></p></li>
-<li><p><a class="reference external" href="https://filezilla-project.org/">https://filezilla-project.org/</a></p></li>
+<li><a class="reference external" href="https://winscp.net/eng/index.php">https://winscp.net/eng/index.php</a></li>
+<li><a class="reference external" href="https://filezilla-project.org/">https://filezilla-project.org/</a></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

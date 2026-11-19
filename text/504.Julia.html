@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Julia Language &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="MATLAB" href="505.Matlab.html" />
@@ -190,48 +196,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="julia-language">
+  <div class="section" id="julia-language">
 <span id="sp-julia"></span><h1>Julia Language<a class="headerlink" href="#julia-language" title="Permalink to this headline">¶</a></h1>
 <p>The Julia programming language is a flexible dynamic language, appropriate for scientific and numerical computing.
 Julia combines features of imperative, functional, and object-oriented programming.
 Julia provides ease and expressiveness for high-level numerical computing, similar to other popular languages such as R, MATLAB, and Python, but also supports general programming.
 Julia is built upon the lineage of mathematical programming languages, but also borrows much from popular dynamic languages, including Lisp, Perl, Python, Lua, and Ruby.
 Using the correct syntax, the performance of Julia programs can be comparable to traditional statically-typed languages like C or Fortran.</p>
-<section id="loading-environment-modules">
+<div class="section" id="loading-environment-modules">
 <h2>Loading Environment Modules<a class="headerlink" href="#loading-environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>Julia is installed and accessible via software modules in terminal/shell sessions.
 To use Julia, load the following modules depending on the cluster you are working on.</p>
-<section id="spruce-knob">
+<div class="section" id="spruce-knob">
 <h3>Spruce Knob<a class="headerlink" href="#spruce-knob" title="Permalink to this headline">¶</a></h3>
 <p>The latest version of Julia on Spruce Knob is 1.7.2
 Load the software module with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/julia/1.7.2
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/julia/1.7.2
 </pre></div>
 </div>
 <p>There is also an equivalent version where dependencies are not preloaded.
 Load the module as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 lang/julia/1.7.2_prereq
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 lang/julia/1.7.2_prereq
 </pre></div>
 </div>
-</section>
-<section id="thorny-flat">
+</div>
+<div class="section" id="thorny-flat">
 <h3>Thorny Flat<a class="headerlink" href="#thorny-flat" title="Permalink to this headline">¶</a></h3>
 <p>On Thorny Flat we have 2 versions of Julia 1.6.5 which is a Long Term Support (LTS) version and 1.7.1.
 Load any of those versions with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/11.2.0 lang/julia/1.6.5_gcc112
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/11.2.0 lang/julia/1.6.5_gcc112
 $&gt; module load lang/gcc/11.2.0 lang/julia/1.7.1_gcc112
 </pre></div>
 </div>
-</section>
-</section>
-<section id="using-julia">
+</div>
+</div>
+<div class="section" id="using-julia">
 <h2>Using Julia<a class="headerlink" href="#using-julia" title="Permalink to this headline">¶</a></h2>
 <p>Once the module is loaded, execute the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; julia
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; julia
 </pre></div>
 </div>
 <p>It will open the Julia Intereactive Shell:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           _
+<div class="highlight-default"><div class="highlight"><pre><span></span>           _
    _       _ _(_)_     |  Documentation: https://docs.julialang.org
   (_)     | (_) (_)    |
    _ _   _| \|_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.
@@ -245,7 +251,7 @@ julia&gt;
 </div>
 <p>From the interactive shell, start executing Julia commands. Learn about Julia from the <a class="reference external" href="https://docs.julialang.org/en/v1/">Official Documentation</a></p>
 <p>Consider a small example on how Julia code looks like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to Compute the volume of a sphere</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Function to Compute the volume of a sphere</span>
 <span class="n">function</span> <span class="n">volume_sphere</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 <span class="c1"># julia allows Unicode names (in UTF-8 encoding)</span>
 <span class="c1"># so either &quot;pi&quot; or the symbol \pi can be used</span>
@@ -283,18 +289,18 @@ julia&gt;
 <p>You can execute these lines one by one on the Julia interactive shell.
 To run a julia script create a file such as <cite>example.jl</cite>  and copy there the lines above.
 Execute the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; julia example.jl
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; julia example.jl
 </pre></div>
 </div>
 <p>You should get:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Volume</span> <span class="n">of</span> <span class="n">sphere</span> <span class="k">with</span> <span class="n">radius</span> <span class="mi">3</span> <span class="o">=</span> <span class="mf">113.097</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Volume</span> <span class="n">of</span> <span class="n">sphere</span> <span class="k">with</span> <span class="n">radius</span> <span class="mi">3</span> <span class="o">=</span> <span class="mf">113.097</span>
 
 <span class="n">Solution</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">quadratic</span> <span class="mi">2</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">x</span> <span class="o">-</span> <span class="mi">12</span> <span class="ow">is</span> <span class="mf">3.0</span>
 <span class="n">Solution</span> <span class="mi">2</span> <span class="n">to</span> <span class="n">quadratic</span> <span class="mi">2</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">x</span> <span class="o">-</span> <span class="mi">12</span> <span class="ow">is</span> <span class="o">-</span><span class="mf">2.0</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

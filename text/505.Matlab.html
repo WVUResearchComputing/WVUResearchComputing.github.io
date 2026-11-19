@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>MATLAB &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Perl Language" href="506.Perl.html" />
@@ -190,7 +196,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="matlab">
+  <div class="section" id="matlab">
 <span id="sp-matlab"></span><h1>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h1>
 <p>MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and proprietary programming language developed by MathWorks.
 MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages, including C, C++, C#, Java, Fortran and Python.</p>
@@ -207,7 +213,7 @@ The work is prepared to be executed without human intervention once the job exec
 <p>In the following sections we will cover how to request jobs under these three modes.</p>
 <p>At the end we will present a small introduction to strategies to improve performance of Matlab jobs.
 One way is via Compiling the code, another is adding some parallelization to take advantage of multicore compute nodes.</p>
-<section id="interactive-execution-using-open-on-demand">
+<div class="section" id="interactive-execution-using-open-on-demand">
 <h2>Interactive execution using Open On-Demand<a class="headerlink" href="#interactive-execution-using-open-on-demand" title="Permalink to this headline">¶</a></h2>
 <p>An HPC cluster is conglomerate of computers inteded to be operated as a single machine.
 This is different from the way you work on a normal desktop computer, we you are completely in control of the applications launched, many of them with graphical interfaces.
@@ -244,45 +250,45 @@ A screen will will show the version being loaded</p>
 <p>Now you can start executing matlab commands in the “Command Window”.
 You can also load .m files and create plots as shown below.</p>
 <a class="reference internal image-reference" href="../_images/Matlab-OOD-7.jpg"><img alt="Using Matlab with Open On-Demand (figure 6)" src="../_images/Matlab-OOD-7.jpg" style="width: 600px;" /></a>
-</section>
-<section id="interactive-execution-on-the-terminal">
+</div>
+<div class="section" id="interactive-execution-on-the-terminal">
 <h2>Interactive execution on the terminal<a class="headerlink" href="#interactive-execution-on-the-terminal" title="Permalink to this headline">¶</a></h2>
-</section>
-<section id="loading-matlab-using-environment-modules">
+</div>
+<div class="section" id="loading-matlab-using-environment-modules">
 <h2>Loading Matlab using Environment Modules<a class="headerlink" href="#loading-matlab-using-environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>MATLAB is accessible via environment Modules on Thorny Flat.
 To check which versions are available execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab
 
 -------------------- /shared/modulefiles/tier1 --------------------
 matlab/2022b matlab/2024a
 </pre></div>
 </div>
 <p>Load the desired version with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab/2024a
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ module avail matlab/2024a
 </pre></div>
 </div>
 <p>or simply load the latest version executing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
 </pre></div>
 </div>
 <p>Notice that the commands above load matlab on the login node.
 You must never use the login node for any execution that last for more than a few seconds.
 Computationally demanding calculations must be executed via job submissions.</p>
 <p>From the login node, request a interactive session with SLURM:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
 trcis001:~$ srun -n 4 --pty bash
 srun: job 24328 queued and waiting for resources
 srun: job 24328 has been allocated resources
 tarcl100:~$
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tarcl100:~$ module load matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>tarcl100:~$ module load matlab
 Loading gcc version 9.3.0 : lang/gcc/9.3.0
 Loading matlab version 2024a : matlab/2024a
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ matlab
 MATLAB is selecting SOFTWARE rendering.
 
                                                                                           &lt; M A T L A B (R) &gt;
@@ -301,22 +307,22 @@ ans =
          4
 </pre></div>
 </div>
-</section>
-<section id="non-interactive-execution-via-job-submission">
+</div>
+<div class="section" id="non-interactive-execution-via-job-submission">
 <h2>Non-interactive execution via job submission<a class="headerlink" href="#non-interactive-execution-via-job-submission" title="Permalink to this headline">¶</a></h2>
 <p>This simple tutorial explains how to use Matlab without launching the
 graphical interface and using the submission script.</p>
 <p>Consider this simple script that computes first and second derivatives
 of a function to find extrema and inflection points of a given function.</p>
 <p>To download the code you can execute the following command directly on the cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/derivatives.zip
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/derivatives.zip
 </pre></div>
 </div>
-<p>Or download the file <a class="reference download internal" download="" href="../_downloads/7b8eb28d6e8d2a3ba139d778731fc14a/derivatives.zip"><code class="xref download docutils literal notranslate"><span class="pre">derivatives.zip</span></code></a>.
+<p>Or download the file <a class="reference download internal" href="../_downloads/derivatives.zip" download=""><code class="xref download docutils literal"><span class="pre">derivatives.zip</span></code></a>.
 And upload the file to the cluster.</p>
 <p>You can create a directory for this, for example <cite>MATLAB_TUT1</cite> and uncompress
 there the file <cite>derivatives.zip</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mkdir MATLAB_TUT1
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ mkdir MATLAB_TUT1
 trcis001:~$ cd MATLAB_TUT1
 trcis001:~$ wget https://docs.hpc.wvu.edu/_static/derivatives.zip
 trcis001:~$ unzip derivatives.zip
@@ -327,7 +333,7 @@ The file contains the matlab code that we would like to execute on the cluster.<
 <p>Write a submission script for SLURM.
 For this example we will use a single core on a single machine (on Thorny Flat)::
 Use your prefered text editor and type the following lines:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=MATLAB
 #SBATCH --output=SLURM-%x.%j.out
@@ -359,7 +365,7 @@ without opening the graphical user interface (GUI). Notive that you
 should execute matlab -nodisplay -r derivatives without adding the “.m”.
 Matlab will always search for a file called “derivatives.m”</p>
 <p>You submit the job from the command line executing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
 trcis001:~$ sbatch runjob.slurm
 Submitted batch job 26212
 </pre></div>
@@ -367,20 +373,20 @@ Submitted batch job 26212
 <p>When the job is submitted you get a number called Job ID.
 This number is an identifier that allow you to keep track of lifetime of the job.
 You can monitor the execution using the command squeue:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -j 26212
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ squeue -j 26212
             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
             26212   standby   MATLAB gufranco  R       0:10      1 tbmcs101
 </pre></div>
 </div>
 <p>You notice the job is running when the state (ST) shows as <cite>R</cite> and you see under <cite>TIME</cite> for how long the job has been running.</p>
 <p>When finished, <cite>squeue</cite> will return an error as the job no longer exist in queue:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ squeue -j 26212
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ squeue -j 26212
 slurm_load_jobs error: Invalid job id specified
 </pre></div>
 </div>
 <p>You can see the job with <cite>sacct</cite> a command for accounting, ie keeping track of the jobs running and complete.
 When the job is still runnning you get:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sacct -j 26212
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ sacct -j 26212
 JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 ------------ ---------- ---------- ---------- ---------- ---------- --------
 26212            MATLAB    standby its-rc-ad+          2    RUNNING      0:0
@@ -388,7 +394,7 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 </pre></div>
 </div>
 <p>Once the job finishes, either by a normal termination or because it was canceled:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ sacct -j 26212
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ sacct -j 26212
 JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 ------------ ---------- ---------- ---------- ---------- ---------- --------
 26212            MATLAB    standby its-rc-ad+          2  COMPLETED      0:0
@@ -396,7 +402,7 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 </pre></div>
 </div>
 <p>When the job concludes, you will get new files that were created by the job:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ ls -1
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ ls -1
 derivatives.fig
 derivatives.m
 derivatives.png
@@ -407,12 +413,12 @@ SLURM-MATLAB.26206.out
 </div>
 <p>The figures where generated and saved on the same folder you submit your
 job. The output of your execution is stored on <cite>SLURM-MATLAB.26206.out</cite></p>
-<figure class="align-default">
+<div class="figure">
 <img alt="derivatives.png" src="../_images/derivatives.png" />
-</figure>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
                   <span class="n">Copyright</span> <span class="mi">1984</span><span class="o">-</span><span class="mi">2014</span> <span class="n">The</span> <span class="n">MathWorks</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
-                    <span class="n">R2014a</span> <span class="p">(</span><span class="mf">8.3.0.532</span><span class="p">)</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="p">(</span><span class="n">glnxa64</span><span class="p">)</span>
+                    <span class="n">R2014a</span> <span class="p">(</span><span class="mf">8.3</span><span class="o">.</span><span class="mf">0.532</span><span class="p">)</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="p">(</span><span class="n">glnxa64</span><span class="p">)</span>
                              <span class="n">February</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2014</span>
 
 
@@ -479,15 +485,15 @@ job. The output of your execution is stored on <cite>SLURM-MATLAB.26206.out</cit
  <span class="mf">0.57871842655441748319601085860196</span>
 </pre></div>
 </div>
-</section>
-<section id="using-the-matlab-compiler">
+</div>
+<div class="section" id="using-the-matlab-compiler">
 <h2>Using the Matlab Compiler<a class="headerlink" href="#using-the-matlab-compiler" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to load matlab to get access to its executables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ module load matlab
 </pre></div>
 </div>
 <p>Prepare the compilation environment with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mbuild -setup
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ mbuild -setup
    MBUILD configured to use &#39;gcc&#39; for C language compilation.
 
    To choose a different language, execute one from the following:
@@ -499,23 +505,23 @@ job. The output of your execution is stored on <cite>SLURM-MATLAB.26206.out</cit
 <p><a class="reference external" href="https://www.mathworks.com/products/ineligible_programs.html">https://www.mathworks.com/products/ineligible_programs.html</a></p>
 <p>So we will use another script for this tutorial.</p>
 <p><a class="reference external" href="Media:mandelbrot.zip">mandelbrot.zip</a></p>
-<p>Download the file <a class="reference download internal" download="" href="../_downloads/7be180f4e3e0cacc52f7f3a5c4782f3c/mandelbrot.zip"><code class="xref download docutils literal notranslate"><span class="pre">mandelbrot.zip</span></code></a>.
+<p>Download the file <a class="reference download internal" href="../_downloads/mandelbrot.zip" download=""><code class="xref download docutils literal"><span class="pre">mandelbrot.zip</span></code></a>.
 Or use <cite>wget</cite> directly from the cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/mandelbrot.zip
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ wget https://docs.hpc.wvu.edu/_static/mandelbrot.zip
 </pre></div>
 </div>
 <p>After uncompress the file “mandelbrot.m”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ mcc -m mandelbrot.m
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ mcc -m mandelbrot.m
 </pre></div>
 </div>
 <p>It takes a while, when finished you will get some extra files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ ls -1
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ ls -1
 mandelbrot
 run_mandelbrot.sh
 </pre></div>
 </div>
 <p>Write a submission script for SLURM (Thorny Flat):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=MATLAB
 #SBATCH --output=SLURM-%x.%j.out
@@ -534,23 +540,21 @@ cd $SLURM_SUBMIT_DIR
 </pre></div>
 </div>
 <p>After submit the job with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
+<div class="highlight-default"><div class="highlight"><pre><span></span>trcis001:~$ module load sched/slurm/22.05
 trcis001:~$ sbatch runjob.slurm
 Submitted batch job 26219
 </pre></div>
 </div>
 <p>You get the results on “SLURM-MATLAB.26219.out” with the corresponding JobID</p>
-<figure class="align-default" id="id1">
+<div class="figure" id="id1">
 <img alt="Mandelbrot fractal generated from Matlab" src="../_images/mandelbrotmatlab.png" />
-<figcaption>
-<p><span class="caption-text">Mandelbrot fractal generated from Matlab</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="summary">
+<p class="caption"><span class="caption-text">Mandelbrot fractal generated from Matlab</span></p>
+</div>
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

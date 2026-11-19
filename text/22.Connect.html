@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Connect to the cluster (SSH) &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="UNIX/Linux Command Line Interface" href="23.CommandLine.html" />
@@ -104,6 +110,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#spruce-knob-connectivity-instructions">Spruce Knob Connectivity Instructions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#thorny-flat-connectivity-instructions">Thorny Flat Connectivity Instructions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dolly-sods-connectivity-instructions">Dolly Sods Connectivity Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#harrpers-ferry-connectivity-instructions">Harrpers Ferry Connectivity Instructions</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging In</a></li>
@@ -194,7 +201,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="connect-to-the-cluster-ssh">
+  <div class="section" id="connect-to-the-cluster-ssh">
 <span id="qs-connect-ssh"></span><h1>Connect to the cluster (SSH)<a class="headerlink" href="#connect-to-the-cluster-ssh" title="Permalink to this headline">¶</a></h1>
 <p>An HPC cluster is a big computing infrastructure intended for concurrent usage by many users.
 A desktop, laptop, or even workstation is intended for a single user at a time.
@@ -210,144 +217,165 @@ If you are working with someone (i.e., a PI) at WVU and need access, please have
 If you are not working with anyone at WVU, please contact <a class="reference external" href="https://helpdesk.hpc.wvu.edu">WVU Research Computing - HPC HelpDesk</a>
 The requestor must be on the campus network or using WVU’s VPN for this request to work.</p>
 <p>The next step is to use an SSH client to connect to one of our clusters.</p>
-<section id="get-an-ssh-client">
+<div class="section" id="get-an-ssh-client">
 <h2>Get an SSH Client<a class="headerlink" href="#get-an-ssh-client" title="Permalink to this headline">¶</a></h2>
 <p>An SSH client is software that allows you to run a remote session on a computer over a network using a secure connection based on the SSH protocol.</p>
 <p>An SSH client usually comes installed on MacOS and most Unix/Linux distributions, so if you are using one of those operating systems, you do not need to install anything.</p>
 <p>Windows users will have to acquire an SSH client.
-PuTTY is a free SSH implementation for Windows platforms. It comes with an <code class="docutils literal notranslate"><span class="pre">xterm</span></code> terminal emulator.</p>
+PuTTY is a free SSH implementation for Windows platforms. It comes with an <code class="docutils literal"><span class="pre">xterm</span></code> terminal emulator.</p>
 <p>Go to <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a> to know more about the product or download it directly from <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY Download</a>.</p>
 <p>PuTTY is not the only SSH client available for Windows. See, for example, <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_SSH_clients">Comparison of SSH clients</a> for several alternatives.</p>
-</section>
-<section id="connecting-to-wvu-s-clusters-via-ssh">
+</div>
+<div class="section" id="connecting-to-wvu-s-clusters-via-ssh">
 <h2>Connecting to WVU’s Clusters via SSH<a class="headerlink" href="#connecting-to-wvu-s-clusters-via-ssh" title="Permalink to this headline">¶</a></h2>
-<p>Currently, WVU has two clusters available for access.
+<p>Currently, WVU has four clusters available for access.
 The instructions for connecting slightly differ depending on which cluster you are using.</p>
-<section id="general-ssh-connection-instructions">
+<div class="section" id="general-ssh-connection-instructions">
 <h3>General SSH Connection Instructions<a class="headerlink" href="#general-ssh-connection-instructions" title="Permalink to this headline">¶</a></h3>
 <p>On MacOS and Unix/Linux, open a terminal shell and type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ssh -X &lt;username&gt;@&lt;hostname&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh -X &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
-<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> is your <em>WVU Login account</em> username and <code class="docutils literal notranslate"><span class="pre">&lt;hostname&gt;</span></code> is the name of the cluster you wish to connect to.
+<p>Where <code class="docutils literal"><span class="pre">&lt;username&gt;</span></code> is your <em>WVU Login account</em> username and <code class="docutils literal"><span class="pre">&lt;hostname&gt;</span></code> is the name of the cluster you wish to connect to.
 The -X option forwards <em>XWindow</em> applications running on the server to your local machine.
-Remember that the <code class="docutils literal notranslate"><span class="pre">$&gt;</span></code> symbols above indicate a command on the terminal; you should not enter those initial characters.</p>
+Remember that the <code class="docutils literal"><span class="pre">$&gt;</span></code> symbols above indicate a command on the terminal; you should not enter those initial characters.</p>
 <p>We currently have three clusters, <em>Dolly Sods</em>, <em>Thorny Flat</em>, and <em>Spruce Knob</em> the hostnames are:</p>
-<table class="colwidths-given docutils align-default" id="id1">
+<table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">WVU’s High-Performance Computer (HPC) Clusters</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 50%" />
-<col style="width: 25%" />
+<col width="25%" />
+<col width="50%" />
+<col width="25%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Cluster</p></th>
-<th class="head"><p>Hostname</p></th>
-<th class="head"><p>Status</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cluster</th>
+<th class="head">Hostname</th>
+<th class="head">Status</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Spruce Knob</strong></p></td>
-<td><p><em>spruce.hpc.wvu.edu</em></p></td>
-<td><p>Operational</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Spruce Knob</strong></td>
+<td><em>spruce.hpc.wvu.edu</em></td>
+<td>Operational</td>
 </tr>
-<tr class="row-odd"><td><p><strong>Thorny Flat</strong></p></td>
-<td><p><em>tf.hpc.wvu.edu</em></p></td>
-<td><p>Operational</p></td>
+<tr class="row-odd"><td><strong>Thorny Flat</strong></td>
+<td><em>tf.hpc.wvu.edu</em></td>
+<td>Operational</td>
 </tr>
-<tr class="row-even"><td><p><strong>Dolly Sods</strong></p></td>
-<td><p><em>ds.hpc.wvu.edu</em></p></td>
-<td><p>Operational</p></td>
+<tr class="row-even"><td><strong>Dolly Sods</strong></td>
+<td><em>ds.hpc.wvu.edu</em></td>
+<td>Operational</td>
+</tr>
+<tr class="row-odd"><td><strong>Harpers Ferry</strong></td>
+<td><em>hf.hpc.wvu.edu</em></td>
+<td>Operational</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="spruce-knob-connectivity-instructions">
+</div>
+<div class="section" id="spruce-knob-connectivity-instructions">
 <h3>Spruce Knob Connectivity Instructions<a class="headerlink" href="#spruce-knob-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
 <p>To connect to Spruce Knob use the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
 </pre></div>
 </div>
 <p><strong>Note:</strong> Two-factor authentication is required to connect to Spruce Knob when not on WVU’s Main Campus Network.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167">here</a></p>
-</section>
-<section id="thorny-flat-connectivity-instructions">
+</div>
+<div class="section" id="thorny-flat-connectivity-instructions">
 <h3>Thorny Flat Connectivity Instructions<a class="headerlink" href="#thorny-flat-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
 <p>To connect to Thorny Flat, you must first connect to WVU’s SSH gateway server.  This gateway server will allow you to connect to Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
 </pre></div>
 </div>
 <p>More information on WVU’s Gateway Service can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301760886?src=-1814658256">here</a>.  When your account is created for Thorny Flat, you will automatically be approved to access WVU’s SSH Gateway Service.</p>
 <p><strong>Note:</strong> Two-factor authentication is required to connect to WVU’s Gateway Service.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167">here</a>.</p>
 <p>then:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh tf.hpc.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh tf.hpc.wvu.edu
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>You cannot connect directly to Thorny Flat via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">tf.hpc.wvu.edu</span></code> will always fail.</p>
 </div>
-</section>
-<section id="dolly-sods-connectivity-instructions">
+</div>
+<div class="section" id="dolly-sods-connectivity-instructions">
 <h3>Dolly Sods Connectivity Instructions<a class="headerlink" href="#dolly-sods-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
 <p>To connect to Dolly Sods, you must first connect to WVU’s SSH gateway server.  This gateway server will allow you to connect to Dolly Sods.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
 </pre></div>
 </div>
 <p>More information on WVU’s Gateway Service can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301760886?src=-1814658256">here</a>.  When your account is created for Dolly Sods, you will automatically be approved to access WVU’s SSH Gateway Service.</p>
 <p><strong>Note:</strong> Two-factor authentication is required to connect to WVU’s Gateway Service.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167">here</a>.</p>
 <p>then:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh ds.hpc.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh ds.hpc.wvu.edu
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>You cannot connect directly to Dolly Sods via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">ds.hpc.wvu.edu</span></code> will always fail.</p>
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>You cannot connect directly to Dolly Sods via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">ds.hpc.wvu.edu</span></code> will always fail.</p>
 </div>
-</section>
-</section>
-<section id="logging-in">
+</div>
+<div class="section" id="harrpers-ferry-connectivity-instructions">
+<h3>Harrpers Ferry Connectivity Instructions<a class="headerlink" href="#harrpers-ferry-connectivity-instructions" title="Permalink to this headline">¶</a></h3>
+<p>To connect to Harpers Ferry, you must first connect to WVU’s SSH gateway server.  This gateway server will allow you to connect to Harpers Ferry.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@ssh.wvu.edu
+</pre></div>
+</div>
+<p>More information on WVU’s Gateway Service can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/301760886?src=-1814658256">here</a>.  When your account is created for Harpers Ferry, you will automatically be approved to access WVU’s Gateway Service.</p>
+<p><strong>Note:</strong> Two-factor authentication is required to connect to WVU’s Gateway Service.  More about WVU’s Two-Factor Authentication system can be found <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/298680370?src=-407137167">here</a>.</p>
+<p>then:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh ds.hpc.wvu.edu
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>You cannot connect directly to Dolly Sods via SSH.</strong> Executing directly from your terminal or SSH client <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">ds.hpc.wvu.edu</span></code> will always fail.</p>
+</div>
+</div>
+</div>
+<div class="section" id="logging-in">
 <h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
 <p>When your SSH access is granted, you will be prompted with a login message
 with helpful commands and updates about the cluster.</p>
 <p>At this point, you will get a terminal prompt such as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;username&gt;@srih0001:~$
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;username&gt;@srih0001:~$
 </pre></div>
 </div>
 <p>All the commands executed from now on are happening on a remote machine, the Spruce Knob <em>head node</em>, this is the place where most of your direct interaction with the cluster happens.</p>
-</section>
-<section id="logging-out">
+</div>
+<div class="section" id="logging-out">
 <h2>Logging Out<a class="headerlink" href="#logging-out" title="Permalink to this headline">¶</a></h2>
 <p>Logging out of a cluster can be done with the exit command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; exit
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; exit
 </pre></div>
 </div>
 <p>The exit command will attempt to terminate any process running on the head.
 Sometimes, you will get an error that jobs are running or stopped.  You can view stopped jobs using the jobs command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; jobs -l
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; jobs -l
 [1]+ 3325 Stopped            vim script56.py
 </pre></div>
 </div>
 <p>The output of jobs -l will give you the job PID number (in this case, 3325) and
 the command (vim script56.py).  To kill jobs preventing successful logout,
 use the kill command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
 </pre></div>
 </div>
 <p>Once all jobs are terminated, the exit command will close the connection to the host.
 In section <a class="reference internal" href="27.WorkloadManager.html#qs-workload-manager"><span class="std std-ref">Workload Manager (SLURM)</span></a>, we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.</p>
-</section>
-<section id="putty-example">
+</div>
+<div class="section" id="putty-example">
 <h2>Putty Example<a class="headerlink" href="#putty-example" title="Permalink to this headline">¶</a></h2>
 <p>If you are using Windows and PuTTy, click on PuTTy Icon and enter the hostname.</p>
 <img alt="../_images/puttystartup.png" src="../_images/puttystartup.png" />
 <p>If you want to enable X11 forwarding, i.e., remote windows popping up on your local machine, follow the steps below to enable X11 forwarding.</p>
 <img alt="../_images/putty_xforward.png" src="../_images/putty_xforward.png" />
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

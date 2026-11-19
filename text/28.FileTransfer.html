@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>File Transfer (Globus) &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Web Interface (Open On-Demand)" href="29.WebInterface.html" />
@@ -187,9 +193,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="file-transfer-globus">
+  <div class="section" id="file-transfer-globus">
 <span id="qs-file-transfer"></span><h1>File Transfer (Globus)<a class="headerlink" href="#file-transfer-globus" title="Permalink to this headline">¶</a></h1>
-<section id="using-globus-online">
+<div class="section" id="using-globus-online">
 <h2>Using Globus Online<a class="headerlink" href="#using-globus-online" title="Permalink to this headline">¶</a></h2>
 <p>Copying files and folders in and out of an HPC cluster is a routine task for HPC users. Users need to move input data to the cluster before this data can be processed. The results will be moved out of the cluster in form of files and folders containing text, figures, tables or some other data. The amount of data could be as small as a simple text file with a few lines or as big as a large binary file or several folders summing Giga Bytes of data.</p>
 <p>There are several ways of moving data in and out of our HPC clusters.
@@ -198,22 +204,22 @@ In this section, we will focus on the simplest, most effective way of moving dat
 There are several advantages to using Globus compared to other methods that will be covered on <a class="reference internal" href="35.TransferFiles.html#bs-file-transfer"><span class="std std-ref">File Transfer Section</span></a>:
 We can summarize the advantages as:</p>
 <ul class="simple">
-<li><p>° Globus works from a web browser, not need to learn commands for a terminal.</p></li>
-<li><p>° Transfers are done in the background so users do not need to keep the browser open. The transfer happens behind the curtains.</p></li>
-<li><p>° Auto performance tuning to ensure the data is transferred as quickly as possible. One can expect a speedup of at least 2x over traditional transfer methods.</p></li>
-<li><p>° Transfers can work in parallel, and data could be encrypted during transfer.</p></li>
-<li><p>° The integrity of the transfer can be ensured via checksum methods (Hashes).</p></li>
-<li><p>° Transfers are automatically restarted after a failed or stopped connection.</p></li>
-<li><p>° Ability to only transfer files that have yet to be transferred (similar to rsync).</p></li>
+<li>° Globus works from a web browser, not need to learn commands for a terminal.</li>
+<li>° Transfers are done in the background so users do not need to keep the browser open. The transfer happens behind the curtains.</li>
+<li>° Auto performance tuning to ensure the data is transferred as quickly as possible. One can expect a speedup of at least 2x over traditional transfer methods.</li>
+<li>° Transfers can work in parallel, and data could be encrypted during transfer.</li>
+<li>° The integrity of the transfer can be ensured via checksum methods (Hashes).</li>
+<li>° Transfers are automatically restarted after a failed or stopped connection.</li>
+<li>° Ability to only transfer files that have yet to be transferred (similar to rsync).</li>
 </ul>
 <p>In addition to all these advantages, WVU is also a <a class="reference external" href="https://www.globus.org/subscriptions">Globus Subscriber</a> which provides additional services over the basic/free subscription. WVU’s Globus Subscription adds the following features:</p>
 <ol class="arabic simple">
-<li><p>Ability to archive/transfer data with unlimited storage to user’s <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868">Google Drive MIX Account</a>.</p></li>
-<li><p>Sharing of data with others inside and outside the university.</p></li>
-<li><p>Sharing of data from personal workstations via <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</p></li>
+<li>Ability to archive/transfer data with unlimited storage to user’s <a class="reference external" href="https://wvu.atlassian.net/servicedesk/customer/portal/5/article/299335692?src=-555450868">Google Drive MIX Account</a>.</li>
+<li>Sharing of data with others inside and outside the university.</li>
+<li>Sharing of data from personal workstations via <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</li>
 </ol>
-</section>
-<section id="understanding-globus">
+</div>
+<div class="section" id="understanding-globus">
 <h2>Understanding Globus<a class="headerlink" href="#understanding-globus" title="Permalink to this headline">¶</a></h2>
 <p>Globus works by properly connecting data storage locations such as your data on one of our HPC clusters with some other data storage locations.
 Those storage locations are called “endpoints”
@@ -221,8 +227,8 @@ Your own computer could be also an “endpoint”. To become an endpoint your co
 This is the software that will run behind curtains and execute the transfer tasks between your computer and a remote endpoint such as the HPC cluster.</p>
 <p>Once a storage defined as an endpoint, it will be available for authorized users to transfer files to or from this endpoint. You can install multiple personal endpoints on several of your computers and transfer from the HPC cluster to your desktop computer initiating the transfer from your laptop.</p>
 <p>The following instructions will take step by step into the process of connecting your HPC account with Globus and installing the personal endpoint on your computer.</p>
-</section>
-<section id="connecting-to-the-globus-web-app">
+</div>
+<div class="section" id="connecting-to-the-globus-web-app">
 <h2>Connecting to the Globus Web App<a class="headerlink" href="#connecting-to-the-globus-web-app" title="Permalink to this headline">¶</a></h2>
 <p>To be able to move data in and out the HPC cluster to your own computer, there are two tasks to be completed.
 Link Globus to your personal WVU account so you can access the end points to our clusters and download and install “Globus Connect Personal” which is a small piece of software that will transfor your own computer into an endpoint where you can interchange data with the HPC cluster.</p>
@@ -243,9 +249,9 @@ There you need to provide your username and password and after you authenticate 
 This is the name of the endpoint connecting to the files in the HPC Cluster Thorny Flat.</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro5.jpg"><img alt="Globus Introduction (figure 5)" src="../_images/Globus-intro5.jpg" style="width: 600px;" /></a>
 <p>Selecting <strong>wvu#thornydtn</strong> will show you two folders <cite>scratch</cite> and <cite>users</cite>. They correspont to the two location where you can store data on Thorny Flat.
-From one side is <cite>users</cite> where there is your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> folder.
+From one side is <cite>users</cite> where there is your <code class="docutils literal"><span class="pre">$HOME</span></code> folder.
 On Thorny Flat you have a data quota of 10GB of data storage.
-The other folder is <cite>scratch</cite> pointing to your <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> folder where you can store upto 20TB of data.</p>
+The other folder is <cite>scratch</cite> pointing to your <code class="docutils literal"><span class="pre">$SCRATCH</span></code> folder where you can store upto 20TB of data.</p>
 <p>The next step is to install <strong>Globus Connect Personal</strong>. The application to convert your own computer into a endpoint. Click on <strong>Collections</strong> on the left side bar</p>
 <a class="reference internal image-reference" href="../_images/Globus-intro6.jpg"><img alt="Globus Introduction (figure 6)" src="../_images/Globus-intro6.jpg" style="width: 600px;" /></a>
 <p>On the top right corner you will see a link to <strong>Get Globus Connect Personal</strong>.
@@ -259,13 +265,13 @@ The page is programmed to detect your operating system. If the installer that yo
 <p>The installation procedure varies for each Operating System.
 In the case of a Mac, the package is a dmg, once the dmg is opened and the app is dragged to the <em>Applications</em> folder.</p>
 <a class="reference internal image-reference" href="../_images/Globus_Personal_Connect_macOS.png"><img alt="Globus Connect Personal installation on macOS" src="../_images/Globus_Personal_Connect_macOS.png" style="width: 400px;" /></a>
-</section>
-<section id="other-methods-of-data-transfer">
+</div>
+<div class="section" id="other-methods-of-data-transfer">
 <h2>Other methods of data transfer<a class="headerlink" href="#other-methods-of-data-transfer" title="Permalink to this headline">¶</a></h2>
 <p>Globus is not the only way for transferring files between your computer and the HPC cluster.
 Other methods include using a Data Transfer Node (DTN) or transferring files using Open On-Demand File Manager. Those methods have limitations and will be covered in the <a class="reference internal" href="35.TransferFiles.html#bs-file-transfer"><span class="std std-ref">File Transfer Section</span></a>:</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

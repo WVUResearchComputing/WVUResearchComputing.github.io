@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Software Packages &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Workload Manager (SLURM)" href="27.WorkloadManager.html" />
@@ -187,19 +193,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="software-packages">
+  <div class="section" id="software-packages">
 <span id="qs-software"></span><h1>Software Packages<a class="headerlink" href="#software-packages" title="Permalink to this headline">¶</a></h1>
 <p>As important as having performant hardware on an HPC cluster, it is important the software that runs on that hardware. The software packages are various, numerous, and sometimes complex in their configuration and installation.
 On a shared resource like an HPC cluster, several individuals could have different requirements about the software they need to use for their research.
 Users can need different scientific codes, programming languages, packages, libraries, and compilers according to the particularities of their research.
 To accommodate all those needs, an HPC cluster offers a set of solutions that allow each user to select the software needed to achieve their goals.
 In this section, we will present an overview of the different options users have to enable the software they need.</p>
-<section id="the-operating-system">
+<div class="section" id="the-operating-system">
 <h2>The Operating System<a class="headerlink" href="#the-operating-system" title="Permalink to this headline">¶</a></h2>
 <p>The Operating System is the set of software packages that provide the basic functionality of a computer.
 Among those packages is the Kernel, the central piece of software capable of communicating with the hardware to perform the low-level tasks that a computer does during its operation.
 Your direct interaction with the operating system is via the command line interface.
-Most commands like <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code> are part of of the operating system. The packages that provide these and many other commands are installed when the computer is provisioned, ie, during the installation of the computer.
+Most commands like <code class="docutils literal"><span class="pre">cp</span></code>, <code class="docutils literal"><span class="pre">ls</span></code> are part of of the operating system. The packages that provide these and many other commands are installed when the computer is provisioned, ie, during the installation of the computer.
 An HPC cluster, being a collection of computers has one operating system installed on every single compute node.</p>
 <p>No scientific software is installed in the Operating system and there are several reasons for that.
 First, there is not much scientific software provided by the operating system. That is particularly true on an OS such as RedHat Enterprise Linux, the operating system installed on the compute nodes.
@@ -207,20 +213,20 @@ This operating system is intended for enterprise installations and as such scien
 <p>Enterprise Operating Systems adopt a conservative policy in terms of the software included. Compilers for C, C++, and Fortran are usually outdated. Python is usually old and lacks most of the typical packages needed for scientific computing.</p>
 <p>To summarize, all that you will use from the OS on compute nodes will be the basic commands that we learn on <a class="reference internal" href="23.CommandLine.html#qs-command-line"><span class="std std-ref">Quick start with the Command Line</span></a>:</p>
 <p>Compilers, Programming Languages, and all scientific software will come from one of the three software channels that we will describe next.</p>
-</section>
-<section id="environment-modules">
+</div>
+<div class="section" id="environment-modules">
 <h2>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>On an HPC cluster, we need to install multiple scientific packages for different research purposes. Sometimes even multiple versions of the same package as users are confronted with codes that change their behavior over time, regressions occur, ie executions that used to work with a given version stop working or behave differently under a new version.</p>
 <p>To accommodate all these needs, Environment Modules is a solution that allows users to enable or disable <cite>Modules</cite> and as a result access certain software packages and versions.</p>
 <p>An Environment Module is just a way of carefully changing a set of variables that define the location of</p>
-</section>
-<section id="conda-environments">
+</div>
+<div class="section" id="conda-environments">
 <h2>Conda Environments<a class="headerlink" href="#conda-environments" title="Permalink to this headline">¶</a></h2>
-</section>
-<section id="singularity-containers">
+</div>
+<div class="section" id="singularity-containers">
 <h2>Singularity Containers<a class="headerlink" href="#singularity-containers" title="Permalink to this headline">¶</a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

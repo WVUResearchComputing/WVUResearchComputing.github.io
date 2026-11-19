@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Thorny Flat (2019-) &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CTSI HPC Cluster (2021-)" href="84.CTSI.html" />
@@ -197,11 +203,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="thorny-flat-2019">
+  <div class="section" id="thorny-flat-2019">
 <h1>Thorny Flat (2019-)<a class="headerlink" href="#thorny-flat-2019" title="Permalink to this headline">¶</a></h1>
 <p>Thorny Flat is current WVU’s general purpose HPC Cluster.  It was deployed in February 2019 and funded in large part by <a class="reference external" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1726534&amp;HistoricalAwards=false">NSF Major Research Instrumentation (MRI) Grant Award #1726534</a>. The cluster has a total of 6196 CPU cores spread over 170 nodes using a shared Intel Omnipath 100Gbps Interconnect. The system is a heterogeneous cluster in which there are different node types. In addition, each year a new addition is added to the cluster, which is known as a new phase. The cluster has five phases and currently is in phase 2.</p>
 <a class="reference internal image-reference" href="../_images/ThornyFlat.jpg"><img alt="Thorny Flat" class="align-center" src="../_images/ThornyFlat.jpg" style="width: 150.0px; height: 300.0px;" /></a>
-<section id="overview">
+<div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p><em>(This text can be used for proposals to Grant Funding Agencies)</em></p>
 <p>Thorny Flat is a general-purpose High-Performance Computing (HPC) cluster.
@@ -227,149 +233,148 @@ There is a total of 47 GPU cards distributed as follows:
 Score was measured from the HPL Linpack benchmark.</p>
 <p>Thorny Flat uses SLURM for workload management and it has a variety of compilers,
 numerical libraries and scientific software specifically compiled and optimized for the hardware architecture.</p>
-<section id="acknowledgment-message">
+<div class="section" id="acknowledgment-message">
 <h3>Acknowledgment Message<a class="headerlink" href="#acknowledgment-message" title="Permalink to this headline">¶</a></h3>
 <p>We ask our users to acknowledge the use of Thorny Flat in all possible publications thanks to this resource. The message in the acknowledgment section could be as follows:</p>
 <blockquote>
-<div><p><em>Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.</em></p>
-</div></blockquote>
-</section>
-<section id="total-compute-resources">
+<div><em>Computational resources were provided by the WVU Research Computing Thorny Flat HPC cluster, which is funded in part by NSF OAC-1726534.</em></div></blockquote>
+</div>
+<div class="section" id="total-compute-resources">
 <h3>Total Compute Resources<a class="headerlink" href="#total-compute-resources" title="Permalink to this headline">¶</a></h3>
 <p>Aggregated numbers:</p>
 <ul class="simple">
-<li><p>Total number of Compute nodes: 178</p></li>
-<li><p>Total number of CPU cores: 6516</p></li>
-<li><p>Total RAM: 29.4 TB</p></li>
+<li>Total number of Compute nodes: 178</li>
+<li>Total number of CPU cores: 6516</li>
+<li>Total RAM: 29.4 TB</li>
 </ul>
 <p>General description of compute nodes:</p>
 <ul class="simple">
-<li><p>167 CPU-only Compute nodes.</p></li>
-<li><p>7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards).</p></li>
-<li><p>3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards).</p></li>
-<li><p>1 Hardware-accelerated compute node with 2 NVIDIA A100.</p></li>
-<li><p>4 Management Nodes.</p></li>
+<li>167 CPU-only Compute nodes.</li>
+<li>7 Hardware-accelerated compute nodes with 3 NVIDIA P6000 (21 GPU cards).</li>
+<li>3 Hardware-accelerated compute nodes with 8 NVIDIA RTX6000 (24 GPU cards).</li>
+<li>1 Hardware-accelerated compute node with 2 NVIDIA A100.</li>
+<li>4 Management Nodes.</li>
 </ul>
-</section>
-<section id="shared-interconnect">
+</div>
+<div class="section" id="shared-interconnect">
 <h3>Shared Interconnect<a class="headerlink" href="#shared-interconnect" title="Permalink to this headline">¶</a></h3>
 <p>All the nodes in Thorny Flat are interconnected using Intel(R) Omnipath(R) 100 Gbps with switches in a blocking ratio of 5:1</p>
-</section>
-<section id="resource-manager-and-system-scheduler">
+</div>
+<div class="section" id="resource-manager-and-system-scheduler">
 <h3>Resource manager and system scheduler<a class="headerlink" href="#resource-manager-and-system-scheduler" title="Permalink to this headline">¶</a></h3>
 <p>Thorny Flat uses SLURM as workload manager version 22.05.6.</p>
-</section>
-</section>
-<section id="hardware">
+</div>
+</div>
+<div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
-<section id="phase-0-1-hardware">
+<div class="section" id="phase-0-1-hardware">
 <h3>Phase 0/1 Hardware<a class="headerlink" href="#phase-0-1-hardware" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/120476/intel-xeon-gold-6138-processor-27-5m-cache-2-00-ghz.html">Intel® Xeon® Gold 6138 Processor</a></p></li>
-<li><p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/120483/intel-xeon-gold-6126-processor-19-25m-cache-2-60-ghz.html">Intel® Xeon® Gold 6126 Processor</a></p></li>
+<li><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/120476/intel-xeon-gold-6138-processor-27-5m-cache-2-00-ghz.html">Intel® Xeon® Gold 6138 Processor</a></li>
+<li><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/120483/intel-xeon-gold-6126-processor-19-25m-cache-2-60-ghz.html">Intel® Xeon® Gold 6126 Processor</a></li>
 </ul>
 </div></blockquote>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 56%" />
-<col style="width: 13%" />
-<col style="width: 9%" />
-<col style="width: 7%" />
+<col width="15%" />
+<col width="56%" />
+<col width="13%" />
+<col width="9%" />
+<col width="7%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Node Type</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><div class="line-block">
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Node Type</th>
+<th class="head">Description</th>
+<th class="head"><div class="first last line-block">
 <div class="line">Community</div>
 <div class="line">Nodes</div>
 </div>
 </th>
-<th class="head"><div class="line-block">
+<th class="head"><div class="first last line-block">
 <div class="line">Condo</div>
 <div class="line">Nodes</div>
 </div>
 </th>
-<th class="head"><p>Total</p></th>
+<th class="head">Total</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Small Memory</p></td>
-<td><ul class="simple">
-<li><p>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</p></li>
-<li><p>96GB memory</p></li>
-<li><p>240GB SSD</p></li>
-<li><p>100 Gb Omnipath</p></li>
-<li><p>5 yr warranty</p></li>
+<tbody valign="top">
+<tr class="row-even"><td>Small Memory</td>
+<td><ul class="first last simple">
+<li>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</li>
+<li>96GB memory</li>
+<li>240GB SSD</li>
+<li>100 Gb Omnipath</li>
+<li>5 yr warranty</li>
 </ul>
 </td>
-<td><p>64</p></td>
-<td><p>13</p></td>
-<td><p>77</p></td>
+<td>64</td>
+<td>13</td>
+<td>77</td>
 </tr>
-<tr class="row-odd"><td><p>Medium Memory</p></td>
-<td><ul class="simple">
-<li><p>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</p></li>
-<li><p>192GB memory</p></li>
-<li><p>240GB SSD</p></li>
-<li><p>100 Gb Omnipath</p></li>
-<li><p>5 yr warranty</p></li>
+<tr class="row-odd"><td>Medium Memory</td>
+<td><ul class="first last simple">
+<li>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</li>
+<li>192GB memory</li>
+<li>240GB SSD</li>
+<li>100 Gb Omnipath</li>
+<li>5 yr warranty</li>
 </ul>
 </td>
-<td><p>0</p></td>
-<td><p>16</p></td>
-<td><p>16</p></td>
+<td>0</td>
+<td>16</td>
+<td>16</td>
 </tr>
-<tr class="row-even"><td><p>Large Memory</p></td>
-<td><ul class="simple">
-<li><p>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</p></li>
-<li><p>384GB memory</p></li>
-<li><p>240GB SSD</p></li>
-<li><p>100 Gb Omnipath</p></li>
-<li><p>5 yr warranty</p></li>
+<tr class="row-even"><td>Large Memory</td>
+<td><ul class="first last simple">
+<li>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</li>
+<li>384GB memory</li>
+<li>240GB SSD</li>
+<li>100 Gb Omnipath</li>
+<li>5 yr warranty</li>
 </ul>
 </td>
-<td><p>0</p></td>
-<td><p>4</p></td>
-<td><p>4</p></td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
 </tr>
-<tr class="row-odd"><td><p>XL Memory</p></td>
-<td><ul class="simple">
-<li><p>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</p></li>
-<li><p>768GB memory</p></li>
-<li><p>240GB SSD</p></li>
-<li><p>100 Gb Omnipath</p></li>
-<li><p>5 yr warranty</p></li>
+<tr class="row-odd"><td>XL Memory</td>
+<td><ul class="first last simple">
+<li>2 x Intel® Xeon® Gold 6138 Processor (20 cores/cpu)</li>
+<li>768GB memory</li>
+<li>240GB SSD</li>
+<li>100 Gb Omnipath</li>
+<li>5 yr warranty</li>
 </ul>
 </td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>4</p></td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
 </tr>
-<tr class="row-even"><td><p>GPU</p></td>
-<td><ul class="simple">
-<li><p>2 x Intel® Xeon® Gold 6126 Processor (12 cores/cpu)</p></li>
-<li><p>3 x NVIDIA Quadro P6000 24GB PCIe GPUs,</p></li>
-<li><p>96GB memory</p></li>
-<li><p>240GB SSD</p></li>
-<li><p>100 Gb Omnipath</p></li>
-<li><p>5 yr warranty</p></li>
+<tr class="row-even"><td>GPU</td>
+<td><ul class="first last simple">
+<li>2 x Intel® Xeon® Gold 6126 Processor (12 cores/cpu)</li>
+<li>3 x NVIDIA Quadro P6000 24GB PCIe GPUs,</li>
+<li>96GB memory</li>
+<li>240GB SSD</li>
+<li>100 Gb Omnipath</li>
+<li>5 yr warranty</li>
 </ul>
 </td>
-<td><p>6</p></td>
-<td><p>1</p></td>
-<td><p>7</p></td>
+<td>6</td>
+<td>1</td>
+<td>7</td>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="partitions">
+</div>
+</div>
+<div class="section" id="partitions">
 <h2>Partitions<a class="headerlink" href="#partitions" title="Permalink to this headline">¶</a></h2>
 <p>The current state and limits of partitions can be found using the qstat
 command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server</span><span class="p">:</span> <span class="n">trcis002</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">server</span><span class="p">:</span> <span class="n">trcis002</span><span class="o">.</span><span class="n">hpc</span><span class="o">.</span><span class="n">wvu</span><span class="o">.</span><span class="n">edu</span>
 
 <span class="n">Partition</span>            <span class="n">Memory</span> <span class="n">CPU</span> <span class="n">Time</span> <span class="n">Walltime</span> <span class="n">Node</span>  <span class="n">Run</span> <span class="n">Que</span> <span class="n">Lm</span>  <span class="n">State</span>
 <span class="o">----------------</span> <span class="o">------</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">----</span>  <span class="o">---</span> <span class="o">---</span> <span class="o">--</span>  <span class="o">-----</span>
@@ -383,240 +388,240 @@ command.</p>
 </pre></div>
 </div>
 <p>There are three main partition types - research team partitions, the standby partition, and community node partitions.</p>
-</section>
-<section id="research-team-partitions">
+</div>
+<div class="section" id="research-team-partitions">
 <h2>Research Team Partitions<a class="headerlink" href="#research-team-partitions" title="Permalink to this headline">¶</a></h2>
 <p>Research teams that have bought their own compute nodes have private partitions that link all their compute nodes together. Only users given permission from the research team’s buyer (Usually the labs PI) will have permission to directly submit jobs to these partitions. While these are private partitions - unused resources/compute nodes from these partitions will be available to the standby partition (see below). However, per the system-wide policies, all research team’s compute nodes must be available to the research team’s users within 4 hours of job submission.  By default, these partitions are regulated by first come, first serve queuing. However, individual research teams can ask for different settings for their respective partition, and should <a class="reference external" href="GettingHelp">contact</a> the RC HPC team with these requests.</p>
-</section>
-<section id="standby-partition">
+</div>
+<div class="section" id="standby-partition">
 <h2>Standby Partition<a class="headerlink" href="#standby-partition" title="Permalink to this headline">¶</a></h2>
 <p>The standy partition is for using resources from research teams partitions that are not currently being used. Priority on the standby partition is set by fair share queuing. This means that user priority is assigned based on a combination of the size of the job and how much system resources the user have used during the given week, with higher priority assigned to larger jobs and/or user jobs that have used fewer system resources in the week. Further, the standby partition has a 4-hour wall time.</p>
-</section>
-<section id="community-node-partitions">
+</div>
+<div class="section" id="community-node-partitions">
 <h2>Community Node Partitions<a class="headerlink" href="#community-node-partitions" title="Permalink to this headline">¶</a></h2>
 <p>Thorny Flat has several partitions that start with the word ‘comm’. These partitions are linked to the 73 compute/GPU nodes bought using NSF funding sources, and as such open for Statewide Higher Education use.
 These partitions are separated by node type (i.e. extra large memory, and GPU) and can be used by all users. Currently, these nodes are regulated by fair share queuing. This means that user priority is assigned based on a combination of the size of the job and how much system resources the user has used during the given week, with higher priority assigned to larger jobs and/or user jobs that have used less system resources in the week. Further, all community partitions have a week wall time, except for the (comm_small_day). comm_small_day allows jobs up 24 hours; and, this partition class has access to a larger number of resources than than comm_small_week). These restrictions are set to prevent a single user from occupying a large number of the community resources for an excessively long time.</p>
-</section>
-<section id="hardware-acceleration">
+</div>
+<div class="section" id="hardware-acceleration">
 <h2>Hardware acceleration<a class="headerlink" href="#hardware-acceleration" title="Permalink to this headline">¶</a></h2>
 <p>Thorny Flat has 11 compute nodes with hardware accelerators in the form of NVIDIA GPU cards.
 The GPUs present on Thorny Flat are NVIDIA P6000, NVIDIA QUADRO RTX6000 and NVIDIA A100
 The following table describes the distribution of accelerators in the GPU compute nodes.</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 52%" />
-<col style="width: 11%" />
-<col style="width: 14%" />
-<col style="width: 7%" />
+<col width="16%" />
+<col width="52%" />
+<col width="11%" />
+<col width="14%" />
+<col width="7%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Node Name</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><div class="line-block">
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Node Name</th>
+<th class="head">Description</th>
+<th class="head"><div class="first last line-block">
 <div class="line">Quadro</div>
 <div class="line">P6000</div>
 </div>
 </th>
-<th class="head"><div class="line-block">
+<th class="head"><div class="first last line-block">
 <div class="line">Quadro</div>
 <div class="line">RTX 6000</div>
 </div>
 </th>
-<th class="head"><p>A100</p></th>
+<th class="head">A100</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>tcogq001</p></td>
-<td><div class="line-block">
+<tbody valign="top">
+<tr class="row-even"><td>tcogq001</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
 </div>
 </td>
-<td><p>3</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr class="row-odd"><td><p>tcogq002</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>tcogq002</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
 </div>
 </td>
-<td><p>3</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr class="row-even"><td><p>tcogq003</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>tcogq003</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
 </div>
 </td>
-<td><p>3</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr class="row-odd"><td><p>tcogq004</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>tcogq004</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
 </div>
 </td>
-<td><p>3</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr class="row-even"><td><p>tcogq005</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>tcogq005</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
 </div>
 </td>
-<td><p>3</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr class="row-odd"><td><p>tcogq006</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>tcogq006</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
 </div>
 </td>
-<td><p>3</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr class="row-even"><td><p>tbmgq001</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>tbmgq001</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6126 CPU &#64; 2.60GHz</div>
 <div class="line">Total RAM: 96GB</div>
 </div>
 </td>
-<td><p>3</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr class="row-odd"><td><p>tbmgq100</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>tbmgq100</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
 </div>
 </td>
-<td><p>0</p></td>
-<td><p>8</p></td>
-<td><p>0</p></td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
 </tr>
-<tr class="row-even"><td><p>tbegq201</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>tbegq201</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
 </div>
 </td>
-<td><p>0</p></td>
-<td><p>8</p></td>
-<td><p>0</p></td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
 </tr>
-<tr class="row-odd"><td><p>tbegq202</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>tbegq202</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
 </div>
 </td>
-<td><p>0</p></td>
-<td><p>8</p></td>
-<td><p>0</p></td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
 </tr>
-<tr class="row-even"><td><p>tbegq200</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>tbegq200</td>
+<td><div class="first last line-block">
 <div class="line">2x Intel(R) Xeon(R) Gold 6230R CPU &#64; 2.10GHz</div>
 <div class="line">Total RAM: 192GB</div>
 </div>
 </td>
-<td><p>0</p></td>
-<td><p>0</p></td>
-<td><p>2</p></td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
 </tr>
-<tr class="row-odd"><td><p>TOTAL</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>TOTAL</td>
+<td><div class="first last line-block">
 <div class="line">CPU: 7 x 24 cores + 4 x 52 cores = 376 cores</div>
 <div class="line">RAM: 7 x 96GB + 4 x 192GB = 1440 GB</div>
 </div>
 </td>
-<td><p>21</p></td>
-<td><p>24</p></td>
-<td><p>2</p></td>
+<td>21</td>
+<td>24</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
 <p>The specifications of the three kinds of GPU cards on Thorny Flat are shown in the table below</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 18%" />
-<col style="width: 16%" />
-<col style="width: 11%" />
-<col style="width: 18%" />
-<col style="width: 17%" />
+<col width="19%" />
+<col width="18%" />
+<col width="16%" />
+<col width="11%" />
+<col width="18%" />
+<col width="17%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><div class="line-block">
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><div class="first last line-block">
 <div class="line">GPU Card</div>
 <div class="line">Model</div>
 </div>
 </th>
-<th class="head"><div class="line-block">
+<th class="head"><div class="first last line-block">
 <div class="line">GPU</div>
 <div class="line">Memory</div>
 </div>
 </th>
-<th class="head"><div class="line-block">
+<th class="head"><div class="first last line-block">
 <div class="line">CUDA</div>
 <div class="line">Cores</div>
 </div>
 </th>
-<th class="head"><div class="line-block">
+<th class="head"><div class="first last line-block">
 <div class="line">Tensor</div>
 <div class="line">Cores</div>
 </div>
 </th>
-<th class="head"><div class="line-block">
+<th class="head"><div class="first last line-block">
 <div class="line">Max Power</div>
 <div class="line">Compsumption</div>
 </div>
 </th>
-<th class="head"><div class="line-block">
+<th class="head"><div class="first last line-block">
 <div class="line">Compute</div>
 <div class="line">Capability</div>
 </div>
 </th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Quadro P6000</p></td>
-<td><p>24 GB GDDR5X</p></td>
-<td><p>3840</p></td>
-<td></td>
-<td><p>250 W</p></td>
-<td><p>6.1</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Quadro P6000</td>
+<td>24 GB GDDR5X</td>
+<td>3840</td>
+<td>&#160;</td>
+<td>250 W</td>
+<td>6.1</td>
 </tr>
-<tr class="row-odd"><td><p>Quadro RTX 6000</p></td>
-<td><p>24 GB GDDR6</p></td>
-<td><p>4608</p></td>
-<td><p>576</p></td>
-<td><p>250 W</p></td>
-<td><p>7.5</p></td>
+<tr class="row-odd"><td>Quadro RTX 6000</td>
+<td>24 GB GDDR6</td>
+<td>4608</td>
+<td>576</td>
+<td>250 W</td>
+<td>7.5</td>
 </tr>
-<tr class="row-even"><td><p>A100-PCIE-40GB</p></td>
-<td><p>40 GB HBM2</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>A100-PCIE-40GB</td>
+<td>40 GB HBM2</td>
+<td><div class="first last line-block">
 <div class="line">6912 FP32</div>
 <div class="line">3456 FP64</div>
 </div>
 </td>
-<td><p>432</p></td>
-<td><p>250 W</p></td>
-<td><p>8.0</p></td>
+<td>432</td>
+<td>250 W</td>
+<td>8.0</td>
 </tr>
 </tbody>
 </table>
@@ -628,8 +633,8 @@ This version number identifies the features supported by the GPU hardware and is
 <p>Devices with the same major revision number are of the same core architecture.
 The major revision number is 8 for devices based on the NVIDIA Ampere GPU architecture (like A100), 7 for devices based on the Volta architecture (like the Quadro RTX 6000), and 6 for devices based on the Pascal architecture (like the Quadro P6000).</p>
 <p>You can see <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">Compute Capabilities</a> for other GPU cards.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

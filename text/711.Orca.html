@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Electronic Structure: Orca &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Clusters Specifications" href="80.ClusterSpecific.html" />
@@ -186,50 +192,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="electronic-structure-orca">
+  <div class="section" id="electronic-structure-orca">
 <h1>Electronic Structure: Orca<a class="headerlink" href="#electronic-structure-orca" title="Permalink to this headline">¶</a></h1>
 <p>ORCA is a general-purpose quantum chemistry program package that features several electronic structure methods (density functional theory, many-body perturbation and coupled cluster theories, and multireference and semiempirical methods).</p>
 <p>ORCA is a flexible, efficient, and easy-to-use general-purpose tool for quantum chemistry with a specific emphasis on the spectroscopic properties of open-shell molecules. It features various standard quantum chemical methods ranging from semiempirical to DFT to single- and multireference correlated ab initio methods.
 In addition, ORCA can also treat environmental and relativistic effects.</p>
 <p>ORCA uses standard Gaussian basis functions and can take advantage of CPU parallelization. Due to its user-friendly style, ORCA is a helpful tool for computational chemists, physicists, and biologists interested in developing a better understanding of experimental data with the help of electronic structure calculations.</p>
-<section id="levels-of-theory">
+<div class="section" id="levels-of-theory">
 <h2>Levels of Theory<a class="headerlink" href="#levels-of-theory" title="Permalink to this headline">¶</a></h2>
 <p>ORCA can optimize atomic geometries by following forces computed from electronic structure calculations. ORCA can also predict many spectroscopic parameters at different levels of theory. The levels of theory supported range from Hartee Fock (HF) to Density Functional Theory (DFT). Other levels, such as semiempirical methods and high-level ab initio quantum chemical methods, based on the configuration interaction and coupled cluster methods, are included in ORCA to an increasing degree.</p>
-</section>
-<section id="the-orca-input-file">
+</div>
+<div class="section" id="the-orca-input-file">
 <h2>The ORCA input file<a class="headerlink" href="#the-orca-input-file" title="Permalink to this headline">¶</a></h2>
-<p>The suffix of ORCA input file can be anything, ORCA documentation suggests the use of the extension <code class="docutils literal notranslate"><span class="pre">.inp</span></code>. The general structure of an ORCA input file consists of several blocks with names like:</p>
+<p>The suffix of ORCA input file can be anything, ORCA documentation suggests the use of the extension <code class="docutils literal"><span class="pre">.inp</span></code>. The general structure of an ORCA input file consists of several blocks with names like:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>BASIS:</strong> Basis sets are specified</p></li>
-<li><p><strong>CASSCF:</strong> Control of CASSCF/NEVPT2 and DMRG calculations&lt;</p></li>
-<li><p><strong>CIS:</strong> Control of CIS and TD-DFT calculations (synonym is TDDFT)</p></li>
-<li><p><strong>COORDS:</strong> Input of atomic coordinates</p></li>
-<li><p><strong>COSMO:</strong> Control of the conductor-like screening model</p></li>
-<li><p><strong>ELPROP:</strong> Control of electric property calculations</p></li>
-<li><p><strong>EPRNMR:</strong> Control of SCF level EPR and NMR calculations</p></li>
-<li><p><strong>FREQ:</strong> Control of frequency calculations</p></li>
-<li><p><strong>GEOM:</strong> Control of geometry optimization</p></li>
-<li><p><strong>MD:</strong> Control of molecular dynamics simulation</p></li>
-<li><p><strong>LOC:</strong> Localization of orbitals</p></li>
-<li><p><strong>MDCI:</strong> Controls single reference correlation methods</p></li>
-<li><p><strong>METHOD:</strong> A computation method is specified here</p></li>
-<li><p><strong>MP2:</strong> Controls the details of the MP2 calculation</p></li>
-<li><p><strong>MRCI:</strong> Control of MRCI calculations</p></li>
-<li><p><strong>OUTPUT:</strong> Control of output</p></li>
-<li><p><strong>PAL:</strong> Control of parallel jobs</p></li>
-<li><p><strong>PARAS:</strong> Input of semiempirial parameters</p></li>
-<li><p><strong>PLOTS:</strong> Control of plot generation</p></li>
-<li><p><strong>REL:</strong> Control of options relativistic</p></li>
-<li><p><strong>RR:</strong> Control of resonance Raman and absorption/fluorescence bandshape calculations</p></li>
-<li><p><strong>SCF:</strong> Control of the SCF procedure</p></li>
+<li><strong>BASIS:</strong> Basis sets are specified</li>
+<li><strong>CASSCF:</strong> Control of CASSCF/NEVPT2 and DMRG calculations&lt;</li>
+<li><strong>CIS:</strong> Control of CIS and TD-DFT calculations (synonym is TDDFT)</li>
+<li><strong>COORDS:</strong> Input of atomic coordinates</li>
+<li><strong>COSMO:</strong> Control of the conductor-like screening model</li>
+<li><strong>ELPROP:</strong> Control of electric property calculations</li>
+<li><strong>EPRNMR:</strong> Control of SCF level EPR and NMR calculations</li>
+<li><strong>FREQ:</strong> Control of frequency calculations</li>
+<li><strong>GEOM:</strong> Control of geometry optimization</li>
+<li><strong>MD:</strong> Control of molecular dynamics simulation</li>
+<li><strong>LOC:</strong> Localization of orbitals</li>
+<li><strong>MDCI:</strong> Controls single reference correlation methods</li>
+<li><strong>METHOD:</strong> A computation method is specified here</li>
+<li><strong>MP2:</strong> Controls the details of the MP2 calculation</li>
+<li><strong>MRCI:</strong> Control of MRCI calculations</li>
+<li><strong>OUTPUT:</strong> Control of output</li>
+<li><strong>PAL:</strong> Control of parallel jobs</li>
+<li><strong>PARAS:</strong> Input of semiempirial parameters</li>
+<li><strong>PLOTS:</strong> Control of plot generation</li>
+<li><strong>REL:</strong> Control of options relativistic</li>
+<li><strong>RR:</strong> Control of resonance Raman and absorption/fluorescence bandshape calculations</li>
+<li><strong>SCF:</strong> Control of the SCF procedure</li>
 </ul>
 </div></blockquote>
-<p>ORCA will ignore lines that start with a <code class="docutils literal notranslate"><span class="pre">#</span></code> and close by a second <code class="docutils literal notranslate"><span class="pre">#</span></code>.
-Blocks start with ‘%‘ and end with the word <code class="docutils literal notranslate"><span class="pre">end</span></code>.</p>
+<p>ORCA will ignore lines that start with a <code class="docutils literal"><span class="pre">#</span></code> and close by a second <code class="docutils literal"><span class="pre">#</span></code>.
+Blocks start with ‘%‘ and end with the word <code class="docutils literal"><span class="pre">end</span></code>.</p>
 <p>Here is an example input file, which request a single point energy calculation on water:</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

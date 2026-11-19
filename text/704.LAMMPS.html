@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>LAMMPS &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bioinformatics: Using Bowtie2" href="705.bowtie2.html" />
@@ -187,7 +193,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="lammps">
+  <div class="section" id="lammps">
 <h1>LAMMPS<a class="headerlink" href="#lammps" title="Permalink to this headline">¶</a></h1>
 <p>Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) is a molecular
 dynamics software code from Sandia National Laboratories.
@@ -206,20 +212,20 @@ LAMMPS is most efficient (in a parallel computing sense) for systems whose parti
 box with approximately uniform density.</p>
 <p>In this tutorial we will demonstrate how to use a hybrid combination for LAMMPS.
 We will combine MPI, OpenMP and GPU acceleration for a simple benchmark case.</p>
-<section id="creating-the-input-file">
+<div class="section" id="creating-the-input-file">
 <h2>Creating the input file<a class="headerlink" href="#creating-the-input-file" title="Permalink to this headline">¶</a></h2>
 <p>Select a good location for executing the simulation.
 For example use $SCRATCH/LAMMPS:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; mkdir $SCRATCH/LAMMPS
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; mkdir $SCRATCH/LAMMPS
 $&gt; cd $SCRATCH/LAMMPS
 </pre></div>
 </div>
 <p>Download the two examples from the LAMMPS webserver:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://lammps.sandia.gov/inputs/in.lj.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; wget https://lammps.sandia.gov/inputs/in.lj.txt
 </pre></div>
 </div>
 <p>The example is very simple, alternatively you can just copy and paste the input file below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 3d Lennard-Jones melt
+<div class="highlight-default"><div class="highlight"><pre><span></span># 3d Lennard-Jones melt
 
 variable    x index 1
 variable    y index 1
@@ -251,20 +257,20 @@ fix     1 all nve
 run     100
 </pre></div>
 </div>
-</section>
-<section id="requesting-an-interactive-job">
+</div>
+<div class="section" id="requesting-an-interactive-job">
 <h2>Requesting an interactive job<a class="headerlink" href="#requesting-an-interactive-job" title="Permalink to this headline">¶</a></h2>
 <p>For the purpose of this example we will use an interactive job.
 Down below we will show how to achieve the same result via a batch job
 We start by requesting and entire GPU compute node.
 On Thorny Flat GPU nodes have 3 GPU cards and 24 CPU cores.
 That is what we are requesting here for a job with a wall time of 2 hours:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; srun -p comm_gpu_inter -G 3 -t 2:00:00 -c 24 --pty bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; srun -p comm_gpu_inter -G 3 -t 2:00:00 -c 24 --pty bash
 </pre></div>
 </div>
 <p>After a few seconds we are redirected to one of the GPU compute nodes.
 We can check which are the GPU cards that were assigned to us with the command <cite>nvidia-smi</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ nvidia-smi
+<div class="highlight-default"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ nvidia-smi
 Wed May  3 18:37:41 2023
 +---------------------------------------------------------------------------------------+
 | NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
@@ -300,21 +306,21 @@ It is important to verify this becase that will determine which capabilites are 
 the cards and the corresponding build of LAMMPS that we can use</p>
 <p>Our next step is to load singularity as the LAMMPS we will use is an image optimized for GPUs.
 Execute this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ module load singularity
+<div class="highlight-default"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ module load singularity
 </pre></div>
 </div>
 <p>Now we are ready to enter into the filesystem of the container.
-The container we will use is <code class="docutils literal notranslate"><span class="pre">NGC_LAMMPS_patch_3Nov2022.sif</span></code> located in <cite>/shared/containers</cite></p>
+The container we will use is <code class="docutils literal"><span class="pre">NGC_LAMMPS_patch_3Nov2022.sif</span></code> located in <cite>/shared/containers</cite></p>
 <p>Get a shell inside the cntainer with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ singularity shell --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif
+<div class="highlight-default"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ singularity shell --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif
 </pre></div>
 </div>
 <p>Remember to use the argument <cite>–nv</cite> to access the GPUs inside the container.
 It is a good practice to double check that such is the case:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
 <span class="n">Wed</span> <span class="n">May</span>  <span class="mi">3</span> <span class="mi">18</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">19</span> <span class="mi">2023</span>
 <span class="o">+---------------------------------------------------------------------------------------+</span>
-<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">530.30.02</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">530.30.02</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.1</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">530.30</span><span class="o">.</span><span class="mi">02</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">530.30</span><span class="o">.</span><span class="mi">02</span>    <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.1</span>     <span class="o">|</span>
 <span class="o">|-----------------------------------------+----------------------+----------------------+</span>
 <span class="o">|</span> <span class="n">GPU</span>  <span class="n">Name</span>                  <span class="n">Persistence</span><span class="o">-</span><span class="n">M</span><span class="o">|</span> <span class="n">Bus</span><span class="o">-</span><span class="n">Id</span>        <span class="n">Disp</span><span class="o">.</span><span class="n">A</span> <span class="o">|</span> <span class="n">Volatile</span> <span class="n">Uncorr</span><span class="o">.</span> <span class="n">ECC</span> <span class="o">|</span>
 <span class="o">|</span> <span class="n">Fan</span>  <span class="n">Temp</span>  <span class="n">Perf</span>            <span class="n">Pwr</span><span class="p">:</span><span class="n">Usage</span><span class="o">/</span><span class="n">Cap</span><span class="o">|</span>         <span class="n">Memory</span><span class="o">-</span><span class="n">Usage</span> <span class="o">|</span> <span class="n">GPU</span><span class="o">-</span><span class="n">Util</span>  <span class="n">Compute</span> <span class="n">M</span><span class="o">.</span> <span class="o">|</span>
@@ -350,90 +356,90 @@ the extra cores via OpenMP threads.
 Most of the processing is taking place on the GPU so it is not critical but a good way for
 trying to maximize the use of resources.
 Execute this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">8</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">8</span>
 </pre></div>
 </div>
 <p>The next command depends on the Hardware Capabilities of the GPU we are using.
 The NVIDIA P6000 support software architecture (gencode) SM 6.1</p>
 <p>The container offers several builds of LAMMPS:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">ls</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lammps</span><span class="o">/</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">ls</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lammps</span><span class="o">/</span>
 <span class="n">sm60</span>  <span class="n">sm70</span>  <span class="n">sm75</span>  <span class="n">sm80</span>  <span class="n">sm86</span>  <span class="n">sm90</span>
 </pre></div>
 </div>
 <p>The selection of which build to use must be consistent with the highest gencode supported by the hardware.</p>
 <p>This table could Guide you about the selection of the appropiated gencode</p>
-<table class="colwidths-given docutils align-default" id="id1">
+<table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">Title</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 12%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="12%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Fermi</p></th>
-<th class="head"><p>Kepler</p></th>
-<th class="head"><p>Maxwell</p></th>
-<th class="head"><p>Pascal</p></th>
-<th class="head"><p>Volta</p></th>
-<th class="head"><p>Turing</p></th>
-<th class="head"><p>Ampere</p></th>
-<th class="head"><p>Ada (Lovelace)</p></th>
-<th class="head"><p>Hopper</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Fermi</th>
+<th class="head">Kepler</th>
+<th class="head">Maxwell</th>
+<th class="head">Pascal</th>
+<th class="head">Volta</th>
+<th class="head">Turing</th>
+<th class="head">Ampere</th>
+<th class="head">Ada (Lovelace)</th>
+<th class="head">Hopper</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>sm_20</p></td>
-<td><p>sm_30</p></td>
-<td><p>sm_50</p></td>
-<td><p>sm_60</p></td>
-<td><p>sm_70</p></td>
-<td><p>sm_75</p></td>
-<td><p>sm_80</p></td>
-<td><p>sm_89</p></td>
-<td><p>sm_90</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>sm_20</td>
+<td>sm_30</td>
+<td>sm_50</td>
+<td>sm_60</td>
+<td>sm_70</td>
+<td>sm_75</td>
+<td>sm_80</td>
+<td>sm_89</td>
+<td>sm_90</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>sm_35</p></td>
-<td><p>sm_52</p></td>
-<td><p>sm_61</p></td>
-<td><p>sm_72 (Xavier)</p></td>
-<td></td>
-<td><p>sm_86</p></td>
-<td></td>
-<td><p>sm_90a (Thor)</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>sm_35</td>
+<td>sm_52</td>
+<td>sm_61</td>
+<td>sm_72 (Xavier)</td>
+<td>&#160;</td>
+<td>sm_86</td>
+<td>&#160;</td>
+<td>sm_90a (Thor)</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>sm_37</p></td>
-<td><p>sm_53</p></td>
-<td><p>sm_62</p></td>
-<td></td>
-<td></td>
-<td><p>sm_87 (Orin)</p></td>
-<td></td>
-<td></td>
+<tr class="row-even"><td>&#160;</td>
+<td>sm_37</td>
+<td>sm_53</td>
+<td>sm_62</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>sm_87 (Orin)</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
 <p>What matters to us is that the P6000 will not support a gencode other than sm60.
 We will setup the variable <cite>LD_LIBRARY_PATH</cite> to search for the lammps variables on the right location
 Execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lammps/sm60/lib
+<div class="highlight-default"><div class="highlight"><pre><span></span>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lammps/sm60/lib
 </pre></div>
 </div>
 <p>We are now ready to execute LAMMPS:
 The following command will ask for 3 MPI processes 3 GPU cards to run the input file above:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lammps</span><span class="o">/</span><span class="n">sm60</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">lmp</span>  <span class="o">-</span><span class="n">k</span> <span class="n">on</span> <span class="n">g</span> <span class="mi">3</span> <span class="o">-</span><span class="n">sf</span> <span class="n">kk</span> <span class="o">-</span><span class="n">pk</span> <span class="n">kokkos</span> <span class="n">cuda</span><span class="o">/</span><span class="n">aware</span> <span class="n">on</span> <span class="n">neigh</span> <span class="n">full</span> <span class="n">comm</span> <span class="n">device</span> <span class="n">binsize</span> <span class="mf">2.8</span> <span class="o">-</span><span class="n">var</span> <span class="n">x</span> <span class="mi">8</span> <span class="o">-</span><span class="n">var</span> <span class="n">y</span> <span class="mi">4</span> <span class="o">-</span><span class="n">var</span> <span class="n">z</span> <span class="mi">8</span> <span class="o">-</span><span class="ow">in</span> <span class="ow">in</span><span class="o">.</span><span class="n">lj</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lammps</span><span class="o">/</span><span class="n">sm60</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">lmp</span>  <span class="o">-</span><span class="n">k</span> <span class="n">on</span> <span class="n">g</span> <span class="mi">3</span> <span class="o">-</span><span class="n">sf</span> <span class="n">kk</span> <span class="o">-</span><span class="n">pk</span> <span class="n">kokkos</span> <span class="n">cuda</span><span class="o">/</span><span class="n">aware</span> <span class="n">on</span> <span class="n">neigh</span> <span class="n">full</span> <span class="n">comm</span> <span class="n">device</span> <span class="n">binsize</span> <span class="mf">2.8</span> <span class="o">-</span><span class="n">var</span> <span class="n">x</span> <span class="mi">8</span> <span class="o">-</span><span class="n">var</span> <span class="n">y</span> <span class="mi">4</span> <span class="o">-</span><span class="n">var</span> <span class="n">z</span> <span class="mi">8</span> <span class="o">-</span><span class="ow">in</span> <span class="ow">in</span><span class="o">.</span><span class="n">lj</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>The code runs is just a few seconds.
 The output looks like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LAMMPS</span> <span class="p">(</span><span class="mi">3</span> <span class="n">Nov</span> <span class="mi">2022</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LAMMPS</span> <span class="p">(</span><span class="mi">3</span> <span class="n">Nov</span> <span class="mi">2022</span><span class="p">)</span>
 <span class="n">KOKKOS</span> <span class="n">mode</span> <span class="ow">is</span> <span class="n">enabled</span> <span class="p">(</span><span class="n">src</span><span class="o">/</span><span class="n">KOKKOS</span><span class="o">/</span><span class="n">kokkos</span><span class="o">.</span><span class="n">cpp</span><span class="p">:</span><span class="mi">106</span><span class="p">)</span>
   <span class="n">will</span> <span class="n">use</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">3</span> <span class="n">GPU</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">per</span> <span class="n">node</span>
 <span class="n">Kokkos</span><span class="p">::</span><span class="n">Cuda</span><span class="p">::</span><span class="n">initialize</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">running</span> <span class="n">kernels</span> <span class="n">compiled</span> <span class="k">for</span> <span class="n">compute</span> <span class="n">capability</span> <span class="mf">6.0</span> <span class="n">on</span> <span class="n">device</span> <span class="k">with</span> <span class="n">compute</span> <span class="n">capability</span> <span class="mf">6.1</span> <span class="p">,</span> <span class="n">this</span> <span class="n">will</span> <span class="n">likely</span> <span class="n">reduce</span> <span class="n">potential</span> <span class="n">performance</span><span class="o">.</span>
@@ -501,12 +507,12 @@ The output looks like this:</p>
 <span class="n">Total</span> <span class="n">wall</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">08</span>
 </pre></div>
 </div>
-</section>
-<section id="executing-lammps-from-a-batch-job">
+</div>
+<div class="section" id="executing-lammps-from-a-batch-job">
 <h2>Executing LAMMPS from a batch job<a class="headerlink" href="#executing-lammps-from-a-batch-job" title="Permalink to this headline">¶</a></h2>
 <p>We can use all that we learn above to convert the execution into a submission script
 Write a submission script that we will call here <cite>runjob.slurm</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #SBATCH --job-name=LAMMPS
 #SBATCH -p comm_gpu_inter
@@ -524,7 +530,7 @@ singularity exec --nv /shared/containers/NGC_LAMMPS_patch_3Nov2022.sif ./run_lam
 </div>
 <p>We need also another file that will set the variables and run LAMMPS inside the container::
 The file is called <cite>run_lammps.sh</cite> and the content is this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 export OMP_NUM_THREADS=8
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lammps/sm60/lib
@@ -533,18 +539,18 @@ mpirun -n 3 /usr/local/lammps/sm60/bin/lmp  -k on g 3 -sf kk -pk kokkos cuda/awa
 </pre></div>
 </div>
 <p>We need to make this file executable using the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; chmod +x run_lammps.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; chmod +x run_lammps.sh
 </pre></div>
 </div>
 <p>Now we can submit the job and wait for the result.
 Submit the job with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; sbatch runjob.slurm
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; sbatch runjob.slurm
 </pre></div>
 </div>
 <p>We will get two files <cite>log.lammps</cite> that is the traditional log from LAMMPS and a file that looks like <cite>slurm-194660.out</cite>.
 The output from LAMMPS that instead of being shown on the screen is stored on a file with the corresponding JobID</p>
 <p>The file looks similar to the output from our interactive execution:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ cat slurm-194660.out
+<div class="highlight-default"><div class="highlight"><pre><span></span>tcogq003:~/scratch/LAMMPS$ cat slurm-194660.out
 Removing gcc version 9.3.0 : lang/gcc/9.3.0
 Removing git version 2.29.1 : dev/git/2.29.1
 /gpfs20/scratch/gufranco/LAMMPS
@@ -616,8 +622,8 @@ Dangerous builds not checked
 Total wall time: 0:00:08
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

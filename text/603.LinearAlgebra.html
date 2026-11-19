@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Linear Algebra &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Boost 1.79" href="604.Boost.html" />
@@ -120,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="606.HDF5_NetCDF.html">HDF5 and NetCDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="607.FFT.html">Fast Fourier Transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="608.ForceFields.html">Force Field Molecular Dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="609.CHARM%2B%2B_NAMD.html">CHARM++ and NAMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="609.CHARM++_NAMD.html">CHARM++ and NAMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="610.DFT.html">Density Functional Theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="611.BigData.html">Big Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="612.Python.html">Python 3.9.7</a></li>
@@ -200,7 +206,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="linear-algebra">
+  <div class="section" id="linear-algebra">
 <h1>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h1>
 <p>Linear Algebra is at the core of many of the algorithms used in High Performance Computing.
 Operations like the addition of two vectors or the product of matrices have been
@@ -219,9 +225,9 @@ building blocks for performing basic vector and matrix operations.
 The routines are organized in three levels:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Level 1 BLAS perform scalar, vector and vector-vector operations.</p></li>
-<li><p>Level 2 BLAS perform matrix-vector operations</p></li>
-<li><p>Level 3 BLAS perform matrix-matrix operations.</p></li>
+<li>Level 1 BLAS perform scalar, vector and vector-vector operations.</li>
+<li>Level 2 BLAS perform matrix-vector operations</li>
+<li>Level 3 BLAS perform matrix-matrix operations.</li>
 </ul>
 </div></blockquote>
 <p>Because the BLAS are efficient, portable, and widely available, they are
@@ -255,8 +261,8 @@ on the CPUs on Thorny.</p>
 numerically unstable.</p>
 <p>Atlas is also an implementation of BLAS that is part of the system and several
 other packages depend of it. Atlas can be found here:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">atlas</span><span class="o">/</span><span class="n">libsatlas</span><span class="o">.</span><span class="n">so</span><span class="mf">.3</span>
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">atlas</span><span class="o">/</span><span class="n">libsatlas</span><span class="o">.</span><span class="n">so</span><span class="mf">.3.10</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">atlas</span><span class="o">/</span><span class="n">libsatlas</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mi">3</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">atlas</span><span class="o">/</span><span class="n">libsatlas</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mf">3.10</span>
 </pre></div>
 </div>
 <p>I do not recommend using that for serious Linear Algebra usage.
@@ -266,33 +272,33 @@ Thorny runs RHEL 7.6 and the compiler is GCC 4.8. Spruce Knob uses RHEL 6.10
 and the compiler is 4.4.</p>
 <p>GCC 4.x has no programming for optimize code for AVX512, that is the main
 reason to use newer compilers like GCC 8.x when compiling scientific code.</p>
-<section id="compiling-reference-blas-and-lapack">
+<div class="section" id="compiling-reference-blas-and-lapack">
 <h2>Compiling Reference BLAS and LAPACK<a class="headerlink" href="#compiling-reference-blas-and-lapack" title="Permalink to this headline">¶</a></h2>
 <p>Now we will show how to compile the reference BLAS and LAPACK.
 The instructions were created for LAPACK 3.8</p>
-<section id="download-the-code">
+<div class="section" id="download-the-code">
 <h3>Download the code<a class="headerlink" href="#download-the-code" title="Permalink to this headline">¶</a></h3>
 <p>The Reference BLAS and LAPACK are hosted on Netlib
 <a class="reference external" href="http://www.netlib.org/lapack/">http://www.netlib.org/lapack/</a>
 The sources for LAPACK also contain the reference BLAS so all that we need
 is to download is the package for lapack:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">netlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">lapack</span><span class="o">/</span><span class="n">lapack</span><span class="o">-</span><span class="mf">3.8.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">netlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">lapack</span><span class="o">/</span><span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Uncompress and untar the file with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lapack</span><span class="o">-</span><span class="mf">3.8.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">lapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>That will generate a folder called <code class="docutils literal notranslate"><span class="pre">lapack-3.8.0</span></code> with all the sources inside.</p>
-</section>
-<section id="patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512">
+<p>That will generate a folder called <code class="docutils literal"><span class="pre">lapack-3.8.0</span></code> with all the sources inside.</p>
+</div>
+<div class="section" id="patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512">
 <h3>Patching the sources to support shared libraries and optimization for AVX512<a class="headerlink" href="#patching-the-sources-to-support-shared-libraries-and-optimization-for-avx512" title="Permalink to this headline">¶</a></h3>
 <p>As they are the sources only allow for static libraries when using the Makefile.
 There is also an option to use cmake, and we will cover that later on.</p>
 <p>Using make, several files need to be changed.
 The patch file can be downloaded from here <a class="reference external" href="Media:lapack.patch">lapack.patch</a>
 The content of the file is this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff -ruN lapack-3.8.0/BLAS/SRC/Makefile lapack-3.8.0_new/BLAS/SRC/Makefile
+<div class="highlight-default"><div class="highlight"><pre><span></span>diff -ruN lapack-3.8.0/BLAS/SRC/Makefile lapack-3.8.0_new/BLAS/SRC/Makefile
 --- lapack-3.8.0/BLAS/SRC/Makefile    2017-11-12 23:15:54.000000000 -0500
 +++ lapack-3.8.0_new/BLAS/SRC/Makefile        2019-11-12 13:23:07.985953000 -0500
 @@ -55,7 +55,10 @@
@@ -429,29 +435,29 @@ diff -ruN lapack-3.8.0/SRC/Makefile lapack-3.8.0_new/SRC/Makefile
       $(ARCH) $(ARCHFLAGS) $@ $^
 </pre></div>
 </div>
-<p>You can download the patch to the folder <code class="docutils literal notranslate"><span class="pre">lapack-3.8.0</span></code> and execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">patch</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">lapack</span><span class="o">.</span><span class="n">patch</span>
+<p>You can download the patch to the folder <code class="docutils literal"><span class="pre">lapack-3.8.0</span></code> and execute:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">patch</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">lapack</span><span class="o">.</span><span class="n">patch</span>
 </pre></div>
 </div>
 <p>Another way is to edit the files one by one.</p>
-<p>For the file <code class="docutils literal notranslate"><span class="pre">lapack-3.8./BLAS/SRC/Makefile</span></code> you need to add a new target
+<p>For the file <code class="docutils literal"><span class="pre">lapack-3.8./BLAS/SRC/Makefile</span></code> you need to add a new target
 “libblas.so” and adding the target to “all”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>all: $(BLASLIB) libblas.so
+<div class="highlight-default"><div class="highlight"><pre><span></span>all: $(BLASLIB) libblas.so
 
 libblas.so: $(ALLOBJ)
 gfortran -shared -Wl,-soname,$@ -o $@ $(ALLOBJ)
 </pre></div>
 </div>
-<p>The file <code class="docutils literal notranslate"><span class="pre">lapack-3.8./Makefile</span></code> should have now:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>install: all
+<p>The file <code class="docutils literal"><span class="pre">lapack-3.8./Makefile</span></code> should have now:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>install: all
     cp BLAS/SRC/libblas.so $(PREFIX)/lib
     cp SRC/liblapack.so $(PREFIX)/lib
     cp *.a $(PREFIX)/lib
 </pre></div>
 </div>
-</section>
-</section>
-<section id="installing-numpy-and-scipy-using-openblas">
+</div>
+</div>
+<div class="section" id="installing-numpy-and-scipy-using-openblas">
 <h2>Installing Numpy and Scipy using OpenBLAS<a class="headerlink" href="#installing-numpy-and-scipy-using-openblas" title="Permalink to this headline">¶</a></h2>
 <p>For the particular case of Python BLAS/LAPACK are very important for two
 packages Numpy and Scipy many scientific code written in Python relies on them.</p>
@@ -460,55 +466,55 @@ were specifically compiled to use OpenBLAS for linear algebra routines.</p>
 <p>The instructions below show how you can do the same for clean virtual
 environments where you want to install numpy and scipy.</p>
 <p>Assume that you want to use PyPy3 from module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module purge
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ module purge
 $ module load lang/python/pypy3.6-7.1.1-portable
 </pre></div>
 </div>
 <p>The first thing to do is to also load GCC 8.2 and OpenBLAS 0.3.7:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load load lang/gcc/8.2.0 libs/openblas/0.3.7_gcc82
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ module load load lang/gcc/8.2.0 libs/openblas/0.3.7_gcc82
 </pre></div>
 </div>
-<p>We start creating the virtual environment with <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>. Notice that PyPy
-comes with its own version of <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> called <code class="docutils literal notranslate"><span class="pre">virtualenv-pypy</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virtualenv-pypy pypy3.6
+<p>We start creating the virtual environment with <code class="docutils literal"><span class="pre">virtualenv</span></code>. Notice that PyPy
+comes with its own version of <code class="docutils literal"><span class="pre">virtualenv</span></code> called <code class="docutils literal"><span class="pre">virtualenv-pypy</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ virtualenv-pypy pypy3.6
 </pre></div>
 </div>
 <p>Activate the environment, create a build folder inside and change to that
 folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source pypy3.6/bin/activate
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ source pypy3.6/bin/activate
 $ mkdir pypy3.6/build
 $ cd pypy3.6/build
 </pre></div>
 </div>
-<p>Now we want to install numpy and scipy, do not try to use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">...</span></code>,
+<p>Now we want to install numpy and scipy, do not try to use <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">...</span></code>,
 it will bring generic versions using the reference BLAS and Lapack.</p>
 <p>Download and extract the packages manually:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://github.com/numpy/numpy/releases/download/v1.17.3/numpy-1.17.3.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget https://github.com/numpy/numpy/releases/download/v1.17.3/numpy-1.17.3.tar.gz
 $ wget https://github.com/scipy/scipy/releases/download/v1.3.1/scipy-1.3.1.tar.gz
 $ tar -zxvf numpy-1.17.3.tar.gz
 $ tar -zxvf scipy-1.3.1.tar.gz
 </pre></div>
 </div>
-<p>First configure numpy. Go to the folder and create a file <code class="docutils literal notranslate"><span class="pre">site.cfg</span></code> with this
+<p>First configure numpy. Go to the folder and create a file <code class="docutils literal"><span class="pre">site.cfg</span></code> with this
 content:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ALL</span><span class="p">]</span>
-<span class="n">library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">lib</span>
-<span class="n">include_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">include</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ALL</span><span class="p">]</span>
+<span class="n">library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">lib</span>
+<span class="n">include_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">include</span>
 
 <span class="p">[</span><span class="n">openblas</span><span class="p">]</span>
 <span class="n">libraries</span> <span class="o">=</span> <span class="n">openblas</span>
-<span class="n">library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">lib</span>
-<span class="n">include_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">include</span>
-<span class="n">runtime_library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3.7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">lib</span>
+<span class="n">library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">lib</span>
+<span class="n">include_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">include</span>
+<span class="n">runtime_library_dirs</span> <span class="o">=</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">openblas</span><span class="o">/</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">7</span><span class="n">_gcc82</span><span class="o">/</span><span class="n">lib</span>
 </pre></div>
 </div>
 <p>You can build and install numpy with pip, just execute:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install .
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip3 install .
 </pre></div>
 </div>
 <p>It takes a while and you get numpy installed and the installation tracked by pip.
 The configuration and installation Scipy is very similar:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ../scipy-1.3.1/
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd ../scipy-1.3.1/
 $ cp ../numpy-1.17.3/site.cfg .
 $ pip3 install .
 </pre></div>
@@ -516,7 +522,7 @@ $ pip3 install .
 <p>With numpy and scipy installed we can install any other packages that you
 plan for the virtual environment. As an example, we will install ipython
 and pytest:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install pytest ipython
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip3 install pytest ipython
 
 (pypy3.6) 12:31:11-gufranco@trcis001:~/scratch/pypy3.6$ ipython
 Python 3.6.1 (784b254d669919c872a505b807db8462b6140973, Apr 16 2019, 18:18:28)
@@ -536,7 +542,7 @@ NumPy relaxed strides checking option: True
 </div>
 <p>The configuration flags for numpy and scipy can be obtained from the command
 below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pypy3.6) 13:21:20-gufranco@trcis001:~/scratch/pypy3.6$ ipython
+<div class="highlight-default"><div class="highlight"><pre><span></span>(pypy3.6) 13:21:20-gufranco@trcis001:~/scratch/pypy3.6$ ipython
 Python 3.6.1 (784b254d669919c872a505b807db8462b6140973, Apr 16 2019, 18:18:28)
 Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
 IPython 7.9.0 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
@@ -576,15 +582,15 @@ blas_opt_info:
     runtime_library_dirs = [&#39;/shared/software/libs/openblas/0.3.7_gcc82/lib&#39;]
 </pre></div>
 </div>
-</section>
-<section id="multithreading-with-openblas">
+</div>
+<div class="section" id="multithreading-with-openblas">
 <h2>Multithreading with OpenBLAS<a class="headerlink" href="#multithreading-with-openblas" title="Permalink to this headline">¶</a></h2>
 <p>Another reason to prefer OpenBLAS or MKL over the reference BLAS and LAPACK is
 that optimized versions provide multithreading, multithreading allows several
 cores that share the same memory space to work on the arrays concurrently.</p>
 <p>OpenBLAS was compiled multithreaded and the number of threads can be controled
 with several environment variables:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OPENBLAS_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OPENBLAS_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
 <span class="n">export</span> <span class="n">GOTO_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
 <span class="n">export</span> <span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span>
 </pre></div>
@@ -598,58 +604,58 @@ Setting the selection of libraries for MKL is complex, but I always use the link
 <p>The only case where I can think someone would like to use the reference BLAS
 and LAPCACK is if you want to check a numerical issue with the optimized
 versions but in production, those versions should never being used.</p>
-</section>
-<section id="scalapack-2-2-0-on-spruce-with-gcc-10-3-0">
+</div>
+<div class="section" id="scalapack-2-2-0-on-spruce-with-gcc-10-3-0">
 <h2>ScaLapack 2.2.0 on Spruce with GCC 10.3.0<a class="headerlink" href="#scalapack-2-2-0-on-spruce-with-gcc-10-3-0" title="Permalink to this headline">¶</a></h2>
 <p>Modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 parallel/openmpi/3.1.6_gcc103 libs/openblas/0.3.19_gcc103 dev/cmake/3.23.0
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 parallel/openmpi/3.1.6_gcc103 libs/openblas/0.3.19_gcc103 dev/cmake/3.23.0
 </pre></div>
 </div>
 <p>Download the software:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/Reference-ScaLAPACK/scalapack/archive/refs/tags/v2.2.0.tar.gz -O scalapack-2.2.0.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/Reference-ScaLAPACK/scalapack/archive/refs/tags/v2.2.0.tar.gz -O scalapack-2.2.0.tar.gz
 $&gt; tar -zxvf scalapack-2.2.0.tar.gz
 $&gt; cd scalapack-2.2.0
 </pre></div>
 </div>
 <p>Use cmake:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; cmake -DCMAKE_Fortran_COMPILER=mpif90 -DCMAKE_C_COMPILER=mpicc \
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; cmake -DCMAKE_Fortran_COMPILER=mpif90 -DCMAKE_C_COMPILER=mpicc \
 -DCMAKE_Fortran_FLAGS=-fallow-argument-mismatch \
 -DCMAKE_INSTALL_PREFIX=/shared/software/libs/scalapack/2.2.0_gcc103_ompi316 \
 -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
 </pre></div>
 </div>
 <p>Run make:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; make
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; make
 </pre></div>
 </div>
-</section>
-<section id="elpa-2021-11-on-spruce-with-gcc-10-3">
+</div>
+<div class="section" id="elpa-2021-11-on-spruce-with-gcc-10-3">
 <h2>ELPA 2021.11 on Spruce with GCC 10.3<a class="headerlink" href="#elpa-2021-11-on-spruce-with-gcc-10-3" title="Permalink to this headline">¶</a></h2>
 <p>Modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 libs/scalapack/2.2.0_gcc103_ompi407 \
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/10.3.0 libs/openblas/0.3.19_gcc103 libs/scalapack/2.2.0_gcc103_ompi407 \
   dev/cmake/3.23.0 parallel/openmpi/4.0.7_gcc103
 </pre></div>
 </div>
 <p>Configure</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; ../configure --prefix=/shared/software/libs/elpa/2021.11_gcc103_ompi407 \
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ../configure --prefix=/shared/software/libs/elpa/2021.11_gcc103_ompi407 \
 LDFLAGS=&quot;-L${MD_OPENBLAS}/lib -L${MD_SCALAPACK}/lib&quot; \
 --disable-sse --disable-avx --disable-avx2 --disable-avx512 CFLAGS=-fPIC
 </pre></div>
 </div>
-</section>
-<section id="elpa-2021-11-on-thorny-with-intel-2022">
+</div>
+<div class="section" id="elpa-2021-11-on-thorny-with-intel-2022">
 <h2>ELPA 2021.11 on Thorny with Intel 2022<a class="headerlink" href="#elpa-2021-11-on-thorny-with-intel-2022" title="Permalink to this headline">¶</a></h2>
 <p>Modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/9.3.0 parallel/cuda/11.7 compiler mpi mkl
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; module load lang/gcc/9.3.0 parallel/cuda/11.7 compiler mpi mkl
 </pre></div>
 </div>
 <p>Configure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$&gt; export SCALAPACK=&quot;-L/gpfs20/shared/software/intel/oneapi/mkl/2022.1.0/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_intelmpi_lp64 -liomp5 -lpthread -lm -ldl&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; export SCALAPACK=&quot;-L/gpfs20/shared/software/intel/oneapi/mkl/2022.1.0/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_intelmpi_lp64 -liomp5 -lpthread -lm -ldl&quot;
 $&gt; ../configure --enable-avx512 --enable-nvidia-gpu CC=mpiicc CXX=mpiicpc FC=mpiifort SCALAPACK_LDFLAGS=&quot;$SCALAPACK&quot; --with-NVIDIA-GPU-compute-capability=sm_61 --prefix=/shared/software/libs/elpa/2021.11.002_intel22_impi22
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

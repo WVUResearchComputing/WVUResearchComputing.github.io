@@ -5,8 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Mountaineer (2011-2018) &mdash; WVU-RC 2026.03.15 documentation</title>
@@ -23,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2026.03.15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +44,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Spruce Knob (2014-2023)" href="82.Spruce.html" />
@@ -182,7 +188,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="mountaineer-2011-2018">
+  <div class="section" id="mountaineer-2011-2018">
 <h1>Mountaineer (2011-2018)<a class="headerlink" href="#mountaineer-2011-2018" title="Permalink to this headline">¶</a></h1>
 <p>Mountaineer was the first centrally managed HPC cluster at WVU.
 Mountaineer was replaced by the HPC clusters Spruce Knob that was introduced in 2013 and was finally decomissioned in 2018 before the launch of Thorny Flat in 2019.</p>
@@ -191,49 +197,55 @@ Each compute node had a dual socket mainboard (2 CPUs per node).
 On Mountaineer, each CPU had 6 CPU cores, ie 12 CPU cores per node.</p>
 <p>The total amount of cores was 384 as the product 32 (nodes) x 2 (CPUs per node) x 6 (cores per CPU).</p>
 <p>The total amount of memory per node was 48GB, considering that each node has 12 cores, the “fair-share” of memory for Mountaineer was 4GB per core.</p>
-<section id="hardware">
+<div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
 <p>Mountaineer was a 384 core cluster with an aggregated 1.5 TB of RAM.</p>
 <blockquote>
 <div><ul class="simple">
-<li><dl class="simple">
-<dt>Hostname</dt><dd><ul>
-<li><p>mountaineer.hpc.wvu.edu</p></li>
+<li><dl class="first docutils">
+<dt>Hostname</dt>
+<dd><ul class="first last">
+<li>mountaineer.hpc.wvu.edu</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Resource manager and system scheduler</dt><dd><ul>
-<li><p>Torque v. 4.2.7</p></li>
-<li><p>Moab Cluster Manager v. 7.2.7</p></li>
+<li><dl class="first docutils">
+<dt>Resource manager and system scheduler</dt>
+<dd><ul class="first last">
+<li>Torque v. 4.2.7</li>
+<li>Moab Cluster Manager v. 7.2.7</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Compute Resources</dt><dd><ul>
-<li><dl class="simple">
-<dt>Nodes, CPUs and cores</dt><dd><ul>
-<li><p>32 compute nodes</p></li>
-<li><p>Dual socket mainboards</p></li>
-<li><p>Dual six-core <a class="reference external" href="https://www.intel.com/content/www/us/en/products/sku/47922/intel-xeon-processor-x5650-12m-cache-2-66-ghz-6-40-gts-intel-qpi/specifications.html">Intel Xeon X5650 2.67 GHz</a> CPUs.</p></li>
-<li><p>The CPU was a processor from the Westmere EP microarchitecture and released Q1 of 2010.</p></li>
+<li><dl class="first docutils">
+<dt>Compute Resources</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Nodes, CPUs and cores</dt>
+<dd><ul class="first last">
+<li>32 compute nodes</li>
+<li>Dual socket mainboards</li>
+<li>Dual six-core <a class="reference external" href="https://www.intel.com/content/www/us/en/products/sku/47922/intel-xeon-processor-x5650-12m-cache-2-66-ghz-6-40-gts-intel-qpi/specifications.html">Intel Xeon X5650 2.67 GHz</a> CPUs.</li>
+<li>The CPU was a processor from the Westmere EP microarchitecture and released Q1 of 2010.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Memory</dt><dd><ul>
-<li><p>48 GB of RAM per node</p></li>
+<li><dl class="first docutils">
+<dt>Memory</dt>
+<dd><ul class="first last">
+<li>48 GB of RAM per node</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Network Specifics</dt><dd><ul>
-<li><p>10 Gb fiber connections between compute nodes</p></li>
-<li><p>1 Gb Ethernet connection from nodes to network attached storage</p></li>
+<li><dl class="first docutils">
+<dt>Network Specifics</dt>
+<dd><ul class="first last">
+<li>10 Gb fiber connections between compute nodes</li>
+<li>1 Gb Ethernet connection from nodes to network attached storage</li>
 </ul>
 </dd>
 </dl>
@@ -245,8 +257,8 @@ On Mountaineer, each CPU had 6 CPU cores, ie 12 CPU cores per node.</p>
 </ul>
 </div></blockquote>
 <p>Moutaineer HPC Cluster was hosted in the facilities of West Virginia Network (WVNET) (837 Chestnut Ridge Road, Morgantown, WV 26505).</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
